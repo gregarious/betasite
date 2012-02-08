@@ -153,33 +153,41 @@ LOGGING = {
             'formatter': 'verbose',
             'filename': to_abspath('logs/debug.log')
         },
-        'resolve_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'verbose',
-            'filename': to_abspath('logs/resolve.log')
-        },
-        'outsourcing_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'verbose',
-            'filename': to_abspath('logs/outsourcing.log')
-        },
-        'fb_import_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'simple_timestamped',
-            'filename': to_abspath('logs/imports/facebook_%s.log' % _timestamp),
-            'delay': True,      # only open if message is emitted
-            'mode': 'w'
-        },
-        'ical_import_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'simple_timestamped',
-            'filename': to_abspath('logs/imports/ical_%s.log' % _timestamp),
-            'delay': True,      # only open if message is emitted
-            'mode': 'w'
+        # 'resolve_file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'formatter': 'verbose',
+        #     'filename': to_abspath('logs/resolve.log')
+        # },
+        # 'outsourcing_file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'formatter': 'verbose',
+        #     'filename': to_abspath('logs/outsourcing.log')
+        # },
+        # 'fb_import_file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'formatter': 'simple_timestamped',
+        #     'filename': to_abspath('logs/imports/facebook_%s.log' % _timestamp),
+        #     'delay': True,      # only open if message is emitted
+        #     'mode': 'w'
+        # },
+        # 'ical_import_file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'formatter': 'simple_timestamped',
+        #     'filename': to_abspath('logs/imports/ical_%s.log' % _timestamp),
+        #     'delay': True,      # only open if message is emitted
+        #     'mode': 'w'
+        # }
+        'obidimport_file': {
+             'level': 'DEBUG',
+             'class': 'logging.FileHandler',
+             'formatter': 'simple_timestamped',
+             'filename': to_abspath('logs/imports/obid_%s.log' % _timestamp),
+             'delay': True,      # only open if message is emitted
+             'mode': 'w'            
         }
     },
     'loggers': {
@@ -188,28 +196,33 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'onlyinpgh.obidimport': {
+            'handlers': ['console','obidimport_file'],
+            'level':'INFO',
+            'propagate': False
+        },
         'onlyinpgh.debugging': {
             'handlers': ['console','debug_file'],
             'level':'DEBUG',
             'propagate': False
         },
         'onlyinpgh.resolve': {
-            'handlers': ['console','resolve_file'],
+            'handlers': ['console'],
             'level':'DEBUG',
             'propagate': False
         },
         'onlyinpgh.outsourcing': {
-            'handlers': ['console','outsourcing_file'],
+            'handlers': ['console'],
             'level':'DEBUG',
             'propagate': False
         },
         'onlyinpgh.fb_import': {
-            'handlers': ['console','fb_import_file'],
+            'handlers': ['console'],
             'level':'DEBUG',
             'propagrate': False
         },
         'onlyinpgh.ical_import': {
-            'handlers': ['console','ical_import_file'],
+            'handlers': ['console'],
             'level':'DEBUG',
             'propagrate': False
         },
