@@ -9,12 +9,13 @@ from onlyinpgh.tagging.categories import load_category_map
 from onlyinpgh.outsourcing.apitools import gplaces_client
 # from onlyinpgh.outsourcing.apitools.facebook import oip_client as fb_client
 
-def add_from_facebook(fb_id,place,import_org=True):
-    assert fb_id and place
-    fb_mgr.import_orgs([fb_id])
+import logging
+logging.disable(logging.WARNING)
+logger = logging.getLogger('onlyinpgh.obidimport')
 
-    # manually hook up the place page
-    ExternalPlaceSource.objects.create(service='fb',uid=fb_id,place=place)
+from onlyinpgh.settings import to_abspath
+CSV_FILENAME = to_abspath('../data/obid.csv')
+HAS_HEADER = True
 
 class OBIDRow:
     def __init__(self,fields):
@@ -24,15 +25,14 @@ class OBIDRow:
         '''
         # ensure each row is at least 6 fields long (fill with blanks if not)
         if len(fields) < 6:
-            fields.extend(['']*(7-len(fields)))
+            fields.extend(['']*(6-len(fields)))
 
-        self.org =      fields[0].strip()
-        self.place =    fields[1].strip()
+        self.import_status = fields[0].lower().strip()
+        self.name =    fields[1].strip()
         self.address =  fields[2].strip()
         self.phone =    fields[3].strip()
         self.url =      fields[4].strip()
-        # [5] is ignored
-        self.fb_id =    fields[6].strip()
+        self.fb_id =    fields[5].strip()
     
     @classmethod
     def rows_from_csv(cls,csv_filename,has_header=False):
@@ -41,11 +41,11 @@ class OBIDRow:
         '''
         with open(csv_filename) as f:
             reader = csv.reader(f)
-            return [OBIDRow(row) for row in reader]
-
+            if HAS_HEADER:
+                reader.next()
+            return [OBIDRow(row) for row in reader] 
+    
 def run():
-    in_filename = os.path.join(os.path.dirname(__file__),'obid.csv')
-
     #clear all tables
     Location.objects.all().delete()
     PlaceMeta.objects.all().delete()
@@ -56,35 +56,67 @@ def run():
     FacebookOrgRecord.objects.all().delete()
 
     gplaces_category_map = load_category_map('google_places')
-    gp_hits, gp_misses = 0,0
 
-    rows = OBIDRow.rows_from_csv(in_filename)
+    rows = OBIDRow.rows_from_csv(CSV_FILENAME)
     
-    # cycle through each row with a facebook reference and store a reference
-    page_mgr = PageImportManager()
+    # prefetch each fb page
     fb_rows = [row for row in rows if row.fb_id]
-    for row,info in zip(fb_rows,page_mgr.pull_page_info([row.fb_id for row in fb_rows])):
+    page_mgr = PageImportManager()
+    infos = page_mgr.pull_page_info([row.fb_id for row in fb_rows])
+    for row,info in zip(fb_rows,infos):
         if isinstance(info,dict):
-            info.pop('metadata',None)       # don't need to store metadata if it exists
-            FacebookPage.objects.get_or_create(fb_id=info['id'],
-                                        defaults=dict(pageinfo_json=json.dumps(info)))
             row.fb_id = info['id']  # ensure a numeric id
         else:
-            print 'ERROR: Pulling fb page %s resulted in the following exception: "%s"' % (str(row.fb_id),str(info))
+            logger.warning('Pre-fetching fb page %s resulted in the following exception: "%s"' % (str(row.fb_id),str(info)))
             row.fb_id = ''
 
     # cycle through all rows and store everything
     for i,row in enumerate(rows):
-        if not row.place:
-            print 'ERROR: no place for entry %d' % i
+        if row.import_status == 'noindex' or not row.name:
+            if not row.name:
+                logger.error('Row %d: No name listed. Skipping.')
+            continue
+        
+        if row.fb_id:
+            report = page_mgr.store_page(row.fb_id)  # if this fails, warnings below will kick in
+            if report.model_instance:
+                logger.debug('Row %d ("%s"): linked to FB page %s' % (i,row.name,report.model_instance.fb_id))
+        
+        organization = None
+        if row.import_status == 'org' or row.import_status == 'orgonly':
+            if row.fb_id:
+                report = page_mgr.import_org(row.fb_id)
+                if report.model_instance:
+                    organization = report.model_instance
+                    if row.name.lower().strip() != organization.name.lower().strip():
+                        logger.warning('Row %d ("%s"): Name from data file does not match Facebook page name "%s". '\
+                                        '(Facebook name was stored as Org name)' % (i,row.name,organization.name))
+                else:
+                    logger.warning('Row %d ("%s"): Organization FB import notice (fbid %s, notice: "%s")' % \
+                                    (i,row.name,str(row.fb_id),str(notice)))
+            
+            # if no fb id or the fb import failed, do it manually
+            if not organization:
+                organization,created = Organization.objects.get_or_create(name=row.name)
+            
+            if not organization.url and row.url:
+                organization.url = row.url
+                organization.save()
+        
+            logger.info('Imported %s as Organization' % row.name)
+
+        # we're done if this is an orgonly entry
+        if row.import_status == 'orgonly':
+            continue
+
+        # if we get here, the status implies the entry is a place
         
         # resolve the location
         location = resolve_location(Location(address=row.address,postcode='15213'))
 
         if location:
-            # hack to get around Google Geocoding appending the unviersity onto all addresses
-            if ( location.address.startswith('University') and not row.address.lower().startswith('univ') ) or \
-               ( location.address.startswith('Carnegie Mellon') and row.address.lower().startswith('carnegie mellon') ):
+            # hack to get around Google Geocoding appending unviersity names onto many addresses
+            if 'university' in location.address.lower() and 'university' not in row.address.lower():
                location.address = ','.join(location.address.split(',')[1:])
 
             try:
@@ -93,58 +125,36 @@ def run():
             except Location.DoesNotExist:
                 location.save()
         else:
-            print 'WARNING: Geocoding failed for entry %d ("%s")' % (i,row.place)
-
-        diff_org = row.org != row.place
-        org, place = None, None
-
-        # import org
-        # if the row has a fb id, we'll try to import the Org from Facebook
-        # only import Org from Facebook if it's the same as the Place (fb id relates to place only)
-        if row.fb_id and not diff_org:
-            try:
-                org = FacebookOrgRecord.objects.get(fb_id=row.fb_id)
-            except FacebookOrgRecord.DoesNotExist:
-                report = page_mgr.import_org(row.fb_id)
-                if report.model_instance:
-                    org = report.model_instance
-                else:
-                    print 'WARNING: Organization FB import failed for entry %d (fbid %s)' % (i,str(row.fb_id))
-
-        if not org:
-            org,created = Organization.objects.get_or_create(name=row.org)
+            logger.warning('Row %d ("%s"): Geocoding failed.' % (i,row.name))
 
         # import place
+        place = None
         if row.fb_id:
-            try:
-                place = ExternalPlaceSource.facebook.get(uid=row.fb_id)
-            except ExternalPlaceSource.DoesNotExist:
-                report = page_mgr.import_place(row.fb_id,import_owners=False)
-                if report.model_instance:
-                    place = report.model_instance
-                    if not place.owner:     # no owner is created automatically, so set it if not created
-                        place.owner = org
-                        place.save()
-                else:
-                    print 'WARNING: Place FB import failed for entry %d (fbid %s)' % (i,str(row.fb_id))
+            report = page_mgr.import_place(row.fb_id,import_owners=False)
+            if report.model_instance:
+                place = report.model_instance
+                if row.name.lower().strip() != place.name.lower().strip():
+                    logger.warning('Row %d ("%s"): Name from data file was overridden by different Facebook page name: "%s"' % \
+                                     (i,row.name,place.name))
+
+                if not place.owner and organization:     # no owner is created automatically, so set it if not created
+                    place.owner = organization
+                    place.save()
+            else:
+                for notice in report.notices:
+                    logger.warning('Row %d ("%s"): Place FB import notice (fbid %s, notice: "%s")' % \
+                                        (i,row.name,str(row.fb_id),str(notice)))
         
+        # if fb import failed, do it manually
         if not place:
-            place,created = Place.objects.get_or_create(name=row.place,location=location,owner=org)
+            place,created = Place.objects.get_or_create(name=row.name,location=location,owner=organization)
         
         if row.url:
             PlaceMeta.objects.create(place=place,meta_key='url',meta_value=row.url)
-            if not diff_org:    # also save the url as the org's url if they're the same
-                org.url = row.url
-                org.save()
-
         if row.phone:
             PlaceMeta.objects.create(place=place,meta_key='phone',meta_value=row.phone)
 
-        print 'Imported %s' % row.place
-        try:
-            print '  (linked to FB page %s)' % ExternalPlaceSource.facebook.get(place=place).uid
-        except ExternalPlaceSource.DoesNotExist:
-            pass
+        logger.info('Imported %s as Place' % row.name)
 
         # store tags from Google Place lookup
         if location and \
@@ -155,7 +165,7 @@ def run():
             coords = (40.4425,-79.9575)
             radius = 5000
 
-        response = gplaces_client.search_request(coords,radius,keyword=row.place)
+        response = gplaces_client.search_request(coords,radius,keyword=row.name)
 
         if len(response) > 0 and 'reference' in response[0]:
             details = gplaces_client.details_request(response[0]['reference'])
@@ -164,14 +174,9 @@ def run():
                 if typ in gplaces_category_map:
                     all_tags.update(gplaces_category_map[typ])
                 else:
-                    print 'WARNING: Unknown Google Places type: "%s"' % typ
+                    logger.warning('Unknown Google Places type: "%s"' % typ)
             if len(all_tags) > 0:
-                print '  Tags:',
-                for t in all_tags:
-                    print '%s,' % t,
-                print
-            gp_hits += 1
+                logger.debug('Row %d ("%s"): Tags [%s]' % (i,str(row.name),', '.join(all_tags)))
         else:
-            print '  WARNING: Failure querying Google Places for "%s" within %dm of (%f,%f)' % (row.place,radius,coords[0],coords[1])
-            gp_misses += 1
-    print gp_hits, gp_misses
+            logger.warning('Row %d ("%s"): Failure querying Google Places for "%s" within %dm of (%f,%f)' % \
+                (i,row.name,row.name,radius,coords[0],coords[1]))

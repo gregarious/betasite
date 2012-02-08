@@ -8,13 +8,13 @@ from django.db import transaction
 from onlyinpgh.outsourcing.apitools import facebook, facebook_client
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.places.models import Location, Place, Meta as PlaceMeta
-from onlyinpgh.outsourcing.models import FacebookOrgRecord, ExternalPlaceSource
+from onlyinpgh.outsourcing.models import FacebookOrgRecord, ExternalPlaceSource, FacebookPage
 
 from onlyinpgh.outsourcing.places import resolve_place, resolve_location
 
 from onlyinpgh import utils
 
-import logging, copy, re
+import logging, copy, re, json
 outsourcing_log = logging.getLogger('onlyinpgh.outsourcing')
 
 # reverse the US_STATE_MAP for eaach lookup of full names to abbreviations
@@ -385,6 +385,22 @@ class PageImportManager(object):
         # return the responses in the same order as the requests
         return [self._cached_page_infos.get(pid,self._unavailable_pages.get(pid))
                     for pid in page_ids]
+
+    def store_page(self,page_id,use_cache=True):
+        '''
+        Inserts a FacebookPage record into the DB if page info can be gathered
+        from the server. If a record already exists, the existing page info 
+        will be overwritten.
+        '''
+        page_info = self.pull_page_info([page_id],use_cache)[0]
+        if not isinstance(page_info,Exception):
+            page_info.pop('metadata',None)       # don't need to store metadata if it exists
+            record, _ = FacebookPage.objects.get_or_create(fb_id=page_info['id'])
+            record.pageinfo_json = json.dumps(page_info)
+            record.save()
+            return PageImportReport(page_id,record)
+        else:
+            return PageImportReport(page_id,None,[page_info])
 
     def _store_org(self,info):
         '''
