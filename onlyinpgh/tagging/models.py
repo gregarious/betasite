@@ -7,6 +7,8 @@ from django.contrib.contenttypes import generic
 
 class Tag(models.Model):
     name = models.SlugField()
+    def __unicode__(self):
+        return self.name
 
 class TaggedItem(models.Model):
     tag = models.ForeignKey(Tag)
@@ -15,4 +17,4 @@ class TaggedItem(models.Model):
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
     def __unicode__(self):
-        return self.tag
+        return u'%s => (%s)' % (unicode(self.tag),unicode(self.content_object))
