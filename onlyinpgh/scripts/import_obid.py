@@ -10,7 +10,7 @@ from onlyinpgh.outsourcing.apitools import gplaces_client
 # from onlyinpgh.outsourcing.apitools.facebook import oip_client as fb_client
 
 import logging
-logging.disable(logging.WARNING)
+logging.disable(logging.INFO)
 logger = logging.getLogger('onlyinpgh.obidimport')
 
 from onlyinpgh.settings import to_abspath
@@ -88,9 +88,8 @@ def run():
                 report = page_mgr.import_org(row.fb_id)
                 if report.model_instance:
                     organization = report.model_instance
-                    if row.name.lower().strip() != organization.name.lower().strip():
-                        logger.warning('Row %d ("%s"): Name from data file does not match Facebook page name "%s". '\
-                                        '(Facebook name was stored as Org name)' % (i,row.name,organization.name))
+                    organization.name = row.name
+                    organization.save()
                 else:
                     logger.warning('Row %d ("%s"): Organization FB import notice (fbid %s, notice: "%s")' % \
                                     (i,row.name,str(row.fb_id),str(notice)))
@@ -133,13 +132,10 @@ def run():
             report = page_mgr.import_place(row.fb_id,import_owners=False)
             if report.model_instance:
                 place = report.model_instance
-                if row.name.lower().strip() != place.name.lower().strip():
-                    logger.warning('Row %d ("%s"): Name from data file was overridden by different Facebook page name: "%s"' % \
-                                     (i,row.name,place.name))
-
+                place.name = row.name
                 if not place.owner and organization:     # no owner is created automatically, so set it if not created
                     place.owner = organization
-                    place.save()
+                place.save()
             else:
                 for notice in report.notices:
                     logger.warning('Row %d ("%s"): Place FB import notice (fbid %s, notice: "%s")' % \
@@ -178,5 +174,5 @@ def run():
             if len(all_tags) > 0:
                 logger.debug('Row %d ("%s"): Tags [%s]' % (i,str(row.name),', '.join(all_tags)))
         else:
-            logger.warning('Row %d ("%s"): Failure querying Google Places for "%s" within %dm of (%f,%f)' % \
-                (i,row.name,row.name,radius,coords[0],coords[1]))
+            logger.warning('Row %d ("%s"): Cannot tag, no Google Places result within %dm of (%f,%f)' % \
+                (i,row.name,radius,coords[0],coords[1]))

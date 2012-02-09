@@ -135,7 +135,7 @@ def _process_place(event_info):
             pass
 
     # we couldn't get a nice id-based Place, so we're going to try to figure one 
-    # out manually if there's vanue or place_name fields 
+    # out manually if there's venue or place_name fields 
     if venue or place_name:
         # do something semi-intelligent to get a good Location out of the venue
         if venue:
