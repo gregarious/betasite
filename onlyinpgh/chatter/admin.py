@@ -8,6 +8,5 @@ class CommentInline(admin.StackedInline):
 
 class PostAdmin(admin.ModelAdmin):
     inlines = [CommentInline]
-    filter_horizontal = ('tags',)
 
 admin.site.register(Post,PostAdmin)

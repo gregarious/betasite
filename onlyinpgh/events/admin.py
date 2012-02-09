@@ -13,7 +13,6 @@ class MetaInline(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     inlines = [RoleInline,MetaInline]
     exclude = ('rrule','rdate','exrule','exdate')
-    filter_horizontal = ('tags',)
     list_display = ('name','place','dtstart','dtend')
     search_fields = ['name']
     ordering = ['dtstart']
