@@ -18,27 +18,36 @@
 	<section id="{% block single_id %}{% endblock %}" class="single-item">
 
 		<header class="single-item-header">
-			<div class="single-item-thumb-container">
-				<img class="single-item-thumb" alt="{% block single_item_image_alt %}{% endblock %}" src="{% block single_item_image_url %}{% endblock %}" />
+			<div class="item-thumb-container">
+				<img class="item-thumb" height="50" width="50" alt="{% block single_item_image_alt %}{% endblock %}" src="{% block single_item_image_url %}{% endblock %}" />
 			</div>
 
-			<div class="single-item-header-content">
-				<h2 class="single-item-title">
+			<div class="item-content-container">
+				<h2 class="item-title">
 				  	{% block single_item_title %}
 					{% endblock %}
 				</h2>
-
 				{% block single_item_header_content %}
 				{% endblock %}				
-			</div>
 
+			</div>
+			
+			<nav class="sub-nav">
+				<ul>
+					<li><span>I'm here!</span></li>
+					<li><span>Directions</span></li>
+					<li><span>Add to Calendar</span></li>
+					<li><span>Talk about it</span></li>
+				</ul>
+			</nav>
+			
 		</header>
 		
 		<section class="single-item-content-container">
-			{% include "tags.html" %}
+			
 	    	{% block single_item_content %}
 	    	{% endblock %}
-
+	    	{% include "tags.html" %}
 		</section>			
 		
 		{% block single_item_related %}{% endblock %}	

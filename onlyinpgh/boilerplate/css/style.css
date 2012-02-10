@@ -351,7 +351,8 @@ header:after, section:after {
   clear: both;
 }
 /* 2 TYPOGRAPHY ---------- */
-p {
+p, time {
+  font-size: 0.9em;
   margin: 0.1em 0;
 }
 .meta {
@@ -377,7 +378,7 @@ p {
 #site-title {
   color: #092740;
   font-family: 'BloklettersViltstift';
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
@@ -395,7 +396,49 @@ p {
   margin: 0;
   text-shadow: 0 0.01em 0 #fff;
 }
-/* 4 LINKS ---------- */
+/* 4 INPUTS ---------- */
+.checkin {
+  display: block;
+  border: 1px #ffffff #092740;
+  background-color: #f1faff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f1faff), to(#90b0cc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #f1faff, #90b0cc);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #f1faff, #90b0cc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #f1faff, #90b0cc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #f1faff, #90b0cc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #f1faff, #90b0cc);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  font-weight: bold;
+  font-size: 14px;
+  width: 44pt;
+  height: 30pt;
+  margin: 0.5em auto;
+  text-align: center;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 50px;
+}
 /* 5 FIGURES & IMAGES ---------- */
 /* 7 FORMS ---------- */
 textarea,
@@ -443,13 +486,6 @@ input[type="text"]:hover {
   margin: 0 1.0416666666666665%;
   margin-bottom: 1em;
 }
-#post-title, #post-content {
-  display: inline;
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
-  margin-bottom: 1em;
-}
 /* 10 NAVIGATION ---------- */
 #site-nav {
   width: 100%;
@@ -469,12 +505,12 @@ input[type="text"]:hover {
   float: left;
   font-weight: bold;
   height: 22pt;
-  margin: 1em 0.25em 0;
+  margin: 1% 0.5% 0;
   padding: 0.25% 0.5% 0;
   position: relative;
   text-align: center;
   text-decoration: none;
-  width: 44pt;
+  width: 9%;
 }
 #site-nav ul li a:hover {
   background-image: url("/static/img/mblue_texture.png");
@@ -485,17 +521,52 @@ input[type="text"]:hover {
   box-shadow: 0 0 0 0;
   background-image: url("/static/img/dblue_texture.png");
 }
-.quick-nav li {
+.sub-nav ul, .quick-nav ul {
+  *zoom: 1;
+  *zoom: 1;
+}
+.sub-nav ul:before,
+.quick-nav ul:before,
+.sub-nav ul:after,
+.quick-nav ul:after {
+  content: "";
+  display: table;
+}
+.sub-nav ul:after, .quick-nav ul:after {
+  clear: both;
+}
+.quick-nav ul li {
   float: right;
   margin-right: 1em;
+  width: 22pt;
   padding: 0.3em;
 }
-.quick-nav li a {
+.quick-nav ul li a {
   color: #000;
   text-shadow: none;
 }
-.quick-nav li img {
+.quick-nav ul li img {
   padding: 0.6em;
+}
+.sub-nav ul li {
+  float: left;
+}
+.arrow-to-single {
+  background: url("http://www.joebalestrino.com/wp-content/uploads/2011/02/arrow-icon.gif");
+  width: 10px;
+  height: 10px;
+}
+#date-nav-left, #date-nav-right {
+  background: url("/static/img/date-nav.png");
+  height: 19px;
+  width: 19px;
+}
+#date-nav-left {
+  float: left;
+}
+#date-nav-right {
+  background-position: -17px -17px;
+  float: right;
 }
 /* 11 ITEMS ---------- */
 .item {
@@ -509,7 +580,7 @@ input[type="text"]:hover {
   margin: 0 1.0416666666666665%;
   cursor: pointer;
   margin: 0.5em 0.5em 0;
-  padding: 1em 0;
+  padding: 0.5em 0;
   -webkit-border-radius: 0.4em;
   -moz-border-radius: 0.4em;
   border-radius: 0.4em;
@@ -526,7 +597,7 @@ input[type="text"]:hover {
 
 }
 .item:active {
-  background: #90b0cc;
+  background: url("/static/img/paper/sand.jpg");
 }
 .item a {
   color: #333;
@@ -537,25 +608,50 @@ input[type="text"]:hover {
   float: left;
   width: 18.75%;
   margin: 0 1.0416666666666665%;
-  height: 70px;
   overflow: hidden;
 }
+.item-thumb-container img,
+.item-point-value img,
+.item-thumb-container .points,
+.item-point-value .points {
+  display: block;
+  height: 44pt;
+  width: 44pt;
+  margin-left: auto;
+  margin-right: auto;
+}
+.item-thumb-container .points, .item-point-value .points {
+  position: relative;
+  top: 12pt;
+  font-family: 'BloklettersViltstift';
+  text-align: center;
+}
 .item-content-container {
-  display: inline;
-  float: left;
-  width: 77.08333333333334%;
-  margin: 0 1.0416666666666665%;
+  float: right;
+  margin: 0 1.3em 0 1.0416666666666665%;
+  width: 72.91666666666666%;
 }
 .item-point-value {
   font-size: 1.8em;
   text-shadow: 0.1em 0.1em 0 #ccc;
+}
+.item-list {
+  *zoom: 1;
+  *zoom: 1;
+  margin: 0.5em 0 0;
+}
+.item-list:before, .item-list:after {
+  content: "";
+  display: table;
+}
+.item-list:after {
+  clear: both;
 }
 .item-list li {
   background: #fff;
   border: 1px #ccc solid;
   float: left;
   font-size: 0.8em;
-  margin-top: 0.5em;
   margin-right: 3.125%;
   padding: 0.3em;
   -webkit-border-radius: 0.5em;
@@ -573,11 +669,53 @@ input[type="text"]:hover {
   text-align: center;
 }
 /* SINGLE ---------- */
+.single-item .item-tags {
+  margin-top: 1em;
+}
+.single-item .item-content-container {
+  margin-right: 3.125%;
+}
+.single-item .sub-nav ul li {
+  background: #f1faff;
+  height: 22pt;
+  margin: 4% 1% 0;
+  width: 23%;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
 .single-item-header {
-  background: url("/static/img/paper/fern.jpg");
   -webkit-box-shadow: 0 0.2em 0.1em #092740;
   -moz-box-shadow: 0 0.2em 0.1em #092740;
   box-shadow: 0 0.2em 0.1em #092740;
+  background-color: #f1faff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f1faff), to(#90b0cc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #f1faff, #90b0cc);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #f1faff, #90b0cc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #f1faff, #90b0cc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #f1faff, #90b0cc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #f1faff, #90b0cc);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
   padding: 1em 0.5em;
 }
 .single-item-title {
@@ -606,21 +744,10 @@ input[type="text"]:hover {
   width: 60px;
 }
 .single-item-content-container {
-  *zoom: 1;
-  *zoom: 1;
-  margin-top: 1em;
-}
-.single-item-content-container:before, .single-item-content-container:after {
-  content: "";
-  display: table;
-}
-.single-item-content-container:after {
-  clear: both;
+  margin: 1em;
 }
 .single-item-desc {
-  font-size: 1em;
   line-height: 1.4em;
-  margin: 1em 0.5em;
   text-indent: 2em;
 }
 .single-item-related {
@@ -640,26 +767,36 @@ input[type="text"]:hover {
 }
 /* 11 CALENDAR ---------- */
 /* 12 UTILITY ---------- */
-.container {
-  padding: 0 0.5em;
-}
 /* 13 SEARCH ---------- */
 /* 14 GLOBAL OBJECTS ---------- */
 /* 15 VENDOR-SPECIFIC ---------- */
 /* 16 MODERNIZR ---------- */
 /* 16 EVENTS SPECIFIC ---------- */
-/* 16 PLACES SPECIFIC ---------- */
-/* 16 SPECIALS SPECIFIC ---------- */
-/* 16 CHATTER SPECIFIC ---------- */
-/* 16 NEWS SPECIFIC ---------- */
-/* 16 JOBS SPECIFIC ---------- */
-/* 17 TEMPLATE SPECIFICS ---------- */
-#offersSingle .item-point-value {
-  font-size: 2.4em;
-  margin: 0;
+#eventsPage .subnav {
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#ffffff));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #cccccc, #ffffff);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #cccccc, #ffffff);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #cccccc, #ffffff);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #cccccc, #ffffff);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #cccccc, #ffffff);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  padding: 0.5em;
+  text-align: center;
 }
-#singleNewsSource {
-  margin: 0 0 0.3em 0;
+#eventsPage .subnav time {
+  font-weight: bold;
 }
 #eventsSingle .single-item-desc {
   padding: 0.5em;
@@ -676,7 +813,116 @@ input[type="text"]:hover {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-#chatterFeed .item-desc {
+/* 16 PLACES SPECIFIC ---------- */
+/* 16 SPECIALS SPECIFIC ---------- */
+#offersSingle .item-point-value {
+  font-size: 2.4em;
+  margin: 0;
+}
+/* 16 CHATTER SPECIFIC ---------- */
+#chatterPage {
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffffff, #cccccc);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #ffffff, #cccccc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffffff, #cccccc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffffff, #cccccc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffffff, #cccccc);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  *zoom: 1;
+  *zoom: 1;
+  margin: 0.5em 0;
+  /*.item-thumb-container {
+    float: right;
+  }
+
+  .item-content-container {
+    float: left;
+    .column(8.5);
+  }*/
+
+}
+#chatterPage:before, #chatterPage:after {
+  content: "";
+  display: table;
+}
+#chatterPage:after {
+  clear: both;
+}
+#chatterPage .sub-nav ul li {
+  margin: 0;
+  padding: 0.5em 0;
+  text-align: center;
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#ffffff));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #cccccc, #ffffff);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #cccccc, #ffffff);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #cccccc, #ffffff);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #cccccc, #ffffff);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #cccccc, #ffffff);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  float: left;
+  margin: 0 1%;
+  padding: 1%;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  text-align: center;
+  width: 18.25%;
+}
+#chatterPage .sub-nav ul li#expandPostForm {
+  width: 7%;
+}
+#chatterPage .sub-nav ul li a {
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+}
+.post-form {
+  *zoom: 1;
+  *zoom: 1;
+  margin-top: 1em;
+  display: none;
+}
+.post-form:before, .post-form:after {
+  content: "";
+  display: table;
+}
+.post-form:after {
+  clear: both;
+}
+#chatterFeed .item-meta {
   display: inline;
   float: left;
   width: 89.58333333333334%;
@@ -713,6 +959,12 @@ input[type="text"]:hover {
 .downvote:hover {
   background-position: right bottom;
 }
+/* 16 NEWS SPECIFIC ---------- */
+#singleNewsSource {
+  margin: 0 0 0.3em 0;
+}
+/* 16 JOBS SPECIFIC ---------- */
+/* 17 TEMPLATE SPECIFICS ---------- */
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-boilerplate/wiki/The-Style

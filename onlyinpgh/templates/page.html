@@ -5,10 +5,10 @@
   <div id="wrapper">
 
     <header id="site-header">
-      <h1 id="site-title">Oakland !</h1>
+      <h1 id="site-title">Oakland Scene</h1>
       <nav class="quick-nav">
         <ul>
-          <li id="switchToMapMode">Map Mode</li>
+          <li id="switchToMapMode">Map</li>
           <li id="expandSearch">Search</li>
         </ul>
       </nav>
@@ -28,7 +28,7 @@
 
     <input type="search" id="site-search" placeholder="Search Scenable" />
 
-    <article id="site-content">
+    <article class="site-content" id="{% block content_id %}{% endblock %}">
     
       {% block content %}{% endblock %}
 

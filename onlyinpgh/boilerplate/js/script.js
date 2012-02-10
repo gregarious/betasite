@@ -15,6 +15,10 @@ jQuery(document).ready( function($) {
 		$('#site-search').slideToggle(200);
 	});
 
+	$('#expandPostForm').click( function() {
+		$('.post-form').slideToggle(200);
+	});
+
 	/*$('#submitSearch').click(function() {
 		printSelectedTags();
 	});

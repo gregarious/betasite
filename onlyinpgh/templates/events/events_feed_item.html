@@ -9,12 +9,14 @@
  	{% endif %}
 
  	{% if e.place %}
-  		<p>Hosted by {{ e.place.name }}</p>
+  		<p>{{ e.place.name }}</p>
 	{% endif %}
 
+	{% comment %}
 	{% if e.place.location.address %}
 		<p>{{ e.place.location.address }}</p>
 	{% endif %}
+	{% endcomment %}
 
 {% endblock %}
 

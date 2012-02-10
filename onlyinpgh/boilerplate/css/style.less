@@ -257,6 +257,8 @@ td { vertical-align: top; }
           box-shadow: @x @y @blur @color; 
 }
 
+
+
 /* 1 ROOT ---------- */
 
 body {
@@ -271,7 +273,8 @@ header, section {
 
 
 
-p {
+p, time {
+  font-size: 0.9em;
   margin: 0.1em 0;
 }
 
@@ -305,7 +308,7 @@ p {
 #site-title {
   color: @dblue;
   font-family: 'BloklettersViltstift';
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
@@ -326,8 +329,24 @@ p {
   text-shadow: 0 0.01em 0 #fff;
 }
 
-/* 4 LINKS ---------- */
+/* 4 INPUTS ---------- */
+
+.checkin {
+    display: block;
+    border: 1px #fff @dblue;
+    .gradient(@white, @lblue);
+    font-weight: bold;
+    font-size: 14px;
+    width: 44pt;
+    height: 30pt;
+    margin: 0.5em auto;
+    text-align: center;
+    .rounded(0.5em);
+    width: 50px;
+}
+
 /* 5 FIGURES & IMAGES ---------- */
+
 /* 7 FORMS ---------- */
 
 textarea, input[type="search"], input[type="email"], input[type="text"] {
@@ -353,11 +372,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin-bottom: 1em;
 }
 
-#post-title, #post-content {
-  .column(12);
-  margin-bottom: 1em;
-}
-
 /* 10 NAVIGATION ---------- */
 
 #site-nav {
@@ -367,38 +381,45 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   ul {
     width: 200%;
     
-    li a {
-      background: @white;
-      .b-shadow(0.2em, 0.2em, 0.1em, @dblue);
-      border-radius: 0.5em 0.5em 0 0;
-      color: #000;
-      cursor: pointer;
-      float: left;
-      font-weight: bold;
-      height: 22pt;
-      margin: 1em 0.25em 0;
-      padding: 0.25% 0.5% 0;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      width: 44pt;
-      
-      &:hover {
-        background-image: url("/static/img/mblue_texture.png");
+    li { 
+      a {
+          background: @white;
+          .b-shadow(0.2em, 0.2em, 0.1em, @dblue);
+          border-radius: 0.5em 0.5em 0 0;
+          color: #000;
+          cursor: pointer;
+          float: left;
+          font-weight: bold;
+          height: 22pt;
+          margin: 1% 0.5% 0;
+          padding: 0.25% 0.5% 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          width: 9%;
+          
+          &:hover {
+            background-image: url("/static/img/mblue_texture.png");
+          }
+    
+          &:active {
+            .b-shadow(0, 0, 0, 0);
+            background-image: url("/static/img/dblue_texture.png");
+    
+          }
+        }
       }
-
-      &:active {
-        .b-shadow(0, 0, 0, 0);
-        background-image: url("/static/img/dblue_texture.png");
-
-      }
-    }
   } 
 }
 
-.quick-nav li {
+.sub-nav ul, .quick-nav ul {
+  .clearfix;
+}
+
+.quick-nav ul li {
   float: right;
   margin-right: 1em;
+  width: 22pt;
   padding: 0.3em;
 
   a {
@@ -411,7 +432,30 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
+.sub-nav ul li {
+  float: left;
+}
 
+.arrow-to-single {
+  background: url("http://www.joebalestrino.com/wp-content/uploads/2011/02/arrow-icon.gif");
+  width: 10px;
+  height: 10px;
+}
+
+#date-nav-left, #date-nav-right {
+  background: url("/static/img/date-nav.png");
+  height: 19px;
+  width: 19px;
+}
+
+#date-nav-left {
+  float: left;
+}
+
+#date-nav-right {
+  background-position: -17px -17px;
+  float: right;
+}
 /* 11 ITEMS ---------- */
 
 .item {
@@ -420,7 +464,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .column(11.9);
   cursor: pointer;
   margin: 0.5em 0.5em 0;
-  padding: 1em 0;
+  padding: 0.5em 0;
   .rounded(0.4em);
 
   &:hover {
@@ -428,10 +472,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
   
   &:active {
-    background: @lblue;
+    background: url("/static/img/paper/sand.jpg");
   }    
-
-
 
   /* Will link with jQuery once templates are finalized */
 
@@ -443,12 +485,29 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .item-thumb-container, .item-point-value {
   .column(2.5);
-  height: 70px;
   overflow: hidden;
+  //margin: 0.2em 0em 0.2em 0.4em;
+
+  img, .points {
+    display: block;
+    height: 44pt;
+    width: 44pt;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .points {
+    position: relative;
+    top: 12pt; // might be a bad idea - try vertical-align: middle
+    font-family: 'BloklettersViltstift';
+    text-align: center;
+  }
 }
 
 .item-content-container {
-  .column(9.5);
+  float: right;
+  margin: 0 1.3em 0 1.0416666666666665%;
+  width: 72.91666666666666%;
 }
 
 .item-point-value {
@@ -461,7 +520,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item-list {
- 
+  .clearfix;
+  margin: 0.5em 0 0;
 }
 
 .item-list li {   
@@ -469,7 +529,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   border: 1px #ccc solid;
   float: left;
   font-size: 0.8em;
-   margin-top: 0.5em;
   margin-right: @total-width*((@gutter-width*1.5)/@_gridsystem-width);
   padding: 0.3em;
   .rounded(0.5em);
@@ -479,12 +538,27 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* SINGLE ---------- */
 
 .single-item {
-  
+  .item-tags {
+    margin-top: 1em;
+  }
+
+  .item-content-container {
+    margin-right: @total-width*((@gutter-width*1.5)/@_gridsystem-width);
+  }
+
+  .sub-nav ul li {
+    background: @white;
+    height: 22pt;
+    margin: 4% 1% 0;
+    width: 23%;
+    .rounded(0.5em);
+
+  }
 }
 
 .single-item-header {
-  background: url("/static/img/paper/fern.jpg");
   .b-shadow(0, 0.2em, 0.1em, @dblue);
+  .gradient(@white, @lblue);
   padding: 1em 0.5em;
 }
 
@@ -517,33 +591,25 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-item-content-container {
-  .clearfix;
-  margin-top: 1em;
+  margin: 1em;
 }
 
 .single-item-desc {
-  font-size: 1em;
   line-height: 1.4em;
-  margin: 1em 0.5em;
   text-indent: 2em;
 }
 
 .single-item-related {
   .clearfix;
+  margin-top: 1em;  
   div {
     clear: both;  
   }
-  
-  margin-top: 1em;  
 }
 
 /* 11 CALENDAR ---------- */
 
 /* 12 UTILITY ---------- */
-
-.container {
-  padding: 0 0.5em;
-}
 
 /* 13 SEARCH ---------- */
 
@@ -553,48 +619,21 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* 16 EVENTS SPECIFIC ---------- */
 
-.events {
-  .item {
+#eventsPage {
+  .subnav {
+    .gradient(#ccc, #fff);
+    padding: 0.5em;
+    text-align: center;
+
+    time {
+      font-weight: bold;
+    }
   }
 }
 
-.places {
-  
-}
-
-.offers {
-  
-}
-
-.chatter {
-  
-}
-
-.news {
-  
-}
-
-.jobs {
-  
-}
-
-
-/* 16 PLACES SPECIFIC ---------- */
-/* 16 SPECIALS SPECIFIC ---------- */
-/* 16 CHATTER SPECIFIC ---------- */
-/* 16 NEWS SPECIFIC ---------- */
-/* 16 JOBS SPECIFIC ---------- */
-
-/* 17 TEMPLATE SPECIFICS ---------- */
-
-
-#offersSingle .item-point-value {
-  font-size: 2.4em;
-  margin: 0;
-}
-
-#singleNewsSource {
-  margin: 0 0 0.3em 0;
+.events {
+  .item {
+  }
 }
 
 #eventsSingle .single-item-desc {
@@ -602,8 +641,75 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .rounded(10px);
 }
 
-#chatterFeed .item-desc {
-  .column(11);
+/* 16 PLACES SPECIFIC ---------- */
+
+.places {
+  
+}
+
+/* 16 SPECIALS SPECIFIC ---------- */
+
+.offers {
+  
+}
+
+#offersSingle .item-point-value {
+  font-size: 2.4em;
+  margin: 0;
+}
+
+/* 16 CHATTER SPECIFIC ---------- */
+
+#chatterPage {
+  .gradient(#fff, #ccc);
+  .clearfix;
+  margin: 0.5em 0;
+
+  /*.item-thumb-container {
+    float: right;
+  }
+
+  .item-content-container {
+    float: left;
+    .column(8.5);
+  }*/
+
+  .sub-nav ul li {
+    margin: 0;
+    padding: 0.5em 0;
+    text-align: center;
+  
+    .gradient(#ccc, #fff);
+    float: left;
+    margin: 0 1%;
+    padding: 1%;
+    .rounded(0.2em);
+    text-align: center;
+    width: 18.25%;
+
+    &#expandPostForm {
+      width: 7%;
+    }
+
+    a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
+    }    
+  }
+}
+
+.post-form {
+  .clearfix;
+  
+  margin-top: 1em;
+  display: none;
+}
+
+#chatterFeed {
+  .item-meta {
+    .column(11);
+  }
 }
 
 .user-avatar {
@@ -639,6 +745,25 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     background-position: right bottom;
   }
 }
+
+/* 16 NEWS SPECIFIC ---------- */
+
+.news {
+  
+}
+
+#singleNewsSource {
+  margin: 0 0 0.3em 0;
+}
+
+/* 16 JOBS SPECIFIC ---------- */
+
+.jobs {
+  
+}
+
+/* 17 TEMPLATE SPECIFICS ---------- */
+
 
 /* 18 MEDIA QUERIES ---------- */
 

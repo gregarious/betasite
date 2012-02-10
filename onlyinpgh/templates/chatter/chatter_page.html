@@ -1,26 +1,25 @@
 {% extends "page.html" %}
 
-{% block page_nav %}
-	<nav data-role="navbar" class="page-nav">
-      <ul>
-      	<li><a href="/chatter" rel="external">Hot</a></li>
-      	<li><a href="/chatter/new" rel="external">New</a></li>
-        <li><a href="/chatter/questions" rel="external">Question</a></li>
-		<li class="disabled"><a>Pics</a></li>
-		<li><a href="/chatter/discuss" rel="external">Discussion</a></li>
-      </ul>
-    </nav>
-{% endblock %}
+{% block content_id %}chatterPage{% endblock %}
 
 {% block content %}
-	
-	<form id="post-form">
-   		<h3>Add a [ type of chatter ]</h3>
-	    <input id="post-title" type="text" placeholder="Post Title" />
-		<br />
-		<textarea id="post-content" placeholder="Post Content"></textarea>
-		</textarea>
-	</form>
+	<nav class="sub-nav">
+      <ul>
+      	<li><a href="/chatter" rel="external">All</a></li>
+        <li><a href="/chatter/questions" rel="external">Question</a></li>
+		<li><a href="/chatter/pics">Pics</a></li>
+		<li><a href="/chatter/discuss" rel="external">Discuss</a></li>
+		<li id="expandPostForm">+</li>
+      </ul>
+    </nav>	
+	<section id="post-form">
+   		<form class="post-form">
+		    <input id="post-title" type="text" placeholder="Post Title" />
+			<br />
+			<textarea id="post-content" placeholder="Post Content"></textarea>
+			</textarea>
+		</form>
+	</section>
 
 	{% include "chatter/chatter_feed.html" %}
 
