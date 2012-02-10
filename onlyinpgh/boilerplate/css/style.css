@@ -334,37 +334,66 @@ body:after {
 /* MIXINS ---------- */
 /* 1 ROOT ---------- */
 body {
-  background-color: #f1faff;
+  background: #90b0cc;
 }
-/* 2 TYPOGRAPHY ---------- */
-header {
+header, section {
   *zoom: 1;
   *zoom: 1;
 }
-header:before, header:after {
+header:before,
+section:before,
+header:after,
+section:after {
   content: "";
   display: table;
 }
-header:after {
+header:after, section:after {
   clear: both;
 }
+/* 2 TYPOGRAPHY ---------- */
 p {
   margin: 0.1em 0;
 }
 .meta {
   margin-top: 0.2em;
 }
+/* 8 SITE ---------- */
+#site-header {
+  position: relative;
+  z-index: 999;
+}
+#site-content {
+  *zoom: 1;
+  *zoom: 1;
+}
+#site-content:before, #site-content:after {
+  content: "";
+  display: table;
+}
+#site-content:after {
+  clear: both;
+}
 /* 3 HEADINGS ---------- */
 #site-title {
-  font-family: 'KomikaTitleRegular';
-  font-size: 1.8em;
+  color: #092740;
+  font-family: 'BloklettersViltstift';
+  font-size: 1.3em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
-  margin: 0 0 0 0.8em;
+  margin: 0.5em 0 0 0.8em;
+  text-shadow: 0 0.09em 0.04em #f1faff;
 }
 .section-title {
-  font-style: italic;
+  background: url("/static/img/paper/sand.jpg");
+  margin: 0.5em 0 0.1em 0;
+  padding: 0.5em;
+  text-shadow: 0 0.04em #ccc;
+}
+.item-title, .single-item-title {
+  font-size: 1em;
+  margin: 0;
+  text-shadow: 0 0.01em 0 #fff;
 }
 /* 4 LINKS ---------- */
 /* 5 FIGURES & IMAGES ---------- */
@@ -401,7 +430,7 @@ input[type="text"]:hover {
 #site-search {
   display: inline;
   float: left;
-  width: 97.91666666666666%;
+  width: 94.58333333333333%;
   margin: 0 1.0416666666666665%;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -423,27 +452,38 @@ input[type="text"]:hover {
 }
 /* 10 NAVIGATION ---------- */
 #site-nav {
-  background-color: #45698b;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 #site-nav ul {
   width: 200%;
 }
-#site-nav ul li {
-  background-color: #90b0cc;
-  border-radius: 0.5em;
+#site-nav ul li a {
+  background: #f1faff;
+  -webkit-box-shadow: 0.2em 0.2em 0.1em #092740;
+  -moz-box-shadow: 0.2em 0.2em 0.1em #092740;
+  box-shadow: 0.2em 0.2em 0.1em #092740;
+  border-radius: 0.5em 0.5em 0 0;
+  color: #000;
+  cursor: pointer;
   float: left;
-  height: 44pt;
-  margin: 0.5em 0.25em;
-  padding: 1% 0.5% 0;
+  font-weight: bold;
+  height: 22pt;
+  margin: 1em 0.25em 0;
+  padding: 0.25% 0.5% 0;
+  position: relative;
   text-align: center;
+  text-decoration: none;
   width: 44pt;
 }
-#site-nav ul li a {
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
+#site-nav ul li a:hover {
+  background-image: url("/static/img/mblue_texture.png");
+}
+#site-nav ul li a:active {
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  background-image: url("/static/img/dblue_texture.png");
 }
 .quick-nav li {
   float: right;
@@ -457,51 +497,47 @@ input[type="text"]:hover {
 .quick-nav li img {
   padding: 0.6em;
 }
-/* 8 CONTENT ---------- */
-#site-content {
-  background-color: #092740;
-  *zoom: 1;
-  *zoom: 1;
-}
-#site-content:before, #site-content:after {
-  content: "";
-  display: table;
-}
-#site-content:after {
-  clear: both;
-}
 /* 11 ITEMS ---------- */
 .item {
+  background: url("/static/img/paper/eggshell.jpg");
+  -webkit-box-shadow: 0.1em 0.1em 0.05em #092740;
+  -moz-box-shadow: 0.1em 0.1em 0.05em #092740;
+  box-shadow: 0.1em 0.1em 0.05em #092740;
   display: inline;
   float: left;
-  width: 97.91666666666666%;
+  width: 97.08333333333333%;
   margin: 0 1.0416666666666665%;
   cursor: pointer;
-  margin-bottom: 1%;
-  margin-top: 1%;
-  padding: 3% 0;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
+  margin: 0.5em 0.5em 0;
+  padding: 1em 0;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  /* Will link with jQuery once templates are finalized */
+
 }
-.item-title {
-  font-size: 1.1em;
-  margin-top: 0;
+.item:active {
+  background: #90b0cc;
+}
+.item a {
+  color: #333;
+  text-decoration: none;
 }
 .item-thumb-container, .item-point-value {
   display: inline;
   float: left;
   width: 18.75%;
   margin: 0 1.0416666666666665%;
+  height: 70px;
   overflow: hidden;
 }
 .item-content-container {
@@ -514,11 +550,12 @@ input[type="text"]:hover {
   font-size: 1.8em;
   text-shadow: 0.1em 0.1em 0 #ccc;
 }
-.item-list li, #checkIn {
-  background-color: #ccc;
-  border: 1px #999 solid;
+.item-list li {
+  background: #fff;
+  border: 1px #ccc solid;
   float: left;
   font-size: 0.8em;
+  margin-top: 0.5em;
   margin-right: 3.125%;
   padding: 0.3em;
   -webkit-border-radius: 0.5em;
@@ -537,19 +574,14 @@ input[type="text"]:hover {
 }
 /* SINGLE ---------- */
 .single-item-header {
-  *zoom: 1;
-  *zoom: 1;
-  margin-bottom: 0.5em;
-}
-.single-item-header:before, .single-item-header:after {
-  content: "";
-  display: table;
-}
-.single-item-header:after {
-  clear: both;
+  background: url("/static/img/paper/fern.jpg");
+  -webkit-box-shadow: 0 0.2em 0.1em #092740;
+  -moz-box-shadow: 0 0.2em 0.1em #092740;
+  box-shadow: 0 0.2em 0.1em #092740;
+  padding: 1em 0.5em;
 }
 .single-item-title {
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin: 0 0 0.3em 0;
 }
 .single-item-header-content {
@@ -569,21 +601,27 @@ input[type="text"]:hover {
 }
 .single-item-thumb-container img {
   display: block;
-  height: 9em;
+  height: 60px;
   margin: 0 auto;
-  width: 9em;
-}
-.single-item-details {
-  list-style-type: square;
-  padding-left: 1.5em;
+  width: 60px;
 }
 .single-item-content-container {
+  *zoom: 1;
+  *zoom: 1;
+  margin-top: 1em;
+}
+.single-item-content-container:before, .single-item-content-container:after {
+  content: "";
+  display: table;
+}
+.single-item-content-container:after {
   clear: both;
 }
 .single-item-desc {
   font-size: 1em;
   line-height: 1.4em;
   margin: 1em 0.5em;
+  text-indent: 2em;
 }
 .single-item-related {
   *zoom: 1;
@@ -610,12 +648,6 @@ input[type="text"]:hover {
 /* 15 VENDOR-SPECIFIC ---------- */
 /* 16 MODERNIZR ---------- */
 /* 16 EVENTS SPECIFIC ---------- */
-.events .item {
-  background-image: url("http://www.webtexture.net/wp-content/gallery/20-seamless-paper-texture/thumbs/thumbs_papar_texture_thumb10.jpg");
-}
-.events .item:hover {
-  border: 1px #999 solid;
-}
 /* 16 PLACES SPECIFIC ---------- */
 /* 16 SPECIALS SPECIFIC ---------- */
 /* 16 CHATTER SPECIFIC ---------- */
@@ -630,8 +662,6 @@ input[type="text"]:hover {
   margin: 0 0 0.3em 0;
 }
 #eventsSingle .single-item-desc {
-  background-color: #f1f1f1;
-  border: 1px solid #e1e1e1;
   padding: 0.5em;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -694,6 +724,7 @@ input[type="text"]:hover {
     float: left;
     width: 47.91666666666667%;
     margin: 0 1.0416666666666665%;
+    margin-bottom: 1em;
   }
 }
 @media screen and (max-width: 520px) {

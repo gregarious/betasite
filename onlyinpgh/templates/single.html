@@ -29,16 +29,13 @@
 				</h2>
 
 				{% block single_item_header_content %}
-				{% endblock %}
-
-				{% include "tags.html" %}
-				
+				{% endblock %}				
 			</div>
 
 		</header>
 		
 		<section class="single-item-content-container">
-
+			{% include "tags.html" %}
 	    	{% block single_item_content %}
 	    	{% endblock %}
 

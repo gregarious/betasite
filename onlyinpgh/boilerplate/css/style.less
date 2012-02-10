@@ -251,23 +251,25 @@ td { vertical-align: top; }
 
 }
 
-.b-shadow(@x, @y, @blue, @color) {
-  -webkit-box-shadow: @x @y @blue @color; 
-     -moz-box-shadow: @x @y @blue @color; 
-          box-shadow: @x @y @blue @color; 
+.b-shadow(@x, @y, @blur, @color) {
+  -webkit-box-shadow: @x @y @blur @color; 
+     -moz-box-shadow: @x @y @blur @color; 
+          box-shadow: @x @y @blur @color; 
 }
 
 /* 1 ROOT ---------- */
 
 body {
-  background-color: @white;
+  background: @lblue;
+}
+
+header, section {
+  .clearfix;
 }
 
 /* 2 TYPOGRAPHY ---------- */
 
-header {
-  .clearfix;
-}
+
 
 p {
   margin: 0.1em 0;
@@ -278,21 +280,51 @@ p {
 }
 
 
+/* 8 SITE ---------- */
+
+#wrapper {
+  
+}
+
+#site-header {
+  position: relative;
+  z-index: 999;
+}
+
+#site-content {
+  .clearfix;
+}
+
+#site-footer {
+
+}
+
+
 /* 3 HEADINGS ---------- */
 
 #site-title {
-  font-family: 'KomikaTitleRegular';
-  font-size: 1.8em;
+  color: @dblue;
+  font-family: 'BloklettersViltstift';
+  font-size: 1.3em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
-  margin: 0 0 0 0.8em;
+  margin: 0.5em 0 0 0.8em;
+  text-shadow: 0 0.09em 0.04em @white;
 }
 
 .section-title {
-  font-style: italic;
+  background: url("/static/img/paper/sand.jpg");
+  margin: 0.5em 0 0.1em 0;
+  padding: 0.5em;
+  text-shadow: 0 0.04em #ccc;
 }
 
+.item-title, .single-item-title {
+  font-size: 1em;
+  margin: 0;
+  text-shadow: 0 0.01em 0 #fff;
+}
 
 /* 4 LINKS ---------- */
 /* 5 FIGURES & IMAGES ---------- */
@@ -310,7 +342,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 #site-search {
-  .column(12);
+  .column(11.6);
   margin-top: 1em;
   margin-bottom: 1em;
   display: none;
@@ -329,27 +361,36 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 10 NAVIGATION ---------- */
 
 #site-nav {
-  background-color: @mblue;
   width: 100%;
-  overflow: hidden; 
+  overflow: auto; 
 
   ul {
     width: 200%;
     
-    li {
-      background-color: @lblue;
-      border-radius: 0.5em;
+    li a {
+      background: @white;
+      .b-shadow(0.2em, 0.2em, 0.1em, @dblue);
+      border-radius: 0.5em 0.5em 0 0;
+      color: #000;
+      cursor: pointer;
       float: left;
-      height: 44pt;
-      margin: 0.5em 0.25em;
-      padding: 1% 0.5% 0;
+      font-weight: bold;
+      height: 22pt;
+      margin: 1em 0.25em 0;
+      padding: 0.25% 0.5% 0;
+      position: relative;
       text-align: center;
+      text-decoration: none;
       width: 44pt;
+      
+      &:hover {
+        background-image: url("/static/img/mblue_texture.png");
+      }
 
-      a {
-        color: #000;
-        font-weight: bold;
-        text-decoration: none;
+      &:active {
+        .b-shadow(0, 0, 0, 0);
+        background-image: url("/static/img/dblue_texture.png");
+
       }
     }
   } 
@@ -371,44 +412,38 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 
-/* 8 CONTENT ---------- */
-
-#wrapper {
-  
-}
-
-#site-header {
-  
-}
-
-#site-content {
-  background-color: @dblue;
-  .clearfix;
-
-}
-
-#site-footer {
-
-}
-
 /* 11 ITEMS ---------- */
 
 .item {
-  .column(12);
+  background: url("/static/img/paper/eggshell.jpg");
+  .b-shadow(0.1em, 0.1em, 0.05em, @dblue);
+  .column(11.9);
   cursor: pointer;
-  margin-bottom: 1%;
-  margin-top: 1%;
-  padding: 3% 0;
-  .rounded(0.5em);
-}
+  margin: 0.5em 0.5em 0;
+  padding: 1em 0;
+  .rounded(0.4em);
 
-.item-title {
-  font-size: 1.1em;
-  margin-top: 0;
+  &:hover {
+   
+  }
+  
+  &:active {
+    background: @lblue;
+  }    
+
+
+
+  /* Will link with jQuery once templates are finalized */
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
 }
 
 .item-thumb-container, .item-point-value {
   .column(2.5);
+  height: 70px;
   overflow: hidden;
 }
 
@@ -421,11 +456,20 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   text-shadow: 0.1em 0.1em 0 #ccc;
 }
 
-.item-list li, #checkIn {
-  background-color: #ccc;
-  border: 1px #999 solid;
+.item-tags {
+  
+}
+
+.item-list {
+ 
+}
+
+.item-list li {   
+  background: #fff;
+  border: 1px #ccc solid;
   float: left;
   font-size: 0.8em;
+   margin-top: 0.5em;
   margin-right: @total-width*((@gutter-width*1.5)/@_gridsystem-width);
   padding: 0.3em;
   .rounded(0.5em);
@@ -434,14 +478,18 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* SINGLE ---------- */
 
+.single-item {
+  
+}
+
 .single-item-header {
-  //.column(12);
-  .clearfix;
-  margin-bottom: 0.5em;
+  background: url("/static/img/paper/fern.jpg");
+  .b-shadow(0, 0.2em, 0.1em, @dblue);
+  padding: 1em 0.5em;
 }
 
 .single-item-title {
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin: 0 0 0.3em 0;
 }
 
@@ -457,26 +505,27 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
   img {
     display: block;
-    height: 9em;
+    height: 60px;
     margin: 0 auto;    
-    width: 9em;
+    width: 60px;
   }
 
 }
 
 .single-item-details {
-  list-style-type: square;
-  padding-left: 1.5em;
+  
 }
 
 .single-item-content-container {
-  clear: both;
+  .clearfix;
+  margin-top: 1em;
 }
 
 .single-item-desc {
   font-size: 1em;
   line-height: 1.4em;
   margin: 1em 0.5em;
+  text-indent: 2em;
 }
 
 .single-item-related {
@@ -506,10 +555,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .events {
   .item {
-    background-image: url("http://www.webtexture.net/wp-content/gallery/20-seamless-paper-texture/thumbs/thumbs_papar_texture_thumb10.jpg");
-    &:hover {
-      border: 1px #999 solid;
-    }
   }
 }
 
@@ -553,8 +598,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 #eventsSingle .single-item-desc {
-  background-color: #f1f1f1;
-  border: 1px solid #e1e1e1;
   padding: 0.5em;
   .rounded(10px);
 }
@@ -608,6 +651,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 @media screen and (min-width: 720px) {
   .item {
     .column(6);
+    margin-bottom: 1em;
   }
 }
 

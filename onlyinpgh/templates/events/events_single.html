@@ -11,18 +11,18 @@
 	<ul class="single-item-details">
 
 		{% if e.dtstart and e.dtend %}
-	 		<li><time datetime="">{{ e.dtstart }} - {{ e.dtend }}</time></li>
+	 		<li class="event-time"><time datetime="">{{ e.dtstart }} - {{ e.dtend }}</time></li>
 	 	{% endif %}
 
 	 	{% if e.place %}
-	  		<li><a href="/places/{{ e.place.id }}">{{ e.place }}</a></li>
+	  		<li class="event-place"><a href="/places/{{ e.place.id }}">{{ e.place }}</a></li>
 		{% endif %}
 
-		{% if e.place.location.address %}
-			<li>{{ e.place.location.address }}</li>
+		{% if e.location.address %}
+			<li class="event-address">{{ e.place.location.address }}</li>
 		{% endif %}
 
-		<li><a href="http://google.com/maps">Get directions...</a></li>
+		<li class="directions"><a href="http://google.com/maps">Get directions...</a></li>
 
 	</ul>
 
