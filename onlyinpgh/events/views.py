@@ -18,6 +18,6 @@ def ajax_events_feed(request):
     for e in Event.objects.filter(dtstart__gt=datetime.utcnow()).order_by('dtstart')[:10]:
         events.append({
             'name': e.name,
-            'dtstart': e.dtstart.strftime('%Y-%m-%d %H:%I'),
-            'dtend': e.dtend.strftime('%Y-%m-%d %H:%I')})
+            'dtstart': e.dtstart.strftime('%Y-%m-%d %H:%M'),
+            'dtend': e.dtend.strftime('%Y-%m-%d %H:%M')})
     return {'events':events}    # decorator will handle JSONP details
