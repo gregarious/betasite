@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from onlyinpgh.places.models import Place, Meta as PlaceMeta
 
+from onlyinpgh.utils.decorators import jsonp_response
 
 # TODO: there must obviously be a better way to do this. Works for now
 class PlaceForTemplate:
@@ -33,4 +35,10 @@ def places_page(request):
 def single_place_page(request, id):
     variables = { 'p' : _package_place(Place.objects.get(id=id)) }
     return render_to_response('places/places_single.html', variables)
-    
+
+@jsonp_response
+def ajax_places_feed(request):
+    places = []
+    for p in Place.objects.all()[:10]:
+        places.append({'name': p.name})
+    return {'places':places}    # decorator will handle JSONP details
