@@ -4,10 +4,10 @@ from django.views.generic.simple import direct_to_template
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
-from onlyinpgh.chatter import views as chatter_views
 from onlyinpgh.places import views as places_views
 from onlyinpgh.events import views as events_views
 from onlyinpgh.offers import views as offers_views
+from onlyinpgh.chatter import views as chatter_views
 from onlyinpgh.news import views as news_views
 from onlyinpgh.tagging import views as tag_views
 from onlyinpgh import views as home_views
@@ -43,6 +43,11 @@ urlpatterns = patterns('',
     url(r'^specials/(?P<id>\d+)/$', offers_views.single_offer_page),
     url(r'^news/(?P<id>\d+)/$', news_views.single_article_page),
     url(r'^events/(?P<id>\d+)/$', events_views.single_event_page),
-    url(r'^places/(?P<id>\d+)/$', places_views.single_place_page)
+    url(r'^places/(?P<id>\d+)/$', places_views.single_place_page),
+
+    # OBID app urls
+    url(r'^ajax/places_feed$', places_views.ajax_places_feed),
+    url(r'^ajax/events_feed$', events_views.ajax_events_feed),
+    #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
 
 )

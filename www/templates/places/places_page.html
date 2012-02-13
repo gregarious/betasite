@@ -1,0 +1,21 @@
+<p>Places woo</p>
+<a id="home-link" href="#">Back Home</a>
+
+<script type="text/javascript">
+    bind_loader($('#home-link'),'/home.html');
+</script>
+
+<!-- Render the feed template -->
+<script type="text/javascript">
+(
+    $.getJSON('http://127.0.0.1:8000/ajax/places_feed',
+                feed_callback);
+    
+    function feed_callback(data,textStatus,jqXHR) {
+        renderTemplate('/places/templates/places_feed.tpl.html', data,
+            function(html) {
+                document.write(data);
+            });
+    }
+)();
+</script>
