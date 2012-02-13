@@ -473,10 +473,9 @@ input[type="text"]:hover {
 #site-search {
   display: inline;
   float: left;
-  width: 94.58333333333333%;
+  width: 89.58333333333334%;
   margin: 0 1.0416666666666665%;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em auto;
   display: none;
 }
 #post-form {
@@ -548,8 +547,28 @@ input[type="text"]:hover {
 .quick-nav ul li img {
   padding: 0.6em;
 }
+#single-utility {
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #222222;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #222222;
+  box-shadow: 0.1em 0.1em 0.1em #222222;
+}
+.sub-nav {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+}
 .sub-nav ul li {
   float: left;
+}
+#footer-nav ul li {
+  background: #90b0cc;
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  padding: 0.5em 0;
+  text-align: center;
 }
 .arrow-to-single {
   background: url("http://www.joebalestrino.com/wp-content/uploads/2011/02/arrow-icon.gif");

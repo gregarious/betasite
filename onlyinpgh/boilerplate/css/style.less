@@ -361,9 +361,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 #site-search {
-  .column(11.6);
-  margin-top: 1em;
-  margin-bottom: 1em;
+  .column(11);
+  margin: 1em auto;
   display: none;
 }
 
@@ -432,8 +431,25 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
+#single-utility {
+  .b-shadow(0.1em, 0.1em, 0.1em, #222);
+}
+
+.sub-nav {
+  .column(12);
+}
+
 .sub-nav ul li {
   float: left;
+}
+
+
+
+#footer-nav ul li {
+  background: @lblue;
+  .column(4);
+  padding: 0.5em 0;
+  text-align: center;
 }
 
 .arrow-to-single {
