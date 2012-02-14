@@ -1,5 +1,14 @@
-<ul>
 {{#places}}
-    <li>{{name}}</li>
-{{/places}}
+<ul>
+    <li>
+        <h3>{{name}}</h3>
+        <p>{{address}}</p>
+        <!-- for use in map code: ({{latitude}},{{longitude}}) -->
+        <ul>
+        {{#tags}}
+            <li>{{name}}</li>
+        {{/tags}}
+        </ul>
+    </li>
 </ul>
+{{/places}}

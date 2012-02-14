@@ -1,0 +1,74 @@
+{{!
+    Template data format:
+        events
+            name
+            start_date
+            start_time
+        specials
+            stub
+            points
+        places
+            name
+            address
+        news
+            title
+            source
+}}
+
+<div>
+Events
+    <ul>
+    {{#events}}
+        <li>
+            <p>{{name}}</p>
+            <p>{{start_date}} - {{start_time}}</p>
+        </li>
+    {{/events}}
+    </ul>
+</div>
+
+<div>
+Specials
+<ul>
+{{#specials}}
+    <li>
+        <p>{{stub}}</p>
+        <p>{{points}}</p>
+    </li>
+{{/specials}}
+</ul>
+</div>
+
+<div>
+Places
+<ul>
+{{#places}}
+    <li>
+        <p>{{name}}</p>
+        <p>{{address}}</p>
+    </li>
+{{/places}}
+</ul>
+</div>
+
+<div>
+News
+<ul>
+{{#news}}
+    <li>
+        <p>{{title}}</p>
+        <p>{{source}}</p>
+    </li>
+{{/news}}
+</ul>
+</div>
+
+<div>
+{{#chatter}}
+{{/chatter}}
+</div>
+
+<div>
+{{#jobs}}
+{{/jobs}}
+</div>
