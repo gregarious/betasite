@@ -1,0 +1,15 @@
+{{#event}}
+    <h3>{{name}}</h3>
+    <p>{{start_date}} {{start_time}} - {{end_time}}</p>
+    {{#place}}
+        <h4>Location:</h4>
+        <p>{{name}}</p>
+        <p><i>{{address}}<i></p>
+        <!-- for use in map code: ({{latitude}},{{longitude}}) -->
+    {{/place}}
+    <ul>
+    {{#tags}}
+        <li>{{name}}</li>
+    {{/tags}}
+    </ul>
+{{/event}}
