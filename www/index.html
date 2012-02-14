@@ -3,23 +3,24 @@
     <title>Title text</title>
 </head>
 <body>
-    <div id='header'>This is header fun fun.</div>
+    <div id='top-nav'>Map | Search</div>
     <hr/>
-    <div id='content'></div>
-    <hr/>
-    <div id='footer'>We probably don't need a footer.</div>
+    <div id='container'>
+    </div>
     <script type="text/javascript" src="/scripts/jquery.js"></script>
     <script type="text/javascript" src="/scripts/ICanHaz.js"></script>
     <script type="text/javascript" src="/main.js"></script>
     <script type="text/javascript">
         $(document).ready( function() {
-            load_view('home',$('#content'));
+            load_view('home',$('#container'));
         });
     </script>
     <!-- DEBUG: remove all below this line before release -->
     <script type="text/javascript">vloaders = {};</script>
+    <!--
     <script type="text/javascript" src="/vloaders/home.js"></script>
     <script type="text/javascript" src="/vloaders/places_feed.js"></script>
     <script type="text/javascript" src="/vloaders/events_feed.js"></script>
+    -->
 </body>
 </html>

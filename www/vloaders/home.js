@@ -9,13 +9,32 @@ vloaders.home = {
             });
         }
         
-        var postrender = function(html) {
-            element.html(html);
-            click_bind($('#events-link'),'events_feed');
-            click_bind($('#places-link'),'places_feed');
-            click_bind($('#specials-link'),'specials_feed');
+        var to_hotlist = function(html) {
+            element.find('#content').html(html);
         }
 
-        render_template('home',{},postrender);
+        var to_mainnav = function(html) {
+            element.find('#main-nav').html(html);
+            click_bind($('#navlink-hot'),'home');
+            click_bind($('#navlink-places'),'places_feed');
+            click_bind($('#navlink-events'),'events_feed');
+            click_bind($('#navlink-specials'),'specials_feed');
+            // click_bind($('#navlink-chatter'),'chatter_feed');
+            // click_bind($('#navlink-news'),'news_feed');
+            // click_bind($('#navlink-jobs'),'jobs_feed');
+        }
+
+        var to_feedcontainer = function(html) {
+            element.html(html); // fills container
+
+            $.getJSON('http://127.0.0.1:8000/ajax/hot_feed?callback=?',
+                function(json) {
+                    render_template('hot',json,to_hotlist);
+                });
+
+            render_template('main_nav',{},to_mainnav);
+        }
+
+        render_template('feed_container',{},to_feedcontainer);
     }
 };

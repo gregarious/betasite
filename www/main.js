@@ -44,11 +44,11 @@ function render_template(tname,data,callback) {
         // If the template doesn't exist, load it from templates/[name].html
         $.get(tfile,function(template) {
                 ich.addTemplate(tname,template);
-                callback.call(null,ich[tname](data));
+                callback.call(null,ich[tname](data),data);
             });
     } 
     else {
         // The template has already been loaded; we'll use the cached template information
-        callback.call(null,ich[tname](data));
+        callback.call(null,ich[tname](data),data);
     }
 }
