@@ -1,9 +1,8 @@
 <ul>
 {{#events}}
-    <li><a href="#" id="event-{{id}}">{{name}}</a></li>
-    <ul>
-        <li>{{dtstart}}</li>
-        <li>{{dtend}}</li>
-    </ul>
+    <li>
+        <h3><a href="#" id="event-item-{{id}}">{{name}}</a></h3>
+        <p>{{start_date}} {{start_time}}</p>
+    </li>
 {{/events}}
 </ul>
