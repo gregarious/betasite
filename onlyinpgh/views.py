@@ -41,11 +41,12 @@ def ajax_hot_page(request):
         t = e.dtstart.strftime('%I:').lstrip('0') + e.dtstart.strftime('%M %p')
         data['events'].append( {'name':e.name, 
                                 'start_date':d,
-                                'start_time':t} )
+                                'start_time':t,
+                                'image_url':e.image_url} )
     
     # filter just for show
     for p in Place.objects.filter(~Q(location__address='')).order_by('?')[:3]:
-        data['places'].append( {'name':p.name,'address':p.location.address} )
+        data['places'].append( {'name':p.name,'address':p.location.address, 'id':p.id} )
     
     for o in Offer.objects.all()[:3]:
         data['specials'].append( {'stub':o.description, 'points':o.point_value} )

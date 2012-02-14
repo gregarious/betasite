@@ -600,21 +600,21 @@ input[type="text"]:hover {
   box-shadow: 0 0 0 0;
   background-image: url("/boilerplate/img/dblue_texture.png");
 }
-.sub-nav ul, .quick-nav ul {
+.utility-nav ul, .quick-nav ul {
   *zoom: 1;
   *zoom: 1;
 }
-.sub-nav ul:before,
+.utility-nav ul:before,
 .quick-nav ul:before,
-.sub-nav ul:after,
+.utility-nav ul:after,
 .quick-nav ul:after {
   content: "";
   display: table;
 }
-.sub-nav ul:after, .quick-nav ul:after {
+.utility-nav ul:after, .quick-nav ul:after {
   clear: both;
 }
-.sub-nav ul li, .quick-nav ul li {
+.utility-nav ul li, .quick-nav ul li {
   cursor: pointer;
 }
 .quick-nav ul li {
@@ -630,19 +630,50 @@ input[type="text"]:hover {
 .quick-nav ul li img {
   padding: 0.6em;
 }
-#single-utility {
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #222222;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #222222;
-  box-shadow: 0.1em 0.1em 0.1em #222222;
-}
-.sub-nav {
+.utility-nav {
   display: inline;
   float: left;
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
 }
-.sub-nav ul li {
+.utility-nav ul li {
   float: left;
+  font-weight: bold;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#45698b));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffffff, #45698b);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #ffffff, #45698b);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffffff, #45698b);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffffff, #45698b);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffffff, #45698b);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  margin: 0.5em 0.5%;
+  overflow: hidden;
+  padding: 0.5em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 44pt;
 }
 #footer-nav ul li {
   background: #90b0cc;
@@ -738,16 +769,11 @@ input[type="text"]:hover {
   text-shadow: 0.1em 0.1em 0 #ccc;
 }
 .item-list {
-  *zoom: 1;
-  *zoom: 1;
-  margin: 0.5em 0 0;
-}
-.item-list:before, .item-list:after {
-  content: "";
-  display: table;
-}
-.item-list:after {
-  clear: both;
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  margin: 0.5em 1em;
 }
 .item-list li {
   background: #fff;
