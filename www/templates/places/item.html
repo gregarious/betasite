@@ -1,7 +1,6 @@
-{{#places}}
 <ul>
-    <li>
-        <h3><a href="#" id="place-item-{{id}}">{{name}}</a></h3>
+    {{#place}}
+        <li>{{name}}</li>
         <p>{{address}}</p>
         <!-- for use in map code: ({{latitude}},{{longitude}}) -->
         <ul>
@@ -9,6 +8,5 @@
             <li>{{name}}</li>
         {{/tags}}
         </ul>
-    </li>
+    {{/place}}
 </ul>
-{{/places}}

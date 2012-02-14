@@ -47,6 +47,8 @@ urlpatterns = patterns('',
 
     # OBID app urls
     url(r'^ajax/places_feed$', places_views.ajax_places_feed),
+    url(r'^ajax/place/(?P<pid>\d+)/$', places_views.ajax_place_item),
+
     url(r'^ajax/events_feed$', events_views.ajax_events_feed),
     url(r'^ajax/event/(?P<eid>\d+)/$', events_views.ajax_event_item),
 

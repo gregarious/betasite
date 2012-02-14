@@ -2,7 +2,7 @@ vloaders.home = {
     init: function() {},
     render: function(element,data) {
         // helper function that binds view loaders to the current element
-        var click_bind = function(link,vloader,data) {
+        var bind_navclick = function(link,vloader,data) {
             link.click( function(event) {
                 load_view(vloader,element,data)
                 event.preventDefault();
@@ -15,13 +15,13 @@ vloaders.home = {
 
         var to_mainnav = function(html) {
             element.find('#main-nav').html(html);
-            click_bind($('#navlink-hot'),'home');
-            click_bind($('#navlink-places'),'places_feed');
-            click_bind($('#navlink-events'),'events_feed');
-            click_bind($('#navlink-specials'),'specials_feed');
-            // click_bind($('#navlink-chatter'),'chatter_feed');
-            // click_bind($('#navlink-news'),'news_feed');
-            // click_bind($('#navlink-jobs'),'jobs_feed');
+            bind_navclick($('#navlink-hot'),'home');
+            bind_navclick($('#navlink-places'),'places_feed');
+            bind_navclick($('#navlink-events'),'events_feed');
+            bind_navclick($('#navlink-specials'),'specials_feed');
+            // bind_navclick($('#navlink-chatter'),'chatter_feed');
+            // bind_navclick($('#navlink-news'),'news_feed');
+            // bind_navclick($('#navlink-jobs'),'jobs_feed');
         }
 
         var to_feedcontainer = function(html) {
