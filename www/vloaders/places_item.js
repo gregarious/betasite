@@ -13,7 +13,7 @@ vloaders.places_item = {
         }
 
         // simple: grab data and render single template
-        $.getJSON('http://127.0.0.1:8000/ajax/place/'+data['id']+'?callback=?',
+        $.getJSON(APP_SERVER+'/ajax/place/'+data['id']+'?callback=?',
             function(json) {
                 console.log(json);
                 render_template('places/item',json,postrender);

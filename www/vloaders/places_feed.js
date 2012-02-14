@@ -17,7 +17,6 @@ vloaders.places_feed = {
             event.preventDefault();        
         }
 
-
         var to_placelist = function(html,data) {
             element.find('#content').html(html);
 
@@ -42,7 +41,7 @@ vloaders.places_feed = {
         var to_feedcontainer = function(html) {
             element.html(html); // fills container
 
-            $.getJSON('http://127.0.0.1:8000/ajax/places_feed?callback=?',
+            $.getJSON(APP_SERVER+'/ajax/places_feed?callback=?',
                 function(json) {
                     render_template('places/feed',json,to_placelist);
                 });

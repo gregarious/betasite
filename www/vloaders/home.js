@@ -11,6 +11,8 @@ vloaders.home = {
         
         var to_hotlist = function(html) {
             element.find('#content').html(html);
+
+            
         }
 
         var to_mainnav = function(html) {
@@ -27,7 +29,7 @@ vloaders.home = {
         var to_feedcontainer = function(html) {
             element.html(html); // fills container
 
-            $.getJSON('http://127.0.0.1:8000/ajax/hot_feed?callback=?',
+            $.getJSON(APP_SERVER+'/ajax/hot_feed?callback=?',
                 function(json) {
                     render_template('hot',json,to_hotlist);
                 });

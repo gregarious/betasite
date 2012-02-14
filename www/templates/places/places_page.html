@@ -8,7 +8,7 @@
 <!-- Render the feed template -->
 <script type="text/javascript">
 (
-    $.getJSON('http://127.0.0.1:8000/ajax/places_feed',
+    $.getJSON(APP_SERVER+'/ajax/places_feed',
                 feed_callback);
     
     function feed_callback(data,textStatus,jqXHR) {

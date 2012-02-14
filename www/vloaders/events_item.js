@@ -13,7 +13,7 @@ vloaders.events_item = {
         }
 
         // simple: grab data and render single template
-        $.getJSON('http://127.0.0.1:8000/ajax/event/'+data['id']+'?callback=?',
+        $.getJSON(APP_SERVER+'/ajax/event/'+data['id']+'?callback=?',
             function(json) {
                 console.log(json);
                 render_template('events/item',json,postrender);

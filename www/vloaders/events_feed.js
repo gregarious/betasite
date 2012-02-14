@@ -18,7 +18,6 @@ vloaders.events_feed = {
             event.preventDefault();        
         }
 
-
         var to_eventlist = function(html,data) {
             element.find('#content').html(html);
 
@@ -43,7 +42,7 @@ vloaders.events_feed = {
         var to_feedcontainer = function(html) {
             element.html(html); // fills container
 
-            $.getJSON('http://127.0.0.1:8000/ajax/events_feed?callback=?',
+            $.getJSON(APP_SERVER+'/ajax/events_feed?callback=?',
                 function(json) {
                     render_template('events/feed',json,to_eventlist);
                 });
