@@ -40,5 +40,13 @@ def single_place_page(request, id):
 def ajax_places_feed(request):
     places = []
     for p in Place.objects.all()[:10]:
-        places.append({'name': p.name})
+        place = {   'name':     p.name,
+                    'tags':     [{'name':item.tag.name} for item in p.tags.all() if item.tag.name != 'establishment'] }
+        loc = p.location
+        if loc:
+            place['address'] = loc.address
+            place['latitude'] = float(loc.latitude) if loc.latitude else None
+            place['longitude'] = float(loc.longitude) if loc.longitude else None
+        places.append(place)
+
     return {'places':places}    # decorator will handle JSONP details
