@@ -12,7 +12,6 @@ vloaders.places_feed = {
                 
             element.html(home_link);
             element.append(html);
-            
         }
 
         // simple: grab data and render single template

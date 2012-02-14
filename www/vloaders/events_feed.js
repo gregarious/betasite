@@ -3,7 +3,13 @@
 vloaders.events_feed = {
     init: function() {},
     render: function(element,data) {
-        var postrender = function(html) {
+        // click handler for single event items
+        var item_clicked = function(event) {
+            load_view('events_single',element,{'id':event.data.eid});
+            event.preventDefault();        
+        }
+
+        var postrender = function(html,data) {
             var home_link = $('<a id="home-link" href="#">Home</a>');
             home_link.click( function(event) {
                     load_view('home',element)
@@ -12,7 +18,12 @@ vloaders.events_feed = {
                 
             element.html(home_link);
             element.append(html);
-            
+
+            for (var i = data.events.length - 1; i >= 0; i--) {
+                var eid = data.events[i].id;
+                element.find('#event-'+eid).click(
+                    {'eid':eid},item_clicked);
+            };
         }
 
         // simple: grab data and render single template
