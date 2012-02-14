@@ -1,18 +1,18 @@
 
-{% extends "page.html" %}
+{% extends "single_custom.html" %}
 
 {% block page_nav %}
 	{% include "page_nav.html" %}
 {% endblock %}
 
-{% block content %}
+{% block single_custom_content %}
 
 	<section id="offersSingle" class="single-item">
 
 		<header class="single-item-header">
 
 			<h2 class="single-item-title">
-			  	{{ o.description }}
+			  	<em>Special:</em> {{ o.description }}
 			</h2>
 
 			<div class="single-item-header-content">
@@ -26,14 +26,16 @@
 			</div>
 
 			<div class="item-point-value">
+				<span class="points">
 				+{{ o.point_value }}
+				</span>
 			</div>
 
 		</header>
 		
 		<section class="single-item-content-container">
 	    
-			<button>Grabbit!</button>
+			<div class="grabbit">Grabbit!</div>
 
 		</section>
 	

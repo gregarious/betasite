@@ -5,13 +5,14 @@
   <div id="wrapper">
 
     <header id="site-header">
-      <h1 id="site-title">Oakland !</h1>
+      <h1 id="site-title">Oakland Scene</h1>
       <nav class="quick-nav">
         <ul>
-          <li id="switchToMapMode">Map Mode</li>
-          <li id="expandSearch">Search</li>
+          <li class="map-mode"></li>
+          <li class="expand-search"></li>
         </ul>
       </nav>
+    </header>
 
       <nav id="site-nav">
         <ul>
@@ -24,12 +25,10 @@
           <li><a href="/jobs" rel="external">Jobs</a></li>
         </ul>
       </nav>
-      
-    </header>
 
     <input type="search" id="site-search" placeholder="Search Scenable" />
 
-    <article id="site-content">
+    <article class="site-content clearfix" id="{% block content_id %}{% endblock %}">
     
       {% block content %}{% endblock %}
 

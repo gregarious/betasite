@@ -4,8 +4,14 @@
 	{% include "page_nav.html" %}
 {% endblock %}
 
-{% block content %}
+{% block content_id %}eventsPage{% endblock %}
 
+{% block content %}
+	<nav class="subnav">
+		<span id="date-nav-left"></span>
+		<time>Today</time>
+		<span id="date-nav-right"></span>
+	</nav>
 	{% include "events/events_feed.html" %}
 
 {% endblock %}

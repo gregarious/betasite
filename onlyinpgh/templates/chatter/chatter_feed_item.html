@@ -1,6 +1,22 @@
 
 <li class="item">
 	<a href="/chatter/{{ c.id }}/">
+
+		<section class="item-content-container">
+		
+		  	<h3 class="item-title">
+		  		{{ c.title }}
+			</h3>
+
+		    <div class="item-desc">
+		    	<p class="meta">by <b>{{ c.author }}</b>, {{ c.dt|timesince }} ago</p>
+		    </div>
+
+		    <div class="item-meta">
+		    	<p class="meta">28 votes, 3 comments</p>
+		    </div>
+		    
+		</section>
 		
 		<div class="item-thumb-container">
 			<img class="item-thumb" height="60" width="60" alt="{{ c.name }}" src="
@@ -21,26 +37,6 @@
 
 			" />
 		</div>
-
-		<section class="item-content-container">
-		
-		  	<h3 class="item-title">
-		  		{{ c.title }}
-			</h3>
-
-			<aside class="voting">
-		        <div class="upvote"></div>
-		        <p class="numvotes">28</p>
-		        <div class="downvote"></div>    
-		    </aside>
-
-		    <div class="item-desc">
-		    	<p class="meta">by <b>{{ c.author }}</b>, {{ c.dt|timesince }} ago</p>
-		    </div>
-				
-			{% include "tags.html" %}
-
-		</section>
 
 	</a>
 </li>

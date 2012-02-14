@@ -10,9 +10,18 @@
 
 jQuery(document).ready( function($) {
 
-	$('#expandSearch').click( function() {
+	$('.expand-search').click( function() {
 		$('#site-nav').slideToggle(200);
 		$('#site-search').slideToggle(200);
+	});
+
+	$('#expandPostForm').click( function() {
+		$('.post-form').slideToggle(200);
+	});
+
+	$('.back').click( function() {
+		parent.history.back();
+		return false;
 	});
 
 	/*$('#submitSearch').click(function() {
