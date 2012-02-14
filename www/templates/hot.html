@@ -15,53 +15,66 @@
             source
 }}
 
-<div>
-Events
+<section id="eventsHot" class="hot-feed">
+    <header>
+        <h3 class="section-title">Upcoming Events</h3>
+    </header>
     <ul>
     {{#events}}
-        <li>
+        <li class="item">
+            <div class="item-thumb-container">
+                <img class="item-thumb" alt="{% block feed_item_image_alt %}{% endblock %}" src="{% block feed_item_image_url %}{% endblock %}" />
+            </div>
+            <article class="item-content-container">
             <p>{{name}}</p>
             <p>{{start_date}} - {{start_time}}</p>
+            </article>
         </li>
     {{/events}}
     </ul>
-</div>
+</section>
 
-<div>
-Specials
-<ul>
-{{#specials}}
-    <li>
-        <p>{{stub}}</p>
-        <p>{{points}}</p>
-    </li>
-{{/specials}}
-</ul>
-</div>
+<section id="specialsHot" class="hot-feed">
+    <header>
+        <h3 class="section-title">Specials</h3>
+    </header>
+    <ul>
+    {{#specials}}
+        <li class="item">
+            <p>{{stub}}</p>
+            <p>{{points}}</p>
+        </li>
+    {{/specials}}
+    </ul>
+</section>
 
-<div>
-Places
-<ul>
-{{#places}}
-    <li>
-        <p>{{name}}</p>
-        <p>{{address}}</p>
-    </li>
-{{/places}}
-</ul>
-</div>
+<section id="placesHot" class="hot-feed">
+    <header>
+        <h3 class="section-title">Hot Spots</h3>
+    </header>
+    <ul>
+    {{#places}}
+        <li class="item">
+            <p>{{name}}</p>
+            <p>{{address}}</p>
+        </li>
+    {{/places}}
+    </ul>
+</section>
 
-<div>
-News
-<ul>
-{{#news}}
-    <li>
-        <p>{{title}}</p>
-        <p>{{source}}</p>
-    </li>
-{{/news}}
-</ul>
-</div>
+<section id="newsHot" class="hot-feed">
+    <header>
+        <h3 class="section-title">Recent News</h3>
+    </header>
+    <ul>
+    {{#news}}
+        <li class="item">
+            <p>{{title}}</p>
+            <p>{{source}}</p>
+        </li>
+    {{/news}}
+    </ul>
+</section>
 
 <div>
 {{#chatter}}

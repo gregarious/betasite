@@ -518,10 +518,10 @@ p, time {
   width: 22px;
 }
 .expand-search {
-  background: url("/static/img/search.png") no-repeat right top;
+  background: url("/boilerplate/img/search.png") no-repeat right top;
 }
 .map-mode {
-  background: url("/static/img/map.png") no-repeat right top;
+  background: url("/boilerplate/img/map.png") no-repeat right top;
 }
 /* 7 FORMS ---------- */
 textarea,
@@ -592,13 +592,13 @@ input[type="text"]:hover {
   width: 9%;
 }
 #site-nav ul li a:hover {
-  background-image: url("/static/img/mblue_texture.png");
+  background-image: url("/boilerplate/img/mblue_texture.png");
 }
 #site-nav ul li a:active {
   -webkit-box-shadow: 0 0 0 0;
   -moz-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
-  background-image: url("/static/img/dblue_texture.png");
+  background-image: url("/boilerplate/img/dblue_texture.png");
 }
 .sub-nav ul, .quick-nav ul {
   *zoom: 1;
@@ -659,7 +659,7 @@ input[type="text"]:hover {
   height: 10px;
 }
 #date-nav-left, #date-nav-right {
-  background: url("/static/img/date-nav.png");
+  background: url("/boilerplate/img/date-nav.png");
   height: 19px;
   width: 19px;
 }
@@ -672,7 +672,7 @@ input[type="text"]:hover {
 }
 /* 11 ITEMS ---------- */
 .item {
-  background: url("/static/img/paper/eggshell.jpg");
+  background: url("/boilerplate/img/paper/eggshell.jpg");
   -webkit-box-shadow: 0.1em 0.1em 0.05em #092740;
   -moz-box-shadow: 0.1em 0.1em 0.05em #092740;
   box-shadow: 0.1em 0.1em 0.05em #092740;
@@ -699,7 +699,7 @@ input[type="text"]:hover {
 
 }
 .item:active {
-  background: url("/static/img/paper/sand.jpg");
+  background: url("/boilerplate/img/paper/sand.jpg");
 }
 .item a {
   color: #333;
@@ -1055,13 +1055,13 @@ input[type="text"]:hover {
   height: 15px;
 }
 .upvote {
-  background: url('/static/img/votingarrows.png') no-repeat left top;
+  background: url('/boilerplate/img/votingarrows.png') no-repeat left top;
 }
 .upvote:hover {
   background-position: right top;
 }
 .downvote {
-  background: url('/static/img/votingarrows.png') no-repeat left bottom;
+  background: url('/boilerplate/img/votingarrows.png') no-repeat left bottom;
 }
 .downvote:hover {
   background-position: right bottom;
@@ -1169,7 +1169,7 @@ textarea[contenteditable] {
   height: auto;
   margin: 0;
   overflow: visible;
-  position: static;
+  position: boilerplate;
   width: auto;
 }
 /* Hide visually and from screenreaders, but maintain layout */
