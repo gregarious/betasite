@@ -1,8 +1,17 @@
 <ul>
 {{#events}}
-    <li>
-        <h3><a href="#" id="event-item-{{id}}">{{name}}</a></h3>
-        <p>{{start_date}} {{start_time}}</p>
+    <li class="item">
+    	<a href="#" id="event-item-{{id}}">
+            <div class="item-thumb-container">
+                <img class="item-thumb" alt="{{name}}" src="{{image_url}}" />
+            </div>
+        	<article class="item-content-container">
+        		<h4 class="item-title">{{name}}</h4>
+        		<div class="item-desc">
+        			<time>{{start_date}} {{start_time}} - {{end_time}}</time>
+        		</div>
+        	</article>
+        </a>
     </li>
 {{/events}}
 </ul>

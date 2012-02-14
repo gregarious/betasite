@@ -63,5 +63,5 @@ def ajax_place_item(request,pid):
         place['address'] = loc.address
         place['latitude'] = float(loc.latitude) if loc.latitude else None
         place['longitude'] = float(loc.longitude) if loc.longitude else None
-
+    
     return {'place':place}

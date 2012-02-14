@@ -457,7 +457,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   } 
 }
 
-.sub-nav ul, .quick-nav ul {
+.utility-nav ul, .quick-nav ul {
   .clearfix;
 
   li {
@@ -482,16 +482,19 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
-#single-utility {
-  .b-shadow(0.1em, 0.1em, 0.1em, #222);
-}
-
-.sub-nav {
+.utility-nav {
   .column(12);
 }
 
-.sub-nav ul li {
+.utility-nav ul li {
   float: left;
+  font-weight: bold;
+  .gradient(#fff, @mblue);
+  margin: 0.5em 0.5%;
+  overflow: hidden;
+  padding: 0.5em;
+  .rounded(1em);
+  width: 44pt;
 }
 
 #footer-nav ul li {
@@ -585,8 +588,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item-list {
-  .clearfix;
-  margin: 0.5em 0 0;
+  .column(12);
+  margin: 0.5em 1em;
 }
 
 .item-list li {   
