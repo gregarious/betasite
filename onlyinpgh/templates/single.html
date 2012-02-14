@@ -1,21 +1,11 @@
-{% extends "page.html" %}
+{% extends "base.html" %}
 
-{% block page_nav %}
+{% block main_body %}
+<div id="wrapper" class="single">
 
-	{% include "page_nav.html" %}
-	<!-- <nav data-role="navbar" class="page-nav">
-      <ul>
-      	<li><a href="" rel="external">&larr; Back</a></li>
-      	<li><a href="/post-form" rel="dialog">Post about it</a></li>
-      	<li><a href="" rel="external">I'm here!</a></li>
-      	<li><a href="" rel="external">Add to Faves</a></li>
-      </ul>
-    </nav> -->
-{% endblock %}
+	{% include "single_header.html" %}
 
-{% block content %}
-
-	<section id="{% block single_id %}{% endblock %}" class="single-item">
+	<article id="{% block single_id %}{% endblock %}" class="single-item">
 
 		<header class="single-item-header">
 			<div class="item-thumb-container">
@@ -52,6 +42,12 @@
 		
 		{% block single_item_related %}{% endblock %}	
 
-	</section>
+	</article>
+
+	<footer id="site-footer">
+	  {% include "global_footer.html" %}
+	</footer>
+
+</div><!-- #wrapper -->
 
 {% endblock %}

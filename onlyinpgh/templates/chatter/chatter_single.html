@@ -2,24 +2,35 @@
 
 {% block single_id %}chatterSingle{% endblock %}
 
-{% block single_item_title %}{{ c.title }}{% endblock %}
+{% block single_item_title %}{{ posts.title }}{% endblock %}
 
 {% block single_item_header_content %}
-	<p>by {{ c.author }}, {{ c.dt|timesince }} ago</p>
+	<p>by {{ posts.author }}, {{ posts.dt|timesince }} ago</p>
+	<aside class="voting">
+		<div class="upvote"></div>
+		<div class="downvote"></div>
+	</aside>
+{% endblock %}
+
+{% block single_item_content %}
+	{% if posts.image_url %}
+		<img class="post-content-image" src="{{ posts.image_url }}" />
+	{% endif %}
+	{{ posts.content }}
 {% endblock %}
 
 {% block single_item_image_url %}
 	
-	{% if c.image_url %}
-		{{ c.image_url }}
+	{% if posts.image_url %}
+		{{ posts.image_url }}
 	{% else %}
-		{% if c.post_type == 'conversation' %}
+		{% if posts.post_type == 'conversation' %}
 			http://www.ncvo-vol.org.uk/sites/default/files/UploadedFiles/speech_icon.jpg
 		{% endif %}
-		{% if c.post_type == 'question' %}
+		{% if posts.post_type == 'question' %}
 			http://catalyst.harvard.edu/images/footer/question_mark.png
 		{% endif %}	
-		{% if c.post_type == 'photo' %}
+		{% if posts.post_type == 'photo' %}
 			http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif
 		{% endif %}	
 	{% endif %}
@@ -28,12 +39,14 @@
 
 {% block single_item_related %}
 
-	{% if c.comment_set.all %}
+	{% if posts.comment_set.all %}
 	    <ul class="comments">
-	    {% for comment in c.comment_set.all %}
+	    {% for comment in posts.comment_set.all %}
 	        <li class="comment-content">
 	            <header>
-	                <img src="{{ comment.commenter.avatar }}"><span class="meta">by {{ comment.commenter.display_name }}, {{ comment.dt|timesince }} ago</span>
+	                <img class="user-avatar" src="{{ comment.commenter.avatar }}">
+	                <a href="" class="meta">{{ comment.commenter.name }}</a>, 
+	                <time>{{ comment.dt|timesince }}</time> ago
 	            </header>
 	            <p>{{ comment.content }}</p>
 	        </li>

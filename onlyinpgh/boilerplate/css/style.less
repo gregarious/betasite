@@ -269,6 +269,12 @@ header, section {
   .clearfix;
 }
 
+img {
+  height: auto;
+  width: 100%;
+  max-width: 800px;
+}
+
 /* 2 TYPOGRAPHY ---------- */
 
 
@@ -290,8 +296,13 @@ p, time {
 }
 
 #site-header {
+  padding-top: 5px;
   position: relative;
   z-index: 999;
+}
+
+.single #site-header {
+  padding-bottom: 10px;
 }
 
 #site-content {
@@ -317,9 +328,14 @@ p, time {
 }
 
 .section-title {
-  background: url("/static/img/paper/sand.jpg");
-  margin: 0.5em 0 0.1em 0;
+  border-top: 2px solid #fff;
+  font-family: 'BloklettersViltstift';
+  font-size: 1.1em;
+  font-weight: normal;
+  .gradient(@white, @lblue);
+  margin: 0 0 0.1em 0;
   padding: 0.5em;
+  text-align: center;
   text-shadow: 0 0.04em #ccc;
 }
 
@@ -345,7 +361,37 @@ p, time {
     width: 50px;
 }
 
-/* 5 FIGURES & IMAGES ---------- */
+.grabbit {
+    border: 2px #fff @dblue;
+    color: #fff;
+    cursor: pointer;
+    .gradient(@mblue, @dblue);
+    font-weight: bold;
+    margin: 0.5em auto;
+    padding: 1em;
+    text-align: center;
+    .rounded(0.3em);
+    width: 50%;
+
+    &:hover {
+
+    }
+}
+
+/* 5 ICONS ---------- */
+
+.expand-search, .map-mode {
+  height: 22px;
+  width: 22px;
+}
+
+.expand-search {
+  background: url("/static/img/search.png") no-repeat right top;
+}
+
+.map-mode {
+  background: url("/static/img/map.png") no-repeat right top;
+}
 
 /* 7 FORMS ---------- */
 
@@ -361,8 +407,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 #site-search {
-  .column(11);
-  margin: 1em auto;
+  width: 90%;
+  margin: 1em 2%;
   display: none;
 }
 
@@ -413,6 +459,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .sub-nav ul, .quick-nav ul {
   .clearfix;
+
+  li {
+    cursor: pointer;  
+  }
+
 }
 
 .quick-nav ul li {
@@ -442,8 +493,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 .sub-nav ul li {
   float: left;
 }
-
-
 
 #footer-nav ul li {
   background: @lblue;
@@ -627,6 +676,10 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* 12 UTILITY ---------- */
 
+.back {
+  cursor: pointer;
+}
+
 /* 13 SEARCH ---------- */
 
 /* 14 GLOBAL OBJECTS ---------- */
@@ -730,7 +783,9 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .user-avatar {
   float: left;
+  height: 30px;
   margin: 0.1em  0.3em;
+  width: 30px;
 }
 
 .chatter-post-form {
@@ -779,6 +834,10 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 /* 17 TEMPLATE SPECIFICS ---------- */
+
+.hot-feed {
+  margin-bottom: 1em;
+}
 
 
 /* 18 MEDIA QUERIES ---------- */

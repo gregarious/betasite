@@ -350,6 +350,11 @@ section:after {
 header:after, section:after {
   clear: both;
 }
+img {
+  height: auto;
+  width: 100%;
+  max-width: 800px;
+}
 /* 2 TYPOGRAPHY ---------- */
 p, time {
   font-size: 0.9em;
@@ -360,8 +365,12 @@ p, time {
 }
 /* 8 SITE ---------- */
 #site-header {
+  padding-top: 5px;
   position: relative;
   z-index: 999;
+}
+.single #site-header {
+  padding-bottom: 10px;
 }
 #site-content {
   *zoom: 1;
@@ -386,9 +395,32 @@ p, time {
   text-shadow: 0 0.09em 0.04em #f1faff;
 }
 .section-title {
-  background: url("/static/img/paper/sand.jpg");
-  margin: 0.5em 0 0.1em 0;
+  border-top: 2px solid #fff;
+  font-family: 'BloklettersViltstift';
+  font-size: 1.1em;
+  font-weight: normal;
+  background-color: #f1faff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f1faff), to(#90b0cc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #f1faff, #90b0cc);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #f1faff, #90b0cc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #f1faff, #90b0cc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #f1faff, #90b0cc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #f1faff, #90b0cc);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  margin: 0 0 0.1em 0;
   padding: 0.5em;
+  text-align: center;
   text-shadow: 0 0.04em #ccc;
 }
 .item-title, .single-item-title {
@@ -439,7 +471,58 @@ p, time {
   background-clip: padding-box;
   width: 50px;
 }
-/* 5 FIGURES & IMAGES ---------- */
+.grabbit {
+  border: 2px #ffffff #092740;
+  color: #fff;
+  cursor: pointer;
+  background-color: #45698b;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#45698b), to(#092740));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #45698b, #092740);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #45698b, #092740);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #45698b, #092740);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #45698b, #092740);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #45698b, #092740);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  font-weight: bold;
+  margin: 0.5em auto;
+  padding: 1em;
+  text-align: center;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 50%;
+}
+/* 5 ICONS ---------- */
+.expand-search, .map-mode {
+  height: 22px;
+  width: 22px;
+}
+.expand-search {
+  background: url("/static/img/search.png") no-repeat right top;
+}
+.map-mode {
+  background: url("/static/img/map.png") no-repeat right top;
+}
 /* 7 FORMS ---------- */
 textarea,
 input[type="search"],
@@ -471,11 +554,8 @@ input[type="text"]:hover {
   border-color: #91D87D;
 }
 #site-search {
-  display: inline;
-  float: left;
-  width: 89.58333333333334%;
-  margin: 0 1.0416666666666665%;
-  margin: 1em auto;
+  width: 90%;
+  margin: 1em 2%;
   display: none;
 }
 #post-form {
@@ -533,6 +613,9 @@ input[type="text"]:hover {
 }
 .sub-nav ul:after, .quick-nav ul:after {
   clear: both;
+}
+.sub-nav ul li, .quick-nav ul li {
+  cursor: pointer;
 }
 .quick-nav ul li {
   float: right;
@@ -786,6 +869,9 @@ input[type="text"]:hover {
 }
 /* 11 CALENDAR ---------- */
 /* 12 UTILITY ---------- */
+.back {
+  cursor: pointer;
+}
 /* 13 SEARCH ---------- */
 /* 14 GLOBAL OBJECTS ---------- */
 /* 15 VENDOR-SPECIFIC ---------- */
@@ -949,7 +1035,9 @@ input[type="text"]:hover {
 }
 .user-avatar {
   float: left;
+  height: 30px;
   margin: 0.1em  0.3em;
+  width: 30px;
 }
 .chatter-post-form {
   margin-bottom: 2em;
@@ -984,6 +1072,9 @@ input[type="text"]:hover {
 }
 /* 16 JOBS SPECIFIC ---------- */
 /* 17 TEMPLATE SPECIFICS ---------- */
+.hot-feed {
+  margin-bottom: 1em;
+}
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-boilerplate/wiki/The-Style

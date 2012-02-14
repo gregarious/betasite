@@ -1,23 +1,25 @@
 {% extends "page.html" %}
 {% include "global_nav.html" %}
 
+{% block content_id %}hot{% endblock %}
+
 {% block content %}
 
-	<section id="eventsHot" class="events">
+	<section id="eventsHot" class="hot-feed">
 		<header>
 			<h3 class="section-title">Upcoming Events</h3>
 		</header>
 		{% include "events/events_feed.html" %}
 	</section>
 
-	<section id="specialsHot" class="offers">
+	<section id="specialsHot" class="hot-feed">
 		<header>
 			<h3 class="section-title">Sizzling Specials</h3>
 		</header>
 		{% include "offers/offers_feed.html" %}
 	</section>
 
-	<section id="newsHot" class="news">
+	<section id="newsHot" class="hot-feed">
 		<header>
 			<h3 class="section-title">Recent News</h3>
 		</header>
