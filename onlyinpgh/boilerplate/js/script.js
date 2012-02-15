@@ -23,12 +23,11 @@ jQuery(document).ready( function($) {
 		return false;
 	});
 
-	var loc = window.location.href;
-	$("#site-nav li a").each(function() {
-		if(this.href == loc) {
-		$(this).addClass('currenthover');
-	  }
+	$('.checkin').click(function(){
+		$('#checkinPoints').fadeIn(300).delay(800).fadeOut(300);
 	});
+
+
 
 
 	/*$('#submitSearch').click(function() {

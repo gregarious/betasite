@@ -297,7 +297,7 @@ p, time {
 
 #site-header {
   padding-top: 5px;
-  position: relative;
+  margin-bottom: 0.5em;
   z-index: 999;
 }
 
@@ -320,7 +320,7 @@ p, time {
 #site-title {
   color: #fff;
   font-family: 'BloklettersViltstift';
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
@@ -348,22 +348,9 @@ p, time {
 
 /* 4 INPUTS ---------- */
 
-.checkin {
-    display: block;
-    border: 1px #fff @dblue;
-    .gradient(@white, @lblue);
-    font-weight: bold;
-    font-size: 14px;
-    width: 44pt;
-    height: 30pt;
-    margin: 0.5em auto;
-    text-align: center;
-    .rounded(0.5em);
-    width: 50px;
-}
-
 .grabbit {
     border: 2px #fff @dblue;
+    color: #fff;
     cursor: pointer;
     .gradient(@mblue, @dblue);
     font-weight: bold;
@@ -422,8 +409,37 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin-bottom: 1em;
 }
 
-.currenthover {
-  background: #fff;
+#redeemSpecial {
+  padding: 0 1em;
+  .meta {
+    margin: 1em 0;
+  }
+  footer {
+    margin-top: 1em;  
+  }
+}
+
+.redeem-form {
+  .clearfix;
+
+  span {
+    height: 22pt;
+    font-weight: bold;
+    margin: 4% 1% 0;
+    padding: 2%;
+    width: 14%;
+    .gradient(@mblue, @dblue);
+    .rounded(0.5em);
+
+    &:active {
+      .gradient(@dblue, @mblue);
+    }
+  }
+
+  input {
+    .column(11);
+    margin: 2%;
+  }
 }
 
 /* 10 NAVIGATION ---------- */
@@ -501,7 +517,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 #footer-nav ul li {
   font-weight: bold;
-  .gradient(@lblue, @white);
   .column(4);
   padding: 0.5em 0;
   text-align: center;
@@ -640,7 +655,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-item-header {
-  .gradient(@white, @lblue);
+  .gradient(#fff, #ccc);
   padding: 1em 0.5em;
 }
 
@@ -716,14 +731,25 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .disabled {
-  color: #888;
+  color: #  ;
 }
+
+#checkinPoints {
+  font-size: 9.50em;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  text-shadow: 3px 3px 0 #CEE319;
+  display: none;
+
+}
+
 /* 13 FOOTER ---------- */
 
 #colophon {
-  position: relative;
-  top: 1em;
-  padding: 1em;
+  .column(11.8);
+  font-size: 0.9em;
+  padding: 1%;
 }
 
 /* 14 GLOBAL OBJECTS ---------- */
