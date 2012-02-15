@@ -262,7 +262,7 @@ td { vertical-align: top; }
 /* 1 ROOT ---------- */
 
 body {
-  background: url(/static/img/paper/limestone.jpg);
+  background: url(/static/img/blue_texture.jpg);
 }
 
 header, section {
@@ -280,11 +280,11 @@ img {
 
 
 p, time {
-  font-size: 0.9em;
   margin: 0.1em 0;
 }
 
 .meta {
+  font-size: 0.9em;
   margin-top: 0.2em;
 }
 
@@ -311,31 +311,32 @@ p, time {
 
 #site-footer {
   .clearfix;
+  margin-top: 2em;
 }
 
 
 /* 3 HEADINGS ---------- */
 
 #site-title {
-  color: @dblue;
+  color: #fff;
   font-family: 'BloklettersViltstift';
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: normal;
   float: left;
   letter-spacing: 0.1em;
   margin: 0.5em 0 0 0.8em;
-  text-shadow: 0 0.09em 0.04em @white;
+  text-shadow: 0 0.09em 0.04em #000;
 }
 
 .section-title {
   border-top: 2px solid #fff;
-  font-family: 'BloklettersViltstift';
   font-size: 1.1em;
-  font-weight: normal;
+  font-style: italic;
+  font-weight: bold;
   .gradient(@white, @lblue);
   margin: 0 0 0.1em 0;
   padding: 0.5em;
-  text-align: center;
+  /*text-align: center;*/
   text-shadow: 0 0.04em #ccc;
 }
 
@@ -421,12 +422,16 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin-bottom: 1em;
 }
 
+.currenthover {
+  background: #fff;
+}
+
 /* 10 NAVIGATION ---------- */
 
 #site-nav {
   width: 100%;
   overflow: auto; 
-
+  border-bottom: 1px #fff solid;
   ul {
     width: 200%;
     
@@ -676,6 +681,10 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   margin: 1em;
 }
 
+.single-content {
+  margin: 1em 0;
+}
+
 .single-item-desc {
   font-size: 1.02em;
   line-height: 1.4em;
@@ -695,7 +704,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 12 UTILITY ---------- */
 
 .back {
-  .gradient(@lblue, @white); 
   cursor: pointer;
   font-weight: bold;
   padding: 0.5em;
@@ -769,15 +777,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .clearfix;
   margin: 0.5em 0;
 
-  /*.item-thumb-container {
-    float: right;
-  }
-
-  .item-content-container {
-    float: left;
-    .column(8.5);
-  }*/
-
   .sub-nav ul li {
     margin: 0;
     padding: 0.5em 0;
@@ -802,26 +801,41 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
-.post-form {
-  .clearfix;
-  display: none;
-}
-
 #chatterFeed {
   .item-meta {
     .column(11);
   }
 }
 
-.user-avatar {
-  float: left;
-  height: 30px;
-  margin: 0.1em  0.3em;
-  width: 30px;
+#chatterSingle {
+  .item-content-container {
+    float: left;
+    margin: 0 1.3em 0 1.0416666666666665%;
+    width: 62.91666666666666%;
+  }
+
+
+  
 }
 
-.chatter-post-form {
-  margin-bottom: 2em;
+.voting {
+  float: right;
+  width: 10%;
+}
+
+.post-form {
+  margin: 2em 0;
+  display: none;
+
+  input {
+    .column(11);
+    margin: 1em;
+  }
+
+  textarea {
+    .column(11);
+    margin: 0 1em 1em;
+  }
 }
 
 .voting {
@@ -846,6 +860,37 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
   &:hover {
     background-position: right bottom;
+  }
+}
+
+.username {
+  font-weight: bold;
+
+  &:visited {
+    color: #333;  
+    text-decoration: none;
+  }
+}
+
+.user-avatar {
+  float: left;
+  height: 20px;
+  margin-right: 0.3em;
+  width: 20px;
+}
+
+.comments {
+  margin-top: 1.5em;
+  li {
+    background: #ccc;
+    margin: 0.5em 0;
+    padding: 0.5em;
+  }
+}
+
+.comment-content {
+  header {
+    border-bottom: 1px #999 solid;
   }
 }
 

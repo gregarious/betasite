@@ -11,20 +11,25 @@
 jQuery(document).ready( function($) {
 
 	$('.expand-search').click( function() {
-		$('#site-nav').slideToggle(200);
 		$('#site-search').slideToggle(200);
 	});
 
-	$('#expandPostForm').toggle( function() {
-			$('.post-form').show(200);
-		}, function() {
-			$('.post-form').hide(200)
-		});
+	$('#expandPostForm').click( function() {
+		$('.post-form').slideToggle(200);
+	});
 
 	$('.back').click( function() {
 		parent.history.back();
 		return false;
 	});
+
+	var loc = window.location.href;
+	$("#site-nav li a").each(function() {
+		if(this.href == loc) {
+		$(this).addClass('currenthover');
+	  }
+	});
+
 
 	/*$('#submitSearch').click(function() {
 		printSelectedTags();
