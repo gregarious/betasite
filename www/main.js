@@ -1,5 +1,9 @@
 // Main script file that contains all plumbing for loading/render templates
 
+// temporary global
+//APP_SERVER = 'http://www.bloodypajamas.com'
+APP_SERVER = 'http://127.0.0.1:8000'
+
 // Main view loading function. Will replace the html contents of 
 // the given element with the rendered view specified.
 //  * element: jQuery object whose html content will be replaced

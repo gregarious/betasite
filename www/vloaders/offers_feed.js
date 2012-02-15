@@ -1,18 +1,30 @@
-vloaders.home = {
+// simple view: gets JSON for offers from server and fills whole element with
+// template for them
+vloaders.offers_feed = {
     init: function() {},
     render: function(element,data) {
         // helper function that binds view loaders to the current element
-        var bind_navclick = function(link,vloader,data) {
+        var bind_navclick = function(link,vloader) {
             link.click( function(event) {
-                load_view(vloader,element,data)
+                load_view(vloader,element)
                 event.preventDefault();
             });
         }
-        
-        var to_hotlist = function(html) {
+
+        // click handler for single event items
+        var item_clicked = function(event) {
+            load_view('offers_item',element,{'id':event.data.id});
+            event.preventDefault();        
+        }
+
+        var to_speciallist = function(html,data) {
             element.find('#content').html(html);
 
-            
+            for (var i = data.specials.length - 1; i >= 0; i--) {
+                var pid = data.specials[i].id;
+                element.find('#special-item-'+pid).click(
+                    {'id':pid},item_clicked);
+            };
         }
 
         var to_mainnav = function(html) {
@@ -29,9 +41,9 @@ vloaders.home = {
         var to_feedcontainer = function(html) {
             element.html(html); // fills container
 
-            $.getJSON(APP_SERVER+'/ajax/hot_feed?callback=?',
+            $.getJSON(APP_SERVER+'/ajax/offers_feed?callback=?',
                 function(json) {
-                    render_template('hot',json,to_hotlist);
+                    render_template('offers/feed',json,to_speciallist);
                 });
 
             render_template('main_nav',{},to_mainnav);

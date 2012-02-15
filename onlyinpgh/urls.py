@@ -52,7 +52,10 @@ urlpatterns = patterns('',
     url(r'^ajax/events_feed$', events_views.ajax_events_feed),
     url(r'^ajax/event/(?P<eid>\d+)/$', events_views.ajax_event_item),
 
+    url(r'^ajax/offers_feed$', offers_views.ajax_offers_feed),
+    url(r'^ajax/offer/(?P<oid>\d+)/$', offers_views.ajax_offer_item),
+
     url(r'^ajax/hot_feed$', home_views.ajax_hot_page)
-    #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
+    #url(r'^ajax/offers_feed$', offers_views.ajax_offers_feed),
 
 )

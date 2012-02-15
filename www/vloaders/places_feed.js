@@ -32,7 +32,7 @@ vloaders.places_feed = {
             bind_navclick($('#navlink-hot'),'home');
             bind_navclick($('#navlink-places'),'places_feed');
             bind_navclick($('#navlink-events'),'events_feed');
-            bind_navclick($('#navlink-specials'),'specials_feed');
+            bind_navclick($('#navlink-specials'),'offers_feed');
             // bind_navclick($('#navlink-chatter'),'chatter_feed');
             // bind_navclick($('#navlink-news'),'news_feed');
             // bind_navclick($('#navlink-jobs'),'jobs_feed');
