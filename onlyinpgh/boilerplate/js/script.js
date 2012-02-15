@@ -15,9 +15,11 @@ jQuery(document).ready( function($) {
 		$('#site-search').slideToggle(200);
 	});
 
-	$('#expandPostForm').click( function() {
-		$('.post-form').slideToggle(200);
-	});
+	$('#expandPostForm').toggle( function() {
+			$('.post-form').show(200);
+		}, function() {
+			$('.post-form').hide(200)
+		});
 
 	$('.back').click( function() {
 		parent.history.back();

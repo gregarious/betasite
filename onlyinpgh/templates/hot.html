@@ -9,7 +9,11 @@
 		<header>
 			<h3 class="section-title">Upcoming Events</h3>
 		</header>
-		{% include "events/events_feed.html" %}
+		{% for e in events|slice:'3' %}
+
+			{% include "events/events_feed_item.html" %}
+
+		{% endfor %}
 	</section>
 
 	<section id="specialsHot" class="hot-feed">
@@ -17,6 +21,17 @@
 			<h3 class="section-title">Sizzling Specials</h3>
 		</header>
 		{% include "offers/offers_feed.html" %}
+	</section>
+
+	<section id="placesHot" class="hot-feed">
+		<header>
+			<h3 class="section-title">Hot Spots</h3>
+		</header>
+		{% for p in places|slice:'3' %}
+
+			{% include "places/places_feed_item.html" %}
+
+		{% endfor %}
 	</section>
 
 	<section id="newsHot" class="hot-feed">

@@ -224,10 +224,10 @@ td { vertical-align: top; }
 /* MIXINS ---------- */
 
 @green: #8FD36F;
-@dblue: #092740;
-@mblue: #45698B;
-@lblue: #90B0CC;
-@white: #F1FAFF;
+@dblue: #333;
+@mblue: #999;
+@lblue: #aaa;
+@white: #e1e1e1;
 
 .rounded(@val) {
   
@@ -262,7 +262,7 @@ td { vertical-align: top; }
 /* 1 ROOT ---------- */
 
 body {
-  background: @lblue;
+  background: url(/static/img/paper/limestone.jpg);
 }
 
 header, section {
@@ -302,7 +302,7 @@ p, time {
 }
 
 .single #site-header {
-  padding-bottom: 10px;
+  
 }
 
 #site-content {
@@ -310,7 +310,7 @@ p, time {
 }
 
 #site-footer {
-
+  .clearfix;
 }
 
 
@@ -363,7 +363,6 @@ p, time {
 
 .grabbit {
     border: 2px #fff @dblue;
-    color: #fff;
     cursor: pointer;
     .gradient(@mblue, @dblue);
     font-weight: bold;
@@ -373,8 +372,13 @@ p, time {
     .rounded(0.3em);
     width: 50%;
 
-    &:hover {
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
 
+    &:active {
+      .gradient(@dblue, @mblue);
     }
 }
 
@@ -482,10 +486,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
-#single-utility {
-  .b-shadow(0.1em, 0.1em, 0.1em, #222);
-}
-
 .sub-nav {
   .column(12);
 }
@@ -495,7 +495,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 #footer-nav ul li {
-  background: @lblue;
+  font-weight: bold;
+  .gradient(@lblue, @white);
   .column(4);
   padding: 0.5em 0;
   text-align: center;
@@ -524,10 +525,10 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 11 ITEMS ---------- */
 
 .item {
-  background: url("/static/img/paper/eggshell.jpg");
-  .b-shadow(0.1em, 0.1em, 0.05em, @dblue);
+  .b-shadow(0.1em, 0.1em, 0.05em, #222);
   .column(11.9);
   cursor: pointer;
+  .gradient(#fff, #e1e1e1);
   margin: 0.5em 0.5em 0;
   padding: 0.5em 0;
   .rounded(0.4em);
@@ -537,7 +538,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
   
   &:active {
-    background: url("/static/img/paper/sand.jpg");
+    .gradient(#e1e1e1, #fff);
   }    
 
   /* Will link with jQuery once templates are finalized */
@@ -564,8 +565,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .points {
     position: relative;
     top: 12pt; // might be a bad idea - try vertical-align: middle
-    font-family: 'BloklettersViltstift';
-    text-align: center;
   }
 }
 
@@ -611,18 +610,31 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin-right: @total-width*((@gutter-width*1.5)/@_gridsystem-width);
   }
 
-  .sub-nav ul li {
-    background: @white;
-    height: 22pt;
-    margin: 4% 1% 0;
-    width: 23%;
-    .rounded(0.5em);
+  .sub-nav {
 
-  }
+      a {
+        color: #fff;  
+        text-decoration: none;
+      }
+      
+      ul li {
+        height: 22pt;
+        font-weight: bold;
+        margin: 4% 1% 0;
+        padding: 2%;
+        width: 14%;
+        .gradient(@mblue, @dblue);
+        .rounded(0.5em);
+    
+        &:active {
+          .gradient(@dblue, @mblue);
+        }
+      }
+    }
+
 }
 
 .single-item-header {
-  .b-shadow(0, 0.2em, 0.1em, @dblue);
   .gradient(@white, @lblue);
   padding: 1em 0.5em;
 }
@@ -651,6 +663,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 }
 
+.single-item {
+  background: @white;
+  padding-bottom: 1em;
+}
+
 .single-item-details {
   
 }
@@ -660,6 +677,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-item-desc {
+  font-size: 1.02em;
   line-height: 1.4em;
   text-indent: 2em;
 }
@@ -677,10 +695,28 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 12 UTILITY ---------- */
 
 .back {
+  .gradient(@lblue, @white); 
   cursor: pointer;
+  font-weight: bold;
+  padding: 0.5em;
+  text-shadow: 0 1px 0 #fff;
 }
 
-/* 13 SEARCH ---------- */
+.points {
+  font-family: 'BloklettersViltstift';
+  text-align: center;
+}
+
+.disabled {
+  color: #888;
+}
+/* 13 FOOTER ---------- */
+
+#colophon {
+  position: relative;
+  top: 1em;
+  padding: 1em;
+}
 
 /* 14 GLOBAL OBJECTS ---------- */
 /* 15 VENDOR-SPECIFIC ---------- */
@@ -730,7 +766,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 16 CHATTER SPECIFIC ---------- */
 
 #chatterPage {
-  .gradient(#fff, #ccc);
   .clearfix;
   margin: 0.5em 0;
 
@@ -747,7 +782,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin: 0;
     padding: 0.5em 0;
     text-align: center;
-  
     .gradient(#ccc, #fff);
     float: left;
     margin: 0 1%;
@@ -770,8 +804,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .post-form {
   .clearfix;
-  
-  margin-top: 1em;
   display: none;
 }
 

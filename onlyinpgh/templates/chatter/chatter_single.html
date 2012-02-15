@@ -6,16 +6,16 @@
 
 {% block single_item_header_content %}
 	<p>by {{ posts.author }}, {{ posts.dt|timesince }} ago</p>
-	<aside class="voting">
-		<div class="upvote"></div>
-		<div class="downvote"></div>
-	</aside>
 {% endblock %}
 
 {% block single_item_content %}
 	{% if posts.image_url %}
 		<img class="post-content-image" src="{{ posts.image_url }}" />
 	{% endif %}
+	<aside class="voting">
+		<div class="upvote"></div>
+		<div class="downvote"></div>
+	</aside>
 	{{ posts.content }}
 {% endblock %}
 

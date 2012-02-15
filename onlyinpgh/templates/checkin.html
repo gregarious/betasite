@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block main_body %}
+
+ <div class="wrapper" id="checkin">
+
+    <header id="site-header">
+      <h1 id="site-title">Oakland Scene</h1>
+      <nav class="quick-nav">
+        <ul>
+          <li class="map-mode"></li>
+          <li class="expand-search"></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article class="site-content clearfix">  
+		<div class="points" id="checkinPoints">+7</div>
+		<p>Checked in at Maggie &amp; Stella's.</p>
+		<div class="single-item">
+			<nav class="sub-nav" id="single-utility">
+				<ul>
+					<a href="/specials/"><li>Special</li></a>
+					<a href="/places/2716"><li>Place page</li></a>
+					<li>Add to Faves</a></li>
+					<a href="/chatter"><li>Post to Chatter</li></a>
+				</ul>
+			</nav>
+		</div>
+	</article>
+
+	<section>
+		<h3 class="section-title">Special:</h3>
+			<div class="item">
+				<a href="/specials/{{ o.id }}/">
+					
+					<div class="item-point-value">
+						<span class="points">
+							+{{ o.point_value }}
+						</span>
+					</div>
+
+					<section class="item-content-container">
+					
+					  	<h3 class="item-title">
+					  		{{ o.description }}
+						</h3>
+
+					    <div class="item-desc">
+							{% if o.sponsor %}
+						  		<p>{{ o.sponsor }}</p>
+						  	{% endif %}
+					    </div>
+							
+						{% include "tags.html" %}
+
+					</section>
+				</a>
+			</div>
+
+	</section>
+
+</div>
+{% endblock %}
