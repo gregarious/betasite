@@ -334,7 +334,7 @@ body:after {
 /* MIXINS ---------- */
 /* 1 ROOT ---------- */
 body {
-  background: url(/static/img/blue_texture.jpg);
+  background: #628FC5;
 }
 header, section {
   *zoom: 1;
@@ -369,15 +369,15 @@ p, time {
   margin-bottom: 0.5em;
   z-index: 999;
 }
-#site-content {
+.site-content {
   *zoom: 1;
   *zoom: 1;
 }
-#site-content:before, #site-content:after {
+.site-content:before, .site-content:after {
   content: "";
   display: table;
 }
-#site-content:after {
+.site-content:after {
   clear: both;
 }
 #site-footer {
@@ -408,23 +408,23 @@ p, time {
   font-size: 1.1em;
   font-style: italic;
   font-weight: bold;
-  background-color: #e1e1e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#aaaaaa));
+  background-color: #ece4d8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ece4d8), to(#bcb2ac));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #e1e1e1, #aaaaaa);
+  background-image: -webkit-linear-gradient(top, #ece4d8, #bcb2ac);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #e1e1e1, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #ece4d8, #bcb2ac);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #e1e1e1, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #ece4d8, #bcb2ac);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #e1e1e1, #aaaaaa);
+  background-image: -o-linear-gradient(top, #ece4d8, #bcb2ac);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #e1e1e1, #aaaaaa);
+  background-image: linear-gradient(top, #ece4d8, #bcb2ac);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   margin: 0 0 0.1em 0;
@@ -440,26 +440,26 @@ p, time {
 }
 /* 4 INPUTS ---------- */
 .grabbit {
-  border: 2px #ffffff #333333;
+  border: 2px #fff #000;
   color: #fff;
   cursor: pointer;
   background-color: #999999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#333333));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#000000));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #999999, #333333);
+  background-image: -webkit-linear-gradient(top, #999999, #000000);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #999999, #333333);
+  background-image: -moz-linear-gradient(top, #999999, #000000);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #999999, #333333);
+  background-image: -ms-linear-gradient(top, #999999, #000000);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #999999, #333333);
+  background-image: -o-linear-gradient(top, #999999, #000000);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #999999, #333333);
+  background-image: linear-gradient(top, #999999, #000000);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   font-weight: bold;
@@ -485,23 +485,23 @@ p, time {
   text-decoration: none;
 }
 .grabbit:active {
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#999999));
+  background-color: #000000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#999999));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #333333, #999999);
+  background-image: -webkit-linear-gradient(top, #000000, #999999);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #333333, #999999);
+  background-image: -moz-linear-gradient(top, #000000, #999999);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #333333, #999999);
+  background-image: -ms-linear-gradient(top, #000000, #999999);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #333333, #999999);
+  background-image: -o-linear-gradient(top, #000000, #999999);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #333333, #999999);
+  background-image: linear-gradient(top, #000000, #999999);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
@@ -585,22 +585,22 @@ input[type="text"]:hover {
   padding: 2%;
   width: 14%;
   background-color: #999999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#333333));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#000000));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #999999, #333333);
+  background-image: -webkit-linear-gradient(top, #999999, #000000);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #999999, #333333);
+  background-image: -moz-linear-gradient(top, #999999, #000000);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #999999, #333333);
+  background-image: -ms-linear-gradient(top, #999999, #000000);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #999999, #333333);
+  background-image: -o-linear-gradient(top, #999999, #000000);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #999999, #333333);
+  background-image: linear-gradient(top, #999999, #000000);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   -webkit-border-radius: 0.5em;
@@ -617,23 +617,23 @@ input[type="text"]:hover {
   background-clip: padding-box;
 }
 .redeem-form span:active {
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#999999));
+  background-color: #000000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#999999));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #333333, #999999);
+  background-image: -webkit-linear-gradient(top, #000000, #999999);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #333333, #999999);
+  background-image: -moz-linear-gradient(top, #000000, #999999);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #333333, #999999);
+  background-image: -ms-linear-gradient(top, #000000, #999999);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #333333, #999999);
+  background-image: -o-linear-gradient(top, #000000, #999999);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #333333, #999999);
+  background-image: linear-gradient(top, #000000, #999999);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
@@ -654,10 +654,10 @@ input[type="text"]:hover {
   width: 200%;
 }
 #site-nav ul li a {
-  background: #e1e1e1;
-  -webkit-box-shadow: 0.2em 0.2em 0.1em #333333;
-  -moz-box-shadow: 0.2em 0.2em 0.1em #333333;
-  box-shadow: 0.2em 0.2em 0.1em #333333;
+  background: #ECE4D8;
+  -webkit-box-shadow: 0.2em 0.2em 0.1em #000000;
+  -moz-box-shadow: 0.2em 0.2em 0.1em #000000;
+  box-shadow: 0.2em 0.2em 0.1em #000000;
   border-radius: 0.5em 0.5em 0 0;
   color: #000;
   cursor: pointer;
@@ -672,13 +672,13 @@ input[type="text"]:hover {
   width: 9%;
 }
 #site-nav ul li a:hover {
-  background-image: url("/static/img/mblue_texture.png");
+  background: ;
 }
 #site-nav ul li a:active {
   -webkit-box-shadow: 0 0 0 0;
   -moz-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
-  background-image: url("/static/img/dblue_texture.png");
+  background: ;
 }
 .sub-nav ul, .quick-nav ul {
   *zoom: 1;
@@ -756,22 +756,22 @@ input[type="text"]:hover {
   margin: 0 1.0416666666666665%;
   cursor: pointer;
   background-color: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e1e1e1));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ece4d8));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
+  background-image: -webkit-linear-gradient(top, #ffffff, #ece4d8);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
+  background-image: -moz-linear-gradient(top, #ffffff, #ece4d8);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
+  background-image: -ms-linear-gradient(top, #ffffff, #ece4d8);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
+  background-image: -o-linear-gradient(top, #ffffff, #ece4d8);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #e1e1e1);
+  background-image: linear-gradient(top, #ffffff, #ece4d8);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   margin: 0.5em 0.5em 0;
@@ -896,23 +896,23 @@ input[type="text"]:hover {
   margin: 4% 1% 0;
   padding: 2%;
   width: 14%;
-  background-color: #999999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#333333));
+  background-color: #324863;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#324863), to(#628fc5));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #999999, #333333);
+  background-image: -webkit-linear-gradient(top, #324863, #628fc5);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #999999, #333333);
+  background-image: -moz-linear-gradient(top, #324863, #628fc5);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #999999, #333333);
+  background-image: -ms-linear-gradient(top, #324863, #628fc5);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #999999, #333333);
+  background-image: -o-linear-gradient(top, #324863, #628fc5);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #999999, #333333);
+  background-image: linear-gradient(top, #324863, #628fc5);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   -webkit-border-radius: 0.5em;
@@ -929,44 +929,47 @@ input[type="text"]:hover {
   background-clip: padding-box;
 }
 .single-item .sub-nav ul li:active {
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#999999));
+  background-color: #628fc5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#628fc5), to(#324863));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #333333, #999999);
+  background-image: -webkit-linear-gradient(top, #628fc5, #324863);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #333333, #999999);
+  background-image: -moz-linear-gradient(top, #628fc5, #324863);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #333333, #999999);
+  background-image: -ms-linear-gradient(top, #628fc5, #324863);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #333333, #999999);
+  background-image: -o-linear-gradient(top, #628fc5, #324863);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #333333, #999999);
+  background-image: linear-gradient(top, #628fc5, #324863);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
 .single-item-header {
+  -webkit-box-shadow: 0.2em 0.2em 0.2em #000000;
+  -moz-box-shadow: 0.2em 0.2em 0.2em #000000;
+  box-shadow: 0.2em 0.2em 0.2em #000000;
   background-color: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ece4d8));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -webkit-linear-gradient(top, #ffffff, #ece4d8);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -moz-linear-gradient(top, #ffffff, #ece4d8);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -ms-linear-gradient(top, #ffffff, #ece4d8);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -o-linear-gradient(top, #ffffff, #ece4d8);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #cccccc);
+  background-image: linear-gradient(top, #ffffff, #ece4d8);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   padding: 1em 0.5em;
@@ -997,11 +1000,14 @@ input[type="text"]:hover {
   width: 60px;
 }
 .single-item {
-  background: #e1e1e1;
+  background: none;
   padding-bottom: 1em;
 }
 .single-item-content-container {
   margin: 1em;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 0px 1px 0px #000;
 }
 .single-content {
   margin: 1em 0;
@@ -1063,23 +1069,23 @@ input[type="text"]:hover {
 /* 16 MODERNIZR ---------- */
 /* 16 EVENTS SPECIFIC ---------- */
 #eventsPage .subnav {
-  background-color: #cccccc;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#ffffff));
+  background-color: #bcb2ac;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bcb2ac), to(#ece4d8));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -webkit-linear-gradient(top, #bcb2ac, #ece4d8);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -moz-linear-gradient(top, #bcb2ac, #ece4d8);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -ms-linear-gradient(top, #bcb2ac, #ece4d8);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -o-linear-gradient(top, #bcb2ac, #ece4d8);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #cccccc, #ffffff);
+  background-image: linear-gradient(top, #bcb2ac, #ece4d8);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   padding: 0.5em;
@@ -1126,23 +1132,23 @@ input[type="text"]:hover {
   margin: 0;
   padding: 0.5em 0;
   text-align: center;
-  background-color: #cccccc;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#ffffff));
+  background-color: #ece4d8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ece4d8), to(#bcb2ac));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -webkit-linear-gradient(top, #ece4d8, #bcb2ac);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -moz-linear-gradient(top, #ece4d8, #bcb2ac);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -ms-linear-gradient(top, #ece4d8, #bcb2ac);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #cccccc, #ffffff);
+  background-image: -o-linear-gradient(top, #ece4d8, #bcb2ac);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #cccccc, #ffffff);
+  background-image: linear-gradient(top, #ece4d8, #bcb2ac);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   float: left;

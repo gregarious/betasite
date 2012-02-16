@@ -224,7 +224,7 @@ td { vertical-align: top; }
 /* MIXINS ---------- */
 
 @green: #8FD36F;
-@dblue: #333;
+
 @mblue: #999;
 @lblue: #aaa;
 @white: #e1e1e1;
@@ -262,7 +262,7 @@ td { vertical-align: top; }
 /* 1 ROOT ---------- */
 
 body {
-  background: url(/static/img/blue_texture.jpg);
+  background: #628FC5;
 }
 
 header, section {
@@ -305,7 +305,7 @@ p, time {
   
 }
 
-#site-content {
+.site-content {
   .clearfix;
 }
 
@@ -333,7 +333,7 @@ p, time {
   font-size: 1.1em;
   font-style: italic;
   font-weight: bold;
-  .gradient(@white, @lblue);
+  .gradient(#ECE4D8, #BCB2AC);
   margin: 0 0 0.1em 0;
   padding: 0.5em;
   /*text-align: center;*/
@@ -349,10 +349,10 @@ p, time {
 /* 4 INPUTS ---------- */
 
 .grabbit {
-    border: 2px #fff @dblue;
+    border: 2px #fff #000;
     color: #fff;
     cursor: pointer;
-    .gradient(@mblue, @dblue);
+    .gradient(@mblue, #000);
     font-weight: bold;
     margin: 0.5em auto;
     padding: 1em;
@@ -366,7 +366,7 @@ p, time {
     }
 
     &:active {
-      .gradient(@dblue, @mblue);
+      .gradient(#000, @mblue);
     }
 }
 
@@ -428,11 +428,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin: 4% 1% 0;
     padding: 2%;
     width: 14%;
-    .gradient(@mblue, @dblue);
+    .gradient(@mblue, #000);
     .rounded(0.5em);
 
     &:active {
-      .gradient(@dblue, @mblue);
+      .gradient(#000, @mblue);
     }
   }
 
@@ -453,8 +453,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     
     li { 
       a {
-          background: @white;
-          .b-shadow(0.2em, 0.2em, 0.1em, @dblue);
+          background: #ECE4D8;
+          .b-shadow(0.2em, 0.2em, 0.1em, #000);
           border-radius: 0.5em 0.5em 0 0;
           color: #000;
           cursor: pointer;
@@ -469,12 +469,12 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
           width: 9%;
           
           &:hover {
-            background-image: url("/static/img/mblue_texture.png");
+            background:;
           }
     
           &:active {
             .b-shadow(0, 0, 0, 0);
-            background-image: url("/static/img/dblue_texture.png");
+            background: ;
     
           }
         }
@@ -548,7 +548,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .b-shadow(0.1em, 0.1em, 0.05em, #222);
   .column(11.9);
   cursor: pointer;
-  .gradient(#fff, #e1e1e1);
+  .gradient(#fff, #ECE4D8);
   margin: 0.5em 0.5em 0;
   padding: 0.5em 0;
   .rounded(0.4em);
@@ -643,11 +643,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
         margin: 4% 1% 0;
         padding: 2%;
         width: 14%;
-        .gradient(@mblue, @dblue);
+        .gradient(#324863, #628FC5);
         .rounded(0.5em);
     
         &:active {
-          .gradient(@dblue, @mblue);
+          .gradient(#628FC5, #324863);
         }
       }
     }
@@ -655,7 +655,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-item-header {
-  .gradient(#fff, #ccc);
+  .b-shadow(0.2em, 0.2em, 0.2em, #000);
+  .gradient(#fff, #ECE4D8);
   padding: 1em 0.5em;
 }
 
@@ -684,8 +685,9 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-item {
-  background: @white;
+  background: none;
   padding-bottom: 1em;
+
 }
 
 .single-item-details {
@@ -694,6 +696,9 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .single-item-content-container {
   margin: 1em;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 0px 1px 0px #000;
 }
 
 .single-content {
@@ -760,7 +765,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 #eventsPage {
   .subnav {
-    .gradient(#ccc, #fff);
+    .gradient(#BCB2AC, #ECE4D8);
     padding: 0.5em;
     text-align: center;
 
@@ -807,7 +812,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     margin: 0;
     padding: 0.5em 0;
     text-align: center;
-    .gradient(#ccc, #fff);
+    .gradient(#ECE4D8, #BCB2AC);
     float: left;
     margin: 0 1%;
     padding: 1%;
