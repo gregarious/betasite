@@ -1,6 +1,155 @@
 @import 'grid';
 
+/* MIXINS ---------- */
+
+@green: #0EBD42;
+
+.rounded(@val) {
+  
+  -webkit-border-radius: @val; 
+     -moz-border-radius: @val; 
+          border-radius: @val; 
+  
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+
+}
+
+.gradient (@first, @second) {
+   background-color: @first;
+   background-image: -webkit-gradient(linear, left top, left bottom, from(@first), to(@second)); /* Saf4+, Chrome */
+   background-image: -webkit-linear-gradient(top, @first, @second); /* Chrome 10+, Saf5.1+, iOS 5+ */
+   background-image:    -moz-linear-gradient(top, @first, @second); /* FF3.6 */
+   background-image:     -ms-linear-gradient(top, @first, @second); /* IE10 */
+   background-image:      -o-linear-gradient(top, @first, @second); /* Opera 11.10+ */
+   background-image:      linear-gradient(top, @first, @second);
+             /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+}
+
+.b-shadow(@x, @y, @blur, @color) {
+	-webkit-box-shadow: @x @y @blur @color; 
+		-moz-box-shadow: @x @y @blur @color; 
+			box-shadow: @x @y @blur @color; 
+}
+
+/* ROOT --------- */
+
+body {
+	background: @green;
+	font-family: "Helvetica";
+}
+
+/* TYPOGRAPHY ------------ */
+
+h1 {
+	color: #fff;
+	text-shadow: 0.07em 0.07em 0 #6DDE8F;
+}
+
+h2 {
+	background: #69B9CF;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+/* FORMS & INPUTS --------------- */
+
+form {
+	.column(12);
+	padding: 2em 0;
+	border-bottom: 2px solid #6DDE8F;
+}
+
+label {
+	color: #fff;
+	.column(2);
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	text-shadow: 0.07em 0.07em 0 #057B28;
+	text-transform: uppercase;
+	text-align: right;
+	position: relative;
+	top: 0.5em;
+}
+
+input[type="text"], textarea {
+	border: 2px #6DDE8F solid;
+	.b-shadow(0.1em, 0.1em, 0.1em, #222);
+	.column(9);
+	float: right;
+	font-size: 1em;
+	margin-bottom: 0.5em;
+	outline: none;
+	padding: 0.5em;
+	.rounded(0.5em);
+}
+
+textarea {
+	height: 6em;
+}
+
+/* NAVIGATION ------------ */
+
+.prev-next {
+	.column(12);
+	.clearfix;
+	margin-top: 1em;
+}
+
+.next, .back {
+	padding: 0.5em;
+	.rounded(0.5em);
+	.b-shadow(0.2em, 0.2em, 0.2em, #222);
+	.gradient(#057B28, #2B8E49);
+	color: #fff;
+	text-decoration: none;
+
+	&:hover {
+		.gradient(#2B8E49, #057B28);
+	}
+
+	&:active {
+		position: relative;
+		top: 2px;
+		left: 2px;
+		background: #054928;	
+		.b-shadow(0, 0, 0, #222);
+	}
+}
+
+.next {
+	float: right;
+}
+
+.back {
+	float: left;
+}
+
+.after-signup {
+	li {
+		list-style-type: none;
+		font-size: 1.3em;
+	}
+}
+
+/* MAIN ------------- */
+
 #wrapper {
-	width: 70%;
+	width: 90%;
+	max-width: 500px;
 	margin: 0 auto;
 }
+
+/* COMPLEMENTARY --------- */
+
+
+.progress {
+	width: 6em;
+	margin: auto;
+
+	span {
+		margin: 0 0.2em;
+	}
+}
+

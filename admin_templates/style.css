@@ -1,15 +1,179 @@
+/* MIXINS ---------- */
+/* ROOT --------- */
 body {
-  width: 100%;
-  *zoom: 1;
+  background: #0ebd42;
+  font-family: "Helvetica";
 }
-body:before, body:after {
+/* TYPOGRAPHY ------------ */
+h1 {
+  color: #fff;
+  text-shadow: 0.07em 0.07em 0 #6DDE8F;
+}
+h2 {
+  background: #69B9CF;
+  font-size: 1.5em;
+  text-align: center;
+}
+/* FORMS & INPUTS --------------- */
+form {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  padding: 2em 0;
+  border-bottom: 2px solid #6DDE8F;
+}
+label {
+  color: #fff;
+  display: inline;
+  float: left;
+  width: 14.583333333333334%;
+  margin: 0 1.0416666666666665%;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-shadow: 0.07em 0.07em 0 #057B28;
+  text-transform: uppercase;
+  text-align: right;
+  position: relative;
+  top: 0.5em;
+}
+input[type="text"], textarea {
+  border: 2px #6DDE8F solid;
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #222222;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #222222;
+  box-shadow: 0.1em 0.1em 0.1em #222222;
+  display: inline;
+  float: left;
+  width: 72.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  float: right;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  outline: none;
+  padding: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+textarea {
+  height: 6em;
+}
+/* NAVIGATION ------------ */
+.prev-next {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  *zoom: 1;
+  margin-top: 1em;
+}
+.prev-next:before, .prev-next:after {
   content: "";
   display: table;
 }
-body:after {
+.prev-next:after {
   clear: both;
 }
+.next, .back {
+  padding: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0.2em 0.2em 0.2em #222222;
+  -moz-box-shadow: 0.2em 0.2em 0.2em #222222;
+  box-shadow: 0.2em 0.2em 0.2em #222222;
+  background-color: #057b28;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#057b28), to(#2b8e49));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #057b28, #2b8e49);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #057b28, #2b8e49);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #057b28, #2b8e49);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #057b28, #2b8e49);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #057b28, #2b8e49);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  color: #fff;
+  text-decoration: none;
+}
+.next:hover, .back:hover {
+  background-color: #2b8e49;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2b8e49), to(#057b28));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #2b8e49, #057b28);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #2b8e49, #057b28);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #2b8e49, #057b28);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #2b8e49, #057b28);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #2b8e49, #057b28);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+}
+.next:active, .back:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+  background: #054928;
+  -webkit-box-shadow: 0 0 0 #222222;
+  -moz-box-shadow: 0 0 0 #222222;
+  box-shadow: 0 0 0 #222222;
+}
+.next {
+  float: right;
+}
+.back {
+  float: left;
+}
+.after-signup li {
+  list-style-type: none;
+  font-size: 1.3em;
+}
+/* MAIN ------------- */
 #wrapper {
-  width: 70%;
+  width: 90%;
+  max-width: 500px;
   margin: 0 auto;
+}
+/* COMPLEMENTARY --------- */
+.progress {
+  width: 6em;
+  margin: auto;
+}
+.progress span {
+  margin: 0 0.2em;
 }
