@@ -1,57 +1,78 @@
-{% extends "single.html" %}
+{% extends "base.html" %}
 
-{% block single_id %}chatterSingle{% endblock %}
+{% block main_body %}
+<div id="wrapper" class="single">
 
-{% block single_item_title %}{{ posts.title }}{% endblock %}
-
-{% block single_item_header_content %}
-	<p>by {{ posts.author }}, {{ posts.dt|timesince }} ago</p>
-	<aside class="voting">
-		<div class="upvote"></div>
-		<div class="downvote"></div>
-	</aside>
-{% endblock %}
-
-{% block single_item_content %}
-	{% if posts.image_url %}
-		<img class="post-content-image" src="{{ posts.image_url }}" />
-	{% endif %}
-	{{ posts.content }}
-{% endblock %}
-
-{% block single_item_image_url %}
+	{% include "single_header.html" %}
 	
-	{% if posts.image_url %}
-		{{ posts.image_url }}
-	{% else %}
-		{% if posts.post_type == 'conversation' %}
-			http://www.ncvo-vol.org.uk/sites/default/files/UploadedFiles/speech_icon.jpg
-		{% endif %}
-		{% if posts.post_type == 'question' %}
-			http://catalyst.harvard.edu/images/footer/question_mark.png
-		{% endif %}	
-		{% if posts.post_type == 'photo' %}
-			http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif
-		{% endif %}	
-	{% endif %}
+	<article id="chatterSingle" class="single-item">
 
-{% endblock %}
+    	<input type="search" id="site-search" placeholder="Search Scenable" />
 
-{% block single_item_related %}
+		<header class="single-item-header">
+			<div class="item-thumb-container">
+				<img class="item-thumb" height="50" width="50" alt="{{posts.title}}" src="{% if posts.image_url %}
+						{{ posts.image_url }}
+					{% else %}
+						{% if posts.post_type == 'conversation' %}
+							http://www.ncvo-vol.org.uk/sites/default/files/UploadedFiles/speech_icon.jpg
+						{% endif %}
+						{% if posts.post_type == 'question' %}
+							http://catalyst.harvard.edu/images/footer/question_mark.png
+						{% endif %}	
+						{% if posts.post_type == 'photo' %}
+							http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif
+						{% endif %}	
+					{% endif %}" />
+			</div>
 
-	{% if posts.comment_set.all %}
-	    <ul class="comments">
-	    {% for comment in posts.comment_set.all %}
-	        <li class="comment-content">
-	            <header>
-	                <img class="user-avatar" src="{{ comment.commenter.avatar }}">
-	                <a href="" class="meta">{{ comment.commenter.name }}</a>, 
-	                <time>{{ comment.dt|timesince }}</time> ago
-	            </header>
-	            <p>{{ comment.content }}</p>
-	        </li>
-	    {% endfor %}
-	    </ul>
-	{% endif %}
+			<div class="item-content-container">
+				<h2 class="item-title">
+				  	{{ posts.title }}
+				</h2>
+				<img class="user-avatar" src="{{ comment.commenter.avatar }}">
+				<p class="meta">by {{ posts.author }}, {{ posts.dt|timesince }} ago</p>	
+	    		{% include "tags.html" %}
+	    				
+
+			</div>
+
+			<aside class="voting">
+				<div class="upvote"></div>
+				<span class="votes">34</span>
+				<div class="downvote"></div>
+			</aside>
+			
+		</header>
+
+		<section class="single-item-content-container">
+
+			{% if posts.image_url %}
+				<img class="post-content-image" src="{{ posts.image_url }}" />
+			{% endif %}
+
+			<p class="single-content">{{ posts.content }}</p>
+
+			<div class="comments">
+			{% if posts.comment_set.all %}
+			    <ul>
+			    {% for comment in posts.comment_set.all %}
+			        <li class="comment-content">
+			            <header>
+			                <img class="user-avatar" src="{{ comment.commenter.avatar }}">
+			                <a href="" class="username meta">{{ comment.commenter.name }}</a>, 
+			                <time class="meta">{{ comment.dt|timesince }}</time> ago
+			            </header>
+			            <p>{{ comment.content }}</p>
+			        </li>
+			    {% endfor %}
+			    </ul>
+			{% endif %}
+		</div> <!-- comments -->
+
+	</section>
+</article>
+
+{% include "global_footer.html" %}
 
 {% endblock %}

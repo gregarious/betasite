@@ -11,7 +11,6 @@
 jQuery(document).ready( function($) {
 
 	$('.expand-search').click( function() {
-		$('#site-nav').slideToggle(200);
 		$('#site-search').slideToggle(200);
 	});
 
@@ -23,6 +22,13 @@ jQuery(document).ready( function($) {
 		parent.history.back();
 		return false;
 	});
+
+	$('.checkin').click(function(){
+		$('#checkinPoints').fadeIn(300).delay(800).fadeOut(300);
+	});
+
+
+
 
 	/*$('#submitSearch').click(function() {
 		printSelectedTags();

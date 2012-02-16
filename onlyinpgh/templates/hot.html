@@ -1,5 +1,4 @@
 {% extends "page.html" %}
-{% include "global_nav.html" %}
 
 {% block content_id %}hot{% endblock %}
 
@@ -9,21 +8,44 @@
 		<header>
 			<h3 class="section-title">Upcoming Events</h3>
 		</header>
-		{% include "events/events_feed.html" %}
+
+		{% for e in events|slice:'3' %}
+			{% include "events/events_feed_item.html" %}
+		{% endfor %}
+		
 	</section>
 
 	<section id="specialsHot" class="hot-feed">
 		<header>
 			<h3 class="section-title">Sizzling Specials</h3>
 		</header>
-		{% include "offers/offers_feed.html" %}
+
+		{% for o in offers|slice:'3' %}
+			{% include "offers/offers_feed_item.html" %}
+		{% endfor %}
+
+	</section>
+
+	<section id="placesHot" class="hot-feed">
+		<header>
+			<h3 class="section-title">Hot Spots</h3>
+		</header>
+
+		{% for p in places|slice:'3' %}
+			{% include "places/places_feed_item.html" %}
+		{% endfor %}
+
 	</section>
 
 	<section id="newsHot" class="hot-feed">
 		<header>
 			<h3 class="section-title">Recent News</h3>
 		</header>
-		{% include "news/news_feed.html" %}
+
+		{% for a in articles|slice:'3' %}
+			{% include "news/news_feed_item.html" %}
+		{% endfor %}
+
 	</section>
 
 <!-- Alo include places, jobs, chatter -->

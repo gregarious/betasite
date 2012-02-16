@@ -2,7 +2,7 @@
 
 {% block main_body %}
 
-  <div id="wrapper">
+  <div class="wrapper" id="checkin">
 
     <header id="site-header">
       <h1 id="site-title">Oakland Scene</h1>
@@ -14,21 +14,21 @@
       </nav>
     </header>
 
+    <input type="search" id="site-search" placeholder="Search Scenable" />
+    
       <nav id="site-nav">
         <ul>
-          <li><a href="/" rel="external">Hot</a></li>
-          <li><a href="/events" rel="externåal" data-iconpos="top">Events</a></li>
-          <li><a href="/specials" rel="external">Specials</a></li>
-          <li><a href="/places" rel="external" data-iconpos="top">Places</a></li>
-          <li><a href="/chatter" rel="external">Chatter</a></li>
-          <li><a href="/news" rel="external">News</a></li>
-          <li><a href="/jobs" rel="external">Jobs</a></li>
+          <li><a href="/">Hot</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a href="/specials">Specials</a></li>
+          <li><a href="/places">Places</a></li>
+          <li><a href="/chatter">Chatter</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a>Jobs</a></li>
         </ul>
       </nav>
 
-    <input type="search" id="site-search" placeholder="Search Scenable" />
-
-    <article class="site-content clearfix" id="{% block content_id %}{% endblock %}">
+    <article class="site-content" id="{% block content_id %}{% endblock %}">
     
       {% block content %}{% endblock %}
 

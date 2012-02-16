@@ -2,11 +2,13 @@
 
 {% block main_body %}
 <div id="wrapper" class="single">
-
+	
 	{% include "single_header.html" %}
-
+	
 	<article id="{% block single_id %}{% endblock %}" class="single-item">
 
+    	<input type="search" id="site-search" placeholder="Search Scenable" />
+    	
 		<header class="single-item-header">
 			<div class="item-thumb-container">
 				<img class="item-thumb" height="50" width="50" alt="{% block single_item_image_alt %}{% endblock %}" src="{% block single_item_image_url %}{% endblock %}" />
@@ -19,25 +21,24 @@
 				</h2>
 				{% block single_item_header_content %}
 				{% endblock %}				
-
+	    		{% include "tags.html" %}
 			</div>
 			
-			<nav class="sub-nav" id="single-utility">
+			<nav class="sub-nav">
 				<ul>
-					<li><span>I'm here!</span></li>
-					<li><span>Directions</span></li>
-					<li><span>Add to Calendar</span></li>
-					<li><span>Talk about it</span></li>
+					<a class="checkin"><li>Here!</li></a>
+					<a href="/specials/1"><li>Special</li></a>
+					<li class="disabled">Directions</li>
+					<li class="disabled">+ to Faves</a></li>
+					<a href="/chatter"><li>To Chatter</li></a>
 				</ul>
 			</nav>
 			
 		</header>
 		
 		<section class="single-item-content-container">
-			
 	    	{% block single_item_content %}
 	    	{% endblock %}
-	    	{% include "tags.html" %}
 		</section>			
 		
 		{% block single_item_related %}{% endblock %}	

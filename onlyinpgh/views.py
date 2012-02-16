@@ -19,9 +19,9 @@ def map_page(request):
 	return render_to_response('map.html',variables)	
 
 # Empty template for splash and search pages
-def home_page(request):
+def checkin_page(request):
 	variables = {}
-	return render_to_response('home.html',variables)	
+	return render_to_response('grabbit.html',variables)	
 
 def search_page(request):
 	variables = {}

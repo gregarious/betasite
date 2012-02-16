@@ -40,11 +40,9 @@
 {% endblock %}
 
 {% block single_item_content %}
-	<button id="checkIn" data-inline="true">I'm here!</button>
 	
 	{% if p.description %}
 		<section class="single-item-desc">
-			<h3>About</h3>
 	  		<p>{{ p.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
 	  	</section>
   	{% endif %}
