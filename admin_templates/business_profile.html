@@ -17,7 +17,7 @@
 
 		<div id="site-content">
 			
-			<article>
+			<article class="current">
 				<header>
 					<h2>The Basics</h2>
 				</header>
@@ -49,7 +49,7 @@
 
 			</article>
 			
-			<article>
+			<article class="current">
 				<header>
 					<h2>Events</h2>
 				</header>
@@ -77,23 +77,35 @@
 					</header>
 					<form>
 						<label>Event Name</label><br />
-						<input type="text" placeholder="Event name" /><br />
+						<div class="inputs">
+							<input type="text" placeholder="Event name" />
+						</div>
 
 						<label>Starts</label>
-						<input type="text" placeholder="Start time" /> <!-- Datepicker -->
+						<div class="inputs">
+							<input type="text" placeholder="Start time" /> <!-- Datepicker -->
+						</div>
 						<label>Ends</label>
-						<input type="text" placeholder="End time" /><br /> <!-- Datepicker -->
+						<div class="inputs">
+							<input type="text" placeholder="End time" /><!-- Datepicker -->
+						</div>
+						<label>Location</label>
+						<div class="inputs">
+							<input type="text" placeholder="Location" /><br /> <!-- Already filled with business address, changeable with autocomplete -->
+						</div>
 
-						<label>Location</label><br />
-						<input type="text" placeholder="Location" /><br /> <!-- Already filled with business address, changeable with autocomplete -->
-
-						<label>Event URL (leave blank if there isn't one)</label><br />
-						<input type="text" placeholder="URL" />
+						<label>Event URL (leave blank if there isn't one)</label>
+						<div class="inputs">
+							<input type="text" placeholder="URL" />
+							<p class="tip">Leave this blank if you don't have one.</p>
+						</div>
 					</form>
 
 					<form>
-						<label>Add some tags:</label><br />
-						<input type="text" placeholder="try 'birthday'" /></form> <!-- Autocomplete -->
+						<label>Add some tags:</label>
+						<div class="inputs">
+							<input type="text" placeholder="try 'birthday'" /></form> <!-- Autocomplete -->
+						</div>
 					</form>
 					
 				</section>
@@ -125,25 +137,41 @@
 					<header>
 						<h3>Add an event...</h3>
 					</header>
+
 					<form>
-						<label>Event Name</label><br />
-						<input type="text" placeholder="Event name" /><br />
-
-						<label>Starts</label>
-						<input type="text" placeholder="Start time" /> <!-- Datepicker -->
-						<label>Ends</label>
-						<input type="text" placeholder="End time" /><br /> <!-- Datepicker -->
-
-						<label>Location</label><br />
-						<input type="text" placeholder="Location" /><br /> <!-- Already filled with business address, changeable with autocomplete -->
-
-						<label>Event URL (leave blank if there isn't one)</label><br />
-						<input type="text" placeholder="URL" />
+						<label>Event Name</label>
+						<div class="inputs">
+							<input type="text" placeholder="Event name" />
+						</div>
+						<label>Location</label>
+						<div class="inputs">
+							<input type="text" placeholder="Location" /><br /> <!-- Already filled with business address, changeable with autocomplete -->
+						</div>
 					</form>
 
 					<form>
-						<label>Add some tags:</label><br />
-						<input type="text" placeholder="try 'birthday'" /></form> <!-- Autocomplete -->
+						<label>Starts</label>
+						<div class="inputs">
+							<input type="text" placeholder="Start time" /> <!-- Datepicker -->
+						</div>
+						<label>Ends</label>
+						<div class="inputs">
+							<input type="text" placeholder="End time" /><br /> <!-- Datepicker -->
+						</div>
+					</form>
+
+					<form>
+						<label>Event URL</label>
+						<div class="inputs">
+							<input type="text" placeholder="URL" />
+						</div>
+					</form>
+
+					<form>
+						<label>Add some tags:</label>
+						<div class="inputs">
+							<input type="text" placeholder="try 'birthday'" /> <!-- Autocomplete -->
+						</div>
 					</form>
 					
 				</section>

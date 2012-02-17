@@ -1,8 +1,19 @@
 /* MIXINS ---------- */
 /* ROOT --------- */
 body {
-  background: #0ebd42;
+  background: url(http://www.webtexture.net/wp-content/gallery/20-seamless-paper-texture/papar_texture_thumb04.jpg);
   font-family: "Helvetica";
+  padding-bottom: 3em;
+}
+section {
+  *zoom: 1;
+}
+section:before, section:after {
+  content: "";
+  display: table;
+}
+section:after {
+  clear: both;
 }
 /* TYPOGRAPHY ------------ */
 h1 {
@@ -14,6 +25,12 @@ h2 {
   font-size: 1.5em;
   text-align: center;
 }
+.tip {
+  color: #555;
+  font-size: 0.8em;
+  font-style: italic;
+  margin-left: 2%;
+}
 /* FORMS & INPUTS --------------- */
 form {
   display: inline;
@@ -21,10 +38,10 @@ form {
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
   padding: 2em 0;
-  border-bottom: 2px solid #6DDE8F;
+  border-bottom: 2px solid #ccc;
 }
 label {
-  color: #fff;
+  color: #057B28;
   display: inline;
   float: left;
   width: 14.583333333333334%;
@@ -32,22 +49,25 @@ label {
   font-size: 0.9em;
   font-weight: bold;
   margin-bottom: 0.5em;
-  text-shadow: 0.07em 0.07em 0 #057B28;
+  text-shadow: 0.07em 0.07em 0 #fff;
   text-transform: uppercase;
   text-align: right;
   position: relative;
   top: 0.5em;
 }
+.option-label {
+  text-transform: none;
+  clear: both;
+}
 input[type="text"], textarea {
-  border: 2px #6DDE8F solid;
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #222222;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #222222;
-  box-shadow: 0.1em 0.1em 0.1em #222222;
+  border: 1px #ccc solid;
+  -webkit-box-shadow: 0.05em 0.05em 0.1em #ffffff;
+  -moz-box-shadow: 0.05em 0.05em 0.1em #ffffff;
+  box-shadow: 0.05em 0.05em 0.1em #ffffff;
   display: inline;
   float: left;
-  width: 72.91666666666666%;
+  width: 93.75%;
   margin: 0 1.0416666666666665%;
-  float: right;
   font-size: 1em;
   margin-bottom: 0.5em;
   outline: none;
@@ -64,6 +84,18 @@ input[type="text"], textarea {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+}
+input[type="text"]:focus, textarea:focus {
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #000000;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #000000;
+  box-shadow: 0.1em 0.1em 0.1em #000000;
+}
+.inputs {
+  display: inline;
+  float: left;
+  width: 72.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  float: right;
 }
 textarea {
   height: 6em;
@@ -98,28 +130,10 @@ textarea {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-box-shadow: 0.2em 0.2em 0.2em #222222;
-  -moz-box-shadow: 0.2em 0.2em 0.2em #222222;
-  box-shadow: 0.2em 0.2em 0.2em #222222;
-  background-color: #057b28;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#057b28), to(#2b8e49));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #057b28, #2b8e49);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #057b28, #2b8e49);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #057b28, #2b8e49);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #057b28, #2b8e49);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #057b28, #2b8e49);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
+  -webkit-box-shadow: 0.2em 0.2em 0.2em #ffffff;
+  -moz-box-shadow: 0.2em 0.2em 0.2em #ffffff;
+  box-shadow: 0.2em 0.2em 0.2em #ffffff;
+  background: #2B8E49;
   color: #fff;
   text-decoration: none;
 }
@@ -146,9 +160,9 @@ textarea {
 }
 .next:active, .back:active {
   position: relative;
-  top: 2px;
-  left: 2px;
-  background: #054928;
+  top: 1px;
+  left: 1px;
+  background: #057B28;
   -webkit-box-shadow: 0 0 0 #222222;
   -moz-box-shadow: 0 0 0 #222222;
   box-shadow: 0 0 0 #222222;
@@ -176,4 +190,8 @@ textarea {
 }
 .progress span {
   margin: 0 0.2em;
+}
+/* UTILITY ----------- */
+.last {
+  border: none;
 }

@@ -21,22 +21,34 @@
 			</header>
 			<form>
 				<label>Hours</label>
-				<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+				<div class="inputs">
+					<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+				</div>
 			</form>
 			<form>
-				<label>Parking</label><br />
-				<input type="checkbox" name="street" value="Street" />Street<br />
-				<input type="checkbox" name="garage" value="Garage" />Garage<br />
-				<input type="checkbox" name="lot" value="Lot" />Parking Lot<br />
-				<input type="checkbox" name="good-luck" value="Good Luck" />Good Luck<br />
+				<label>Parking</label>
+				<div class="inputs">
+					<input type="checkbox" name="street" value="Street" />
+					<label class="option-label">Street</label>
+					<input type="checkbox" name="garage" value="Garage" />
+					<label class="option-label">Garage</label>
+					<input type="checkbox" name="lot" value="Lot" />
+					<label class="option-label">Parking Lot</label>
+					<input type="checkbox" name="good-luck" value="Good Luck" />
+					<label class="option-label">Good Luck</label>
+				</div>
 			</form>
 			<form>
-				<label>Upload a profile pic:</label>
-				[Image upload form goes here]
+				<label>Upload a pic</label>
+				<div class="inputs">
+					[Image upload form goes here]
+				</div>
 			</form>
 			<form>	
-				<label>Desciption for you profile page:</label>
-				<textarea placeholder="My business is really cool. If you come here you will be rewarded with good karma, chocolate, and other misc goodies. Thanks for your time."></textarea>
+				<label>Desciption</label>
+				<div class="inputs">
+					<textarea placeholder="My business is really cool. If you come here you will be rewarded with good karma, chocolate, and other misc goodies. Thanks for your time."></textarea>
+				</div>
 			</form>
 
 		</div> <!-- #site-content -->
@@ -46,7 +58,7 @@
 				<a href="index.html" class="back">&larr; Back</a>
 				<a href="signup_screen3.html" class="next">Next &rarr;</a>				
 			</div>
-			
+
 			<!-- There will be a progress bar here -->
 			<div class="progress">
 				<span id="step1">&#9830;</span>
