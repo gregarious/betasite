@@ -23,7 +23,6 @@
    background-image:      -o-linear-gradient(top, @first, @second); /* Opera 11.10+ */
    background-image:      linear-gradient(top, @first, @second);
              /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
 }
 
 .b-shadow(@x, @y, @blur, @color) {
@@ -35,9 +34,9 @@
 /* ROOT --------- */
 
 body {
-	background: url(http://www.webtexture.net/wp-content/gallery/20-seamless-paper-texture/papar_texture_thumb04.jpg);
+	background: url(img/paper/stormy_sky.jpg);
 	font-family: "Helvetica";
-	padding-bottom: 3em;
+	padding: 3em 0;
 }
 
 section, article {
@@ -53,7 +52,8 @@ img {
 
 h1 {
 	color: #fff;
-	text-shadow: 0.07em 0.07em 0 #6DDE8F;
+	text-shadow: 0.07em 0.07em 0 #2C525D;
+	margin-top: 0;
 }
 
 h2 {
@@ -88,6 +88,13 @@ p {
 	display: none;
 }
 
+#showPopularTags {
+	color: #955247;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 /* FORMS & INPUTS --------------- */
 
 form {
@@ -95,7 +102,7 @@ form {
 }
 
 label {
-	color: #057B28;
+	color: #2C525D;
 	.column(2.8);
 	font-size: 0.9em;
 	font-weight: bold;
@@ -122,7 +129,8 @@ input[type="text"], textarea {
 	.rounded(0.5em);
 
 	&:focus {
-		.b-shadow(0.1em, 0.06em, 0.1em, #555);
+		/*border-color: #2C525D;*/
+		.b-shadow(0, 0, 0.2em, #2C525D);
 	}
 }
 
@@ -160,7 +168,7 @@ input[type="text"], textarea {
 
 .uploaded-image {
 	display: block;
-	max-width: 80%;
+	max-width: 50%;
 	margin: 1em auto 2em;
 }
 
@@ -175,20 +183,20 @@ input[type="text"], textarea {
 .next, .back, .submit-item {
 	padding: 0.5em;
 	.rounded(0.5em);
-	.b-shadow(0.2em, 0.2em, 0.2em, #fff);
-	background: #2B8E49;
+	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	background: #2C525D;
 	color: #fff;
 	text-decoration: none;
 
 	&:hover {
-		.gradient(#2B8E49, #057B28);
+		.gradient(#1B333A, #2C525D);
 	}
 
 	&:active {
 		position: relative;
 		top: 1px;
 		left: 1px;
-		background: #057B28;	
+		background: #1B333A;
 		.b-shadow(0, 0, 0, #222);
 	}
 }
@@ -202,9 +210,22 @@ input[type="text"], textarea {
 }
 
 .after-signup {
+	ul {
+		.clearfix;	
+		padding-left: 0;
+	}
+	
 	li {
-		list-style-type: none;
+		/*.gradient(#3DA2BE, #2C525D);*/
+		background: url(img/paper/fern.jpg);
+		.b-shadow(0.1em, 0.1em, 0.1em, #888);
+		.column(6);
 		font-size: 1.3em;
+		height: 10em;
+		list-style-type: none;
+		margin: 1.04167%; 
+		.rounded(0.5em);
+		
 	}
 }
 
@@ -216,10 +237,19 @@ input[type="text"], textarea {
 /* MAIN ------------- */
 
 #wrapper {
+	.b-shadow(0.07em, 0.07em, 0.5em, #000);
+	background: #E6E9E2;
 	width: 90%;
-	max-width: 500px;
+	max-width: 700px;
 	margin: 0 auto;
+	padding: 2% 4%;
+	.rounded(0.5em);
 }
+
+#site-footer {
+	clear: both;	
+}
+
 
 /* COMPLEMENTARY --------- */
 
