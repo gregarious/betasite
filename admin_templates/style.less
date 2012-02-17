@@ -57,6 +57,11 @@ h2 {
 	text-align: center;
 }
 
+p {
+	color: #222;
+	text-shadow: 0.05em 0.05em 0.05em #fff;
+}
+
 .tip {
 	color: #555;
 	font-size: 0.8em;
@@ -64,17 +69,29 @@ h2 {
 	margin-left: 2%;
 }
 
+.description {
+	text-indent: 2em;
+}
+
+.add-item-link {
+	font-size: 1em;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.add-item-form {
+	display: none;
+}
+
 /* FORMS & INPUTS --------------- */
 
 form {
-	.column(12);
-	padding: 2em 0;
-	border-bottom: 2px solid #ccc;
+	.clearfix;
 }
 
 label {
 	color: #057B28;
-	.column(2);
+	.column(2.8);
 	font-size: 0.9em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
@@ -85,9 +102,8 @@ label {
 	top: 0.5em;
 }
 
-.option-label {
-	text-transform: none;
-	clear: both;
+textarea {
+	height: 6em;
 }
 
 input[type="text"], textarea {
@@ -114,8 +130,25 @@ input[type="checkbox"] {
 	float: right;
 }
 
-textarea {
-	height: 6em;
+.checkbox-label {
+	text-transform: none;
+	clear: both;
+}
+
+.form-container {
+	.column(12);
+	padding: 2em 0;
+	border-bottom: 2px solid #ccc;
+}
+
+.social-input {
+	width: 75% !important;
+}
+
+.social-icon {
+	margin-top: 0.25em;
+	width: 15%;
+	float: right;
 }
 
 /* NAVIGATION ------------ */

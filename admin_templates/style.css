@@ -25,26 +25,43 @@ h2 {
   font-size: 1.5em;
   text-align: center;
 }
+p {
+  color: #222;
+  text-shadow: 0.05em 0.05em 0.05em #fff;
+}
 .tip {
   color: #555;
   font-size: 0.8em;
   font-style: italic;
   margin-left: 2%;
 }
+.description {
+  text-indent: 2em;
+}
+.add-item-link {
+  font-size: 1em;
+  font-style: italic;
+  cursor: pointer;
+}
+.add-item-form {
+  display: none;
+}
 /* FORMS & INPUTS --------------- */
 form {
-  display: inline;
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
-  padding: 2em 0;
-  border-bottom: 2px solid #ccc;
+  *zoom: 1;
+}
+form:before, form:after {
+  content: "";
+  display: table;
+}
+form:after {
+  clear: both;
 }
 label {
   color: #057B28;
   display: inline;
   float: left;
-  width: 14.583333333333334%;
+  width: 21.25%;
   margin: 0 1.0416666666666665%;
   font-size: 0.9em;
   font-weight: bold;
@@ -55,9 +72,8 @@ label {
   position: relative;
   top: 0.5em;
 }
-.option-label {
-  text-transform: none;
-  clear: both;
+textarea {
+  height: 6em;
 }
 input[type="text"], textarea {
   border: 1px #ccc solid;
@@ -97,8 +113,25 @@ input[type="text"]:focus, textarea:focus {
   margin: 0 1.0416666666666665%;
   float: right;
 }
-textarea {
-  height: 6em;
+.checkbox-label {
+  text-transform: none;
+  clear: both;
+}
+.form-container {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  padding: 2em 0;
+  border-bottom: 2px solid #ccc;
+}
+.social-input {
+  width: 75% !important;
+}
+.social-icon {
+  margin-top: 0.25em;
+  width: 15%;
+  float: right;
 }
 /* NAVIGATION ------------ */
 .prev-next {

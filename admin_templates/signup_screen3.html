@@ -19,32 +19,49 @@
 			<header>
 				<h2>Fun stuff</h2>					
 			</header>
-			<form>
-				<!-- Selected tags will appear in designated div. User's will be able to remove them by clicking an 'x' in the corner of tag bubble. -->
-				<label>Add some tags:</label>
-				<div class="inputs">
-					<p>Suggested:</p> <!-- Click one and it moves to current tags div -->
-				
-					<ul>
-						<li>Restaurant</li>
-						<li>Outdoors</li>
-						<li>Awesome</li>
-						<li>Retail</li>
-					</ul>
-					
-					<p>or add your own:</p>
-					
-					<input type="text" placeholder="try 'latte'" /> <!-- Autocomplete -->
-				</div>
-			</form>
-			<form>
-				<label>How can users reach you?</label><br />
-				<div class="inputs">
-					[link to FB page]<br />
-					[link to Twitter]<br />
-				</div>
-			</form>
+			<div class="form-container">
+				<form>
+					<label>Upload Image</label>
+					<div class="inputs">
+						[Image upload form goes here]
+					</div>
+				</form>
+			</div>
+			<div class="form-container">
+				<form>
+					<!-- Selected tags will appear in designated div. User's will be able to remove them by clicking an 'x' in the corner of tag bubble. -->
+					<label>Tags</label>
+					<div class="inputs">
+						<input type="text" placeholder="try 'latte'" /> <!-- Autocomplete -->
+					</div>
+					<div class="inputs">
+						<p>Suggested:</p> <!-- Click one and it moves to current tags div -->
+						<ul>
+							<li>Restaurant</li>
+							<li>Outdoors</li>
+							<li>Awesome</li>
+							<li>Retail</li>
+						</ul>
+					</div>
+				</form>
+			</div>
 
+			<div class="form-container">
+				<form>
+					<label>On the web</label>
+					<div class="inputs">
+						<!-- Placeholder icons -->
+						<input class="social-input" type="text" placeholder="Facebook page" />
+						<div class="social-icon">
+							<img src="http://www.sportswearnet.com/gif/layout/icons/facebook_icon30x30.jpg" />
+						</div>
+						<input class="social-input" type="text" placeholder="Twitter username" />
+						<div class="social-icon">
+							<img src="http://www.littleleague.org/Assets/images/icons/twitter-icon-sm.png" />
+						</div>
+					</div>
+				</form>
+			</div>
 		</div> <!-- #site-content -->
 
 		<footer id="site-footer">
