@@ -147,9 +147,9 @@ def run():
             place,created = Place.objects.get_or_create(name=row.name,location=location,owner=organization)
         
         if row.url:
-            PlaceMeta.objects.create(place=place,meta_key='url',meta_value=row.url)
+            PlaceMeta.objects.get_or_create(place=place,meta_key='url',defaults=dict(meta_value=row.url))
         if row.phone:
-            PlaceMeta.objects.create(place=place,meta_key='phone',meta_value=row.phone)
+            PlaceMeta.objects.get_or_create(place=place,meta_key='phone',defaults=dict(meta_value=row.phone))
 
         logger.info('Imported %s as Place' % row.name)
 
