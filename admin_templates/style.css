@@ -5,15 +5,22 @@ body {
   font-family: "Helvetica";
   padding-bottom: 3em;
 }
-section {
+section, article {
   *zoom: 1;
 }
-section:before, section:after {
+section:before,
+article:before,
+section:after,
+article:after {
   content: "";
   display: table;
 }
-section:after {
+section:after, article:after {
   clear: both;
+}
+img {
+  height: auto;
+  max-width: 100%;
 }
 /* TYPOGRAPHY ------------ */
 h1 {
@@ -38,7 +45,7 @@ p {
 .description {
   text-indent: 2em;
 }
-.add-item-link {
+.add-item-link, .edit-link {
   font-size: 1em;
   font-style: italic;
   cursor: pointer;
@@ -102,9 +109,9 @@ input[type="text"], textarea {
   background-clip: padding-box;
 }
 input[type="text"]:focus, textarea:focus {
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #000000;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #000000;
-  box-shadow: 0.1em 0.1em 0.1em #000000;
+  -webkit-box-shadow: 0.1em 0.06em 0.1em #555555;
+  -moz-box-shadow: 0.1em 0.06em 0.1em #555555;
+  box-shadow: 0.1em 0.06em 0.1em #555555;
 }
 .inputs {
   display: inline;
@@ -133,6 +140,15 @@ input[type="text"]:focus, textarea:focus {
   width: 15%;
   float: right;
 }
+/* IMAGES ------------ */
+.thumbnail {
+  max-width: 150px;
+}
+.uploaded-image {
+  display: block;
+  max-width: 80%;
+  margin: 1em auto 2em;
+}
 /* NAVIGATION ------------ */
 .prev-next {
   display: inline;
@@ -149,7 +165,7 @@ input[type="text"]:focus, textarea:focus {
 .prev-next:after {
   clear: both;
 }
-.next, .back {
+.next, .back, .submit-item {
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -170,7 +186,7 @@ input[type="text"]:focus, textarea:focus {
   color: #fff;
   text-decoration: none;
 }
-.next:hover, .back:hover {
+.next:hover, .back:hover, .submit-item:hover {
   background-color: #2b8e49;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#2b8e49), to(#057b28));
   /* Saf4+, Chrome */
@@ -191,7 +207,7 @@ input[type="text"]:focus, textarea:focus {
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
-.next:active, .back:active {
+.next:active, .back:active, .submit-item:active {
   position: relative;
   top: 1px;
   left: 1px;
@@ -209,6 +225,9 @@ input[type="text"]:focus, textarea:focus {
 .after-signup li {
   list-style-type: none;
   font-size: 1.3em;
+}
+.submit-item {
+  float: right;
 }
 /* MAIN ------------- */
 #wrapper {

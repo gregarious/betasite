@@ -40,8 +40,13 @@ body {
 	padding-bottom: 3em;
 }
 
-section {
+section, article {
 	.clearfix;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
 }
 
 /* TYPOGRAPHY ------------ */
@@ -73,7 +78,7 @@ p {
 	text-indent: 2em;
 }
 
-.add-item-link {
+.add-item-link, .edit-link {
 	font-size: 1em;
 	font-style: italic;
 	cursor: pointer;
@@ -117,12 +122,8 @@ input[type="text"], textarea {
 	.rounded(0.5em);
 
 	&:focus {
-		.b-shadow(0.1em, 0.1em, 0.1em, #000);
+		.b-shadow(0.1em, 0.06em, 0.1em, #555);
 	}
-}
-
-input[type="checkbox"] {
-	
 }
 
 .inputs {
@@ -151,6 +152,18 @@ input[type="checkbox"] {
 	float: right;
 }
 
+/* IMAGES ------------ */
+
+.thumbnail {
+	max-width: 150px;
+}
+
+.uploaded-image {
+	display: block;
+	max-width: 80%;
+	margin: 1em auto 2em;
+}
+
 /* NAVIGATION ------------ */
 
 .prev-next {
@@ -159,7 +172,7 @@ input[type="checkbox"] {
 	margin-top: 1em;
 }
 
-.next, .back {
+.next, .back, .submit-item {
 	padding: 0.5em;
 	.rounded(0.5em);
 	.b-shadow(0.2em, 0.2em, 0.2em, #fff);
@@ -193,6 +206,11 @@ input[type="checkbox"] {
 		list-style-type: none;
 		font-size: 1.3em;
 	}
+}
+
+
+.submit-item {
+	float: right;
 }
 
 /* MAIN ------------- */
