@@ -3,11 +3,7 @@
 {% block main_body %}
 <div id="wrapper" class="single">
 	
-	{% include "single_header.html" %}
-	
 	<article id="{% block single_id %}{% endblock %}" class="single-item">
-
-    	<input type="search" id="site-search" placeholder="Search Scenable" />
     	
 		<header class="single-item-header">
 			<div class="item-thumb-container">
@@ -44,11 +40,6 @@
 		{% block single_item_related %}{% endblock %}	
 
 	</article>
-
-	<footer id="site-footer">
-	  {% include "global_footer.html" %}
-	</footer>
-
 </div><!-- #wrapper -->
 
 {% endblock %}

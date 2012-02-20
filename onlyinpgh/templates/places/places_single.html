@@ -1,73 +1,46 @@
-{% extends "single.html" %}
+{% extends "base.html" %}
 
-{% block single_id %}placeSingle{% endblock %}
+{% block main_body %}
+<div id="wrapper" class="single">
 
-{% block single_item_title %}<em>Place:</em> {{ p.name }}{% endblock %}
+	<article id="placesSingle" class="single-item">
 
-{% block single_item_header_content %}
+		<header class="single-item-header">
+			<div class="item-thumb-container">
+				<img class="item-thumb" height="50" width="50" alt="{{ place.name }}" src="{{ place.image_url }}" />
+			</div>
 
-	<ul class="single-item-details">
-		{% if p.location.address %}
-			<li>{{ p.location.address }}</li>
-		{% endif %}
+			<div class="item-content-container">
+				<h2 class="item-title">
+				  	<em>Place:</em> {{ place.name }}
+				</h2>
+			</div>
+		</header>
 
-		{% if p.hours %}
-	 		<li>{{ p.hours }}</li>
-	 	{% endif %}
+		<ul class="single-item-details">
+			{% if place.location.address %}
+				<li>{{ place.location.address }}</li>
+			{% endif %}
 
-	 	{% if p.phone %}
-	  		<li>Phone: {{ p.phone }}</li>
-		{% endif %}
+			{% if place.hours %}
+		 		<li>{{ place.hours }}</li>
+		 	{% endif %}
 
-		<li>Parking: Street</li>
+		 	{% if place.phone %}
+		  		<li>Phone: {{ place.phone }}</li>
+			{% endif %}
 
-	</ul>
-
-{% endblock %}
-
-{% block single_item_image_url %}
-
-	{% if p.image_url %}
-		{{ p.image_url }}
-	{% else %}
-		http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif
-	{% endif %}
-
-{% endblock %}
-
-{% block single_item_image_alt %}
-	{{ p.name }}
-{% endblock %}
-
-{% block single_item_content %}
-	
-	{% if p.description %}
-		<section class="single-item-desc">
-	  		<p>{{ p.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
-	  	</section>
-  	{% endif %}
-
+			<li>Parking: Street</li>
+		</ul>
+		<ul class="item-list">
+			{% for tagitem in place.tags %}
+				<li>{{ tagitem.tag.name }}</li>
+			{% endfor %}
+		</ul>
+		{% if place.description %}
+			<section class="single-item-desc">
+		  		<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
+		  	</section>
+	  	{% endif %}
 
 {% endblock %}
-
-{% block single_item_related %}
-
-	<section class="single-item-related">
-		<h3>Specials</h3>
-		{% include "events/events_feed_item.html" %}
-	</section>
-
-	<section class="single-item-related">
-		<h3>Happenings</h3>
-		{% include "events/events_feed_item.html" %}
-	</section>
-
-	<section class="single-item-related">
-		<h3>Chatter</h3>
-		{% include "chatter/chatter_feed_item.html" %}
-	</section>
-
-{% endblock %}
-
-
-

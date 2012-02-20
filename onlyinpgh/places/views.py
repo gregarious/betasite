@@ -17,6 +17,10 @@ class ViewPlace(ViewInstance):
         self.hours = get_meta('hours')
         self.image_url = get_meta('image_url')
 
+        # temporary placeholder
+        if not self.image_url:
+            self.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
+
     def to_app_data(self):
         tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
         data = {
@@ -38,18 +42,19 @@ class ViewPlace(ViewInstance):
         return data
 
 def _view_data_all():
-    return [ViewPlace(p) for p in Place.objects.select_related().all()][:10]
+    return [ViewPlace(p) for p in Place.objects.select_related().all()[:10]]
 
 def _view_data_id(pid):
     return ViewPlace(Place.objects.select_related().get(id=pid))
 
 def feed_page(request):
     data = {'places':   _view_data_all()}
-    return render_to_response('place/feed.html',data)
+    # each feed item needs a link to the details pagej
+    return render_to_response('places/places_feed.html',data)
 
 def detail_page(request,pid):
-    data = {'places':   _view_data_id(pid)}
-    return render_to_response('place/single.html',data)
+    data = {'place':   _view_data_id(pid)}
+    return render_to_response('places/places_single.html',data)
 
 @jsonp_response
 def feed_app(request):

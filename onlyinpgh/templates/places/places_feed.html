@@ -1,14 +1,13 @@
-{% extends "feed.html" %}
+{# Main places feed #}
 
-{% block feed_id %}placesFeed{% endblock %}
+{% extends "base.html" %}
 
-{% block feed_content %}
-
-	{% for p in places %}
-
-		{% include "places/places_feed_item.html" %}
-
-	{% endfor %}
-
+{% block main_body %}
+<ul id="placesFeed" class="feed">
+    {% for place in places %}
+        {% with item=place detail_view="places-item-detail" %}
+            {% include "places/places_feed_item.html" %}
+        {% endwith %}
+    {% endfor %}
+</ul>
 {% endblock %}
-
