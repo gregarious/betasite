@@ -10,11 +10,11 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
-class TaggedItem(models.Model):
-    tag = models.ForeignKey(Tag)
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+# class TaggedItem(models.Model):
+#     tag = models.ForeignKey(Tag)
+#     content_type = models.ForeignKey(ContentType)
+#     object_id = models.PositiveIntegerField()
+#     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    def __unicode__(self):
-        return u'%s => (%s)' % (unicode(self.tag),unicode(self.content_object))
+#     def __unicode__(self):
+#         return u'%s => (%s)' % (unicode(self.tag),unicode(self.content_object))

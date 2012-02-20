@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^places/',include('places.urls')),
+    url(r'^tagging/',include('tagging.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),

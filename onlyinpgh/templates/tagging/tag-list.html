@@ -1,0 +1,9 @@
+{% comment %}
+    Expects an "tags" array, each is a dict with "name" and "id" keys.
+{% endcomment %}
+
+<div class="tag-list">
+{% for tag in tags %}
+    <a href="{% url tagging-item-detail tid=tag.id %}">{{tag.name}}</a>
+{% endfor %}
+</div>

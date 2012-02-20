@@ -4,7 +4,7 @@ from onlyinpgh.places.models import Location, Place, Meta as PlaceMeta
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.outsourcing.models import ExternalPlaceSource, FacebookPage, FacebookOrgRecord
-from onlyinpgh.tagging.models import Tag, TaggedItem
+from onlyinpgh.tagging.models import Tag
 from onlyinpgh.outsourcing.fbpages import PageImportManager
 from onlyinpgh.tagging.categories import load_category_map
 from onlyinpgh.outsourcing.apitools import gplaces_client
@@ -174,7 +174,7 @@ def run():
                     logger.warning('Unknown Google Places type: "%s"' % typ)
             for tagstr in all_tags:
                 tag, _ = Tag.objects.get_or_create(name=tagstr.lower())
-                TaggedItem.objects.create(content_object=place, tag=tag)
+                place.tags.add(tag)
             if len(all_tags) > 0:
                 logger.debug('Row %d ("%s"): Tags [%s]' % (i,str(row.name),', '.join(all_tags)))
         else:

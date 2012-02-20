@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.contenttypes import generic
 
 from onlyinpgh.identity.models import Identity
-from onlyinpgh.tagging.models import TaggedItem
+from onlyinpgh.tagging.models import Tag
 
 from datetime import datetime
 
@@ -28,7 +28,7 @@ class Post(models.Model):
     # TODO: probably turn this into an ImageField -- just simple url for now
     image_url = models.URLField(max_length=400,blank=True)
 
-    tags = generic.GenericRelation(TaggedItem)
+    tags = models.ManyToManyField(Tag)
 
     def __unicode__(self):
         return u'#%s type:%s' % (unicode(self.id),self.post_type)

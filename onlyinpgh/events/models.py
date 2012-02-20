@@ -5,7 +5,7 @@ import pytz
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import Identity, Organization
-from onlyinpgh.tagging.models import TaggedItem
+from onlyinpgh.tagging.models import Tag
 
 from onlyinpgh.utils.time import utctolocal
 from onlyinpgh.settings import TIME_ZONE
@@ -45,7 +45,7 @@ class Event(models.Model):
     # make the event "invisible", meaning it won't be displayable, searchable, etc.
     invisible = models.BooleanField(default=False)
 
-    tags = generic.GenericRelation(TaggedItem)
+    tags = models.ManyToManyField(Tag)
 
     # TODO: change these to template filters
     @property

@@ -18,17 +18,16 @@ class ViewPlace(ViewInstance):
         self.image_url = get_meta('image_url')
 
     def to_app_data(self):
-        tags = [tagitem.tag for tagitem in self.tags]
-        tag_data = [{'name':t.name,'id':t.id} for t in tags]
+        tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
         data = {
             'id':       self.id,
             'name':     self.name,
             'description':  self.description,
             'image_url':    self.image_url,
-            'tags': tag_data,
+            'tags':     tag_data,
             'hours':    self.hours,
             'url':      self.url,
-        }
+            }
 
         if self.location:
             data['location'] = {

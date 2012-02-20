@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from math import sqrt, pow
 
 from onlyinpgh.identity.models import Organization
-from onlyinpgh.tagging.models import TaggedItem
+from onlyinpgh.tagging.models import Tag
 
 # TODO: largely a placeholder, flesh out more later
 class Neighborhood(models.Model):
@@ -197,7 +197,7 @@ class Place(models.Model):
     location = models.ForeignKey(Location,blank=True,null=True)
 
     owner = models.ForeignKey(Organization,blank=True,null=True)
-    tags = generic.GenericRelation(TaggedItem)
+    tags = models.ManyToManyField(Tag)
 
     def __unicode__(self):
         s = self.name
