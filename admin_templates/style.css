@@ -1,9 +1,14 @@
+@import url(fonts/arvo-fontfacekit/stylesheet.css);
+
+@import url(fonts/nunito-fontfacekit/stylesheet.css);
+/* Will move this to template when that happens */
 /* MIXINS ---------- */
 /* ROOT --------- */
 body {
   background: url(img/paper/stormy_sky.jpg);
-  font-family: "Helvetica";
-  padding: 3em 0;
+  font-family: 'ArvoRegular';
+  font-weight: normal;
+  padding: 2em 0 3em;
 }
 section, article {
   *zoom: 1;
@@ -25,13 +30,16 @@ img {
 /* TYPOGRAPHY ------------ */
 h1 {
   color: #fff;
-  text-shadow: 0.07em 0.07em 0 #2C525D;
-  margin-top: 0;
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 0 0 1em;
+  text-align: center;
+  text-shadow: 0.1em 0.1em 0 #222;
 }
 h2 {
-  background: #69B9CF;
-  font-size: 1.5em;
-  text-align: center;
+  font-size: 1.2em;
+  font-weight: normal;
+  padding: 0.5em 0;
 }
 p {
   color: #222;
@@ -129,9 +137,20 @@ input[type="text"]:focus, textarea:focus {
   margin: 0 1.0416666666666665%;
   float: right;
 }
+input[type="checkbox"] {
+  float: left;
+  margin-top: 1em;
+}
 .checkbox-label {
+  margin-bottom: 0.1em;
   text-transform: none;
-  clear: both;
+  text-align: left;
+}
+.check-container {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
 }
 .form-container {
   display: inline;
@@ -147,11 +166,11 @@ input[type="text"]:focus, textarea:focus {
 .social-icon {
   margin-top: 0.25em;
   width: 15%;
-  float: right;
+  float: left;
 }
 /* IMAGES ------------ */
 .thumbnail {
-  max-width: 150px;
+  max-width: 300px;
 }
 .uploaded-image {
   display: block;
@@ -243,9 +262,28 @@ input[type="text"]:focus, textarea:focus {
   clear: both;
 }
 .after-signup li {
-  /*.gradient(#3DA2BE, #2C525D);*/
+  cursor: pointer;
+  background-color: #3da2be;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3da2be), to(#a9c6e8));
+  /* Saf4+, Chrome */
 
-  background: url(img/paper/fern.jpg);
+  background-image: -webkit-linear-gradient(top, #3da2be, #a9c6e8);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #3da2be, #a9c6e8);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #3da2be, #a9c6e8);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #3da2be, #a9c6e8);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #3da2be, #a9c6e8);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  /*background: url(img/paper/fern.jpg);*/
+
   -webkit-box-shadow: 0.1em 0.1em 0.1em #888888;
   -moz-box-shadow: 0.1em 0.1em 0.1em #888888;
   box-shadow: 0.1em 0.1em 0.1em #888888;
@@ -270,19 +308,46 @@ input[type="text"]:focus, textarea:focus {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+.after-signup li:hover {
+  background-color: #a9c6e8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#a9c6e8), to(#3da2be));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #a9c6e8, #3da2be);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #a9c6e8, #3da2be);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #a9c6e8, #3da2be);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #a9c6e8, #3da2be);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #a9c6e8, #3da2be);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  background: #3DA2BE;
+}
+.after-signup li:active {
+  background: #255C9E;
+}
 .submit-item {
   float: right;
 }
-/* MAIN ------------- */
+/* SITE ------------- */
 #wrapper {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+#site-content {
   -webkit-box-shadow: 0.07em 0.07em 0.5em #000000;
   -moz-box-shadow: 0.07em 0.07em 0.5em #000000;
   box-shadow: 0.07em 0.07em 0.5em #000000;
   background: #E6E9E2;
-  width: 90%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2% 4%;
+  padding-bottom: 1em;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -296,18 +361,119 @@ input[type="text"]:focus, textarea:focus {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-#site-footer {
+/* CONTENT ----------- */
+.content-header {
+  margin-top: 1.5em;
+  text-align: center;
+}
+.content-container {
+  padding: 0 5% 3%;
+}
+/* PROFILE --------- */
+.details {
+  float: left;
+}
+.thumbnail {
+  float: right;
+}
+.profile-section {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  padding-bottom: 1em;
+}
+.details {
+  margin-top: 0;
+}
+.details li {
+  padding-top: 0.5em;
+  /* Need to not repeat this from utility */
+
+}
+.details li.first {
+  padding-top: 0;
+}
+.social-icon {
   clear: both;
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #ccc;
+}
+.social-icon img {
+  float: left;
+}
+.social-icon .social-link {
+  float: left;
+  margin: 0.5em 0.5em 0 1em;
+}
+.item-content {
+  display: none;
 }
 /* COMPLEMENTARY --------- */
 .progress {
-  width: 6em;
+  width: 20%;
   margin: auto;
 }
 .progress span {
   margin: 0 0.2em;
 }
+.profile-tags {
+  *zoom: 1;
+  padding: 0;
+}
+.profile-tags:before, .profile-tags:after {
+  content: "";
+  display: table;
+}
+.profile-tags:after {
+  clear: both;
+}
+.profile-tags li {
+  float: left;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e1e1e1));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffffff, #e1e1e1);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  list-style-type: none;
+  margin: 0 0.5em;
+  padding: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
 /* UTILITY ----------- */
 .last {
   border: none;
+}
+.first {
+  padding-top: 0;
 }

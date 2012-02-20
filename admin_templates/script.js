@@ -9,5 +9,7 @@ $(document).ready( function(){
 
 	expand_form('#openEventForm','#eventForm');
 	expand_form('#openSpecialForm','#specialForm');
+	expand_form('.scheduled-item h4','.scheduled-item > .item-content');
+
 
 });

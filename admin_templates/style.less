@@ -1,5 +1,9 @@
 @import 'grid';
 
+/* Will move this to template when that happens */
+@import url(fonts/arvo-fontfacekit/stylesheet.css);
+@import url(fonts/nunito-fontfacekit/stylesheet.css);
+
 /* MIXINS ---------- */
 
 @green: #0EBD42;
@@ -35,8 +39,9 @@
 
 body {
 	background: url(img/paper/stormy_sky.jpg);
-	font-family: "Helvetica";
-	padding: 3em 0;
+	font-family: 'ArvoRegular';
+	font-weight: normal;
+	padding: 2em 0 3em;
 }
 
 section, article {
@@ -52,14 +57,17 @@ img {
 
 h1 {
 	color: #fff;
-	text-shadow: 0.07em 0.07em 0 #2C525D;
-	margin-top: 0;
+	font-size: 1.5em;
+	font-style: italic;
+	margin: 0 0 1em;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0 #222;
 }
 
 h2 {
-	background: #69B9CF;
-	font-size: 1.5em;
-	text-align: center;
+	font-size: 1.2em;
+	font-weight: normal;
+	padding: 0.5em 0;
 }
 
 p {
@@ -139,9 +147,19 @@ input[type="text"], textarea {
 	float: right;
 }
 
+input[type="checkbox"] {
+	float: left;
+	margin-top: 1em;
+}
+
 .checkbox-label {
+	margin-bottom: 0.1em;
 	text-transform: none;
-	clear: both;
+	text-align: left;
+}
+
+.check-container {
+	.column(12);
 }
 
 .form-container {
@@ -157,13 +175,13 @@ input[type="text"], textarea {
 .social-icon {
 	margin-top: 0.25em;
 	width: 15%;
-	float: right;
+	float: left;
 }
 
 /* IMAGES ------------ */
 
 .thumbnail {
-	max-width: 150px;
+	max-width: 300px;
 }
 
 .uploaded-image {
@@ -216,8 +234,9 @@ input[type="text"], textarea {
 	}
 	
 	li {
-		/*.gradient(#3DA2BE, #2C525D);*/
-		background: url(img/paper/fern.jpg);
+		cursor: pointer;
+		.gradient(#3DA2BE, #A9C6E8); 
+		/*background: url(img/paper/fern.jpg);*/
 		.b-shadow(0.1em, 0.1em, 0.1em, #888);
 		.column(6);
 		font-size: 1.3em;
@@ -225,6 +244,15 @@ input[type="text"], textarea {
 		list-style-type: none;
 		margin: 1.04167%; 
 		.rounded(0.5em);
+
+		&:hover {
+			.gradient(#A9C6E8, #3DA2BE);
+			background: #3DA2BE;
+		}
+
+		&:active {
+			background: #255C9E;
+		}
 		
 	}
 }
@@ -234,20 +262,86 @@ input[type="text"], textarea {
 	float: right;
 }
 
-/* MAIN ------------- */
+/* SITE ------------- */
 
 #wrapper {
-	.b-shadow(0.07em, 0.07em, 0.5em, #000);
-	background: #E6E9E2;
 	width: 90%;
 	max-width: 700px;
 	margin: 0 auto;
-	padding: 2% 4%;
+}
+
+#site-header {
+
+}
+
+#site-content {
+	.b-shadow(0.07em, 0.07em, 0.5em, #000);
+	background: #E6E9E2;
+	padding-bottom: 1em;
 	.rounded(0.5em);
 }
 
-#site-footer {
-	clear: both;	
+/* CONTENT ----------- */
+
+.content-header {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.content-container {
+	padding: 0 5% 3%;
+}
+
+/* PROFILE --------- */
+
+.details {
+	float: left;
+}
+
+.thumbnail {
+	float: right;
+}
+
+.profile-section {
+	.column(12);
+	padding-bottom: 1em;
+}
+
+.details {
+	margin-top: 0;
+	li {
+		padding-top: 0.5em;
+
+		/* Need to not repeat this from utility */
+		&.first {
+			padding-top: 0;
+		}
+	}
+}
+
+.description {
+	
+}
+
+.social-icon {
+	clear: both;
+	.column(12);
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid #ccc;
+
+	img {
+		float: left;
+	}
+	
+	.social-link {
+		float: left;
+		margin: 0.5em 0.5em 0 1em;
+	}
+}
+
+.item-content {
+	display: none;
 }
 
 
@@ -255,7 +349,7 @@ input[type="text"], textarea {
 
 
 .progress {
-	width: 6em;
+	width: 20%;
 	margin: auto;
 
 	span {
@@ -263,8 +357,25 @@ input[type="text"], textarea {
 	}
 }
 
+.profile-tags {
+	.clearfix;
+	padding: 0;
+	li {
+		float: left;
+		.gradient(#fff, #e1e1e1);
+		list-style-type: none;
+		margin: 0 0.5em;
+		padding: 0.5em;
+		.rounded(0.5em);
+	}
+}
+
 /* UTILITY ----------- */
 
 .last {
 	border: none;
+}
+
+.first {
+	padding-top: 0;
 }

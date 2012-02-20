@@ -2,7 +2,7 @@
 
 <head>
 
-	<title>Scenable Business Account Signup</title>
+	<title>Scenable Business Account Registration</title>
 	<link rel="stylesheet" href="style.css">
 
 </head>
@@ -11,61 +11,70 @@
 	<div id="wrapper">
 
 		<header id="site-header">
-			<h1>Sign up for a Scenable Business User account</h1>
+			<h1>Register for a Scenable Business Account</h1>
 		</header>
 
-		<div id="site-content">
+		<article id="site-content">
 			
-			<header>
+			<header class="content-header">
 				<h2>The Basics</h2>					
-			</header>
+			</header> <!-- #site-header -->
 
-			<div class="form-container">
-				<form>
-					<label class="input-label">Business Name</label>
-					<div class="inputs">
-						<input type="text" placeholder="Your Business Name" />
-					</div>
-				</form>
-			</div>
+			<section class="content-container">
+				<section class="form-container first">
+					<form>
+						<label class="input-label">Business Name</label>
+						<div class="inputs">
+							<input type="text" placeholder="Your Business Name" />
+						</div>
+					</form>
+				</section> <!-- .form-container -->
 
-			<div class="form-container">
-				<form>
-					<label>Address</label>
-					<div class="inputs">
-						<input type="text" placeholder="Address" />
-						<input type="text" placeholder="Apt or Suite #" />
-						<p class="tip">Just the essentials, we know you're in Pittsburgh :)
-					</div>
-				</form>
-			</div>
+				<section class="form-container">
+					<form>
+						<label>Address</label>
+						<div class="inputs">
+							<input type="text" placeholder="Address" />
+							<input type="text" placeholder="Apt or Suite #" />
+							<p class="tip">Just the essentials, we know you're in Pittsburgh :)</p>
+						</div>
+					</form>
+				</section> <!-- .form-container -->
 
-			<div class="form-container last">
-				<form>
-					<label>Phone</label>
-					<div class="inputs">
-						<input type="text" placeholder="(412)...what else?" />
+				<section class="form-container last">
+					<form>
+						<label>Phone</label>
+						<div class="inputs">
+							<input type="text" placeholder="(412)...what else?" />
+						</div>
+					</form>
+					<form class="last">	
+						<label>Website</label>
+						<div class="inputs">
+							<input type="text" placeholder="http://coolrestaurant.com" />
+						</div>
+					</form>
+				</section> <!-- .form-container -->
+
+				<footer class="content-footer">
+					<div class="prev-next">
+						<a href="signup_screen2.html" class="next">Next &rarr;</a>				
 					</div>
-				</form>
-				<form class="last">	
-					<label>Website</label>
-					<div class="inputs">
-						<input type="text" placeholder="http://coolrestaurant.com" />
+					<div class="progress">
+						<span id="step1">&#9830;</span>
+						<span id="step2">&#9830;</span>
+						<span id="step3">&#9830;</span>
+						<span id="step4">&#9830;</span>
 					</div>
-				</form>
-			</div>		
-		</div> <!-- #site-content -->
+				</footer> <!-- .content-footer -->
+
+			</section> <!-- .content-container -->
+
+
+		</article> <!-- #site-content -->
 
 		<footer id="site-footer">
-			<div class="prev-next">
-				<a href="signup_screen2.html" class="next">Next &rarr;</a>				
-			</div>
-			<div class="progress">
-				<span id="step1">&#9830;</span>
-				<span id="step2">&#9830;</span>
-				<span id="step3">&#9830;</span>
-				<span id="step4">&#9830;</span>
-			</div>
+			<p>What up, #site-footer!</p>
 		</footer>
 
 	</div> <!-- #wrapper -->
