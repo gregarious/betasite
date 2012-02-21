@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'onlyinpgh.identity',
     'onlyinpgh.news',
     'onlyinpgh.chatter',
-    'onlyinpgh.tagging',
+    'onlyinpgh.tags',
     'onlyinpgh.offers',
     'onlyinpgh.checkin',
     'onlyinpgh.outsourcing',

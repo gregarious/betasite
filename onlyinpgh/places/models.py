@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from math import sqrt, pow
 
 from onlyinpgh.identity.models import Organization
-from onlyinpgh.tagging.models import Tag
+from onlyinpgh.tags.models import Tag
 
 # TODO: largely a placeholder, flesh out more later
 class Neighborhood(models.Model):

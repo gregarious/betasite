@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes import generic
 
-from onlyinpgh.tagging.models import Tag
+from onlyinpgh.tags.models import Tag
 
 class Article(models.Model):
     class Meta:

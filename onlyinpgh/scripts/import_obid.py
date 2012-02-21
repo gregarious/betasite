@@ -4,9 +4,9 @@ from onlyinpgh.places.models import Location, Place, Meta as PlaceMeta
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.outsourcing.models import ExternalPlaceSource, FacebookPage, FacebookOrgRecord
-from onlyinpgh.tagging.models import Tag
+from onlyinpgh.tags.models import Tag
 from onlyinpgh.outsourcing.fbpages import PageImportManager
-from onlyinpgh.tagging.categories import load_category_map
+from onlyinpgh.tags.categories import load_category_map
 from onlyinpgh.outsourcing.apitools import gplaces_client
 # from onlyinpgh.outsourcing.apitools.facebook import oip_client as fb_client
 

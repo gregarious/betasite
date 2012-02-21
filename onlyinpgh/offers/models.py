@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.contenttypes import generic
 
 from onlyinpgh.identity.models import Organization
-from onlyinpgh.tagging.models import Tag
+from onlyinpgh.tags.models import Tag
 
 class Offer(models.Model):
     description = models.TextField()

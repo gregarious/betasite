@@ -33,8 +33,8 @@
 			<li>Parking: Street</li>
 		</ul>
 		<ul class="item-list">
-			{% for tagitem in place.tags %}
-				<li>{{ tagitem.tag.name }}</li>
+			{% for tag in place.tags %}
+				<li>{{ tag.name }}</li>
 			{% endfor %}
 		</ul>
 		{% if place.description %}

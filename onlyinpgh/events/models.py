@@ -5,7 +5,7 @@ import pytz
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import Identity, Organization
-from onlyinpgh.tagging.models import Tag
+from onlyinpgh.tags.models import Tag
 
 from onlyinpgh.utils.time import utctolocal
 from onlyinpgh.settings import TIME_ZONE

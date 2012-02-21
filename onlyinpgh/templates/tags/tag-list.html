@@ -4,6 +4,6 @@
 
 <div class="tag-list">
 {% for tag in tags %}
-    <a href="{% url tagging-item-detail tid=tag.id %}">{{tag.name}}</a>
+    <a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a>
 {% endfor %}
 </div>

@@ -9,7 +9,7 @@ from onlyinpgh.events import views as events_views
 from onlyinpgh.offers import views as offers_views
 from onlyinpgh.chatter import views as chatter_views
 from onlyinpgh.news import views as news_views
-from onlyinpgh.tagging import views as tag_views
+from onlyinpgh.tags import views as tag_views
 from onlyinpgh import views as home_views
 
 admin.autodiscover()
@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^places/',include('places.urls')),
-    url(r'^tagging/',include('tagging.urls')),
+    url(r'^tags/',include('tags.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),
