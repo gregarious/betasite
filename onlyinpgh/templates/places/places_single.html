@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% comment %}
+Outer template that prints a single place detail page. 
+
+Context variables:
+    place:      relevant PlaceView object
+    special:    highlighted Offer object (optional)
+{% endcomment %}
+
 {% block main_body %}
 <div id="wrapper" class="single">
 
@@ -32,11 +40,12 @@
 
 			<li>Parking: Street</li>
 		</ul>
-		<ul class="item-list">
-			{% for tag in place.tags %}
-				<li>{{ tag.name }}</li>
-			{% endfor %}
-		</ul>
+
+		{% include "tags/tag-list.html" with tags=place.tags %}
+
+		{# uses place and special context variables #}
+		{% include "places/place_actions.html" %}
+
 		{% if place.description %}
 			<section class="single-item-desc">
 		  		<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
