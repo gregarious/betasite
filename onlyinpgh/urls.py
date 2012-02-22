@@ -15,13 +15,14 @@ from onlyinpgh import views as home_views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'onlyinpgh.views.home', name='home'),
-    # url(r'^onlyinpgh/', include('onlyinpgh.foo.urls')),
-
+    
+    (r'^login/$', 'django.contrib.auth.views.login'),
+    (r'^logout/$', 'django.contrib.auth.views.logout'),
+    
+    url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    
     url(r'^places/',include('places.urls')),
     url(r'^tags/',include('tags.urls')),
 
