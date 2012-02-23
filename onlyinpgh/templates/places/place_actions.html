@@ -4,10 +4,17 @@ Prints the row of action links for place detail pages.
 Context variables:
     place:      relevant PlaceView object
     special:    highlighted Offer object (optional)
+    checkin:    Checkin object, if already checked in (object)
 {% endcomment %}
 
-<a href="#" class="place-checkin-button">Check In</a> |
+{% if place.checkin %}
+<span class="place-checkin-notice">Checked In</span> |
+{% else %}
+<a href="?action=checkin" class="place-checkin-button">Check In</a> |
+{% endif %}
+
 <a href="#" class="place-favorite-button">Add To Favorites</a> |
+
 {% if special %}
     <a href="#" class="place-special-button">Active Special</a>
 {% else %}

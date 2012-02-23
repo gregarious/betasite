@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 
 from math import sqrt, pow
 
+from django.contrib.auth.models import User
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.tags.models import Tag
 
@@ -259,3 +260,11 @@ class LocationLookupNotice(models.Model):
     def __unicode__(self):
         loc_label = unicode(self.location) if self.location else u'[no location]'
         return u'%s: %s' % (loc_label,self.notice_type)
+
+class Checkin(models.Model):
+    place = models.ForeignKey(Place)
+    user = models.ForeignKey(User)
+    dtcreated = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return u'%s@%s' % (unicode(self.user),unicode(self.place))

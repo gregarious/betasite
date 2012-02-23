@@ -5,8 +5,6 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-TIME_ZONE = 'America/New_York'
-
 DB_DEFAULT = {
     'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     'NAME': '',                      # Or path to database file if using sqlite3.

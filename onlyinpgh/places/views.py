@@ -1,9 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from onlyinpgh.places.models import Place, Meta as PlaceMeta
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 
-from onlyinpgh.utils.decorators import jsonp_response
+from onlyinpgh.places.models import Place, Meta as PlaceMeta, Checkin as PlaceCheckin
+
+from onlyinpgh.utils.jsontools import json_response, jsonp_response, package_json_response
 from onlyinpgh.utils import ViewInstance, get_or_none
+
+from datetime import datetime, timedelta
 
 class ViewPlace(ViewInstance):
     def __init__(self,place):
@@ -20,6 +24,19 @@ class ViewPlace(ViewInstance):
         # temporary placeholder
         if not self.image_url:
             self.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
+
+    # TODO: move this outside. send in user-specific stuff as a seperate object
+    def add_userdata(self,user):
+        '''
+        Appends 'checkin' and 'favorite' members to this ViewPlace
+        '''
+        try:
+            self.checkin = PlaceCheckin.objects.filter(place=self._orig_instance,
+                                                        user=user,
+                                                        dtcreated__gt=_get_checkin_cutoff()) \
+                                                    .order_by('-dtcreated')[0]
+        except IndexError:
+            self.checkin = None
 
     def to_app_data(self):
         tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
@@ -44,17 +61,82 @@ class ViewPlace(ViewInstance):
 def _view_data_all():
     return [ViewPlace(p) for p in Place.objects.select_related().all()[:10]]
 
-def _view_data_id(pid):
-    return ViewPlace(Place.objects.select_related().get(id=pid))
+def _view_data_id(pid,user):
+    place = ViewPlace(Place.objects.select_related().get(id=pid))
+    place.add_userdata(user)
+    print dir(place)
+    return place
+
+def _get_checkin_cutoff():
+    return datetime.utcnow() - timedelta(hours=3)
+
+def _handle_place_action(request,pid,action):
+    '''
+    Returns a status dict that resulted from the action.
+    '''
+    failresp = lambda msg: {'status': 'failure', 'error': msg}
+    if not request.user.is_authenticated():
+        return failresp('user not authenticated')
+    elif not request.user.is_authenticated():
+        return failresp('user account inactive')
+    else:
+        try:
+            place = Place.objects.get(id=pid)
+        except Place.DoesNotExist:
+            return failresp('invalid place id')
+
+        if action == 'checkin':
+            print PlaceCheckin.objects.filter(place__id=pid,
+                                            user=request.user)
+            # don't allow multiple checkins within 3 hours
+            if PlaceCheckin.objects.filter(place__id=pid,
+                                            user=request.user,
+                                            dtcreated__gt=_get_checkin_cutoff()).count() > 0:
+                return failresp('already checked in')
+            else:
+                PlaceCheckin.objects.create(place=place,
+                                            user=request.user)
+        elif action == 'favorite':
+            FavoriteItem.objects.create(content_object=place,
+                                        user=request.user)
+        else:
+            return failresp('invalid action')
+    return {'status': 'success'}
 
 def feed_page(request):
     data = {'places':   _view_data_all()}
-    # each feed item needs a link to the details pagej
-    return render_to_response('places/places_feed.html',data)
+    # each feed item needs a link to the details page
+    return render(request,
+                    'places/places_feed.html',
+                    data)
 
 def detail_page(request,pid):
-    data = {'place':   _view_data_id(pid)}
-    return render_to_response('places/places_single.html',data)
+    '''
+    View displays single places as well as handling many user actions taken
+    on these places.
+
+    The actions are specified via an 'action' GET argument. If the GET request
+    is an XMLHttpRequest (ajax), the response will be a JSON object noting the
+    status of the request. If no action or a non-AJAX request, the whole page
+    will be returned.
+
+    Supported actions:
+    - checkin: User check in to the given place
+    - favorite: User favorites the given place
+    '''
+    action = request.GET.get('action')
+
+    # handle the action and get a dict with details about the result
+    result = _handle_place_action(request,pid,action)
+    # if the request was made via AJAX, client just expects the result dict returned as JSON
+    if request.is_ajax():
+        return package_json_response(result)
+
+    # as long as there was no AJAX-requested action, we will return a fully rendered new page 
+    data = {'places':   _view_data_id(pid,request.user)}
+    return render(request,
+                    'places/places_single.html',
+                    data)
 
 @jsonp_response
 def feed_app(request):

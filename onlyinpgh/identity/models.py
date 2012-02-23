@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 class Identity(models.Model):
     class Meta:
         verbose_name_plural = 'identities'
@@ -22,3 +25,11 @@ class Organization(Identity):
 class Individual(Identity):
     pass
 
+class FavoriteItem(models.Model):
+    user = models.ForeignKey(User)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+
+    def __unicode__(self):
+        return u'%s => %s' % (unicode(self.account),unicode(self.content_object))

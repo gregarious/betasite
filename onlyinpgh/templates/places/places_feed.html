@@ -2,7 +2,7 @@
 
 {% extends "base.html" %}
 
-{% block main_body %}
+{% block content %}
 <ul id="placesFeed" class="feed">
     {% for place in places %}
         {% with item=place detail_view="places-item-detail" %}

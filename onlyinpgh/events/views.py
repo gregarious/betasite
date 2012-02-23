@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from onlyinpgh.events.models import Event
-from onlyinpgh.utils.decorators import jsonp_response
+from onlyinpgh.utils.jsontools import jsonp_response
 
 from datetime import datetime
 

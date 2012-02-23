@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from onlyinpgh.offers.models import Offer
 
-from onlyinpgh.utils.decorators import jsonp_response
+from onlyinpgh.utils.jsontools import jsonp_response
 
 def offers_page(request):
 	variables = { 'offers': Offer.objects.all() }

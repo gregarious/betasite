@@ -26,6 +26,7 @@ class ViewInstance(object):
         If so, the managers will be replaced with the results of an all() 
         call on themselves.
         '''
+        self._orig_instance = instance
         for field in instance._meta.fields:
             setattr(self,field.name,getattr(instance,field.name))
         

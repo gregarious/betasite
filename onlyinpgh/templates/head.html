@@ -5,3 +5,11 @@
   <script data-main="/static/js/main" src="/static/js/require-jquery.js"></script>
 </head>
 <body>
+<div id="debug-user">
+{% if user %}
+	Logged in as: {{user.username}} | <a href="/logout">Logout</a>
+{% else %}
+	<a href="/login">Login</a>
+{% endif %}
+</div>
+<hr/>
