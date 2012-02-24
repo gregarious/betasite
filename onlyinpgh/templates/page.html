@@ -4,12 +4,20 @@
 Template for any Scenable webpage. 
 
 Context variables:
-	- main_content: string
+	- main_content: HTML string
 
 Purposefully an trivial wrapper around base.html. base.html should handle
-all the content-agnostic boilerplate stuff in the header/footer, leaving 
+all the browser-based plumbing boilerplate in the header/footer, leaving 
 page.html to handle the basic skeleton for page content. Right now that
 skeleton is almost empty, but it may not always be.
+
+This will encourage to sticking to a particular page layout for all
+standard Scenable pages. If there are special cases that should follow
+their own rules, these special cases can become new base.html child 
+themes that won't have to worry about browser-level boilerplate code.
+
+Take home messsage: No views should render to base.html, but any
+whole page response should render to this.
 {% endcomment %}
 
 {% block content %}

@@ -1,3 +1,10 @@
+{% comment %}
+Template to render a particular place as a feed item.
+
+Context variables:
+	place:			Place object (includes image_url)
+	is_favorite:	boolean (optional)
+{% endcomment %}
 <div class='place-feed-item'>
 	<h3>
 		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>

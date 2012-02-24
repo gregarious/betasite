@@ -1,3 +1,10 @@
+{% comment %}
+Template to render a particular event as a feed item.
+
+Context variables:
+	event:			Event object
+{% endcomment %}
+
 <div class='event-feed-item'>
 	<h3>{{event.name}}</h3>
 	<h4>{{event.dtstart}} - {{event.dtend}}</h4>

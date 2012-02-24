@@ -1,3 +1,11 @@
+{% comment %}
+Template describing basic skeleton for feed.
+
+Context variables:
+	class_name: 	string
+	items:			HTML strings
+{% endcomment %}
+
 <div class="{{class_name}}">
 	{% for item in items %}
 		{{item}}
