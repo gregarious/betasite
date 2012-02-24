@@ -32,4 +32,4 @@ class FavoriteItem(models.Model):
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
     def __unicode__(self):
-        return u'%s => %s' % (unicode(self.account),unicode(self.content_object))
+        return u'%s => %s' % (unicode(self.user),unicode(self.content_object))

@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.tags.models import Tag
 
+from onlyinpgh.utils import get_or_none
+
 # TODO: largely a placeholder, flesh out more later
 class Neighborhood(models.Model):
     name = models.CharField(max_length=100)
@@ -206,6 +208,11 @@ class Place(models.Model):
             s += u'. Loc: ' + self.location.address + u', ' + self.location.town  + u', ' + self.location.state + u', ' + self.location.postcode  
         assert type(s==unicode)
         return s
+
+    def get_meta(self,key):
+        '''Returns a meta value with the given key, or None.'''
+        meta = get_or_none(self.meta_set,meta_key=key)
+        return meta.meta_value if meta else None
 
 class Meta(models.Model):
     '''

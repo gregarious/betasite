@@ -1,0 +1,7 @@
+<div class='place-feed-item'>
+	<h1>{{place.name}}</h1>
+	<p>{{place.location.address}}</p>
+	{% if is_favorite %}
+	<p>{{user.username}} loves this shit.</p>
+	{% endif %}
+</div>

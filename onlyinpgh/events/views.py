@@ -2,7 +2,14 @@ from django.shortcuts import render_to_response
 from onlyinpgh.events.models import Event
 from onlyinpgh.utils.jsontools import jsonp_response
 
+from onlyinpgh.utils import SelfRenderingView
+
 from datetime import datetime
+
+class FeedItem(SelfRenderingView):
+    template_name = 'events/feed_item.html'
+    def __init__(self,event):
+        self.event = event
 
 def events_page(request):
     variables = { 'events': Event.objects.filter(invisible=False) }

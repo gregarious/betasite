@@ -1,3 +1,6 @@
+from django.template import Context, RequestContext
+from django.template.loader import get_template
+
 url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
 def get_or_none(manager,**kwargs):
@@ -37,3 +40,23 @@ class ViewInstance(object):
                 setattr(self,field.name,getattr(instance,field.name).all())
             else:
                 setattr(self,field.name,getattr(instance,field.name))
+
+class SelfRenderingView(object):
+    template_name = None
+
+    def render_template(self,request=None):
+        '''
+        Render the class's template with all instance variables passed in
+        as the Context.
+        '''
+        if not cls.template_name:
+            raise NotImplementedError('SelfRenderingView subclasses must declare a template_name class variable!')
+        template = get_template(cls.template_name)
+        context = self.to_context(request)
+        return self._template.render(context)
+
+    def to_context(request=None):
+        if request:
+            return RequestContext(request,self.__dict__)
+        else:
+            return Context(self.__dict__)

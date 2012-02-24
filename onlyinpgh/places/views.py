@@ -1,53 +1,50 @@
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
-from django.template import RequestContext
+
+from django.template import Context, RequestContext
 
 from onlyinpgh.places.models import Place, Meta as PlaceMeta, Checkin as PlaceCheckin
+from onlyinpgh.identity.models import FavoriteItem
 
 from onlyinpgh.utils.jsontools import json_response, jsonp_response, package_json_response
-from onlyinpgh.utils import ViewInstance, get_or_none
+from onlyinpgh.utils import ViewInstance, SelfRenderingView
 
 from datetime import datetime, timedelta
 
-class ViewPlace(ViewInstance):
+class PlaceView(ViewInstance):
     def __init__(self,place):
-        super(ViewPlace,self).__init__(place,extract_m2m=True)
-        def get_meta(key):
-            meta = get_or_none(place.meta_set,meta_key=key)
-            return meta.meta_value if meta else None
+        super(PlaceView,self).__init__(place,extract_m2m=True)
 
-        self.phone = get_meta('phone')
-        self.url = get_meta('url')
-        self.hours = get_meta('hours')
-        self.image_url = get_meta('image_url')
+        self.phone = place.get_meta('phone')
+        self.url = place.get_meta('url')
+        self.hours = place.get_meta('hours')
+        self.image_url = place.get_meta('image_url')
 
+class FeedItem(SelfRenderingView):
+    template_name = 'places/feed_item.html'
+    
+    def __init__(self,place,user=None):
+        self.place = PlaceView(place)   # adds meta info, extracts tags from m2m manager
+        self.user = user
+        if self.user:
+            self.is_favorite = FavoriteItem.objects.filter(user=self.user,
+                                                            object_id=self.place.id)\
+                                                    .count() > 0
         # temporary placeholder
-        if not self.image_url:
-            self.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
-
-    # TODO: move this outside. send in user-specific stuff as a seperate object
-    def add_userdata(self,user):
-        '''
-        Appends 'checkin' and 'favorite' members to this ViewPlace
-        '''
-        try:
-            self.checkin = PlaceCheckin.objects.filter(place=self._orig_instance,
-                                                        user=user,
-                                                        dtcreated__gt=_get_checkin_cutoff()) \
-                                                    .order_by('-dtcreated')[0]
-        except IndexError:
-            self.checkin = None
+        if not self.place.image_url:
+            self.place.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
 
     def to_app_data(self):
-        tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
-        data = {
-            'id':       self.id,
-            'name':     self.name,
-            'description':  self.description,
-            'image_url':    self.image_url,
-            'tags':     tag_data,
-            'hours':    self.hours,
-            'url':      self.url,
+        tag_data = [{'name':t.name,'id':t.id} for t in self.place.tags]
+        data = { 'place': {
+                    'id':       self.place.id,
+                    'name':     self.place.name,
+                    'description':  self.place.description,
+                    'image_url':    self.place.image_url,
+                    'tags':     tag_data,
+                    'hours':    self.place.hours,
+                    'url':      self.place.url,
+                },
             }
 
         if self.location:
@@ -55,8 +52,50 @@ class ViewPlace(ViewInstance):
                     'address':      self.location.address,
                     'longitude':    float(self.location.longitude),
                     'latitude':     float(self.location.latitude),
-                },
+                }
         return data
+
+# class PlaceView(ViewInstance):
+#     def __init__(self,place):
+#         super(ViewPlace,self).__init__(place,extract_m2m=True)
+
+#         self.phone = place.get_meta('phone')
+#         self.url = place.get_meta('url')
+#         self.hours = place.get_meta('hours')
+#         self.image_url = place.get_meta('image_url')
+
+    # # TODO: move this outside. send in user-specific stuff as a seperate object
+    # def add_userdata(self,user):
+    #     '''
+    #     Appends 'checkin' and 'favorite' members to this ViewPlace
+    #     '''
+    #     try:
+    #         self.checkin = PlaceCheckin.objects.filter(place=self._orig_instance,
+    #                                                     user=user,
+    #                                                     dtcreated__gt=_get_checkin_cutoff()) \
+    #                                                 .order_by('-dtcreated')[0]
+    #     except IndexError:
+    #         self.checkin = None
+
+    # def to_app_data(self):
+    #     tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
+    #     data = {
+    #         'id':       self.id,
+    #         'name':     self.name,
+    #         'description':  self.description,
+    #         'image_url':    self.image_url,
+    #         'tags':     tag_data,
+    #         'hours':    self.hours,
+    #         'url':      self.url,
+    #         }
+
+    #     if self.location:
+    #         data['location'] = {
+    #                 'address':      self.location.address,
+    #                 'longitude':    float(self.location.longitude),
+    #                 'latitude':     float(self.location.latitude),
+    #             },
+    #     return data
 
 def _view_data_all():
     return [ViewPlace(p) for p in Place.objects.select_related().all()[:10]]
