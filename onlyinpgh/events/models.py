@@ -45,7 +45,7 @@ class Event(models.Model):
     # make the event "invisible", meaning it won't be displayable, searchable, etc.
     invisible = models.BooleanField(default=False)
 
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag,blank=True)
 
     # TODO: change these to template filters
     @property

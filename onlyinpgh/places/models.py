@@ -200,7 +200,7 @@ class Place(models.Model):
     location = models.ForeignKey(Location,blank=True,null=True)
 
     owner = models.ForeignKey(Organization,blank=True,null=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag,blank=True)
 
     def __unicode__(self):
         s = self.name

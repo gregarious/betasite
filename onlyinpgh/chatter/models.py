@@ -28,7 +28,7 @@ class Post(models.Model):
     # TODO: probably turn this into an ImageField -- just simple url for now
     image_url = models.URLField(max_length=400,blank=True)
 
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag,blank=True)
 
     def __unicode__(self):
         return u'#%s type:%s' % (unicode(self.id),self.post_type)
