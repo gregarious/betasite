@@ -2,14 +2,31 @@ from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 
 from django.template import Context, RequestContext
+from django.template.loader import get_template
 
 from onlyinpgh.places.models import Place, Meta as PlaceMeta, Checkin as PlaceCheckin
 from onlyinpgh.identity.models import FavoriteItem
+from onlyinpgh.offers.models import Offer
 
 from onlyinpgh.utils.jsontools import json_response, jsonp_response, package_json_response
-from onlyinpgh.utils import ViewInstance, SelfRenderingView
+from onlyinpgh.utils import ViewInstance, SelfRenderingView, process_external_url
 
 from datetime import datetime, timedelta
+import urllib
+
+def to_directions_link(location):
+    daddr = ''
+    if location.address:
+        daddr = location.address
+        if location.postcode:
+            daddr += ', ' + location.postcode
+    elif location.longitude and not location.latutude:
+        daddr = '(%f,%f)' % (float(location.longitude),float(location.latutude))
+
+    if not daddr:
+        return None
+    else:
+        return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr':daddr})
 
 class PlaceView(ViewInstance):
     def __init__(self,place):
@@ -24,87 +41,86 @@ class FeedItem(SelfRenderingView):
     template_name = 'places/feed_item.html'
     
     def __init__(self,place,user=None):
-        self.place = PlaceView(place)   # adds meta info, extracts tags from m2m manager
-        self.user = user
-        if self.user:
-            self.is_favorite = FavoriteItem.objects.filter(user=self.user,
-                                                            object_id=self.place.id)\
-                                                    .count() > 0
+        self.place = place
+        # explicitly grab the image url and tags to make them context-friendly
+        self.place.image_url = place.get_meta('image_url')
+
+        if user:
+            self.is_favorite = FavoriteItem.objects.filter_by_type(model_type=Place,
+                                                                    model_instance=self.place)\
+                                                                .count() > 0
         # temporary placeholder
         if not self.place.image_url:
             self.place.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
 
     def to_app_data(self):
-        tag_data = [{'name':t.name,'id':t.id} for t in self.place.tags]
+        '''
+        Handles explicit conversion of the FeedItem to serialized data
+        along with any string formatting operations (e.g. date formatting)
+        '''
+        loc_data = None
+        if self.place.location:
+            loc_data = {
+                'address':      self.place.location.address,
+                'longitude':    float(self.place.location.longitude),
+                'latitude':     float(self.place.location.latitude),
+            }
+
         data = { 'place': {
                     'id':       self.place.id,
                     'name':     self.place.name,
-                    'description':  self.place.description,
                     'image_url':    self.place.image_url,
-                    'tags':     tag_data,
-                    'hours':    self.place.hours,
-                    'url':      self.place.url,
+                    'tags':     [{'name':t.name,'id':t.id} for t in self.place.tags.all()],
+                    'location': loc_data,
                 },
             }
 
-        if self.location:
-            data['location'] = {
-                    'address':      self.location.address,
-                    'longitude':    float(self.location.longitude),
-                    'latitude':     float(self.location.latitude),
-                }
         return data
 
-# class PlaceView(ViewInstance):
-#     def __init__(self,place):
-#         super(ViewPlace,self).__init__(place,extract_m2m=True)
+class SingleItem(FeedItem):
+    template_name = 'places/single.html'
 
-#         self.phone = place.get_meta('phone')
-#         self.url = place.get_meta('url')
-#         self.hours = place.get_meta('hours')
-#         self.image_url = place.get_meta('image_url')
+    def __init__(self,place,user=None):
+        # super will handle place (with image_url and tags) and is_favorite
+        super(SingleItem,self).__init__(place,user=user)
+        self.place.hours = place.get_meta('hours')
+        self.place.url = place.get_meta('url')
+        if self.place.url:
+            self.place.url = process_external_url(self.place.url)
 
-    # # TODO: move this outside. send in user-specific stuff as a seperate object
-    # def add_userdata(self,user):
-    #     '''
-    #     Appends 'checkin' and 'favorite' members to this ViewPlace
-    #     '''
-    #     try:
-    #         self.checkin = PlaceCheckin.objects.filter(place=self._orig_instance,
-    #                                                     user=user,
-    #                                                     dtcreated__gt=_get_checkin_cutoff()) \
-    #                                                 .order_by('-dtcreated')[0]
-    #     except IndexError:
-    #         self.checkin = None
+        specials = Offer.objects.filter(place=self.place)
+        if specials:
+            self.featured_special = specials[0] # arbitrary choice
+        if self.place.location:
+            self.directions_link = to_directions_link(place.location)
 
-    # def to_app_data(self):
-    #     tag_data = [{'name':t.name,'id':t.id} for t in self.tags]
-    #     data = {
-    #         'id':       self.id,
-    #         'name':     self.name,
-    #         'description':  self.description,
-    #         'image_url':    self.image_url,
-    #         'tags':     tag_data,
-    #         'hours':    self.hours,
-    #         'url':      self.url,
-    #         }
+    def to_app_data(self):
+        # get super's app data first, then insert new fields
+        data = super(SingleItem,self).to_app_data()
+        data['place'].update(
+            { 'hours': self.place.hours,
+              'url':   self.place.url })
+        data.update(
+            { 'featured_special': {   
+                    'description': self.featured_special.description,
+                    'point_value': self.featured_special.point_value, 
+                    'id':          self.featured_special.id},
+              'directions_link':    self.directions_link })
+        return data
 
-    #     if self.location:
-    #         data['location'] = {
-    #                 'address':      self.location.address,
-    #                 'longitude':    float(self.location.longitude),
-    #                 'latitude':     float(self.location.latitude),
-    #             },
-    #     return data
+class RelatedFeeds(SelfRenderingView):
+    template_name = 'feed_collection.html'
 
-def _view_data_all():
-    return [ViewPlace(p) for p in Place.objects.select_related().all()[:10]]
+    def __init__(self,place,user=None):
+        self.place = place
+        # TODO: MORE
 
-def _view_data_id(pid,user):
-    place = ViewPlace(Place.objects.select_related().get(id=pid))
-    place.add_userdata(user)
-    print dir(place)
-    return place
+def _feed_items_all(user=None):
+    return [FeedItem(p,user) for p in Place.objects.select_related().all()[:10]]
+
+def _single_id(pid,user=None):
+    return SingleItem(Place.objects.select_related().get(id=pid),
+                        user=user)
 
 def _get_checkin_cutoff():
     return datetime.utcnow() - timedelta(hours=3)
@@ -124,30 +140,44 @@ def _handle_place_action(request,pid,action):
         except Place.DoesNotExist:
             return failresp('invalid place id')
 
-        if action == 'checkin':
-            print PlaceCheckin.objects.filter(place__id=pid,
-                                            user=request.user)
-            # don't allow multiple checkins within 3 hours
-            if PlaceCheckin.objects.filter(place__id=pid,
-                                            user=request.user,
-                                            dtcreated__gt=_get_checkin_cutoff()).count() > 0:
-                return failresp('already checked in')
-            else:
-                PlaceCheckin.objects.create(place=place,
-                                            user=request.user)
-        elif action == 'favorite':
-            FavoriteItem.objects.create(content_object=place,
-                                        user=request.user)
+        if action == 'fav' or action == 'unfav':
+            existing = FavoriteItem.objects.filter_by_type(model_type=Place,
+                            model_instance=place,
+                            user=request.user)
+            if action == 'fav':
+                if len(existing) > 0:
+                    return failresp('item already in favorites')
+                else:
+                    FavoriteItem.objects.create(user=request.user,
+                                                content_object=place)
+            elif action == 'unfav':
+                if len(existing) > 0:
+                    existing.delete()
+                else:
+                    return failresp('item not in favorites')
         else:
             return failresp('invalid action')
     return {'status': 'success'}
 
 def feed_page(request):
-    data = {'places':   _view_data_all()}
-    # each feed item needs a link to the details page
-    return render(request,
-                    'places/places_feed.html',
-                    data)
+    '''
+    View function that handles a page load request for a feed of place
+    items. 
+
+    Renders page.html with main_content set to the rendered HTML of
+    a feed.
+    '''
+    # get a list of rendered Place FeedItems
+    items = _feed_items_all(request.user)
+    rendered_items = [item.self_render() for item in items]
+
+    # feed these rendered blocks into feed.html
+    feed_context = Context(dict(items=rendered_items,
+                                class_name='place_feed'))
+    feed_html = get_template('feed.html').render(feed_context)
+
+    return render(request,'page.html',
+                    {'main_content':feed_html})
 
 def detail_page(request,pid):
     '''
@@ -160,29 +190,30 @@ def detail_page(request,pid):
     will be returned.
 
     Supported actions:
-    - checkin: User check in to the given place
-    - favorite: User favorites the given place
+    - fav: User adds given place to his favorites
+    - unfav: User removes given place from favorites
     '''
     action = request.GET.get('action')
+    if action:
+        # handle the action and get a dict with details about the result
+        result = _handle_place_action(request,pid,action)
+        # if the request was made via AJAX, client just expects the result dict returned as JSON
+        if request.is_ajax():
+            return package_json_response(result)
 
-    # handle the action and get a dict with details about the result
-    result = _handle_place_action(request,pid,action)
-    # if the request was made via AJAX, client just expects the result dict returned as JSON
-    if request.is_ajax():
-        return package_json_response(result)
+    # TODO: return error message on action failure?
+    detail_view = _single_id(pid,user=request.user)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
-    data = {'places':   _view_data_id(pid,request.user)}
-    return render(request,
-                    'places/places_single.html',
-                    data)
+    return render(request,'page.html',
+                    Context({'main_content':detail_view.self_render()}))
 
+## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
 @jsonp_response
 def feed_app(request):
-    data = {'places':   [vp.to_app_data() for vp in _view_data_all()]}
-    return data
+    items = _feed_items_all(request.user)
+    return [item.to_app_data() for item in items]
 
 @jsonp_response
 def detail_app(request,pid):
-    data = {'place':    _view_data_id(pid).to_app_data()}
-    return data
+    return _single_id(pid,user=request.user).to_app_data()

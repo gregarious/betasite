@@ -1,43 +1,17 @@
 {% extends "base.html" %}
 
-{% block main_body %}
+{% comment %}
+Template for any Scenable webpage. 
 
-  <div class="wrapper" id="checkin">
+Context variables:
+	- main_content: string
 
-    <header id="site-header">
-      <h1 id="site-title">Oakland Scene</h1>
-      <nav class="quick-nav">
-        <ul>
-          <li class="map-mode"></li>
-          <li class="expand-search"></li>
-        </ul>
-      </nav>
-    </header>
+Purposefully an trivial wrapper around base.html. base.html should handle
+all the content-agnostic boilerplate stuff in the header/footer, leaving 
+page.html to handle the basic skeleton for page content. Right now that
+skeleton is almost empty, but it may not always be.
+{% endcomment %}
 
-    <input type="search" id="site-search" placeholder="Search Scenable" />
-    
-      <nav id="site-nav">
-        <ul>
-          <li><a href="/">Hot</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/specials">Specials</a></li>
-          <li><a href="/places">Places</a></li>
-          <li><a href="/chatter">Chatter</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a>Jobs</a></li>
-        </ul>
-      </nav>
-
-    <article class="site-content" id="{% block content_id %}{% endblock %}">
-    
-      {% block content %}{% endblock %}
-
-    </article>
-
-    <footer id="site-footer">
-      {% include "global_footer.html" %}
-    </footer>
-
-  </div><!-- #wrapper -->
-
+{% block content %}
+{{main_content}}
 {% endblock %}

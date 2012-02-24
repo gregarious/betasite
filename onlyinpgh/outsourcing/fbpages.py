@@ -140,12 +140,8 @@ def store_fbpage_organization(page_info):
         # otherwise, go with the fb link (and manually create it if even that fails)
         url = page_info.get('link','http://www.facebook.com/%s'%pid)
     
-    # ensure URL starts with protocol (PHP site didn't handle these URLs well)
-    url_p = re.compile(utils.url_pattern)
-    if not url_p.match(url):
-        url = 'http://'+url
-        if not url_p.match(url):    # if that didn't work, blank out the url
-            url = ''
+    # ensure URL starts with protocol (otherwise browsers will treat like relative URLs)
+    url = utils.process_external_url(url)
 
     organization, created = Organization.objects.get_or_create(name=pname[:200],
                                                                 avatar=page_info.get('picture','')[:400],

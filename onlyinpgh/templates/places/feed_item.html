@@ -1,7 +1,11 @@
 <div class='place-feed-item'>
-	<h1>{{place.name}}</h1>
+	<h3>
+		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+		{% if is_favorite %}
+		<span class="favorite-star">*</span>
+		{% endif %}
+
+	</h3>
+	<img src="{{place.image_url}}"/>
 	<p>{{place.location.address}}</p>
-	{% if is_favorite %}
-	<p>{{user.username}} loves this shit.</p>
-	{% endif %}
 </div>

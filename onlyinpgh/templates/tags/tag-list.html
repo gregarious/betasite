@@ -1,9 +1,13 @@
 {% comment %}
-    Expects an "tags" array, each is a dict with "name" and "id" keys.
+	Context variables:
+		tags:	List of Tag objects
 {% endcomment %}
 
 <div class="tag-list">
+Tags:
+<ul>
 {% for tag in tags %}
-    <a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a>
+    <li><a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
 {% endfor %}
+</ul>
 </div>

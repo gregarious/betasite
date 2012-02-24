@@ -1,0 +1,74 @@
+{% comment %}
+Inner template that renders details about a single place.
+
+Context variables:
+    place:      		Place object with extra fields (e.g. url, hours)
+    featured_special: 	Offer object (optional)
+    directions_link:	Google Maps link (optional)
+{% endcomment %}
+
+<div id="wrapper" class="single">
+
+	<article id="placesSingle" class="single-item">
+
+		<header class="single-item-header">
+			<div class="item-thumb-container">
+				<img class="item-thumb" height="50" width="50" alt="{{ place.name }}" src="{{ place.image_url }}" />
+			</div>
+
+			<div class="item-content-container">
+				<h2 class="item-title">
+				  	<em>Place:</em> {{ place.name }}
+				</h2>
+			</div>
+		</header>
+
+		<ul class="single-item-details">
+			{% if place.location.address %}
+				<li>
+				{{ place.location.address }}
+				{% if directions_link %}
+					<a href="{{directions_link}}">(directions)</a>
+				{% endif %}
+				</li>
+			{% endif %}
+
+			{% if place.url %}
+				<li><a href="{{ place.url }}">{{ place.url }}</a></li>
+			{% endif %}
+
+			{% if place.hours %}
+		 		<li>{{ place.hours }}</li>
+		 	{% endif %}
+
+		 	{% if place.phone %}
+		  		<li>Phone: {{ place.phone }}</li>
+			{% endif %}
+
+			<li>Parking: Street</li>
+		</ul>
+
+		{% include "tags/tag-list.html" with tags=place.tags.all %}
+
+		{% if is_favorite %}
+			<a href="?action=unfav" class="unfavorite-action">Remove from Favorites</a>
+		{% else %}
+			<a href="?action=fav" class="favorite-action">Add to Favorites</a>
+		{% endif %}
+		{# uses place and special context variables #}
+
+		{% if place.description %}
+			<section class="single-item-desc">
+		  		<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
+		  	</section>
+	  	{% endif %}
+
+	  	{% if featured_special %}
+	  		<div class="featured_special">
+	  			{{featured_special.description}}
+	  			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
+	  		</div>
+	  	{% endif %}
+
+	  	<a href="#">Report a problem</a> |
+	  	<a href="#">Post to chatter</a>

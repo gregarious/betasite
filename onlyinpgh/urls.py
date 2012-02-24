@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
     url(r'^places/',include('places.urls')),
+    url(r'^offers/',include('offers.urls')),
     url(r'^tags/',include('tags.urls')),
 
     # url(r'^$', home_views.hot_page),

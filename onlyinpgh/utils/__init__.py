@@ -1,7 +1,15 @@
 from django.template import Context, RequestContext
 from django.template.loader import get_template
+import re
 
 url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+def process_external_url(url):
+    url_p = re.compile(url_pattern)
+    if not url_p.match(url):
+        url = 'http://'+url
+        if not url_p.match(url):    # if that didn't work, blank out the url
+            url = ''
+    return url
 
 def get_or_none(manager,**kwargs):
     '''
@@ -44,18 +52,17 @@ class ViewInstance(object):
 class SelfRenderingView(object):
     template_name = None
 
-    def render_template(self,request=None):
+    def self_render(self,request=None):
         '''
         Render the class's template with all instance variables passed in
         as the Context.
         '''
-        if not cls.template_name:
+        if not self.template_name:
             raise NotImplementedError('SelfRenderingView subclasses must declare a template_name class variable!')
-        template = get_template(cls.template_name)
         context = self.to_context(request)
-        return self._template.render(context)
+        return get_template(self.template_name).render(context)
 
-    def to_context(request=None):
+    def to_context(self,request=None):
         if request:
             return RequestContext(request,self.__dict__)
         else:
