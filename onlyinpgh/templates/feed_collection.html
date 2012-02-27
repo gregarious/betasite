@@ -1,0 +1,14 @@
+{% comment %}
+Renders a collection of feeds, one after the other.
+
+Context variables:
+	feeds:	list of dicts as follows:
+		label:		label of feed
+		content:	HTML string
+{% endcomment %}
+
+<div class="feed-collection">
+	{% for feed in feeds %}
+		{{ feed.content }}
+	{% endfor %}
+</div>

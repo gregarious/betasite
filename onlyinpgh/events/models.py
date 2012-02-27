@@ -3,6 +3,7 @@ from django.contrib.contenttypes import generic
 
 import pytz
 
+from django.contrib.auth.models import User
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import Identity, Organization
 from onlyinpgh.tags.models import Tag
@@ -94,9 +95,9 @@ class Meta(models.Model):
         return self.meta_key + ':' + self.meta_value
 
 class Attendee(models.Model):
-    identity = models.ForeignKey(Identity)
+    user = models.ForeignKey(User)
     event = models.ForeignKey(Event)
     # maybe some commitment level or something?
 
     def __unicode__(self):
-        return unicode(self.individual) + u'@' + unicode(self.event)
+        return unicode(self.user) + u'@' + unicode(self.event)

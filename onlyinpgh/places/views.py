@@ -5,8 +5,11 @@ from django.template import Context, RequestContext
 from django.template.loader import get_template
 
 from onlyinpgh.places.models import Place, Meta as PlaceMeta, Checkin as PlaceCheckin
+from onlyinpgh.events.models import Event
 from onlyinpgh.identity.models import FavoriteItem
 from onlyinpgh.offers.models import Offer
+
+from onlyinpgh.events import views as event_views
 
 from onlyinpgh.utils.jsontools import json_response, jsonp_response, package_json_response
 from onlyinpgh.utils import ViewInstance, SelfRenderingView, process_external_url
@@ -27,15 +30,6 @@ def to_directions_link(location):
         return None
     else:
         return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr':daddr})
-
-class PlaceView(ViewInstance):
-    def __init__(self,place):
-        super(PlaceView,self).__init__(place,extract_m2m=True)
-
-        self.phone = place.get_meta('phone')
-        self.url = place.get_meta('url')
-        self.hours = place.get_meta('hours')
-        self.image_url = place.get_meta('image_url')
 
 class FeedItem(SelfRenderingView):
     template_name = 'places/feed_item.html'
@@ -112,8 +106,19 @@ class RelatedFeeds(SelfRenderingView):
     template_name = 'feed_collection.html'
 
     def __init__(self,place,user=None):
-        self.place = place
-        # TODO: MORE
+        # TODO: make generate_feed take in feed items, not bare objects
+        event_items = event_views.generate_feed(Event.objects.filter(place=place))
+        #offer_items = offer_views.generate_feed(Offer.objects.filter(place=place))
+        
+        self.feeds = [
+            {'label': 'events', 
+             'content': event_items },
+            {'label': 'offers', 
+             'content': 'More to come...' },
+            ]
+
+    def to_app_data(self):
+        return {}
 
 def _feed_items_all(user=None):
     return [FeedItem(p,user) for p in Place.objects.select_related().all()[:10]]
@@ -159,6 +164,18 @@ def _handle_place_action(request,pid,action):
             return failresp('invalid action')
     return {'status': 'success'}
 
+def generate_feed(places):
+    '''
+    Returns a rendered HTML string feed of the places input.
+    ''' 
+    rendered_items = [place.self_render() for place in places]
+
+    # feed these rendered blocks into feed.html
+    feed_context = Context(dict(items=rendered_items,
+                                class_name='places_feed'))
+    feed_html = get_template('feed.html').render(feed_context)
+    return feed_html
+
 def feed_page(request):
     '''
     View function that handles a page load request for a feed of place
@@ -168,14 +185,7 @@ def feed_page(request):
     a feed.
     '''
     # get a list of rendered Place FeedItems
-    items = _feed_items_all(request.user)
-    rendered_items = [item.self_render() for item in items]
-
-    # feed these rendered blocks into feed.html
-    feed_context = Context(dict(items=rendered_items,
-                                class_name='place_feed'))
-    feed_html = get_template('feed.html').render(feed_context)
-
+    feed_html = generate_feed(_feed_items_all(request.user))
     return render(request,'page.html',
                     {'main_content':feed_html})
 
@@ -203,10 +213,14 @@ def detail_page(request,pid):
 
     # TODO: return error message on action failure?
     detail_view = _single_id(pid,user=request.user)
+    html = detail_view.self_render()
+
+    related_feeds = RelatedFeeds(Place.objects.get(id=pid))
+    html += related_feeds.self_render()
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
     return render(request,'page.html',
-                    Context({'main_content':detail_view.self_render()}))
+                    Context({'main_content':html}))
 
 ## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
 @jsonp_response
