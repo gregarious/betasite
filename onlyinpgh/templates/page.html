@@ -21,5 +21,25 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
+
+<header id="site-header">
+	<div id="debug-user">
+	{% if user %}
+		Logged in as: {{user.username}} | <a href="/logout">Logout</a>
+	{% else %}
+		<a href="/login">Login</a>
+	{% endif %}
+	</div>
+	<hgroup>
+		<h1 id="site-title" class="global-heading">Oakland!</h1>
+		<h2 id="site-tagline" class="global-heading">Where all the cool kids are at</h2>
+	</hgroup>
+	<nav>
+		
+	</nav>
+</header>
 {{main_content}}
+<footer id="site-footer">
+	<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
+</footer>
 {% endblock %}

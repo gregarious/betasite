@@ -6,11 +6,8 @@ Context variables:
 	items:			HTML strings
 {% endcomment %}
 
-<div class="{{class_name}}">
+<ul class="{{class_name}}">
 	{% for item in items %}
 		{{item}}
-		{% if not forloop.last %}
-			<hr/>
-		{% endif %}
 	{% endfor %}
-</div>
+</ul>

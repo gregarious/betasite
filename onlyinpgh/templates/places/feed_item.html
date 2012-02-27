@@ -10,8 +10,12 @@ Context variables:
 	<div class="item-thumb-container">
 		<img class="item-thumb" alt="{{item.name}}" src="{{place.image_url}}" />
 	</div>
-	<h4>
-		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
-	</h4>
-	<p>{{place.location.address}}</p>
+	<section class="item-content">
+		<h4>
+			<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+		</h4>
+		<div class="item-desc">
+			<p>{{place.location.address}}</p>
+		</div>
+	</section>
 </li>
