@@ -5,13 +5,13 @@ Context variables:
 	place:			Place object (includes image_url)
 	is_favorite:	boolean (optional)
 {% endcomment %}
-<div class='place-feed-item'>
-	<h3>
+
+<li class="item">
+	<div class="item-thumb-container">
+		<img class="item-thumb" alt="{{item.name}}" src="{{place.image_url}}" />
+	</div>
+	<h4>
 		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
-		{% if is_favorite %}
-		<span class="favorite-star">*</span>
-		{% endif %}
-	</h3>
-	<img src="{{place.image_url}}"/>
+	</h4>
 	<p>{{place.location.address}}</p>
-</div>
+</li>
