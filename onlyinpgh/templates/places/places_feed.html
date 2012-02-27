@@ -4,7 +4,7 @@
 
 {% block feed_content %}
 
-	{% for p in places %}
+	{% for p in places|dictsort:"id" %}
 
 		{% include "places/places_feed_item.html" %}
 

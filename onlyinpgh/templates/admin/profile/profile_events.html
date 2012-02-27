@@ -1,0 +1,130 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_id %}profileEvents{% endblock page_id %}
+
+{% block page_title %}
+	notlaura's Events
+{% endblock page_title %}
+
+{% block page_header %}
+	notlaura's Events
+{% endblock page_header %}
+
+{% block content_header %}
+	Scheduled Events
+{% endblock content_header %}
+
+{% block content_body %}
+	
+	{% include "admin/profile/scheduled_event.html" %}
+		
+		<div class="item-content">
+
+			<div class="profile-section">
+				<ul class="details">
+					<li>Friday, Feb 21</li>
+					<li>10am-2pm</li>
+					<li>5425 Penn Ave<br />
+					Pittsburgh, PA 15206</li>
+					<li><a href="http://catapultpgh.com">http://catapultpgh.com</a></li>
+				</ul>
+				<img class="thumbnail" src="http://www.bestmarketingspain.com/picts/laser-event.jpg" />
+			</div>
+
+			<div class="profile-section">
+				<p class="description">When setting up the event as an organizer, I highly recommend you leave all the default settings the way they are - that is, allow guests to invite others, upload photos, write on the wall, etc. The reason is that every one of these activities creates news items that go out into the feeds of those individuals and their friends. This is great viral visibility for you and for them.</p>
+			</div>
+				
+			<div class="profile-section">
+				<ul class="profile-tags">
+					<li>Awesome</li>
+					<li>Talented</li>
+					<li>Fantastic</li>
+					<li>Best</li>
+					<li>Coolest</li>
+				</ul>
+			</div>
+
+			<div class="social-icon">
+				<img src="http://www.sportswearnet.com/gif/layout/icons/facebook_icon30x30.jpg" />
+				<a href="http://facebook.com/laras126" class="social-link">http://facebook.com/laras126</a>
+
+			</div>
+			<div class="social-icon last">
+				<img src="http://www.littleleague.org/Assets/images/icons/twitter-icon-sm.png" />
+				<a href="http://twitter.com/laras126" class="social-link">http://twitter.com/laras126</a>
+			</div>
+		</div> <!-- .event-content -->
+		
+		<footer>
+			<p class="edit-link">Edit this event...</p>
+		</footer>
+
+	</section> <!-- .scheduled-item -->
+
+	<section class="add-item"> <!-- If the event already exists via FB crawler, autofill this section. -->
+		<header>
+			<h3 id="openEventForm" class="add-item-link">Add an event...</h3>
+		</header>
+
+		<article id="eventForm" class="item-content">
+			<div class="form-container">
+				<form>
+					<label>Name &amp; Location</label>
+					<div class="inputs">
+						<input type="text" placeholder="Event name" />
+					</div>
+				</form>
+				<form>
+					<div class="inputs">
+						<input type="text" placeholder="Location" /><!-- Already filled with existing address, changeable with autocomplete -->
+						<p class="tip">If different from business address.</p>
+					</div>
+				</form>
+			</div>
+
+			<div class="form-container">
+				<form>
+					<label>Date &amp; Time</label>
+					<div class="inputs">
+						<input type="text" placeholder="Start time" /> <!-- Datepicker -->
+					</div>
+					<div class="inputs">
+						<input type="text" placeholder="End time" /><!-- Datepicker -->
+					</div>
+				</form>
+			</div>
+
+			<div class="form-container last">
+				<form>
+					<label>Upload Image</label>
+					<div class="inputs">
+						<input type="text" placeholder="This would be an upload form" />
+						<p class="tip">And this would be your uploaded image:</p>
+						<img class="uploaded-image" src="http://www.cellspace.org/new/sites/default/files/CELLspaceEvent.jpg">
+					</div>
+				</form>
+				<form>
+					<label>URL</label>
+					<div class="inputs">
+						<input type="text" placeholder="URL" />
+						<p class="tip">Leave it blank if you don't have one.</p>
+					</div>
+				</form>
+				<form>
+					<label>Tags</label>
+					<div class="inputs">
+						<input type="text" placeholder="try 'happy hour'" /></form> <!-- Autocomplete -->
+					</div>
+				</form>
+			</div>
+
+		</article> <!-- #eventForm - Events -->
+
+	</section> <!-- .add-item -->
+			
+{% endblock content_body %}
+
+{% block content_footer %}
+	<p class="submit-item">Add an event...</p>
+{% endblock content_footer %}

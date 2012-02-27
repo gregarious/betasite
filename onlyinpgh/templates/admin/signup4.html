@@ -1,0 +1,36 @@
+{% extends "admin/signup_page.html" %}
+
+{% block content_header %}
+	Fun stuff	
+{% endblock content_header %}
+
+{% block content_body %}
+	<div class="form-container">
+		<form>
+			<label>On the web</label>
+			<div class="inputs">
+				<!-- Placeholder icons -->
+				<input class="social-input" type="text" placeholder="Facebook page" />
+				<div class="signup-social-icon">
+					<img src="http://www.sportswearnet.com/gif/layout/icons/facebook_icon30x30.jpg" />
+				</div>
+				<input class="social-input" type="text" placeholder="Twitter username" />
+				<div class="signup-social-icon">
+					<img src="http://www.littleleague.org/Assets/images/icons/twitter-icon-sm.png" />
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock content_body %}
+			
+{% block prev_next %}
+	<a href="signup3" class="back">&larr; Back</a>
+	<a href="admin_home" class="next">Finish! &rarr;</a>
+{% endblock prev_next %}
+
+{% block progress %}
+	<span id="step1">&#9830;</span>
+	<span id="step2">&#9830;</span>
+	<span id="step3">&#9830;</span>
+	<span id="step4">&#9830;</span>
+{% endblock progress %}

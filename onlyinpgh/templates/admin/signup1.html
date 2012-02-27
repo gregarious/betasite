@@ -1,0 +1,55 @@
+{% extends "admin/signup_page.html" %}
+
+{% block content_header %}
+	Basics
+{% endblock content_header %}
+
+{% block content_body %}
+
+	<section class="form-container first">
+		<form>
+			<label class="input-label">Business Name</label>
+			<div class="inputs">
+				<input type="text" placeholder="Your Business Name" />
+			</div>
+		</form>
+	</section> <!-- .form-container -->
+
+	<section class="form-container">
+		<form>
+			<label>Address</label>
+			<div class="inputs">
+				<input type="text" placeholder="Address" />
+				<input type="text" placeholder="Apt or Suite #" />
+				<p class="tip">Just the essentials, we know you're in Pittsburgh :)</p>
+			</div>
+		</form>
+	</section> <!-- .form-container -->
+
+	<section class="form-container last">
+		<form>
+			<label>Phone</label>
+			<div class="inputs">
+				<input type="text" placeholder="(412)...what else?" />
+			</div>
+		</form>
+		<form class="last">	
+			<label>Website</label>
+			<div class="inputs">
+				<input type="text" placeholder="http://coolrestaurant.com" />
+			</div>
+		</form>
+	</section> <!-- .form-container -->
+	
+{% endblock content_body %}
+
+{% block prev_next %}
+	<a href="signup2" class="next">Next &rarr;</a>
+{% endblock prev_next %}
+
+{% block progress %}
+	<span id="step1">&#9830;</span>
+	<span id="step2">&#9830;</span>
+	<span id="step3">&#9830;</span>
+	<span id="step4">&#9830;</span>
+{% endblock progress %}

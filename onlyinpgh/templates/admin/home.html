@@ -1,0 +1,28 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_title %}
+	notlaura's Business Admin
+{% endblock page_title %}
+
+{% block page_header %}
+	notlaura
+{% endblock page_header %}
+
+{% block content_header %}
+	What do you want to do?
+{% endblock content_header %}
+
+{% block content_body %}
+	<nav class="after-signup">
+		<ul>
+			<!-- To profile page with expanded events section in edit mode -->
+			<a href="profile_basics"><li>See your Page</li></a>
+			<!-- To profile page with expanded specials section in edit mode -->
+			<a href="profile_basics"><li>Edit info</li></a>
+			<!-- To profile page with expanded 'your info' section in edit mode -->
+			<a href="profile_specials"><li>Manage Specials</li></a>
+			<!-- To single business page as seen by other users -->
+			<a href="profile_events"><li>Manage Events</li></a>
+		</ul>
+	</nav>
+{% endblock content_body %}
