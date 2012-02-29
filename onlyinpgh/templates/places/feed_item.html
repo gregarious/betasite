@@ -1,10 +1,12 @@
 {% comment %}
 Template to render a particular place as a feed item.
 
+Corresponding ViewModel: places.viewmodels.PlaceFeedItem
+
 Context variables:
 	place:			Place object (includes image_url)
 	is_favorite:	boolean (optional)
-	tag_list:		
+	tag_list:		a TagList RenderableViewModel
 {% endcomment %}
 
 {% load self_render from viewmodel_tags %}
