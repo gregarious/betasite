@@ -263,6 +263,7 @@ td { vertical-align: top; }
 
 body {
   background: #fff url(/static/img/oakland/abbey_road.jpg) no-repeat center fixed;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 #wrapper {
@@ -275,6 +276,7 @@ header, section {
   .clearfix;
 }
 
+/* Responsive images */
 img {
   height: auto;
   width: 100%;
@@ -291,6 +293,9 @@ p, time {
   margin-top: 0.2em;
 }
 
+.address {
+  font-weight: bold;
+}
 
 /* 3 HEADINGS ---------- */
 
@@ -581,16 +586,19 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   background-position: -17px -17px;
   float: right;
 }
-/* 11 ITEMS ---------- */
+/* 11 FEED/ITEMS ---------- */
+
+.feed {
+  .clearfix;
+}
 
 .item {
   .b-shadow(0, 0, 0.1em, #222);
-  width: 46%;
-  float: left;
+  .column_nm(12);
   list-style-type: none;
   background: fade(#fff, 80%);
   margin: 1%;
-  padding: 1%;
+  padding: 2% 1%;
   /*.rounded(0.5em);*/
 
   /* Will link with jQuery once templates are finalized */
@@ -599,23 +607,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     color: #000;
     text-shadow: 0 0 0.05em #fff;
     text-decoration: none;
-  }
-}
-
-.item-thumb-container, .item-point-value {
-  .column(4);
-  overflow: hidden;
-  //margin: 0.2em 0em 0.2em 0.4em;
-
-  img, .points {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .points {
-    position: relative;
-    top: 12pt; // might be a bad idea - try vertical-align: middle
   }
 }
 
@@ -634,19 +625,38 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   }
 }
 
+.item-thumb-container, .item-point-value {
+  .column(2.6);
+  overflow: hidden;
+  padding: 1%;
+
+  img, .points {
+    //.b-shadow(1px, 1px, 5px, #000);
+    border: 2px #fff solid;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 100px;
+    min-height: 30px;
+
+  }
+
+  .points {
+    position: relative;
+    top: 12pt; // might be a bad idea - try vertical-align: middle
+  }
+}
+
+
 .item-content {
   float: right;
   margin: 0 1.3% 0 1.0416666666666665%;
-  .column(7);
+  .column(9);
 }
 
 .item-point-value {
   font-size: 1.8em;
   text-shadow: 0.1em 0.1em 0 #ccc;
-}
-
-.item-tags {
-  
 }
 
 .item-list {
@@ -667,41 +677,9 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* SINGLE ---------- */
 
-.single-item {
-  .item-tags {
-    margin-top: 1em;
-  }
-
-  .sub-nav {
-
-      a {
-        color: #fff;  
-        text-decoration: none;
-      }
-      
-      ul li {
-        height: 22pt;
-        font-weight: bold;
-        margin: 4% 1% 0;
-        padding: 2%;
-        width: 14%;
-        .gradient(#324863, #628FC5);
-        .rounded(0.5em);
-    
-        &:active {
-          .gradient(#628FC5, #324863);
-        }
-      }
-    }
-
-}
-
-.single-thumb-container {
-  .column(3);
-}
-
 .single-header {
-    .column(9);
+  background: fade(#fff, 60%);
+  padding: 3%;
 }
 
 .single-title {
@@ -709,55 +687,56 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   font-family: 'ArvoRegular', serif;
   font-size: 2em;
   font-weight: normal;
-  margin: 0;
-  padding-bottom: 0.1em;
+  margin: 0 0 2%;
+  padding: 0 0.3em 0.1em;
   text-shadow: 0 0 0.2em #999;
 }
 
-.single-item-thumb-container {
+.single-thumb-container {
   .column(3);
-  float: left;
-  margin: 0;  
 
   img {
-    display: block;
-    height: 60px;
-    margin: 0 auto;    
-    width: 60px;
+    min-height: 70px;
+    .b-shadow(1px, 1px, 3px, #000);
   }
 }
 
-.single-item {
-  background: none;
-  padding-bottom: 1em;
-}
+.single-details {
+    .column(8.9);
+    float: right;
+    margin-left: 1%;
 
-.single-item-content-container {
-  margin: 1em;
-  color: #fff;
-  font-size: 1.1em;
-  text-shadow: 0px 1px 0px #000;
+    ul {
+      li {
+        margin: 0 0 1%;
+      }
+    }
 }
 
 .single-content {
   margin: 1em 0;
 }
 
-.single-item-desc {
-  font-size: 1.02em;
-  line-height: 1.4em;
-  text-indent: 2em;
-}
+/* 11 TAGS ---------- */
 
-.single-item-related {
-  .clearfix;
-  margin-top: 1em;  
-  div {
-    clear: both;  
+.tag-list {
+  .column_nm(12);
+  font-size: 0.9em;
+  margin: 1% 0 0;
+  ul {
+    li a {
+      border: 1px solid #ccc;
+      color: #111;
+      float: left;
+      .gradient(#fff, #e1e1e1);
+      margin: 1%;
+      padding: 1%;
+      .rounded(0.5em);
+      text-decoration: none;
+      text-shadow: 1px 1px 1px #fff;
+    }
   }
 }
-
-/* 11 CALENDAR ---------- */
 
 /* 12 UTILITY ---------- */
 
@@ -810,11 +789,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     time {
       font-weight: bold;
     }
-  }
-}
-
-.events {
-  .item {
   }
 }
 

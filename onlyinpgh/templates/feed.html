@@ -10,7 +10,7 @@ Context variables:
 
 {% load self_render from viewmodel_tags %}
 
-<ul class="{{class_name}}">
+<ul class="{{class_name}} feed">
 	{% for item in items %}
 		{% self_render item %}
 	{% endfor %}

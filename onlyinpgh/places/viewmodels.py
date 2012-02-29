@@ -47,7 +47,7 @@ class PlaceFeedItem(RenderableViewModel):
         }
         # temporary placeholder
         if not self._meta['image_url']:
-            self._meta['image_url'] = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
+            self._meta['image_url'] = '/static/img/default_place.png'
 
         self.tag_list = TagList(place.tags.all())
         if user:
@@ -60,7 +60,7 @@ class PlaceFeedItem(RenderableViewModel):
         return cleaned_dict
 
 class PlacesFeed(FeedViewModel):
-    class_name = 'places-feed'
+    class_name = 'places'
 
     @classmethod
     def init_from_places(cls,places,user=None):

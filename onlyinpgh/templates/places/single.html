@@ -13,63 +13,61 @@ Context variables:
 
 {% load self_render from viewmodel_tags %}
 
-<div id="wrapper" class="single">
-
-	<article id="placesSingle" class="single-item">
-
-		<div class="single-thumb-container">
-			<img alt="{{ place.name }}" src="{{ place.image_url }}" />
-		</div>
-
-		<header class="single-header">		
-			<h2 class="single-title">{{ place.name }}</h2>
-			<ul class="single-details">
-				{% if place.location.address %}
-					<li>
-					{{ place.location.address }}
-					{% if directions_link %}
-						<a href="{{directions_link}}">(directions)</a>
-					{% endif %}
-					</li>
+<header class="single-header">		
+	<h2 class="single-title">{{ place.name }}</h2>
+	<div class="single-thumb-container">
+		<img alt="{{ place.name }}" src="{{ place.image_url }}" height="500" width="500" />
+	</div>
+	<div class="single-details">
+		<ul>
+			{% if place.location.address %}
+				<li class="address">
+				{{ place.location.address }}
+				{% if directions_link %}
+					<a href="{{directions_link}}">(directions)</a>
 				{% endif %}
+				</li>
+			{% endif %}
 
-				{% if place.url %}
-					<li><a href="{{ place.url }}">{{ place.url }}</a></li>
-				{% endif %}
+			{% if place.hours %}
+		 		<li>{{ place.hours }}</li>
+		 	{% endif %}
 
-				{% if place.hours %}
-			 		<li>{{ place.hours }}</li>
-			 	{% endif %}
+		 	{% if place.phone %}
+		  		<li>Phone: {{ place.phone }}</li>
+			{% endif %}
 
-			 	{% if place.phone %}
-			  		<li>Phone: {{ place.phone }}</li>
-				{% endif %}
+			<li>Parking: Street</li>
 
-				<li>Parking: Street</li>
-			</ul>
-			{% include "tags/tag-list.html" with tags=place.tags.all %}
-		</header>
+			{% if place.url %}
+				<li><a href="{{ place.url }}">Visit our website</a></li>
+			{% endif %}
 
-		{% self_render tag_list %}
+		</ul>
+	</div>
+	{% self_render tag_list %}
+</header>
 
+<section class="single-content">
+	<ul>
 		{% if is_favorite %}
-			<a href="?action=unfav" class="unfavorite-action">Remove from Favorites</a>
+			<li><a href="?action=unfav" class="unfavorite-action">Remove from Favorites</a></li>
 		{% else %}
-			<a href="?action=fav" class="favorite-action">Add to Favorites</a>
+			<li><a href="?action=fav" class="favorite-action">Add to Favorites</a></li>
 		{% endif %}
+		<li><a href="#">Report a problem</a></li>
+		<li><a href="#">Post to chatter</a></li>
+	</ul>
 
-		{% if place.description %}
-			<section class="single-item-desc">
-		  		<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
-		  	</section>
-	  	{% endif %}
+	{% if place.description %}	
+	  	<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>	  	
+	{% endif %}
 
-	  	{% if featured_special %}
-	  		<div class="featured_special">
-	  			{{featured_special.description}}
-	  			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-	  		</div>
-	  	{% endif %}
+	{% if featured_special %}
+		<div class="single-featured-special">
+			{{featured_special.description}}
+			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
+		</div>
+	{% endif %}
 
-	  	<a href="#">Report a problem</a> |
-	  	<a href="#">Post to chatter</a>
+</section>
