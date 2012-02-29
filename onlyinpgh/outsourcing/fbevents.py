@@ -13,7 +13,7 @@ from onlyinpgh.outsourcing.models import FacebookEventRecord, FacebookOrgRecord,
 
 from onlyinpgh.outsourcing.places import resolve_place, resolve_location
 
-from onlyinpgh.utils.time import localtoutc
+from onlyinpgh.common.utils.time import localtoutc
 
 from itertools import chain
 from dateutil import parser as dtparser

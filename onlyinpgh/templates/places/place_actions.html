@@ -1,0 +1,40 @@
+{% comment %}
+Prints the row of action links for place detail pages.
+
+Context variables:
+    place:      relevant Place object
+    special:    highlighted Offer object (optional)
+    checkin:    Checkin object, if already checked in (object)
+{% endcomment %}
+
+{% if place.checkin %}
+<span class="place-checkin-notice">Checked In</span> |
+{% else %}
+<a href="?action=checkin" class="place-checkin-button">Check In</a> |
+{% endif %}
+
+<a href="#" class="place-favorite-button">Add To Favorites</a> |
+
+{% if special %}
+    <a href="#" class="place-special-button">Active Special</a>
+{% else %}
+    <span class="greyed place-special-button">No Current Special</span>
+{% endif %} |
+<a href="#" class="place-directions-button">Directions</a> |
+<a href="#" class="place-chatterpost-button">Post To Chatter</a>
+
+<script>
+    // TODO: make these bind functions jquery plugin functions? Then just call $(selector).bind_*?
+    require(['jquery','helpers/place_buttons'],function($,place_buttons) {
+        place_buttons.bind_checkin($('.place-checkin-button'), 
+                                    {{place.id}});
+        place_buttons.bind_special($('.place-special-button'),
+                                    {{place.id}});
+        place_buttons.bind_favorite($('.place-favorite-button'),
+                                    {{place.id}});
+        place_buttons.bind_directions($('.place-directions-button'),
+                                    {{place.id}});
+        place_buttons.bind_chatter($('.place-chatterpost-button'),
+                                    {{place.id}});
+    });
+</script>

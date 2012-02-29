@@ -3,7 +3,7 @@ from onlyinpgh.places.models import Location, Place
 from onlyinpgh.events.models import Event, Role
 
 from onlyinpgh.outsourcing.places import smart_text_resolve
-from onlyinpgh.utils.time import localtoutc
+from onlyinpgh.common.utils.time import localtoutc
 import icalendar, urllib, pytz, datetime, logging
 
 logger = logging.getLogger('onlyinpgh.outsourcing')

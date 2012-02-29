@@ -4,9 +4,12 @@ Inner template that renders details about a single place.
 Context variables:
     place:      		Place object with extra fields (e.g. url, hours)
     is_favorite:		boolean (optional)
+    tag_list:			TagList ViewModel
     featured_special: 	Offer object (optional)
     directions_link:	Google Maps link (optional)
 {% endcomment %}
+
+{% load self_render from viewmodel_tags %}
 
 <div id="wrapper" class="single">
 
@@ -49,14 +52,13 @@ Context variables:
 			<li>Parking: Street</li>
 		</ul>
 
-		{% include "tags/tag-list.html" with tags=place.tags.all %}
+		{% self_render tag_list %}
 
 		{% if is_favorite %}
 			<a href="?action=unfav" class="unfavorite-action">Remove from Favorites</a>
 		{% else %}
 			<a href="?action=fav" class="favorite-action">Add to Favorites</a>
 		{% endif %}
-		{# uses place and special context variables #}
 
 		{% if place.description %}
 			<section class="single-item-desc">

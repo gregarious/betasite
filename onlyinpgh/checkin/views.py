@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from onlyinpgh.utils.jsontools import json_response, jsonp_response
+from onlyinpgh.common.utils.jsontools import json_response, jsonp_response
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event

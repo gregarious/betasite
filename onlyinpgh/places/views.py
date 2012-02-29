@@ -4,128 +4,20 @@ from django.shortcuts import render, render_to_response
 from django.template import Context, RequestContext
 from django.template.loader import get_template
 
-from onlyinpgh.places.models import Place, Meta as PlaceMeta, Checkin as PlaceCheckin
-from onlyinpgh.events.models import Event
+from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
-from onlyinpgh.offers.models import Offer
 
-from onlyinpgh.events import views as event_views
+from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
+from onlyinpgh.common.utils import process_external_url
 
-from onlyinpgh.utils.jsontools import json_response, jsonp_response, package_json_response
-from onlyinpgh.utils import ViewInstance, SelfRenderingView, process_external_url
+from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail
 
 from datetime import datetime, timedelta
 import urllib
 
-def to_directions_link(location):
-    daddr = ''
-    if location.address:
-        daddr = location.address
-        if location.postcode:
-            daddr += ', ' + location.postcode
-    elif location.longitude and not location.latutude:
-        daddr = '(%f,%f)' % (float(location.longitude),float(location.latutude))
 
-    if not daddr:
-        return None
-    else:
-        return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr':daddr})
-
-class FeedItem(SelfRenderingView):
-    template_name = 'places/feed_item.html'
-    
-    def __init__(self,place,user=None):
-        self.place = place
-        # explicitly grab the image url and tags to make them context-friendly
-        self.place.image_url = place.get_meta('image_url')
-
-        if user:
-            self.is_favorite = FavoriteItem.objects.filter_by_type(model_type=Place,
-                                                                    model_instance=self.place)\
-                                                                .count() > 0
-        # temporary placeholder
-        if not self.place.image_url:
-            self.place.image_url = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
-
-    def to_app_data(self):
-        '''
-        Handles explicit conversion of the FeedItem to serialized data
-        along with any string formatting operations (e.g. date formatting)
-        '''
-        loc_data = None
-        if self.place.location:
-            loc_data = {
-                'address':      self.place.location.address,
-                'longitude':    float(self.place.location.longitude),
-                'latitude':     float(self.place.location.latitude),
-            }
-
-        data = { 'place': {
-                    'id':       self.place.id,
-                    'name':     self.place.name,
-                    'image_url':    self.place.image_url,
-                    'tags':     [{'name':t.name,'id':t.id} for t in self.place.tags.all()],
-                    'location': loc_data,
-                },
-            }
-
-        return data
-
-class SingleItem(FeedItem):
-    template_name = 'places/single.html'
-
-    def __init__(self,place,user=None):
-        # super will handle place (with image_url and tags) and is_favorite
-        super(SingleItem,self).__init__(place,user=user)
-        self.place.hours = place.get_meta('hours')
-        self.place.url = place.get_meta('url')
-        if self.place.url:
-            self.place.url = process_external_url(self.place.url)
-
-        specials = Offer.objects.filter(place=self.place)
-        if specials:
-            self.featured_special = specials[0] # arbitrary choice
-        if self.place.location:
-            self.directions_link = to_directions_link(place.location)
-
-    def to_app_data(self):
-        # get super's app data first, then insert new fields
-        data = super(SingleItem,self).to_app_data()
-        data['place'].update(
-            { 'hours': self.place.hours,
-              'url':   self.place.url })
-        data.update(
-            { 'featured_special': {   
-                    'description': self.featured_special.description,
-                    'point_value': self.featured_special.point_value, 
-                    'id':          self.featured_special.id},
-              'directions_link':    self.directions_link })
-        return data
-
-class RelatedFeeds(SelfRenderingView):
-    template_name = 'feed_collection.html'
-
-    def __init__(self,place,user=None):
-        # TODO: make generate_feed take in feed items, not bare objects
-        event_items = event_views.generate_feed(Event.objects.filter(place=place))
-        #offer_items = offer_views.generate_feed(Offer.objects.filter(place=place))
-        
-        self.feeds = [
-            {'label': 'events', 
-             'content': event_items },
-            {'label': 'offers', 
-             'content': 'More to come...' },
-            ]
-
-    def to_app_data(self):
-        return {}
-
-def _feed_items_all(user=None):
-    return [FeedItem(p,user) for p in Place.objects.select_related().all()[:10]]
-
-def _single_id(pid,user=None):
-    return SingleItem(Place.objects.select_related().get(id=pid),
-                        user=user)
+def _places_all():
+    return Place.objects.select_related().all()[:10]
 
 def _get_checkin_cutoff():
     return datetime.utcnow() - timedelta(hours=3)
@@ -164,18 +56,6 @@ def _handle_place_action(request,pid,action):
             return failresp('invalid action')
     return {'status': 'success'}
 
-def generate_feed(places):
-    '''
-    Returns a rendered HTML string feed of the places input.
-    ''' 
-    rendered_items = [place.self_render() for place in places]
-
-    # feed these rendered blocks into feed.html
-    feed_context = Context(dict(items=rendered_items,
-                                class_name='places_feed'))
-    feed_html = get_template('feed.html').render(feed_context)
-    return feed_html
-
 def feed_page(request):
     '''
     View function that handles a page load request for a feed of place
@@ -184,10 +64,10 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    # get a list of rendered Place FeedItems
-    feed_html = generate_feed(_feed_items_all(request.user))
+    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
+
     return render(request,'page.html',
-                    {'main_content':feed_html})
+                    {'main_content':feed.to_html(request)})
 
 def detail_page(request,pid):
     '''
@@ -212,11 +92,12 @@ def detail_page(request,pid):
             return package_json_response(result)
 
     # TODO: return error message on action failure?
-    detail_view = _single_id(pid,user=request.user)
-    html = detail_view.self_render()
+    place = Place.objects.select_related().get(id=pid)
+    details = PlaceDetail(place,user=request.user)
+    html = details.to_html(request)
 
-    related_feeds = RelatedFeeds(Place.objects.get(id=pid))
-    html += related_feeds.self_render()
+#    related_feeds = RelatedFeeds(Place.objects.get(id=pid))
+#    html += related_feeds.self_render()
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
     return render(request,'page.html',
@@ -225,9 +106,11 @@ def detail_page(request,pid):
 ## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
 @jsonp_response
 def feed_app(request):
-    items = _feed_items_all(request.user)
-    return [item.to_app_data() for item in items]
+    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
+    return feed.to_data()   # decorator will handle JSON response wrapper
 
 @jsonp_response
 def detail_app(request,pid):
-    return _single_id(pid,user=request.user).to_app_data()
+    place = Place.objects.select_related().get(id=pid)
+    details = PlaceDetail(place,user=request.user)
+    return details.to_data()    # decorator will handle JSON response wrapper

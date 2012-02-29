@@ -1,5 +1,3 @@
-from django.template import Context, RequestContext
-from django.template.loader import get_template
 import re
 
 url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
@@ -49,21 +47,3 @@ class ViewInstance(object):
             else:
                 setattr(self,field.name,getattr(instance,field.name))
 
-class SelfRenderingView(object):
-    template_name = None
-
-    def self_render(self,request=None):
-        '''
-        Render the class's template with all instance variables passed in
-        as the Context.
-        '''
-        if not self.template_name:
-            raise NotImplementedError('SelfRenderingView subclasses must declare a template_name class variable!')
-        context = self.to_context(request)
-        return get_template(self.template_name).render(context)
-
-    def to_context(self,request=None):
-        if request:
-            return RequestContext(request,self.__dict__)
-        else:
-            return Context(self.__dict__)

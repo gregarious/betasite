@@ -3,12 +3,14 @@ Template describing basic skeleton for feed.
 
 Context variables:
 	class_name: 	string
-	items:			HTML strings
+	items:			a list of ViewModels
 {% endcomment %}
+
+{% load self_render from viewmodel_tags %}
 
 <div class="{{class_name}}">
 	{% for item in items %}
-		{{item}}
+		{% self_render item %}
 		{% if not forloop.last %}
 			<hr/>
 		{% endif %}

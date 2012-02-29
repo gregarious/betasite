@@ -4,7 +4,11 @@ Template to render a particular place as a feed item.
 Context variables:
 	place:			Place object (includes image_url)
 	is_favorite:	boolean (optional)
+	tag_list:		
 {% endcomment %}
+
+{% load self_render from viewmodel_tags %}
+
 <div class='place-feed-item'>
 	<h3>
 		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
@@ -14,4 +18,6 @@ Context variables:
 	</h3>
 	<img src="{{place.image_url}}"/>
 	<p>{{place.location.address}}</p>
+
+	{% self_render tag_list %}
 </div>

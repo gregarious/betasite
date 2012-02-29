@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from onlyinpgh.identity.models import Organization
 from onlyinpgh.tags.models import Tag
 
-from onlyinpgh.utils import get_or_none
+from onlyinpgh.common.utils import get_or_none
 
 # TODO: largely a placeholder, flesh out more later
 class Neighborhood(models.Model):
