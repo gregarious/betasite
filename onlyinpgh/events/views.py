@@ -3,20 +3,28 @@ from django.template import Context, RequestContext
 from django.template.loader import get_template
 
 from onlyinpgh.events.models import Event, Attendee
-from onlyinpgh.utils.jsontools import jsonp_response
+from onlyinpgh.common.utils.jsontools import jsonp_response
 
-from onlyinpgh.utils import SelfRenderingView
+from onlyinpgh.common.rendering import FeedItem
 
 from datetime import datetime
 
-class FeedItem(SelfRenderingView):
+class EventFeedItem(FeedItem):
     template_name = 'events/feed_item.html'
+    dom_class = 'events_feed'
     def __init__(self,event,user=None):
         self.event = event
 
         if user:
             self.is_attending = Attendee.objects.filter(user=user,event=event)\
                                                 .count() > 0
+
+    @classmethod
+    def render_feed_from_events(cls,events,request=None):
+        user = request.user if request else None
+        items = [cls(event,user) for event in events]
+        blocks = [item.self_render() for item in items]
+        return cls.render_feed_from_blocks(blocks,dom_class='events_feed',request=request)
 
     def to_app_data(self):
         data = { 'event': {
@@ -45,18 +53,6 @@ def _split_dt(dt):
     t = dt.strftime('%I:').lstrip('0') + dt.strftime('%M %p')
 
     return(d,t)
-
-def generate_feed(events):
-    '''
-    Returns a rendered HTML string feed of the events input.
-    '''
-    rendered_items = [FeedItem(event).self_render() for event in events]
-
-    # feed these rendered blocks into feed.html
-    feed_context = Context(dict(items=rendered_items,
-                                class_name='events_feed'))
-    feed_html = get_template('feed.html').render(feed_context)
-    return feed_html
 
 @jsonp_response
 def ajax_events_feed(request):

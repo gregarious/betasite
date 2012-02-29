@@ -3,12 +3,14 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-# TOOD: some sort of easy tag creation funcion? maybe part of a mgr?
+from onlyinpgh.common.core.viewmodels import ViewModel, RenderableViewModel
 
-class Tag(models.Model):
-    name = models.SlugField()
-    def __unicode__(self):
-        return self.name
+class Tag(models.Model,ViewModel):
+	'''also extends ViewModel: base class's to_data handles everything'''
+	name = models.SlugField()
+
+	def __unicode__(self):
+		return self.name
 
 # class TaggedItem(models.Model):
 #     tag = models.ForeignKey(Tag)

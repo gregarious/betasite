@@ -2,13 +2,17 @@
 Renders a collection of feeds, one after the other.
 
 Context variables:
-	feeds:	list of dicts as follows:
-		label:		label of feed
-		content:	HTML string
+	feeds:	list of dicts with the following format:
+		label:		string
+		feed_view:	FeedViewModel
 {% endcomment %}
+
+{% load self_render from viewmodel_tags %}
 
 <div class="feed-collection">
 	{% for feed in feeds %}
-		{{ feed.content }}
+		<h2>{{ feed.label }}</h2>
+		{% self_render feed.feed_view %}
 	{% endfor %}
+	<hr/><hr/>
 </div>

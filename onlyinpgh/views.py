@@ -8,7 +8,7 @@ from onlyinpgh.events.models import Event
 from onlyinpgh.news.models import Article
 from onlyinpgh.offers.models import Offer
 
-from onlyinpgh.utils.jsontools import jsonp_response
+from onlyinpgh.common.utils.jsontools import jsonp_response
 
 def hot_page(request):
     variables = { 'places': Place.objects.all(), 'events': Event.objects.all(), 'news': Article.objects.all(), 'offers': Offer.objects.all() }
