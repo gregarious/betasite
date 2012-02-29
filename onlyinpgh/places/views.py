@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import Context
 from django.template.loader import get_template
-
+from django.utils.safestring import SafeUnicode
 from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
 
 from onlyinpgh.places.models import Place
@@ -111,6 +111,9 @@ def detail_page(request,pid):
         ('Places 2',places2_feed),
         ('Places 3',places3_feed),
     ])
+
+    print dir(html)
+    html += SafeUnicode(u'<hr/><hr/>')
 
     html += related_feeds.to_html(request)
 

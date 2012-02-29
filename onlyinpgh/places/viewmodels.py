@@ -22,8 +22,8 @@ def location_to_data(location):
     '''Helper for ViewModels that need a subset of Location data'''
     return {
         'address':      location.address,
-        'longitude':    float(location.longitude),
-        'latitude':     float(location.latitude),
+        'longitude':    float(location.longitude) if location.longitude else None,
+        'latitude':     float(location.latitude) if location.latitude else None,
     }
 
 def place_to_data(place,place_meta):
