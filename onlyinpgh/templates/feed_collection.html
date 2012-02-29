@@ -13,6 +13,6 @@ Context variables:
 	{% for feed in feeds %}
 		<h2>{{ feed.label }}</h2>
 		{% self_render feed.feed_view %}
+		<hr/><hr/>
 	{% endfor %}
-	<hr/><hr/>
 </div>
