@@ -19,7 +19,8 @@
 //////////
 
 body {
-	width: 100%;
+	margin: 0 auto;
+	max-width: 960px;
 	.clearfix;
 }
 
@@ -35,6 +36,13 @@ body {
 	float: left;
 	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
 	margin: 0 @total-width*((@gutter-width*.5)/@_gridsystem-width);
+}
+
+.column_nm(@x,@columns:@columns) {
+	display: inline;
+	float: left;
+	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
+	margin: 0;
 }
 
 .offset(@offset:1) {
@@ -53,20 +61,4 @@ body {
 	&:after {
 	    clear:both;
 	}
-}
-
-
-////////////
-// MIXINS //
-////////////
-
-.rounded(@val) {
-	
-  -webkit-border-radius: @val; 
-     -moz-border-radius: @val; 
-          border-radius: @val; 
-  -moz-background-clip: padding; 
-  	-webkit-background-clip: 
-  		padding-box; background-clip: padding-box;
-
 }

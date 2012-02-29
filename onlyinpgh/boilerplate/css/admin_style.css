@@ -2,7 +2,8 @@
 
 @import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
 body {
-  width: 100%;
+  margin: 0 auto;
+  max-width: 960px;
   *zoom: 1;
 }
 body:before, body:after {
@@ -128,12 +129,6 @@ input[type="text"], textarea {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 input[type="text"]:focus, textarea:focus {
   /*border-color: #2C525D;*/
@@ -207,12 +202,6 @@ input[type="checkbox"] {
 }
 .next, .back, .submit-item {
   padding: 0.5em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -313,12 +302,6 @@ input[type="checkbox"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 .after-signup li:hover {
   background-color: #a9c6e8;
@@ -360,12 +343,6 @@ input[type="checkbox"] {
   box-shadow: 0.07em 0.07em 0.5em #000000;
   background: #E6E9E2;
   padding-bottom: 1em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -464,12 +441,6 @@ input[type="checkbox"] {
   list-style-type: none;
   margin: 0 0.5em;
   padding: 0.5em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
