@@ -1,16 +1,19 @@
-from django.http import HttpResponse
-from django.shortcuts import render, render_to_response
-
-from django.template import Context, RequestContext
+from django.shortcuts import render
+from django.template import Context
 from django.template.loader import get_template
+
+from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
-
-from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
-from onlyinpgh.common.utils import process_external_url
-
 from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail
+
+# for feed collection building
+from onlyinpgh.common.viewmodels import FeedCollection
+#from onlyinpgh.events.viewmodels import EventsFeed
+from onlyinpgh.events.models import Event
+#from onlyinpgh.offers.viewmodels import OffersFeed
+from onlyinpgh.offers.models import Offer
 
 from datetime import datetime, timedelta
 import urllib
@@ -90,18 +93,30 @@ def detail_page(request,pid):
         # if the request was made via AJAX, client just expects the result dict returned as JSON
         if request.is_ajax():
             return package_json_response(result)
-
     # TODO: return error message on action failure?
+
+    # build and render place detail viewmodel
     place = Place.objects.select_related().get(id=pid)
     details = PlaceDetail(place,user=request.user)
     html = details.to_html(request)
 
-#    related_feeds = RelatedFeeds(Place.objects.get(id=pid))
-#    html += related_feeds.self_render()
+    # build and render related feeds viewmodel
+    # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here, 
+    #  but using places for the sake of testing and mockup styling
+    places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
+    places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
+    places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
+    related_feeds = FeedCollection.init_from_feeds( [
+        ('Places 1',places1_feed),
+        ('Places 2',places2_feed),
+        ('Places 3',places3_feed),
+    ])
+
+    html += related_feeds.to_html(request)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
     return render(request,'page.html',
-                    Context({'main_content':html}))
+            Context({'main_content':html}))
 
 ## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
 @jsonp_response

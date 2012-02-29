@@ -55,11 +55,9 @@ class RenderableViewModel(ViewModel):
 		return RequestContext(request,data) if request else Context(data)
 
 	def to_html(self,request=None):
-		# TODO: remove
 		if not self.template_name:
 			raise NotImplementedError('RenderableViewModel subclasses must define the template_name class variable!')
 		context = self.to_context(request)
-		print self.to_json()
 		return get_template(self.template_name).render(context)
 
 def basic_data_clean(viewmodel,flatten_viewmodels=True):

@@ -21,3 +21,16 @@ class FeedViewModel(RenderableViewModel):
 		if not self.class_name:
 			raise NotImplementedError('FeedViewModel subclasses must define the class_name variable!')
 		return super(FeedViewModel,self).to_html(request)
+
+class FeedCollection(RenderableViewModel):
+	template_name = 'feed_collection.html'
+	@classmethod
+	def init_from_feeds(cls,feed_tuples):
+		'''
+		Initialize from list of (label,FeedViewModel) tuples.
+		'''
+		inst = cls()
+		inst.feeds = [ {'label': label,
+						'feed_view': feed} 
+						for label,feed in feed_tuples ]
+		return inst
