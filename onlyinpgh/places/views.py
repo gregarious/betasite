@@ -6,14 +6,9 @@ from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, pack
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
-from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail
+from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFeeds
 
 # for feed collection building
-from onlyinpgh.common.viewmodels import FeedCollection
-#from onlyinpgh.events.viewmodels import EventsFeed
-from onlyinpgh.events.models import Event
-#from onlyinpgh.offers.viewmodels import OffersFeed
-from onlyinpgh.offers.models import Offer
 
 from datetime import datetime, timedelta
 import urllib
@@ -100,22 +95,13 @@ def detail_page(request,pid):
     details = PlaceDetail(place,user=request.user)
     html = details.to_html(request)
 
+    html += SafeUnicode(u'\n<hr/><hr/>\n')
+
     # build and render related feeds viewmodel
-    # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here, 
-    #  but using places for the sake of testing and mockup styling
-    places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
-    places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
-    places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4])
-    related_feeds = FeedCollection.init_from_feeds( [
-        ('Places 1',places1_feed),
-        ('Places 2',places2_feed),
-        ('Places 3',places3_feed),
-    ])
-
-    print dir(html)
-    html += SafeUnicode(u'<hr/><hr/>')
-
+    related_feeds = PlaceRelatedFeeds(place,user=request.user)
     html += related_feeds.to_html(request)
+
+    print related_feeds.to_json()
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
     return render(request,'page.html',

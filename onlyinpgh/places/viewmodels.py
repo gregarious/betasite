@@ -4,6 +4,14 @@ from onlyinpgh.common.viewmodels import FeedViewModel
 from onlyinpgh.tags.viewmodels import TagList
 from onlyinpgh.identity.models import FavoriteItem
 
+from onlyinpgh.common.viewmodels import FeedCollection
+#from onlyinpgh.events.viewmodels import EventsFeed
+from onlyinpgh.events.models import Event
+#from onlyinpgh.offers.viewmodels import OffersFeed
+from onlyinpgh.offers.models import Offer
+
+from onlyinpgh.places.models import Place
+
 def to_directions_link(location):
     daddr = ''
     if location.address:
@@ -93,22 +101,20 @@ class PlaceDetail(RenderableViewModel):
         cleaned_dict['place'] = place_to_data(self._place,self._meta)
         return cleaned_dict
 
+class PlaceRelatedFeeds(FeedCollection):
+    def __init__(self,place,user=None):
+        # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here, 
+        #  but using places for the sake of testing and mockup styling
+        places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
+        places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
+        places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
 
-# class RelatedFeeds(SelfRenderingView):
-#     template_name = 'feed_collection.html'
-
-#     def __init__(self,place,user=None):
-#         event_items = EventFeedItem.render_feed_from_events(
-#                         Event.objects.filter(place=place),
-#                         user)
-#         #offer_items = offer_views.generate_feed(Offer.objects.filter(place=place))
-        
-#         self.feeds = [
-#             {'label': 'events', 
-#              'content': event_items },
-#             {'label': 'offers', 
-#              'content': 'More to come...' },
-#             ]
-
-#     def to_app_data(self):
-#         return {}
+        feed_tuples = [ ('Places 1',places1_feed),
+                        ('Places 2',places2_feed),
+                        ('Places 3',places3_feed),
+                        ]
+        super(PlaceRelatedFeeds,self).__init__(feed_tuples)
+    
+    def to_html(self,request=None):
+        print 'PlaceRelatedFeeds:', self.__dict__  
+        return super(PlaceRelatedFeeds,self).to_html(request)

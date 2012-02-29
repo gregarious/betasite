@@ -55,6 +55,7 @@ class RenderableViewModel(ViewModel):
 		return RequestContext(request,data) if request else Context(data)
 
 	def to_html(self,request=None):
+		print 'RenderableViewModel:', self.__dict__
 		if not self.template_name:
 			raise NotImplementedError('RenderableViewModel subclasses must define the template_name class variable!')
 		context = self.to_context(request)

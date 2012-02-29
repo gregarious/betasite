@@ -24,13 +24,15 @@ class FeedViewModel(RenderableViewModel):
 
 class FeedCollection(RenderableViewModel):
 	template_name = 'feed_collection.html'
-	@classmethod
-	def init_from_feeds(cls,feed_tuples):
+	def __init__(self,feed_tuples):
 		'''
 		Initialize from list of (label,FeedViewModel) tuples.
 		'''
-		inst = cls()
-		inst.feeds = [ {'label': label,
+		self.feeds = [ {'label': label,
 						'feed_view': feed} 
 						for label,feed in feed_tuples ]
-		return inst
+		print 'FeedCollection init: ', self.__dict__
+
+	def to_html(self,request=None):
+		print 'FeedCollection:', self.__dict__
+		return super(FeedCollection,self).to_html(request)
