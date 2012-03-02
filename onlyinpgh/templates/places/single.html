@@ -44,8 +44,8 @@ Context variables:
 			{% endif %}
 
 		</ul>
+			{% self_render tag_list %}
 	</div>
-	{% self_render tag_list %}
 </header>
 
 <section class="single-content">
@@ -68,6 +68,11 @@ Context variables:
 			{{featured_special.description}}
 			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
 		</div>
+		{% else %}
+			<div class="single-featured-special">
+				The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
+				<a class="grabbit">Grabbit!</a>
+			</div>
 	{% endif %}
 
 </section>

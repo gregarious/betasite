@@ -262,7 +262,7 @@ td { vertical-align: top; }
 /* 1 ROOT ---------- */
 
 body {
-  background: #fff url(/static/img/oakland/abbey_road.jpg) no-repeat center fixed;
+  background: url(/static/img/paper/fern.jpg);
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
@@ -290,11 +290,15 @@ p, time {
 
 .meta {
   font-size: 0.9em;
-  margin-top: 0.2em;
+  margin-top: 0.5em;
 }
 
 .address {
   font-weight: bold;
+}
+
+.description {
+
 }
 
 /* 3 HEADINGS ---------- */
@@ -352,21 +356,17 @@ p, time {
 
 #site-nav {
   .column_nm(12);
-  /*border-bottom: 0.3em #fff solid;
-  position: absolute;
-  left: 0;
-  bottom: 0;*/
-  background-color: #555;
+  border-bottom: 0.3em #fff solid;
   ul {
     li { 
       a {
-          /*.gradient(#e1e1e1, #aaa);
           .b-shadow(0, -0.12em, 0.1em, #000);
-  -webkit-border-radius: 0 0 12px 12px;
-     -moz-border-radius: 0 0 12px 12px;
-          border-radius: 0 0 12px 12px;
+  -webkit-border-radius: 12px 12px 0 0;
+     -moz-border-radius: 12px 12px 0 0;
+          border-radius: 12px 12px 0 0;
+          .gradient(@mblue, @lblue);
 
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 
           color: #000;
           cursor: pointer;
@@ -593,13 +593,12 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item {
-  .b-shadow(0, 0, 0.1em, #222);
+  
   .column_nm(12);
   list-style-type: none;
-  background: fade(#fff, 80%);
+  border-bottom: 1px #999 dashed;
   margin: 1%;
   padding: 2% 1%;
-  /*.rounded(0.5em);*/
 
   /* Will link with jQuery once templates are finalized */
 
@@ -611,7 +610,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item-title {
-  margin: 0.2em;
+  margin: 0.2em 0 0.5em;
   a {
     font-size: 1.2em;
     font-family: 'ArvoRegular';
@@ -626,7 +625,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item-thumb-container, .item-point-value {
-  .column(2.6);
+  .column(1.7);
   overflow: hidden;
   padding: 1%;
 
@@ -634,10 +633,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     //.b-shadow(1px, 1px, 5px, #000);
     border: 2px #fff solid;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 1%;
+    width: 100%;
+    height: auto;
+    min-height: 50px;
     max-height: 100px;
-    min-height: 30px;
 
   }
 
@@ -649,9 +649,9 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 
 .item-content {
-  float: right;
+  .column_nm(10);
   margin: 0 1.3% 0 1.0416666666666665%;
-  .column(9);
+  float: right;
 }
 
 .item-point-value {
@@ -696,7 +696,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   .column(3);
 
   img {
-    min-height: 70px;
+    min-height: 90px;
+    max-height: 130px;
     .b-shadow(1px, 1px, 3px, #000);
   }
 }
@@ -739,6 +740,13 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 /* 12 UTILITY ---------- */
+
+.has-special {
+  float: right;
+  color: red;
+  font-style: italic;
+  .rounded(5px);
+}
 
 .back {
   cursor: pointer;

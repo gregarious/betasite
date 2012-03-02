@@ -31,6 +31,7 @@ def place_to_data(place,place_meta):
     data = {    
         'id':       place.id,
         'name':     place.name,
+        'description':     place.description,
         'location': location_to_data(place.location) if place.location else None,
     }
     data.update(place_meta)

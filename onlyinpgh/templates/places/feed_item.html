@@ -19,12 +19,25 @@ Context variables:
 		<h4 class="item-title">
 			<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
 		</h4>
-		{% if is_favorite %}
-			<p class="favorite-star">*</span>
+		
+		<!-- Once things have specials, remove else content -->
+		{% if featured_special %}
+			<div class="has-special"></div>
+		{% else %}
+			<p class="has-special">Special!</p>
 		{% endif %}
-		<div class="item-desc">
-			<p>{{place.location.address}}</p>		
-		</div>
+		<p class="address">{{place.location.address}}</p>
+		{% if place.description %}	
+	  		<p class="meta">{{ place.description|truncatewords:35|urlizetrunc:20 }}</p>	  	
+		{% endif %}
 		{% self_render tag_list %}
 	</section>
 </li>
+
+{% comment %}
+	{% if is_favorite %}
+		<div class="is-favorite">*</div>
+	{% else %}
+		<div class="favorite-star">X</div>	
+	{% endif %}
+{% endcomment %}
