@@ -12,7 +12,7 @@ from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFee
 
 from datetime import datetime, timedelta
 import urllib
-
+from time import sleep
 
 def _places_all():
     return Place.objects.select_related().all()[:10]
@@ -24,35 +24,39 @@ def _handle_place_action(request,pid,action):
     '''
     Returns a status dict that resulted from the action.
     '''
-    failresp = lambda msg: {'status': 'failure', 'error': msg}
+    failure = lambda msg: {'status': 'error', 'msg': msg}
+    success = lambda msg: {'status': 'success', 'msg': msg}
     if not request.user.is_authenticated():
-        return failresp('user not authenticated')
+        return failure('user not authenticated')
     elif not request.user.is_authenticated():
-        return failresp('user account inactive')
+        return failure('user account inactive')
     else:
         try:
             place = Place.objects.get(id=pid)
         except Place.DoesNotExist:
-            return failresp('invalid place id')
+            return failure('invalid place id')
 
-        if action == 'fav' or action == 'unfav':
+        if action == 'addfav' or action == 'removefav':
             existing = FavoriteItem.objects.filter_by_type(model_type=Place,
                             model_instance=place,
                             user=request.user)
-            if action == 'fav':
+            if action == 'addfav':
                 if len(existing) > 0:
-                    return failresp('item already in favorites')
+                    # despite non-action, we count this as a success
+                    return success('item already in favorites')
                 else:
                     FavoriteItem.objects.create(user=request.user,
                                                 content_object=place)
-            elif action == 'unfav':
+                    return success('added')
+            elif action == 'removefav':
                 if len(existing) > 0:
                     existing.delete()
+                    return success('removed')
                 else:
-                    return failresp('item not in favorites')
+                    # despite non-action, we count this as a success
+                    return success('item not in favorites')
         else:
-            return failresp('invalid action')
-    return {'status': 'success'}
+            return failure('invalid action')
 
 def feed_page(request):
     '''
@@ -100,8 +104,6 @@ def detail_page(request,pid):
     # build and render related feeds viewmodel
     related_feeds = PlaceRelatedFeeds(place,user=request.user)
     html += related_feeds.to_html(request)
-
-    print related_feeds.to_json()
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page 
     return render(request,'page.html',
