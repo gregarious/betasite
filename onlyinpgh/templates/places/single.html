@@ -51,9 +51,9 @@ Context variables:
 <section class="single-content">
 	<ul>
 		{% if is_favorite %}
-			<li><a href="?action=unfav" class="unfavorite-action">Remove from Favorites</a></li>
+			<li><a href="?action=unfav" class="favbutton remove">Remove from Favorites</a></li>
 		{% else %}
-			<li><a href="?action=fav" class="favorite-action">Add to Favorites</a></li>
+			<li><a href="?action=fav" class="favbutton add">Add to Favorites</a></li>
 		{% endif %}
 		<li><a href="#">Report a problem</a></li>
 		<li><a href="#">Post to chatter</a></li>
@@ -76,3 +76,47 @@ Context variables:
 	{% endif %}
 
 </section>
+
+<script type="text/javascript">
+	require(['jquery','helpers/place_actions'],function($,place_actions) {
+		// handle the add/remove favorite button
+		$(".favbutton").click( function(event) {
+			var link = $(this);		// save the link element that fired the event
+
+			// depending on the button class, either attempt adding or 
+			// removing favorite state of place
+			var changingFavorite;
+			if (link.hasClass('add')) {
+				changingFavorite = place_actions.addFavorite({{place.id}});
+				changingFavorite.done( function(msg) {
+					link.text('Remove from Favorites')
+						.removeClass('add')
+						.addClass('remove');
+				});
+			}
+			else if (link.hasClass('remove')) {
+				changingFavorite = place_actions.removeFavorite({{place.id}});
+				changingFavorite.done( function(msg) {
+					link.text('Add to Favorites')
+						.removeClass('remove')
+						.addClass('add');
+				});
+			}
+
+			// in case neither add/remove action was taken, skip the rest
+			// (would only happen if the DOM class is messed up)
+			if(changingFavorite) {
+				// TODO: add spinner
+				// fail/always actions are the same despite the promise type
+				changingFavorite.fail( function(msg) {
+					alert('Failure: ' + msg);	// TODO: do something better
+				});
+				changingFavorite.always( function() {
+					// TODO: remove spinner
+				});				
+			}
+
+			event.preventDefault();
+		});
+	});
+</script>
