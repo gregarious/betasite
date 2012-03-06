@@ -20,8 +20,13 @@
 
 body {
 	margin: 0 auto;
-	max-width: 960px;
 	.clearfix;
+}
+
+.border-box {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 .row(@columns:@columns) {
@@ -32,6 +37,7 @@ body {
 }
 
 .column(@x,@columns:@columns) {
+	.border-box;
 	display: inline;
 	float: left;
 	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
@@ -41,6 +47,7 @@ body {
 .column_nm(@x,@columns:@columns) {
 	display: inline;
 	float: left;
+	.border-box;
 	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
 	margin: 0;
 }

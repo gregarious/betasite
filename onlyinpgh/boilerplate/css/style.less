@@ -257,23 +257,34 @@ td { vertical-align: top; }
           box-shadow: @x @y @blur @color; 
 }
 
+.b-shadow-bot(@x, @y, @blur, @color) {
+  -webkit-box-shadow: @x @y 0 0 @blur @color; 
+     -moz-box-shadow: @x @y 0 0 @blur @color; 
+          box-shadow: @x @y 0 0 @blur @color; 
+}
 
+.fixed {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
 
 /* 1 ROOT ---------- */
 
 body {
-  background: url(/static/img/paper/fern.jpg);
+  background: url(/static/img/paper/fern.jpg) fixed;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
-#wrapper {
-  /*background: #fff;*/
-  padding: 1em;
-  margin: 1em 0;
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  .border-box;
+  .clearfix;
 }
 
 header, section {
-  .clearfix;
 }
 
 /* Responsive images */
@@ -314,10 +325,12 @@ p, time {
   color: #111;
   font-family: 'BloklettersViltstift';
   font-size: 1.5em;
+  margin: 0;
 }
 
 #site-tagline {
   font-size: 1em; 
+  margin: 0;
 }
 
 .section-title {
@@ -337,17 +350,21 @@ p, time {
 
 /* 4 SITE ---------- */
 
-#site-header {
-  padding-top: 5px;
-  margin-bottom: 0.5em;
-  z-index: 999;
-  position: relative;
+#site-search {
+  .column_nm(12);
+}
 
+#site-header {
+  .column_nm(12);
+  .gradient(#fff, #aaa);
+  .fixed;
+  height: 4em;
+  padding: 0.5em 0;
+  /*.b-shadow-bot(1em, 1em, 0.1em, #000);*/
   hgroup {
-    .column_nm(6);
-    padding: 0.5em;
-    background-color: #DAF7B1;
-    .b-shadow(0, 0, 3px, #fff);
+    .column(2);
+    /*background-color: #DAF7B1;*/
+    /*.b-shadow(0, 0, 3px, #fff);*/
     /*position: absolute;
     left: -1%;
     bottom: 30%;*/
@@ -355,30 +372,30 @@ p, time {
 }
 
 #site-nav {
-  .column_nm(12);
-  border-bottom: 0.3em #fff solid;
+  .column(6.5);
+  /*border-bottom: 0.3em #fff solid;*/
   ul {
+    .clearfix;
     li { 
       a {
-          .b-shadow(0, -0.12em, 0.1em, #000);
-  -webkit-border-radius: 12px 12px 0 0;
-     -moz-border-radius: 12px 12px 0 0;
-          border-radius: 12px 12px 0 0;
-          .gradient(@mblue, @lblue);
+        border: 2px solid #fff; 
+        /*.b-shadow(0, -0.12em, 0.1em, #000); */
+    -webkit-border-radius: 12px 12px 0 0;
+       -moz-border-radius: 12px 12px 0 0;
+            border-radius: 12px 12px 0 0;
+            .gradient(@mblue, @lblue);
 
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
           color: #000;
           cursor: pointer;
-          float: left;
+          .column(1.7);
+          font-size: 0.9em;
           font-weight: bold;
-          height: 22pt;
-          margin: 0 0.5%;
-          padding: 0.5% 0.5% 0;
-          position: relative;
+          height: 3em;
+          margin-top: 1em;
+          padding: 0.5% 2% 0;
           text-align: center;
           text-decoration: none;
-          width: 9%;
           
           &:hover {
             .gradient(#aaa, #fff);
@@ -393,16 +410,28 @@ p, time {
   } 
 }
 
+
+.current-page {
+  background: @mblue !important;
+}
+
 #site-content {
   background: fade(#fff, 60%);
-  .column_nm(9);
-  padding: 1%;
-  /*.rounded(1em);*/
   .b-shadow(0, 0, 1em, #e1e1e1);
+  .column(8.5);
+  padding: 1%;
+  position: relative;
+  top: 4.5em;
 }
 
 #site-sidebar {
-  .column(3);
+  .fixed;
+  top: 4em;
+  .column(3.5);
+  max-width: 250px;
+  float: right;
+  background: url(/static/img/paper/eggshell.jpg);
+  padding: 1%;
 }
 
 #site-footer {
@@ -414,11 +443,9 @@ p, time {
 /* HEADER ELEMENTS -------- */
 
 #debug-user {
-  padding: 0.5em 0 1em;
-}
-
-#header-image {
-  
+  .column(3.5);
+  margin-top: 1.5em;
+  text-align: right;
 }
 
 /* 4 INPUTS ---------- */
@@ -473,12 +500,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 }
 
-#site-search {
-  width: 90%;
-  margin: 1em 2%;
-  display: none;
-}
-
 #post-form { 
     .column(11.7);
     margin-bottom: 1em;
@@ -519,51 +540,18 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* 10 NAVIGATION ---------- */
 
-.utility-nav ul, .quick-nav ul {
-  .clearfix;
-
-  li {
-    cursor: pointer;  
-  }
-
-}
-
-.quick-nav ul li {
-  float: right;
-  margin-right: 1em;
-  width: 22pt;
-  padding: 0.3em;
-
-  a {
-    color: #000;
-    text-shadow: none;
-  }
-
-  img {
-    padding: 0.6em;
-  }
-}
-
 .utility-nav {
   .column(12);
+  margin-top: 1em;
 }
 
-.utility-nav ul li {
-  float: left;
+.utility-nav li {
   font-weight: bold;
   .gradient(#fff, @mblue);
-  margin: 0.5em 0.5%;
-  overflow: hidden;
-  padding: 0.5em;
-  .rounded(1em);
-  width: 44pt;
-}
-
-#footer-nav ul li {
-  font-weight: bold;
   .column(4);
-  padding: 0.5em 0;
-  text-align: center;
+  height: 3em;
+  overflow: hidden;
+  .rounded(0.5em);
 }
 
 .arrow-to-single {
@@ -593,8 +581,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .item {
-  
-  .column_nm(12);
+  .column(12);
   list-style-type: none;
   border-bottom: 1px #999 dashed;
   margin: 1%;
@@ -679,6 +666,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .single-header {
   background: fade(#fff, 60%);
+  .column(12);
   padding: 3%;
 }
 
@@ -704,6 +692,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .single-details {
     .column(8.9);
+    padding: 0 3% 3% ;
     float: right;
     margin-left: 1%;
 
@@ -715,8 +704,33 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .single-content {
-  margin: 1em 0;
+  .column(12);
+  margin-top: 1em;
+  
 }
+
+.single-nav {
+  .column_nm(2);
+  margin-right: 0;
+
+  ul li a {
+    .gradient(#fff, #999);
+    display: block;
+  }
+}
+
+.single-section {
+
+  .title {
+    margin: 0;
+  }
+
+  background: fade(#fff, 60%);
+  .column_nm(10.5);
+  
+  padding: 3%;
+}
+
 
 /* 11 TAGS ---------- */
 
@@ -741,6 +755,11 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* 12 UTILITY ---------- */
 
+.container {
+  
+  margin: auto;
+}
+
 .has-special {
   float: right;
   color: red;
@@ -758,10 +777,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 .points {
   font-family: 'BloklettersViltstift';
   text-align: center;
-}
-
-.disabled {
-  color: #  ;
 }
 
 #checkinPoints {

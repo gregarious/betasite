@@ -17,6 +17,15 @@ Context variables:
 	<h2 class="single-title">{{ place.name }}</h2>
 	<div class="single-thumb-container">
 		<img alt="{{ place.name }}" src="{{ place.image_url }}" height="500" width="500" />
+		<ul class="utility-nav">
+			{% if is_favorite %}
+				<li><a href="?action=unfav" class="favbutton remove">RFav</a></li>
+			{% else %}
+				<li><a href="?action=fav" class="favbutton add">AFav</a></li>
+			{% endif %}
+			<li><a href="#">!</a></li>
+			<li><a href="#">`O</a></li>
+		</ul>
 	</div>
 	<div class="single-details">
 		<ul>
@@ -48,34 +57,44 @@ Context variables:
 	</div>
 </header>
 
-<section class="single-content">
-	<ul>
-		{% if is_favorite %}
-			<li><a href="?action=unfav" class="favbutton remove">Remove from Favorites</a></li>
-		{% else %}
-			<li><a href="?action=fav" class="favbutton add">Add to Favorites</a></li>
+<article class="single-content">
+
+	<nav class="single-nav">
+		<ul>
+			<li><a id="placeAtAGlance">At a glance...</a></li>
+			<li><a id="placeEvents">Events</a></li>
+			<li><a id="placeSpecials">Specials</a></li>
+			<li><a id="placeMap">Map</a></li>
+			<li><a id="placeChatter">Chatter</a></li>
+			<li><a id="placeRelated">Related</a></li>
+		</ul>
+	</nav>
+
+	<section class="single-section" id="{{place_section_id}}">
+
+		<h1 class="title">{{place_section_title}}</h1>
+		
+		{% if place.description %}	
+		  	<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>	  	
 		{% endif %}
-		<li><a href="#">Report a problem</a></li>
-		<li><a href="#">Post to chatter</a></li>
-	</ul>
 
-	{% if place.description %}	
-	  	<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>	  	
-	{% endif %}
-
-	{% if featured_special %}
-		<div class="single-featured-special">
-			{{featured_special.description}}
-			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-		</div>
-		{% else %}
-			<div class="single-featured-special">
+			<!-- <div class="single-featured-special">
 				The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
 				<a class="grabbit">Grabbit!</a>
-			</div>
-	{% endif %}
+			</div> -->
+		
 
-</section>
+	</section>
+
+	{% if featured_special %}
+		<aside class="single-featured-special">
+			{{featured_special.description}}
+			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
+		</aside>
+	{% endif %}
+	
+	<!-- Section feed goes here. At a glance includes all feeds. -->
+</article>
 
 <script type="text/javascript">
 	require(['jquery','helpers/place_actions'],function($,place_actions) {
@@ -100,6 +119,7 @@ Context variables:
 					link.text('Add to Favorites')
 						.removeClass('remove')
 						.addClass('add');
+						alert('Oops! ' + msg);	// TODO: do something better
 				});
 			}
 
@@ -109,7 +129,7 @@ Context variables:
 				// TODO: add spinner
 				// fail/always actions are the same despite the promise type
 				changingFavorite.fail( function(msg) {
-					alert('Failure: ' + msg);	// TODO: do something better
+					alert('Oops! ' + msg);	// TODO: do something better
 				});
 				changingFavorite.always( function() {
 					// TODO: remove spinner

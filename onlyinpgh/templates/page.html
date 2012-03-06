@@ -21,40 +21,60 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-<div id="wrapper">
 
-	<header id="site-header">
-		<!-- <img id="header-image" src="/static/img/oakland/header/crude_brew_960.jpg" /> -->
-		<hgroup>
-			<h1 id="site-title" class="global-heading">Oakland Scene</h1>
-			<h2 id="site-tagline" class="global-heading">Where all the cool kids are at</h2>
-		</hgroup>
-		<nav id="site-nav">
-	        <ul>
-				<li><a href="/">Hot</a></li>
-				<li><a href="/events/">Events</a></li>
-				<li><a href="/specials/">Specials</a></li>
-				<li><a href="/places/">Places</a></li>
-				<li><a href="/chatter/">Chatter</a></li>
-				<li><a href="/news/">News</a></li>
-				<li><a>Jobs</a></li>
-			</ul>
-		</nav>
-	</header>
-
-	<div id="site-content" role="main">
-		<input type="text" placeholder="Filter places..." />
-		{{main_content}}
-	</div>
-
-	<aside id="site-sidebar" role="complementary">
-		<div id="debug-user">
+<!-- <div id="top-bar">
+	<span id="other-scenes">
+		Related scenes:
+	</span>
+	<span id="debug-user">
 		{% if user %}
 			Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
 		{% else %}
 			<a href="/login">Login</a>
 		{% endif %}
+	</span>
+</div> -->
+	
+<header id="site-header">		
+	<!-- <img id="header-image" src="/static/img/oakland/header/crude_brew_960.jpg" /> -->
+	<div class="wrap">
+		<hgroup>
+			<h1 id="site-title" class="global-heading">Oakland</h1>
+			<h2 id="site-tagline" class="global-heading">Scene</h2>
+		</hgroup>
+		<nav id="site-nav">
+	        <ul>
+				<li><a href="/">Hot!</a></li>
+				<li><a href="/events/">Events</a></li>
+				<li><a href="/places/">Places</a></li>
+				<li><a href="/specials/">Specials</a></li>
+				<li><a href="/chatter/">Chatter</a></li>
+				<li><a href="/news/">News</a></li>
+				<li><a>Jobs</a></li>
+			</ul>
+		</nav>
+		
+		<div id="debug-user">
+			{% if user %}
+				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
 		</div>
+
+	</div>
+
+</header>
+
+
+<div class="wrap">
+	
+	<div id="site-content" role="main">
+		{{main_content}}
+	</div>
+	
+	<aside id="site-sidebar" role="complementary">
+		<input id="site-search" type="search" placeholder="Search the Oakland Scene..." />
 		<h3>Broadcast here</h3>
 		<ul id="broadcast">
 			<li class="item">Sample sidebar content</li>
@@ -62,13 +82,13 @@ whole page response should render to this.
 			<li class="item">Sample sidebar content</li>
 			<li class="item">Sample sidebar content</li>
 		</ul>
-		
 	</aside>
 
 	<footer id="site-footer">
 		<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
 	</footer>
-	
+
 </div>
+
 
 {% endblock %}
