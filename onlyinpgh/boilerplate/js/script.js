@@ -13,6 +13,36 @@ jQuery(document).ready( function($) {
 		menu_item.addClass('current-page');
 	}
 
+	/////////////////
+	/// BROADCAST ///
+	/////////////////
+	
+	// Hide the broadcast for 1 secs, then slide down
+	$('#broadcast').delay(1000).slideDown(500);
+
+	// Function to cycle through the broadcast items - eventually will be loading new ones
+	// http://stackoverflow.com/questions/5258277/rotating-an-unordered-list-automatically-with-jquery
+	function rotateBroadcast() {
+		var prev = $("#broadcast li:first-child");
+		$.unique(prev).each(function(i) {
+			$(this).delay(i*1000).slideUp(200, function() {
+				$(this).appendTo(this.parentNode).slideDown(200);
+			});
+		});
+	}
+	window.setInterval(rotateBroadcast,5000);
+
+	var pages = {'#placeAtAGlance':'.ataglance', '#placeEvents':'.events', '#placeSpecials':'.specials', '#placeMap': '.map', '#placeChatter':'.chatter', '#placeRelated':'.related'};
+
+
+
+	$.each(pages, function(id, page) {
+		$('#id').click(function() {
+			
+		});
+	});
+
+
 }); // document.ready
 
 

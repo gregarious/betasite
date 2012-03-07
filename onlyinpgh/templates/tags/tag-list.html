@@ -10,7 +10,7 @@ Context variables:
 <div class="tag-list">
 	<ul>
 	{% for tag in tags %}
-	    <li><a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
+	    <li><a class="meta" href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
 	{% endfor %}
 	</ul>
 </div>

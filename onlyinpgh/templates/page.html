@@ -53,14 +53,8 @@ whole page response should render to this.
 				<li><a>Jobs</a></li>
 			</ul>
 		</nav>
+		<input id="site-search" type="search" placeholder="Search the scene..." />
 		
-		<div id="debug-user">
-			{% if user %}
-				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
-			{% else %}
-				<a href="/login">Login</a>
-			{% endif %}
-		</div>
 
 	</div>
 
@@ -68,19 +62,40 @@ whole page response should render to this.
 
 
 <div class="wrap">
-	
+
 	<div id="site-content" role="main">
+		<div class="feed-header">
+			<h1 class="page-title">Places</h1> <!-- Need a var for feed name here -->
+			<span class="add-filter">Filter Places</span>
+			<div class="filter-form">
+			</div>
+		</div>
+	
 		{{main_content}}
 	</div>
 	
 	<aside id="site-sidebar" role="complementary">
-		<input id="site-search" type="search" placeholder="Search the Oakland Scene..." />
-		<h3>Broadcast here</h3>
+		<div id="debug-user" class="meta">
+			{% if user %}
+				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | 99 Burgher | <a class="logout" href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
+		</div>
+		<h3>Scenecast</h3>
 		<ul id="broadcast">
-			<li class="item">Sample sidebar content</li>
-			<li class="item">Sample sidebar content</li>
-			<li class="item">Sample sidebar content</li>
-			<li class="item">Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
 		</ul>
 	</aside>
 
