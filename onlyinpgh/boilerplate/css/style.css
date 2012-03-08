@@ -567,7 +567,6 @@ p, time {
   width: 100%;
   position: fixed;
   z-index: 999;
-  height: 73px;
   padding: 0.5em 0;
   /*.b-shadow-bot(1em, 1em, 0.1em, #000);*/
 
@@ -590,28 +589,15 @@ p, time {
 
 }
 #site-nav {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  display: inline;
-  float: left;
-  width: 52.083333333333336%;
-  margin: 0 1.0416666666666665%;
+  position: fixed;
+  left: auto;
+  margin-left: -40px;
+  top: 50px;
   /*border-bottom: 0.3em #fff solid;*/
 
 }
-#site-nav ul {
-  *zoom: 1;
-  *zoom: 1;
-}
-#site-nav ul:before, #site-nav ul:after {
-  content: "";
-  display: table;
-}
-#site-nav ul:after {
-  clear: both;
-}
 #site-nav ul li a {
+  display: block;
   /*.b-shadow(0, -0.12em, 0.1em, #000); */
 
   -webkit-border-radius: 12px 0.1em 0 0;
@@ -625,18 +611,11 @@ p, time {
   box-shadow: 0 0 2px #ffffff;
   color: #000;
   cursor: pointer;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  display: inline;
-  float: left;
-  width: 12.083333333333334%;
-  margin: 0 1.0416666666666665%;
   font-size: 10px;
   font-weight: bold;
-  height: 55px;
+  width: 50px;
   margin-top: 1em;
-  padding: 40px 2% 0;
+  padding: 40px 0 0;
   text-align: center;
   text-decoration: none;
 }
@@ -676,6 +655,7 @@ p, time {
   width: 100%;
   position: fixed;
   z-index: 999;
+  right: auto;
   top: 73px;
   padding: 0.5%;
 }

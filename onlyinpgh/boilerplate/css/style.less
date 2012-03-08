@@ -375,7 +375,7 @@ p, time {
   .column_nm(12);
   .gradient(#fff, #aaa);
   .fixed;
-  height: 73px;
+  
   padding: 0.5em 0;
   /*.b-shadow-bot(1em, 1em, 0.1em, #000);*/
   hgroup {
@@ -389,12 +389,15 @@ p, time {
 }
 
 #site-nav {
-  .column(6.5);
+  position: fixed;
+  left: auto;
+  margin-left: -40px;
+  top: 50px;
   /*border-bottom: 0.3em #fff solid;*/
   ul {
-    .clearfix;
     li { 
-      a { 
+      a {
+        display: block;
         /*.b-shadow(0, -0.12em, 0.1em, #000); */
         -webkit-border-radius: 12px 0.1em 0 0;
            -moz-border-radius: 0.1em 0.1em 0 0;
@@ -404,12 +407,11 @@ p, time {
         .b-shadow(0, 0, 2px, #fff);
         color: #000;
         cursor: pointer;
-        .column(1.7);
         font-size: 10px;
         font-weight: bold;
-        height: 55px;
+        width: 50px;
         margin-top: 1em;
-        padding: 40px 2% 0;
+        padding: 40px 0 0;
         text-align: center;
         text-decoration: none;
           
@@ -442,6 +444,7 @@ p, time {
   max-width: 200px;
   clear: both;
   .fixed;
+  right: auto;
   top: 73px;
   padding: 0.5%;
 }
