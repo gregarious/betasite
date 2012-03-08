@@ -273,10 +273,11 @@ td { vertical-align: top; }
 /* 1 ROOT ---------- */
 
 body {
-  background-image: url(/static/img/Oakland/RGB/Oakland_Vertical_RGB_Green.png), url(/static/img/paper/eggshell.jpg);
+  /*background-image: url(/static/img/Oakland/RGB/Oakland_Vertical_RGB_Green.png), url(/static/img/paper/eggshell.jpg);
   background-attachment: fixed, fixed;
   background-position: bottom right, center;
-  background-repeat: no-repeat, repeat;
+  background-repeat: no-repeat, repeat;*/
+  background: url("/static/img/Oakland/abbey_road_bw.jpg") no-repeat fixed center;
   font-family: Helvetica, sans-serif;
 
   /*font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;*/
@@ -430,7 +431,7 @@ p, time {
 }
 
 #site-content {
-  background: url(/static/img/paper/sand.jpg);
+  background: fade(#fff, 60%);
   .column(8.5);
   position: relative;
   /*padding: 1%;*/
@@ -590,7 +591,7 @@ p, time {
 
 .feed {
   .clearfix;
-  background: url(/static/img/paper/eggshell.jpg);
+  background: fade(#fff, 60%);
   .b-shadow(0, 0, 1em, #e1e1e1);
   margin: 2% 2% 0;
 }
