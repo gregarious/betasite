@@ -32,13 +32,12 @@ jQuery(document).ready( function($) {
 	}
 	window.setInterval(rotateBroadcast,5000);
 
-	var pages = {'#placeAtAGlance':'.ataglance', '#placeEvents':'.events', '#placeSpecials':'.specials', '#placeMap': '.map', '#placeChatter':'.chatter', '#placeRelated':'.related'};
+	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 
-
-
-	$.each(pages, function(id, page) {
-		$('#id').click(function() {
-			
+	$.each(pages, function(i, id) {
+		$('a.'+id).click(function() {
+			$('.single-section').delay(200).hide();
+			$(id+'.single-section').fadeIn(200); // Will replace this with a .get();
 		});
 	});
 
