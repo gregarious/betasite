@@ -23,9 +23,9 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
-    url(r'^places/',include('places.urls')),
-    url(r'^offers/',include('offers.urls')),
-    url(r'^tags/',include('tags.urls')),
+    url(r'^places/',include('onlyinpgh.places.urls')),
+    url(r'^offers/',include('onlyinpgh.offers.urls')),
+    url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),
