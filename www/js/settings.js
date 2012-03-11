@@ -8,7 +8,6 @@
 		// if true, various 
 		// TODO: SHOULD BE FALSE (or all traces removed from source) FOR LAUNCH!
 		BROWSER_DEBUG: true,
-		
 	};
 
 	obid.utils = {
