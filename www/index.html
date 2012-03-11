@@ -72,16 +72,18 @@
     <script src="js/libs/jquery.mobile-1.0.1.js"></script>  
     <script src="js/libs/mustache.js"></script>             <!-- globals loaded: Mustache -->
     <script src="js/libs/underscore.js"></script>           <!-- globals loaded: _ -->
-    <script src="js/libs/backbone.js"></script>             <!-- globals loaded: Backbone -->
 
     <!-- Phonegap JS API -->
     <script src="js/libs/phonegap-1.4.1.js"></script>       <!-- lots of globals, see http://docs.phonegap.com/ -->
 
+    <script src="js/libs/backbone.js"></script>             <!-- globals loaded: Backbone -->
+
+    <script src="js/helpers/mbp.js"></script>     <!-- globals loaded: MBP -->
+    <script src="js/settings.js"></script>     <!-- globals loaded: obid -->
+
     <!-- Finally require.js to handle all custom modules (not using for code lib loading). -->
     <script data-main="js/main" src="js/libs/require.js"></script>  <!-- globals loaded: define, require -->
 
-    <!-- Uncomment if any boilerplate helpers are needed -->
-    <!-- <script src="boilerplate/js/mylibs/helper.js"></script> -->
 
     <script>
       // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/

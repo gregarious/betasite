@@ -4,9 +4,9 @@
 // $, jQuery, Mustache, Backbone
 
 function debugStart() {
-    gettingData = $.getJSON('http://scenable.com/apitest/places/app/284/');
+    gettingData = $.getJSON(obid.utils.to_api('places/app/284'));
     gettingData.done( function(data) {
-         $('#container').html(Mustache.render(singleTemplate,data));
+         $('#container').html('this:'+Mustache.render(singleTemplate,data));
     });
     gettingData.fail( function(jqXHR, textStatus, errorThrown) {
          alert('Problem contacting server: '+textStatus);
@@ -27,5 +27,5 @@ $(function() {
     });
 
 // ONLY FOR BROWSER TESTING: ALWAYS DISABLE WHEN RUN WITH PHONEGAP!!!
-//    //$.trigger('deviceready');   
+    $(document).trigger('deviceready');   
 });

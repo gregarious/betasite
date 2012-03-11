@@ -6,3 +6,5 @@ A catch all text file for things that should be considered once there's an actua
 - Launch app with latest version of Phonegap, and other js libraries.
 
 - Root through boilerplate code for app and site to remove anything unnecessary.
+
+- Unit tests for EVERYTHING after launch. EEEEVVVERYTHING.
