@@ -1,0 +1,6 @@
+Extra wrinkles for deploying phonegap apps:
+
+Ensure phonegap script import is in index.html
+Need to explicitly allow internet access for JSON calls
+- iOS: In phonegap.plist, need domain name listed as array entry under ExternalHosts
+- Android: ?

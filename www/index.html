@@ -50,68 +50,38 @@
     <script src="boilerplate/js/libs/modernizr-custom.js"></script>
 
     <!-- Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill -->
-    <script>Modernizr.mq('(min-width:0)') || document.write('<script src="boilerplate/js/libs/respond.min.js">\x3C/script>')</script>
+    <script>Modernizr.mq('(min-width:0)') || document.write('<script src="js/libs/respond.min.js">\x3C/script>')</script>
 </head>
 
 <body>
-
-    <header id="site-header">
-      <h1 id="site-title">Oakland Scene</h1>
-      <nav class="quick-nav">
-        <ul>
-          <li class="map-mode"></li>
-          <li class="expand-search"></li>
-        </ul>
-      </nav>
+    <!-- Just the most basic DOM: programatically handle everything else via Backbone views -->
+    <header>
+        <nav id="header-nav"></nav>
     </header>
 
     <div id="container">
     </div>
-
-     <!-- Unminified jQuery for development -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <!-- Reference local copy if remote is unavailable -->
-    <script>window.jQuery || document.write('<script src="boilerplate/js/libs/jquery-1.7.1.js"><\/script>')</script>
-
-    <script type="text/javascript" src="scripts/ICanHaz.js"></script>
     
-    <!-- Sceneable Scripts -->
-    <script type="text/javascript" src="main.js"></script>
-    <script src="boilerplate/js/script.js"></script>
+    <div id="footer">
+    </div>
 
-    <script type="text/javascript">
-        $(document).ready( function() {
-            load_view('home',$('#container'));
-        });
-    </script>
-     <!-- Unminified for development -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="boilerplate/js/libs/jquery-1.7.1.js"><\/script>')</script>
-    <script type="text/javascript" src="scripts/ICanHaz.js"></script>
-    
-    <!-- Sceneable Scripts -->
-    <script type="text/javascript" src="main.js"></script>
-    <script src="boilerplate/js/script.js"></script>
+    <!-- TODO: minify these scripts. see boilerplate ant build script, require optimizer, etc. -->
 
-    <!-- DEBUG: remove all below this line before release -->
-    <script type="text/javascript">vloaders = {};</script>
+    <!-- Main Scenable module anchor point -->
+    <script src="js/libs/jquery-1.7.1.js"></script>         <!-- globals loaded: jQuery, $ -->
+    <script src="js/libs/jquery.mobile-1.0.1.js"></script>  
+    <script src="js/libs/mustache.js"></script>             <!-- globals loaded: Mustache -->
+    <script src="js/libs/underscore.js"></script>           <!-- globals loaded: _ -->
+    <script src="js/libs/backbone.js"></script>             <!-- globals loaded: Backbone -->
 
-    <!--<script type="text/javascript" src="vloaders/home.js"></script>
-    <script type="text/javascript" src="vloaders/places_feed.js"></script>
-    <script type="text/javascript" src="vloaders/places_item.js"></script>
-    <script type="text/javascript" src="vloaders/events_feed.js"></script>
-    <script type="text/javascript" src="vloaders/events_item.js"></script>-->
-    <!-- JavaScript at the bottom for fast page loading -->
+    <!-- Phonegap JS API -->
+    <script src="js/libs/phonegap-1.4.1.js"></script>       <!-- lots of globals, see http://docs.phonegap.com/ -->
 
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-   
-    <!-- Google Maps API v3
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
+    <!-- Finally require.js to handle all custom modules (not using for code lib loading). -->
+    <script data-main="js/main" src="js/libs/require.js"></script>  <!-- globals loaded: define, require -->
 
-
-    <!-- scripts concatenated and minified via ant build script -->
-    <script src="boilerplate/js/mylibs/helper.js"></script>
-    <!-- end concatenated and minified scripts-->
+    <!-- Uncomment if any boilerplate helpers are needed -->
+    <!-- <script src="boilerplate/js/mylibs/helper.js"></script> -->
 
     <script>
       // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
@@ -130,6 +100,4 @@
     </script> -->
 
 </body>
-</html>
-
 </html>
