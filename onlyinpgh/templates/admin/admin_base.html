@@ -11,11 +11,11 @@
 <body>
 	<div class="wrapper" id="{% block page_id %}{% endblock page_id %}">
 
-		<header id="page-header">
-			<h1>{% block page_header %}{% endblock page_header %}</h1>
+		<header id="site-header">
+			<h1>Scenable Business account: {% block page_header %}{% endblock page_header %}</h1>
 		</header>
 
-		<article id="page-content">	
+		<article id="site-content">	
 			<section class="content-container">
 
 				<header class="content-header">
@@ -36,16 +36,17 @@
 
 		</article> <!-- #page-content -->
 
-		<footer id="page-footer">
-			<p>What up, #page-footer!</p>
-		</footer>
-
 	</div> <!-- #wrapper -->
+
+	<div id="footer-image"></div>
+	<footer id="site-footer">
+		<p id="colophon">What up, #page-footer!</p>
+	</footer>
 
 	<!-- Scripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.js"><\/script>')</script>
-
+	<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
 	<script src="/static/js/admin_script.js"></script>
 
 </body>

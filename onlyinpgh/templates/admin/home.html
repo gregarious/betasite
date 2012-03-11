@@ -13,16 +13,28 @@
 {% endblock content_header %}
 
 {% block content_body %}
-	<nav class="after-signup">
+	<nav class="admin-home">
 		<ul>
 			<!-- To profile page with expanded events section in edit mode -->
-			<a href="profile_basics"><li>See your Page</li></a>
+			<li id="adminViewProfile">
+				<img src="/static/img/icons/black/anchor.png" />
+				<a href="profile_basics">See your Page</a>
+			</li>
 			<!-- To profile page with expanded specials section in edit mode -->
-			<a href="profile_basics"><li>Edit info</li></a>
+			<li id="adminEditProfile">
+				<img src="/static/img/icons/black/box-edit.png" />
+				<a href="profile_basics">Edit info</a>
+			</li>
 			<!-- To profile page with expanded 'your info' section in edit mode -->
-			<a href="profile_specials"><li>Manage Specials</li></a>
+			<li id="adminSpecials">
+				<img src="/static/img/icons/black/tag-special.png" />
+				<a href="profile_specials">Manage Specials</a>
+			</li>
 			<!-- To single business page as seen by other users -->
-			<a href="profile_events"><li>Manage Events</li></a>
+			<li id="adminEvents">
+				<img src="/static/img/icons/black/calendar-alt.png" />
+				<a href="profile_events">Manage Events</a>
+			</li>
 		</ul>
 	</nav>
 {% endblock content_body %}

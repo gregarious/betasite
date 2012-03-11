@@ -1,48 +1,40 @@
 @import 'grid';
+@import 'mixins';
 
 /* Will move this to template when that happens */
 @import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
 @import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
+@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
 
-/* MIXINS ---------- */
-
-@green: #0EBD42;
-
-.rounded(@val) {
-  
-  -webkit-border-radius: @val; 
-     -moz-border-radius: @val; 
-          border-radius: @val; 
-  
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-
-}
-
-.gradient (@first, @second) {
-   background-color: @first;
-   background-image: -webkit-gradient(linear, left top, left bottom, from(@first), to(@second)); /* Saf4+, Chrome */
-   background-image: -webkit-linear-gradient(top, @first, @second); /* Chrome 10+, Saf5.1+, iOS 5+ */
-   background-image:    -moz-linear-gradient(top, @first, @second); /* FF3.6 */
-   background-image:     -ms-linear-gradient(top, @first, @second); /* IE10 */
-   background-image:      -o-linear-gradient(top, @first, @second); /* Opera 11.10+ */
-   background-image:      linear-gradient(top, @first, @second);
-             /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-}
-
-.b-shadow(@x, @y, @blur, @color) {
-	-webkit-box-shadow: @x @y @blur @color; 
-		-moz-box-shadow: @x @y @blur @color; 
-			box-shadow: @x @y @blur @color; 
-}
 
 /* ROOT --------- */
 
 body {
-	background: url(/static/img/paper/stormy_sky.jpg);
+	// Use media queries to substitute 
+	// smaller/larger images accorsing to screensize
+	/*background: url("/static/img/illus/pgh.png"), url("/static/img/illus/blue-scratch.png");
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, top left;*/
+	//background: url("/static/img/custom/sky_texture.png");
+	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
+	background: @skyblue;
 	font-family: 'ArvoRegular';
 	font-weight: normal;
+	height: 100%;
 	margin: 0;
-	padding: 3em 0;
+	overflow: hidden;
+	padding: 3em 0 0;
+	width: 100%;
+}
+
+.wrapper {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
 }
 
 section, article {
@@ -58,10 +50,11 @@ img {
 
 h1 {
 	color: #fff;
+	font-family: 'BloklettersViltstift';
 	font-size: 1.5em;
-	font-style: italic;
+	font-weight: normal;
 	margin: 0 0 1em;
-	text-align: center;
+	text-align: left;
 	text-shadow: 0.1em 0.1em 0 #222;
 }
 
@@ -102,6 +95,12 @@ p {
 	font-weight: bold;
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+#colophon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -228,33 +227,41 @@ input[type="checkbox"] {
 	float: left;
 }
 
-.after-signup {
+.admin-home {
 	ul {
 		.clearfix;	
 		padding-left: 0;
 	}
 	
 	li {
-		cursor: pointer;
-		.gradient(#3DA2BE, #A9C6E8); 
-		/*background: url(img/paper/fern.jpg);*/
-		.b-shadow(0.1em, 0.1em, 0.1em, #888);
 		.column(6);
-		font-size: 1.3em;
-		height: 10em;
 		list-style-type: none;
-		margin: 1.04167%; 
-		.rounded(0.5em);
+		height: 10em;
+		margin: 1.04167%;
+		text-align: center;
 
-		&:hover {
-			.gradient(#A9C6E8, #3DA2BE);
-			background: #3DA2BE;
+		img {
+			display: block;
+			margin: 3em auto;
 		}
 
-		&:active {
-			background: #255C9E;
-		}
+		a {
+			/*background: url(img/paper/fern.jpg);*/
+			/*.b-shadow(0.1em, 0.1em, 0.1em, #888);*/
+			font-size: 1.3em;
+			list-style-type: none;
+		/*	.rounded(0.5em);*/
+
+			&:hover {
+				.gradient(#A9C6E8, #3DA2BE);
+				background: #3DA2BE;
+			}
+
+			&:active {
+				background: #255C9E;
+			}
 		
+		}
 	}
 }
 
@@ -271,15 +278,40 @@ input[type="checkbox"] {
 	margin: 0 auto;
 }
 
-#page-header {
+#site-header {
 
 }
 
-#page-content {
-	.b-shadow(0.07em, 0.07em, 0.5em, #000);
-	background: #E6E9E2;
-	padding-bottom: 1em;
+#site-content {
+	.b-shadow(1px, 1px, 6px, #fff);
+	background: fade(#fff, 70%);
+	//#E6E9E2;
+	position: relative;
+	//z-index: 999;
+	margin-bottom: 270px;
 	.rounded(0.5em);
+}
+
+#footer-image {
+	width: 100%;
+	margin: 0;
+
+	/* Can click thru div */
+	pointer-events:none;
+	
+	// Add queries for larger sign - this is for 1024
+	background-image: url(/static/img/illus/pgh-250h.png);
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, repeat-x;
+	background-position: bottom left, bottom left; 
+	height: 800px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+#site-footer {
+
 }
 
 /* CONTENT ----------- */
@@ -375,3 +407,22 @@ input[type="checkbox"] {
 .first {
 	padding-top: 0 !important;
 }
+
+
+/* ICONS ---------- */
+
+/*#adminViewProfile {
+	.icon(anchor);
+}
+
+#adminEditProfile {
+	.icon(box-edit);
+}
+
+#adminSpecials {
+	.icon(tag-special);
+}
+
+#adminEvents {
+	.icon(calendar-alt);
+}*/
