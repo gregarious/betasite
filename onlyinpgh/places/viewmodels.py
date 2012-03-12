@@ -1,13 +1,14 @@
 from onlyinpgh.common.core.viewmodels import ViewModel, RenderableViewModel
 
-from onlyinpgh.common.viewmodels import FeedViewModel
-from onlyinpgh.tags.viewmodels import TagList
-from onlyinpgh.identity.models import FavoriteItem
-
-from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.events.models import Event
 from onlyinpgh.offers.models import Offer
 from onlyinpgh.places.models import Place
+from onlyinpgh.identity.models import FavoriteItem
+
+from onlyinpgh.common.viewmodels import FeedViewModel, FeedCollection
+from onlyinpgh.tags.viewmodels import TagList
+
+from onlyinpgh.common.utils import process_external_url
 
 import urllib
 
@@ -92,6 +93,9 @@ class PlaceDetail(RenderableViewModel):
         self._place = place
         self._meta = {key: place.get_meta(key)
                         for key in ('image_url', 'hours', 'phone', 'url')}
+
+        if 'url' in self._meta:
+            self._meta['url'] = process_external_url(self._meta['url'])
 
         # temporary placeholder
         if not self._meta['image_url']:
