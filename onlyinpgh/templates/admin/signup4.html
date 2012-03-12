@@ -1,5 +1,5 @@
 
-<div class="form-container">
+<div class="form-container first">
 	<form>
 		<label>On the web</label>
 		<div class="inputs">
@@ -16,10 +16,28 @@
 	</form>
 </div>
 
-<a href="#item3" class="back panel">&larr; Back</a>
-<a href="admin_home" class="next panel">Finish! &rarr;</a>
+<div class="form-container last">
+	<form>
+		<!-- Selected tags will appear in designated div. User's will be able to remove them by clicking an 'x' in the corner of tag bubble. -->
+		<label>Tags</label>
+		<div class="inputs">
+			<input type="text" placeholder="try 'latte'" /> <!-- Autocomplete -->
+		</div>
+		<div class="inputs">
+			<p>Suggested:</p> <!-- Click one and it moves to current tags div -->
+			<ul>
+				<li>Restaurant</li>
+				<li>Outdoors</li>
+				<li>Awesome</li>
+				<li>Retail</li>
+			</ul>
+		</div>
+	</form>
+</div>
 
-<span id="step1">&#9830;</span>
-<span id="step2">&#9830;</span>
-<span id="step3">&#9830;</span>
-<span id="step4">&#9830;</span>
+<div class="prev-next">
+	<a href="#item3" name="screen3" class="back panel">&larr; Back</a>
+	<a href="admin_home" name="home" class="next panel">Finish! &rarr;</a>
+</div>
+
+{% include 'admin/progress.html' %}

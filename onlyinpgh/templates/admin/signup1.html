@@ -33,9 +33,8 @@
 	</form>
 </section> <!-- .form-container -->
 
-<a href="#item2" class="next panel">Next &rarr;</a>
+<div class="prev-next">
+	<a href="#item2" name="screen2" class="next panel">Next &rarr;</a>
+</div>
 
-<span id="step1">&#9830;</span>
-<span id="step2">&#9830;</span>
-<span id="step3">&#9830;</span>
-<span id="step4">&#9830;</span>
+{% include 'admin/progress.html' %}

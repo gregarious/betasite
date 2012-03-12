@@ -14,6 +14,17 @@ body:before, body:after {
 body:after {
   clear: both;
 }
+.border-box {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
 /* Will move this to template when that happens */
 /* ROOT --------- */
 body {
@@ -28,7 +39,8 @@ body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
-  padding: 3em 0 0;
+  /*padding: 3em 0 0;*/
+
   width: 100%;
 }
 #mask {
@@ -60,6 +72,113 @@ section:after, article:after {
 img {
   height: auto;
   max-width: 100%;
+}
+/* SITE ------------- */
+/*.wrapper {
+	width: 90%;
+	max-width: 700px;
+
+}
+*/
+#site-header {
+  width: 100%;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e1e1e1));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffffff, #e1e1e1);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  height: 50px;
+  position: fixed;
+  top: 0;
+  padding-left: 25%;
+  z-index: 999;
+}
+.item {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+#site-content {
+  height: 100%;
+  /*width: 20%;*/
+
+  margin: auto;
+  /*padding: 1em;*/
+
+  position: relative;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  /*overflow: auto;*/
+
+  /*top: 5%;*/
+
+}
+#footer-image {
+  width: 100%;
+  margin: 0;
+  /* Can click thru div */
+
+  pointer-events: none;
+  /*background-image: url(/static/img/illus/pgh-250h.png);
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, repeat-x;
+	background-position: bottom left, bottom left; */
+
+  height: 800px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+/* CONTENT ----------- */
+.content-header {
+  margin-top: 1.5em;
+  text-align: center;
+}
+.content-container {
+  -webkit-box-shadow: 1px 1px 6px #ffffff;
+  -moz-box-shadow: 1px 1px 6px #ffffff;
+  box-shadow: 1px 1px 6px #ffffff;
+  background: rgba(255, 255, 255, 0.7);
+  height: 100%;
+  margin: auto;
+  padding: 100px 3% 3%;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
 }
 /* TYPOGRAPHY ------------ */
 h1 {
@@ -156,12 +275,6 @@ input[type="text"], textarea {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 input[type="text"]:focus, textarea:focus {
   /*border-color: #2C525D;*/
@@ -215,14 +328,11 @@ input[type="checkbox"] {
 .uploaded-image {
   display: block;
   max-width: 50%;
+  max-height: 400px;
   margin: 1em auto 2em;
 }
 /* NAVIGATION ------------ */
 .prev-next {
-  display: inline;
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
   *zoom: 1;
   margin-top: 1em;
 }
@@ -235,12 +345,6 @@ input[type="checkbox"] {
 }
 .next, .back, .submit-item {
   padding: 0.5em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -353,88 +457,6 @@ input[type="checkbox"] {
 .submit-item {
   float: right;
 }
-/* SITE ------------- */
-/*.wrapper {
-	width: 90%;
-	max-width: 700px;
-
-}
-*/
-#site-header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-.item {
-  width: 20%;
-  height: 100%;
-  float: left;
-}
-#site-content {
-  -webkit-box-shadow: 1px 1px 6px #ffffff;
-  -moz-box-shadow: 1px 1px 6px #ffffff;
-  box-shadow: 1px 1px 6px #ffffff;
-  background: rgba(255, 255, 255, 0.7);
-  margin: 0 auto;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  /*padding: 1em;*/
-
-  position: relative;
-  top: 5%;
-}
-#footer-image, #site-header {
-  width: 100%;
-  margin: 0;
-  /* Can click thru div */
-
-  pointer-events: none;
-  background-image: url(/static/img/illus/pgh-250h.png);
-  background-attachment: fixed, fixed;
-  background-repeat: no-repeat, repeat-x;
-  background-position: bottom left, bottom left;
-  height: 800px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-/* CONTENT ----------- */
-.content-header {
-  margin-top: 1.5em;
-  text-align: center;
-}
-.content-container {
-  -webkit-box-shadow: 1px 1px 6px #ffffff;
-  -moz-box-shadow: 1px 1px 6px #ffffff;
-  box-shadow: 1px 1px 6px #ffffff;
-  background: rgba(255, 255, 255, 0.7);
-  margin: 5% auto;
-  padding: 3%;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  width: 50%;
-}
 /* PROFILE --------- */
 .details {
   float: left;
@@ -524,12 +546,6 @@ input[type="checkbox"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 /* UTILITY ----------- */
 .last {
@@ -537,6 +553,9 @@ input[type="checkbox"] {
 }
 .first {
   padding-top: 0 !important;
+}
+.selected {
+  background-color: green;
 }
 /* ICONS ---------- */
 /*#adminViewProfile {
@@ -554,3 +573,4 @@ input[type="checkbox"] {
 #adminEvents {
 	.icon(calendar-alt);
 }*/
+/* MEDIA QUERIES -------- */

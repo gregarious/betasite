@@ -15,10 +15,11 @@ jQuery(document).ready( function(){
 
 	$('a.panel').click(function () {
 
-		$('a.panel').removeClass('selected');
-		$(this).addClass('selected');
-		
-		current = $(this);
+		current = $(this).attr('name');
+		console.log(current);
+
+		$('.progress span').removeClass('selected');
+		$('article.'+current+' .progress .'+current).addClass('selected');
 		
 		$('#wrapper').scrollTo($(this).attr('href'), 800);		
 		

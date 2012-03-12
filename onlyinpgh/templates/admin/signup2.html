@@ -1,5 +1,5 @@
 
-<div class="form-container">
+<div class="form-container first">
 	<form>
 		<label>Hours</label>
 		<div class="inputs">
@@ -39,10 +39,9 @@
 	</form>
 </div>
 
-<a href="#item1" class="back panel">&larr; Back</a>
-<a href="#item3" class="next panel">Next &rarr;</a>
+<div class="prev-next">
+	<a href="#item1" name="screen1" class="back panel">&larr; Back</a>
+	<a href="#item3" name="screen3" class="next panel">Next &rarr;</a>
+</div>
 
-<span id="step1">&#9830;</span>
-<span id="step2">&#9830;</span>
-<span id="step3">&#9830;</span>
-<span id="step4">&#9830;</span>
+ {% include 'admin/progress.html' %}
