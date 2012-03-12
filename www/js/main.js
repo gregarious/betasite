@@ -36,55 +36,71 @@ $(function() {
         // since we use require below, we become asynchronous.
         // we need to return a promise for when we're done.
         var configuringApp = $.Deferred();
-
+        var app;    // initialized to AppRouter below
         // TODO: make this more selective script loading. For now just load it all up front.
-        require(["models/places","views/places_feed","views/place_detail"],function(models,feed_views,detail_views) {
+        require(
+            ["models/places",
+             "views/places_feed",
+             "views/place_detail"],
+            function(models,feed_views,detail_views) {
 
             var AppRouter = Backbone.Router.extend({
                 routes: {
                     '':'home',
-                    'places':'places_feed'
-                    //'places/:id/':'place_detail'
+                    'places':'places_feed',
+                    'places/:id':'place_detail'
                 },
 
                 home: function(){
-                    //alert('home');
-                    this.navigate('/places', true);
+                    console.log('Router: home');
+                    // Temporary redirect
+                    this.navigate('places', true);
                 },
 
                 places_feed: function(){
-                    //alert('feed');
-                    this.feed = new models.PlacesFeed();
-                    this.feedView = new feed_views.PlacesFeedView({model:this.feed});
+                    console.log('Router: places_feed');
+                    var feed = new models.PlacesFeed();
                     console.log('spinner on');
-                    // This call is asynchronous. Will reset the collection when it returns, which
-                    //  will DYNAMICALLY insert items into the rendered HTMLElement (feedView.el).
-                    this.feed.fetch({
-                        success: function(collection,response) { console.log('success! ' + collection.length + ' objects fetched.'); console.log('spinner off'); },
-                        error: function(collection,response) { console.log('error! ' + response.statusText); console.log('spinner off'); }
+                    feed.fetch({
+                        success: function(collection,response) {
+                            console.log('spinner off');
+                            app.showView('#container',
+                                new feed_views.PlacesFeedView({model:collection}));
+                        },
+                        error: function(collection,response) {
+                            console.log('error! ' + response.statusText);
+                            console.log('spinner off');
+                        }
                     });
-
-                    // THIS "el" CONTENT IS NOT STATIC! See note above
-                    $('#container').html(this.feedView.render().el);
                 },
 
                 place_detail: function(id){
-                    //alert('detail');
-                    this.place = new this.PlacesDetail({id:id});
-                    this.detailView = new detail_views.PlaceDetailView();
+                    console.log('Router: place_detail');
+                    var place = new models.PlaceDetail({id:id});
 
                     console.log('spinner on');
-                    this.place.fetch({
-                        success: function(collection,response) { console.log('success!'); console.log('spinner off'); },
-                        error: function(collection,response) { console.log('error! ' + response.statusText); console.log('spinner off'); }
+                    place.fetch({
+                        success: function(model,response) {
+                            console.log('spinner off');
+                            app.showView('#container',
+                                new detail_views.PlaceDetailView({model:model}));
+                        },
+                        error: function(model,response) {
+                            console.log('error! ' + response.statusText);
+                            console.log('spinner off');
+                        }
                     });
+                },
 
-                    $('#container').html(this.detailView.render().el);
+                showView: function(selector, view) {
+                    this.currentView = view;
+                    $(selector).html(this.currentView.render().el);
+                    return view;
                 }
             });
             
             // creating the new Router registers it with Backbone
-            var app = new AppRouter();
+            app = new AppRouter();
 
             configuringApp.resolve();
         });

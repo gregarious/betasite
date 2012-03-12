@@ -1,10 +1,13 @@
 # Django settings for onlyinpgh project.
 
-import os, datetime
+import os
+import datetime
 # import settings that differ based on deployment
 import settings_local
 
 ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
+
+
 def to_abspath(path):
     '''prepends ROOT_DIR setting to the given path'''
     return os.path.join(ROOT_DIR, path)
@@ -67,8 +70,10 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+APPEND_SLASH = False
+
 # Additional locations of static files
-STATICFILES_DIRS = (    
+STATICFILES_DIRS = (
     to_abspath('resources'),
 )
 
@@ -125,7 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -202,7 +207,7 @@ LOGGING = {
              'formatter': 'simple_timestamped',
              'filename': to_abspath('logs/imports/obid_%s.log' % _timestamp),
              'delay': True,      # only open if message is emitted
-             'mode': 'w'            
+             'mode': 'w'
         }
     },
     'loggers': {
@@ -212,33 +217,33 @@ LOGGING = {
             'propagate': True,
         },
         'onlyinpgh.obidimport': {
-            'handlers': ['console','obidimport_file'],
-            'level':'INFO',
+            'handlers': ['console', 'obidimport_file'],
+            'level': 'INFO',
             'propagate': False
         },
         'onlyinpgh.debugging': {
-            'handlers': ['console','debug_file'],
-            'level':'DEBUG',
+            'handlers': ['console', 'debug_file'],
+            'level': 'DEBUG',
             'propagate': False
         },
         'onlyinpgh.resolve': {
             'handlers': ['console'],
-            'level':'DEBUG',
+            'level': 'DEBUG',
             'propagate': False
         },
         'onlyinpgh.outsourcing': {
             'handlers': ['console'],
-            'level':'DEBUG',
+            'level': 'DEBUG',
             'propagate': False
         },
         'onlyinpgh.fb_import': {
             'handlers': ['console'],
-            'level':'DEBUG',
+            'level': 'DEBUG',
             'propagrate': False
         },
         'onlyinpgh.ical_import': {
             'handlers': ['console'],
-            'level':'DEBUG',
+            'level': 'DEBUG',
             'propagrate': False
         },
     },
@@ -250,7 +255,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'simple_timestamped': {
-            'format': '%(levelname)s %(asctime)s %(message)s'  
+            'format': '%(levelname)s %(asctime)s %(message)s'
         },
     }
 }

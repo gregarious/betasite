@@ -19,7 +19,7 @@ Expects the following view data:
 }}
 
 <h3>
-	<p>{{ place.name }}</p>
+	<a href="#places/{{place.id}}">{{ place.name }}</a>
 	{{#is_favorite}}
 	<span class="favorite-star">*</span>
 	{{/is_favorite}}

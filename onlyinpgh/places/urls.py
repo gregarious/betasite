@@ -6,5 +6,5 @@ urlpatterns = patterns('onlyinpgh.places.views',
     url(r'^(?P<pid>\d+)/$', 'detail_page', name='places-item-detail'),
 
     url(r'^app/feed/$', 'feed_app'),
-    url(r'^app/(?P<pid>\d+)/$', 'detail_app'),
+    url(r'^app/(?P<pid>\d+)$', 'detail_app'),
 )
