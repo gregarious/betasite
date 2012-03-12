@@ -4,3 +4,6 @@ settings_local.py
 *~
 *#
 .DS_Store*
+
+boilerplate/css/fonts
+boilerplate/img
