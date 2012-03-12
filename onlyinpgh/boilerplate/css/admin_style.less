@@ -23,18 +23,24 @@ body {
 	font-weight: normal;
 	height: 100%;
 	margin: 0;
-	overflow: hidden;
+	overflow-x: hidden;
 	padding: 3em 0 0;
-	width: 100%;
+	width:100%;
 }
 
-.wrapper {
+#mask {
+	width:500%;
+	height:100%;
+	overflow-x: hidden;
+}
+
+#wrapper {
 	height: 100%;
 	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 section, article {
@@ -228,6 +234,7 @@ input[type="checkbox"] {
 }
 
 .admin-home {
+	
 	ul {
 		.clearfix;	
 		padding-left: 0;
@@ -272,27 +279,38 @@ input[type="checkbox"] {
 
 /* SITE ------------- */
 
-.wrapper {
+/*.wrapper {
 	width: 90%;
 	max-width: 700px;
-	margin: 0 auto;
+
+}
+*/
+#site-header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
-#site-header {
-
+.item {
+	width:20%;
+	height:100%;
+	float:left;
 }
 
 #site-content {
 	.b-shadow(1px, 1px, 6px, #fff);
 	background: fade(#fff, 70%);
 	//#E6E9E2;
-	position: relative;
 	//z-index: 999;
-	margin-bottom: 270px;
+	margin: 0 auto;
 	.rounded(0.5em);
+	/*padding: 1em;*/
+	position: relative;
+	top: 5%;
 }
 
-#footer-image {
+#footer-image, #site-header {
 	width: 100%;
 	margin: 0;
 
@@ -322,7 +340,16 @@ input[type="checkbox"] {
 }
 
 .content-container {
-	padding: 0 5% 3%;
+	.b-shadow(1px, 1px, 6px, #fff);
+	background: fade(#fff, 70%);
+	margin: 5% auto;
+	padding: 3%;
+	.rounded(0.5em);
+	width: 50%;
+	//#E6E9E2;
+	//z-index: 999;
+	// margin: 0 auto 270px;
+	
 }
 
 /* PROFILE --------- */

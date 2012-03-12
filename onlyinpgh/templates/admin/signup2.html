@@ -1,61 +1,48 @@
-{% extends "admin/signup_page.html" %}
 
-{% block content_header %}
-	Details
-{% endblock content_header %}
+<div class="form-container">
+	<form>
+		<label>Hours</label>
+		<div class="inputs">
+			<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+		</div>
+	</form>
 
-{% block content_body %}
-	
-	<div class="form-container">
-		<form>
-			<label>Hours</label>
-			<div class="inputs">
-				<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+	<form>
+		<label>Parking</label>
+		<div class="inputs">
+			<div class="check-container">
+				<input type="checkbox" name="street" value="Street" />
+				<label class="checkbox-label">Street</label>
 			</div>
-		</form>
-	
-		<form>
-			<label>Parking</label>
-			<div class="inputs">
-				<div class="check-container">
-					<input type="checkbox" name="street" value="Street" />
-					<label class="checkbox-label">Street</label>
-				</div>
-				<div class="check-container">
-					<input type="checkbox" name="garage" value="Garage" />
-					<label class="checkbox-label">Garage</label>
-				</div>
-				<div class="check-container">
-					<input type="checkbox" name="lot" value="Lot" />
-					<label class="checkbox-label">Parking Lot</label>
-				</div>
-				<div class="check-container">
-					<input type="checkbox" name="good-luck" value="Good Luck" />
-					<label class="checkbox-label">Good Luck</label>
-				</div>
-			</div> <!-- .inputs -->
-		</form>
-	</div>
-
-	<div class="form-container last">
-		<form>	
-			<label>Desciption</label>
-			<div class="inputs">
-				<textarea placeholder="My business is really cool. If you come here you will be rewarded with good karma, chocolate, and other misc goodies. Thanks for your time."></textarea>
+			<div class="check-container">
+				<input type="checkbox" name="garage" value="Garage" />
+				<label class="checkbox-label">Garage</label>
 			</div>
-		</form>
-	</div>
+			<div class="check-container">
+				<input type="checkbox" name="lot" value="Lot" />
+				<label class="checkbox-label">Parking Lot</label>
+			</div>
+			<div class="check-container">
+				<input type="checkbox" name="good-luck" value="Good Luck" />
+				<label class="checkbox-label">Good Luck</label>
+			</div>
+		</div> <!-- .inputs -->
+	</form>
+</div>
 
-{% endblock content_body %}			
-	
-{% block prev_next %}
-	<a href="signup1" class="back">&larr; Back</a>
-	<a href="signup3" class="next">Next &rarr;</a>
-{% endblock prev_next %}
+<div class="form-container last">
+	<form>	
+		<label>Desciption</label>
+		<div class="inputs">
+			<textarea placeholder="My business is really cool. If you come here you will be rewarded with good karma, chocolate, and other misc goodies. Thanks for your time."></textarea>
+		</div>
+	</form>
+</div>
 
-{% block progess %}
-	<span id="step1">&#9830;</span>
-	<span id="step2">&#9830;</span>
-	<span id="step3">&#9830;</span>
-	<span id="step4">&#9830;</span>
-{% endblock progess %}
+<a href="#item1" class="back panel">&larr; Back</a>
+<a href="#item3" class="next panel">Next &rarr;</a>
+
+<span id="step1">&#9830;</span>
+<span id="step2">&#9830;</span>
+<span id="step3">&#9830;</span>
+<span id="step4">&#9830;</span>

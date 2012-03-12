@@ -61,11 +61,11 @@ urlpatterns = patterns('',
     #url(r'^ajax/offers_feed$', offers_views.ajax_offers_feed),
 
     # Business Admin generic templates
-    url(r'^signup1$', direct_to_template, {'template':'admin/signup1.html'}),
-    url(r'^signup2$', direct_to_template, {'template':'admin/signup2.html'}),
-    url(r'^signup3$', direct_to_template, {'template':'admin/signup3.html'}),
-    url(r'^signup4$', direct_to_template, {'template':'admin/signup4.html'}),
-    url(r'^admin_home$', direct_to_template, {'template':'admin/home.html'}),
+    url(r'^signup$', direct_to_template, {'template':'admin/admin_base.html'}),
+    # url(r'^signup2$', direct_to_template, {'template':'admin/signup2.html'}),
+    # url(r'^signup3$', direct_to_template, {'template':'admin/signup3.html'}),
+    # url(r'^signup4$', direct_to_template, {'template':'admin/signup4.html'}),
+    # url(r'^admin_home$', direct_to_template, {'template':'admin/home.html'}),
     url(r'^profile_basics$', direct_to_template, {'template':'admin/profile/profile_basics.html'}),
     url(r'^profile_events$', direct_to_template, {'template':'admin/profile/profile_events.html'}),
     url(r'^profile_specials$', direct_to_template, {'template':'admin/profile/profile_specials.html'})

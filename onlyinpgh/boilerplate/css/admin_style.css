@@ -25,8 +25,24 @@ body {
   background: #a9c6e8;
   font-family: 'ArvoRegular';
   font-weight: normal;
+  height: 100%;
   margin: 0;
+  overflow-x: hidden;
   padding: 3em 0 0;
+  width: 100%;
+}
+#mask {
+  width: 500%;
+  height: 100%;
+  overflow-x: hidden;
+}
+#wrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
 }
 section, article {
   *zoom: 1;
@@ -338,32 +354,47 @@ input[type="checkbox"] {
   float: right;
 }
 /* SITE ------------- */
-.wrapper {
-  width: 90%;
-  max-width: 700px;
-  margin: 0 auto;
+/*.wrapper {
+	width: 90%;
+	max-width: 700px;
+
+}
+*/
+#site-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.item {
+  width: 20%;
+  height: 100%;
+  float: left;
 }
 #site-content {
   -webkit-box-shadow: 1px 1px 6px #ffffff;
   -moz-box-shadow: 1px 1px 6px #ffffff;
   box-shadow: 1px 1px 6px #ffffff;
   background: rgba(255, 255, 255, 0.7);
+  margin: 0 auto;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /*padding: 1em;*/
+
   position: relative;
-  margin-bottom: 270px;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+  top: 5%;
 }
-#footer-image {
+#footer-image, #site-header {
   width: 100%;
   margin: 0;
   /* Can click thru div */
@@ -384,7 +415,25 @@ input[type="checkbox"] {
   text-align: center;
 }
 .content-container {
-  padding: 0 5% 3%;
+  -webkit-box-shadow: 1px 1px 6px #ffffff;
+  -moz-box-shadow: 1px 1px 6px #ffffff;
+  box-shadow: 1px 1px 6px #ffffff;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 5% auto;
+  padding: 3%;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 50%;
 }
 /* PROFILE --------- */
 .details {

@@ -9,44 +9,66 @@
 </head>
 
 <body>
-	<div class="wrapper" id="{% block page_id %}{% endblock page_id %}">
 
-		<header id="site-header">
-			<h1>Scenable Business account: {% block page_header %}{% endblock page_header %}</h1>
-		</header>
 
-		<article id="site-content">	
-			<section class="content-container">
+	<div id="wrapper">
+		<div id="mask">
 
-				<header class="content-header">
-					<h2>{% block content_header %}
-					{% endblock content_header %}</h2>	
-				</header> <!-- .content-header -->
 
-				<article class="content-body">
-					{% block content_body %}
-					{% endblock content_body %}
+				<header id="site-header">
+					<h1>Scenable Business account:</h1>
+				</header>
+
+			<div id="site-content">
+
+				<article id="item1" class="item">
+					<!-- <a name="item1"></a> -->
+					<div class="content-container"> 
+						{% include 'admin/signup1.html' %}
+					</div>
 				</article>
 				
-				<footer class="content-footer">
-					{% block content_footer %}
-					{% endblock content_footer %}
-				</footer>
-			</section>
+				<article id="item2" class="item">
+					<!-- <a name="item2"></a> -->
+					<div class="content-container">
+						{% include 'admin/signup2.html' %}
+					</div>
+				</article>
+				
+				<article id="item3" class="item">
+					<!-- <a name="item3"></a> -->
+					<div class="content-container">
+						{% include 'admin/signup3.html' %}
+					</div>
+				</article>
 
-		</article> <!-- #page-content -->
+				<article id="item4" class="item">
+					<!-- <a name="item4"></a> -->
+					<div class="content-container">
+						{% include 'admin/signup4.html' %}
+					</div>
+				</article>
+			</div>
 
-	</div> <!-- #wrapper -->
+			<!-- 
+			<article id="item5" class="item">
+				<a name="item5"></a>
+				<div class="content">item5 <a href="#item1" class="panel">back</a></div>
+			</article> -->
 
-	<div id="footer-image"></div>
+		</div>
+	</div>
+
+	<!-- <div id="footer-image"></div> -->
+
 	<footer id="site-footer">
 		<p id="colophon">What up, #page-footer!</p>
 	</footer>
 
 	<!-- Scripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.js"><\/script>')</script>
-	<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
+	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
 	<script src="/static/js/admin_script.js"></script>
 
 </body>
