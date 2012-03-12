@@ -21,19 +21,19 @@ $(function() {
 
         // device is ready, so once routers are ready, let's go!
         configuringApp.done(function(){
-            console.log('starting app');    
+            console.log('starting app');
             Backbone.history.start();
         });
-        console.log('Using API_URL: '+obid.settings.API_URL);        
+        console.log('Using API_URL: '+obid.settings.API_URL);
     });
 
     // if we're debugging in the browser, manually call this
     if(obid.settings.BROWSER_DEBUG) {
-        $(document).trigger('deviceready'); 
+        $(document).trigger('deviceready');
     }
 
     function configApp() {
-        // since we use require below, we become asynchronous. 
+        // since we use require below, we become asynchronous.
         // we need to return a promise for when we're done.
         var configuringApp = $.Deferred();
 
@@ -49,7 +49,7 @@ $(function() {
                     this.feed = new models.PlacesFeed();
                     this.feedView = new views.PlacesFeedView({model:this.feed});
                     console.log('spinner on');
-                    // This call is asynchronous. Will reset the collection when it returns, which 
+                    // This call is asynchronous. Will reset the collection when it returns, which
                     //  will DYNAMICALLY insert items into the rendered HTMLElement (feedView.el).
                     this.feed.fetch({
                         success: function(collection,response) { console.log('success! ' + collection.length + ' objects fetched.'); console.log('spinner off'); },
