@@ -42,7 +42,13 @@ $(function() {
 
             var AppRouter = Backbone.Router.extend({
                 routes: {
-                    '':'places_feed'
+                    '':'home',
+                    'places':'places_feed',
+                    'placeswines/:id':'places_detail'
+                },
+
+                home: function(){
+                    this.navigate('places', true);
                 },
 
                 places_feed: function(){
@@ -62,7 +68,7 @@ $(function() {
             });
             
             // creating the new Router registers it with Backbone
-            new AppRouter();
+            var app = new AppRouter();
 
             configuringApp.resolve();
         });
