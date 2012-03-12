@@ -2,5 +2,5 @@
 www/js/settings.js
 
 
-onlyinpgh/boilerplate/css/fonts
-onlyinpgh/boilerplate/img
+onlyinpgh/boilerplate/css/fonts/*	
+onlyinpgh/boilerplate/img/*
