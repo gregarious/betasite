@@ -1,0 +1,36 @@
+{{!
+Template expects the following data:
+	place:			object
+		id:				number
+		name:			string
+		image_url:		string
+		location:		object (optional)
+			address:		text (optional)
+			latitutde:		number (optional)
+			longitude:		number (optional)
+	is_favorite:	boolean (optional)
+	tag_list:		object
+		tags:			array of objects:
+			id:				number
+			name:			string
+
+}}
+
+<h3>
+	<p>{{ place.name }}</p>
+	{{#is_favorite}}
+	<span class="favorite-star">*</span>
+	{{/is_favorite}}
+</h3>
+<img src="{{place.image_url}}"/>
+<p>{{place.location.address}}</p>
+
+{{#tag_list}}
+	<div class="tag-list">
+		<ul>
+		{{#tags}}
+			<li>{{name}}</li>
+		{{/tags}}
+		</ul>
+	</div>
+{{/tag_list}}

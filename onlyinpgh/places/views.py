@@ -113,7 +113,8 @@ def detail_page(request,pid):
 @jsonp_response
 def feed_app(request):
     feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
-    return feed.to_data()   # decorator will handle JSON response wrapper
+    # TODO: revisit this 'items' hack
+    return feed.to_data()['items']   # decorator will handle JSON response wrapper
 
 @jsonp_response
 def detail_app(request,pid):
