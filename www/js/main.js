@@ -1,9 +1,12 @@
 // Main entrypoint for all JS
 
-/*global $, Mustache, Backbone, _, obid */
+/*global $, Mustache, Backbone, _, obid, require */
+/*jshint browser:true */
+/*jshint devel:true */
 
 // ready script
 $(function() {
+    'use strict';
     console.log('BROWSER_DEBUG: ' + obid.settings.BROWSER_DEBUG);
 
     // we get a promise that will be resolved when the routers are set up
@@ -11,7 +14,7 @@ $(function() {
     
     $(document).on('deviceready',function(){  // ensure phonegap API is hooked up to device
         $.ajaxSetup({
-            timeout: 5000,
+            timeout: 5000
         });
         console.log('BROWSER_DEBUG: ' + obid.settings.BROWSER_DEBUG);
         console.log('AJAX global timeout set to 5s.');
@@ -39,7 +42,7 @@ $(function() {
 
             var AppRouter = Backbone.Router.extend({
                 routes: {
-                    '':'places_feed',
+                    '':'places_feed'
                 },
 
                 places_feed: function(){
@@ -50,13 +53,13 @@ $(function() {
                     //  will DYNAMICALLY insert items into the rendered HTMLElement (feedView.el).
                     this.feed.fetch({
                         success: function(collection,response) { console.log('success! ' + collection.length + ' objects fetched.'); console.log('spinner off'); },
-                        error: function(collection,response) { console.log('error! ' + response.statusText); console.log('spinner off'); },
+                        error: function(collection,response) { console.log('error! ' + response.statusText); console.log('spinner off'); }
                     });
 
                     // THIS "el" CONTENT IS NOT STATIC! See note above
                     $('#container').html(this.feedView.render().el);
-                },
-            })
+                }
+            });
             
             // creating the new Router registers it with Backbone
             new AppRouter();

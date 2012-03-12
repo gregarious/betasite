@@ -1,6 +1,9 @@
-/*global Backbone, _, $, require, define */
+/*global Backbone, _, $, Mustache, require, define */
+/*jshint browser:true */
+/*jshint devel:true */
 
 define(['text!../../templates/places/feed_item.html'],function(item_tpl){
+	'use strict';
 	var PlacesFeedView = Backbone.View.extend({
 		tagName: 'ul',
 		className: 'places-feed',
@@ -14,7 +17,7 @@ define(['text!../../templates/places/feed_item.html'],function(item_tpl){
 				$(this.el).append(new PlacesFeedItemView({model:feeditem}).render().el);
 			}, this);
 			return this;
-		},
+		}
 	});
 
 	var PlacesFeedItemView = Backbone.View.extend({
@@ -25,7 +28,7 @@ define(['text!../../templates/places/feed_item.html'],function(item_tpl){
 		render:function (eventName) {
 			$(this.el).html(Mustache.render(item_tpl,this.model.toJSON()));
 			return this;
-		},
+		}
 	});
 
 	return {
