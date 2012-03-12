@@ -1,5 +1,7 @@
 {{!
-Template expects the following data:
+Template for a single places feed item.
+
+Expects the following view data:
 	place:			object
 		id:				number
 		name:			string
@@ -25,6 +27,7 @@ Template expects the following data:
 <img src="{{place.image_url}}"/>
 <p>{{place.location.address}}</p>
 
+{{!TODO: move to partial}}
 {{#tag_list}}
 	<div class="tag-list">
 		<ul>

@@ -1,0 +1,110 @@
+{{!
+Template for a single places feed item.
+
+Expects the following view data:
+	place:			object
+		id:				number
+		name:			string
+		image_url:		string
+		url:			string (optional)
+		hours:			string (optional)
+		phone:			string (optional)
+		location:		object (optional)
+			address:		text (optional)
+			latitutde:		number (optional)
+			longitude:		number (optional)
+			directions_link:string (optional)
+	is_favorite:	boolean (optional)
+	tag_list:		object
+		tags:			array of objects:
+			id:				number
+			name:			string
+	featured_special:	object
+		description:		string
+    	point_value:		number
+}}
+
+<div id="wrapper" class="single">
+
+	<article id="placesSingle" class="single-item">
+
+		<header class="single-item-header">
+			<div class="item-thumb-container">
+				<img class="item-thumb" height="50" width="50" alt="{{ place.name }}" src="{{ place.image_url }}" />
+			</div>
+
+			<div class="item-content-container">
+				<h2 class="item-title">
+				  	<em>Place:</em> {{ place.name }}
+				</h2>
+			</div>
+		</header>
+
+		{{#place}}
+		<ul class="single-item-details">
+			{{#location}}
+				<li>
+				{{ address }}
+				{#directions_link}}
+					<a href="{{.}}">(directions)</a>
+				{/directions_link}}
+				</li>
+			{{/location}}
+
+			{{#url}}
+				<li><a href="{{.}}">{{.}}</a></li>
+			{{/url}}
+
+			{#hours}}
+		 		<li>Hours: {{.}}</li>
+		 	{{/hours}}
+
+		 	{{#phone}}
+		  		<li>Phone: {{.}}</li>
+			{{/phone}}
+
+			<li>Parking: Street</li>
+		</ul>
+	{{/place}}
+
+	{{!TODO: move to partial}}
+	{{#tag_list}}
+		<div class="tag-list">
+			<ul>
+			{{#tags}}
+				<li>{{name}}</li>
+			{{/tags}}
+			</ul>
+		</div>
+	{{/tag_list}}
+
+	<p class="favorite-p">
+	{{#favorite}}
+		<a href="?action=removefav" class="favbutton remove">Remove from Favorites</a>
+	{{/favorite}}
+	{{^favorite}}
+		<a href="?action=addfav" class="favbutton add">Add to Favorites</a>
+	{{/favorite}}
+	</p>
+
+	{{#place}}
+		{{#description}}
+			<section class="single-item-desc">
+		  		<p>{{.}}</p>
+		  	</section>
+	  	{{/description}}
+	{{/place}}
+
+	{{#featured_special}}
+  		<div class="featured_special">
+  			{{description}}
+  			{{!TODO: insert link to special}}
+  			<a href="#">Grab it!</a>
+  		</div>
+  	{{/featured_special}}
+
+  	<a href="#">Report a problem</a> |
+  	<a href="#">Post to chatter</a>
+</div>
+
+<!-- need add to favorite support -->

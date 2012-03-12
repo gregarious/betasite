@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.template import Context
-from django.template.loader import get_template
 from django.utils.safestring import SafeUnicode
-from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
+from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
@@ -11,16 +10,17 @@ from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFee
 # for feed collection building
 
 from datetime import datetime, timedelta
-import urllib
-from time import sleep
+
 
 def _places_all():
     return Place.objects.select_related().all()[:10]
 
+
 def _get_checkin_cutoff():
     return datetime.utcnow() - timedelta(hours=3)
 
-def _handle_place_action(request,pid,action):
+
+def _handle_place_action(request, pid, action):
     '''
     Returns a status dict that resulted from the action.
     '''
@@ -58,20 +58,22 @@ def _handle_place_action(request,pid,action):
         else:
             return failure('invalid action')
 
+
 def feed_page(request):
     '''
     View function that handles a page load request for a feed of place
-    items. 
+    items.
 
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
+    feed = PlacesFeed.init_from_places(_places_all(), user=request.user)
 
-    return render(request,'page.html',
-                    {'main_content':feed.to_html(request)})
+    return render(request, 'page.html',
+                    {'main_content': feed.to_html(request)})
 
-def detail_page(request,pid):
+
+def detail_page(request, pid):
     '''
     View displays single places as well as handling many user actions taken
     on these places.
@@ -88,7 +90,7 @@ def detail_page(request,pid):
     action = request.GET.get('action')
     if action:
         # handle the action and get a dict with details about the result
-        result = _handle_place_action(request,pid,action)
+        result = _handle_place_action(request, pid, action)
         # if the request was made via AJAX, client just expects the result dict returned as JSON
         if request.is_ajax():
             return package_json_response(result)
@@ -96,28 +98,29 @@ def detail_page(request,pid):
 
     # build and render place detail viewmodel
     place = Place.objects.select_related().get(id=pid)
-    details = PlaceDetail(place,user=request.user)
+    details = PlaceDetail(place, user=request.user)
     html = details.to_html(request)
 
     html += SafeUnicode(u'\n<hr/><hr/>\n')
 
     # build and render related feeds viewmodel
-    related_feeds = PlaceRelatedFeeds(place,user=request.user)
+    related_feeds = PlaceRelatedFeeds(place, user=request.user)
     html += related_feeds.to_html(request)
 
-    # as long as there was no AJAX-requested action, we will return a fully rendered new page 
-    return render(request,'page.html',
-            Context({'main_content':html}))
+    # as long as there was no AJAX-requested action, we will return a fully rendered new page
+    return render(request, 'page.html',
+            Context({'main_content': html}))
 
-## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
+
 @jsonp_response
 def feed_app(request):
-    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
+    feed = PlacesFeed.init_from_places(_places_all(), user=request.user)
     # TODO: revisit this 'items' hack
     return feed.to_data()['items']   # decorator will handle JSON response wrapper
 
+
 @jsonp_response
-def detail_app(request,pid):
+def detail_app(request, pid):
     place = Place.objects.select_related().get(id=pid)
-    details = PlaceDetail(place,user=request.user)
+    details = PlaceDetail(place, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper

@@ -5,14 +5,23 @@
 define(function(){
 	'use strict';
 	// all structure comes from API call
-	return {
-		PlacesFeedItem: Backbone.Model.extend(),
+	var PlacesFeedItem = Backbone.Model.extend();
 	
-		PlacesFeed: Backbone.Collection.extend({
-			model: this.PlacesFeedItem,
-			url: obid.utils.to_api('places/app/feed'),
-			// for debugging in the browser, use syncJSONP plugin
-			sync: obid.settings.BROWSER_DEBUG ? Backbone.syncJSONP : Backbone.sync
-		})
+	var PlacesFeed = Backbone.Collection.extend({
+		model: PlacesFeedItem,
+		url: obid.utils.to_api('places/app/feed'),
+		// for debugging in the browser, use syncJSONP plugin
+		sync: obid.settings.BROWSER_DEBUG ? Backbone.syncJSONP : Backbone.sync
+	});
+
+	var PlacesDetail = Backbone.Model.extend({
+		urlRoot: obid.utils.to_api('places/app')
+	});
+	
+	// return the models wrapped up in a module object
+	return {
+		PlacesFeedItem: PlacesFeedItem,
+		PlacesFeed: PlacesFeed,
+		PlacesDetail: PlacesDetail
 	};
 });

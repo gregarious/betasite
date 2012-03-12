@@ -5,10 +5,10 @@ Corresponding ViewModel: places.viewmodels.PlaceDetail
 
 Context variables:
     place:      		Place object with extra fields (e.g. url, hours)
+    	-- Note that place.location will have an optional directions_link field
     is_favorite:		boolean (optional)
     tag_list:			a TagList RenderableViewModel
     featured_special: 	Offer object (optional)
-    directions_link:	Google Maps link (optional)
 {% endcomment %}
 
 {% load self_render from viewmodel_tags %}
@@ -33,8 +33,8 @@ Context variables:
 			{% if place.location.address %}
 				<li>
 				{{ place.location.address }}
-				{% if directions_link %}
-					<a href="{{directions_link}}">(directions)</a>
+				{% if place.location.directions_link %}
+					<a href="{{place.location.directions_link}}">(directions)</a>
 				{% endif %}
 				</li>
 			{% endif %}

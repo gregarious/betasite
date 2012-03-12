@@ -38,22 +38,24 @@ $(function() {
         var configuringApp = $.Deferred();
 
         // TODO: make this more selective script loading. For now just load it all up front.
-        require(["models/places","views/places_feed"],function(models,views) {
+        require(["models/places","views/places_feed","views/place_detail"],function(models,feed_views,detail_views) {
 
             var AppRouter = Backbone.Router.extend({
                 routes: {
                     '':'home',
-                    'places':'places_feed',
-                    'placeswines/:id':'places_detail'
+                    'places':'places_feed'
+                    //'places/:id/':'place_detail'
                 },
 
                 home: function(){
-                    this.navigate('places', true);
+                    //alert('home');
+                    this.navigate('/places', true);
                 },
 
                 places_feed: function(){
+                    //alert('feed');
                     this.feed = new models.PlacesFeed();
-                    this.feedView = new views.PlacesFeedView({model:this.feed});
+                    this.feedView = new feed_views.PlacesFeedView({model:this.feed});
                     console.log('spinner on');
                     // This call is asynchronous. Will reset the collection when it returns, which
                     //  will DYNAMICALLY insert items into the rendered HTMLElement (feedView.el).
@@ -64,6 +66,20 @@ $(function() {
 
                     // THIS "el" CONTENT IS NOT STATIC! See note above
                     $('#container').html(this.feedView.render().el);
+                },
+
+                place_detail: function(id){
+                    //alert('detail');
+                    this.place = new this.PlacesDetail({id:id});
+                    this.detailView = new detail_views.PlaceDetailView();
+
+                    console.log('spinner on');
+                    this.place.fetch({
+                        success: function(collection,response) { console.log('success!'); console.log('spinner off'); },
+                        error: function(collection,response) { console.log('error! ' + response.statusText); console.log('spinner off'); }
+                    });
+
+                    $('#container').html(this.detailView.render().el);
                 }
             });
             
