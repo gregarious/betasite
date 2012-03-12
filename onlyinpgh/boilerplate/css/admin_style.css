@@ -114,11 +114,7 @@ img {
 }
 #site-content {
   height: 100%;
-  /*width: 20%;*/
-
   margin: auto;
-  /*padding: 1em;*/
-
   position: relative;
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
@@ -128,10 +124,6 @@ img {
 
   box-sizing: border-box;
   /* Opera/IE 8+ */
-
-  /*overflow: auto;*/
-
-  /*top: 5%;*/
 
 }
 #footer-image {
@@ -493,9 +485,6 @@ input[type="checkbox"] {
 .social-icon .social-link {
   float: left;
   margin: 0.5em 0.5em 0 1em;
-}
-.item-content {
-  display: none;
 }
 /* COMPLEMENTARY --------- */
 .progress {
