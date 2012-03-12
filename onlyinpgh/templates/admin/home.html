@@ -1,0 +1,35 @@
+
+{% extends 'admin/admin_base.html' %}
+
+{% block page_title %}[bus name] Admin{% endblock %}
+
+{% block page_header_title %}[bus name] Admin{% endblock %}
+
+{% block content %}
+	<div class="content-container">
+		<nav class="admin-home">
+			<ul>
+				<!-- To profile page with expanded events section in edit mode -->
+				<li id="adminViewProfile">
+					<img src="/static/img/icons/black/anchor.png" />
+					<a href="">See your Page</a>
+				</li>
+				<!-- To profile page with expanded specials section in edit mode -->
+				<li id="adminEditProfile">
+					<img src="/static/img/icons/black/box-edit.png" />
+					<a href="profile/basics">Edit info</a>
+				</li>
+				<!-- To profile page with expanded 'your info' section in edit mode -->
+				<li id="adminSpecials">
+					<img src="/static/img/icons/black/tag-special.png" />
+					<a href="profile/specials">Manage Specials</a>
+				</li>
+				<!-- To single business page as seen by other users -->
+				<li id="adminEvents">
+					<img src="/static/img/icons/black/calendar-alt.png" />
+					<a href="profile/events">Manage Events</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+{% endblock %}

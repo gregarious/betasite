@@ -1,0 +1,43 @@
+
+<div class="form-container first">
+	<form>
+		<label>On the web</label>
+		<div class="inputs">
+			<!-- Placeholder icons -->
+			<input class="social-input" type="text" placeholder="Facebook page" />
+			<div class="signup-social-icon">
+				<img src="http://www.sportswearnet.com/gif/layout/icons/facebook_icon30x30.jpg" />
+			</div>
+			<input class="social-input" type="text" placeholder="Twitter username" />
+			<div class="signup-social-icon">
+				<img src="http://www.littleleague.org/Assets/images/icons/twitter-icon-sm.png" />
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="form-container last">
+	<form>
+		<!-- Selected tags will appear in designated div. User's will be able to remove them by clicking an 'x' in the corner of tag bubble. -->
+		<label>Tags</label>
+		<div class="inputs">
+			<input type="text" placeholder="try 'latte'" /> <!-- Autocomplete -->
+		</div>
+		<div class="inputs">
+			<p>Suggested:</p> <!-- Click one and it moves to current tags div -->
+			<ul>
+				<li>Restaurant</li>
+				<li>Outdoors</li>
+				<li>Awesome</li>
+				<li>Retail</li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+<div class="prev-next">
+	<a href="#item3" name="screen3" class="back panel">&larr; Back</a>
+	<a href="home" name="home" class="next panel">Finish! &rarr;</a>
+</div>
+
+{% include 'admin/progress.html' %}

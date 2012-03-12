@@ -1,0 +1,47 @@
+
+<div class="form-container first">
+	<form>
+		<label>Hours</label>
+		<div class="inputs">
+			<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+		</div>
+	</form>
+
+	<form>
+		<label>Parking</label>
+		<div class="inputs">
+			<div class="check-container">
+				<input type="checkbox" name="street" value="Street" />
+				<label class="checkbox-label">Street</label>
+			</div>
+			<div class="check-container">
+				<input type="checkbox" name="garage" value="Garage" />
+				<label class="checkbox-label">Garage</label>
+			</div>
+			<div class="check-container">
+				<input type="checkbox" name="lot" value="Lot" />
+				<label class="checkbox-label">Parking Lot</label>
+			</div>
+			<div class="check-container">
+				<input type="checkbox" name="good-luck" value="Good Luck" />
+				<label class="checkbox-label">Good Luck</label>
+			</div>
+		</div> <!-- .inputs -->
+	</form>
+</div>
+
+<div class="form-container last">
+	<form>	
+		<label>Desciption</label>
+		<div class="inputs">
+			<textarea placeholder="My business is really cool. If you come here you will be rewarded with good karma, chocolate, and other misc goodies. Thanks for your time."></textarea>
+		</div>
+	</form>
+</div>
+
+<div class="prev-next">
+	<a href="#item1" name="screen1" class="back panel">&larr; Back</a>
+	<a href="#item3" name="screen3" class="next panel">Next &rarr;</a>
+</div>
+
+ {% include 'admin/progress.html' %}

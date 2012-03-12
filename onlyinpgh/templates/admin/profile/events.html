@@ -1,0 +1,28 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_id %}profileEvents{% endblock page_id %}
+
+{% block page_title %}
+	notlaura's Events
+{% endblock page_title %}
+
+{% block page_header_title %}
+	[bus name's]'s Events
+{% endblock %}
+
+{% block content %}
+
+	<div class="content-container">
+		
+		<!-- For each scheduled event, include this  -->
+		{% include "admin/profile/scheduled_event.html" %}
+
+	
+	
+	</div>	<!-- .content-container -->
+	
+{% endblock %}
+
+{% block content_footer %}
+	<p class="submit-item">Add an event...</p>
+{% endblock content_footer %}

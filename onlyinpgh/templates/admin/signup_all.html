@@ -1,0 +1,41 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block page_title %}Business Account Registration{% endblock %}
+
+{% block page_header_title %}Scenable Business Account Registration{% endblock %}
+
+{% block content %}
+
+	<div id="mask">
+
+		<article id="item1" class="item screen1">
+			<!-- <a name="item1"></a> -->
+			<div class="content-container"> 
+				{% include 'admin/signup1.html' %}
+			</div>
+		</article>
+		
+		<article id="item2" class="item screen2">
+			<!-- <a name="item2"></a> -->
+			<div class="content-container">
+				{% include 'admin/signup2.html' %}
+			</div>
+		</article>
+		
+		<article id="item3" class="item screen3">
+			<!-- <a name="item3"></a> -->
+			<div class="content-container">
+				{% include 'admin/signup3.html' %}
+			</div>
+		</article>
+
+		<article id="item4" class="item screen4">
+			<!-- <a name="item4"></a> -->
+			<div class="content-container">
+				{% include 'admin/signup4.html' %}
+			</div>
+		</article>
+
+	</div>
+
+{% endblock %}

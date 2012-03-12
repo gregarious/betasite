@@ -1,0 +1,27 @@
+<li class="item">
+
+	<div class="item-thumb-container">
+		<img class="item-thumb" alt="{% block feed_item_image_alt %}{% endblock %}" src="{% block feed_item_image_url %}{% endblock %}" />
+	</div>
+
+	<section class="item-content-container">
+	
+	  	<h4 class="item-title">
+	  		{% block feed_item_title %}
+		    {% endblock %}
+		</h4>
+
+	    <div class="item-desc">
+	    	{% block feed_item_content %}
+	    	{% endblock %}
+	    </div>
+
+	    {% include "tags.html" %}
+
+		<footer class="item-footer">
+			<a href="">Expand event...</a>
+		</footer>
+
+	</section>
+	
+</li>

@@ -1,0 +1,132 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_title %}
+	notlaura's Specials
+{% endblock page_title %}
+
+{% block page_id %}profileSpecials{% endblock page_id %}
+
+{% block page_header %}
+	notlaura
+{% endblock page_header %}
+
+{% block content_header %}
+	Current Specials
+{% endblock content_header %}
+
+{% block content_body %}
+	
+	<!-- **** Make this an include **** -->
+
+	<!-- Loop this section for existing events with unique id's for each - possibly a template -->
+	<section class="scheduled-item">
+
+		<header>
+			<h3>$5 Head massage</h3>
+		</header>
+
+		<div class="item-content">
+			
+			<div class="profile-section">
+				<ul>
+					<li>Good through {{expiration_date}}</li>
+					<li>{{price}}</li>
+					<li>{{point_value}}</li>
+				</ul>
+				<img class="thumbnail" src="http://www.destination360.com/europe/france/images/s/france-food-dining.jpg" />
+			</div>
+
+			<div class="profile-section">
+				<p>According to Emily Post, napkins may only be used to cover laps, clean up spills, or signal the waiter via semaphore that your table has hit an iceberg. Master restaurant etiquette over a gourmet meal with this cool special.</p>
+			</div>
+					
+			<div class="profile-section">
+				<ul class="profile-tags">
+					<li>Comfortable</li>
+					<li>Relaxing</li>
+					<li>Generous</li>
+					<li>Interesting</li>
+				</ul>
+			</div>
+				
+				<footer>
+					<p class="edit-link">Edit this special...</p>
+				</footer>
+				
+			</article> <!-- .current-items - Specials -->
+
+			<article class="add-item">
+				<header>
+					<h3 id="openSpecialForm" class="add-item-link">Add a special...</h3>
+				</header>
+				<section id="specialForm" class="add-item-form">
+					<div class="form-container">
+						<form>
+							<label>Name</label>
+							<div class="inputs">
+								<input type="text" placeholder="Event name" />
+							</div>
+						</form>
+						<form>
+							<label>Short description</label>
+							<!-- Limit to 150 characters or something -->
+							<div class="inputs">
+								<textarea placeholder="Coolest special EVER! Get mad pizzas and beers tonight ONLY!!"></textarea>
+							</div>
+						</form>
+					</div>
+
+					<div class="form-container">
+						<form>
+							<label>Price</label>
+							<div class="inputs">
+								<input type="text" placeholder="$1,000,000" />
+							</div>
+						</form>
+						<form>
+							<label>Expires</label>
+							<div class="inputs">
+								<input type="text" placeholder="date special expires" /> <!-- Datepicker -->
+								<input type="checkbox" name="no-expiration" /><label class="checkbox-label">Available forever</label>
+							</div>
+						</form>
+						<form>
+							<label># Available</label>
+							<div class="inputs">
+								<input type="text" placeholder="10" /> <!-- Datepicker -->
+								<input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label>
+							</div>
+						</form>
+					</div>
+
+					<div class="form-container last">
+						<form>
+							<label>Upload an Image</label>
+							<div class="inputs">
+								<input type="text" placeholder="Image uploader" />
+								<p class="tip">Leave blank to use your profile picture.</p>
+								<img class="uploaded-image" src="http://www.cellspace.org/new/sites/default/files/CELLspaceEvent.jpg">
+							</div>
+						</form>
+
+						<form>
+							<label>Tags</label>
+							<div class="inputs">
+								<input type="text" placeholder="try 'birthday'" /> <!-- Autocomplete -->
+								<p class="tip" id="showPopularTags">See popular tags...</p>
+							</div>
+						</form>
+					</div>
+
+					<div class="submit-item">
+						Add Special
+					</div>
+				
+
+				</section>
+
+{% endblock content_body %}
+			
+{% block content_footer %}
+	<p class="submit-item">Add a special...</p>
+{% endblock content_footer %}
