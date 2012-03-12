@@ -45,21 +45,29 @@ $(function() {
              "views/nav_header"],
             function(models,feed_views,detail_views,header_views) {
 
-            // TODO: move into some backbone plugin/util places
+            // TODO: move these functions into some backbone plugin/util places
+            // Function will fill the html of the given selector with the view content
             var showView = function(selector,view) {
                 // TODO: save view connected to each selector
                 $(selector).html(view.render().el);
                 return view;
             };
 
-            var fetchAndShow = function(selector,model,ViewClass,spinner) {
+            // Function will fetch all data necessary to fill given model, create
+            //  a view with the model, and render that view to the given selector.
+            //
+            // Arguments:
+            //  * view_func: a function that takes in a model/collection and outputs
+            //      a Backbone.View instance
+            var fetchAndShow = function(selector,model,view_func,spinner) {
                 if(spinner) {
-                    $(selector).html('<div class="spinner">spinning...</div>');
+                    $(selector).html('<div class="spinner">Loading...</div>');
                 }
                 model.fetch({
                     // callback could return model or collection as first arg
                     success: function(model,response) {
-                        showView(selector, new ViewClass({model: model}));
+                        // TODO: should we be doing a call() here?
+                        showView(selector, view_func(model));
                     },
                     error: function(model,response) {
                         $(selector).html('<p>error: ' + response.statusText+'</p>');
@@ -83,44 +91,37 @@ $(function() {
                 },
 
                 home: function(){
-                    console.log('Router: home');
-                    // // Temporary redirect
-                    // this.navigate('places', true);
+                    // no-op for now
                 },
 
                 places_feed: function(){
-                    console.log('Router: places_feed');
                     var feed = new models.PlacesFeed();
-                    fetchAndShow('#container',feed,feed_views.PlacesFeedView,true);
-                    // feed.fetch({
-                    //     success: function(collection,response) {
-                    //         console.log('spinner off');
-                    //         showView('#container',
-                    //             new feed_views.PlacesFeedView({model:collection}));
-                    //     },
-                    //     error: function(collection,response) {
-                    //         console.log('error! ' + response.statusText);
-                    //         console.log('spinner off');
-                    //     }
-                    // });
+                    fetchAndShow('#container', feed, function(collection) {
+                        return new feed_views.PlacesFeedView({model: collection});
+                    }, true);
                 },
 
                 place_detail: function(id){
-                    console.log('Router: place_detail');
                     var place = new models.PlaceDetail({id:id});
+                    fetchAndShow('#container', place, function(model) {
+                        return new detail_views.PlaceDetailView({model: model});
+                    }, true);
+                },
 
-                    fetchAndShow('#container',place,detail_views.PlaceDetailView,true);
-                    // place.fetch({
-                    //     success: function(model,response) {
-                    //         console.log('spinner off');
-                    //         showView('#container',
-                    //             new detail_views.PlaceDetailView({model:model}));
-                    //     },
-                    //     error: function(model,response) {
-                    //         console.log('error! ' + response.statusText);
-                    //         console.log('spinner off');
-                    //     }
-                    // });
+                events_feed: function() {
+                    $("#container").html('events feed!');
+                },
+
+                event_detail: function(id) {
+                    $("#container").html('event ' + id + ' detail!');
+                },
+
+                specials_feed: function() {
+                    $("#container").html('specials feed!');
+                },
+
+                special_detail: function(id) {
+                    $("#container").html('special' + id + ' detail!');
                 }
             });
             
