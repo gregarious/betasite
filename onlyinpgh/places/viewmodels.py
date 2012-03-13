@@ -1,13 +1,14 @@
 from onlyinpgh.common.core.viewmodels import ViewModel, RenderableViewModel
 
-from onlyinpgh.common.viewmodels import FeedViewModel
-from onlyinpgh.tags.viewmodels import TagList
-from onlyinpgh.identity.models import FavoriteItem
-
-from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.events.models import Event
 from onlyinpgh.offers.models import Offer
 from onlyinpgh.places.models import Place
+from onlyinpgh.identity.models import FavoriteItem
+
+from onlyinpgh.common.viewmodels import FeedViewModel, FeedCollection
+from onlyinpgh.tags.viewmodels import TagList
+
+from onlyinpgh.common.utils import process_external_url
 
 import urllib
 
@@ -41,7 +42,6 @@ def place_to_data(place, place_meta):
     data = {
         'id':       place.id,
         'name':     place.name,
-        'description':     place.description,
         'location': location_to_data(place.location) if place.location else None,
         'directions_link': to_directions_link(place.location),
     }
@@ -60,7 +60,7 @@ class PlaceFeedItem(RenderableViewModel):
         }
         # temporary placeholder
         if not self._meta['image_url']:
-            self._meta['image_url'] = '/static/img/default_place.png'
+            self._meta['image_url'] = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
 
         self.tag_list = TagList(place.tags.all())
         if user:
@@ -74,7 +74,7 @@ class PlaceFeedItem(RenderableViewModel):
 
 
 class PlacesFeed(FeedViewModel):
-    class_name = 'places'
+    class_name = 'places-feed'
 
     @classmethod
     def init_from_places(cls, places, user=None):
@@ -93,6 +93,9 @@ class PlaceDetail(RenderableViewModel):
         self._place = place
         self._meta = {key: place.get_meta(key)
                         for key in ('image_url', 'hours', 'phone', 'url')}
+
+        if 'url' in self._meta:
+            self._meta['url'] = process_external_url(self._meta['url'])
 
         # temporary placeholder
         if not self._meta['image_url']:
@@ -113,7 +116,6 @@ class PlaceRelatedFeeds(FeedCollection):
     def __init__(self, place, user=None):
         # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here,
         #  but using places for the sake of testing and mockup styling
-<<<<<<< HEAD
         places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
         places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
         places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
@@ -127,18 +129,3 @@ class PlaceRelatedFeeds(FeedCollection):
     def to_html(self, request=None):
         print 'PlaceRelatedFeeds:', self.__dict__
         return super(PlaceRelatedFeeds, self).to_html(request)
-=======
-        places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
-        places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
-        places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4],user=user)
-
-        feed_tuples = [ ('Places 1',places1_feed),
-                        ('Places 2',places2_feed),
-                        ('Places 3',places3_feed),
-                        ]
-        super(PlaceRelatedFeeds,self).__init__(feed_tuples)
-    
-    def to_html(self,request=None):
-        print 'PlaceRelatedFeeds:', self.__dict__  
-        return super(PlaceRelatedFeeds,self).to_html(request)
->>>>>>> refs/heads/place-templates-markup
