@@ -146,7 +146,10 @@ Context variables:
 				// TODO: add spinner
 				// fail/always actions are the same despite the promise type
 				changingFavorite.fail( function(msg) {
-					alert('Oops! ' + msg);	// TODO: do something better
+					$('.single-thumb-container').append('<div id="favoriteError" class="error">Oops! ' + msg + '</div>'); // Will want to customize the 'not authenticated' msg to include link to login/signup
+
+					// Maybe this isn't needed - without, error duplicated everytime favorited 
+					$('#favoriteError').delay(2000).fadeOut(300);	// TODO: do something better
 				});
 				changingFavorite.always( function() {
 					$('.changing-fav-spinner').fadeOut(100);
