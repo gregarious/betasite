@@ -13,34 +13,29 @@ Context variables:
 
 {% load self_render from viewmodel_tags %}
 
-<div id="wrapper" class="single">
-
-	<article id="placesSingle" class="single-item">
-
-		<header class="single-item-header">
-			<div class="item-thumb-container">
-				<img class="item-thumb" height="50" width="50" alt="{{ place.name }}" src="{{ place.image_url }}" />
-			</div>
-
-			<div class="item-content-container">
-				<h2 class="item-title">
-				  	<em>Place:</em> {{ place.name }}
-				</h2>
-			</div>
-		</header>
-
-		<ul class="single-item-details">
+<header class="single-header">		
+	<h2 class="single-title">{{ place.name }}</h2>
+	<div class="single-thumb-container">
+		<img alt="{{ place.name }}" src="{{ place.image_url }}" height="500" width="500" />
+		<ul class="utility-nav">
+			{% if is_favorite %}
+				<li><a href="?action=unfav" class="favbutton remove" title="Remove Favorite"></a></li>
+			{% else %}
+				<li><a href="?action=fav" class="favbutton add" title="Add Favorite"></a></li>
+			{% endif %}
+			<li><a href="#" class="report" title="Report a problem"></a></li>
+			<li><a href="#" class="post-to-chatter" title="Post to Chatter"></a></li>
+		</ul>
+	</div>
+	<div class="single-details">
+		<ul>
 			{% if place.location.address %}
-				<li>
+				<li class="address">
 				{{ place.location.address }}
 				{% if place.location.directions_link %}
 					<a href="{{place.location.directions_link}}">(directions)</a>
 				{% endif %}
 				</li>
-			{% endif %}
-
-			{% if place.url %}
-				<li><a href="{{ place.url }}">{{ place.url }}</a></li>
 			{% endif %}
 
 			{% if place.hours %}
@@ -52,58 +47,96 @@ Context variables:
 			{% endif %}
 
 			<li>Parking: Street</li>
+
+			{% if place.url %}
+				<li><a href="{{ place.url }}">Visit our website</a></li>
+			{% endif %}
+
 		</ul>
+			{% self_render tag_list %}
+	</div>
+</header>
 
-		{% self_render tag_list %}
+<article class="single-content">
 
-		<p class="favorite-p">
-		{% if is_favorite %}
-			<a href="?action=removefav" class="favbutton remove">Remove from Favorites</a>
-		{% else %}
-			<a href="?action=addfav" class="favbutton add">Add to Favorites</a>
+	<nav class="single-nav">
+		<ul>
+			<li><a id="placeAtAGlance"></a></li>
+			<li><a id="placeEvents"></a></li>
+			<li><a id="placeSpecials">Specials</a></li>
+			<li><a id="placeMap">Map</a></li>
+			<li><a id="placeChatter">Chatter</a></li>
+			<li><a id="placeRelated">Related</a></li>
+		</ul>
+	</nav>
+
+	<section class="single-section" id="placeAtAGlance">
+		At a glance
+	</section>
+	<section class="single-section" id="placeEvents">
+		Events
+	</section>
+	<section class="single-section" id="placeSpecials">
+		Specials
+	</section>
+	<section class="single-section" id="placeMap">
+		Map
+	</section>
+	<section class="single-section" id="placeChatter">
+		Chatter
+	</section>
+	<section class="single-section" id="placeRelated">
+		Related
+	</section>
+
+<!-- 	<section class="single-section" id="{{place_section_id}}">
+
+		<h1 class="title">{{place_section_title}}</h1>
+		
+		{% if place.description %}	
+		  	<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>	  	
 		{% endif %}
-		</p>
+ -->
+			<!-- <div class="single-featured-special">
+				The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
+				<a class="grabbit">Grabbit!</a>
+			</div> -->
+		
 
-		{% if place.description %}
-			<section class="single-item-desc">
-		  		<p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>
-		  	</section>
-	  	{% endif %}
+<!-- 	</section> -->
 
-	  	{% if featured_special %}
-	  		<div class="featured_special">
-	  			{{featured_special.description}}
-	  			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-	  		</div>
-	  	{% endif %}
-
-	  	<a href="#">Report a problem</a> |
-	  	<a href="#">Post to chatter</a>
-</div>
+	{% if featured_special %}
+		<aside class="single-featured-special">
+			{{featured_special.description}}
+			<a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
+		</aside>
+	{% endif %}
+	
+	<!-- Section feed goes here. At a glance includes all feeds. -->
+</article>
 
 <script type="text/javascript">
 	require(['jquery','helpers/place_actions'],function($,place_actions) {
 		// handle the add/remove favorite button
 		$(".favbutton").click( function(event) {
 			var link = $(this);		// save the link element that fired the event
-
+			$('.favbutton').html('<p class="changing-fav-spinner">spinner</p>');
 			// depending on the button class, either attempt adding or 
 			// removing favorite state of place
 			var changingFavorite;
 			if (link.hasClass('add')) {
 				changingFavorite = place_actions.addFavorite({{place.id}});
 				changingFavorite.done( function(msg) {
-					link.text('Remove from Favorites')
-						.removeClass('add')
+					link.removeClass('add')
 						.addClass('remove');
 				});
 			}
 			else if (link.hasClass('remove')) {
 				changingFavorite = place_actions.removeFavorite({{place.id}});
 				changingFavorite.done( function(msg) {
-					link.text('Add to Favorites')
-						.removeClass('remove')
+					link.removeClass('remove')
 						.addClass('add');
+						// alert('Oops! ' + msg);	// TODO: do something better
 				});
 			}
 
@@ -113,10 +146,10 @@ Context variables:
 				// TODO: add spinner
 				// fail/always actions are the same despite the promise type
 				changingFavorite.fail( function(msg) {
-					alert('Failure: ' + msg);	// TODO: do something better
+					alert('Oops! ' + msg);	// TODO: do something better
 				});
 				changingFavorite.always( function() {
-					// TODO: remove spinner
+					$('.changing-fav-spinner').fadeOut(100);
 				});				
 			}
 

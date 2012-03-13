@@ -8,10 +8,9 @@ Context variables:
 {% endcomment %}
 
 <div class="tag-list">
-Tags:
-<ul>
-{% for tag in tags %}
-    <li><a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
-{% endfor %}
-</ul>
+	<ul>
+	{% for tag in tags %}
+	    <li><a class="meta" href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
+	{% endfor %}
+	</ul>
 </div>

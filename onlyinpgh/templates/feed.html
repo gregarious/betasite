@@ -10,11 +10,8 @@ Context variables:
 
 {% load self_render from viewmodel_tags %}
 
-<div class="{{class_name}}">
+<ul class="{{class_name}} feed">
 	{% for item in items %}
 		{% self_render item %}
-		{% if not forloop.last %}
-			<hr/>
-		{% endif %}
 	{% endfor %}
-</div>
+</ul>

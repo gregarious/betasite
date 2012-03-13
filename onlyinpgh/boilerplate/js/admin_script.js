@@ -1,4 +1,6 @@
+
 jQuery(document).ready( function(){
+
 
 	// slideToggle the add event/special forms
 	var expand_form = function(title, content) {

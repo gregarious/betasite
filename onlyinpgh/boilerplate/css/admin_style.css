@@ -4,7 +4,7 @@
 
 @import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
 body {
-  width: 100%;
+  margin: 0 auto;
   *zoom: 1;
 }
 body:before, body:after {
@@ -13,6 +13,11 @@ body:before, body:after {
 }
 body:after {
   clear: both;
+}
+.border-box {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .border-box {
   -webkit-box-sizing: border-box;
@@ -116,6 +121,9 @@ img {
   height: 100%;
   margin: auto;
   position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
 
@@ -162,6 +170,9 @@ img {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   width: 50%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   /* Safari/Chrome, other WebKit */
 
@@ -232,6 +243,18 @@ form:after {
 }
 label {
   color: #2C525D;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 21.25%;
@@ -253,6 +276,18 @@ input[type="text"], textarea {
   -webkit-box-shadow: 0.05em 0.05em 0.1em #ffffff;
   -moz-box-shadow: 0.05em 0.05em 0.1em #ffffff;
   box-shadow: 0.05em 0.05em 0.1em #ffffff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 93.75%;
@@ -276,6 +311,18 @@ input[type="text"]:focus, textarea:focus {
   box-shadow: 0 0 0.2em #2c525d;
 }
 .inputs {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 72.91666666666666%;
@@ -292,12 +339,36 @@ input[type="checkbox"] {
   text-align: left;
 }
 .check-container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
 }
 .form-container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 97.91666666666666%;
@@ -325,6 +396,22 @@ input[type="checkbox"] {
 }
 /* NAVIGATION ------------ */
 .prev-next {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
   *zoom: 1;
   margin-top: 1em;
 }
@@ -398,6 +485,18 @@ input[type="checkbox"] {
   clear: both;
 }
 .admin-home li {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 47.91666666666667%;
@@ -457,6 +556,18 @@ input[type="checkbox"] {
   float: right;
 }
 .profile-section {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 97.91666666666666%;
@@ -471,6 +582,18 @@ input[type="checkbox"] {
 }
 .social-icon {
   clear: both;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
   display: inline;
   float: left;
   width: 97.91666666666666%;

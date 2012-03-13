@@ -1,6 +1,11 @@
 .DS_Store
+<<<<<<< HEAD
 www/js/settings.js
 
 
 onlyinpgh/boilerplate/css/fonts/*	
 onlyinpgh/boilerplate/img/*
+=======
+onlyinpgh/boilerplate/css/fonts/
+onlyinpgh/boilerplate/img/Oakland/
+>>>>>>> refs/heads/place-templates-markup

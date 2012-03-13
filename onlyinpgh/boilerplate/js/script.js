@@ -1,78 +1,48 @@
 
-
-/* Credits:
-*** Andi Smith, Using jQuery .on() and .off()
-  * http://www.andismith.com/blog/2011/11/on-and-off/
-*** Queness, Simple jQuery Modal Window Tutorial
-  * http://www.queness.com/post/77/simple-jquery-modal-window-tutorial
-*/
-
-
 jQuery(document).ready( function($) {
 
-	$('.expand-search').click( function() {
-		$('#site-search').slideToggle(200);
-	});
+	// this doesn't get each one, just first first
+	/*$('.item').find('.tag-list ul li a').first().css('margin-left', '0');*/
 
-	$('#expandPostForm').click( function() {
-		$('.post-form').slideToggle(200);
-	});
+	// Highlight the current menu item based on URL.
+	// Alter this so it ignores id paths - i.e. Places is stil highlighted at /places/229
 
-	$('.back').click( function() {
-		parent.history.back();
-		return false;
-	});
-
-	$('.checkin').click(function(){
-		$('#checkinPoints').fadeIn(300).delay(800).fadeOut(300);
-	});
-
-
-
-
-	/*$('#submitSearch').click(function() {
-		printSelectedTags();
-	});
-
+	loc = location.pathname;
+	menu_item = $('#site-nav').find('a[href$="'+loc+'"]');
 	
-	// Make main nav select items links - somewhat a hack, will likely need to change
-	$('#select-choice-a').change( function() {
-
-		var menuItem = $(this).attr('value');		
-		window.location = "/" + menuItem;
-
-	});
-
-
-	function printSelectedTags() {
-		$('#tagSearchChoice option').each( function() {
-			$('#searchSummary').text($(this).val());
-		});
+	if(menu_item.attr('href') == loc) {
+		menu_item.addClass('current-page');
 	}
 
-	$('#expandQuickSearch').click( function() {
-		$('.quick-search').slideToggle(300);
-	})
-		*/
+	/////////////////
+	/// BROADCAST ///
+	/////////////////
+	
+	// Hide the broadcast for 1 secs, then slide down
+	$('#broadcast').delay(1000).slideDown(500);
+
+	// Function to cycle through the broadcast items - eventually will be loading new ones
+	// http://stackoverflow.com/questions/5258277/rotating-an-unordered-list-automatically-with-jquery
+	function rotateBroadcast() {
+		var prev = $("#broadcast li:first-child");
+		$.unique(prev).each(function(i) {
+			$(this).delay(i*1000).slideUp(200, function() {
+				$(this).appendTo(this.parentNode).slideDown(200);
+			});
+		});
+	}
+	window.setInterval(rotateBroadcast,5000);
+
+	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
+
+	$.each(pages, function(i, id) {
+		$('a.'+id).click(function() {
+			$('.single-section').delay(200).hide();
+			$(id+'.single-section').fadeIn(200); // Will replace this with a .get();
+		});
+	});
+
+
 }); // document.ready
-
-
-
-/*****************/
-/*** BASIC MAP ***/
-/*****************/
-
-
-/*function initializeMap() {
-
-	var latlng = new google.maps.LatLng(40.381423,-80.222168);
-	var myOptions = {
-		zoom: 12,
-		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-
-	var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-}*/
 
 
