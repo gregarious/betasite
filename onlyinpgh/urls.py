@@ -58,4 +58,14 @@ urlpatterns = patterns('',
 
     # url(r'^ajax/hot_feed$', home_views.ajax_hot_page)
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
+
+    # Business Admin generic templates
+    url(r'^bus_admin/signup$', direct_to_template, {'template':'admin/signup_all.html'}),
+    url(r'^bus_admin/home$', direct_to_template, {'template':'admin/home.html'}),
+    url(r'^bus_admin/profile/basics$', direct_to_template, {'template':'admin/profile/basics.html'}),
+    url(r'^bus_admin/profile/events$', direct_to_template, {'template':'admin/profile/events.html'}),
+    url(r'^bus_admin/profile/specials$', direct_to_template, {'template':'admin/profile/specials.html'})
+
+
+
 )
