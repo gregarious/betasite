@@ -44,23 +44,23 @@ Expects the following view data:
 		<ul class="single-item-details">
 			{{#location}}
 				<li>
-				{{ address }}
-				{#directions_link}}
-					<a href="{{.}}">(directions)</a>
-				{/directions_link}}
+				{{address}}
+				{{#directions_link}}
+					<a href="{{directions_link}}">(directions)</a>
+				{{/directions_link}}
 				</li>
 			{{/location}}
 
 			{{#url}}
-				<li><a href="{{.}}">{{.}}</a></li>
+				<li>Website: <a href="{{url}}">{{url}}</a></li>
 			{{/url}}
 
-			{#hours}}
-		 		<li>Hours: {{.}}</li>
+			{{#hours}}
+		 		<li>Hours: {{hours}}</li>
 		 	{{/hours}}
 
 		 	{{#phone}}
-		  		<li>Phone: {{.}}</li>
+		  		<li>Phone: {{phone}}</li>
 			{{/phone}}
 
 			<li>Parking: Street</li>
@@ -90,7 +90,7 @@ Expects the following view data:
 	{{#place}}
 		{{#description}}
 			<section class="single-item-desc">
-		  		<p>{{.}}</p>
+		  		<p>{{description}}</p>
 		  	</section>
 	  	{{/description}}
 	{{/place}}
