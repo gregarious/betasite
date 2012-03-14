@@ -21,7 +21,90 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-    {% autoescape off %}
-    {{main_content}}
-    {% endautoescape %}
+<!-- <div id="top-bar">
+	<span id="other-scenes">
+		Related scenes:
+	</span>
+	<span id="debug-user">
+		{% if user %}
+			Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
+		{% else %}
+			<a href="/login">Login</a>
+		{% endif %}
+	</span>
+</div> -->
+	
+<header id="site-header">		
+	<!-- <img id="header-image" src="/static/img/oakland/header/crude_brew_960.jpg" /> -->
+	<div class="wrap">
+		<hgroup>
+			<h1 id="site-title" class="global-heading">Oakland</h1>
+			<h2 id="site-tagline" class="global-heading">Scene</h2>
+		</hgroup>
+		
+		<input id="site-search" type="search" placeholder="Search the scene..." />	
+
+	</div>
+
+</header>
+
+<div class="wrap">
+	
+	<nav id="site-nav">
+	    <ul>
+			<li><a href="/" id="siteHot">Hot!</a></li>
+			<li><a href="/events/" id="siteEvents">Events</a></li>
+			<li><a href="/places/" id="sitePlaces">Places</a></li>
+			<li><a href="/specials/" id="siteSpecials">Specials</a></li>
+			<li><a href="/chatter/" id="siteChatter">Chatter</a></li>
+			<li><a href="/news/" id="siteNews">News</a></li>
+			<li><a id="siteJobs">Jobs</a></li>
+		</ul>
+	</nav>
+
+	<div id="site-content" role="main">
+		<div class="feed-header">
+			<h1 class="page-title">Places</h1> <!-- Need a var for feed name here -->
+			<span class="add-filter">Filter Places</span>
+			<div class="filter-form">
+			</div>
+		</div>
+	
+	    {% autoescape off %}
+		    {{main_content}}
+	    {% endautoescape %}
+
+	</div>
+	
+	<aside id="site-sidebar" role="complementary">
+		<div id="debug-user" class="meta">
+			{% if user %}
+				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | 99 Burgher | <a class="logout" href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
+		</div>
+		<h3>Scenecast</h3>
+		<ul id="broadcast">
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+			<li>Sample sidebar content</li>
+		</ul>
+	</aside>
+
+	<footer id="site-footer">
+		<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
+	</footer>
+
+</div>
+
 {% endblock %}

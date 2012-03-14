@@ -1,4 +1,5 @@
 from django.template.loader import get_template
+from django.shortcuts import render
 
 # work in progress. don't use self_render template tag till fixed
 
@@ -36,6 +37,18 @@ from django.template.loader import get_template
 #                                 tag_type=tag_type, class_label=class_label,
 #                                 id_label=id_label, attrs=attrs)
 
+def _wrap_content(content, tag_type=None, class_label=None, id_label=None, attrs={}):
+    '''
+    Helper for wrapping content in elements.
+    '''
+    if not tag_type:
+        return content
+
+    attrs.update({'class': class_label, 'id': id_label})
+    attr_strs = [('%s="%s"' % (key, str(val).replace(r'"', r'\"')))
+                    for key, val in attrs.items() if val is not None]
+    return '<%s %s>\n%s\n</%s>' % (tag_type, ' '.join(attr_strs), content, tag_type)
+
 
 def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_label=None, attrs={}):
     '''
@@ -64,9 +77,20 @@ def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_la
     except AttributeError:
         rendered = get_template(template).render(viewmodel.to_context())
 
-    if tag_type:
-        attrs.update({'class': class_label, 'id': id_label})
-        attr_strs = [('%s="%s"' % (key, str(val).replace(r'"', r'\"')))
-                        for key, val in attrs.items() if val is not None]
-        rendered = '<%s %s>\n%s\n</%s>' % (tag_type, ' '.join(attr_strs), rendered, tag_type)
-    return rendered
+    return _wrap_content(rendered,
+                            tag_type=tag_type, class_label=class_label,
+                            id_label=id_label, attrs=attrs)
+
+
+def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs={}):
+    '''
+    Simple helper to render a list of elements. Will wrap the elements
+    in an outer wrapper with attributes as specified.
+    '''
+    return _wrap_content('\n'.join(elements),
+                            tag_type=tag_type, class_label=class_label,
+                            id_label=id_label, attrs=attrs)
+
+
+def render_to_page(content, request=None):
+    return render(request, 'page.html', {'main_content': content})

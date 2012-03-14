@@ -1,0 +1,39 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block page_title %}Business Account Registration{% endblock %}
+
+{% block page_header_title %}Scenable Business Account Registration{% endblock %}
+
+{% block page_id %}signup{% endblock %}
+
+{% block content %}
+
+	<div id="mask">
+
+		<article id="panelOne" class="panel signup">
+			<div class="content-container"> 
+				{% include 'admin/signup1.html' %}
+			</div>
+		</article>
+		
+		<article id="panelTwo" class="panel signup">
+			<div class="content-container">
+				{% include 'admin/signup2.html' %}
+			</div>
+		</article>
+		
+		<article id="panelThree" class="panel signup">
+			<div class="content-container">
+				{% include 'admin/signup3.html' %}
+			</div>
+		</article>
+
+		<article id="panelFour" class="panel signup">
+			<div class="content-container">
+				{% include 'admin/signup4.html' %}
+			</div>
+		</article>
+
+	</div>
+
+{% endblock %}

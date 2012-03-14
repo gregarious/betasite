@@ -1,0 +1,15 @@
+<li class="item">
+	<div class="item-thumb-container">
+		{% block item_thumb %}{% endblock %}
+	</div>
+	<section class="item-content">
+		<h4 class="item-title">
+			<a href="">
+				{% block scheduled_item_title %}
+		    	{% endblock %}
+		   	</a>
+		</h4>
+		{% block scheduled_item_content %}{% endblock %}
+		<!-- tags here -->
+	</section>
+</li>

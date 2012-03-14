@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('onlyinpgh.places.views',
     url(r'^$', 'feed_page'),

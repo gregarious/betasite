@@ -75,6 +75,7 @@ APPEND_SLASH = False
 # Additional locations of static files
 STATICFILES_DIRS = (
     to_abspath('resources'),
+    to_abspath('boilerplate'),
 )
 
 # List of finder classes that know how to find static files in

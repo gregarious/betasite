@@ -1,0 +1,34 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block page_title %}bus name's Specials{% endblock %}
+
+{% block page_header_title %}
+	[bus name's] Specials
+{% endblock %}
+
+{% block page_class %}admin specials{% endblock %}
+
+{% block content %}
+
+	<div class="content-container">
+		<section class="scheduled-items">
+			<header class="feed-header">
+				<h2 class="feed-title">Current Specials</h2>
+			</header>
+			<ul class="feed">	
+				<!-- For each scheduled event, include this  -->
+				{% include "admin/profile/scheduled_special.html" %}
+				{% include "admin/profile/scheduled_special.html" %}
+				{% include "admin/profile/scheduled_special.html" %}
+			</ul>
+		</section>
+		<section class="add-item">
+			
+		</section>
+	</div>	<!-- .content-container -->
+	
+{% endblock %}
+
+{% block content_footer %}
+	<p class="submit-item">Add a Special...</p>
+{% endblock content_footer %}

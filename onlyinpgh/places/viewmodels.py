@@ -48,8 +48,8 @@ def place_to_data(place, place_meta):
 
 
 class PlaceFeedItem(ViewModel):
-    def __init__(self, place, user=None, request=None):
-        super(PlaceFeedItem, self).__init__(request=request)
+    def __init__(self, place, user=None):
+        super(PlaceFeedItem, self).__init__()
         self._place = place
         # FeedItems only need the image_url
         self._meta = {
@@ -72,6 +72,7 @@ class PlaceFeedItem(ViewModel):
 
 class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
+        super(PlaceDetail, self).__init__()
         self._place = place
         self._meta = dict([(key, place.get_meta(key))
                         for key in ('image_url', 'hours', 'phone', 'url')])

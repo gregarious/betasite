@@ -1,0 +1,36 @@
+<!doctype html>
+
+<head>
+
+	<title>Scenable | {% block page_title %}
+	{% endblock page_title %}</title>
+	<link rel="stylesheet" href="/static/css/admin_style.css">
+
+</head>
+
+<body>
+
+	<header id="site-header">
+		<h1>{% block page_header_title %}{% endblock %}</h1>
+		{% block page_header_content %}{% endblock %}
+	</header>
+
+	<div id="site-content" class="{% block page_class %}{% endblock %}">
+		{% block content %}{% endblock %}
+	</div>
+
+	<footer id="site-footer">
+		<p id="colophon">What up, #page-footer!</p>
+	</footer>
+
+	<!-- <div id="footer-image"></div> -->
+
+
+	<!-- Scripts -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
+	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
+	<script src="/static/js/admin_script.js"></script>
+
+</body>
+</html>

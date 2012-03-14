@@ -1,20 +1,19 @@
 <li class="item">
+
 	<div class="item-thumb-container">
 		<img class="item-thumb" alt="{{item.name}}" src="{{item.image_url}}" />
 	</div>
 
-	<section class="item-content-container">
-	
+	<section class="item-content">
 	  	<h4 class="item-title">
 	  		{% block feed_item_title %}
 		    {% endblock %}
 		</h4>
-
 	    <div class="item-desc">
 	    	{% block feed_item_content %}
 	    	{% endblock %}
 	    </div>
 		<span class="arrow-to-single"></span>
 	</section>
- 	</a> 
+	
 </li>

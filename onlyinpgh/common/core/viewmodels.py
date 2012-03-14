@@ -9,16 +9,7 @@ class ViewModel(object):
     '''
     Abstract base class for ViewModels
     '''
-    # TODO: might want to move request back to some rendering function?
-    # requests aren't really part of a ViewModel inherently, only at the
-    # point of data extraction for responses are they relevant
-    def __init__(self, request=None):
-        self.request = request
-
-    def set_request(self, request):
-        self.request = request
-
-    def to_data(self, include_request=True):
+    def to_data(self):
         '''
         Returns a serialization-friendly dict of the member variables
         stored in this ViewModel. Base class version simply strips out
@@ -30,15 +21,7 @@ class ViewModel(object):
         variables simple enough for this standard (e.g. Django models with
         ForeignKeys) should override to_data.
         '''
-        data = basic_data_extractor(self)
-
-        # if we've got an internal request object, process it using the
-        # standard request processors (code copied from RequestContext.__init__
-
-        # if self.request and include_request:
-        #     for processor in get_standard_processors():
-        #         data.update(processor(self.request))
-        return data
+        return basic_data_extractor(self)
 
     def to_json(self):
         '''
@@ -56,14 +39,8 @@ class ViewModel(object):
         Calling this with a specific request object will not overwrite
         the internal request. Use set_request for this.
         '''
-
-        request = request or self.request
-        if request:
-            # let django handle the request variable setting
-            data = self.to_data(include_request=False)
-            return RequestContext(request, data)
-        else:
-            return Context(self.to_data())
+        return RequestContext(request, self.to_data()) if request \
+                else Context(self.to_data())
 
 
 def basic_data_extractor(viewmodel):

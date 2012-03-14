@@ -1,0 +1,492 @@
+@import 'mixins';
+
+/* Will move this to template when that happens */
+/*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
+@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
+@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
+
+*/
+/* ROOT --------- */
+
+body {
+	margin: 0 auto;
+	.clearfix;
+	// Use media queries to substitute 
+	// smaller/larger images accorsing to screensize
+	/*background: url("/static/img/illus/pgh.png"), url("/static/img/illus/blue-scratch.png");
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, top left;*/
+	//background: url("/static/img/custom/sky_texture.png");
+	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
+	background: @skyblue;
+	font-family: 'ArvoRegular';
+	font-weight: normal;
+	height: 100%;
+	margin: 0;
+	overflow-x: hidden;
+	/*padding: 3em 0 0;*/
+	width:100%;
+}
+
+#mask {
+	width:500%;
+	height:100%;
+	overflow-x: hidden;
+}
+
+section, article {
+	.clearfix;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+
+/* 2 TYPOGRAPHY ---------- */
+
+@import 'type';
+
+
+/* SITE ------------- */
+
+#site-header {
+	width: 100%;
+	.gradient(#fff, #e1e1e1);
+	height: 100px;
+	position: fixed;
+	top: 0;
+	padding-left: 40%;
+	z-index: 999;
+}
+
+#site-content {
+	.border-box;
+	width: 100%;
+	margin-top: 100px;
+	
+	&.admin, &.home {
+		position: relative;
+	}
+
+	&.signup {
+		
+		position: absolute;
+		left: 0;
+		overflow-x: hidden;	
+	}
+}
+
+.panel {
+	float: left;
+	width: 20%;
+}
+
+#footer-image {
+	width: 100%;
+	margin: 0;
+
+	/* Can click thru div */
+	pointer-events: none;
+	
+	// Add queries for larger sign - this is for 1024
+	/*background-image: url(/static/img/illus/pgh-250h.png);
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, repeat-x;
+	background-position: bottom left, bottom left; */
+	height: 800px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+#site-footer {
+
+}
+
+/* CONTENT ----------- */
+
+.content-header {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.content-container {
+	//height: 100%;
+	.clearfix;	
+	margin: auto;
+	.border-box;
+	padding: 3%;
+}
+
+
+/* SIGNUP ------ */
+
+
+.signup {
+	.content-container {
+		.b-shadow(1px, 1px, 6px, #fff);
+		background: fade(#fff, 70%);
+		.rounded(0.5em);
+		width: 50%;
+	}
+}
+
+/* HOME ---------- */
+
+.home-nav {
+	margin: auto 0;
+
+	ul {
+		.clearfix;
+		padding-left: 0;
+	}
+	
+	li {
+		list-style-type: none;
+
+		a {
+			.b-shadow(0.1em, 0.1em, 0.1em, #888);
+			.column(5.5);
+			.gradient(#e1e1e1, #fff);
+			font-size: 1.3em;
+			margin: 3%;
+			.rounded(10px);
+			text-align: center;
+	
+			img {
+				display: block;
+				margin: 25% auto;
+			}
+	
+			&.top {
+				margin-top: 0;
+			}
+
+			&.bottom {
+				margin-bottom: 0;
+			}
+
+			&:hover {
+				.gradient(#fff, #e1e1e1);
+			}
+
+			&:active {
+				background: #e1e1e1;
+			}
+		}
+	}
+}
+
+.home .content-container, .admin .content-container {
+	width: 70%;
+	padding-top: 0;
+}
+
+/* ADMIN ---------- */
+
+.admin .content-container {
+	padding-top: 1%;
+}
+
+/* SCHEDULED --------- */
+
+.scheduled-items {
+	ul {
+		.clearfix;
+		padding: 0;
+	}
+}
+
+/* 2 FEED/ITEMS ---------- */
+
+@import 'feed';
+
+
+/* TYPOGRAPHY ------------ */
+
+h1 {
+	color: #fff;
+	font-family: 'BloklettersViltstift';
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 0 0 1em;
+	text-align: left;
+	text-shadow: 0.1em 0.1em 0 #222;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+	padding: 0.5em 0;
+}
+
+p {
+	color: #222;
+	text-shadow: 0.05em 0.05em 0.05em #fff;
+}
+
+.tip {
+	color: #555;
+	font-size: 0.8em;
+	font-style: italic;
+	margin-left: 2%;
+}
+
+.description {
+	text-indent: 2em;
+}
+
+.add-item-link, .edit-link {
+	font-size: 1em;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.add-item-form {
+	display: none;
+}
+
+#showPopularTags {
+	color: #955247;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#colophon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+/* FORMS & INPUTS --------------- */
+
+form {
+	.clearfix;
+}
+
+label {
+	color: #2C525D;
+	.column(2.8);
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	text-shadow: 0.07em 0.07em 0 #fff;
+	text-transform: uppercase;
+	text-align: right;
+	position: relative;
+	top: 0.5em;
+}
+
+textarea {
+	height: 6em;
+}
+
+input[type="text"], textarea {
+	border: 1px #ccc solid;
+	.b-shadow(0.05em, 0.05em, 0.1em, #fff);
+	.column(11.5);
+	font-size: 1em;
+	margin-bottom: 0.5em;
+	outline: none;
+	padding: 0.5em;
+	.rounded(0.5em);
+
+	&:focus {
+		/*border-color: #2C525D;*/
+		.b-shadow(0, 0, 0.2em, #2C525D);
+	}
+}
+
+.inputs {
+	.column(9);
+	float: right;
+}
+
+input[type="checkbox"] {
+	float: left;
+	margin-top: 1em;
+}
+
+.checkbox-label {
+	margin-bottom: 0.1em;
+	text-transform: none;
+	text-align: left;
+}
+
+.check-container {
+	.column(12);
+}
+
+.form-container {
+	.column(12);
+	padding: 2em 0;
+	border-bottom: 2px solid #ccc;
+}
+
+.social-input {
+	width: 75% !important;
+}
+
+.signup-social-icon {
+	margin-top: 0.25em;
+	width: 15%;
+	float: left;
+}
+
+/* IMAGES ------------ */
+
+.thumbnail {
+	max-width: 300px;
+}
+
+.uploaded-image {
+	display: block;
+	max-width: 50%;
+	max-height: 400px;
+	margin: 1em auto 2em;
+}
+
+/* NAVIGATION ------------ */
+
+.prev-next {
+//	.column(12);
+	.clearfix;
+	margin-top: 1em;
+}
+
+.next, .back, .submit-item {
+	padding: 0.5em;
+	.rounded(0.5em);
+	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	background: #2C525D;
+	color: #fff;
+	text-decoration: none;
+
+	&:hover {
+		.gradient(#1B333A, #2C525D);
+	}
+
+	&:active {
+		position: relative;
+		top: 1px;
+		left: 1px;
+		background: #1B333A;
+		.b-shadow(0, 0, 0, #222);
+	}
+}
+
+.next {
+	float: right;
+}
+
+.back {
+	float: left;
+}
+
+.submit-item {
+	float: right;
+}
+
+
+/* PROFILE --------- */
+
+.details {
+	float: left;
+}
+
+.thumbnail {
+	float: right;
+}
+
+.profile-section {
+	.column(12);
+	padding-bottom: 1em;
+}
+
+.details {
+	margin-top: 0;
+	li {
+		padding-top: 0.5em;
+	}
+}
+
+.description {
+	
+}
+
+.social-icon {
+	clear: both;
+	.column(12);
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid #ccc;
+
+	img {
+		float: left;
+	}
+	
+	.social-link {
+		float: left;
+		margin: 0.5em 0.5em 0 1em;
+	}
+}
+
+.item-content {
+	//display: none;
+}
+
+
+/* COMPLEMENTARY --------- */
+
+
+.progress {
+	width: 20%;
+	margin: auto;
+
+	span {
+		margin: 0 0.2em;
+	}
+}
+
+.profile-tags {
+	.clearfix;
+	padding: 0;
+	li {
+		float: left;
+		.gradient(#fff, #e1e1e1);
+		list-style-type: none;
+		margin: 0 0.5em;
+		padding: 0.5em;
+		.rounded(0.5em);
+	}
+}
+
+/* UTILITY ----------- */
+
+.last {
+	border: none !important;
+}
+
+.first {
+	padding-top: 0 !important;
+}
+
+.selected {
+	background-color: green;
+}
+
+/* MEDIA QUERIES -------- */
+
+
+
+/* Not working?
+@media only screen and (max-device-width: 720px) {
+
+	.signup .content-container {
+		width: 90%;
+	}
+}*/

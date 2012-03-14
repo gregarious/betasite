@@ -1,0 +1,65 @@
+/* 	Stylesheet to define le icons 
+*/
+/* 	TODO: 
+		Sprite sheet
+		Background positioning will be added 
+*/
+/* To be made into sprite sheet */
+a {
+  /* Single place nav */
+
+  /* Global nav */
+
+}
+a#placeAtAGlance {
+  background: #ffffff url("/static/img/icons/black/photo-magnify.png") no-repeat center 8px;
+}
+a#placeEvents {
+  background: #ffffff url("/static/img/icons/black/calendar-alt.png") no-repeat center 8px;
+}
+a#placeSpecials {
+  background: #ffffff url("/static/img/icons/black/tag-special.png") no-repeat center 8px;
+}
+a#placeMap {
+  background: #ffffff url("/static/img/icons/black/map.png") no-repeat center 8px;
+}
+a#placeChatter {
+  background: #ffffff url("/static/img/icons/black/speech-bubble.png") no-repeat center 8px;
+}
+a#placeRelated {
+  background: #ffffff url("/static/img/icons/black/list.png") no-repeat center 8px;
+}
+a#siteHot {
+  background: #ffffff url("/static/img/icons/black/campfire.png") no-repeat center 8px;
+}
+a#sitePlaces {
+  background: #ffffff url("/static/img/icons/black/store-front.png") no-repeat center 8px;
+}
+a#siteEvents {
+  background: #ffffff url("/static/img/icons/black/calendar-alt.png") no-repeat center 8px;
+}
+a#siteSpecials {
+  background: #ffffff url("/static/img/icons/black/tag-special.png") no-repeat center 8px;
+}
+a#siteChatter {
+  background: #ffffff url("/static/img/icons/black/speech-bubble.png") no-repeat center 8px;
+}
+a#siteNews {
+  background: #ffffff url("/static/img/icons/black/newspaper.png") no-repeat center 8px;
+}
+a#siteJobs {
+  background: #ffffff url("/static/img/icons/black/suitcase.png") no-repeat center 8px;
+}
+/* Actions */
+.favbutton.remove {
+  background: #ffffff url("/static/img/icons/black/heart-cancel.png") no-repeat center 8px;
+}
+.favbutton.add {
+  background: #ffffff url("/static/img/icons/black/heart-add.png") no-repeat center 8px;
+}
+.report {
+  background: #ffffff url("/static/img/icons/black/alert.png") no-repeat center 8px;
+}
+.post-to-chatter {
+  background: #ffffff url("/static/img/icons/black/speech-bubble.png") no-repeat center 8px;
+}

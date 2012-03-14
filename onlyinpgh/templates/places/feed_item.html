@@ -9,17 +9,31 @@ Context variables:
 	tag_list:		data from a TagList ViewModel
 {% endcomment %}
 
-{% load self_render from rendering_tags %}
-
-<h3>
-	<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
-	{% if is_favorite %}
-	<span class="favorite-star">*</span>
-	{% endif %}
-</h3>
-<img src="{{place.image_url}}"/>
-<p>{{place.location.address}}</p>
-
-<div class="tag-list">
-{% include "tags/tag-list.html" with tags=tag_list.tags %}
+<div class="item-thumb-container">
+	<img class="item-thumb" alt="{{place.name}}" src="{{place.image_url}}" />
 </div>
+<section class="item-content">
+	<h4 class="item-title">
+		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+	</h4>
+	
+	<!-- Once things have specials, switch else content -->
+	{% if featured_special %}
+		<div class="has-special"></div>
+	{% else %}
+		<p class="has-special">Special!</p>
+	{% endif %}
+	<p class="address">{{place.location.address}}</p>
+	{% if place.description %}	
+  		<p class="meta">{{ place.description|truncatewords:35|urlizetrunc:20 }}</p>	  	
+	{% endif %}
+	{% include "tags/tag_list.html" with tags=tag_list.tags %}
+</section>
+
+{% comment %}
+	{% if is_favorite %}
+		<div class="is-favorite">*</div>
+	{% else %}
+		<div class="favorite-star">X</div>	
+	{% endif %}
+{% endcomment %}
