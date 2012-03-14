@@ -1,25 +1,25 @@
 {% comment %}
 Template to render a particular place as a feed item.
 
-Corresponding ViewModel: places.viewmodels.PlaceFeedItem
+Compatible ViewModels: places.viewmodels.PlaceFeedItem
 
 Context variables:
 	place:			Place object (includes image_url)
 	is_favorite:	boolean (optional)
-	tag_list:		a TagList RenderableViewModel
+	tag_list:		data from a TagList ViewModel
 {% endcomment %}
 
-{% load self_render from viewmodel_tags %}
+{% load self_render from rendering_tags %}
 
-<div class='place-feed-item'>
-	<h3>
-		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
-		{% if is_favorite %}
-		<span class="favorite-star">*</span>
-		{% endif %}
-	</h3>
-	<img src="{{place.image_url}}"/>
-	<p>{{place.location.address}}</p>
+<h3>
+	<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+	{% if is_favorite %}
+	<span class="favorite-star">*</span>
+	{% endif %}
+</h3>
+<img src="{{place.image_url}}"/>
+<p>{{place.location.address}}</p>
 
-	{% self_render tag_list %}
+<div class="tag-list">
+{% include "tags/tag-list.html" with tags=tag_list.tags %}
 </div>

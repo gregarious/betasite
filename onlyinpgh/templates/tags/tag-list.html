@@ -1,17 +1,15 @@
 {% comment %}
 Prints a list of tags.
 
-Corresponding ViewModel: tags.viewmodels.TagList
+Compatible ViewModel: tags.viewmodels.TagList
 
 Context variables:
 	tags:	List of Tag objects
 {% endcomment %}
 
-<div class="tag-list">
 Tags:
 <ul>
 {% for tag in tags %}
     <li><a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
 {% endfor %}
 </ul>
-</div>

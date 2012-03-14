@@ -1,20 +1,17 @@
 {% comment %}
 Template describing basic skeleton for feed.
 
-Corresponding ViewModel: common.viewmodels.FeedViewModel
+Compatible ViewModels: common.viewmodels.FeedViewModel
 
 Context variables:
-	class_name: 	string
-	items:			a list of RenderableViewModels
+	items:			[strings]
 {% endcomment %}
 
-{% load self_render from viewmodel_tags %}
-
-<div class="{{class_name}}">
-	{% for item in items %}
-		{% self_render item %}
-		{% if not forloop.last %}
-			<hr/>
-		{% endif %}
-	{% endfor %}
-</div>
+{% autoescape off %}
+{% for item in items %}
+    {{ item }}
+	{% if not forloop.last %}
+		<hr/>
+	{% endif %}
+{% endfor %}
+{% endautoescape %}

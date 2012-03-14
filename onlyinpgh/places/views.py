@@ -5,9 +5,10 @@ from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_respon
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
-from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFeeds
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
-# for feed collection building
+from onlyinpgh.common.viewmodels import FeedViewModel
+from onlyinpgh.common.core.rendering import render_viewmodel
 
 from datetime import datetime, timedelta
 
@@ -67,10 +68,24 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    feed = PlacesFeed.init_from_places(_places_all(), user=request.user)
+    # get a list of rendered items
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in _places_all()]
+    rendered_items = [render_viewmodel(item,
+                            template='places/feed_item.html',
+                            tag_type='li',
+                            class_label='places-feed-item')
+                        for item in feed_items]
 
-    return render(request, 'page.html',
-                    {'main_content': feed.to_html(request)})
+    # render the feed full of items
+    feed = FeedViewModel(rendered_items)
+
+    content = render_viewmodel(feed,
+        template='feed.html',
+        tag_type='ul',
+        class_label='places-feed')
+    print content
+
+    return render(request, 'page.html', {'main_content': content})
 
 
 def detail_page(request, pid):

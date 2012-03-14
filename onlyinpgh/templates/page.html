@@ -21,5 +21,7 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-{{main_content}}
+    {% autoescape off %}
+    {{main_content}}
+    {% endautoescape %}
 {% endblock %}

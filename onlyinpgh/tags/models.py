@@ -1,16 +1,13 @@
 from django.db import models
 
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from onlyinpgh.common.core.viewmodels import ViewModel
 
-from onlyinpgh.common.core.viewmodels import ViewModel, RenderableViewModel
+class Tag(models.Model, ViewModel):
+    '''also extends ViewModel: base class's to_data handles everything'''
+    name = models.SlugField()
 
-class Tag(models.Model,ViewModel):
-	'''also extends ViewModel: base class's to_data handles everything'''
-	name = models.SlugField()
-
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name
 
 # class TaggedItem(models.Model):
 #     tag = models.ForeignKey(Tag)
