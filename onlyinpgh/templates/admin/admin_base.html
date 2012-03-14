@@ -15,15 +15,16 @@
 		{% block page_header_content %}{% endblock %}
 	</header>
 
-	<div id="wrapper">
+	<div id="site-content" class="{% block page_class %}{% endblock %}">
 		{% block content %}{% endblock %}
 	</div>
-
-	<!-- <div id="footer-image"></div> -->
 
 	<footer id="site-footer">
 		<p id="colophon">What up, #page-footer!</p>
 	</footer>
+
+	<!-- <div id="footer-image"></div> -->
+
 
 	<!-- Scripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>

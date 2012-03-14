@@ -15,15 +15,15 @@ jQuery(document).ready( function(){
 
 	// Sliding signup sequence
 
-	$('a.panel').click(function () {
+	$('a.shift-panel').click(function () {
 
 		current = $(this).attr('name');
 		console.log(current);
 
 		$('.progress span').removeClass('selected');
-		$('article.'+current+' .progress .'+current).addClass('selected');
+		$('.progress .'+current).addClass('selected');
 		
-		$('#wrapper').scrollTo($(this).attr('href'), 800);		
+		$('#site-content').scrollTo($(this).attr('href'), 800);		
 		
 		return false;
 	});
@@ -39,12 +39,12 @@ function resizePanel() {
 	width = $(window).width();
 	height = $(window).height();
 
-	mask_width = width * $('.item').length;
+	mask_width = width * $('.panel').length;
 		
 	$('#debug').html(width  + ' ' + height + ' ' + mask_width);
 		
-	$('#wrapper, .item').css({width: width, height: height});
+	$('#site-content, .panel').css({width: width, height: height});
 	$('#mask').css({width: mask_width, height: height});
-	$('#wrapper').scrollTo($('a.selected').attr('href'), 0);
+	$('#site-content').scrollTo($('a.selected').attr('href'), 0);
 		
 }

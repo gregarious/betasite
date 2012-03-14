@@ -1,17 +1,16 @@
-
-@import 'grid';
 @import 'mixins';
-@import 'feed';
 
 /* Will move this to template when that happens */
-@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
+/*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
 @import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
 @import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
 
-
+*/
 /* ROOT --------- */
 
 body {
+	margin: 0 auto;
+	.clearfix;
 	// Use media queries to substitute 
 	// smaller/larger images accorsing to screensize
 	/*background: url("/static/img/illus/pgh.png"), url("/static/img/illus/blue-scratch.png");
@@ -36,15 +35,6 @@ body {
 	overflow-x: hidden;
 }
 
-#wrapper {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	overflow-x: hidden;
-}
-
 section, article {
 	.clearfix;
 }
@@ -54,35 +44,44 @@ img {
 	max-width: 100%;
 }
 
+
+/* 2 TYPOGRAPHY ---------- */
+
+@import 'type';
+
+
 /* SITE ------------- */
 
-/*.wrapper {
-	width: 90%;
-	max-width: 700px;
-
-}
-*/
 #site-header {
 	width: 100%;
 	.gradient(#fff, #e1e1e1);
-	height: 50px;
+	height: 100px;
 	position: fixed;
 	top: 0;
-	padding-left: 25%;
+	padding-left: 40%;
 	z-index: 999;
 }
 
-.item {
-	width: 20%;
-	height: 100%;
-	float: left;
+#site-content {
+	.border-box;
+	width: 100%;
+	margin-top: 100px;
+	
+	&.admin, &.home {
+		position: relative;
+	}
+
+	&.signup {
+		
+		position: absolute;
+		left: 0;
+		overflow-x: hidden;	
+	}
 }
 
-#site-content {
-	height: 100%;
-	margin: auto;
-	position: relative;
-	.border-box;
+.panel {
+	float: left;
+	width: 20%;
 }
 
 #footer-image {
@@ -90,7 +89,7 @@ img {
 	margin: 0;
 
 	/* Can click thru div */
-	pointer-events:none;
+	pointer-events: none;
 	
 	// Add queries for larger sign - this is for 1024
 	/*background-image: url(/static/img/illus/pgh-250h.png);
@@ -115,15 +114,95 @@ img {
 }
 
 .content-container {
-	.b-shadow(1px, 1px, 6px, #fff);
-	background: fade(#fff, 70%);
-	height: 100%;
+	//height: 100%;
+	.clearfix;	
 	margin: auto;
-	padding: 100px 3% 3%;
-	.rounded(0.5em);
-	width: 50%;
 	.border-box;
+	padding: 3%;
 }
+
+
+/* SIGNUP ------ */
+
+
+.signup {
+	.content-container {
+		.b-shadow(1px, 1px, 6px, #fff);
+		background: fade(#fff, 70%);
+		.rounded(0.5em);
+		width: 50%;
+	}
+}
+
+/* HOME ---------- */
+
+.home-nav {
+	margin: auto 0;
+
+	ul {
+		.clearfix;
+		padding-left: 0;
+	}
+	
+	li {
+		list-style-type: none;
+
+		a {
+			.b-shadow(0.1em, 0.1em, 0.1em, #888);
+			.column(5.5);
+			.gradient(#e1e1e1, #fff);
+			font-size: 1.3em;
+			margin: 3%;
+			.rounded(10px);
+			text-align: center;
+	
+			img {
+				display: block;
+				margin: 25% auto;
+			}
+	
+			&.top {
+				margin-top: 0;
+			}
+
+			&.bottom {
+				margin-bottom: 0;
+			}
+
+			&:hover {
+				.gradient(#fff, #e1e1e1);
+			}
+
+			&:active {
+				background: #e1e1e1;
+			}
+		}
+	}
+}
+
+.home .content-container, .admin .content-container {
+	width: 70%;
+	padding-top: 0;
+}
+
+/* ADMIN ---------- */
+
+.admin .content-container {
+	padding-top: 1%;
+}
+
+/* SCHEDULED --------- */
+
+.scheduled-items {
+	ul {
+		.clearfix;
+		padding: 0;
+	}
+}
+
+/* 2 FEED/ITEMS ---------- */
+
+@import 'feed';
 
 
 /* TYPOGRAPHY ------------ */
@@ -308,46 +387,6 @@ input[type="checkbox"] {
 	float: left;
 }
 
-.admin-home {
-	
-	ul {
-		.clearfix;	
-		padding-left: 0;
-	}
-	
-	li {
-		.column(6);
-		list-style-type: none;
-		height: 10em;
-		margin: 1.04167%;
-		text-align: center;
-
-		img {
-			display: block;
-			margin: 3em auto;
-		}
-
-		a {
-			/*background: url(img/paper/fern.jpg);*/
-			/*.b-shadow(0.1em, 0.1em, 0.1em, #888);*/
-			font-size: 1.3em;
-			list-style-type: none;
-		/*	.rounded(0.5em);*/
-
-			&:hover {
-				.gradient(#A9C6E8, #3DA2BE);
-				background: #3DA2BE;
-			}
-
-			&:active {
-				background: #255C9E;
-			}
-		
-		}
-	}
-}
-
-
 .submit-item {
 	float: right;
 }
@@ -440,11 +479,14 @@ input[type="checkbox"] {
 	background-color: green;
 }
 
-
-/* ICONS ---------- */
-
-
-
-
-
 /* MEDIA QUERIES -------- */
+
+
+
+/* Not working?
+@media only screen and (max-device-width: 720px) {
+
+	.signup .content-container {
+		width: 90%;
+	}
+}*/

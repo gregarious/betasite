@@ -5,31 +5,44 @@
 
 {% block page_header_title %}[bus name] Admin{% endblock %}
 
+{% block page_class %}home{% endblock %}
+
 {% block content %}
+
 	<div class="content-container">
-		<nav class="admin-home">
+
+		<nav class="home-nav">
 			<ul>
 				<!-- To profile page with expanded events section in edit mode -->
 				<li id="adminViewProfile">
-					<img src="/static/img/icons/black/anchor.png" />
-					<a href="">See your Page</a>
+					<a href="" class="top">
+						<img src="/static/img/icons/black/anchor.png" />
+						See your Page
+					</a>
 				</li>
 				<!-- To profile page with expanded specials section in edit mode -->
 				<li id="adminEditProfile">
-					<img src="/static/img/icons/black/box-edit.png" />
-					<a href="profile/basics">Edit info</a>
+					<a href="profile/basics" class="top">
+						<img src="/static/img/icons/black/box-edit.png" />
+						Edit info
+					</a>
 				</li>
 				<!-- To profile page with expanded 'your info' section in edit mode -->
 				<li id="adminSpecials">
-					<img src="/static/img/icons/black/tag-special.png" />
-					<a href="profile/specials">Manage Specials</a>
+					<a href="profile/specials" class="bottom">
+						<img src="/static/img/icons/black/tag-special.png" />
+						Manage Specials
+					</a>
 				</li>
 				<!-- To single business page as seen by other users -->
 				<li id="adminEvents">
-					<img src="/static/img/icons/black/calendar-alt.png" />
-					<a href="profile/events">Manage Events</a>
+					<a href="profile/events" class="bottom">
+						<img src="/static/img/icons/black/calendar-alt.png" />
+						Manage Events
+					</a>
 				</li>
 			</ul>
 		</nav>
 	</div>
+
 {% endblock %}

@@ -2,12 +2,17 @@
 
 {% block item_id %}event-catapult{% endblock item_id %}
 
+{% block scheduled_item_thumb %}
+	<img class="item-thumb" alt="" src="http://hof.povray.org/images/office-13.jpg" />
+{% endblock %}
+
 {% block scheduled_item_title %}
 	Working at Catapult
 {% endblock %}
 
 {% block scheduled_item_content %}
-	<img src="http://hof.povray.org/images/office-13.jpg" />
+	<time class="datetime meta">Dec. 13 5pm-9pm</time>
+	<p class="address meta">123 Sally Dr. Pittsburgh</p>
 {% endblock %}
 
 {% block scheduled_item_footer %}

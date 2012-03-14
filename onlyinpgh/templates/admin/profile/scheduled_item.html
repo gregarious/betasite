@@ -1,6 +1,6 @@
 <li class="item">
 	<div class="item-thumb-container">
-		<img class="item-thumb" alt="" src="http://hof.povray.org/images/office-13.jpg" />
+		{% block item_thumb %}{% endblock %}
 	</div>
 	<section class="item-content">
 		<h4 class="item-title">
@@ -9,9 +9,7 @@
 		    	{% endblock %}
 		   	</a>
 		</h4>
-		<p class="address"></p>		
-	  	<p class="meta"></p>	  	
+		{% block scheduled_item_content %}{% endblock %}
 		<!-- tags here -->
-
 	</section>
 </li>

@@ -1,3 +1,69 @@
+/////////////////
+// Semantic.gs // for LESS: http://lesscss.org/
+/////////////////
+
+// Defaults which you can freely override
+@column-width: 60;
+@gutter-width: 20;
+@columns: 12;
+
+// Utility variable — you should never need to modify this
+@_gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+
+// Set @total-width to 100% for a fluid layout
+@total-width: 100%;
+
+
+//////////
+// GRID //
+//////////
+
+.row(@columns:@columns) {
+  display: inline-block;
+  width: @total-width*((@gutter-width + @_gridsystem-width)/@_gridsystem-width);
+  margin: 0 @total-width*(((@gutter-width*.5)/@_gridsystem-width)*-1);
+  .clearfix;
+}
+
+.column(@x,@columns:@columns) {
+  .border-box;
+  display: inline;
+  float: left;
+  width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
+  margin: 0 @total-width*((@gutter-width*.5)/@_gridsystem-width);
+}
+
+.column_nm(@x,@columns:@columns) {
+  display: inline;
+  float: left;
+  .border-box;
+  width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
+  margin: 0;
+}
+
+.offset(@offset:1) {
+  margin-left: (@gutter-width+@column-width)*@offset + @total-width*((@gutter-width*.5)/@_gridsystem-width);
+}
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+  *zoom:1;
+  
+  &:before,
+  &:after {
+      content:"";
+      display:table;
+  }
+  &:after {
+      clear:both;
+  }
+}
+
+
+///////////////////
+//// SHORTCUTS ////
+///////////////////
+
 @green: #0EBD42;
 @skyblue: #A9C6E8;
 @green: #8FD36F;
@@ -43,8 +109,15 @@
           box-shadow: @x @y 0 0 @blur @color; 
 }
 
-.fixed {
+.fixed() {
   width: 100%;
   position: fixed;
   z-index: 999;
+}
+
+
+.border-box() {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
 }

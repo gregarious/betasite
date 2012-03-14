@@ -1,7 +1,5 @@
 {% extends "admin/admin_base.html" %}
 
-{% block page_id %}profileEvents{% endblock page_id %}
-
 {% block page_title %}
 	notlaura's Events
 {% endblock page_title %}
@@ -10,15 +8,23 @@
 	[bus name's]'s Events
 {% endblock %}
 
+{% block page_class %}admin events{% endblock %}
+
 {% block content %}
 
 	<div class="content-container">
-		
-		<!-- For each scheduled event, include this  -->
-		{% include "admin/profile/scheduled_event.html" %}
+		<section class="scheduled-items">
+			<header class="feed-header">
+				<h2 class="feed-title">Scheduled Events</h2>
+			</header>
+			<ul class="feed">		
+				<!-- For each scheduled event, include this  -->
+				{% include "admin/profile/scheduled_event.html" %}
+			</ul>
+		</section>
+		<section class="add-item">
 
-	
-	
+		</section>
 	</div>	<!-- .content-container -->
 	
 {% endblock %}

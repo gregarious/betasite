@@ -1,0 +1,10 @@
+p, time {
+  margin: 0.1em 0;
+}
+.meta {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+.address {
+  font-weight: bold;
+}
