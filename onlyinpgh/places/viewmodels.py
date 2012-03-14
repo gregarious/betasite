@@ -1,11 +1,9 @@
-from onlyinpgh.common.core.viewmodels import ViewModel, RenderableViewModel
+from onlyinpgh.common.core.viewmodels import ViewModel
 
-from onlyinpgh.events.models import Event
-from onlyinpgh.offers.models import Offer
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
 
-from onlyinpgh.common.viewmodels import FeedViewModel, FeedCollection
+from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.tags.viewmodels import TagList
 
 from onlyinpgh.common.utils import process_external_url
@@ -50,10 +48,9 @@ def place_to_data(place, place_meta):
     return data
 
 
-class PlaceFeedItem(RenderableViewModel):
-    template_name = 'places/feed_item.html'
-
+class PlaceFeedItem(ViewModel):
     def __init__(self, place, user=None):
+        super(PlaceFeedItem, self).__init__()
         self._place = place
         # FeedItems only need the image_url
         self._meta = {
@@ -74,26 +71,12 @@ class PlaceFeedItem(RenderableViewModel):
         return cleaned_dict
 
 
-class PlacesFeed(FeedViewModel):
-    class_name = 'places-feed'
-
-    @classmethod
-    def init_from_places(cls, places, user=None):
-        '''
-        Factory constructor to initiate a feed from a list of Places.
-        '''
-        inst = cls()
-        inst.items = [PlaceFeedItem(p) for p in places]
-        return inst
-
-
-class PlaceDetail(RenderableViewModel):
-    template_name = 'places/single.html'
-
+class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
+        super(PlaceDetail, self).__init__()
         self._place = place
-        self._meta = {key: place.get_meta(key)
-                        for key in ('image_url', 'hours', 'phone', 'url')}
+        self._meta = dict([(key, place.get_meta(key))
+                        for key in ('image_url', 'hours', 'phone', 'url')])
 
         if 'url' in self._meta:
             self._meta['url'] = process_external_url(self._meta['url'])

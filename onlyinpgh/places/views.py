@@ -1,13 +1,11 @@
-from django.shortcuts import render
-from django.template import Context
 from django.utils.safestring import SafeUnicode
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
-from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFeeds
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
-# for feed collection building
+from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
 
 from datetime import datetime, timedelta
 
@@ -67,10 +65,20 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    feed = PlacesFeed.init_from_places(_places_all(), user=request.user)
+    # get a list of rendered items
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in _places_all()]
+    rendered_items = [render_viewmodel(item,
+                            template='places/feed_item.html',
+                            tag_type='li',
+                            class_label='item')
+                        for item in feed_items]
 
-    return render(request, 'page.html',
-                    {'main_content': feed.to_html(request)})
+    # render the feed full of items
+    content = render_list(rendered_items,
+        tag_type='ul',
+        class_label='places-feed')
+
+    return render_to_page(content, request=request)
 
 
 def detail_page(request, pid):
@@ -99,24 +107,24 @@ def detail_page(request, pid):
     # build and render place detail viewmodel
     place = Place.objects.select_related().get(id=pid)
     details = PlaceDetail(place, user=request.user)
-    html = details.to_html(request)
+    content = render_viewmodel(details,
+                template='places/single.html',
+                class_label='place-single')
 
-    html += SafeUnicode(u'\n<hr/><hr/>\n')
+    # content += SafeUnicode(u'\n<hr/><hr/>\n')
 
     # build and render related feeds viewmodel
-    related_feeds = PlaceRelatedFeeds(place, user=request.user)
-    html += related_feeds.to_html(request)
+    # related_feeds = PlaceRelatedFeeds(place, user=request.user)
+    # content += related_feeds.to_html(request)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    return render(request, 'page.html',
-            Context({'main_content': html}))
+    return render_to_page(content, request=request)
 
 
 @jsonp_response
 def feed_app(request):
-    feed = PlacesFeed.init_from_places(_places_all(), user=request.user)
-    # TODO: revisit this 'items' hack
-    return feed.to_data()['items']   # decorator will handle JSON response wrapper
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in _places_all()]
+    return [item.to_data() for item in feed_items]
 
 
 @jsonp_response

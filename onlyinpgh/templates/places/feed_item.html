@@ -1,38 +1,34 @@
 {% comment %}
 Template to render a particular place as a feed item.
 
-Corresponding ViewModel: places.viewmodels.PlaceFeedItem
+Compatible ViewModels: places.viewmodels.PlaceFeedItem
 
 Context variables:
 	place:			Place object (includes image_url)
 	is_favorite:	boolean (optional)
-	tag_list:		a TagList RenderableViewModel
+	tag_list:		data from a TagList ViewModel
 {% endcomment %}
 
-{% load self_render from viewmodel_tags %}
-
-<li class="item">
-	<div class="item-thumb-container">
-		<img class="item-thumb" alt="{{place.name}}" src="{{place.image_url}}" />
-	</div>
-	<section class="item-content">
-		<h4 class="item-title">
-			<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
-		</h4>
-		
-		<!-- Once things have specials, switch else content -->
-		{% if featured_special %}
-			<div class="has-special"></div>
-		{% else %}
-			<p class="has-special">Special!</p>
-		{% endif %}
-		<p class="address">{{place.location.address}}</p>
-		{% if place.description %}	
-	  		<p class="meta">{{ place.description|truncatewords:35|urlizetrunc:20 }}</p>	  	
-		{% endif %}
-		{% self_render tag_list %}
-	</section>
-</li>
+<div class="item-thumb-container">
+	<img class="item-thumb" alt="{{place.name}}" src="{{place.image_url}}" />
+</div>
+<section class="item-content">
+	<h4 class="item-title">
+		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+	</h4>
+	
+	<!-- Once things have specials, switch else content -->
+	{% if featured_special %}
+		<div class="has-special"></div>
+	{% else %}
+		<p class="has-special">Special!</p>
+	{% endif %}
+	<p class="address">{{place.location.address}}</p>
+	{% if place.description %}	
+  		<p class="meta">{{ place.description|truncatewords:35|urlizetrunc:20 }}</p>	  	
+	{% endif %}
+	{% include "tags/tag_list.html" with tags=tag_list.tags %}
+</section>
 
 {% comment %}
 	{% if is_favorite %}

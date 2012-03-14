@@ -4,25 +4,17 @@ from django.views.generic.simple import direct_to_template
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
-from onlyinpgh.places import views as places_views
-from onlyinpgh.events import views as events_views
-from onlyinpgh.offers import views as offers_views
-from onlyinpgh.chatter import views as chatter_views
-from onlyinpgh.news import views as news_views
-from onlyinpgh.tags import views as tag_views
-from onlyinpgh import views as home_views
-
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    
+
     (r'^login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),
-    
+
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    
+
     url(r'^places/',include('onlyinpgh.places.urls')),
     url(r'^offers/',include('onlyinpgh.offers.urls')),
     url(r'^tags/',include('onlyinpgh.tags.urls')),

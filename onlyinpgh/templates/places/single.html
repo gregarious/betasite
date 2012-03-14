@@ -11,8 +11,6 @@ Context variables:
     featured_special: 	Offer object (optional)
 {% endcomment %}
 
-{% load self_render from viewmodel_tags %}
-
 <header class="single-header">		
 	<h2 class="single-title">{{ place.name }}</h2>
 	<div class="single-thumb-container">
@@ -53,7 +51,9 @@ Context variables:
 			{% endif %}
 
 		</ul>
-			{% self_render tag_list %}
+		<div class="tag-list">
+			{% include "tags/tag_list.html" with tags=tag_list.tags %}
+		</div>
 	</div>
 </header>
 

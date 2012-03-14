@@ -21,7 +21,6 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-
 <!-- <div id="top-bar">
 	<span id="other-scenes">
 		Related scenes:
@@ -71,7 +70,10 @@ whole page response should render to this.
 			</div>
 		</div>
 	
-		{{main_content}}
+	    {% autoescape off %}
+		    {{main_content}}
+	    {% endautoescape %}
+
 	</div>
 	
 	<aside id="site-sidebar" role="complementary">
@@ -104,6 +106,5 @@ whole page response should render to this.
 	</footer>
 
 </div>
-
 
 {% endblock %}
