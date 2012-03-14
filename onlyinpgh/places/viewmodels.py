@@ -42,6 +42,7 @@ def place_to_data(place, place_meta):
     data = {
         'id':       place.id,
         'name':     place.name,
+        'description': place.description,
         'location': location_to_data(place.location) if place.location else None,
         'directions_link': to_directions_link(place.location),
     }
