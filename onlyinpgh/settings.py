@@ -119,6 +119,8 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
+AUTH_PROFILE_MODULE = 'onlyinpgh.accounts.UserProfile'
+
 TEMPLATE_DIRS = (
     to_abspath('templates'),
 )
@@ -140,7 +142,7 @@ INSTALLED_APPS = (
     'onlyinpgh.places',
     'onlyinpgh.events',
     'onlyinpgh.specials',
-    'onlyinpgh.organizations',
+    'onlyinpgh.accounts',
     'onlyinpgh.news',
     'onlyinpgh.chatter',
     'onlyinpgh.tags',

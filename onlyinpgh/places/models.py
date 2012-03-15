@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.core.exceptions import ValidationError
@@ -176,6 +177,10 @@ class Location(models.Model, ViewModel):
         return s.rstrip(', ')
 
 
+class PlaceProfileNotAvailable(Exception):
+    pass
+
+
 class Place(models.Model, ViewModel):
     '''
     Handles information about places.
@@ -194,6 +199,18 @@ class Place(models.Model, ViewModel):
         if self.location and self.location.address:
             s += u' (%s)' % self.location.address
         return s
+
+    def get_profile(self):
+        """
+        Returns the associated PlaceProfile. A simplified version of
+        the code laid out in django.contrib.auth.User.get_profile.
+        """
+        if not hasattr(self, '_profile_cache'):
+            try:
+                self._profile_cache = PlaceProfile.objects.get(place__id__exact=self.id)
+            except PlaceProfile.DoesNotExist:
+                raise PlaceProfileNotAvailable
+        return self._profile_cache
 
     def to_data(self):
         '''
@@ -231,6 +248,13 @@ class PlaceProfile(models.Model, ViewModel):
 
     def __unicode__(self):
         return unicode(self.place)
+
+
+# signal handler to automatically create a new UserProfile
+def create_place_profile(sender, instance, created, **kwargs):
+    if created:
+        PlaceProfile.objects.create(place=instance)
+post_save.connect(create_place_profile, sender=Place)
 
 
 class PlaceMeta(models.Model):

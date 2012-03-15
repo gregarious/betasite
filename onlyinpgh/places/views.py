@@ -2,7 +2,7 @@ from django.utils.safestring import SafeUnicode
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 
 from onlyinpgh.places.models import Place, PlaceProfile
-#from onlyinpgh.organizations.models import FavoriteItem
+#from onlyinpgh.accounts.models import FavoriteItem
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
 from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
@@ -64,8 +64,8 @@ def feed_page(request):
     # get a list of rendered items
     # TODO: look into efficiency of this call. should we be selective about description? should we center query on Place or Profile?
     # TODO: also consider case where place has no associated profile. think if this should even be allowed in model logic
-    profiles = PlaceProfile.objects.select_related().all()[:10]
-    feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
+    places = Place.objects.select_related().all()[:10]
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     rendered_items = [render_viewmodel(item,
                             template='places/feed_item.html',
                             tag_type='li',
@@ -104,8 +104,8 @@ def detail_page(request, pid):
     # TODO: return error message on action failure?
 
     # build and render place detail viewmodel
-    profile = PlaceProfile.objects.select_related().get(place__id=pid)
-    details = PlaceDetail(profile, user=request.user)
+    place = Place.objects.select_related().get(id=pid)
+    details = PlaceDetail(place, user=request.user)
     content = render_viewmodel(details,
                 template='places/single.html',
                 class_label='place-single')
