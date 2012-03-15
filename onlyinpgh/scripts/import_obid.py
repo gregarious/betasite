@@ -1,5 +1,7 @@
 import csv
 
+from django.db import transaction
+
 from onlyinpgh.places.models import Location, Place
 from onlyinpgh.outsourcing.places import resolve_location
 
@@ -48,14 +50,14 @@ class OBIDRow:
                 reader.next()
             return [OBIDRow(row) for row in reader]
 
+gplaces_category_map = load_category_map('google_places')
+
 
 def run():
     # should clears all tables
     Place.objects.all().delete()
     Location.objects.all().delete()
     Tag.objects.all().delete()
-
-    gplaces_category_map = load_category_map('google_places')
 
     rows = OBIDRow.rows_from_csv(CSV_FILENAME)
 
@@ -72,88 +74,93 @@ def run():
     #         row.fb_id = ''
 
     # cycle through all rows and store everything
-    for i, row in enumerate(rows):
-        if row.import_type == 'noindex':
-            continue
-        if not row.name:
-            logger.error('Row %d: No name listed. Skipping.')
-            continue
+    for idx, row in enumerate(rows):
+        insert_row(row, idx)
 
-        # # TODO: reenable facebook pulling
-        # if row.fb_id:
-        #     report = page_mgr.store_page(row.fb_id)  # if this fails, warnings below will kick in
-        #     if report.model_instance:
-        #         logger.debug('Row %d ("%s"): linked to FB page %s' % (i, row.name, report.model_instance.fb_id))
 
-        # resolve the location
-        location = resolve_location(Location(address=row.address.strip(), postcode='15213'))
+@transaction.commit_on_success
+def insert_row(row, idx=None):
+    if row.import_type == 'noindex':
+        return
+    if not row.name:
+        logger.error('Row %d: No name listed. Skipping.')
+        return
 
-        if location:
-            # hack to get around Google Geocoding appending unviersity names onto many addresses
-            if 'university' in location.address.lower() and 'university' not in row.address.lower():
-                location.address = ','.join(location.address.split(',')[1:])
-            location.address = location.address.strip()
+    # # TODO: reenable facebook pulling
+    # if row.fb_id:
+    #     report = page_mgr.store_page(row.fb_id)  # if this fails, warnings below will kick in
+    #     if report.model_instance:
+    #         logger.debug('Row %d ("%s"): linked to FB page %s' % (idx, row.name, report.model_instance.fb_id))
 
-            try:
-                # if exact match exists, use it instead of the newly found one
-                location = Location.objects.get(address=location.address, postcode=location.postcode)
-            except Location.DoesNotExist:
-                location.save()
-        else:
-            logger.warning('Row %d ("%s"): Geocoding failed.' % (i, row.name))
+    # resolve the location
+    location = resolve_location(Location(address=row.address.strip(), postcode='15213'))
 
-        # import place
-        place = None
-        # TODO: reenable facebook integration
-        # if row.fb_id:
-        #     report = page_mgr.import_place(row.fb_id, import_owners=False)
-        #     if report.model_instance:
-        #         place = report.model_instance
-        #         place.name = row.name
-        #         place.save()
-        #     else:
-        #         for notice in report.notices:
-        #             logger.warning('Row %d ("%s"): Place FB import notice (fbid %s, notice: "%s")' % \
-        #                             (i, row.name, str(row.fb_id), str(notice)))
+    if location:
+        # hack to get around Google Geocoding appending unviersity names onto many addresses
+        if 'university' in location.address.lower() and 'university' not in row.address.lower():
+            location.address = ','.join(location.address.split(',')[1:])
+        location.address = location.address.strip()
 
-        # if fb import failed, do it manually
-        if not place:
-            place, created = Place.objects.get_or_create(name=row.name, location=location)
-            profile = place.get_profile()
-            profile.url = row.url[:200]
-            profile.phone = row.phone[:200]
-            profile.save()
+        try:
+            # if exact match exists, use it instead of the newly found one
+            location = Location.objects.get(address=location.address, postcode=location.postcode)
+        except Location.DoesNotExist:
+            location.save()
+    else:
+        logger.warning('Row %d ("%s"): Geocoding failed.' % (idx, row.name))
 
-        logger.info('Imported %s as Place' % row.name)
+    # import place
+    place = None
+    # TODO: reenable facebook integration
+    # if row.fb_id:
+    #     report = page_mgr.import_place(row.fb_id, import_owners=False)
+    #     if report.model_instance:
+    #         place = report.model_instance
+    #         place.name = row.name
+    #         place.save()
+    #     else:
+    #         for notice in report.notices:
+    #             logger.warning('Row %d ("%s"): Place FB import notice (fbid %s, notice: "%s")' % \
+    #                             (idx, row.name, str(row.fb_id), str(notice)))
 
-        # store tags from Google Place lookup
-        if location and \
-            location.latitude is not None and location.longitude is not None:
-            coords = (location.latitude, location.longitude)
-            radius = 1000
-        else:
-            coords = (40.4425, -79.9575)
-            radius = 5000
+    # if fb import failed, do it manually
+    if not place:
+        place, created = Place.objects.get_or_create(name=row.name, location=location)
+        profile = place.get_profile()
+        profile.url = row.url[:200]
+        profile.phone = row.phone[:200]
+        profile.save()
 
-        response = gplaces_client.search_request(coords, radius, keyword=row.name)
+    logger.info('Imported %s as Place' % row.name)
 
-        if len(response) > 0 and 'reference' in response[0]:
-            details = gplaces_client.details_request(response[0]['reference'])
-            all_tags = set()
-            for typ in details.get('types', []):
-                if typ == 'establishment':  # skip this tag
-                    continue
-                elif typ in gplaces_category_map:
-                    all_tags.update(gplaces_category_map[typ])
-                else:
-                    logger.warning('Unknown Google Places type: "%s"' % typ)
-            for tagstr in all_tags:
-                tag, _ = Tag.objects.get_or_create(name=tagstr.lower())
-                place.tags.add(tag)
-            if len(all_tags) > 0:
-                logger.debug('Row %d ("%s"): Tags [%s]' % (i, str(row.name), ', '.join(all_tags)))
-        else:
-            logger.warning('Row %d ("%s"): Cannot tag, no Google Places result within %dm of (%f,%f)' % \
-                (i, row.name, radius, coords[0], coords[1]))
+    # store tags from Google Place lookup
+    if location and \
+        location.latitude is not None and location.longitude is not None:
+        coords = (location.latitude, location.longitude)
+        radius = 1000
+    else:
+        coords = (40.4425, -79.9575)
+        radius = 5000
 
-        print 'added', place
+    response = gplaces_client.search_request(coords, radius, keyword=row.name)
+
+    if len(response) > 0 and 'reference' in response[0]:
+        details = gplaces_client.details_request(response[0]['reference'])
+        all_tags = set()
+        for typ in details.get('types', []):
+            if typ == 'establishment':  # skip this tag
+                continue
+            elif typ in gplaces_category_map:
+                all_tags.update(gplaces_category_map[typ])
+            else:
+                logger.warning('Unknown Google Places type: "%s"' % typ)
+        for tagstr in all_tags:
+            tag, _ = Tag.objects.get_or_create(name=tagstr.lower())
+            place.tags.add(tag)
+        if len(all_tags) > 0:
+            logger.debug('Row %d ("%s"): Tags [%s]' % (idx, str(row.name), ', '.join(all_tags)))
+    else:
+        logger.warning('Row %d ("%s"): Cannot tag, no Google Places result within %dm of (%f,%f)' % \
+            (idx, row.name, radius, coords[0], coords[1]))
+
+    print 'added', place
