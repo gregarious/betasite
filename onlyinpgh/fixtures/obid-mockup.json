@@ -3899,7 +3899,7 @@
     "pk": 229, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:40", 
+      "dtcreated": "2012-03-15 17:05:25", 
       "tags": [
         25, 
         50, 
@@ -3914,7 +3914,7 @@
     "pk": 284, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:08", 
+      "dtcreated": "2012-03-15 17:05:59", 
       "tags": [
         16, 
         17, 
@@ -3929,7 +3929,7 @@
     "pk": 203, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:24", 
+      "dtcreated": "2012-03-15 17:05:08", 
       "tags": [
         17, 
         16, 
@@ -3948,7 +3948,7 @@
     "pk": 255, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:55", 
+      "dtcreated": "2012-03-15 17:05:41", 
       "tags": [
         78
       ], 
@@ -3961,7 +3961,7 @@
     "pk": 152, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:50", 
+      "dtcreated": "2012-03-15 17:04:41", 
       "tags": [
         6, 
         7, 
@@ -3976,7 +3976,7 @@
     "pk": 158, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:53", 
+      "dtcreated": "2012-03-15 17:04:43", 
       "tags": [
         16, 
         17
@@ -3990,7 +3990,7 @@
     "pk": 241, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:45", 
+      "dtcreated": "2012-03-15 17:05:30", 
       "tags": [
         6, 
         7, 
@@ -4005,7 +4005,7 @@
     "pk": 39, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:09", 
+      "dtcreated": "2012-03-15 17:03:50", 
       "tags": [
         16, 
         17, 
@@ -4021,7 +4021,7 @@
     "pk": 212, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:33", 
+      "dtcreated": "2012-03-15 17:05:12", 
       "tags": [
         6, 
         7, 
@@ -4036,7 +4036,7 @@
     "pk": 105, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:15", 
+      "dtcreated": "2012-03-15 17:04:20", 
       "tags": [], 
       "image_url": "", 
       "name": "Allegheny County Health Dept.", 
@@ -4047,7 +4047,7 @@
     "pk": 77, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:55", 
+      "dtcreated": "2012-03-15 17:04:07", 
       "tags": [
         6, 
         7, 
@@ -4062,7 +4062,7 @@
     "pk": 115, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:20", 
+      "dtcreated": "2012-03-15 17:04:24", 
       "tags": [
         6, 
         7, 
@@ -4077,7 +4077,7 @@
     "pk": 231, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:41", 
+      "dtcreated": "2012-03-15 17:05:26", 
       "tags": [
         49
       ], 
@@ -4090,7 +4090,7 @@
     "pk": 249, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:49", 
+      "dtcreated": "2012-03-15 17:05:34", 
       "tags": [
         16, 
         17, 
@@ -4106,7 +4106,7 @@
     "pk": 207, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:26", 
+      "dtcreated": "2012-03-15 17:05:10", 
       "tags": [
         3, 
         4, 
@@ -4121,7 +4121,7 @@
     "pk": 189, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:12", 
+      "dtcreated": "2012-03-15 17:04:59", 
       "tags": [
         57, 
         65
@@ -4135,7 +4135,7 @@
     "pk": 140, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:40", 
+      "dtcreated": "2012-03-15 17:04:35", 
       "tags": [], 
       "image_url": "", 
       "name": "Bellisario's Automotive", 
@@ -4146,7 +4146,7 @@
     "pk": 109, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:17", 
+      "dtcreated": "2012-03-15 17:04:22", 
       "tags": [
         1, 
         2
@@ -4160,7 +4160,7 @@
     "pk": 113, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:19", 
+      "dtcreated": "2012-03-15 17:04:24", 
       "tags": [], 
       "image_url": "", 
       "name": "Board of Public Education", 
@@ -4171,7 +4171,7 @@
     "pk": 82, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:01", 
+      "dtcreated": "2012-03-15 17:04:10", 
       "tags": [], 
       "image_url": "", 
       "name": "Bombay Emporium", 
@@ -4182,7 +4182,7 @@
     "pk": 211, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:32", 
+      "dtcreated": "2012-03-15 17:05:12", 
       "tags": [
         6, 
         7, 
@@ -4197,7 +4197,7 @@
     "pk": 180, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:04", 
+      "dtcreated": "2012-03-15 17:04:55", 
       "tags": [
         17, 
         29, 
@@ -4216,13 +4216,13 @@
     "pk": 230, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:41", 
+      "dtcreated": "2012-03-15 17:05:25", 
       "tags": [
-        8, 
-        17, 
-        16, 
+        6, 
         7, 
-        6
+        8, 
+        16, 
+        17
       ], 
       "image_url": "", 
       "name": "Burgers & Rice Bowl", 
@@ -4233,7 +4233,7 @@
     "pk": 99, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:12", 
+      "dtcreated": "2012-03-15 17:04:17", 
       "tags": [
         6, 
         7, 
@@ -4248,7 +4248,7 @@
     "pk": 268, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:01", 
+      "dtcreated": "2012-03-15 17:05:47", 
       "tags": [
         16, 
         17, 
@@ -4265,7 +4265,7 @@
     "pk": 118, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:22", 
+      "dtcreated": "2012-03-15 17:04:26", 
       "tags": [
         45, 
         17, 
@@ -4282,13 +4282,13 @@
     "pk": 225, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:38", 
+      "dtcreated": "2012-03-15 17:05:21", 
       "tags": [
-        17, 
-        25, 
         16, 
+        17, 
+        23, 
         24, 
-        23
+        25
       ], 
       "image_url": "", 
       "name": "Caliban Book Shop", 
@@ -4299,7 +4299,7 @@
     "pk": 156, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:52", 
+      "dtcreated": "2012-03-15 17:04:42", 
       "tags": [
         17, 
         25, 
@@ -4316,7 +4316,7 @@
     "pk": 205, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:25", 
+      "dtcreated": "2012-03-15 17:05:09", 
       "tags": [
         8, 
         17, 
@@ -4333,7 +4333,7 @@
     "pk": 164, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:56", 
+      "dtcreated": "2012-03-15 17:04:46", 
       "tags": [
         6, 
         7, 
@@ -4348,7 +4348,7 @@
     "pk": 104, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:15", 
+      "dtcreated": "2012-03-15 17:04:19", 
       "tags": [
         15, 
         43
@@ -4362,7 +4362,7 @@
     "pk": 232, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:42", 
+      "dtcreated": "2012-03-15 17:05:26", 
       "tags": [
         25, 
         50, 
@@ -4377,7 +4377,7 @@
     "pk": 265, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:59", 
+      "dtcreated": "2012-03-15 17:05:45", 
       "tags": [
         14, 
         15, 
@@ -4392,7 +4392,7 @@
     "pk": 233, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:42", 
+      "dtcreated": "2012-03-15 17:05:27", 
       "tags": [
         25, 
         50, 
@@ -4407,7 +4407,7 @@
     "pk": 235, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:43", 
+      "dtcreated": "2012-03-15 17:05:28", 
       "tags": [
         25, 
         50, 
@@ -4422,7 +4422,7 @@
     "pk": 234, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:43", 
+      "dtcreated": "2012-03-15 17:05:27", 
       "tags": [
         25, 
         50, 
@@ -4437,7 +4437,7 @@
     "pk": 247, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:48", 
+      "dtcreated": "2012-03-15 17:05:33", 
       "tags": [], 
       "image_url": "", 
       "name": "Center Cleaners", 
@@ -4448,7 +4448,7 @@
     "pk": 254, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:51", 
+      "dtcreated": "2012-03-15 17:05:41", 
       "tags": [], 
       "image_url": "", 
       "name": "Center for Personal Development", 
@@ -4459,7 +4459,7 @@
     "pk": 56, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:40", 
+      "dtcreated": "2012-03-15 17:03:59", 
       "tags": [], 
       "image_url": "", 
       "name": "Center for Wholistic Therapy", 
@@ -4470,7 +4470,7 @@
     "pk": 260, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:57", 
+      "dtcreated": "2012-03-15 17:05:43", 
       "tags": [
         14, 
         15
@@ -4484,7 +4484,7 @@
     "pk": 31, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:02", 
+      "dtcreated": "2012-03-15 17:03:46", 
       "tags": [
         3, 
         4, 
@@ -4499,7 +4499,7 @@
     "pk": 252, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:50", 
+      "dtcreated": "2012-03-15 17:05:40", 
       "tags": [], 
       "image_url": "", 
       "name": "Centre Ave. News", 
@@ -4510,7 +4510,7 @@
     "pk": 88, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:03", 
+      "dtcreated": "2012-03-15 17:04:12", 
       "tags": [
         7, 
         39, 
@@ -4526,7 +4526,7 @@
     "pk": 165, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:56", 
+      "dtcreated": "2012-03-15 17:04:46", 
       "tags": [
         6, 
         7, 
@@ -4541,7 +4541,7 @@
     "pk": 79, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:59", 
+      "dtcreated": "2012-03-15 17:04:08", 
       "tags": [
         3, 
         4, 
@@ -4556,7 +4556,7 @@
     "pk": 214, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:34", 
+      "dtcreated": "2012-03-15 17:05:13", 
       "tags": [], 
       "image_url": "", 
       "name": "Cimini Hair Design", 
@@ -4567,7 +4567,7 @@
     "pk": 183, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:09", 
+      "dtcreated": "2012-03-15 17:04:57", 
       "tags": [
         11, 
         13, 
@@ -4583,7 +4583,7 @@
     "pk": 29, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:01", 
+      "dtcreated": "2012-03-15 17:03:45", 
       "tags": [
         11, 
         13, 
@@ -4599,7 +4599,7 @@
     "pk": 2, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:42", 
+      "dtcreated": "2012-03-15 17:03:32", 
       "tags": [
         3, 
         4, 
@@ -4614,7 +4614,7 @@
     "pk": 210, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:32", 
+      "dtcreated": "2012-03-15 17:05:11", 
       "tags": [
         67, 
         39, 
@@ -4632,7 +4632,7 @@
     "pk": 93, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:09", 
+      "dtcreated": "2012-03-15 17:04:14", 
       "tags": [
         6, 
         7, 
@@ -4647,7 +4647,7 @@
     "pk": 17, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:50", 
+      "dtcreated": "2012-03-15 17:03:39", 
       "tags": [
         6, 
         7, 
@@ -4662,7 +4662,7 @@
     "pk": 49, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:37", 
+      "dtcreated": "2012-03-15 17:03:55", 
       "tags": [
         6, 
         7, 
@@ -4677,7 +4677,7 @@
     "pk": 259, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:57", 
+      "dtcreated": "2012-03-15 17:05:43", 
       "tags": [], 
       "image_url": "", 
       "name": "Dairy Queen", 
@@ -4688,7 +4688,7 @@
     "pk": 48, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:36", 
+      "dtcreated": "2012-03-15 17:03:55", 
       "tags": [
         8, 
         17, 
@@ -4705,7 +4705,7 @@
     "pk": 179, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:03", 
+      "dtcreated": "2012-03-15 17:04:55", 
       "tags": [
         11, 
         13, 
@@ -4720,7 +4720,7 @@
     "pk": 199, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:22", 
+      "dtcreated": "2012-03-15 17:05:06", 
       "tags": [
         8, 
         17, 
@@ -4737,7 +4737,7 @@
     "pk": 110, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:18", 
+      "dtcreated": "2012-03-15 17:04:22", 
       "tags": [], 
       "image_url": "", 
       "name": "E.S. Management", 
@@ -4748,7 +4748,7 @@
     "pk": 153, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:51", 
+      "dtcreated": "2012-03-15 17:04:41", 
       "tags": [
         16, 
         17
@@ -4762,7 +4762,7 @@
     "pk": 87, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:03", 
+      "dtcreated": "2012-03-15 17:04:12", 
       "tags": [
         6, 
         7, 
@@ -4777,7 +4777,7 @@
     "pk": 133, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:38", 
+      "dtcreated": "2012-03-15 17:04:33", 
       "tags": [
         20, 
         21, 
@@ -4792,7 +4792,7 @@
     "pk": 124, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:29", 
+      "dtcreated": "2012-03-15 17:04:28", 
       "tags": [
         11, 
         13, 
@@ -4807,7 +4807,7 @@
     "pk": 65, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:45", 
+      "dtcreated": "2012-03-15 17:04:03", 
       "tags": [
         30, 
         35, 
@@ -4822,7 +4822,7 @@
     "pk": 94, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:10", 
+      "dtcreated": "2012-03-15 17:04:15", 
       "tags": [], 
       "image_url": "", 
       "name": "Eye Candy", 
@@ -4833,7 +4833,7 @@
     "pk": 145, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:47", 
+      "dtcreated": "2012-03-15 17:04:38", 
       "tags": [
         30
       ], 
@@ -4846,7 +4846,7 @@
     "pk": 67, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:49", 
+      "dtcreated": "2012-03-15 17:04:03", 
       "tags": [], 
       "image_url": "", 
       "name": "Family House", 
@@ -4857,7 +4857,7 @@
     "pk": 35, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:04", 
+      "dtcreated": "2012-03-15 17:03:48", 
       "tags": [
         3, 
         4, 
@@ -4872,7 +4872,7 @@
     "pk": 45, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:13", 
+      "dtcreated": "2012-03-15 17:03:53", 
       "tags": [
         3, 
         4, 
@@ -4887,7 +4887,7 @@
     "pk": 245, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:47", 
+      "dtcreated": "2012-03-15 17:05:32", 
       "tags": [
         11, 
         13, 
@@ -4903,7 +4903,7 @@
     "pk": 169, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:58", 
+      "dtcreated": "2012-03-15 17:04:50", 
       "tags": [
         11, 
         13, 
@@ -4919,7 +4919,7 @@
     "pk": 266, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:00", 
+      "dtcreated": "2012-03-15 17:05:46", 
       "tags": [
         3, 
         4, 
@@ -4934,7 +4934,7 @@
     "pk": 19, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:51", 
+      "dtcreated": "2012-03-15 17:03:40", 
       "tags": [
         6, 
         7, 
@@ -4949,7 +4949,7 @@
     "pk": 111, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:18", 
+      "dtcreated": "2012-03-15 17:04:23", 
       "tags": [
         16, 
         17, 
@@ -4964,7 +4964,7 @@
     "pk": 139, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:40", 
+      "dtcreated": "2012-03-15 17:04:35", 
       "tags": [], 
       "image_url": "", 
       "name": "Fox's Pizza Den", 
@@ -4975,7 +4975,7 @@
     "pk": 271, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:02", 
+      "dtcreated": "2012-03-15 17:05:48", 
       "tags": [
         15, 
         43
@@ -4989,7 +4989,7 @@
     "pk": 37, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:06", 
+      "dtcreated": "2012-03-15 17:03:49", 
       "tags": [
         3, 
         4, 
@@ -5004,7 +5004,7 @@
     "pk": 54, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:39", 
+      "dtcreated": "2012-03-15 17:03:58", 
       "tags": [
         6, 
         7, 
@@ -5019,7 +5019,7 @@
     "pk": 162, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:55", 
+      "dtcreated": "2012-03-15 17:04:45", 
       "tags": [
         7, 
         39, 
@@ -5035,7 +5035,7 @@
     "pk": 188, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:12", 
+      "dtcreated": "2012-03-15 17:04:59", 
       "tags": [], 
       "image_url": "", 
       "name": "General Nutrition Center", 
@@ -5046,7 +5046,7 @@
     "pk": 184, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:10", 
+      "dtcreated": "2012-03-15 17:04:57", 
       "tags": [
         16, 
         17, 
@@ -5062,7 +5062,7 @@
     "pk": 151, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:50", 
+      "dtcreated": "2012-03-15 17:04:40", 
       "tags": [
         6, 
         7, 
@@ -5077,7 +5077,7 @@
     "pk": 146, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:47", 
+      "dtcreated": "2012-03-15 17:04:38", 
       "tags": [
         17, 
         25, 
@@ -5094,7 +5094,7 @@
     "pk": 55, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:39", 
+      "dtcreated": "2012-03-15 17:03:58", 
       "tags": [], 
       "image_url": "", 
       "name": "Gregory's Hair Design", 
@@ -5105,7 +5105,7 @@
     "pk": 193, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:14", 
+      "dtcreated": "2012-03-15 17:05:01", 
       "tags": [
         16, 
         17
@@ -5119,7 +5119,7 @@
     "pk": 4, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:43", 
+      "dtcreated": "2012-03-15 17:03:33", 
       "tags": [
         13, 
         12, 
@@ -5136,7 +5136,7 @@
     "pk": 270, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:01", 
+      "dtcreated": "2012-03-15 17:05:48", 
       "tags": [
         9, 
         10, 
@@ -5153,7 +5153,7 @@
     "pk": 15, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:49", 
+      "dtcreated": "2012-03-15 17:03:38", 
       "tags": [
         20, 
         26, 
@@ -5168,7 +5168,7 @@
     "pk": 103, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:14", 
+      "dtcreated": "2012-03-15 17:04:19", 
       "tags": [
         1, 
         2
@@ -5182,7 +5182,7 @@
     "pk": 281, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:06", 
+      "dtcreated": "2012-03-15 17:05:57", 
       "tags": [
         3, 
         4, 
@@ -5197,7 +5197,7 @@
     "pk": 200, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:22", 
+      "dtcreated": "2012-03-15 17:05:07", 
       "tags": [
         7, 
         39, 
@@ -5215,7 +5215,7 @@
     "pk": 128, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:31", 
+      "dtcreated": "2012-03-15 17:04:30", 
       "tags": [
         45, 
         17, 
@@ -5232,7 +5232,7 @@
     "pk": 10, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:46", 
+      "dtcreated": "2012-03-15 17:03:36", 
       "tags": [
         17, 
         25, 
@@ -5249,7 +5249,7 @@
     "pk": 1, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:42", 
+      "dtcreated": "2012-03-15 17:03:32", 
       "tags": [
         1, 
         2
@@ -5263,7 +5263,7 @@
     "pk": 13, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:48", 
+      "dtcreated": "2012-03-15 17:03:37", 
       "tags": [
         16, 
         17
@@ -5277,7 +5277,7 @@
     "pk": 18, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:51", 
+      "dtcreated": "2012-03-15 17:03:39", 
       "tags": [
         20, 
         26, 
@@ -5292,7 +5292,7 @@
     "pk": 91, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:05", 
+      "dtcreated": "2012-03-15 17:04:14", 
       "tags": [
         49
       ], 
@@ -5305,7 +5305,7 @@
     "pk": 155, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:52", 
+      "dtcreated": "2012-03-15 17:04:42", 
       "tags": [], 
       "image_url": "", 
       "name": "IGA Market on Forbes", 
@@ -5316,7 +5316,7 @@
     "pk": 102, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:14", 
+      "dtcreated": "2012-03-15 17:04:18", 
       "tags": [
         6, 
         7, 
@@ -5331,7 +5331,7 @@
     "pk": 240, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:45", 
+      "dtcreated": "2012-03-15 17:05:30", 
       "tags": [
         6, 
         7, 
@@ -5346,7 +5346,7 @@
     "pk": 85, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:02", 
+      "dtcreated": "2012-03-15 17:04:11", 
       "tags": [
         16, 
         17
@@ -5360,7 +5360,7 @@
     "pk": 216, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:34", 
+      "dtcreated": "2012-03-15 17:05:14", 
       "tags": [
         3, 
         4, 
@@ -5375,7 +5375,7 @@
     "pk": 8, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:45", 
+      "dtcreated": "2012-03-15 17:03:35", 
       "tags": [
         19, 
         12, 
@@ -5392,7 +5392,7 @@
     "pk": 143, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:44", 
+      "dtcreated": "2012-03-15 17:04:37", 
       "tags": [], 
       "image_url": "", 
       "name": "Jim's Amoco", 
@@ -5403,7 +5403,7 @@
     "pk": 119, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:23", 
+      "dtcreated": "2012-03-15 17:04:26", 
       "tags": [
         6, 
         7, 
@@ -5418,7 +5418,7 @@
     "pk": 106, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:16", 
+      "dtcreated": "2012-03-15 17:04:20", 
       "tags": [], 
       "image_url": "", 
       "name": "Job Links", 
@@ -5429,7 +5429,7 @@
     "pk": 84, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:01", 
+      "dtcreated": "2012-03-15 17:04:11", 
       "tags": [], 
       "image_url": "", 
       "name": "Joe Bellisario Barber", 
@@ -5440,7 +5440,7 @@
     "pk": 182, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:07", 
+      "dtcreated": "2012-03-15 17:04:56", 
       "tags": [
         6, 
         7, 
@@ -5455,7 +5455,7 @@
     "pk": 142, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:42", 
+      "dtcreated": "2012-03-15 17:04:36", 
       "tags": [
         49
       ], 
@@ -5468,7 +5468,7 @@
     "pk": 120, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:25", 
+      "dtcreated": "2012-03-15 17:04:26", 
       "tags": [
         18
       ], 
@@ -5481,7 +5481,7 @@
     "pk": 251, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:50", 
+      "dtcreated": "2012-03-15 17:05:37", 
       "tags": [
         6, 
         7, 
@@ -5502,7 +5502,7 @@
     "pk": 81, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:00", 
+      "dtcreated": "2012-03-15 17:04:09", 
       "tags": [
         6, 
         7, 
@@ -5517,13 +5517,13 @@
     "pk": 238, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:44", 
+      "dtcreated": "2012-03-15 17:05:29", 
       "tags": [
-        8, 
-        17, 
-        16, 
+        6, 
         7, 
-        6
+        8, 
+        16, 
+        17
       ], 
       "image_url": "", 
       "name": "Kevin's Deli", 
@@ -5534,7 +5534,7 @@
     "pk": 175, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:01", 
+      "dtcreated": "2012-03-15 17:04:53", 
       "tags": [
         16, 
         17
@@ -5548,17 +5548,17 @@
     "pk": 228, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:40", 
+      "dtcreated": "2012-03-15 17:05:24", 
       "tags": [
-        17, 
-        76, 
-        75, 
-        7, 
-        39, 
         6, 
+        7, 
         8, 
         16, 
-        74
+        17, 
+        39, 
+        74, 
+        75, 
+        76
       ], 
       "image_url": "", 
       "name": "Kiva Han Cafe", 
@@ -5569,7 +5569,7 @@
     "pk": 98, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:12", 
+      "dtcreated": "2012-03-15 17:04:17", 
       "tags": [
         16, 
         17
@@ -5583,7 +5583,7 @@
     "pk": 222, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:37", 
+      "dtcreated": "2012-03-15 17:05:17", 
       "tags": [
         6, 
         7, 
@@ -5598,7 +5598,7 @@
     "pk": 32, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:03", 
+      "dtcreated": "2012-03-15 17:03:47", 
       "tags": [
         17, 
         34, 
@@ -5617,7 +5617,7 @@
     "pk": 215, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:34", 
+      "dtcreated": "2012-03-15 17:05:13", 
       "tags": [
         6, 
         7, 
@@ -5632,7 +5632,7 @@
     "pk": 24, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:54", 
+      "dtcreated": "2012-03-15 17:03:42", 
       "tags": [
         6, 
         7, 
@@ -5647,7 +5647,7 @@
     "pk": 14, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:49", 
+      "dtcreated": "2012-03-15 17:03:38", 
       "tags": [], 
       "image_url": "", 
       "name": "Lefty's Tatoo Parlor", 
@@ -5658,7 +5658,7 @@
     "pk": 226, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:39", 
+      "dtcreated": "2012-03-15 17:05:24", 
       "tags": [
         6, 
         7, 
@@ -5673,7 +5673,7 @@
     "pk": 130, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:33", 
+      "dtcreated": "2012-03-15 17:04:31", 
       "tags": [
         16, 
         17, 
@@ -5689,7 +5689,7 @@
     "pk": 127, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:30", 
+      "dtcreated": "2012-03-15 17:04:30", 
       "tags": [
         30, 
         35, 
@@ -5704,7 +5704,7 @@
     "pk": 57, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:40", 
+      "dtcreated": "2012-03-15 17:03:59", 
       "tags": [
         6, 
         7, 
@@ -5719,7 +5719,7 @@
     "pk": 248, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:48", 
+      "dtcreated": "2012-03-15 17:05:33", 
       "tags": [
         57, 
         65
@@ -5733,7 +5733,7 @@
     "pk": 204, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:24", 
+      "dtcreated": "2012-03-15 17:05:09", 
       "tags": [
         6, 
         7, 
@@ -5748,7 +5748,7 @@
     "pk": 97, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:11", 
+      "dtcreated": "2012-03-15 17:04:16", 
       "tags": [], 
       "image_url": "", 
       "name": "Lucca Restaurant", 
@@ -5759,7 +5759,7 @@
     "pk": 168, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:57", 
+      "dtcreated": "2012-03-15 17:04:49", 
       "tags": [
         6, 
         7, 
@@ -5774,7 +5774,7 @@
     "pk": 278, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:05", 
+      "dtcreated": "2012-03-15 17:05:54", 
       "tags": [
         30, 
         35, 
@@ -5789,7 +5789,7 @@
     "pk": 7, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:45", 
+      "dtcreated": "2012-03-15 17:03:35", 
       "tags": [
         16, 
         17
@@ -5803,7 +5803,7 @@
     "pk": 90, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:04", 
+      "dtcreated": "2012-03-15 17:04:13", 
       "tags": [
         20, 
         26, 
@@ -5818,7 +5818,7 @@
     "pk": 173, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:00", 
+      "dtcreated": "2012-03-15 17:04:52", 
       "tags": [
         6, 
         7, 
@@ -5833,7 +5833,7 @@
     "pk": 78, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:56", 
+      "dtcreated": "2012-03-15 17:04:08", 
       "tags": [
         49
       ], 
@@ -5846,7 +5846,7 @@
     "pk": 136, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:39", 
+      "dtcreated": "2012-03-15 17:04:34", 
       "tags": [
         16, 
         17, 
@@ -5861,7 +5861,7 @@
     "pk": 213, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:33", 
+      "dtcreated": "2012-03-15 17:05:13", 
       "tags": [
         6, 
         7, 
@@ -5876,7 +5876,7 @@
     "pk": 261, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:58", 
+      "dtcreated": "2012-03-15 17:05:44", 
       "tags": [
         7, 
         16, 
@@ -5897,7 +5897,7 @@
     "pk": 121, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:26", 
+      "dtcreated": "2012-03-15 17:04:27", 
       "tags": [
         17, 
         34, 
@@ -5916,7 +5916,7 @@
     "pk": 117, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:21", 
+      "dtcreated": "2012-03-15 17:04:25", 
       "tags": [], 
       "image_url": "", 
       "name": "Mi Ranchito", 
@@ -5927,7 +5927,7 @@
     "pk": 52, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:38", 
+      "dtcreated": "2012-03-15 17:03:57", 
       "tags": [], 
       "image_url": "", 
       "name": "Milan Hair and Nail Spa", 
@@ -5938,7 +5938,7 @@
     "pk": 149, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:49", 
+      "dtcreated": "2012-03-15 17:04:39", 
       "tags": [
         6, 
         7, 
@@ -5953,7 +5953,7 @@
     "pk": 131, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:35", 
+      "dtcreated": "2012-03-15 17:04:32", 
       "tags": [
         30, 
         35, 
@@ -5969,7 +5969,7 @@
     "pk": 250, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:49", 
+      "dtcreated": "2012-03-15 17:05:36", 
       "tags": [
         6, 
         7, 
@@ -5984,7 +5984,7 @@
     "pk": 237, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:44", 
+      "dtcreated": "2012-03-15 17:05:29", 
       "tags": [], 
       "image_url": "", 
       "name": "National Development Corp.", 
@@ -5995,7 +5995,7 @@
     "pk": 272, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:02", 
+      "dtcreated": "2012-03-15 17:05:48", 
       "tags": [
         14, 
         15
@@ -6009,7 +6009,7 @@
     "pk": 9, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:46", 
+      "dtcreated": "2012-03-15 17:03:35", 
       "tags": [
         20, 
         21, 
@@ -6024,7 +6024,7 @@
     "pk": 137, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:39", 
+      "dtcreated": "2012-03-15 17:04:34", 
       "tags": [
         6, 
         7, 
@@ -6039,7 +6039,7 @@
     "pk": 196, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:19", 
+      "dtcreated": "2012-03-15 17:05:05", 
       "tags": [
         16, 
         17
@@ -6053,7 +6053,7 @@
     "pk": 243, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:46", 
+      "dtcreated": "2012-03-15 17:05:31", 
       "tags": [
         6, 
         7, 
@@ -6068,7 +6068,7 @@
     "pk": 195, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:17", 
+      "dtcreated": "2012-03-15 17:05:02", 
       "tags": [
         3, 
         4, 
@@ -6083,7 +6083,7 @@
     "pk": 69, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:50", 
+      "dtcreated": "2012-03-15 17:04:04", 
       "tags": [
         46
       ], 
@@ -6096,7 +6096,7 @@
     "pk": 70, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:51", 
+      "dtcreated": "2012-03-15 17:04:05", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland BID", 
@@ -6107,7 +6107,7 @@
     "pk": 95, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:11", 
+      "dtcreated": "2012-03-15 17:04:15", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Cafe", 
@@ -6118,7 +6118,7 @@
     "pk": 34, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:04", 
+      "dtcreated": "2012-03-15 17:03:48", 
       "tags": [
         14, 
         15
@@ -6132,7 +6132,7 @@
     "pk": 71, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:51", 
+      "dtcreated": "2012-03-15 17:04:05", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Community Council", 
@@ -6143,7 +6143,7 @@
     "pk": 239, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:45", 
+      "dtcreated": "2012-03-15 17:05:29", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Community Deli", 
@@ -6154,7 +6154,7 @@
     "pk": 64, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:43", 
+      "dtcreated": "2012-03-15 17:04:02", 
       "tags": [
         17, 
         16, 
@@ -6173,7 +6173,7 @@
     "pk": 178, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:03", 
+      "dtcreated": "2012-03-15 17:04:54", 
       "tags": [
         16, 
         17, 
@@ -6189,7 +6189,7 @@
     "pk": 154, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:51", 
+      "dtcreated": "2012-03-15 17:04:42", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Oasis Tanning", 
@@ -6200,7 +6200,7 @@
     "pk": 72, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:51", 
+      "dtcreated": "2012-03-15 17:04:05", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Planning & Dev. Corp.", 
@@ -6211,7 +6211,7 @@
     "pk": 58, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:40", 
+      "dtcreated": "2012-03-15 17:03:59", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Real Estate Co.", 
@@ -6222,7 +6222,7 @@
     "pk": 138, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:40", 
+      "dtcreated": "2012-03-15 17:04:35", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Trans. Mgt. Assoc.", 
@@ -6233,7 +6233,7 @@
     "pk": 76, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:53", 
+      "dtcreated": "2012-03-15 17:04:07", 
       "tags": [], 
       "image_url": "", 
       "name": "Oakland Village Realty", 
@@ -6244,7 +6244,7 @@
     "pk": 21, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:53", 
+      "dtcreated": "2012-03-15 17:03:41", 
       "tags": [
         6, 
         7, 
@@ -6259,7 +6259,7 @@
     "pk": 47, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:36", 
+      "dtcreated": "2012-03-15 17:03:54", 
       "tags": [
         20, 
         26, 
@@ -6274,7 +6274,7 @@
     "pk": 46, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:35", 
+      "dtcreated": "2012-03-15 17:03:54", 
       "tags": [
         30, 
         35, 
@@ -6289,7 +6289,7 @@
     "pk": 167, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:57", 
+      "dtcreated": "2012-03-15 17:04:47", 
       "tags": [
         6, 
         7, 
@@ -6304,7 +6304,7 @@
     "pk": 198, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:21", 
+      "dtcreated": "2012-03-15 17:05:06", 
       "tags": [
         6, 
         7, 
@@ -6319,7 +6319,7 @@
     "pk": 209, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:30", 
+      "dtcreated": "2012-03-15 17:05:11", 
       "tags": [
         11, 
         13, 
@@ -6335,7 +6335,7 @@
     "pk": 276, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:04", 
+      "dtcreated": "2012-03-15 17:05:51", 
       "tags": [
         11, 
         13, 
@@ -6351,7 +6351,7 @@
     "pk": 171, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:59", 
+      "dtcreated": "2012-03-15 17:04:51", 
       "tags": [
         6, 
         7, 
@@ -6366,7 +6366,7 @@
     "pk": 114, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:19", 
+      "dtcreated": "2012-03-15 17:04:24", 
       "tags": [
         6, 
         7, 
@@ -6381,7 +6381,7 @@
     "pk": 191, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:13", 
+      "dtcreated": "2012-03-15 17:05:00", 
       "tags": [
         6, 
         7, 
@@ -6396,7 +6396,7 @@
     "pk": 244, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:47", 
+      "dtcreated": "2012-03-15 17:05:32", 
       "tags": [
         7, 
         39, 
@@ -6412,7 +6412,7 @@
     "pk": 135, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:38", 
+      "dtcreated": "2012-03-15 17:04:33", 
       "tags": [
         11, 
         13, 
@@ -6427,7 +6427,7 @@
     "pk": 20, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:52", 
+      "dtcreated": "2012-03-15 17:03:40", 
       "tags": [
         17, 
         29, 
@@ -6444,7 +6444,7 @@
     "pk": 116, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:20", 
+      "dtcreated": "2012-03-15 17:04:25", 
       "tags": [], 
       "image_url": "", 
       "name": "People's Oakland", 
@@ -6455,7 +6455,7 @@
     "pk": 269, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:01", 
+      "dtcreated": "2012-03-15 17:05:47", 
       "tags": [
         16, 
         17, 
@@ -6471,7 +6471,7 @@
     "pk": 36, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:05", 
+      "dtcreated": "2012-03-15 17:03:49", 
       "tags": [
         30, 
         35, 
@@ -6486,7 +6486,7 @@
     "pk": 26, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:55", 
+      "dtcreated": "2012-03-15 17:03:44", 
       "tags": [
         16, 
         17, 
@@ -6501,7 +6501,7 @@
     "pk": 16, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:50", 
+      "dtcreated": "2012-03-15 17:03:38", 
       "tags": [
         6, 
         7, 
@@ -6516,7 +6516,7 @@
     "pk": 280, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:06", 
+      "dtcreated": "2012-03-15 17:05:57", 
       "tags": [
         7, 
         47, 
@@ -6531,7 +6531,7 @@
     "pk": 201, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:23", 
+      "dtcreated": "2012-03-15 17:05:07", 
       "tags": [
         60, 
         17, 
@@ -6549,7 +6549,7 @@
     "pk": 219, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:36", 
+      "dtcreated": "2012-03-15 17:05:15", 
       "tags": [], 
       "image_url": "", 
       "name": "Pittsburgh Athletic Association", 
@@ -6560,7 +6560,7 @@
     "pk": 62, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:42", 
+      "dtcreated": "2012-03-15 17:04:01", 
       "tags": [
         8, 
         17, 
@@ -6577,7 +6577,7 @@
     "pk": 236, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:43", 
+      "dtcreated": "2012-03-15 17:05:28", 
       "tags": [], 
       "image_url": "", 
       "name": "Pittsburgh Chamber Music Society", 
@@ -6588,7 +6588,7 @@
     "pk": 262, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:58", 
+      "dtcreated": "2012-03-15 17:05:44", 
       "tags": [
         7, 
         14, 
@@ -6604,7 +6604,7 @@
     "pk": 75, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:53", 
+      "dtcreated": "2012-03-15 17:04:07", 
       "tags": [
         7, 
         47, 
@@ -6619,7 +6619,7 @@
     "pk": 61, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:41", 
+      "dtcreated": "2012-03-15 17:04:01", 
       "tags": [
         14, 
         15
@@ -6633,7 +6633,7 @@
     "pk": 174, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:00", 
+      "dtcreated": "2012-03-15 17:04:52", 
       "tags": [
         6, 
         7, 
@@ -6648,7 +6648,7 @@
     "pk": 96, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:11", 
+      "dtcreated": "2012-03-15 17:04:16", 
       "tags": [
         6, 
         7, 
@@ -6663,7 +6663,7 @@
     "pk": 5, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:44", 
+      "dtcreated": "2012-03-15 17:03:34", 
       "tags": [
         14, 
         15
@@ -6677,7 +6677,7 @@
     "pk": 38, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:07", 
+      "dtcreated": "2012-03-15 17:03:50", 
       "tags": [
         6, 
         7, 
@@ -6692,7 +6692,7 @@
     "pk": 60, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:41", 
+      "dtcreated": "2012-03-15 17:04:00", 
       "tags": [
         6, 
         7, 
@@ -6707,7 +6707,7 @@
     "pk": 11, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:47", 
+      "dtcreated": "2012-03-15 17:03:36", 
       "tags": [
         6, 
         7, 
@@ -6722,7 +6722,7 @@
     "pk": 194, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:15", 
+      "dtcreated": "2012-03-15 17:05:01", 
       "tags": [
         6, 
         7, 
@@ -6737,7 +6737,7 @@
     "pk": 160, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:54", 
+      "dtcreated": "2012-03-15 17:04:44", 
       "tags": [
         6, 
         7, 
@@ -6752,7 +6752,7 @@
     "pk": 73, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:52", 
+      "dtcreated": "2012-03-15 17:04:06", 
       "tags": [
         20, 
         26, 
@@ -6767,7 +6767,7 @@
     "pk": 177, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:02", 
+      "dtcreated": "2012-03-15 17:04:54", 
       "tags": [
         6, 
         7, 
@@ -6782,7 +6782,7 @@
     "pk": 144, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:45", 
+      "dtcreated": "2012-03-15 17:04:37", 
       "tags": [
         6, 
         7, 
@@ -6797,7 +6797,7 @@
     "pk": 256, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:56", 
+      "dtcreated": "2012-03-15 17:05:42", 
       "tags": [], 
       "image_url": "", 
       "name": "Radio Shack", 
@@ -6808,7 +6808,7 @@
     "pk": 150, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:49", 
+      "dtcreated": "2012-03-15 17:04:40", 
       "tags": [
         16, 
         17, 
@@ -6824,7 +6824,7 @@
     "pk": 273, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:03", 
+      "dtcreated": "2012-03-15 17:05:49", 
       "tags": [
         15, 
         43
@@ -6838,7 +6838,7 @@
     "pk": 279, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:05", 
+      "dtcreated": "2012-03-15 17:05:56", 
       "tags": [
         6, 
         7, 
@@ -6855,7 +6855,7 @@
     "pk": 176, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:01", 
+      "dtcreated": "2012-03-15 17:04:53", 
       "tags": [
         8, 
         17, 
@@ -6872,7 +6872,7 @@
     "pk": 170, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:58", 
+      "dtcreated": "2012-03-15 17:04:50", 
       "tags": [
         45, 
         17, 
@@ -6889,7 +6889,7 @@
     "pk": 51, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:37", 
+      "dtcreated": "2012-03-15 17:03:57", 
       "tags": [
         45, 
         17, 
@@ -6906,7 +6906,7 @@
     "pk": 264, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:59", 
+      "dtcreated": "2012-03-15 17:05:45", 
       "tags": [
         3, 
         4, 
@@ -6926,7 +6926,7 @@
     "pk": 190, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:13", 
+      "dtcreated": "2012-03-15 17:04:59", 
       "tags": [
         16, 
         17, 
@@ -6942,7 +6942,7 @@
     "pk": 107, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:16", 
+      "dtcreated": "2012-03-15 17:04:21", 
       "tags": [
         17, 
         34, 
@@ -6961,7 +6961,7 @@
     "pk": 258, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:56", 
+      "dtcreated": "2012-03-15 17:05:42", 
       "tags": [
         6, 
         7, 
@@ -6976,7 +6976,7 @@
     "pk": 185, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:11", 
+      "dtcreated": "2012-03-15 17:04:57", 
       "tags": [], 
       "image_url": "", 
       "name": "Samuel Land Co.", 
@@ -6987,7 +6987,7 @@
     "pk": 132, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:37", 
+      "dtcreated": "2012-03-15 17:04:32", 
       "tags": [
         6, 
         7, 
@@ -7002,7 +7002,7 @@
     "pk": 134, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:38", 
+      "dtcreated": "2012-03-15 17:04:33", 
       "tags": [], 
       "image_url": "", 
       "name": "Schenley Park Animal Hospital", 
@@ -7013,7 +7013,7 @@
     "pk": 3, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:43", 
+      "dtcreated": "2012-03-15 17:03:33", 
       "tags": [
         6, 
         7, 
@@ -7028,7 +7028,7 @@
     "pk": 112, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:19", 
+      "dtcreated": "2012-03-15 17:04:23", 
       "tags": [
         6, 
         7, 
@@ -7043,7 +7043,7 @@
     "pk": 148, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:48", 
+      "dtcreated": "2012-03-15 17:04:39", 
       "tags": [
         16, 
         17, 
@@ -7059,7 +7059,7 @@
     "pk": 257, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:56", 
+      "dtcreated": "2012-03-15 17:05:42", 
       "tags": [], 
       "image_url": "", 
       "name": "Seoul Mart", 
@@ -7070,7 +7070,7 @@
     "pk": 186, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:11", 
+      "dtcreated": "2012-03-15 17:04:58", 
       "tags": [
         16, 
         17
@@ -7084,7 +7084,7 @@
     "pk": 161, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:54", 
+      "dtcreated": "2012-03-15 17:04:45", 
       "tags": [
         16, 
         17
@@ -7098,7 +7098,7 @@
     "pk": 50, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:37", 
+      "dtcreated": "2012-03-15 17:03:56", 
       "tags": [
         14, 
         15, 
@@ -7113,7 +7113,7 @@
     "pk": 223, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:38", 
+      "dtcreated": "2012-03-15 17:05:17", 
       "tags": [
         72, 
         71, 
@@ -7130,7 +7130,7 @@
     "pk": 66, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:47", 
+      "dtcreated": "2012-03-15 17:04:03", 
       "tags": [
         6, 
         7, 
@@ -7145,7 +7145,7 @@
     "pk": 208, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:28", 
+      "dtcreated": "2012-03-15 17:05:10", 
       "tags": [
         6, 
         7, 
@@ -7160,7 +7160,7 @@
     "pk": 80, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:00", 
+      "dtcreated": "2012-03-15 17:04:09", 
       "tags": [
         6, 
         7, 
@@ -7175,7 +7175,7 @@
     "pk": 22, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:53", 
+      "dtcreated": "2012-03-15 17:03:41", 
       "tags": [
         14, 
         15
@@ -7189,7 +7189,7 @@
     "pk": 23, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:54", 
+      "dtcreated": "2012-03-15 17:03:41", 
       "tags": [
         14, 
         15
@@ -7203,13 +7203,13 @@
     "pk": 227, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:39", 
+      "dtcreated": "2012-03-15 17:05:24", 
       "tags": [
-        5, 
-        4, 
-        73, 
         3, 
-        6
+        4, 
+        5, 
+        6, 
+        73
       ], 
       "image_url": "", 
       "name": "St. Nicholas Greek Orthodox Cathedral", 
@@ -7220,7 +7220,7 @@
     "pk": 275, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:04", 
+      "dtcreated": "2012-03-15 17:05:50", 
       "tags": [
         3, 
         4, 
@@ -7235,7 +7235,7 @@
     "pk": 6, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:45", 
+      "dtcreated": "2012-03-15 17:03:34", 
       "tags": [
         3, 
         4, 
@@ -7250,7 +7250,7 @@
     "pk": 33, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:03", 
+      "dtcreated": "2012-03-15 17:03:47", 
       "tags": [
         3, 
         4, 
@@ -7265,7 +7265,7 @@
     "pk": 101, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:13", 
+      "dtcreated": "2012-03-15 17:04:18", 
       "tags": [
         3, 
         4, 
@@ -7280,7 +7280,7 @@
     "pk": 218, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:35", 
+      "dtcreated": "2012-03-15 17:05:15", 
       "tags": [
         6, 
         7, 
@@ -7295,7 +7295,7 @@
     "pk": 163, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:55", 
+      "dtcreated": "2012-03-15 17:04:46", 
       "tags": [
         6, 
         7, 
@@ -7310,7 +7310,7 @@
     "pk": 277, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:05", 
+      "dtcreated": "2012-03-15 17:05:52", 
       "tags": [
         7, 
         69, 
@@ -7327,7 +7327,7 @@
     "pk": 129, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:31", 
+      "dtcreated": "2012-03-15 17:04:31", 
       "tags": [
         56, 
         57, 
@@ -7342,7 +7342,7 @@
     "pk": 263, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:59", 
+      "dtcreated": "2012-03-15 17:05:45", 
       "tags": [], 
       "image_url": "", 
       "name": "Stuckert's Towing", 
@@ -7353,7 +7353,7 @@
     "pk": 224, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:38", 
+      "dtcreated": "2012-03-15 17:05:19", 
       "tags": [
         6, 
         7, 
@@ -7368,7 +7368,7 @@
     "pk": 172, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:59", 
+      "dtcreated": "2012-03-15 17:04:51", 
       "tags": [
         6, 
         7, 
@@ -7383,7 +7383,7 @@
     "pk": 40, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:11", 
+      "dtcreated": "2012-03-15 17:03:51", 
       "tags": [
         32, 
         16, 
@@ -7406,7 +7406,7 @@
     "pk": 157, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:52", 
+      "dtcreated": "2012-03-15 17:04:43", 
       "tags": [
         20, 
         26, 
@@ -7421,7 +7421,7 @@
     "pk": 30, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:02", 
+      "dtcreated": "2012-03-15 17:03:46", 
       "tags": [
         6, 
         7, 
@@ -7436,7 +7436,7 @@
     "pk": 12, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:48", 
+      "dtcreated": "2012-03-15 17:03:37", 
       "tags": [
         8, 
         17, 
@@ -7453,7 +7453,7 @@
     "pk": 27, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:57", 
+      "dtcreated": "2012-03-15 17:03:44", 
       "tags": [
         3, 
         4, 
@@ -7468,7 +7468,7 @@
     "pk": 28, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:59", 
+      "dtcreated": "2012-03-15 17:03:45", 
       "tags": [
         6, 
         7, 
@@ -7483,7 +7483,7 @@
     "pk": 187, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:12", 
+      "dtcreated": "2012-03-15 17:04:58", 
       "tags": [
         6, 
         7, 
@@ -7498,7 +7498,7 @@
     "pk": 92, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:07", 
+      "dtcreated": "2012-03-15 17:04:14", 
       "tags": [
         6, 
         7, 
@@ -7513,7 +7513,7 @@
     "pk": 74, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:52", 
+      "dtcreated": "2012-03-15 17:04:06", 
       "tags": [
         6, 
         7, 
@@ -7528,7 +7528,7 @@
     "pk": 108, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:17", 
+      "dtcreated": "2012-03-15 17:04:21", 
       "tags": [
         20, 
         26, 
@@ -7543,7 +7543,7 @@
     "pk": 159, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:53", 
+      "dtcreated": "2012-03-15 17:04:44", 
       "tags": [
         16, 
         17
@@ -7557,7 +7557,7 @@
     "pk": 123, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:28", 
+      "dtcreated": "2012-03-15 17:04:28", 
       "tags": [
         1, 
         2
@@ -7571,7 +7571,7 @@
     "pk": 166, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:57", 
+      "dtcreated": "2012-03-15 17:04:47", 
       "tags": [
         14, 
         15
@@ -7585,7 +7585,7 @@
     "pk": 86, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:02", 
+      "dtcreated": "2012-03-15 17:04:11", 
       "tags": [
         25, 
         50, 
@@ -7600,7 +7600,7 @@
     "pk": 242, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:46", 
+      "dtcreated": "2012-03-15 17:05:31", 
       "tags": [], 
       "image_url": "", 
       "name": "The Sign Source", 
@@ -7611,7 +7611,7 @@
     "pk": 141, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:41", 
+      "dtcreated": "2012-03-15 17:04:36", 
       "tags": [
         16, 
         17
@@ -7625,7 +7625,7 @@
     "pk": 202, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:23", 
+      "dtcreated": "2012-03-15 17:05:08", 
       "tags": [
         54, 
         55
@@ -7639,7 +7639,7 @@
     "pk": 83, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:01", 
+      "dtcreated": "2012-03-15 17:04:10", 
       "tags": [
         6, 
         7, 
@@ -7654,7 +7654,7 @@
     "pk": 147, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:48", 
+      "dtcreated": "2012-03-15 17:04:38", 
       "tags": [
         16, 
         17
@@ -7668,7 +7668,7 @@
     "pk": 89, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:04", 
+      "dtcreated": "2012-03-15 17:04:13", 
       "tags": [
         46
       ], 
@@ -7681,7 +7681,7 @@
     "pk": 63, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:42", 
+      "dtcreated": "2012-03-15 17:04:02", 
       "tags": [], 
       "image_url": "", 
       "name": "Tong's Cuisine", 
@@ -7692,7 +7692,7 @@
     "pk": 217, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:35", 
+      "dtcreated": "2012-03-15 17:05:14", 
       "tags": [
         16, 
         17
@@ -7706,7 +7706,7 @@
     "pk": 192, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:14", 
+      "dtcreated": "2012-03-15 17:05:00", 
       "tags": [
         16, 
         17, 
@@ -7722,13 +7722,13 @@
     "pk": 246, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:48", 
+      "dtcreated": "2012-03-15 17:05:32", 
       "tags": [
-        17, 
-        25, 
         16, 
+        17, 
+        23, 
         24, 
-        23
+        25
       ], 
       "image_url": "", 
       "name": "Townsend Booksellers", 
@@ -7739,7 +7739,7 @@
     "pk": 41, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:12", 
+      "dtcreated": "2012-03-15 17:03:52", 
       "tags": [
         30, 
         35, 
@@ -7754,7 +7754,7 @@
     "pk": 125, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:29", 
+      "dtcreated": "2012-03-15 17:04:29", 
       "tags": [
         30
       ], 
@@ -7767,7 +7767,7 @@
     "pk": 42, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:12", 
+      "dtcreated": "2012-03-15 17:03:52", 
       "tags": [
         15, 
         43
@@ -7781,7 +7781,7 @@
     "pk": 53, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:38", 
+      "dtcreated": "2012-03-15 17:03:57", 
       "tags": [
         6, 
         7, 
@@ -7796,7 +7796,7 @@
     "pk": 220, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:36", 
+      "dtcreated": "2012-03-15 17:05:16", 
       "tags": [
         6, 
         7, 
@@ -7811,7 +7811,7 @@
     "pk": 253, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:51", 
+      "dtcreated": "2012-03-15 17:05:40", 
       "tags": [], 
       "image_url": "", 
       "name": "United Cerebal Palsy Center", 
@@ -7822,7 +7822,7 @@
     "pk": 68, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:50", 
+      "dtcreated": "2012-03-15 17:04:04", 
       "tags": [], 
       "image_url": "", 
       "name": "United Jewish Federation", 
@@ -7833,7 +7833,7 @@
     "pk": 126, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:30", 
+      "dtcreated": "2012-03-15 17:04:29", 
       "tags": [
         54, 
         55
@@ -7847,7 +7847,7 @@
     "pk": 206, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:25", 
+      "dtcreated": "2012-03-15 17:05:09", 
       "tags": [
         15, 
         43
@@ -7861,7 +7861,7 @@
     "pk": 25, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:53:55", 
+      "dtcreated": "2012-03-15 17:03:42", 
       "tags": [
         8, 
         7, 
@@ -7878,7 +7878,7 @@
     "pk": 43, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:12", 
+      "dtcreated": "2012-03-15 17:03:52", 
       "tags": [
         30, 
         35, 
@@ -7894,7 +7894,7 @@
     "pk": 100, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:13", 
+      "dtcreated": "2012-03-15 17:04:17", 
       "tags": [
         1, 
         2
@@ -7908,7 +7908,7 @@
     "pk": 283, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:07", 
+      "dtcreated": "2012-03-15 17:05:58", 
       "tags": [
         30
       ], 
@@ -7921,7 +7921,7 @@
     "pk": 282, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:07", 
+      "dtcreated": "2012-03-15 17:05:58", 
       "tags": [], 
       "image_url": "", 
       "name": "VA Pgh. Healthcare System", 
@@ -7932,7 +7932,7 @@
     "pk": 181, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:05", 
+      "dtcreated": "2012-03-15 17:04:56", 
       "tags": [
         6, 
         7, 
@@ -7947,7 +7947,7 @@
     "pk": 221, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:37", 
+      "dtcreated": "2012-03-15 17:05:16", 
       "tags": [
         6, 
         7, 
@@ -7962,7 +7962,7 @@
     "pk": 44, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:13", 
+      "dtcreated": "2012-03-15 17:03:53", 
       "tags": [
         14, 
         15
@@ -7976,7 +7976,7 @@
     "pk": 197, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:56:21", 
+      "dtcreated": "2012-03-15 17:05:05", 
       "tags": [
         30, 
         35, 
@@ -7991,7 +7991,7 @@
     "pk": 267, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:00", 
+      "dtcreated": "2012-03-15 17:05:46", 
       "tags": [], 
       "image_url": "", 
       "name": "Wines & Spirits", 
@@ -8002,7 +8002,7 @@
     "pk": 59, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:54:41", 
+      "dtcreated": "2012-03-15 17:04:00", 
       "tags": [], 
       "image_url": "", 
       "name": "Wines & Spirits", 
@@ -8013,7 +8013,7 @@
     "pk": 122, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:55:28", 
+      "dtcreated": "2012-03-15 17:04:27", 
       "tags": [
         15, 
         43
@@ -8027,7 +8027,7 @@
     "pk": 274, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-15 16:57:03", 
+      "dtcreated": "2012-03-15 17:05:49", 
       "tags": [
         30
       ], 
