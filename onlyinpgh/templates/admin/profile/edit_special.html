@@ -1,0 +1,95 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_class %}admin edit{% endblock %}
+
+{% block page_title %}
+	notlaura's Specials
+{% endblock %}
+
+{% block page_header_title %}
+	$5 Head Massage
+{% endblock %}
+
+{% block content %}
+
+	<div class="content-container">
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Title</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="Event name" /> -->
+				<!-- <p class="tip">Limit 140 chars.</p> -->
+				<p>$5 Head Massage</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Starts</label>
+			<div class="inputs">
+				<p>December 12, 12:00pm</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Expires</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="date special expires" /> --> <!-- Datepicker -->
+				<p>December 13, 1:00am</p>
+			</div>
+		</form>
+
+		<form>
+			<label>Price</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="$1,000,000" /> -->
+				<p>$100,000</p>
+				<div class="points tip">+100,000</div>
+			</div>
+		</form>
+		
+
+		<form>
+			<label>Number Available</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="10" /> --> <!-- Datepicker -->
+				<!-- <input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label> -->
+				<p>Not limited</p>
+			</div>
+		</form>
+
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Image</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="Image Upload form here" /> -->
+				<img class="uploaded-image" src="http://m4.licdn.com/mpr/mpr/shrink_100_100/p/2/000/105/2e2/1425158.jpg">
+				<!-- <input type="text" placeholder="Image Upload form here" /> -->
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Tags</label>
+			<div class="inputs">
+				<ul class="tag-list">
+					<li><a>fancy</a></li>
+					<li><a>food</a></li>
+					<li><a>gourmet</a></li>
+					<li><a>cookie</a></li>
+				</ul>
+				<!-- <input type="text" placeholder="try 'birthday'" /> --> <!-- Autocomplete -->
+				<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
+			</div>
+		</form>
+
+		<div class="prev-next">
+			<button class="back">Cancel</button>
+			<button class="next">Save Changes</button>
+		</div>
+	</div>
+
+{% endblock %}

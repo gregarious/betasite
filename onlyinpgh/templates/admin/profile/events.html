@@ -16,9 +16,12 @@
 		<section class="scheduled-items">
 			<header class="feed-header">
 				<h2 class="feed-title">Scheduled Events</h2>
+				<div id="addItem">Add Event...</div>
 			</header>
 			<ul class="feed">		
 				<!-- For each scheduled event, include this  -->
+				{% include "admin/profile/scheduled_event.html" %}
+				{% include "admin/profile/scheduled_event.html" %}
 				{% include "admin/profile/scheduled_event.html" %}
 			</ul>
 		</section>

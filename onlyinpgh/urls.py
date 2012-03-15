@@ -56,8 +56,8 @@ urlpatterns = patterns('',
     url(r'^bus_admin/home$', direct_to_template, {'template':'admin/home.html'}),
     url(r'^bus_admin/profile/basics$', direct_to_template, {'template':'admin/profile/basics.html'}),
     url(r'^bus_admin/profile/events$', direct_to_template, {'template':'admin/profile/events.html'}),
-    url(r'^bus_admin/profile/specials$', direct_to_template, {'template':'admin/profile/specials.html'})
-
-
+    url(r'^bus_admin/profile/specials$', direct_to_template, {'template':'admin/profile/specials.html'}),
+    url(r'^bus_admin/profile/edit-event$', direct_to_template, {'template':'admin/profile/edit_event.html'}),
+    url(r'^bus_admin/profile/edit-special$', direct_to_template, {'template':'admin/profile/edit_special.html'}),
 
 )

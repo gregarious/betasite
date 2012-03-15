@@ -1,6 +1,7 @@
-<li class="item">
+
+<li class="item" id="item-1">
 	<div class="item-thumb-container">
-		{% block item_thumb %}{% endblock %}
+		{% block scheduled_item_thumb %}{% endblock %}
 	</div>
 	<section class="item-content">
 		<h4 class="item-title">
@@ -9,7 +10,17 @@
 		    	{% endblock %}
 		   	</a>
 		</h4>
-		{% block scheduled_item_content %}{% endblock %}
+		<div class="item-actions">
+			<a href="edit-event"><img class="edit-item" src="/static/img/icons/black/box-edit.png" /></a>
+			<a href="edit-special"><img class="delete-item" src="/static/img/icons/black/cancel.png" /></a>
+		</div>
+		<ul class="item-details">
+			{% block scheduled_item_details %}{% endblock %}
+		</ul>
+		<ul class="tag-list">
+			{% block scheduled_item_tags %}{% endblock %}
+		</ul>
 		<!-- tags here -->
 	</section>
 </li>
+

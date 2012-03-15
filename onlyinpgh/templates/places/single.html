@@ -11,10 +11,12 @@ Context variables:
     featured_special: 	Offer object (optional)
 {% endcomment %}
 
-<header class="single-header">		
+<header class="single-header">	
+
 	<h2 class="single-title">{{ place.name }}</h2>
+
 	<div class="single-thumb-container">
-		<img alt="{{ place.name }}" src="{{ place.image_url }}" height="500" width="500" />
+		<img alt="{{ place.name }}" src="{{ place.image_url }}" />
 		<ul class="utility-nav">
 			{% if is_favorite %}
 				<li><a href="?action=unfav" class="favbutton remove" title="Remove Favorite"></a></li>
@@ -25,6 +27,7 @@ Context variables:
 			<li><a href="#" class="post-to-chatter" title="Post to Chatter"></a></li>
 		</ul>
 	</div>
+
 	<div class="single-details">
 		<ul>
 			{% if place.location.address %}
@@ -51,9 +54,9 @@ Context variables:
 			{% endif %}
 
 		</ul>
-		<div class="tag-list">
-			{% include "tags/tag_list.html" with tags=place.tags %}
-		</div>
+
+		{% include "tags/tag_list.html" with tags=tag_list.tags %}
+
 	</div>
 </header>
 
