@@ -112,7 +112,7 @@ ul {
 }
 
 #site-footer {
-
+	.column(12);
 }
 
 /* CONTENT ----------- */
@@ -128,6 +128,7 @@ ul {
 	margin: auto;
 	.border-box;
 	padding: 3%;
+	position: relative;
 }
 
 
@@ -194,6 +195,45 @@ ul {
 	width: 80%;
 	max-width: 720px;
 	padding-top: 0;
+}
+
+#site-nav {
+  position: fixed;
+  left: auto;
+  left: 0;
+  top: 50px;
+  /*border-bottom: 0.3em #fff solid;*/
+  ul {
+    li { 
+      a {
+        display: block;
+        /*.b-shadow(0, -0.12em, 0.1em, #000); */
+        -webkit-border-radius: 5px 0 0 5px;
+           -moz-border-radius: 5px 0 0 5px;
+                border-radius: 5px 0 0 5px;
+
+        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        .b-shadow(0, 0, 2px, #000);
+        color: #000;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: bold;
+        width: 50px;
+        margin-top: 1em;
+        padding: 40px 0 0;
+        text-align: center;
+        text-decoration: none;
+          
+        &:hover {
+          background-color: #ccc;
+        }
+  
+        &:active {
+          background-color: #E6B717;
+        }
+      }
+    }
+  } 
 }
 
 /* ADMIN ---------- */
@@ -268,111 +308,6 @@ p {
 	text-decoration: underline;
 	cursor: pointer;
 }
-
-#colophon {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-/* FORMS & INPUTS --------------- */
-
-form {
-	.clearfix;
-}
-
-label {
-	color: #2C525D;
-	.column(2.8);
-	font-size: 0.9em;
-	font-weight: bold;
-	margin-bottom: 0.5em;
-	text-shadow: 0.07em 0.07em 0 #fff;
-	text-transform: uppercase;
-	text-align: right;
-	position: relative;
-	top: 0.5em;
-}
-
-textarea {
-	height: 6em;
-}
-
-input[type="text"], textarea {
-	border: 1px #ccc solid;
-	.b-shadow(0.05em, 0.05em, 0.1em, #fff);
-	.column(11.5);
-	font-size: 1em;
-	margin-bottom: 0.5em;
-	outline: none;
-	padding: 0.5em;
-	.rounded(0.5em);
-
-	&:focus {
-		/*border-color: #2C525D;*/
-		.b-shadow(0, 0, 0.2em, #2C525D);
-	}
-}
-
-.inputs {
-	.column(9);
-	float: right;
-}
-
-input[type="checkbox"] {
-	float: left;
-	margin-top: 1em;
-}
-
-.checkbox-label {
-	margin-bottom: 0.1em;
-	text-transform: none;
-	text-align: left;
-}
-
-.check-container {
-	.column(12);
-}
-
-.form-container {
-	.column(12);
-	padding: 2em 0;
-	border-bottom: 2px solid #ccc;
-}
-
-.social-input {
-	width: 75% !important;
-}
-
-.signup-social-icon {
-	margin-top: 0.25em;
-	width: 15%;
-	float: left;
-}
-
-
-.edit {
-
-	.edit-link {
-		position: absolute;
-		top: 0;
-		right: 0;
-		display: none;
-	}
-	form {
-		padding: 1em 0;
-		position: relative;
-		&:hover {
-			background: #fff;	
-		}
-	}	
-
-	label {
-		
-	}
-}
-
-
 
 /* IMAGES ------------ */
 

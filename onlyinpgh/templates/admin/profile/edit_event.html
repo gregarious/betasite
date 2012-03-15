@@ -1,6 +1,6 @@
 {% extends "admin/admin_base.html" %}
 
-{% block page_class %}admin edit{% endblock %}
+{% block page_class %}admin event{% endblock %}
 
 {% block page_title %}
 	notlaura's Events
@@ -88,6 +88,30 @@
 				<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
 			</div>
 		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>On the web</label>
+			<div class="inputs">
+				<!-- Placeholder icons -->
+				<input class="social-input" type="text" placeholder="Facebook page" />
+				<div class="signup-social-icon">
+					<img src="http://www.sportswearnet.com/gif/layout/icons/facebook_icon30x30.jpg" />
+				</div>
+				<input class="social-input" type="text" placeholder="Twitter username" />
+				<div class="signup-social-icon">
+					<img src="http://www.littleleague.org/Assets/images/icons/twitter-icon-sm.png" />
+				</div>
+			</div>
+		</form>
+		
+		<div class="prev-next">
+			<button class="back">Cancel</button>
+			<!-- If editing current event -->
+			<button class="next">Save Changes</button>
+			<!-- If adding an event -->
+			<!-- <button class="next">Add Event</button> -->
+		</div>
 
 	</div>
 

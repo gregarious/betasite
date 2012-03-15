@@ -52,9 +52,9 @@ urlpatterns = patterns('',
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
 
     # Business Admin generic templates
-    url(r'^bus_admin/signup$', direct_to_template, {'template':'admin/signup_all.html'}),
     url(r'^bus_admin/home$', direct_to_template, {'template':'admin/home.html'}),
-    url(r'^bus_admin/profile/basics$', direct_to_template, {'template':'admin/profile/basics.html'}),
+    url(r'^bus_admin/signup$', direct_to_template, {'template':'admin/signup_all.html'}),
+    url(r'^bus_admin/profile$', direct_to_template, {'template':'admin/profile/profile.html'}),
     url(r'^bus_admin/profile/events$', direct_to_template, {'template':'admin/profile/events.html'}),
     url(r'^bus_admin/profile/specials$', direct_to_template, {'template':'admin/profile/specials.html'}),
     url(r'^bus_admin/profile/edit-event$', direct_to_template, {'template':'admin/profile/edit_event.html'}),
