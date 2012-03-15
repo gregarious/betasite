@@ -1,4 +1,5 @@
 from pytz import timezone, utc
+from onlyinpgh.settings import TIME_ZONE
 
 # cliff's notes on converting a UTC dt:
 # >>> from pytz import timezone
@@ -7,6 +8,17 @@ from pytz import timezone, utc
 # >>> est_dt = est.normalize(utc_dt.astimezone(est))    % convert into the EST timezone
 # Note that just setting tzinfo to localize and using datetime.astimezone to convert isn't enough. the pytz
 #   normalize/localize methods are needed to ensure Daylight savings special cases are handled
+
+
+def localize(dt, local_tz_name=None):
+    '''
+    Localizes a tz-naive datetime. Can manually choose timezone by
+    specifying argument, or go with server's default.
+    '''
+    if dt.tzinfo:
+        raise ValueError('Given datetime must be timezone naive!')
+    tz = local_tz_name or TIME_ZONE
+    return timezone(tz).localize(dt)
 
 
 def utctolocal(dt, local_tz_name, return_naive=False):

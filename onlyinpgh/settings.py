@@ -30,7 +30,7 @@ DATABASES['default']['TEST_CHARSET'] = 'utf8'
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Eastern'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -139,11 +139,11 @@ INSTALLED_APPS = (
     'onlyinpgh.common',
     'onlyinpgh.places',
     'onlyinpgh.events',
-    'onlyinpgh.identity',
+    'onlyinpgh.specials',
+    'onlyinpgh.organizations',
     'onlyinpgh.news',
     'onlyinpgh.chatter',
     'onlyinpgh.tags',
-    'onlyinpgh.offers',
     'onlyinpgh.outsourcing',
 )
 
