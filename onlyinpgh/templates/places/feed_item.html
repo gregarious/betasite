@@ -27,7 +27,7 @@ Context variables:
 	{% if place.description %}	
   		<p class="meta">{{ place.description|truncatewords:35|urlizetrunc:20 }}</p>	  	
 	{% endif %}
-	{% include "tags/tag_list.html" with tags=tag_list.tags %}
+	{% include "tags/tag_list.html" with tags=place.tags %}
 </section>
 
 {% comment %}

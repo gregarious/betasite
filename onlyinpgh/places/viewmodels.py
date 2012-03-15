@@ -4,7 +4,6 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.identity.models import FavoriteItem
 
 from onlyinpgh.common.viewmodels import FeedCollection
-from onlyinpgh.tags.viewmodels import TagList
 
 from onlyinpgh.common.utils import process_external_url
 
@@ -26,74 +25,41 @@ def to_directions_link(location):
         return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr': daddr})
 
 
-def location_to_data(location):
-    '''Helper for ViewModels that need a subset of Location data'''
-    return {
-        'address':      location.address,
-        'longitude':    float(location.longitude) if location.longitude else None,
-        'latitude':     float(location.latitude) if location.latitude else None,
-    }
-
-
-def place_to_data(place, place_meta):
-    '''Helper for ViewModels that need a subset of Place data'''
-    data = {
-        'id':       place.id,
-        'name':     place.name,
-        'description': place.description,
-        'location': location_to_data(place.location) if place.location else None,
-        'directions_link': to_directions_link(place.location),
-    }
-    data.update(place_meta)
-    return data
-
-
 class PlaceFeedItem(ViewModel):
-    def __init__(self, place, user=None):
+    def __init__(self, place_profile, user=None):
         super(PlaceFeedItem, self).__init__()
-        self._place = place
-        # FeedItems only need the image_url
-        self._meta = {
-            'image_url': place.get_meta('image_url')
-        }
-        # temporary placeholder
-        if not self._meta['image_url']:
-            self._meta['image_url'] = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
+        self.place = place_profile.place
+        # description isn't part of core Place
+        self._description = place_profile.description
+        # TODO: reenable favorites when user model is created
+        # if user:
+        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
 
-        self.tag_list = TagList(place.tags.all())
-        if user:
-            self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
-
-    def to_data(self, *args, **kwargs):
-        '''Manually handles setting of place data'''
-        cleaned_dict = super(PlaceFeedItem, self).to_data(*args, **kwargs)
-        cleaned_dict['place'] = place_to_data(self._place, self._meta)
-        return cleaned_dict
+    def to_data(self):
+        data = super(PlaceFeedItem, self).to_data()
+        # add description to the place entry
+        data['place']['description'] = self._description
+        return data
 
 
 class PlaceDetail(ViewModel):
-    def __init__(self, place, user=None):
+    def __init__(self, place_profile, user=None):
         super(PlaceDetail, self).__init__()
-        self._place = place
-        self._meta = dict([(key, place.get_meta(key))
-                        for key in ('image_url', 'hours', 'phone', 'url')])
+        self.place = place_profile.place
+        self._profile = place_profile
+        # clean url for output
+        self._profile.url = process_external_url(self._profile.url)
 
-        if 'url' in self._meta:
-            self._meta['url'] = process_external_url(self._meta['url'])
-
-        # temporary placeholder
-        if not self._meta['image_url']:
-            self._meta['image_url'] = 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
-
-        self.tag_list = TagList(place.tags.all())
-        if user:
-            self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
+        # TODO: reenable favorites when user model is created
+        # if user:
+        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
 
     def to_data(self, *args, **kwargs):
         '''Manually handles setting of place data'''
-        cleaned_dict = super(PlaceDetail, self).to_data(*args, **kwargs)
-        cleaned_dict['place'] = place_to_data(self._place, self._meta)
-        return cleaned_dict
+        data = super(PlaceDetail, self).to_data()
+        # inject profile data into place object
+        data['place'].update(self._profile.to_data())
+        return data
 
 
 class PlaceRelatedFeeds(FeedCollection):

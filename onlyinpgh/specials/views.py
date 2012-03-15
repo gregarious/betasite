@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from onlyinpgh.offers.models import Offer
+from onlyinpgh.specials.models import Special
 
 from onlyinpgh.common.utils.jsontools import jsonp_response
 

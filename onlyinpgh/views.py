@@ -6,16 +6,16 @@ from datetime import datetime
 from onlyinpgh.places.models import Place, Meta as PlaceMeta
 from onlyinpgh.events.models import Event
 from onlyinpgh.news.models import Article
-from onlyinpgh.offers.models import Offer
+from onlyinpgh.specials.models import Special
 
 from onlyinpgh.common.utils.jsontools import jsonp_response
 
 def hot_page(request):
-    variables = { 'places': Place.objects.all(), 'events': Event.objects.all(), 'news': Article.objects.all(), 'offers': Offer.objects.all() }
+    variables = { 'places': Place.objects.all(), 'events': Event.objects.all(), 'news': Article.objects.all(), 'offers': Special.objects.all() }
     return render_to_response('hot.html',variables)
 
 def map_page(request):
-	variables = { 'places': Place.objects.all(), 'events': Event.objects.all(), 'news': Article.objects.all(), 'offers': Offer.objects.all() }
+	variables = { 'places': Place.objects.all(), 'events': Event.objects.all(), 'news': Article.objects.all(), 'offers': Special.objects.all() }
 	return render_to_response('map.html',variables)	
 
 # Empty template for splash and search pages

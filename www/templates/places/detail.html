@@ -65,18 +65,16 @@ Expects the following view data:
 
 			<li>Parking: Street</li>
 		</ul>
-	{{/place}}
 
 	{{!TODO: move to partial}}
-	{{#tag_list}}
-		<div class="tag-list">
-			<ul>
-			{{#tags}}
-				<li>{{name}}</li>
-			{{/tags}}
-			</ul>
-		</div>
-	{{/tag_list}}
+	<div class="tag-list">
+		<ul>
+		{{#tags}}
+			<li>{{name}}</li>
+		{{/tags}}
+		</ul>
+	</div>
+	{{/place}}
 
 	<p class="favorite-p">
 	{{#favorite}}

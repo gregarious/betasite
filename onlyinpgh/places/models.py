@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator, MinLeng
 from django.core.exceptions import ValidationError
 
 from onlyinpgh.tags.models import Tag
+from onlyinpgh.common.core.viewmodels import ViewModel
 
 from math import sqrt, pow
 
@@ -91,7 +92,7 @@ class CloseLocationManager(models.Manager):
             return self.get_or_create(**kwargs)
 
 
-class Location(models.Model):
+class Location(models.Model, ViewModel):
     '''
     Handles specific information about where a physical place is located. Should
     rarely be exposed without a Place wrapping it on the front end.
@@ -175,7 +176,7 @@ class Location(models.Model):
         return s.rstrip(', ')
 
 
-class Place(models.Model):
+class Place(models.Model, ViewModel):
     '''
     Handles information about places.
     '''
@@ -191,11 +192,27 @@ class Place(models.Model):
     def __unicode__(self):
         s = self.name
         if self.location and self.location.address:
-            s += u'(%s)' % self.location.address
+            s += u' (%s)' % self.location.address
         return s
 
+    def to_data(self):
+        '''
+        Overrides ViewModel's to_data to ignore dtcreated and
+        extract tags.
+        '''
+        # TODO: remove temporary placeholder
+        image_url = self.image_url or 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
 
-class PlaceProfile(models.Model):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'location': self.location.to_data(),
+            'image_url': image_url,
+            'tags': [tag.to_data() for tag in self.tags.all()]
+        }
+
+
+class PlaceProfile(models.Model, ViewModel):
     '''
     Extended information about a place
     '''
@@ -211,6 +228,9 @@ class PlaceProfile(models.Model):
     url = models.URLField(blank=True)
     fb_id = models.CharField(max_length=50, blank=True)
     twitter_username = models.CharField(max_length=15, blank=True)
+
+    def __unicode__(self):
+        return unicode(self.place)
 
 
 class PlaceMeta(models.Model):
