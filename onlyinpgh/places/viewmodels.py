@@ -26,11 +26,11 @@ def to_directions_link(location):
 
 
 class PlaceFeedItem(ViewModel):
-    def __init__(self, place_profile, user=None):
+    def __init__(self, place, user=None):
         super(PlaceFeedItem, self).__init__()
-        self.place = place_profile.place
+        self.place = place
         # description isn't part of core Place
-        self._description = place_profile.description
+        self._description = place.get_profile().description
         # TODO: reenable favorites when user model is created
         # if user:
         #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
@@ -43,10 +43,10 @@ class PlaceFeedItem(ViewModel):
 
 
 class PlaceDetail(ViewModel):
-    def __init__(self, place_profile, user=None):
+    def __init__(self, place, user=None):
         super(PlaceDetail, self).__init__()
-        self.place = place_profile.place
-        self._profile = place_profile
+        self.place = place
+        self._profile = place.get_profile()
         # clean url for output
         self._profile.url = process_external_url(self._profile.url)
 

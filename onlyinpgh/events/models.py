@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
-from onlyinpgh.organizations.models import Organization
+from onlyinpgh.accounts.models import Organization
 
 
 class Event(models.Model):
