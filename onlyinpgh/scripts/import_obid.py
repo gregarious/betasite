@@ -1,6 +1,6 @@
 import csv
 
-from onlyinpgh.places.models import Location, Place, PlaceProfile
+from onlyinpgh.places.models import Location, Place
 from onlyinpgh.outsourcing.places import resolve_location
 
 #from onlyinpgh.outsourcing.models import ExternalPlaceSource, FacebookPage, FacebookOrgRecord
