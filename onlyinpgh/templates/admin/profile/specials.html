@@ -11,9 +11,11 @@
 {% block content %}
 
 	<div class="content-container">
+		{% include "admin/admin_nav.html" %}
 		<section class="scheduled-items">
 			<header class="feed-header">
 				<h2 class="feed-title">Current Specials</h2>
+				<a class="add-item-link" href="edit-event">Add Special...</a><!-- Goes to edit event template with empty inputs -->
 			</header>
 			<ul class="feed">	
 				<!-- For each scheduled event, include this  -->
@@ -23,7 +25,7 @@
 			</ul>
 		</section>
 		<section class="add-item">
-			
+				
 		</section>
 	</div>	<!-- .content-container -->
 	

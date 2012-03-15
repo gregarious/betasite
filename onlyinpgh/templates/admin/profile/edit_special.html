@@ -26,6 +26,17 @@
 
 		<form>
 			<div class="edit-link">Edit</div>
+			<label>Location</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="Event name" /> -->
+				<!-- <p class="tip">Limit 140 chars.</p> -->
+				<p>Uncle Sam's</p>
+				<p>123 Jalopy Dr</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
 			<label>Starts</label>
 			<div class="inputs">
 				<p>December 12, 12:00pm</p>
@@ -88,8 +99,12 @@
 
 		<div class="prev-next">
 			<button class="back">Cancel</button>
+			<!-- If editing existing special -->
 			<button class="next">Save Changes</button>
+			<!-- If adding an special -->
+			<!-- <button class="next">Add Special</button> -->
 		</div>
+
 	</div>
 
 {% endblock %}

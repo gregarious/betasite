@@ -1,0 +1,98 @@
+/* FORMS & INPUTS --------------- */
+
+form {
+	.clearfix;
+}
+
+label {
+	color: #2C525D;
+	.column(2.8);
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	text-shadow: 0.07em 0.07em 0 #fff;
+	text-transform: uppercase;
+	text-align: right;
+	position: relative;
+	top: 0.5em;
+}
+
+textarea {
+	height: 6em;
+}
+
+input[type="text"], textarea {
+	border: 1px #ccc solid;
+	.b-shadow(0.05em, 0.05em, 0.1em, #fff);
+	.column(11.5);
+	font-size: 1em;
+	margin-bottom: 0.5em;
+	outline: none;
+	padding: 0.5em;
+	.rounded(0.5em);
+
+	&:focus {
+		/*border-color: #2C525D;*/
+		.b-shadow(0, 0, 0.2em, #2C525D);
+	}
+}
+
+.inputs {
+	.column(9);
+	float: right;
+}
+
+input[type="checkbox"] {
+	float: left;
+	margin-top: 1em;
+}
+
+.checkbox-label {
+	margin-bottom: 0.1em;
+	text-transform: none;
+	text-align: left;
+}
+
+.check-container {
+	.column(12);
+}
+
+.form-container {
+	.column(12);
+	padding: 2em 0;
+	border-bottom: 2px solid #ccc;
+}
+
+.social-input {
+	width: 75% !important;
+}
+
+.signup-social-icon {
+	margin-top: 0.25em;
+	width: 15%;
+	float: left;
+}
+
+
+.admin {
+
+	.edit-link {
+		position: absolute;
+		top: 0;
+		right: 0;
+		//display: none;
+	}
+	form {
+		padding: 1em 0;
+		position: relative;
+		&:hover {
+			background: #fff;	
+		}
+	}	
+
+	label {
+		
+	}
+}
+
+
