@@ -2,6 +2,8 @@
 Module that sets up the ViewModel system.
 '''
 from django.template import Context, RequestContext
+
+from decimal import Decimal
 import json
 
 
@@ -82,6 +84,10 @@ def _flatten(obj):
             return [_flatten(v) for v in obj]
     except TypeError:
         pass
+
+    # handle a decimal
+    if isinstance(obj, Decimal):
+        return float(obj)
 
     # we're assuming anything that makes it to here is a primitive
     return obj

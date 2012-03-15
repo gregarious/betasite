@@ -1,15 +1,19 @@
 from django.contrib import admin
-from onlyinpgh.places.models import Place, Location, Meta as PlaceMeta
+from onlyinpgh.places.models import Place, PlaceProfile, Location, PlaceMeta
+
 
 class PlaceMetaInline(admin.TabularInline):
     model = PlaceMeta
-    extra = 3
+    extra = 1
+
 
 class PlaceAdmin(admin.ModelAdmin):
     inlines = [PlaceMetaInline]
 
+
 class LocationAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Place,PlaceAdmin)
-admin.site.register(Location,LocationAdmin)
+admin.site.register(Place, PlaceAdmin)
+admin.site.register(PlaceProfile)
+admin.site.register(Location)

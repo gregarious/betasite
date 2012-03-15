@@ -13,15 +13,14 @@ from onlyinpgh.outsourcing.models import FacebookEventRecord, FacebookOrgRecord,
 
 from onlyinpgh.outsourcing.places import resolve_place, resolve_location
 
-from onlyinpgh.common.utils.time import localtoutc
+from onlyinpgh.settings import TIME_ZONE
+from onlyinpgh.common.utils.time import localize
 
 from itertools import chain
 from dateutil import parser as dtparser
 import json, copy, logging, pytz
 
 outsourcing_log = logging.getLogger('onlyinpgh.outsourcing')
-
-EST = pytz.timezone('US/Eastern')
 
 # TODO: should be in apitools.facebook somewhere
 def _run_batch(batch):
@@ -275,13 +274,14 @@ def store_fbevent(event_info,event_image=None,
 
     # process times
     try:
-        dtstart_est = EST.localize(dtparser.parse(event_info.get('start_time')))
-        dtend_est = EST.localize(dtparser.parse(event_info.get('end_time')))
+        # TODO: assume the times are relative to our server? not sure if this is safe.
+        dtstart_local = localize(dtparser.parse(event_info.get('start_time')))
+        dtend_local = localize(dtparser.parse(event_info.get('end_time')))
     except ValueError as e:
         raise ValueError('Bad start/end time for event fbid %s: %s' % (unicode(fbid),unicode(e)))
         
-    event.dtstart = localtoutc(dtstart_est,return_naive=True)
-    event.dtend = localtoutc(dtend_est,return_naive=True)
+    event.dtstart = dtstart_local
+    event.dtend = dtstart_local
 
     # process image
     if event_image is None:
@@ -310,8 +310,8 @@ def store_fbevent(event_info,event_image=None,
     dtupdate_str = event_info.get('updated_time')
     if dtupdate_str:
         dtupdated = dtparser.parse(event_info.get('updated_time'))
-        if dtupdated.tzinfo:    # if a tz was part of the time string, convert to UTC (otherwise just assume UTC)
-            dtupdated = localtoutc(dtupdated,return_naive=True)
+        if not dtupdated.tzinfo:    # if a tz wasn't part of the time string, assume it's server's dt
+            dtupdated = localize(dtupdated, TIME_ZONE)
         event.dtmodified = dtupdated
     else:
         dtupdated = event.dtmodified

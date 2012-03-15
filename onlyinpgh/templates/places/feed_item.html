@@ -31,7 +31,7 @@ Context variables:
 		<li class="address">{{place.location.address}}</li>	
   	</ul>
 
-	{% include "tags/tag_list.html" with tags=tag_list.tags %}
+	{% include "tags/tag_list.html" with tags=place.tags %}
 
 	{% if place.description %}	
 		<section class="item-description">

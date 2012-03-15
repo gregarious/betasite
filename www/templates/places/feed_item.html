@@ -28,12 +28,10 @@ Expects the following view data:
 <p>{{place.location.address}}</p>
 
 {{!TODO: move to partial}}
-{{#tag_list}}
-	<div class="tag-list">
-		<ul>
-		{{#tags}}
-			<li>{{name}}</li>
-		{{/tags}}
-		</ul>
-	</div>
-{{/tag_list}}
+<div class="tag-list">
+	<ul>
+	{{#place.tags}}
+		<li>{{name}}</li>
+	{{/place.tags}}
+	</ul>
+</div>
