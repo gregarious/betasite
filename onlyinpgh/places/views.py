@@ -1,17 +1,13 @@
 from django.utils.safestring import SafeUnicode
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 
-from onlyinpgh.places.models import Place
-from onlyinpgh.identity.models import FavoriteItem
+from onlyinpgh.places.models import Place, PlaceProfile
+#from onlyinpgh.accounts.models import FavoriteItem
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
 from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
 
 from datetime import datetime, timedelta
-
-
-def _places_all():
-    return Place.objects.select_related().all()[:10]
 
 
 def _get_checkin_cutoff():
@@ -66,7 +62,10 @@ def feed_page(request):
     a feed.
     '''
     # get a list of rendered items
-    feed_items = [PlaceFeedItem(place, user=request.user) for place in _places_all()]
+    # TODO: look into efficiency of this call. should we be selective about description? should we center query on Place or Profile?
+    # TODO: also consider case where place has no associated profile. think if this should even be allowed in model logic
+    places = Place.objects.select_related().all()[:10]
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     rendered_items = [render_viewmodel(item,
                             template='places/feed_item.html',
                             tag_type='li',
@@ -123,12 +122,13 @@ def detail_page(request, pid):
 
 @jsonp_response
 def feed_app(request):
-    feed_items = [PlaceFeedItem(place, user=request.user) for place in _places_all()]
+    profiles = PlaceProfile.objects.select_related().all()[:10]
+    feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
     return [item.to_data() for item in feed_items]
 
 
 @jsonp_response
 def detail_app(request, pid):
-    place = Place.objects.select_related().get(id=pid)
-    details = PlaceDetail(place, user=request.user)
+    profile = PlaceProfile.objects.select_related().get(place__id=pid)
+    details = PlaceDetail(profile, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
