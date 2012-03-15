@@ -3,15 +3,17 @@ jQuery(document).ready( function(){
 
 
 	// slideToggle the add event/special forms
-	var expand_form = function(title, content) {
-	    $(title).click(function(){
-			$(content).slideToggle(500);
-		});
-	}
+	// var expand_form = function(title, content) {
+	//     $(title).click(function(){
+	// 		$(content).slideToggle(500);
+	// 	});
+	// }
 
-	expand_form('#openEventForm','#eventForm');
-	expand_form('#openSpecialForm','#specialForm');
-	expand_form('.scheduled-item h4','.scheduled-item > .item-content');
+	// expand_form('#openEventForm','#eventForm');
+	// expand_form('#openSpecialForm','#specialForm');
+	// expand_form('.scheduled-item h4','.scheduled-item > .item-content');
+
+
 
 	// Sliding signup sequence
 
@@ -31,8 +33,35 @@ jQuery(document).ready( function(){
 	$(window).resize(function () {
 		resizePanel();
 	});
+
+
+	// Item actions
+
+	// $('.item').hover(function(){
+	// 	var itemClass = '.' + $(this).attr('class');
+	// 	$(itemClass + ' .item-actions').fadeIn(200);
+	// 	//console.log(itemClass + ' .item-actions');
+	// }, function(){
+	// 	$('.item-actions').fadeOut(200);
+	// 	//$(this+' .item-actions').fadeOut(200);
+	// });
+
 	
+	// Where item-1 is unique item id
+	$('#item-1 .delete-item').click(function(){
+		alert('Are you sure you want to delete #item-1?');
+	});
+
+	// Show edit link when hovering over form item
+	$('.edit form').hover(function(){
+		console.log('asdasd');
+		$('.edit-link').fadeIn(200);
+	}, function(){
+		$('.edit-link').fadeOut(200);
+	});
+
 });
+
 
 function resizePanel() {
 

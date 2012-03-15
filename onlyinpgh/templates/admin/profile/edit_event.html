@@ -1,0 +1,94 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_class %}admin edit{% endblock %}
+
+{% block page_title %}
+	notlaura's Events
+{% endblock %}
+
+{% block page_header_title %}
+	Editing...
+{% endblock %}
+
+{% block content %}
+
+	<div class="content-container">
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Name</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="Event name" /> -->
+				<p>Working at Catapult</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Starts</label>
+			<div class="inputs">
+				<p>December 12, 12:00pm</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Ends</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="date special expires" /> --> <!-- Datepicker -->
+				<p>December 13, 1:00am</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Location</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="date special expires" /> --> <!-- Datepicker -->
+				<p>Joe Schmoe's</p>
+				<p>Cherry Pie Blvd.</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Description</label>
+			<!-- Limit to 150 characters or something -->
+			<div class="inputs">
+				<!-- <textarea placeholder="Coolest special EVER! Get mad pizzas and beers tonight ONLY!!"></textarea> -->
+				<p class="item-description">
+					Fluent and self taught in web, usability, and interaction design, WordPress development, and Adobe software. Currently invested in Scenable, a mobile and web app for connecting local communities. Part time freelance WordPress consulting and development. Skilled in 2D animation and video editing.
+
+					Ultimate goal career goal is to obtain an Masters in Entertainment Technology from Carnegie Mellon University and to start a company designing video games for higher education (lectures and textbooks aren’t cutting it).
+				</p>
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Image</label>
+			<div class="inputs">
+				<!-- <input type="text" placeholder="Image Upload form here" /> -->
+				<img class="uploaded-image" src="http://m4.licdn.com/mpr/mpr/shrink_100_100/p/2/000/105/2e2/1425158.jpg">
+				<!-- <input type="text" placeholder="Image Upload form here" /> -->
+			</div>
+		</form>
+
+		<form>
+			<div class="edit-link">Edit</div>
+			<label>Tags</label>
+			<div class="inputs">
+				<ul class="tag-list">
+					<li><a>fancy</a></li>
+					<li><a>food</a></li>
+					<li><a>gourmet</a></li>
+					<li><a>cookie</a></li>
+				</ul>
+				<!-- <input type="text" placeholder="try 'birthday'" /> --> <!-- Autocomplete -->
+				<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
+			</div>
+		</form>
+
+	</div>
+
+{% endblock %}

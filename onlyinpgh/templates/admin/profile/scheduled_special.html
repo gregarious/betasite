@@ -2,7 +2,7 @@
 
 {% block item_id %}special-massage{% endblock item_id %}
 
-{% block item_thumb %}
+{% block scheduled_item_thumb %}
 	<div class="points">+5</div>
 {% endblock %}
 
@@ -10,11 +10,17 @@
 	$5 Head Massage
 {% endblock %}
 
-{% block scheduled_item_content %}
+{% block scheduled_item_details %}
 	<time class="datetime meta">Dec. 13 5pm-9pm</time>
 	<p class="address meta">123 Sally Dr. Pittsburgh</p>
 {% endblock %}
 
+{% block scheduled_item_tags %}
+	<li><a>fancy</a></li>
+	<li><a>food</a></li>
+	<li><a>gourmet</a></li>
+	<li><a>cookie</a></li>
+{% endblock %}
+
 {% block scheduled_item_footer %}
-	
 {% endblock %}
