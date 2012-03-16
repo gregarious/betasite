@@ -1,4 +1,4 @@
-{% extends "admin/base.html" %}
+{% extends "organizations/manage/base.html" %}
 
 {% block page_header_title %}
 	[bus name's]'s Events
@@ -16,9 +16,9 @@
 			</header>
 			<ul class="feed">		
 				<!-- For each scheduled event, include this  -->
-				{% include "admin/profile/scheduled_event.html" %}
-				{% include "admin/profile/scheduled_event.html" %}
-				{% include "admin/profile/scheduled_event.html" %}
+				{% include "events/manage/scheduled_event.html" %}
+				{% include "events/manage/scheduled_event.html" %}
+				{% include "events/manage/scheduled_event.html" %}
 			</ul>
 		</section>
 		<section class="add-item">

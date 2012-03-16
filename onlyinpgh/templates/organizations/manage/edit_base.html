@@ -1,4 +1,4 @@
-{% extends "admin/base.html" %}
+{% extends "organizations/manage/base.html" %}
 
 {% block page_header_title %}
 	Editing bus_name's {% block active_section %}{% endblock %}
@@ -8,10 +8,8 @@
 
 {% block content %}
 	<div class="content-container">
-		<form>
-			{% block form_contents %}
-			{% endblock %}
-		</form>
+		{% block form_contents %}
+		{% endblock %}
 		<div class="prev-next">
 			<button class="back">Cancel</button>
 			<!-- If editing existing special -->

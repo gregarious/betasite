@@ -1,9 +1,11 @@
-{% extends "admin/profile/edit_base.html" %}
+{% extends "organizations/manage/edit_base.html" %}
 
 {% block active_section %}Events{% endblock %}
 
 {% block form_contents %}
-	
+
+<form>	
+
 	<fieldset>
 		<div class="edit-link">Edit</div>
 		<label>Name</label>
@@ -94,5 +96,7 @@
 			</div>
 		</div>
 	</field>
+
+</form>
 
 {% endblock %}

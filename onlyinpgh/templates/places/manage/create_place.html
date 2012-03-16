@@ -1,4 +1,4 @@
-{% extends 'admin/base.html' %}
+{% extends "organizations/manage/base.html" %}
 
 {% block page_header_title %}Scenable Business Account Registration{% endblock %}
 
@@ -11,34 +11,28 @@
 
 			<article id="panelOne" class="panel signup">
 				<div class="content-container"> 
-					{% include 'admin/signup.html' %}
+					{% include 'places/manage/create_place1.html' %}
 				</div>
 			</article>
 
 			<article id="panelTwo" class="panel signup">
 				<div class="content-container"> 
-					{% include 'admin/signup1.html' %}
+					{% include 'places/manage/create_place2.html' %}
 				</div>
 			</article>
 			
 			<article id="panelThree" class="panel signup">
 				<div class="content-container">
-					{% include 'admin/signup2.html' %}
+					{% include 'places/manage/create_place3.html' %}
 				</div>
 			</article>
 			
 			<article id="panelFour" class="panel signup">
 				<div class="content-container">
-					{% include 'admin/signup3.html' %}
+					{% include 'places/manage/create_place4.html' %}
 				</div>
 			</article>
 
-			<article id="panelFive" class="panel signup">
-				<div class="content-container">
-					{% include 'admin/signup4.html' %}
-				</div>
-			</article>
-			
 		</form>
 	</div>
 
