@@ -52,12 +52,13 @@ urlpatterns = patterns('',
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
 
     # Business Admin generic templates
-    url(r'^bus_admin/home$', direct_to_template, {'template':'admin/home.html'}),
-    url(r'^bus_admin/signup$', direct_to_template, {'template':'admin/signup_all.html'}),
-    url(r'^bus_admin/events$', direct_to_template, {'template':'admin/profile/events.html'}),
-    url(r'^bus_admin/specials$', direct_to_template, {'template':'admin/profile/specials.html'}),
-    url(r'^bus_admin/edit/place$', direct_to_template, {'template':'admin/profile/edit_place.html'}),
-    url(r'^bus_admin/edit/event$', direct_to_template, {'template':'admin/profile/edit_event.html'}),
-    url(r'^bus_admin/edit/special$', direct_to_template, {'template':'admin/profile/edit_special.html'}),
+    url(r'^bus_admin/home$', direct_to_template, {'template':'organizations/manage/home.html'}),
+    url(r'^bus_admin/signup$', direct_to_template, {'template':'registration/biz_signup.html'}),
+    url(r'^bus_admin/create_place$', direct_to_template, {'template':'places/manage/create_place.html'}),
+    url(r'^bus_admin/events$', direct_to_template, {'template':'events/manage/events.html'}),
+    url(r'^bus_admin/specials$', direct_to_template, {'template':'specials/manage/specials.html'}),
+    url(r'^bus_admin/edit/place$', direct_to_template, {'template':'places/manage/edit_place.html'}),
+    url(r'^bus_admin/edit/event$', direct_to_template, {'template':'events/manage/edit_event.html'}),
+    url(r'^bus_admin/edit/special$', direct_to_template, {'template':'specials/manage/edit_special.html'}),
 
 )
