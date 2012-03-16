@@ -1,4 +1,4 @@
-{% extends 'admin/base.html' %}
+{% extends "organizations/manage/base.html" %}
 
 {% block page_header_title %}Scenable Business Account Registration{% endblock %}
 
@@ -41,5 +41,7 @@
 			
 		</form>
 	</div>
+
+{% include "places/manage/progress.html" %}
 
 {% endblock %}
