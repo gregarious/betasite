@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block page_header_title %}
+	Editing bus_name's {% block active_section %}{% endblock %}
+{% endblock %}
+
+{% block page_class %}admin{% endblock %}
+
+{% block content %}
+	<div class="content-container">
+		<form>
+			{% block form_contents %}
+			{% endblock %}
+		</form>
+		<div class="prev-next">
+			<button class="back">Cancel</button>
+			<!-- If editing existing special -->
+			<button class="next">Save Changes</button>
+			<!-- If adding an special -->
+			<!-- <button class="next">Add Special</button> -->
+		</div>
+	</div>
+
+{% endblock %}

@@ -54,10 +54,10 @@ urlpatterns = patterns('',
     # Business Admin generic templates
     url(r'^bus_admin/home$', direct_to_template, {'template':'admin/home.html'}),
     url(r'^bus_admin/signup$', direct_to_template, {'template':'admin/signup_all.html'}),
-    url(r'^bus_admin/profile$', direct_to_template, {'template':'admin/profile/profile.html'}),
-    url(r'^bus_admin/profile/events$', direct_to_template, {'template':'admin/profile/events.html'}),
-    url(r'^bus_admin/profile/specials$', direct_to_template, {'template':'admin/profile/specials.html'}),
-    url(r'^bus_admin/profile/edit-event$', direct_to_template, {'template':'admin/profile/edit_event.html'}),
-    url(r'^bus_admin/profile/edit-special$', direct_to_template, {'template':'admin/profile/edit_special.html'}),
+    url(r'^bus_admin/events$', direct_to_template, {'template':'admin/profile/events.html'}),
+    url(r'^bus_admin/specials$', direct_to_template, {'template':'admin/profile/specials.html'}),
+    url(r'^bus_admin/edit/place$', direct_to_template, {'template':'admin/profile/edit_place.html'}),
+    url(r'^bus_admin/edit/event$', direct_to_template, {'template':'admin/profile/edit_event.html'}),
+    url(r'^bus_admin/edit/special$', direct_to_template, {'template':'admin/profile/edit_special.html'}),
 
 )

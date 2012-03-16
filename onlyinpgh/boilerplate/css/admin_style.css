@@ -664,8 +664,8 @@ p {
 .prev-next:after {
   clear: both;
 }
-.next,
-.back,
+a.next,
+a.back,
 .submit-item {
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -681,8 +681,8 @@ p {
   color: #fff;
   text-decoration: none;
 }
-.next:hover,
-.back:hover,
+a.next:hover,
+a.back:hover,
 .submit-item:hover {
   background-color: #1b333a;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1b333a), to(#2c525d));
@@ -704,8 +704,8 @@ p {
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
-.next:active,
-.back:active,
+a.next:active,
+a.back:active,
 .submit-item:active {
   position: relative;
   top: 1px;

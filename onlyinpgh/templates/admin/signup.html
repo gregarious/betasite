@@ -1,29 +1,35 @@
-<div class="form-container first">
-	<form>
+<div class="field-container first">
+	<fieldset>
 		<label class="input-label">Username</label>
 		<div class="inputs">
 			<input type="text" placeholder="interesting username" />
 		</div>
-	</form>
-	<form>
+	</fieldset>
+	<fieldset>
 		<label class="input-label">Email</label>
 		<div class="inputs">
 			<input type="text" placeholder="awesome@sweet.com" />
 		</div>
-	</form>
-</div> <!-- .form-container -->
+	</fieldset>
+</div> <!-- .field-container -->
 
-<div class="form-container last">
-	<form>
+<div class="field-container last">
+	<fieldset>
 		<label class="input-label">Password</label>
 		<div class="inputs">
 			<input type="text" placeholder="Excellent password" />
 		</div>
-	</form>
-	<form>
+	</fieldset>
+	<fieldset>
 		<label class="input-label">Confirm Password</label>
 		<div class="inputs">
 			<input type="text" placeholder="Excellent password confirmed" />
 		</div>
-	</form>
-</div> <!-- .form-container -->
+	</fieldset>
+</div> <!-- .field-container -->
+
+<div class="prev-next">
+	<a href="#panelTwo" name="panel-two" class="next shift-panel">Next &rarr;</a>
+</div>
+
+{% include "admin/progress.html" %}

@@ -1,12 +1,12 @@
-form {
+fieldset {
   *zoom: 1;
 }
-form:before,
-form:after {
+fieldset:before,
+fieldset:after {
   content: "";
   display: table;
 }
-form:after {
+fieldset:after {
   clear: both;
 }
 label {
@@ -94,7 +94,7 @@ input[type="checkbox"] {
   width: 81.25%;
   margin: 0 1.0416666666666665%;
 }
-.form-container {
+.field-container {
   display: inline;
   float: left;
   width: 97.91666666666666%;
@@ -115,10 +115,10 @@ input[type="checkbox"] {
   top: 0;
   right: 0;
 }
-.admin form {
+.admin fieldset {
   padding: 1em 0;
   position: relative;
 }
-.admin form:hover {
+.admin fieldset:hover {
   background: #fff;
 }

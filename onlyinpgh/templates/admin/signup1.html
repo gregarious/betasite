@@ -1,40 +1,41 @@
-<div class="form-container first">
-	<form>
+<div class="field-container first">
+	<fieldset>
 		<label class="input-label">Business Name</label>
 		<div class="inputs">
 			<input type="text" placeholder="Your Business Name" />
 		</div>
-	</form>
-</div> <!-- .form-container -->
+	</fieldset>
+</div> <!-- .field-container -->
 
-<div class="form-container">
-	<form>
+<div class="field-container">
+	<fieldset>
 		<label>Address</label>
 		<div class="inputs">
 			<input type="text" placeholder="Address" />
 			<input type="text" placeholder="Apt or Suite #" />
 			<p class="tip">Just the essentials, we know you're in Pittsburgh :)</p>
 		</div>
-	</form>
-</div> <!-- .form-container -->
+	</fieldset>
+</div> <!-- .fieldset-container -->
 
-<div class="form-container last">
-	<form>
+<div class="field-container last">
+	<fieldset>
 		<label>Phone</label>
 		<div class="inputs">
 			<input type="text" placeholder="(412)...what else?" />
 		</div>
-	</form>
-	<form class="last">	
+	</fieldset>
+	<fieldset class="last">	
 		<label>Website</label>
 		<div class="inputs">
 			<input type="text" placeholder="http://coolrestaurant.com" />
 		</div>
-	</form>
-</div> <!-- .form-container -->
+	</fieldset>
+</div> <!-- .field-container -->
 
 <div class="prev-next">
-	<a href="#panelTwo" name="panel-two" class="next shift-panel">Next &rarr;</a>
+	<a href="#panelOne" name="panel-one" class="back shift-panel">&larr; Back</a>
+	<a href="#panelThree" name="panel-three" class="next shift-panel">Next &rarr;</a>
 </div>
 
 {% include 'admin/progress.html' %}

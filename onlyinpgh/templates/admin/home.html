@@ -1,9 +1,6 @@
+{% extends 'admin/base.html' %}
 
-{% extends 'admin/admin_base.html' %}
-
-{% block page_title %}[bus name] Admin{% endblock %}
-
-{% block page_header_title %}[bus name] Admin{% endblock %}
+{% block page_header_title %}Manage [bus name]{% endblock %}
 
 {% block page_class %}home{% endblock %}
 
@@ -22,21 +19,21 @@
 				</li>
 				<!-- To profile page with expanded specials section in edit mode -->
 				<li>
-					<a href="profile" class="top">
+					<a href="edit/place" class="top">
 						<img src="/static/img/icons/black/box-edit.png" />
 						Edit info
 					</a>
 				</li>
 				<!-- To profile page with expanded 'your info' section in edit mode -->
 				<li>
-					<a href="profile/specials" class="bottom">
+					<a href="specials" class="bottom">
 						<img src="/static/img/icons/black/tag-special.png" />
 						Manage Specials
 					</a>
 				</li>
 				<!-- To single business page as seen by other users -->
 				<li>
-					<a href="profile/events" class="bottom">
+					<a href="events" class="bottom">
 						<img src="/static/img/icons/black/calendar-alt.png" />
 						Manage Events
 					</a>
