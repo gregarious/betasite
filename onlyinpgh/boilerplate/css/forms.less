@@ -1,4 +1,4 @@
-/* FORMS & INPUTS --------------- */
+@import 'helpers';
 
 form {
 	.clearfix;
@@ -44,7 +44,8 @@ input[type="text"], textarea {
 
 input[type="checkbox"] {
 	float: left;
-	margin-top: 1em;
+	.column_nm(1);
+	margin: 0.6em 0.5em 0;
 }
 
 .checkbox-label {
@@ -53,8 +54,18 @@ input[type="checkbox"] {
 	text-align: left;
 }
 
+#parking {
+	fieldset {
+		.column(12);
+	}
+}
+
 .check-container {
-	.column(12);
+	.column(6);
+
+	label {
+		.column(10);
+	}
 }
 
 .form-container {

@@ -2,30 +2,51 @@
 <div class="form-container first">
 	<form>
 		<label>Hours</label>
-		<div class="inputs">
-			<input type="text" placeholder="9am-5:30pm Mon-Sun" />
+		<div class="inputs" id="hours">
+			<fieldset class="hours-set">
+				<div class="container">
+					<input type="text" placeholder="9am-5:30pm" />
+					<p class="tip">Times</p>
+				</div>
+				<div class="container last">
+					<input type="text" placeholder="Mon-Sun" />
+					<p class="tip">Days</p>
+				</div>
+			</fieldset>
+			<div id="addHours">+</div> <!-- Click function: duplicate fieldset.hours-set the above form -->
 		</div>
 	</form>
 
 	<form>
 		<label>Parking</label>
-		<div class="inputs">
-			<div class="check-container">
-				<input type="checkbox" name="street" value="Street" />
-				<label class="checkbox-label">Street</label>
-			</div>
-			<div class="check-container">
-				<input type="checkbox" name="garage" value="Garage" />
-				<label class="checkbox-label">Garage</label>
-			</div>
-			<div class="check-container">
-				<input type="checkbox" name="lot" value="Lot" />
-				<label class="checkbox-label">Parking Lot</label>
-			</div>
-			<div class="check-container">
-				<input type="checkbox" name="good-luck" value="Good Luck" />
-				<label class="checkbox-label">Good Luck</label>
-			</div>
+		<div class="inputs" id="parking">
+			<!-- <select multiple="multiple">
+				<option>Street</option>
+				<option>Garage</option>
+				<option>Lot</option>
+				<option>Valet</option>
+				<option>Good Luck!</option>
+			</select> -->
+			<!-- <fieldset> -->
+				<div class="check-container">
+					<input type="checkbox" name="street" value="Street" />
+					<label class="checkbox-label">Street</label>
+				</div>
+				<div class="check-container">
+					<input type="checkbox" name="garage" value="Garage" />
+					<label class="checkbox-label">Garage</label>
+				</div>
+			<!-- </fieldset>
+			<fielset> -->
+				<div class="check-container">
+					<input type="checkbox" name="lot" value="Lot" />
+					<label class="checkbox-label">Parking Lot</label>
+				</div>
+				<div class="check-container">
+					<input type="checkbox" name="good-luck" value="Good Luck" />
+					<label class="checkbox-label">Good Luck</label>
+				</div>
+			<!-- </fielset> -->
 		</div> <!-- .inputs -->
 	</form>
 </div>

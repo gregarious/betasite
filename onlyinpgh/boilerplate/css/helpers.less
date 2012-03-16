@@ -26,7 +26,6 @@
 }
 
 .column(@x,@columns:@columns) {
-  .border-box;
   display: inline;
   float: left;
   width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
@@ -36,7 +35,6 @@
 .column_nm(@x,@columns:@columns) {
   display: inline;
   float: left;
-  .border-box;
   width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);
   margin: 0;
 }
