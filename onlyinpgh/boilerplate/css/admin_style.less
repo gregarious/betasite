@@ -4,10 +4,9 @@
 
 /* Will move this to template when that happens */
 /*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
-@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
+@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);*/
 @import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
 
-*/
 /* ROOT --------- */
 
 body {
@@ -15,13 +14,13 @@ body {
 	.clearfix;
 	// Use media queries to substitute 
 	// smaller/larger images accorsing to screensize
-	/*background: url("/static/img/illus/pgh.png"), url("/static/img/illus/blue-scratch.png");
+	/*background: url("/static/img/illus/pgh.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
 	background-position: bottom left, top left;*/
-	//background: url("/static/img/custom/sky_texture.png");
+	background: url("/static/img/custom/sky_texture.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
-	background: @skyblue;
+	//background: @skyblue;
 	font-family: 'ArvoRegular';
 	font-weight: normal;
 	height: 100%;
@@ -64,19 +63,21 @@ ul {
 
 #site-header {
 	width: 100%;
-	.gradient(#fff, #e1e1e1);
-	height: 100px;
+	//.gradient(#fff, #e1e1e1);
+	background: url("/static/img/custom/sky_texture.png");
+	.b-shadow(0.05em, 0.05em, 0.5em, #000);
+	height: 70px;
 	position: fixed;
 	top: 0;
-	padding-left: 40%;
+	//padding-left: 40%;
 	z-index: 999;
 }
 
 #site-content {
-	.border-box;
 	width: 100%;
-	margin-top: 100px;
-	
+	margin-top: 70px;
+	padding-top: 10px;
+	.border-box;
 	&.admin, &.home {
 		position: relative;
 	}
@@ -102,10 +103,10 @@ ul {
 	pointer-events: none;
 	
 	// Add queries for larger sign - this is for 1024
-	/*background-image: url(/static/img/illus/pgh-250h.png);
+	background-image: url(/static/img/illus/pgh-250h.png);
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, repeat-x;
-	background-position: bottom left, bottom left; */
+	background-position: bottom left, bottom left; 
 	height: 800px;
 	position: fixed;
 	bottom: 0;
@@ -114,6 +115,9 @@ ul {
 
 #site-footer {
 	.column(12);
+	/*position: fixed;
+	bottom: 0;
+	right: 0;*/
 }
 
 /* CONTENT ----------- */
@@ -125,12 +129,30 @@ ul {
 
 .content-container {
 	//height: 100%;
+	.b-shadow(1px, 1px, 6px, #fff);
+	background: fade(#fff, 70%);
 	.clearfix;	
-	margin: auto;
+	margin: 10px auto;
 	.border-box;
-	padding: 3%;
-	position: relative;
+	.rounded(0.5em);
+	padding: 5% 4% 3% 2%;
+	width: 80%;
+
+	&.signup {
+		max-width: 600px;	
+	}
+
+	&.admin, &#home {
+		max-width: 720px;	
+		padding-top: 2%;	
+	}
+
+	&#home {
+		.no-b-shadow();
+		background: none;
+	}
 }
+
 
 /* FORMS & INPUTS --------------- */
 
@@ -141,11 +163,7 @@ ul {
 
 .signup {
 	.content-container {
-		.b-shadow(1px, 1px, 6px, #fff);
-		background: fade(#fff, 70%);
-		.rounded(0.5em);
-		width: 80%;
-		max-width: 600px;
+		
 	}
 }
 
@@ -214,12 +232,6 @@ ul {
 	}
 }
 
-.home .content-container, .admin .content-container {
-	width: 80%;
-	max-width: 720px;
-	padding-top: 0;
-}
-
 #site-nav {
   position: fixed;
   left: auto;
@@ -261,9 +273,6 @@ ul {
 
 /* ADMIN ---------- */
 
-.admin .content-container {
-	padding-top: 1%;
-}
 
 /* SCHEDULED --------- */
 
@@ -278,59 +287,8 @@ ul {
 
 @import 'feed.css';
 
-
 @import 'single.css';
 
-/* TYPOGRAPHY ------------ */
-
-h1 {
-	color: #fff;
-	font-family: 'BloklettersViltstift';
-	font-size: 1.5em;
-	font-weight: normal;
-	margin: 0 0 1em;
-	text-align: left;
-	text-shadow: 0.1em 0.1em 0 #222;
-}
-
-h2 {
-	font-size: 1.2em;
-	font-weight: normal;
-	padding: 0.5em 0;
-}
-
-p {
-	color: #222;
-	text-shadow: 0.05em 0.05em 0.05em #fff;
-}
-
-.tip {
-	color: #555;
-	font-size: 0.8em;
-	font-style: italic;
-	margin-left: 2%;
-}
-
-.description {
-	text-indent: 2em;
-}
-
-.add-item-link, .edit-link {
-	font-size: 1em;
-	font-style: italic;
-	cursor: pointer;
-}
-
-.add-item-form {
-	display: none;
-}
-
-#showPopularTags {
-	color: #955247;
-	font-weight: bold;
-	text-decoration: underline;
-	cursor: pointer;
-}
 
 /* IMAGES ------------ */
 
@@ -347,17 +305,18 @@ p {
 /* NAVIGATION ------------ */
 
 .prev-next {
-//	.column(12);
+	.column(12);
 	.clearfix;
 	margin-top: 1em;
 }
 
-a.next, a.back, .submit-item {
+.next, .back, .submit-item {
 	padding: 0.5em;
 	.rounded(0.5em);
+	border: none;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
 	background: #2C525D;
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
 
 	&:hover {
@@ -437,8 +396,7 @@ a.next, a.back, .submit-item {
 /* COMPLEMENTARY --------- */
 
 
-.progress {
-	width: 20%;
+/*.progress {
 	margin: auto;
 
 	span {
@@ -446,7 +404,7 @@ a.next, a.back, .submit-item {
 	}
 }
 
-.profile-tags {
+*/.profile-tags {
 	.clearfix;
 	padding: 0;
 	li {

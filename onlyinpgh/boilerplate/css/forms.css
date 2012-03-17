@@ -1,3 +1,14 @@
+form {
+  *zoom: 1;
+}
+form:before,
+form:after {
+  content: "";
+  display: table;
+}
+form:after {
+  clear: both;
+}
 fieldset {
   *zoom: 1;
 }
@@ -18,7 +29,7 @@ label {
   font-size: 0.9em;
   font-weight: bold;
   margin-bottom: 0.5em;
-  text-shadow: 0.07em 0.07em 0 #fff;
+  text-shadow: 0.07em 0.07em 0 #ffffff;
   text-transform: uppercase;
   text-align: right;
   position: relative;
@@ -27,9 +38,15 @@ label {
 textarea {
   height: 6em;
 }
+::-webkit-input-placeholder {
+  color: #AAAAAA;
+}
+:-moz-placeholder {
+  color: #AAAAAA;
+}
 input[type="text"],
 textarea {
-  border: 1px #ccc solid;
+  border: 1px #cccccc solid;
   -webkit-box-shadow: 0.05em 0.05em 0.1em #ffffff;
   -moz-box-shadow: 0.05em 0.05em 0.1em #ffffff;
   box-shadow: 0.05em 0.05em 0.1em #ffffff;
@@ -100,7 +117,7 @@ input[type="checkbox"] {
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
   padding: 2em 0;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 .social-input {
   width: 75% !important;

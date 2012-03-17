@@ -1,7 +1,27 @@
 @import 'helpers';
 
-p, time {
-  margin: 0.1em 0;
+
+/* TYPOGRAPHY ------------ */
+
+h1 {
+	color: #fff;
+	font-family: 'BloklettersViltstift';
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 0 0 1em;
+	text-shadow: 0.1em 0.1em 0 #222;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+	padding: 0.5em 0;
+}
+
+p {
+	color: #222;
+	margin: 0.1em 0;
+	text-shadow: 0.05em 0.05em 0.05em #fff;
 }
 
 .datetime {
@@ -15,4 +35,41 @@ p, time {
 
 .address {
   font-weight: bold;
+}
+
+.tip {
+	color: #555;
+	font-size: 0.8em;
+	font-style: italic;
+	margin-left: 2%;
+}
+
+.description {
+	text-indent: 2em;
+}
+
+.add-item-link, .edit-link {
+	font-size: 1em;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.add-item-form {
+	display: none;
+}
+
+#showPopularTags {
+	color: #955247;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* HEADINGS ------- */
+
+#site-title {
+	border-bottom: 1px #e1e1e1 solid;
+	margin-top: 20px;
+	padding: 0 0 15px 15px;
+	text-align: center;
 }

@@ -14,9 +14,8 @@ jQuery(document).ready( function(){
 	// expand_form('.scheduled-item h4','.scheduled-item > .item-content');
 
 
-
-	// Sliding signup sequence
-
+	// Sliding create place wizard
+	// http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
 	$('a.shift-panel').click(function () {
 
 		current = $(this).attr('name');
@@ -52,17 +51,9 @@ jQuery(document).ready( function(){
 		alert('Are you sure you want to delete #item-1?');
 	});
 
-	// Show edit link when hovering over form item
-	$('.edit form').hover(function(){
-		console.log('asdasd');
-		$('.edit-link').fadeIn(200);
-	}, function(){
-		$('.edit-link').fadeOut(200);
-	});
-
 });
 
-
+// http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
 function resizePanel() {
 
 	width = $(window).width();

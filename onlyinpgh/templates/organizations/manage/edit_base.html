@@ -1,17 +1,9 @@
 {% extends "manage_base.html" %}
 
-{% block page_header_title %}
-	Editing bus_name's {% block active_section %}{% endblock %}
-{% endblock %}
-
-{% block page_class %}admin{% endblock %}
-
 {% block content %}
-	<div class="content-container">
-		<form>
-			{% block form_contents %}
-			{% endblock %}
-		</form>
+	<div class="content-container admin" id="place">
+		{% block form_contents %}
+		{% endblock %}
 		<div class="prev-next">
 			<button class="back">Cancel</button>
 			<!-- If editing existing special -->

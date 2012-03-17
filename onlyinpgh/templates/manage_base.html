@@ -10,14 +10,13 @@
 <body>
 
 	<header id="site-header">
-		<h1>{% block page_header_title %}{% endblock %}</h1>
+		<h1 id="site-title">Scenable Business Account</h1>
 	</header>
 
-	<div id="site-content" class="{% block page_class %}{% endblock %}">
+	<div id="site-content">
 	    {% autoescape off %}
 		    {{content}}
 	    {% endautoescape %}
-
 	</div>
 
 	<footer id="site-footer">
@@ -30,7 +29,14 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
 	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
-	<script src="/static/js/admin_script.js"></script>
+	<script src="/static/js/admin_script.js"></script>	
 
+	<!-- jQuery UI Autocomplete 
+	<script src="/static/js/libs/jquery-ui/jquery.ui.autocomplete.min.js"></script>
+	<script src="/static/js/libs/jquery-ui/jquery.ui.core.min.js"></script>
+	<script src="/static/js/libs/jquery-ui/jquery.ui.position.min.js"></script>
+	<script src="/static/js/libs/jquery-ui/jquery.ui.position.min.js"></script>
+	<script src="/static/js/libs/jquery-ui/jquery.ui.widget.min.js"></script>
+-->
 </body>
 </html>
