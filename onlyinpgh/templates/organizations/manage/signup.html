@@ -1,0 +1,60 @@
+<form action="" method="POST" >
+	{% csrf_token %}
+	<div class="field-container first">
+		<fieldset>
+			{{ form.email.errors }}
+			<label class="input-label">{{ form.email.label }}</label>
+			<div class="inputs">
+				<input type="text" name="{{ form.email.html_name }}" placeholder="awesome@sweet.com" value="{{ form.email.value }}"/>
+			</div>
+		</fieldset>
+	
+		<fieldset>
+			{{ form.password1.errors }}
+			<label class="input-label">{{ form.password1.label }}</label>
+			<div class="inputs">
+				<input type="text" name="{{ form.password1.html_name }}" placeholder="Excellent password" />
+			</div>
+		</fieldset>
+		<fieldset>
+			{{ form.password2.errors }}
+			<label class="input-label">{{ form.password2.label }}</label>
+			<div class="inputs">
+				<input type="text" name="{{ form.password2.html_name }}" placeholder="Excellent password confirmed" />
+			</div>
+		</fieldset>
+	</div> <!-- .field-container -->
+
+	<div class="field-container last">
+		{{ form.business.errors }}
+		<div class="ui-widget">
+			<label class="input-label">{{ form.business.html_name }}</label>
+			<input type="text" name="{{ form.business.html_name }}_text" id="{{ form.business.html_id }}_text" value="" />
+			<input type="hidden" name="{{ form.business.html_name }}" value="{{ form.business.value }}" id="{{ form.business.html_id }}"/>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				$("#{{ form.business.html_id }}_text").autocomplete({
+					source: function(request,response) {
+						$.getJSON({
+							url: '/places/lookup/all/',
+							data: {},
+							success: function(data) {
+								$('#{{ form.business.html_id }}').val('!'+request.term);
+								console.log('setting hidden value to ' + $('#{{ form.business.html_id }}').val());
+							}
+						});
+
+					},
+					select: function(event,ui) {
+						$('#{{ form.business.html_id }}_text').val(ui.item.name);
+						$('#{{ form.business.html_id }}').val(ui.item.id);
+						console.log('setting hidden value to ' + $('#{{ form.business.html_id }}').val());
+					}
+				});
+			});
+		</script>
+	</div> <!-- .field-container -->
+
+	<button type="submit">Submit</submit>
+</form>

@@ -7,4 +7,6 @@ urlpatterns = patterns('onlyinpgh.places.views',
 
     url(r'^app/feed/$', 'feed_app'),
     url(r'^app/(?P<pid>\d+)$', 'detail_app'),
+
+    url(r'^lookup/all/$', 'feed_app'),
 )

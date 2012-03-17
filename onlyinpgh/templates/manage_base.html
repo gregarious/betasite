@@ -14,7 +14,10 @@
 	</header>
 
 	<div id="site-content" class="{% block page_class %}{% endblock %}">
-		{% block content %}{% endblock %}
+	    {% autoescape off %}
+		    {{content}}
+	    {% endautoescape %}
+
 	</div>
 
 	<footer id="site-footer">
