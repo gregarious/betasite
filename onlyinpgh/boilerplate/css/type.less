@@ -4,7 +4,6 @@
 /* TYPOGRAPHY ------------ */
 
 h1 {
-	color: #fff;
 	font-family: 'BloklettersViltstift';
 	font-size: 1.5em;
 	font-weight: normal;
@@ -48,22 +47,6 @@ p {
 	text-indent: 2em;
 }
 
-.add-item-link, .edit-link {
-	font-size: 1em;
-	font-style: italic;
-	cursor: pointer;
-}
-
-.add-item-form {
-	display: none;
-}
-
-#showPopularTags {
-	color: #955247;
-	font-weight: bold;
-	text-decoration: underline;
-	cursor: pointer;
-}
 
 /* HEADINGS ------- */
 
@@ -72,4 +55,21 @@ p {
 	margin-top: 20px;
 	padding: 0 0 15px 15px;
 	text-align: center;
+	
+	a {
+		color: #fff;
+	
+		&:hover {
+			color: #fff;
+				text-shadow: 0.05em 0.05em 0 #222;
+		}
+
+		&:active {
+			text-shadow: 0 0.03em 0.05em #000;
+		}
+
+		&:visited {
+			color: #fff;
+		}
+	}
 }

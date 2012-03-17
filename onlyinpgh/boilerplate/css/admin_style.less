@@ -13,18 +13,19 @@ body {
 	margin: 0 auto;
 	.clearfix;
 	// Use media queries to substitute 
-	// smaller/larger images accorsing to screensize
+	// smaller/larger images saccorsing to screensize
 	/*background: url("/static/img/illus/pgh.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
 	background-position: bottom left, top left;*/
-	background: url("/static/img/custom/sky_texture.png");
+	background: url("/static/img/custom/sky-head-tex.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
 	//background: @skyblue;
-	font-family: 'ArvoRegular';
+	font-family: 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	height: 100%;
 	margin: 0;
+	padding-bottom: 3em;
 	//overflow-x: hidden;
 	/*padding: 3em 0 0;*/
 	width:100%;
@@ -64,7 +65,8 @@ ul {
 #site-header {
 	width: 100%;
 	//.gradient(#fff, #e1e1e1);
-	background: url("/static/img/custom/sky_texture.png");
+	background: url("/static/img/custom/sky-dark-tex.png");
+	//box-shadow: 0 12px 5px -12px black;
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	height: 70px;
 	position: fixed;
@@ -393,28 +395,51 @@ ul {
 }
 
 
-/* COMPLEMENTARY --------- */
+/* ACTIONS --------- */
 
-
-/*.progress {
-	margin: auto;
-
-	span {
-		margin: 0 0.2em;
-	}
+.add-item-link {
+	font-size: 1em;
+	font-style: italic;
+	cursor: pointer;
 }
 
-*/.profile-tags {
-	.clearfix;
-	padding: 0;
-	li {
-		float: left;
-		.gradient(#fff, #e1e1e1);
-		list-style-type: none;
-		margin: 0 0.5em;
-		padding: 0.5em;
-		.rounded(0.5em);
-	}
+.edit-link {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	.icon('pencil');
+	display: none;
+}
+
+.add-item-form {
+	display: none;
+}
+
+#showPopularTags {
+	color: #955247;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* 11 TAGS ---------- */
+
+.tag-list {
+  .column_nm(12);
+  font-size: 0.9em;
+  margin: 1% 0 0;
+  
+    li a {
+      color: #888;
+      float: left;
+      margin: 0 1% 1% 0;
+      padding: 1%;
+      text-decoration: none;
+      text-shadow: 1px 1px 1px #fff;
+      .border-box;
+
+   
+  }
 }
 
 /* UTILITY ----------- */

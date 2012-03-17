@@ -51,6 +51,14 @@ jQuery(document).ready( function(){
 		alert('Are you sure you want to delete #item-1?');
 	});
 
+	// Hide and show edit link for each field
+	$('fieldset').hover( function() {
+		$(this).children('.edit-link').fadeIn(100);
+		//console.log(this);
+	}, function() {
+		$('.content-container').find('.edit-link').hide();
+	});
+
 });
 
 // http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
