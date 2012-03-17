@@ -1,3 +1,5 @@
+@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
+
 @import 'type.css';
 
 @import 'forms.css';
@@ -256,20 +258,17 @@ td {
 }
 /* Will move this to template when that happens */
 /*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
-@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);
-@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
-
-*/
+@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);*/
 /* ROOT --------- */
 body {
   margin: 0 auto;
   *zoom: 1;
-  /*background: url("/static/img/illus/pgh.png"), url("/static/img/illus/blue-scratch.png");
+  /*background: url("/static/img/illus/pgh.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
 	background-position: bottom left, top left;*/
 
-  background: #a9c6e8;
+  background: url("/static/img/custom/sky_texture.png");
   font-family: 'ArvoRegular';
   font-weight: normal;
   height: 100%;
@@ -320,37 +319,22 @@ ul li {
 /* SITE ------------- */
 #site-header {
   width: 100%;
-  background-color: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e1e1e1));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffffff, #e1e1e1);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
-  height: 100px;
+  background: url("/static/img/custom/sky_texture.png");
+  -webkit-box-shadow: 0.05em 0.05em 0.5em #000000;
+  -moz-box-shadow: 0.05em 0.05em 0.5em #000000;
+  box-shadow: 0.05em 0.05em 0.5em #000000;
+  height: 70px;
   position: fixed;
   top: 0;
-  padding-left: 40%;
   z-index: 999;
 }
 #site-content {
+  width: 100%;
+  margin-top: 70px;
+  padding-top: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
-  margin-top: 100px;
 }
 #site-content.admin,
 #site-content.home {
@@ -371,11 +355,10 @@ ul li {
   /* Can click thru div */
 
   pointer-events: none;
-  /*background-image: url(/static/img/illus/pgh-250h.png);
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, repeat-x;
-	background-position: bottom left, bottom left; */
-
+  background-image: url(/static/img/illus/pgh-250h.png);
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, repeat-x;
+  background-position: bottom left, bottom left;
   height: 800px;
   position: fixed;
   bottom: 0;
@@ -386,6 +369,10 @@ ul li {
   float: left;
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
+  /*position: fixed;
+	bottom: 0;
+	right: 0;*/
+
 }
 /* CONTENT ----------- */
 .content-header {
@@ -393,13 +380,23 @@ ul li {
   text-align: center;
 }
 .content-container {
+  -webkit-box-shadow: 1px 1px 6px #ffffff;
+  -moz-box-shadow: 1px 1px 6px #ffffff;
+  box-shadow: 1px 1px 6px #ffffff;
+  background: rgba(255, 255, 255, 0.7);
   *zoom: 1;
-  margin: auto;
+  margin: 10px auto;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 3%;
-  position: relative;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 5% 4% 3% 2%;
+  width: 80%;
 }
 .content-container:before,
 .content-container:after {
@@ -409,22 +406,22 @@ ul li {
 .content-container:after {
   clear: both;
 }
-/* FORMS & INPUTS --------------- */
-/* SIGNUP ------ */
-.signup .content-container {
-  -webkit-box-shadow: 1px 1px 6px #ffffff;
-  -moz-box-shadow: 1px 1px 6px #ffffff;
-  box-shadow: 1px 1px 6px #ffffff;
-  background: rgba(255, 255, 255, 0.7);
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  width: 80%;
+.content-container.signup {
   max-width: 600px;
 }
+.content-container.admin,
+.content-container#home {
+  max-width: 720px;
+  padding-top: 2%;
+}
+.content-container#home {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: none;
+}
+/* FORMS & INPUTS --------------- */
+/* SIGNUP ------ */
 #hours .hours-set {
   display: inline;
   float: left;
@@ -538,12 +535,6 @@ ul li {
 .home-nav li a:active {
   background: #e1e1e1;
 }
-.home .content-container,
-.admin .content-container {
-  width: 80%;
-  max-width: 720px;
-  padding-top: 0;
-}
 #site-nav {
   position: fixed;
   left: auto;
@@ -582,9 +573,6 @@ ul li {
   background-color: #E6B717;
 }
 /* ADMIN ---------- */
-.admin .content-container {
-  padding-top: 1%;
-}
 /* SCHEDULED --------- */
 .scheduled-items ul {
   *zoom: 1;
@@ -599,49 +587,6 @@ ul li {
   clear: both;
 }
 /* 2 FEED/ITEMS ---------- */
-/* TYPOGRAPHY ------------ */
-h1 {
-  color: #fff;
-  font-family: 'BloklettersViltstift';
-  font-size: 1.5em;
-  font-weight: normal;
-  margin: 0 0 1em;
-  text-align: left;
-  text-shadow: 0.1em 0.1em 0 #222;
-}
-h2 {
-  font-size: 1.2em;
-  font-weight: normal;
-  padding: 0.5em 0;
-}
-p {
-  color: #222;
-  text-shadow: 0.05em 0.05em 0.05em #fff;
-}
-.tip {
-  color: #555;
-  font-size: 0.8em;
-  font-style: italic;
-  margin-left: 2%;
-}
-.description {
-  text-indent: 2em;
-}
-.add-item-link,
-.edit-link {
-  font-size: 1em;
-  font-style: italic;
-  cursor: pointer;
-}
-.add-item-form {
-  display: none;
-}
-#showPopularTags {
-  color: #955247;
-  font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
-}
 /* IMAGES ------------ */
 .thumbnail {
   max-width: 300px;
@@ -678,11 +623,12 @@ p {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  border: none;
   -webkit-box-shadow: 0.07em 0.07em 0.1em #888888;
   -moz-box-shadow: 0.07em 0.07em 0.1em #888888;
   box-shadow: 0.07em 0.07em 0.1em #888888;
   background: #2C525D;
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
 }
 .next:hover,
@@ -766,14 +712,15 @@ p {
   margin: 0.5em 0.5em 0 1em;
 }
 /* COMPLEMENTARY --------- */
-.progress {
-  width: 20%;
-  margin: auto;
+/*.progress {
+	margin: auto;
+
+	span {
+		margin: 0 0.2em;
+	}
 }
-.progress span {
-  margin: 0 0.2em;
-}
-.profile-tags {
+
+*/.profile-tags {
   *zoom: 1;
   padding: 0;
 }
