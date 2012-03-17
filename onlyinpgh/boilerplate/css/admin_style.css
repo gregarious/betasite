@@ -721,7 +721,7 @@ ul li {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  background: url('/static/img/icons/black/pencil.png') no-repeat center;
+  background: url('/static/img_using/pencil.png') no-repeat center;
   display: none;
 }
 .add-item-form {
