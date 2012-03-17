@@ -267,7 +267,7 @@ body {
 	background-repeat: no-repeat, no-repeat;
 	background-position: bottom left, top left;*/
 
-  background: url("/static/img/custom/sky-head-tex.png");
+  background: url("/static/img_using/custom/sky-head-tex.png");
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: normal;
   height: 100%;
@@ -319,7 +319,7 @@ ul li {
 /* SITE ------------- */
 #site-header {
   width: 100%;
-  background: url("/static/img/custom/sky-dark-tex.png");
+  background: url("/static/img_using/custom/sky-dark-tex.png");
   -webkit-box-shadow: 0.05em 0.05em 0.5em #000000;
   -moz-box-shadow: 0.05em 0.05em 0.5em #000000;
   box-shadow: 0.05em 0.05em 0.5em #000000;
@@ -355,7 +355,7 @@ ul li {
   /* Can click thru div */
 
   pointer-events: none;
-  background-image: url(/static/img/illus/pgh-250h.png);
+  background-image: url(/static/img_using/illus/pgh-250h.png);
   background-attachment: fixed, fixed;
   background-repeat: no-repeat, repeat-x;
   background-position: bottom left, bottom left;
