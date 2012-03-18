@@ -7,32 +7,38 @@ from django.template.loader import render_to_string
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.organizations.models import Organization
-from onlyinpgh.organizations.forms import OrgUserCreationForm, PlaceClaimForm
+from onlyinpgh.organizations.forms import OrgUserCreationForm
 from django.contrib.auth import authenticate, login
 
-from django.db import IntegrityError
 
+from onlyinpgh.accounts.models import FakeUser
 
 def biz_signup(request):
     if request.POST:
         form = OrgUserCreationForm(request.POST)
         if form.is_valid():
-            # user, org, place = form.complete_registration()
-            email = form.cleaned_data["email"].strip()
-            password = form.cleaned_data["password1"]
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password2']
+            business = form.cleaned_data['business']
 
-            # just set username as email now
-            username = email
-            try:
-                User.objects.get(username=username)
-            except User.DoesNotExist:
-                try:
-                    User.objects.create_user(username=username, email=email, password=password)
-                except IntegrityError:
-                    print 'hacked together new user',username
-                    return place_claim(request)
+            seminar_admin = authenticate(username='seminar', password='seminar')
+            if not seminar_admin:
+                return HttpResponseServerError("Failure code 58008")
             else:
-                return HttpResponseServerError('Internal server error. At least I prepared this error message for you, dear user. Code 1.')
+                login(request, seminar_admin)
+
+            # just looking up place by name now. no id returned from autocomplete field
+            place, _ = Place.objects.get_or_create(name=business)
+
+            org = Organization.objects.create(name=place.name)
+            org.administrators.add(seminar_admin)
+            org.establishments.add(place)
+
+            fake = FakeUser.objects.create(username=email, password=password, org=org, place=place)
+            request.session['fakeuser'] = fake
+
+            print 'set the session. redirecting'
+            return redirect('biz_admin_home')
     else:
         form = OrgUserCreationForm()
 
@@ -42,46 +48,15 @@ def biz_signup(request):
     return render(request, 'manage_base.html', {'content': form_html})
 
 
-def place_claim(request):
-    if request.POST:
-        form = PlaceClaimForm(request.POST)
-        # if form.is_valid():
-        #     email = form.cleaned_data["email"].strip()
-        #     password = form.cleaned_data["password1"]
-        #     business = form.cleaned_data["business"]
-
-        #     user = authenticate(username=email, password=password)
-        #     if user is not None:
-        #         print 'logging in', user
-        #         login(request, user)
-        #     else:
-        #         return HttpResponseServerError('Internal server error. At least I prepared this error message for you, dear user. Code 2.')
-
-        #     # just looking up place by name now. no id returned from autocomplete field
-        #     place, _ = Place.objects.get_or_create(name=business)
-
-        #     org = Organization.objects.create(name=place.name)
-        #     org.administrators.add(user)
-        #     org.establishments.add(place)
-
-        #     request.session['working_place'] = place
-        #     request.session['working_org'] = org
-        #     print 'set the session. redirecting'
-        #     return redirect('biz_admin_home')
-    else:
-        form = PlaceClaimForm()
-
-    form_html = mark_safe(render_to_string(
-        'organizations/manage/claim_biz.html', {'form': form},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
-
-
 def biz_admin_home(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
     content = mark_safe(render_to_string(
         'organizations/manage/home.html', {},
         context_instance=RequestContext(request)))
 
+
+    print 'in biz admin as ' + str(request.session['fakeuser'])
     return render(request, 'manage_base.html', {'content': content})
 
 ### TESTING ####

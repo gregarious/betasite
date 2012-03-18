@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'onlyinpgh.news',
     'onlyinpgh.chatter',
     'onlyinpgh.tags',
+    'onlyinpgh.organizations',
     'onlyinpgh.outsourcing',
 )
 
