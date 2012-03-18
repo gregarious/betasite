@@ -9,6 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     (r'^testbed/form$', 'onlyinpgh.events.views.formtest'),
+    (r'^testbed/user$','onlyinpgh.organizations.views.usercreation_test'),
 
     (r'^login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),
@@ -55,6 +56,8 @@ urlpatterns = patterns('',
 
     # Business Admin generic templates
     url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup'),
+    url(r'^business/usercreatehack$', 'onlyinpgh.organizations.views.usercreate_hack'),
+
     url(r'^bus_admin/home$', direct_to_template, {'template':'organizations/manage/home.html'}),
     url(r'^bus_admin/signup$', direct_to_template, {'template':'registration/biz_signup.html'}),
     url(r'^bus_admin/create_place$', direct_to_template, {'template':'places/manage/create_place.html'}),

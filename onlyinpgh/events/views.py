@@ -5,7 +5,9 @@ from django.template.loader import get_template
 from onlyinpgh.events.models import Event, Attendee
 from onlyinpgh.common.utils.jsontools import jsonp_response
 
-from onlyinpgh.common.rendering import FeedItem
+class FeedItem(object):
+    pass
+#from onlyinpgh.common.rendering import FeedItem
 
 from datetime import datetime
 
@@ -89,3 +91,39 @@ def ajax_event_item(request,eid):
         event_data['place'] = place
 
     return {'event':event_data}
+
+    ###### TEST ERASE #####
+from django.http import HttpResponse
+from django import forms
+from django.template import Template
+
+page_template = Template('''
+<form action="#" method="post">
+{% csrf_token %}
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }}: {{ field }}
+    </div>
+{% endfor %}
+<input type="submit" value="Submit" />
+</form>
+''')
+
+from django.contrib.auth.models import User
+from onlyinpgh.organizations.models import Organization
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Organization
+
+
+def formtest(request):
+    if request.POST:
+        form = EventForm(request.POST)
+        #if form.is_valid():
+        #return HttpResponse('place saved!')
+    else:
+        form = EventForm()
+
+    context = RequestContext(request, {'form': form})
+    return HttpResponse(page_template.render(context))
