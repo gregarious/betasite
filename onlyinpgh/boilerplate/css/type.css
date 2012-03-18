@@ -1,6 +1,6 @@
 /* TYPOGRAPHY ------------ */
 h1 {
-  font-family: 'BloklettersViltstift';
+  font-family: 'BloklettersBalpen';
   font-size: 1.5em;
   font-weight: normal;
   margin: 0 0 1em;
@@ -9,7 +9,11 @@ h1 {
 h2 {
   font-size: 1.2em;
   font-weight: normal;
-  padding: 0.5em 0;
+  padding-bottom: 0.1em;
+  color: #2C525D;
+  text-shadow: 0.07em 0.07em 0 #ffffff;
+  font-style: italic;
+  margin: 0;
 }
 p {
   color: #222;
@@ -27,7 +31,11 @@ p {
   color: #555;
   font-size: 0.8em;
   font-style: italic;
+  display: block;
   margin-left: 2%;
+}
+.tip.desc {
+  margin-top: 2%;
 }
 .description {
   text-indent: 2em;

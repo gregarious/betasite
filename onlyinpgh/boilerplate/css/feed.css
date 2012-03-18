@@ -1,5 +1,5 @@
 /* 11 FEED/ITEMS ---------- */
-.feed-header {
+.feed-header, .content-header {
   /*background: @green;*/
 
   -moz-box-sizing: border-box;
@@ -13,26 +13,19 @@
   padding: 1% 2%;
   position: relative;
 }
-.feed-header .add-item-link {
+.feed-header .add-item-link, .content-header .add-item-link {
   position: absolute;
   right: 0;
   top: 0;
 }
-.feed-title {
-  color: green;
-  font-style: italic;
-  margin: 0;
-}
 .feed {
   *zoom: 1;
-  background: rgba(255, 255, 255, 0.6);
   -webkit-box-shadow: 0 0 1em #e1e1e1;
   -moz-box-shadow: 0 0 1em #e1e1e1;
   box-shadow: 0 0 1em #e1e1e1;
   margin: 2% 2% 0;
 }
-.feed:before,
-.feed:after {
+.feed:before, .feed:after {
   content: "";
   display: table;
 }
@@ -48,8 +41,6 @@
   border-bottom: 1px #999 dashed;
   margin: 1%;
   padding: 2% 1%;
-  /* Will link with jQuery once templates are finalized */
-
 }
 .item a {
   color: #000;
@@ -113,8 +104,7 @@
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
 }
-.item-details header,
-.item-details ul {
+.item-details header, .item-details ul {
   display: inline;
   float: left;
   width: 97.91666666666666%;
@@ -132,8 +122,7 @@
   *zoom: 1;
   float: left;
 }
-.admin .item-description:before,
-.admin .item-description:after {
+.admin .item-description:before, .admin .item-description:after {
   content: "";
   display: table;
 }

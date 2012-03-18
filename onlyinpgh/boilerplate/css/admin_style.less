@@ -18,7 +18,7 @@ body {
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
 	background-position: bottom left, top left;*/
-	background: url("/static/img/custom/sky-head-tex.png");
+	background: url("/static/img_using/custom/sky-head-tex.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
 	//background: @skyblue;
 	font-family: 'Helvetica', 'Arial', sans-serif;
@@ -26,7 +26,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding-bottom: 3em;
-	//overflow-x: hidden;
+	overflow-x: hidden;
 	/*padding: 3em 0 0;*/
 	width:100%;
 }
@@ -34,7 +34,7 @@ body {
 #mask {
 	width:500%;
 	height:100%;
-	//overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 section, article {
@@ -65,7 +65,7 @@ ul {
 #site-header {
 	width: 100%;
 	//.gradient(#fff, #e1e1e1);
-	background: url("/static/img/custom/sky-dark-tex.png");
+	background: url("/static/img_using/custom/sky-dark-tex.png");
 	//box-shadow: 0 12px 5px -12px black;
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	height: 70px;
@@ -105,7 +105,7 @@ ul {
 	pointer-events: none;
 	
 	// Add queries for larger sign - this is for 1024
-	background-image: url(/static/img/illus/pgh-250h.png);
+	background-image: url(/static/img_using/pgh-250h.png);
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, repeat-x;
 	background-position: bottom left, bottom left; 
@@ -125,8 +125,10 @@ ul {
 /* CONTENT ----------- */
 
 .content-header {
-	margin-top: 1.5em;
-	text-align: center;
+	margin-bottom: 1em;
+	.tip {
+		margin: 0;
+	}
 }
 
 .content-container {
@@ -137,16 +139,20 @@ ul {
 	margin: 10px auto;
 	.border-box;
 	.rounded(0.5em);
-	padding: 5% 4% 3% 2%;
+	padding: 5% 2% 3% 2%;
 	width: 80%;
-
+	max-width: 720px;	
+	
 	&.signup {
-		max-width: 600px;	
+	
 	}
 
 	&.admin, &#home {
-		max-width: 720px;	
 		padding-top: 2%;	
+	}
+
+	&.admin {
+		margin-bottom: 200px;
 	}
 
 	&#home {
@@ -162,12 +168,6 @@ ul {
 
 /* SIGNUP ------ */
 
-
-.signup {
-	.content-container {
-		
-	}
-}
 
 #hours {
 	.hours-set {
@@ -186,6 +186,26 @@ ul {
 	.column(1);		
 	float: right;
 	font-size: 2em;
+}
+
+.progress-container {
+	.column(12);
+
+	.progress {
+		width: 70px;
+		margin: auto;
+		div {
+			background: url('/static/img_using/inactive-progress.png') center;
+			margin: 0 3px;
+			height: 10px;
+			width: 10px;
+			float: left;
+
+			&.selected {
+				background: url('/static/img_using/active-progress.png') center;
+			}
+		}
+	}
 }
 
 /* HOME ---------- */
@@ -234,47 +254,14 @@ ul {
 	}
 }
 
-#site-nav {
-  position: fixed;
-  left: auto;
-  left: 0;
-  top: 50px;
-  /*border-bottom: 0.3em #fff solid;*/
-  ul {
-    li { 
-      a {
-        display: block;
-        /*.b-shadow(0, -0.12em, 0.1em, #000); */
-        -webkit-border-radius: 5px 0 0 5px;
-           -moz-border-radius: 5px 0 0 5px;
-                border-radius: 5px 0 0 5px;
-
-        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-        .b-shadow(0, 0, 2px, #000);
-        color: #000;
-        cursor: pointer;
-        font-size: 10px;
-        font-weight: bold;
-        width: 50px;
-        margin-top: 1em;
-        padding: 40px 0 0;
-        text-align: center;
-        text-decoration: none;
-          
-        &:hover {
-          background-color: #ccc;
-        }
-  
-        &:active {
-          background-color: #E6B717;
-        }
-      }
-    }
-  } 
-}
-
 /* ADMIN ---------- */
 
+.admin {
+	.item {
+		border: none;
+		background: fade(#fff, 60%);
+	}
+}
 
 /* SCHEDULED --------- */
 
@@ -395,30 +382,49 @@ ul {
 }
 
 
+/* FORMS ------- */
+
+.admin {
+
+	.edit-link {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+		//.icon('pencil');
+		display: none;
+
+		img {
+			float: right;
+		}
+	}
+
+	fieldset {
+		padding: 1em 0;
+		position: relative;
+		.rounded(0.2em);
+		-webkit-transition:background 0.1s ease-in;  
+	   	-moz-transition:background 0.1s ease-in;  
+	    -o-transition:background 0.1s ease-in;  
+	    transition:background 0.1s ease-in;  
+		
+		&:hover {
+			-webkit-transition:background 0.4s ease-out;  
+		   	-moz-transition:background 0.4s ease-out;  
+		    -o-transition:background 0.4s ease-out;  
+		    transition:background 0.4s ease-out;  
+			background: #fff;	
+			cursor: pointer;
+		}
+	}	
+
+}
+
 /* ACTIONS --------- */
 
 .add-item-link {
 	font-size: 1em;
 	font-style: italic;
-	cursor: pointer;
-}
-
-.edit-link {
-	cursor: pointer;
-	width: 30px;
-	height: 30px;
-	.icon('pencil');
-	display: none;
-}
-
-.add-item-form {
-	display: none;
-}
-
-#showPopularTags {
-	color: #955247;
-	font-weight: bold;
-	text-decoration: underline;
 	cursor: pointer;
 }
 
@@ -456,14 +462,11 @@ ul {
 	background-color: green;
 }
 
-/* MEDIA QUERIES -------- */
+img.edit-item {
+	margin-right: 10px;
+}
 
+.delete-item {
 
+}
 
-/* Not working?
-@media only screen and (max-device-width: 720px) {
-
-	.signup .content-container {
-		width: 90%;
-	}
-}*/

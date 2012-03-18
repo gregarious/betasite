@@ -3,87 +3,81 @@
 {% block active_section %}Specials{% endblock %}
 
 {% block form_contents %}
+
+<header class="content-header">
+	<h2>Editing your Special</h2>
+</header>
+
 <form>
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Title</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="Event name" /> -->
+			<input type="text" placeholder="Special name" />
 			<!-- <p class="tip">Limit 140 chars.</p> -->
-			<p>$5 Head Massage</p>
 		</div>
 	</fieldset>
 
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Location</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="Event name" /> -->
-			<!-- <p class="tip">Limit 140 chars.</p> -->
-			<p>Uncle Sam's</p>
-			<p>123 Jalopy Dr</p>
+			<input type="text" placeholder="Where is this special?" />
 		</div>
 	</fieldset>
 
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Starts</label>
 		<div class="inputs">
-			<p>December 12, 12:00pm</p>
+			<input type="text" placeholder="date special begins" />
 		</div>
 	</fieldset>
 
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Expires</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="date special expires" /> --> <!-- Datepicker -->
-			<p>December 13, 1:00am</p>
+			<input type="text" placeholder="date special expires" />
 		</div>
 	</fieldset>
 
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Price</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="$1,000,000" /> -->
-			<p>$100,000</p>
-			<div class="points tip">+100,000</div>
+			<input type="text" placeholder="$1,000,000" />
+			<!-- <div class="points tip">+100,000</div> -->
 		</div>
 	</fieldset>
 	
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Number Available</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="10" /> --> <!-- Datepicker -->
-			<!-- <input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label> -->
-			<p>Not limited</p>
+			<input type="text" placeholder="10" />
+			<div class="check-container">
+				<input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label>
+			</div>
 		</div>
 	</fieldset>
 
-	<fieldset>
-		<div class="edit-link"></div>
+	<!-- <fieldset>
+		<a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a>
 		<label>Image</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="Image Upload field here" /> -->
+			<input type="text" placeholder="Image Upload field here" />
 			<img class="uploaded-image" src="http://m4.licdn.com/mpr/mpr/shrink_100_100/p/2/000/105/2e2/1425158.jpg">
-			<!-- <input type="text" placeholder="Image Upload field here" /> -->
+			<input type="text" placeholder="Image Upload field here" />
 		</div>
-	</fieldset>
+	</fieldset> -->
 
 	<fieldset>
-		<div class="edit-link"></div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Tags</label>
 		<div class="inputs">
-			<ul class="tag-list">
-				<li><a>fancy</a></li>
-				<li><a>food</a></li>
-				<li><a>gourmet</a></li>
-				<li><a>cookie</a></li>
-			</ul>
-			<!-- <input type="text" placeholder="try 'birthday'" /> --> <!-- Autocomplete -->
-			<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
+		<input type="text" placeholder="try 'birthday'" />
+			<p class="tip">Enter tags separated by commas like: birthday, party, cake, casual</p>
 		</div>
 	</fieldset>
 </form>
