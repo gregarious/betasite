@@ -294,9 +294,6 @@ fieldset {
   margin: 0;
   padding: 0;
 }
-label {
-  cursor: pointer;
-}
 legend {
   border: 0;
   *margin-left: -7px;
@@ -516,9 +513,6 @@ p {
 }
 .errorlist li {
   color: maroon;
-}
-#confirm-pass {
-  margin-top: 10px;
 }
 .description {
   text-indent: 2em;
