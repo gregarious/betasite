@@ -1,4 +1,9 @@
+
 <div class="content-container">
+
+	<header class="content-header">
+		<h2>Register</h2>
+	</header>
 
 	<form action="" method="POST" >
 		{% csrf_token %}
@@ -12,7 +17,7 @@
 			</fieldset>
 		</div>
 
-		<div class="field-container last">
+		<div class="field-container">
 			<fieldset>
 				{{ form.password1.errors }}
 				<label class="input-label">{{ form.password1.label }}</label>
@@ -30,13 +35,13 @@
 			</fieldset>
 		</div> <!-- .field-container -->
 
-		<div class="field-container">
+		<div class="field-container last">
 			<fieldset>
 				{{ form.business.errors }}
 				<div class="ui-widget">
 					<label class="input-label">{{ form.business.label }}</label>
 					<div class="inputs">
-						<input name="{{ form.business.html_name }}" id="{{ form.business.id_for_label }}" value="" placeholder="Your Business" />
+						<input name="{{ form.business.html_name }}" id="{{ form.business.id_for_label }}" value="" type="text" placeholder="Your Business" class="double" />
 					</div>
 				</div>
 

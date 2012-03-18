@@ -70,6 +70,19 @@ ul {
 	z-index: 999;
 }
 
+#logout {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-style: italic;
+	color: #e1e1e1;
+	text-shadow: 0.02em, 0.02em, 0em, #fff;
+
+	&:hover {
+		color: @skyblue;
+	}
+}
+
 #site-content {
 	width: 100%;
 	margin-top: 100px;
@@ -137,7 +150,7 @@ ul {
 	margin: 10px auto;
 	.border-box;
 	.rounded(0.5em);
-	padding: 5% 2% 3% 2%;
+	padding: 3% 2% 3% 2%;
 	width: 80%;
 	max-width: 650px;	
 	
@@ -213,17 +226,20 @@ ul {
 	li {
 		list-style-type: none;
 
-		a {
-			.b-shadow(0.1em, 0.1em, 0.1em, #333);
-			.column(2.5);
-			.gradient(#e1e1e1, #fff);
-			font-size: 1.3em;
-			margin: 3%;
-			.rounded(1.5em);
+		
+			//.b-shadow(0.1em, 0.1em, 0.1em, #333);
+			.column(3);
+			//.gradient(#e1e1e1, #fff);
+			font-size: 1.1em;
+			margin: 1% 3% 2%;
+			padding: 2%;
+			//.rounded(1.5em);
 			text-align: center;
+
 			p {
 				margin-bottom: 1em;
 			}
+
 			img {
 				display: block;
 				margin: 20% auto 10% auto;
@@ -247,14 +263,14 @@ ul {
 			}*/
 
 			&.disabled {
-				.no-b-shadow();
-				background: fade(#fff, 50%);
+				/*.no-b-shadow();
+				background: fade(#fff, 50%);*/
 
 				&:hover {
-					background: fade(#fff, 50%);					
+					background: none;					
 				}
 			}
-		}
+		
 	}
 }
 
@@ -268,7 +284,6 @@ ul {
 }
 
 /* AUTOCOMPLETE ------ */
-
 
 /* SCHEDULED --------- */
 

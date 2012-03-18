@@ -170,9 +170,6 @@ fieldset {
   margin: 0;
   padding: 0;
 }
-label {
-  cursor: pointer;
-}
 legend {
   border: 0;
   *margin-left: -7px;
@@ -309,6 +306,17 @@ ul li {
   top: 0;
   z-index: 999;
 }
+#logout {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-style: italic;
+  color: #e1e1e1;
+  text-shadow: 0.02em, 0.02em, 0em, #fff;
+}
+#logout:hover {
+  color: #a9c6e8;
+}
 #site-content {
   width: 100%;
   margin-top: 100px;
@@ -382,7 +390,7 @@ ul li {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 5% 2% 3% 2%;
+  padding: 3% 2% 3% 2%;
   width: 80%;
   max-width: 650px;
 }
@@ -458,42 +466,13 @@ ul li {
 }
 .home-nav li {
   list-style-type: none;
-}
-.home-nav li a {
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #333333;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #333333;
-  box-shadow: 0.1em 0.1em 0.1em #333333;
   display: inline;
   float: left;
-  width: 18.75%;
+  width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
-  background-color: #e1e1e1;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#ffffff));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #e1e1e1, #ffffff);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #e1e1e1, #ffffff);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #e1e1e1, #ffffff);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #e1e1e1, #ffffff);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #e1e1e1, #ffffff);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
-  font-size: 1.3em;
-  margin: 3%;
-  -webkit-border-radius: 1.5em;
-  -moz-border-radius: 1.5em;
-  border-radius: 1.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+  font-size: 1.1em;
+  margin: 1% 3% 2%;
+  padding: 2%;
   text-align: center;
   /*&.top {
 				margin-top: 0;
@@ -504,30 +483,29 @@ ul li {
 			}*/
 
 }
-.home-nav li a p {
+.home-nav li p {
   margin-bottom: 1em;
 }
-.home-nav li a img {
+.home-nav li img {
   display: block;
   margin: 20% auto 10% auto;
 }
-.home-nav li a:hover {
+.home-nav li:hover {
   background: #e1e1e1;
 }
-.home-nav li a:active {
+.home-nav li:active {
   background: #e1e1e1;
   -webkit-box-shadow: 0.05em 0.05em 0.05em #333333;
   -moz-box-shadow: 0.05em 0.05em 0.05em #333333;
   box-shadow: 0.05em 0.05em 0.05em #333333;
 }
-.home-nav li a.disabled {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background: rgba(255, 255, 255, 0.5);
+.home-nav li.disabled {
+  /*.no-b-shadow();
+				background: fade(#fff, 50%);*/
+
 }
-.home-nav li a.disabled:hover {
-  background: rgba(255, 255, 255, 0.5);
+.home-nav li.disabled:hover {
+  background: none;
 }
 /* ADMIN ---------- */
 .admin .item {

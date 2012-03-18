@@ -40,9 +40,6 @@ p {
 .errorlist li {
   color: maroon;
 }
-#confirm-pass {
-  margin-top: 10px;
-}
 .description {
   text-indent: 2em;
 }
