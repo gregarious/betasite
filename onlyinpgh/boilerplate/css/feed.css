@@ -1,5 +1,6 @@
 /* 11 FEED/ITEMS ---------- */
-.feed-header {
+.feed-header,
+.content-header {
   /*background: @green;*/
 
   -moz-box-sizing: border-box;
@@ -13,15 +14,11 @@
   padding: 1% 2%;
   position: relative;
 }
-.feed-header .add-item-link {
+.feed-header .add-item-link,
+.content-header .add-item-link {
   position: absolute;
   right: 0;
   top: 0;
-}
-.feed-title {
-  color: green;
-  font-style: italic;
-  margin: 0;
 }
 .feed {
   *zoom: 1;

@@ -273,6 +273,7 @@ body {
   height: 100%;
   margin: 0;
   padding-bottom: 3em;
+  overflow-x: hidden;
   /*padding: 3em 0 0;*/
 
   width: 100%;
@@ -288,6 +289,7 @@ body:after {
 #mask {
   width: 500%;
   height: 100%;
+  overflow-x: hidden;
 }
 section,
 article {
@@ -355,7 +357,7 @@ ul li {
   /* Can click thru div */
 
   pointer-events: none;
-  background-image: url(/static/img_using/illus/pgh-250h.png);
+  background-image: url(/static/img_using/pgh-250h.png);
   background-attachment: fixed, fixed;
   background-repeat: no-repeat, repeat-x;
   background-position: bottom left, bottom left;
@@ -376,8 +378,10 @@ ul li {
 }
 /* CONTENT ----------- */
 .content-header {
-  margin-top: 1.5em;
-  text-align: center;
+  margin-bottom: 1em;
+}
+.content-header .tip {
+  margin: 0;
 }
 .content-container {
   -webkit-box-shadow: 1px 1px 6px #ffffff;
@@ -395,8 +399,9 @@ ul li {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 5% 4% 3% 2%;
+  padding: 5% 2% 3% 2%;
   width: 80%;
+  max-width: 720px;
 }
 .content-container:before,
 .content-container:after {
@@ -406,13 +411,12 @@ ul li {
 .content-container:after {
   clear: both;
 }
-.content-container.signup {
-  max-width: 600px;
-}
 .content-container.admin,
 .content-container#home {
-  max-width: 720px;
   padding-top: 2%;
+}
+.content-container.admin {
+  margin-bottom: 200px;
 }
 .content-container#home {
   -webkit-box-shadow: none;
@@ -444,6 +448,26 @@ ul li {
   margin: 0 1.0416666666666665%;
   float: right;
   font-size: 2em;
+}
+.progress-container {
+  display: inline;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+}
+.progress-container .progress {
+  width: 70px;
+  margin: auto;
+}
+.progress-container .progress div {
+  background: url('/static/img_using/inactive-progress.png') center;
+  margin: 0 3px;
+  height: 10px;
+  width: 10px;
+  float: left;
+}
+.progress-container .progress div.selected {
+  background: url('/static/img_using/active-progress.png') center;
 }
 /* HOME ---------- */
 .home-nav {
@@ -711,18 +735,44 @@ ul li {
   float: left;
   margin: 0.5em 0.5em 0 1em;
 }
+/* FORMS ------- */
+.admin .edit-link {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  display: none;
+}
+.admin .edit-link img {
+  float: right;
+}
+.admin fieldset {
+  padding: 1em 0;
+  position: relative;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: background 0.1s ease-in;
+  -moz-transition: background 0.1s ease-in;
+  -o-transition: background 0.1s ease-in;
+  transition: background 0.1s ease-in;
+}
+.admin fieldset:hover {
+  -webkit-transition: background 0.4s ease-out;
+  -moz-transition: background 0.4s ease-out;
+  -o-transition: background 0.4s ease-out;
+  transition: background 0.4s ease-out;
+  background: #fff;
+  cursor: pointer;
+}
 /* ACTIONS --------- */
 .add-item-link {
   font-size: 1em;
   font-style: italic;
   cursor: pointer;
-}
-.edit-link {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  background: url('/static/img_using/pencil.png') no-repeat center;
-  display: none;
 }
 .add-item-form {
   display: none;

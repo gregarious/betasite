@@ -127,15 +127,3 @@ input[type="checkbox"] {
   width: 15%;
   float: left;
 }
-.admin .edit-link {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.admin fieldset {
-  padding: 1em 0;
-  position: relative;
-}
-.admin fieldset:hover {
-  background: #fff;
-}

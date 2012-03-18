@@ -3,55 +3,59 @@
 {% block active_section %}Events{% endblock %}
 
 {% block form_contents %}
+
+<header class="content-header">
+	<h2>Editing your Place Page</h2>
+	<p class="tip">Click each item to edit.</p>
+</header>
+
 <form>
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Name</label>
 		<div class="inputs">
-			<p>notlaura</p>
-			<!-- <input type="text" placeholder="Event name" /> -->
+			<input type="text" placeholder="Place name" />
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Address</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="Address" /> -->
-			<p>123 Your Shirt Ave.</p>
-			<p>Apt #666</p>
-			<!-- <input type="text" placeholder="Apt or Suite #" /> -->
-			<!-- <p class="tip">Just the essentials, we know you're in Pittsburgh :)</p> -->
+			<input type="text" placeholder="Address" />
+			<input type="text" placeholder="Apt or Suite #" />
+			<p class="tip">Just the essentials, we know you're in Pittsburgh :)</p>
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Phone</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="(412)...what else?" /> -->
-			<p>724 244 2491</p>
+			<input type="text" placeholder="(412)...what else?" />
 		</div>
 	</fieldset>
 	<fieldset class="last">	
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Website</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="http://coolrestaurant.com" /> -->
-			<p>http://sweetass.com/</p>
+			<input type="text" placeholder="http://coolrestaurant.com" />
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Hours</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="9am-5:30pm Mon-Sun" /> -->
-			<p>Mon-Fri 5pm-10pm</p>
-			<p>Sat 3pm-10pm</p>
-			<p>Closed Sun.</p>
+			<input type="text" placeholder="9am-5:30pm Mon-Sun" />
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Parking</label>
 		<div class="inputs">
-			<!-- <div class="check-container">
+			<div class="check-container">
 				<input type="checkbox" name="street" value="Street" />
 				<label class="checkbox-label">Street</label>
 			</div>
@@ -66,47 +70,46 @@
 			<div class="check-container">
 				<input type="checkbox" name="good-luck" value="Good Luck" />
 				<label class="checkbox-label">Good Luck</label>
-			</div> -->
-			<p>Street, Garage</p>
-		</div> <!-- .inputs -->
-	</fieldset>
-
-	<fieldset>
-		<label>Description</label>
-		<!-- Limit to 150 characters or something -->
-		<div class="inputs">
-			<p>Originally founded by Chris Wanstrath, PJ Hyett and Tom Preston-Werner as a project to simplify sharing code, GitHub has grown into an application used by over a million people to store over two million code repositories, making GitHub the largest code host in the world.
-
-			Code is about the people writing it. We focus on lowering the barriers of collaboration by building powerful features into our products that make it easier to contribute. The tools we create help individuals and companies, public and private, to write better code, faster. Ship it!</p>
-			<!-- <textarea placeholder="Coolest special EVER! Get mad pizzas and beers tonight ONLY!!"></textarea> -->
+			</div>
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+		<label>What you love</label>
+		<div class="inputs">
+			<textarea placeholder="What do you love about your business in Oakland?"></textarea>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+		<label>Why you love it</label>
+			<textarea placeholder="Why do you love having a business in Oakland?"></textarea>
+		</div>
+	</fieldset>
+
+<!-- 
+	<fieldset>
+		<a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a>
 		<label>Upload an Image</label>
 		<div class="inputs">
-			<!-- <input type="text" placeholder="Image uploader" />
-			<p class="tip">Leave blank to use your profile picture.</p> -->
+			<input type="text" placeholder="Image uploader" />
+			<p class="tip">Leave blank to use your profile picture.</p>
 			<img class="uploaded-image" src="https://a248.e.akamai.net/assets.github.com/images/modules/about_page/parallax_octocat.png">
 		</div>
-	</fieldset>
+	</fieldset> -->
 
 	<fieldset>
-		<div class="edit-link">Edit</div>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Tags</label>
 		<div class="inputs">
-			<ul class="tag-list">
-				<li><a>fancy</a></li>
-				<li><a>food</a></li>
-				<li><a>gourmet</a></li>
-				<li><a>cookie</a></li>
-			</ul>
-			<!-- <input type="text" placeholder="try 'birthday'" /> --> <!-- Autocomplete -->
-			<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
+			<input type="text" placeholder="try 'birthday'" />
 		</div>
 	</fieldset>
 
 	<fieldset>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>On the web</label>
 		<div class="inputs">
 			<!-- Placeholder icons -->
