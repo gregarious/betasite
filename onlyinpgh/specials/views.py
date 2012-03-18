@@ -1,7 +1,26 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
+from django.utils.safestring import mark_safe
+from django.template import RequestContext
+from django.template.loader import render_to_string
+
 from onlyinpgh.specials.models import Special
 
-from onlyinpgh.common.utils.jsontools import jsonp_response
+
+def biz_edit_special(request, sid):
+    form = None
+    form_html = mark_safe(render_to_string(
+        'organizations/manage/edit_special.html', {'form': form, 'mode': 'edit'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})
+
+
+def biz_add_special(request):
+    form = None
+    form_html = mark_safe(render_to_string(
+        'organizations/manage/edit_special.html', {'form': form, 'mode': 'add'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})
+
 
 # def feed_page(request):
 #     variables = {'offers': Offer.objects.all()}

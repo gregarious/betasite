@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from onlyinpgh.places.models import Place
 from onlyinpgh.organizations.models import Organization
 
-from django.db import IntegrityError
-from django.db import transaction
 
 class OrgUserCreationForm(forms.Form):
     """
@@ -21,7 +19,7 @@ class OrgUserCreationForm(forms.Form):
     password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
 
     # TODO: make this a AutoComplete field. All autocomplete stuff is hardcoded into form template right now.
-    business = forms.CharField(label="Business name", initial='', required=True)
+    #business = forms.CharField(label="Business name", initial='', required=True)
 
     def clean_email(self):
         email = self.cleaned_data["email"]
@@ -56,6 +54,58 @@ class OrgUserCreationForm(forms.Form):
     #             raise forms.ValidationError("Error retreiving autocompleted business name.")
     #     return place
 
+
+    # def complete_registration(self):
+    #     '''
+    #     Saves the the new user, new org, and new/existing business. Also
+    #     returns them as a 3-tuple.
+    #     '''
+    #     print 'in complete'
+    #     if not self.is_valid():
+    #         raise Exception("Cannot register with in invalid form.")
+
+    #     # clean_business turned the given business name into a Place
+    #     business = self.cleaned_data["business"].strip()
+    #     email = self.cleaned_data["email"].strip()
+    #     password = self.cleaned_data["password1"]
+
+    #     # just set username as email now
+    #     username = email
+    #     try:
+    #         User.objects.get(username=username)
+    #     except User.DoesNotExist:
+    #         try:
+    #             user = User.objects.create_user(username=username, email=email, password=password)
+    #         except IntegrityError:
+    #             pass
+    #     else:
+    #         raise Exception('User already exists!')
+
+    #     # just looking up place by name now. no id returned from autocomplete field
+    #     place = Place.objects.get_or_create(name=business)
+
+    #     org = Organization.objects.create(name=place.name)
+    #     org.administrators.add(user)
+    #     org.establishments.add(place)
+
+    #     return user, org, place
+
+
+class PlaceClaimForm(forms.Form):
+    """
+    Form for org signups in the social media seminar business.
+
+    Code modeled off of django.contrib.auth.forms.UserCreationForm.
+
+    Form creates a User from the email and password. Also offers methods
+    that create the initial Organization this user will have authorization
+    over, and link that Org to a default Place (either existing or new).
+    """
+    email = forms.EmailField(initial='')
+    password1 = forms.CharField(widget=forms.PasswordInput)
+
+    business = forms.CharField(label="Business name", initial='', required=True)
+
     def complete_registration(self):
         '''
         Saves the the new user, new org, and new/existing business. Also
@@ -63,8 +113,14 @@ class OrgUserCreationForm(forms.Form):
         '''
         print 'in complete'
         if not self.is_valid():
-            raise Exception("Cannot register with in invalid form.")
+            raise Exception("Cannot register with an invalid form.")
 
+        email = self.cleaned_data["email"].strip()
+        password = self.cleaned_data["password1"]
+
+        user = authenticate(username='john', password='secret')
+
+        user = User.objects.get(username=self.email)
         # clean_business turned the given business name into a Place
         business = self.cleaned_data["business"].strip()
         email = self.cleaned_data["email"].strip()
@@ -78,7 +134,7 @@ class OrgUserCreationForm(forms.Form):
             try:
                 user = User.objects.create_user(username=username, email=email, password=password)
             except IntegrityError:
-                user = User.objects.get(username=username)
+                pass
         else:
             raise Exception('User already exists!')
 
@@ -90,3 +146,4 @@ class OrgUserCreationForm(forms.Form):
         org.establishments.add(place)
 
         return user, org, place
+

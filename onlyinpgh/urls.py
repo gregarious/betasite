@@ -8,9 +8,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    (r'^testbed/form$', 'onlyinpgh.events.views.formtest'),
-    (r'^testbed/user$','onlyinpgh.organizations.views.usercreation_test'),
-
     (r'^login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),
 
@@ -56,15 +53,20 @@ urlpatterns = patterns('',
 
     # Business Admin generic templates
     url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup'),
-    url(r'^business/usercreatehack$', 'onlyinpgh.organizations.views.usercreate_hack'),
+    url(r'^business/claim$', 'onlyinpgh.organizations.views.place_claim'),
 
-    url(r'^bus_admin/home$', direct_to_template, {'template':'organizations/manage/home.html'}),
+    url(r'^business/home$', direct_to_template, {'template':'organizations/manage/home.html'}),
     url(r'^bus_admin/signup$', direct_to_template, {'template':'registration/biz_signup.html'}),
     url(r'^bus_admin/create_place$', direct_to_template, {'template':'places/manage/create_place.html'}),
     url(r'^bus_admin/events$', direct_to_template, {'template':'events/manage/events.html'}),
     url(r'^bus_admin/specials$', direct_to_template, {'template':'specials/manage/specials.html'}),
     url(r'^bus_admin/edit/place$', direct_to_template, {'template':'places/manage/edit_place.html'}),
-    url(r'^bus_admin/edit/event$', direct_to_template, {'template':'events/manage/edit_event.html'}),
-    url(r'^bus_admin/edit/special$', direct_to_template, {'template':'specials/manage/edit_special.html'}),
+
+    url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
+    url(r'^business/add_special$', 'onlyinpgh.specials.views.biz_add_special'),
+
+
+    url(r'^business/edit_event/(?P<eid>\d+)$', 'onlyinpgh.events.views.biz_edit_event'),
+    url(r'^business/edit_special/(?P<sid>\d+)$', 'onlyinpgh.specials.views.biz_edit_special'),
 
 )

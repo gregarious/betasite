@@ -2,10 +2,12 @@
 	<h2>Claim your Business</h2>
 </header>
 
-<form>
-
+<form action="{% url onlyinpgh.organizations.views.place_claim %}" method="POST">
+{% csrf_token %}
 <div class="field-container">
 	<fieldset>
+		<input type="hidden" name="{{ form.email.html_name }}" value="{{ form.email.value }}"/>
+		<input type="hidden" name="{{ form.password1.html_name }}" value="{{ form.password1.value }}"/>
 		{{ form.business.errors }}
 		<div class="ui-widget">
 			<label class="input-label">{{ form.business.label }}</label>
