@@ -246,7 +246,7 @@ td {
 body {
   margin: 0 auto;
   *zoom: 1;
-  background: #a9c6e8;
+  background: url("/static/img_using/custom/sky-head-tex.png");
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   font-weight: normal;
   height: 100%;
@@ -343,15 +343,15 @@ ul li {
   /* Can click thru div */
 
   pointer-events: none;
-  /*background-image: url(/static/img_using/pgh-250h.png);
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, repeat-x;
-	background-position: bottom left, bottom left; */
-
-  background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
+  background-image: url(/static/img_using/pgh-250h.png);
   background-attachment: fixed, fixed;
-  background-repeat: no-repeat, no-repeat;
+  background-repeat: no-repeat, repeat-x;
   background-position: bottom left, bottom left;
+  /*background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, bottom left;*/
+
   height: 250px;
   position: fixed;
   bottom: 0;
