@@ -22,6 +22,12 @@ def biz_add_event(request):
         context_instance=RequestContext(request)))
     return render(request, 'manage_base.html', {'content': form_html})
 
+def biz_show_events(request):
+    content = mark_safe(render_to_string(
+        'events/manage/events.html', {},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': content})
+
 
 # from django.shortcuts import render_to_response
 # from django.template import Context, RequestContext

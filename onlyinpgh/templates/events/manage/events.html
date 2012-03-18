@@ -1,26 +1,14 @@
-{% extends "manage_base.html" %}
-
-{% block page_header_title %}
-	[bus name's]'s Events
-{% endblock %}
-
-{% block page_class %}admin events{% endblock %}
-
-{% block content %}
-
-	<div class="content-container admin" id="events">
-		<section class="scheduled-items">
-			<header class="feed-header">
-				<h2 class="feed-title">Scheduled Events</h2>
-				<a class="add-item-link" href="edit/event">Add Event...</a><!-- Goes to edit event template with empty inputs -->
-			</header>
-			<ul class="feed">		
-				<!-- For each scheduled event, include this  -->
-				{% include "events/manage/scheduled_event.html" %}
-				{% include "events/manage/scheduled_event.html" %}
-				{% include "events/manage/scheduled_event.html" %}
-			</ul>
-		</section>
-	</div>	<!-- .content-container -->
-	
-{% endblock %}
+<div class="content-container admin" id="events">
+	<section class="scheduled-items">
+		<header class="feed-header">
+			<h2 class="feed-title">Scheduled Events</h2>
+			<a class="add-item-link" href="edit/event">Add Event...</a><!-- Goes to edit event template with empty inputs -->
+		</header>
+		<ul class="feed">		
+			<!-- For each scheduled event, include this  -->
+			{% include "events/manage/scheduled_event.html" %}
+			{% include "events/manage/scheduled_event.html" %}
+			{% include "events/manage/scheduled_event.html" %}
+		</ul>
+	</section>
+</div>	<!-- .content-container -->

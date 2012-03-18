@@ -22,6 +22,13 @@ def biz_add_special(request):
     return render(request, 'manage_base.html', {'content': form_html})
 
 
+def biz_show_specials(request):
+    content = mark_safe(render_to_string(
+        'specials/manage/specials.html', {},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': content})
+
+
 # def feed_page(request):
 #     variables = {'offers': Offer.objects.all()}
 #     return render_to_response('offers/offers_page.html', variables)

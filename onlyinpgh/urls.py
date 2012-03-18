@@ -57,16 +57,15 @@ urlpatterns = patterns('',
 
     url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home'),
 
-    url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
+    url(r'^business/specials$', 'onlyinpgh.specials.views.biz_show_specials'),
     url(r'^business/add_special$', 'onlyinpgh.specials.views.biz_add_special'),
-
-    url(r'^business/edit_event/(?P<eid>\d+)$', 'onlyinpgh.events.views.biz_edit_event'),
     url(r'^business/edit_special/(?P<sid>\d+)$', 'onlyinpgh.specials.views.biz_edit_special'),
 
-    url(r'^bus_admin/signup$', direct_to_template, {'template':'registration/biz_signup.html'}),
+    url(r'^business/events$', 'onlyinpgh.events.views.biz_show_events'),
+    url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
+    url(r'^business/edit_event/(?P<eid>\d+)$', 'onlyinpgh.events.views.biz_edit_event'),
+
     url(r'^bus_admin/create_place$', direct_to_template, {'template':'places/manage/create_place.html'}),
-    url(r'^bus_admin/events$', direct_to_template, {'template':'events/manage/events.html'}),
-    url(r'^bus_admin/specials$', direct_to_template, {'template':'specials/manage/specials.html'}),
     url(r'^bus_admin/edit/place$', direct_to_template, {'template':'places/manage/edit_place.html'}),
 
 
