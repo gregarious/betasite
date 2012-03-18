@@ -1,31 +1,37 @@
-<form action="" method="POST" >
-	{% csrf_token %}
-	<div class="field-container first">
-		<fieldset>
-			{{ form.email.errors }}
-			<label class="input-label">{{ form.email.label }}</label>
-			<div class="inputs">
-				<input type="text" name="{{ form.email.html_name }}" placeholder="awesome@sweet.com" value="{{ form.email.value }}"/>
-			</div>
-		</fieldset>
-	
-		<fieldset>
-			{{ form.password1.errors }}
-			<label class="input-label">{{ form.password1.label }}</label>
-			<div class="inputs">
-				<input type="text" name="{{ form.password1.html_name }}" placeholder="Excellent password" />
-			</div>
-		</fieldset>
+<div class="content-container">
 
-		<fieldset>
-			{{ form.password2.errors }}
-			<label class="input-label">{{ form.password2.label }}</label>
-			<div class="inputs">
-				<input type="text" name="{{ form.password2.html_name }}" placeholder="Excellent password confirmed" />
-			</div>
-		</fieldset>
-	</div> <!-- .field-container -->
+	<form action="" method="POST" >
+		{% csrf_token %}
+		<div class="field-container first">
+			<fieldset>
+				{{ form.email.errors }}
+				<label class="input-label">{{ form.email.label }}</label>
+				<div class="inputs">
+					<input type="text" name="{{ form.email.html_name }}" placeholder="awesome@cool.com" value="{{ form.email.value }}"/>
+				</div>
+			</fieldset>
+		</div>
 
-	<button type="submit" class="submit-item">Submit</submit>
+		<div class="field-container last">
+			<fieldset>
+				{{ form.password1.errors }}
+				<label class="input-label">{{ form.password1.label }}</label>
+				<div class="inputs">
+					<input type="password" name="{{ form.password1.html_name }}" placeholder="Excellent password" />
+				</div>
+			</fieldset>
 
-</form>
+			<fieldset>
+				{{ form.password2.errors }}
+				<label class="input-label">{{ form.password2.label }}</label>
+				<div class="inputs">
+					<input type="password" id="confirm-pass" name="{{ form.password2.html_name }}" placeholder="Confirm password" />
+				</div>
+			</fieldset>
+		</div> <!-- .field-container -->
+
+		<button type="submit" class="submit-item">Submit</button>
+
+	</form>
+
+</div>
