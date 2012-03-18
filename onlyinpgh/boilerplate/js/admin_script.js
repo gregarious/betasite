@@ -47,17 +47,17 @@ jQuery(document).ready( function(){
 
 	
 	// Where item-1 is unique item id
-	$('#item-1 .delete-item').click(function(){
-		alert('Are you sure you want to delete #item-1?');
-	});
+	// $('#item-1 .delete-item').click(function(){
+	// 	alert('Are you sure you want to delete #item-1?');
+	// });
 
 	// Hide and show edit link for each field
-	$('fieldset').hover( function() {
-		$(this).children('.edit-link').fadeIn(100);
-		//console.log(this);
-	}, function() {
-		$('.content-container').find('.edit-link').hide();
-	});
+	// $('fieldset').hover( function() {
+	// 	$(this).children('.edit-link').fadeIn(100);
+	// 	//console.log(this);
+	// }, function() {
+	// 	$('.content-container').find('.edit-link').hide();
+	// });
 
 });
 
@@ -68,8 +68,6 @@ function resizePanel() {
 	height = $(window).height();
 
 	mask_width = width * $('.panel').length;
-		
-	$('#debug').html(width  + ' ' + height + ' ' + mask_width);
 		
 	$('#site-content, .panel').css({width: width, height: height});
 	$('#mask').css({width: mask_width, height: height});
