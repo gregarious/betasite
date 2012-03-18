@@ -13,6 +13,9 @@
 
 	<header id="site-header">
 		<h1 id="site-title"><a href="/bus_admin/home">Scenable Business Account</a></h1>
+		{% if user %}
+			<a href="/logout">Logout</a>
+		{% endif %}
 	</header>
 
 	<div id="site-content">

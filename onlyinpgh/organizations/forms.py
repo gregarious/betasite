@@ -19,7 +19,7 @@ class OrgUserCreationForm(forms.Form):
     password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
 
     # TODO: make this a AutoComplete field. All autocomplete stuff is hardcoded into form template right now.
-    #business = forms.CharField(label="Business name", initial='', required=True)
+    business = forms.CharField(label="Business name", initial='', required=True)
 
     def clean_email(self):
         email = self.cleaned_data["email"]

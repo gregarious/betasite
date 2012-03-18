@@ -53,9 +53,8 @@ urlpatterns = patterns('',
 
     # Business Admin generic templates
     url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup'),
-    url(r'^business/claim$', 'onlyinpgh.organizations.views.place_claim'),
 
-    url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home'),
+    url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home', name='biz_admin_home'),
 
     url(r'^business/specials$', 'onlyinpgh.specials.views.biz_show_specials'),
     url(r'^business/add_special$', 'onlyinpgh.specials.views.biz_add_special'),
