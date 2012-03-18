@@ -132,3 +132,24 @@ def detail_app(request, pid):
     profile = PlaceProfile.objects.select_related().get(place__id=pid)
     details = PlaceDetail(profile, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
+
+@jsonp_response
+def place_lookup(request):
+    if request.GET:
+        results = Place.objects.filter(name__icontains=request.GET.get('q', ''))
+        limit = request.GET.get('limit')
+        if limit:
+            results = results[:limit]
+
+    return [{'id':p.id, 'name':p.name} for p in results]
+
+###### MANGEMENT-RELATED VIEWS ######
+
+
+def get_create_place_wizard(request, pid=None):
+    '''
+    Returns the 4-panel place creation form for business administration.
+
+    If pid refers to a valid place, input values will be autofilled.
+    '''
+    return None

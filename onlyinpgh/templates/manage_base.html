@@ -4,6 +4,8 @@
 
 	<title>Scenable | Manage bus_name</title>
 	<link rel="stylesheet" href="/static/css/admin_style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
 
 </head>
 
@@ -14,7 +16,9 @@
 	</header>
 
 	<div id="site-content">
-		{% block content %}{% endblock %}
+	    {% autoescape off %}
+		    {{content}}
+	    {% endautoescape %}
 	</div>
 
 	<footer id="site-footer">
@@ -24,17 +28,15 @@
 	<div id="footer-image"></div>
 
 	<!-- Scripts -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
 	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
 	<script src="/static/js/admin_script.js"></script>	
 
-	<!-- jQuery UI Autocomplete 
-	<script src="/static/js/libs/jquery-ui/jquery.ui.autocomplete.min.js"></script>
+	<!-- jQuery UI Autocomplete -->
 	<script src="/static/js/libs/jquery-ui/jquery.ui.core.min.js"></script>
 	<script src="/static/js/libs/jquery-ui/jquery.ui.position.min.js"></script>
 	<script src="/static/js/libs/jquery-ui/jquery.ui.position.min.js"></script>
 	<script src="/static/js/libs/jquery-ui/jquery.ui.widget.min.js"></script>
--->
+	<script src="/static/js/libs/jquery-ui/jquery.ui.autocomplete.min.js"></script>
+
 </body>
 </html>
