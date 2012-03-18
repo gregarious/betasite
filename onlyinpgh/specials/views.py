@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.safestring import mark_safe
 from django.template import RequestContext
 from django.template.loader import render_to_string
@@ -7,6 +7,9 @@ from onlyinpgh.specials.models import Special
 
 
 def biz_edit_special(request, sid):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
     form = None
     form_html = mark_safe(render_to_string(
         'specials/manage/edit_special.html', {'form': form, 'mode': 'edit'},
@@ -15,6 +18,8 @@ def biz_edit_special(request, sid):
 
 
 def biz_add_special(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
     form = None
     form_html = mark_safe(render_to_string(
         'specials/manage/edit_special.html', {'form': form, 'mode': 'add'},
@@ -23,6 +28,8 @@ def biz_add_special(request):
 
 
 def biz_show_specials(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
     content = mark_safe(render_to_string(
         'specials/manage/specials.html', {},
         context_instance=RequestContext(request)))

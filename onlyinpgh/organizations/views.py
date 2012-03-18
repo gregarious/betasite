@@ -49,9 +49,12 @@ def biz_signup(request):
 
 
 def biz_admin_home(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
     content = mark_safe(render_to_string(
         'organizations/manage/home.html', {},
         context_instance=RequestContext(request)))
+
 
     print 'in biz admin as ' + str(request.session['fakeuser'])
     return render(request, 'manage_base.html', {'content': content})

@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.safestring import mark_safe
 from django.template import RequestContext
 from django.template.loader import render_to_string
@@ -8,6 +8,9 @@ from onlyinpgh.events.models import Event
 
 
 def biz_edit_event(request, eid):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
     form = None
     form_html = mark_safe(render_to_string(
         'events/manage/edit_event.html', {'form': form, 'mode': 'edit'},
@@ -16,6 +19,9 @@ def biz_edit_event(request, eid):
 
 
 def biz_add_event(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
     form = None
     form_html = mark_safe(render_to_string(
         'events/manage/edit_event.html', {'form': form, 'mode': 'add'},
@@ -23,6 +29,9 @@ def biz_add_event(request):
     return render(request, 'manage_base.html', {'content': form_html})
 
 def biz_show_events(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
     content = mark_safe(render_to_string(
         'events/manage/events.html', {},
         context_instance=RequestContext(request)))

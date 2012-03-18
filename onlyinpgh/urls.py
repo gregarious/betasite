@@ -52,7 +52,7 @@ urlpatterns = patterns('',
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
 
     # Business Admin generic templates
-    url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup'),
+    url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup', name='biz_signup'),
 
     url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home', name='biz_admin_home'),
 
