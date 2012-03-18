@@ -27,18 +27,34 @@ p {
 .address {
   font-weight: bold;
 }
-.tip {
+.tip, .errorlist li {
   color: #555;
   font-size: 0.8em;
   font-style: italic;
   display: block;
   margin-left: 2%;
 }
-.tip.desc {
+.tip.desc, .errorlist li.desc {
   margin-top: 2%;
+}
+.errorlist li {
+  color: maroon;
+}
+#confirm-pass {
+  margin-top: 10px;
 }
 .description {
   text-indent: 2em;
+}
+#colophon {
+  text-align: right;
+}
+#colophon a {
+  color: #333;
+  font-style: italic;
+}
+#colophon a:hover {
+  color: #666;
 }
 /* HEADINGS ------- */
 #site-title {

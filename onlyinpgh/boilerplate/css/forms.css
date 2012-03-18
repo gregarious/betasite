@@ -1,8 +1,7 @@
 form {
   *zoom: 1;
 }
-form:before,
-form:after {
+form:before, form:after {
   content: "";
   display: table;
 }
@@ -11,9 +10,9 @@ form:after {
 }
 fieldset {
   *zoom: 1;
+  position: relative;
 }
-fieldset:before,
-fieldset:after {
+fieldset:before, fieldset:after {
   content: "";
   display: table;
 }
@@ -44,8 +43,7 @@ textarea {
 :-moz-placeholder {
   color: #AAAAAA;
 }
-input[type="text"],
-textarea {
+input[type="text"], input[type="password"], textarea {
   border: 1px #cccccc solid;
   -webkit-box-shadow: 0.05em 0.05em 0.1em #ffffff;
   -moz-box-shadow: 0.05em 0.05em 0.1em #ffffff;
@@ -65,8 +63,7 @@ textarea {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-input[type="text"]:focus,
-textarea:focus {
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
   /*border-color: #2C525D;*/
 
   -webkit-box-shadow: 0 0 0.2em #2c525d;
