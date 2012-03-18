@@ -6,55 +6,66 @@
 
 	<form action="" method="POST">
 
-		<fieldset id="field-1">
-			<!-- <div class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></div> -->
-			<label>Name</label>
-			<div class="inputs">
-				<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
-			</div>
-		</fieldset>
+		<div class="field-container">
+		
+			<fieldset id="field-1">
+				<!-- <div class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></div> -->
+				<label>Name</label>
+				<div class="inputs">
+					<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
+				</div>
+			</fieldset>
 
-		<fieldset>
-			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-			<label>Starts</label>
-			<div class="inputs">
-				<input type="text" placeholder="Event starts" name="{{form.dtstart.html_name}}" value="{{form.dtstart.value}}"/><!-- Datepicker -->
-			</div>
-		</fieldset>
+			<fieldset>
+				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+				<label>Location</label>
+				<div class="inputs">
+					<input type="text" placeholder="Your St." name="location" value="{{location}}" />
+				</div>
+			</fieldset>
 
-		<fieldset>
-			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-			<label>Ends</label>
-			<div class="inputs">
-				<input type="text" placeholder="Event ends" name="{{form.dtend.html_name}}" value="{{form.dtend.value}}"/><!-- Datepicker -->
-			</div>
-		</fieldset>
+		</div>
 
-		<fieldset>
-			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-			<label>Location</label>
-			<div class="inputs">
-				<input type="text" placeholder="Your St." name="location" value="{{location}}" />
-			</div>
-		</fieldset>
+		<div class="field-container">
 
-		<fieldset>
-			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-			<label>Description</label>
-			<!-- Limit to 150 characters or something -->
-			<div class="inputs">
-				<textarea name="{{form.description.html_name}}" value="{{form.description.value}}" placeholder="What's your event all about?"></textarea>
-			</div>
-		</fieldset>
+			<fieldset>
+				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+				<label>Starts</label>
+				<div class="inputs">
+					<input type="text" placeholder="Event starts" name="{{form.dtstart.html_name}}" value="{{form.dtstart.value}}"/><!-- Datepicker -->
+				</div>
+			</fieldset>
 
-		<fieldset>
-			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-			<label>Tags</label>
-			<div class="inputs">
-				<input type="text" name="{{tags}}" value="{{form.description.value}}" placeholder="try 'concert'" />
-			</div>
-		</fieldset>
+			<fieldset>
+				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+				<label>Ends</label>
+				<div class="inputs">
+					<input type="text" placeholder="Event ends" name="{{form.dtend.html_name}}" value="{{form.dtend.value}}"/><!-- Datepicker -->
+				</div>
+			</fieldset>
 
+		</div>
+
+		<div class="field-container">
+
+			<fieldset class="desc">
+				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+				<label>Description</label>
+				<!-- Limit to 150 characters or something -->
+				<div class="inputs">
+					<textarea name="{{form.description.html_name}}" value="{{form.description.value}}" placeholder="What's your event all about?"></textarea>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+				<label>Tags</label>
+				<div class="inputs">
+					<input type="text" name="{{tags}}" value="{{form.description.value}}" placeholder="try 'concert'" />
+				</div>
+			</fieldset>
+	</div>
+	<div class="field-container">
 		<fieldset>
 			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 			<label>On the web</label>
@@ -69,6 +80,6 @@
 				</div>
 			</div>
 		</fieldset>
-
+	</div>
 	</form>
 </div>
