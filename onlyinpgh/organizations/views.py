@@ -8,12 +8,14 @@ from django.template.loader import render_to_string
 from onlyinpgh.places.models import Place
 from onlyinpgh.organizations.models import Organization
 from onlyinpgh.organizations.forms import OrgUserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 from onlyinpgh.accounts.models import FakeUser
 
 def biz_signup(request):
+    logout(request)
+
     if request.POST:
         form = OrgUserCreationForm(request.POST)
         if form.is_valid():
