@@ -80,7 +80,7 @@ def place_claim(request):
 def biz_admin_home(request):
     content = mark_safe(render_to_string(
         'organizations/manage/home.html', {},
-        context_instance=RequestContext))
+        context_instance=RequestContext(request)))
 
     return render(request, 'manage_base.html', {'content': content})
 

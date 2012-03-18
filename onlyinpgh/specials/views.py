@@ -9,7 +9,7 @@ from onlyinpgh.specials.models import Special
 def biz_edit_special(request, sid):
     form = None
     form_html = mark_safe(render_to_string(
-        'organizations/manage/edit_special.html', {'form': form, 'mode': 'edit'},
+        'specials/manage/edit_special.html', {'form': form, 'mode': 'edit'},
         context_instance=RequestContext(request)))
     return render(request, 'manage_base.html', {'content': form_html})
 
@@ -17,7 +17,7 @@ def biz_edit_special(request, sid):
 def biz_add_special(request):
     form = None
     form_html = mark_safe(render_to_string(
-        'organizations/manage/edit_special.html', {'form': form, 'mode': 'add'},
+        'specials/manage/edit_special.html', {'form': form, 'mode': 'add'},
         context_instance=RequestContext(request)))
     return render(request, 'manage_base.html', {'content': form_html})
 

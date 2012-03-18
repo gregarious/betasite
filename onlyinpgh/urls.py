@@ -55,7 +55,7 @@ urlpatterns = patterns('',
     url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup'),
     url(r'^business/claim$', 'onlyinpgh.organizations.views.place_claim'),
 
-    url(r'^business/home$', 'onlyinpgh.organizations.views.home'),
+    url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home'),
 
     url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
     url(r'^business/add_special$', 'onlyinpgh.specials.views.biz_add_special'),
