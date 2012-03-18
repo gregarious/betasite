@@ -3,6 +3,11 @@
 {% block active_section %}Specials{% endblock %}
 
 {% block form_contents %}
+
+<header class="content-header">
+	<h2>Editing your Special</h2>
+</header>
+
 <form>
 	<fieldset>
 		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
@@ -17,10 +22,7 @@
 		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Location</label>
 		<div class="inputs">
-			<input type="text" placeholder="Special Location" />
-			<!-- <p class="tip">Limit 140 chars.</p> -->
-			<p>Uncle Sam's</p>
-			<p>123 Jalopy Dr</p>
+			<input type="text" placeholder="Where is this special?" />
 		</div>
 	</fieldset>
 
@@ -28,7 +30,7 @@
 		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Starts</label>
 		<div class="inputs">
-			<p>December 12, 12:00pm</p>
+			<input type="text" placeholder="date special begins" />
 		</div>
 	</fieldset>
 
@@ -36,12 +38,12 @@
 		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Expires</label>
 		<div class="inputs">
-			<input type="text" placeholder="date special expires" /> <!-- Datepicker -->
+			<input type="text" placeholder="date special expires" />
 		</div>
 	</fieldset>
 
 	<fieldset>
-		<a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a>
+		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Price</label>
 		<div class="inputs">
 			<input type="text" placeholder="$1,000,000" />
@@ -54,7 +56,9 @@
 		<label>Number Available</label>
 		<div class="inputs">
 			<input type="text" placeholder="10" />
-			<input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label>
+			<div class="check-container">
+				<input type="checkbox" name="not-limited" /><label class="checkbox-label">Not limited</label>
+			</div>
 		</div>
 	</fieldset>
 
@@ -64,7 +68,7 @@
 		<div class="inputs">
 			<input type="text" placeholder="Image Upload field here" />
 			<img class="uploaded-image" src="http://m4.licdn.com/mpr/mpr/shrink_100_100/p/2/000/105/2e2/1425158.jpg">
-			<input type="text" placeholder="Image Upload field here" /> -->
+			<input type="text" placeholder="Image Upload field here" />
 		</div>
 	</fieldset> -->
 
@@ -72,8 +76,8 @@
 		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 		<label>Tags</label>
 		<div class="inputs">
-		<input type="text" placeholder="try 'birthday'" /> <!-- Autocomplete -->
-			<!-- <p class="tip" id="showPopularTags">See popular tags...</p> -->
+		<input type="text" placeholder="try 'birthday'" />
+			<p class="tip">Enter tags separated by commas like: birthday, party, cake, casual</p>
 		</div>
 	</fieldset>
 </form>

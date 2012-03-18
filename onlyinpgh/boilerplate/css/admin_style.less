@@ -254,47 +254,14 @@ ul {
 	}
 }
 
-#site-nav {
-  position: fixed;
-  left: auto;
-  left: 0;
-  top: 50px;
-  /*border-bottom: 0.3em #fff solid;*/
-  ul {
-    li { 
-      a {
-        display: block;
-        /*.b-shadow(0, -0.12em, 0.1em, #000); */
-        -webkit-border-radius: 5px 0 0 5px;
-           -moz-border-radius: 5px 0 0 5px;
-                border-radius: 5px 0 0 5px;
-
-        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-        .b-shadow(0, 0, 2px, #000);
-        color: #000;
-        cursor: pointer;
-        font-size: 10px;
-        font-weight: bold;
-        width: 50px;
-        margin-top: 1em;
-        padding: 40px 0 0;
-        text-align: center;
-        text-decoration: none;
-          
-        &:hover {
-          background-color: #ccc;
-        }
-  
-        &:active {
-          background-color: #E6B717;
-        }
-      }
-    }
-  } 
-}
-
 /* ADMIN ---------- */
 
+.admin {
+	.item {
+		border: none;
+		background: fade(#fff, 60%);
+	}
+}
 
 /* SCHEDULED --------- */
 
@@ -451,9 +418,6 @@ ul {
 		}
 	}	
 
-	label {
-		
-	}
 }
 
 /* ACTIONS --------- */
@@ -461,17 +425,6 @@ ul {
 .add-item-link {
 	font-size: 1em;
 	font-style: italic;
-	cursor: pointer;
-}
-
-.add-item-form {
-	display: none;
-}
-
-#showPopularTags {
-	color: #955247;
-	font-weight: bold;
-	text-decoration: underline;
 	cursor: pointer;
 }
 
@@ -509,14 +462,11 @@ ul {
 	background-color: green;
 }
 
-/* MEDIA QUERIES -------- */
+img.edit-item {
+	margin-right: 10px;
+}
 
+.delete-item {
 
+}
 
-/* Not working?
-@media only screen and (max-device-width: 720px) {
-
-	.signup .content-container {
-		width: 90%;
-	}
-}*/
