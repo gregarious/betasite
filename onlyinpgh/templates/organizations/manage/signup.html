@@ -16,6 +16,7 @@
 				<input type="text" name="{{ form.password1.html_name }}" placeholder="Excellent password" />
 			</div>
 		</fieldset>
+
 		<fieldset>
 			{{ form.password2.errors }}
 			<label class="input-label">{{ form.password2.label }}</label>
@@ -25,71 +26,6 @@
 		</fieldset>
 	</div> <!-- .field-container -->
 
-	<div class="field-container last">
-		{{ form.business.errors }}
-		<div class="ui-widget">
-			<label class="input-label">{{ form.business.label }}</label>
-			<input name="{{ form.business.html_name }}" id="{{ form.business.id_for_label }}" value="" />
-		</div>
-		<script type="text/javascript">
-			$(function() {
-				$("#{{ form.business.id_for_label }}").autocomplete({
-					source: function(request,response) {
-						$.ajax({
-							url: '/places/lookup/all',
-							data: {'q':request.term, 'limit':10},
-							success: function(data) {
-								data = $.map( data, function( item ) {
-									return item.name;
-								});
-								console.log('response');
-								response(data);
-							}
-						});
-					},
-// 					focus: function(event,ui) {
-// 						console.log('focus');
-// 						console.log(ui);
-// 						console.log('setting ' + ui.item.label);
-// 						$("#{{ form.business.id_for_label }}_text").val(ui.item.label);
-// 						return false;
-// 					},
-// 					create: function(event,ui) {
-// 						console.log('create');
-// 						console.log(ui);
-// 					},
-// 					search: function(event,ui) {
-// 						console.log('search');
-// //						$("#{{ form.business.id_for_label }}_text").val("!"+$("#{{ form.business.id_for_label }}").val())
-// 						console.log(ui);
-// 					},
-// 					select: function(event,ui) {
-// 						//$('#{{ form.business.id_for_label }}_text').val(ui.item.name);
-// 						//$('#{{ form.business.id_for_label }}').val(ui.item.id);
-// 						$("#{{ form.business.id_for_label }}_text").val(ui.item.label);
-// 						$("#{{ form.business.id_for_label }}").val(ui.item.value);
-// 						console.log('select');
-// 						console.log(ui);
-// 						return false;
-// 					},
-// 					change: function(event,ui) {
-// 						console.log('change');
-// 						console.log(ui);
-// 						// $('#{{ form.business.id_for_label }}').val('!'+request.term);
-// 						// 	console.log('setting hidden value to ' + $('#{{ form.business.id_for_label }}').val(
-// 						// 		));
-							
-// 					},
-					open: function() {
-						$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-					},
-					close: function() {
-						$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-					}
-				});
-			});
-		</script>
-	</div> <!-- .field-container -->
+	<button type="submit" class="submit-item">Submit</submit>
 
-	<button type="submit">Submit</submit>
 </form>
