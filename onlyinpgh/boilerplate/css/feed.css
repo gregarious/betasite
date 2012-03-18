@@ -13,11 +13,6 @@
   padding: 1% 2%;
   position: relative;
 }
-.feed-header .add-item-link, .content-header .add-item-link {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
 .feed {
   *zoom: 1;
   -webkit-box-shadow: 0 0 1em #e1e1e1;

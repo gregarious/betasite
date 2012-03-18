@@ -678,10 +678,14 @@ ul li {
 }
 /* ACTIONS --------- */
 .add-item-link {
-  font-size: 1em;
+  font-size: 0.8em;
   font-style: italic;
-  cursor: pointer;
-  margin-top: 0.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #B83939;
 }
 /* 11 TAGS ---------- */
 .tag-list {

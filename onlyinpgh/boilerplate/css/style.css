@@ -1126,11 +1126,6 @@ p {
   padding: 1% 2%;
   position: relative;
 }
-.feed-header .add-item-link, .content-header .add-item-link {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
 .feed {
   *zoom: 1;
   *zoom: 1;

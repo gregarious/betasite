@@ -1,71 +1,74 @@
-<header class="content-header">
-	<h2>Editing your Event</h2> <!-- Fill with event name OR adding event -->
-</header>
 
-<form action="" method="POST">
+<div class="content-container">
+	<header class="content-header">
+		<h2>Editing your Event</h2> <!-- Fill with event name OR adding event -->
+	</header>
 
-	<fieldset id="field-1">
-		<!-- <div class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></div> -->
-		<label>Name</label>
-		<div class="inputs">
-			<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
-		</div>
-	</fieldset>
+	<form action="" method="POST">
 
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>Starts</label>
-		<div class="inputs">
-			<input type="text" placeholder="Event starts" name="{{form.dtstart.html_name}}" value="{{form.dtstart.value}}"/><!-- Datepicker -->
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>Ends</label>
-		<div class="inputs">
-			<input type="text" placeholder="Event ends" name="{{form.dtend.html_name}}" value="{{form.dtend.value}}"/><!-- Datepicker -->
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>Location</label>
-		<div class="inputs">
-			<input type="text" placeholder="Your St." name="location" value="{{location}}" />
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>Description</label>
-		<!-- Limit to 150 characters or something -->
-		<div class="inputs">
-			<textarea name="{{form.description.html_name}}" value="{{form.description.value}}" placeholder="What's your event all about?"></textarea>
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>Tags</label>
-		<div class="inputs">
-			<input type="text" name="{{tags}}" value="{{form.description.value}}" placeholder="try 'concert'" />
-		</div>
-	</fieldset>
-
-	<fieldset>
-		<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
-		<label>On the web</label>
-		<div class="inputs">
-			<input class="social-input" type="text" placeholder="Facebook page" />
-			<div class="signup-social-icon">
-				<img src="static/img_using/facebook.png" />
+		<fieldset id="field-1">
+			<!-- <div class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></div> -->
+			<label>Name</label>
+			<div class="inputs">
+				<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
 			</div>
-			<input class="social-input" type="text" placeholder="Twitter username" />
-			<div class="signup-social-icon">
-				<img src="static/img_using/twitter.png" />
-			</div>
-		</div>
-	</field>
+		</fieldset>
 
-</form>
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>Starts</label>
+			<div class="inputs">
+				<input type="text" placeholder="Event starts" name="{{form.dtstart.html_name}}" value="{{form.dtstart.value}}"/><!-- Datepicker -->
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>Ends</label>
+			<div class="inputs">
+				<input type="text" placeholder="Event ends" name="{{form.dtend.html_name}}" value="{{form.dtend.value}}"/><!-- Datepicker -->
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>Location</label>
+			<div class="inputs">
+				<input type="text" placeholder="Your St." name="location" value="{{location}}" />
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>Description</label>
+			<!-- Limit to 150 characters or something -->
+			<div class="inputs">
+				<textarea name="{{form.description.html_name}}" value="{{form.description.value}}" placeholder="What's your event all about?"></textarea>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>Tags</label>
+			<div class="inputs">
+				<input type="text" name="{{tags}}" value="{{form.description.value}}" placeholder="try 'concert'" />
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
+			<label>On the web</label>
+			<div class="inputs">
+				<input class="social-input" type="text" placeholder="Facebook page" />
+				<div class="signup-social-icon">
+					<img src="static/img_using/facebook.png" />
+				</div>
+				<input class="social-input" type="text" placeholder="Twitter username" />
+				<div class="signup-social-icon">
+					<img src="static/img_using/twitter.png" />
+				</div>
+			</div>
+		</fieldset>
+
+	</form>
+</div>

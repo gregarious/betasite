@@ -16,22 +16,22 @@ jQuery(document).ready( function(){
 
 	// Sliding create place wizard
 	// http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
-	$('a.shift-panel').click(function () {
+	// $('a.shift-panel').click(function () {
 
-		current = $(this).attr('name');
-		console.log(current);
+	// 	current = $(this).attr('name');
+	// 	console.log(current);
 
-		$('.progress span').removeClass('selected');
-		$('.progress .'+current).addClass('selected');
+	// 	$('.progress span').removeClass('selected');
+	// 	$('.progress .'+current).addClass('selected');
 		
-		$('#site-content').scrollTo($(this).attr('href'), 800);		
+	// 	$('#site-content').scrollTo($(this).attr('href'), 800);		
 		
-		return false;
-	});
+	// 	return false;
+	// });
 
-	$(window).resize(function () {
-		resizePanel();
-	});
+	// $(window).resize(function () {
+	// 	resizePanel();
+	// });
 
 
 	// Item actions
