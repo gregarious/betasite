@@ -139,7 +139,7 @@ ul {
 	.rounded(0.5em);
 	padding: 5% 2% 3% 2%;
 	width: 80%;
-	max-width: 720px;	
+	max-width: 650px;	
 	
 	&.signup {
 	
@@ -215,36 +215,44 @@ ul {
 
 		a {
 			.b-shadow(0.1em, 0.1em, 0.1em, #333);
-			.column(5.5);
+			.column(2.5);
 			.gradient(#e1e1e1, #fff);
 			font-size: 1.3em;
 			margin: 3%;
 			.rounded(1.5em);
 			text-align: center;
-	
+			p {
+				margin-bottom: 1em;
+			}
 			img {
 				display: block;
-				margin: 25% auto;
+				margin: 20% auto 10% auto;
 			}
-	
+
 			&:hover {
 				background: #e1e1e1;
 			}
 
-			&.top {
+			&:active {
+				background: #e1e1e1;
+				.b-shadow(0.05em, 0.05em, 0.05em, #333);
+			}
+
+			/*&.top {
 				margin-top: 0;
 			}
 
 			&.bottom {
 				margin-bottom: 0;
-			}
+			}*/
 
-			&:hover {
-				.gradient(#fff, #e1e1e1);
-			}
+			&.disabled {
+				.no-b-shadow();
+				background: fade(#fff, 50%);
 
-			&:active {
-				background: #e1e1e1;
+				&:hover {
+					background: fade(#fff, 50%);					
+				}
 			}
 		}
 	}

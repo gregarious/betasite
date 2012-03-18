@@ -384,7 +384,7 @@ ul li {
   background-clip: padding-box;
   padding: 5% 2% 3% 2%;
   width: 80%;
-  max-width: 720px;
+  max-width: 650px;
 }
 .content-container:before, .content-container:after {
   content: "";
@@ -465,7 +465,7 @@ ul li {
   box-shadow: 0.1em 0.1em 0.1em #333333;
   display: inline;
   float: left;
-  width: 43.75%;
+  width: 18.75%;
   margin: 0 1.0416666666666665%;
   background-color: #e1e1e1;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#ffffff));
@@ -495,49 +495,46 @@ ul li {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   text-align: center;
+  /*&.top {
+				margin-top: 0;
+			}
+
+			&.bottom {
+				margin-bottom: 0;
+			}*/
+
+}
+.home-nav li a p {
+  margin-bottom: 1em;
 }
 .home-nav li a img {
   display: block;
-  margin: 25% auto;
+  margin: 20% auto 10% auto;
 }
 .home-nav li a:hover {
   background: #e1e1e1;
-}
-.home-nav li a.top {
-  margin-top: 0;
-}
-.home-nav li a.bottom {
-  margin-bottom: 0;
-}
-.home-nav li a:hover {
-  background-color: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e1e1e1));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffffff, #e1e1e1);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
 }
 .home-nav li a:active {
   background: #e1e1e1;
+  -webkit-box-shadow: 0.05em 0.05em 0.05em #333333;
+  -moz-box-shadow: 0.05em 0.05em 0.05em #333333;
+  box-shadow: 0.05em 0.05em 0.05em #333333;
+}
+.home-nav li a.disabled {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.5);
+}
+.home-nav li a.disabled:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 /* ADMIN ---------- */
 .admin .item {
   border: none;
   background: rgba(255, 255, 255, 0.6);
 }
+/* AUTOCOMPLETE ------ */
 /* SCHEDULED --------- */
 .scheduled-items ul {
   *zoom: 1;
