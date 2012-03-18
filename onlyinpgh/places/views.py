@@ -1,6 +1,8 @@
-from django.utils.safestring import SafeUnicode
+from django.utils.safestring import mark_safe
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
+from django.template import RequestContext
 from onlyinpgh.places.models import Place, PlaceProfile
 #from onlyinpgh.accounts.models import FavoriteItem
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
@@ -145,11 +147,22 @@ def place_lookup(request):
 
 ###### MANGEMENT-RELATED VIEWS ######
 
+def biz_create_place(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
 
-def get_create_place_wizard(request, pid=None):
-    '''
-    Returns the 4-panel place creation form for business administration.
+    form = None
+    form_html = mark_safe(render_to_string(
+        'places/manage/create_place.html', {'form': form, 'mode': 'edit'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})
 
-    If pid refers to a valid place, input values will be autofilled.
-    '''
-    return None
+def biz_edit_place(request, pid):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
+    form = None
+    form_html = mark_safe(render_to_string(
+        'places/manage/edit_place.html', {'form': form, 'mode': 'edit'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})

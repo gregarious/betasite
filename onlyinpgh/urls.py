@@ -12,12 +12,13 @@ urlpatterns = patterns('',
     (r'^logout/$', 'django.contrib.auth.views.logout'),
 
     url(r'^admin/', include(admin.site.urls)),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^places/',include('onlyinpgh.places.urls')),
-    url(r'^specials/',include('onlyinpgh.specials.urls')),
-    url(r'^tags/',include('onlyinpgh.tags.urls')),
+    #url(r'^places/',include('onlyinpgh.places.urls')),
+    #url(r'^specials/',include('onlyinpgh.specials.urls')),
+    #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),
@@ -64,8 +65,8 @@ urlpatterns = patterns('',
     url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
     url(r'^business/edit_event/(?P<eid>\d+)$', 'onlyinpgh.events.views.biz_edit_event'),
 
-    url(r'^bus_admin/create_place$', direct_to_template, {'template':'places/manage/create_place.html'}),
-    url(r'^bus_admin/edit/place$', direct_to_template, {'template':'places/manage/edit_place.html'}),
+    url(r'^business/create_place$', 'onlyinpgh.places.views.biz_create_place'),
+    url(r'^business/edit_place/(?P<pid>\d+)$', 'onlyinpgh.places.views.biz_edit_place'),
 
 
 )
