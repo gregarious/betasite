@@ -1202,13 +1202,15 @@ p {
 }
 .item-title a {
   font-size: 1.2em;
-  font-family: Helvetica, sans-serif;
   font-weight: bold;
-  text-shadow: 0 0 0.05em #fff;
+  color: #333;
+  text-shadow: 0 0 0.01em #fff;
 }
 .item-title a:hover {
-  text-shadow: 0 0 0 #000;
-  color: #999;
+  color: #777 !important;
+}
+.item-title a:visited {
+  color: #333;
 }
 .item-actions {
   float: right;

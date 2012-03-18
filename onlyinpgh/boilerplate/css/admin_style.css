@@ -255,7 +255,7 @@ body {
 	background-position: bottom left, top left;*/
 
   background: url("/static/img_using/custom/sky-head-tex.png");
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   font-weight: normal;
   height: 100%;
   margin: 0;
@@ -422,34 +422,25 @@ ul li {
 #hours .container.last {
   margin-left: 5%;
 }
-#addHours {
-  display: inline;
-  float: left;
-  width: 6.25%;
-  margin: 0 1.0416666666666665%;
-  float: right;
-  font-size: 2em;
-}
-.progress-container {
-  display: inline;
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
-}
-.progress-container .progress {
-  width: 70px;
-  margin: auto;
-}
-.progress-container .progress div {
-  background: url('/static/img_using/inactive-progress.png') center;
-  margin: 0 3px;
-  height: 10px;
-  width: 10px;
-  float: left;
-}
-.progress-container .progress div.selected {
-  background: url('/static/img_using/active-progress.png') center;
-}
+/*.progress-container {
+	.column(12);
+
+	.progress {
+		width: 70px;
+		margin: auto;
+		div {
+			background: url('/static/img_using/inactive-progress.png') center;
+			margin: 0 3px;
+			height: 10px;
+			width: 10px;
+			float: left;
+
+			&.selected {
+				background: url('/static/img_using/active-progress.png') center;
+			}
+		}
+	}
+}*/
 /* HOME ---------- */
 .home-nav {
   margin: auto 0;
@@ -712,6 +703,7 @@ ul li {
   font-size: 1em;
   font-style: italic;
   cursor: pointer;
+  margin-top: 0.5em;
 }
 /* 11 TAGS ---------- */
 .tag-list {
