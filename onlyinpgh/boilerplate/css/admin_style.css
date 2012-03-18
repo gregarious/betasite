@@ -249,11 +249,7 @@ td {
 body {
   margin: 0 auto;
   *zoom: 1;
-  /*background: url("/static/img/illus/pgh.png");
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, no-repeat;
-	background-position: bottom left, top left;*/
-
+  background: #a9c6e8;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   font-weight: normal;
   height: 100%;
@@ -339,11 +335,16 @@ ul li {
   /* Can click thru div */
 
   pointer-events: none;
-  background-image: url(/static/img_using/pgh-250h.png);
+  /*background-image: url(/static/img_using/pgh-250h.png);
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, repeat-x;
+	background-position: bottom left, bottom left; */
+
+  background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
   background-attachment: fixed, fixed;
-  background-repeat: no-repeat, repeat-x;
+  background-repeat: no-repeat, no-repeat;
   background-position: bottom left, bottom left;
-  height: 800px;
+  height: 250px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -459,9 +460,9 @@ ul li {
   list-style-type: none;
 }
 .home-nav li a {
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #888888;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #888888;
-  box-shadow: 0.1em 0.1em 0.1em #888888;
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #333333;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #333333;
+  box-shadow: 0.1em 0.1em 0.1em #333333;
   display: inline;
   float: left;
   width: 43.75%;
@@ -487,9 +488,9 @@ ul li {
 
   font-size: 1.3em;
   margin: 3%;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  border-radius: 1.5em;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -498,6 +499,9 @@ ul li {
 .home-nav li a img {
   display: block;
   margin: 25% auto;
+}
+.home-nav li a:hover {
+  background: #e1e1e1;
 }
 .home-nav li a.top {
   margin-top: 0;

@@ -12,13 +12,10 @@
 body {
 	margin: 0 auto;
 	.clearfix;
-	/*background: url("/static/img/illus/pgh.png");
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, no-repeat;
-	background-position: bottom left, top left;*/
 	//background: url("/static/img_using/custom/sky-head-tex.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
-	//background: @skyblue;
+	background: @skyblue;
+
 	font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	height: 100%;
@@ -102,11 +99,15 @@ ul {
 	pointer-events: none;
 	
 	// Add queries for larger sign - this is for 1024
-	background-image: url(/static/img_using/pgh-250h.png);
+	/*background-image: url(/static/img_using/pgh-250h.png);
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, repeat-x;
-	background-position: bottom left, bottom left; 
-	height: 800px;
+	background-position: bottom left, bottom left; */
+	background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
+	background-attachment: fixed, fixed;
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, bottom left;
+	height: 250px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -213,12 +214,12 @@ ul {
 		list-style-type: none;
 
 		a {
-			.b-shadow(0.1em, 0.1em, 0.1em, #888);
+			.b-shadow(0.1em, 0.1em, 0.1em, #333);
 			.column(5.5);
 			.gradient(#e1e1e1, #fff);
 			font-size: 1.3em;
 			margin: 3%;
-			.rounded(10px);
+			.rounded(1.5em);
 			text-align: center;
 	
 			img {
@@ -226,6 +227,10 @@ ul {
 				margin: 25% auto;
 			}
 	
+			&:hover {
+				background: #e1e1e1;
+			}
+
 			&.top {
 				margin-top: 0;
 			}
@@ -253,6 +258,9 @@ ul {
 		background: fade(#fff, 60%);
 	}
 }
+
+/* AUTOCOMPLETE ------ */
+
 
 /* SCHEDULED --------- */
 
