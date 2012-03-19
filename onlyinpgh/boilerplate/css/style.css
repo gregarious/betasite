@@ -24,7 +24,9 @@ nav,
 section {
   display: block;
 }
-audio, canvas, video {
+audio,
+canvas,
+video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
@@ -93,7 +95,8 @@ a:focus {
   outline: thin dotted;
 }
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
-a:hover, a:active {
+a:hover,
+a:active {
   outline: 0;
 }
 /* =============================================================================
@@ -102,7 +105,8 @@ a:hover, a:active {
 abbr[title] {
   border-bottom: 1px dotted;
 }
-b, strong {
+b,
+strong {
   font-weight: bold;
 }
 blockquote {
@@ -148,7 +152,8 @@ pre {
 q {
   quotes: none;
 }
-q:before, q:after {
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -156,7 +161,8 @@ small {
   font-size: 85%;
 }
 /* Position subscript and superscript content without affecting line-height: h5bp.com/k */
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -176,7 +182,8 @@ sub {
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; } */
 /* Our [lack of] list style: */
-ul, ol {
+ul,
+ol {
   list-style: none;
   list-style-image: none;
   margin: 0;
@@ -248,14 +255,16 @@ textarea {
  * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
  * 2. Correct inner spacing displayed oddly in IE6/7
  */
-button, input {
+button,
+input {
   line-height: normal;
   *overflow: visible;
 }
 /*
  * Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7
  */
-table button, table input {
+table button,
+table input {
   *overflow: auto;
 }
 /*
@@ -273,7 +282,8 @@ input[type="submit"],
 /*
  * Consistent box sizing and appearance
  */
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
@@ -289,7 +299,8 @@ input[type="search"]::-webkit-search-decoration {
 /*
  * Remove inner padding and border in FF3/4: h5bp.com/l
  */
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner,
+input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -303,7 +314,8 @@ textarea {
   resize: vertical;
 }
 /* Colors for form validity */
-input:invalid, textarea:invalid {
+input:invalid,
+textarea:invalid {
   background-color: #f0dddd;
 }
 /* =============================================================================
@@ -324,7 +336,8 @@ body {
   *zoom: 1;
   *zoom: 1;
 }
-body:before, body:after {
+body:before,
+body:after {
   content: "";
   display: table;
 }
@@ -429,7 +442,8 @@ body {
   *zoom: 1;
   position: relative;
 }
-.wrap:before, .wrap:after {
+.wrap:before,
+.wrap:after {
   content: "";
   display: table;
 }
@@ -465,7 +479,8 @@ input[type="text"]:hover {
   border-color: #91D87D;
 }
 /* 2 TYPOGRAPHY ---------- */
-p, time {
+p,
+time {
   margin: 0.1em 0;
 }
 .meta {
@@ -666,7 +681,8 @@ p, time {
   *zoom: 1;
   margin-top: 2em;
 }
-#site-footer:before, #site-footer:after {
+#site-footer:before,
+#site-footer:after {
   content: "";
   display: table;
 }
@@ -848,7 +864,8 @@ p, time {
   *zoom: 1;
   *zoom: 1;
 }
-.redeem-form:before, .redeem-form:after {
+.redeem-form:before,
+.redeem-form:after {
   content: "";
   display: table;
 }
@@ -919,7 +936,8 @@ p, time {
   margin: 2%;
 }
 /* 10 NAVIGATION ---------- */
-#date-nav-left, #date-nav-right {
+#date-nav-left,
+#date-nav-right {
   background: url("../img/date-nav.png");
   height: 19px;
   width: 19px;
@@ -953,7 +971,8 @@ p, time {
   box-shadow: 0 0 1em #e1e1e1;
   margin: 2% 2% 0;
 }
-.feed:before, .feed:after {
+.feed:before,
+.feed:after {
   content: "";
   display: table;
 }
@@ -993,7 +1012,8 @@ p, time {
   text-shadow: 0 0 0 #000;
   color: #999;
 }
-.item-thumb-container, .item-point-value {
+.item-thumb-container,
+.item-point-value {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1016,7 +1036,8 @@ p, time {
   min-height: 50px;
   max-height: 100px;
 }
-.item-thumb-container .points, .item-point-value .points {
+.item-thumb-container .points,
+.item-point-value .points {
   position: relative;
   top: 12pt;
 }
@@ -1378,7 +1399,8 @@ p, time {
   *zoom: 1;
   margin: 0.5em 0;
 }
-#chatterPage:before, #chatterPage:after {
+#chatterPage:before,
+#chatterPage:after {
   content: "";
   display: table;
 }
@@ -1618,7 +1640,8 @@ textarea[contenteditable] {
   width: 1px;
 }
 /* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -1631,7 +1654,8 @@ textarea[contenteditable] {
   visibility: hidden;
 }
 /* Contain floats: h5bp.com/q */
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   content: "";
   display: table;
 }
@@ -1654,7 +1678,8 @@ textarea[contenteditable] {
     -ms-filter: none !important;
   }
   /* Black prints faster: h5bp.com/s */
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: underline;
   }
   a[href]:after {
@@ -1663,11 +1688,14 @@ textarea[contenteditable] {
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
     content: "";
   }
   /* Don't show links for images, or javascript/internal links */
-  pre, blockquote {
+  pre,
+  blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
@@ -1675,7 +1703,8 @@ textarea[contenteditable] {
     display: table-header-group;
   }
   /* h5bp.com/t */
-  tr, img {
+  tr,
+  img {
     page-break-inside: avoid;
   }
   img {
@@ -1684,11 +1713,14 @@ textarea[contenteditable] {
   @page  {
     margin: 0.5cm;
   }
-  p, h2, h3 {
+  p,
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
-  h2, h3 {
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 }
