@@ -1,3 +1,1133 @@
 .DS_Store
 onlyinpgh/boilerplate/img/*
 
+onlyinpgh/boilerplate/LESS/feed.less
+onlyinpgh/boilerplate/LESS/forms.less
+onlyinpgh/boilerplate/LESS/helpers.less
+onlyinpgh/boilerplate/LESS/icons.less
+onlyinpgh/boilerplate/LESS/normalize.less
+onlyinpgh/boilerplate/LESS/single.less
+onlyinpgh/boilerplate/LESS/type.less
+onlyinpgh/boilerplate/img_store/Oakland/CMYK/Oakland_Vertical_CMYK_Green.eps
+onlyinpgh/boilerplate/img_store/Oakland/OIO.jpg
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1076.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1079.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1082.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1163.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1180.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1190.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1227.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1311.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1359.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1366.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1382.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1391.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1401.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1404.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1410.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1435.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_1604.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_5458.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_5541.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_5549.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8264.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8284.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8296.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8304.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8339.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8344.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8372.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8390.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8415.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8434.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8435.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8452.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8470.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8474.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8497.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8602.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Oakland's Restaurants/IMG_8633.JPG
+onlyinpgh/boilerplate/img_store/Oakland/PMS/Oakland_Vertical_PMS_1C_Green.eps
+onlyinpgh/boilerplate/img_store/Oakland/PMS/Oakland_Vertical_PMS_2C_Green.eps
+onlyinpgh/boilerplate/img_store/Oakland/Picture1.jpg
+onlyinpgh/boilerplate/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green.jpg
+onlyinpgh/boilerplate/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green.png
+onlyinpgh/boilerplate/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green_450.png
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0001.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0006.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0830.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0853.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0856.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0871.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0882.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0928.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0945.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0946.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0950.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0974.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0989.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_0998.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1041.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1057.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1064.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1076.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1079.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1082.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1122.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1163.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1180.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1190.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1206.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1227.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1250.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1282.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1289.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1305.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1311.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1330.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1347.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1353.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1359.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1366.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1382.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1391.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1401.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1404.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1410.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1435.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1439.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1525.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1604.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1614.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1623.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1624.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1627.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1646.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1652.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1660.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1665.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1666.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1776.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1804.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1848.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1855.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1859.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1861.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1867.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1897.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1921.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1948.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_1982.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2005.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2032.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2034.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2053.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2066.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2071.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2077.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2088.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2101.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2121.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2135.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_2155.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5128.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5143.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5146.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5151.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5155.jpg
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5195.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5197.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5212.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5231.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5240.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5240.tif
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5247.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5269.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5279.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5282.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5283.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5286.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5293.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5297.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5310.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5324.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5325.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5329.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5330.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5334.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5349.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5354.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5357.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5368.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5369.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5371.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5374.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5378.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5379.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5381.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5391.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5393.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5395.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5400.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5408.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5409.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5412.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5413.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5414.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5458.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5489.JPG
+onlyinpgh/boilerplate/img_store/Oakland/Rick Armstrong Random/IMG_5490.JPG
+onlyinpgh/boilerplate/img_store/Oakland/abbey_road.jpg
+onlyinpgh/boilerplate/img_store/Oakland/abbey_road.png
+onlyinpgh/boilerplate/img_store/Oakland/abbey_road_bw.jpg
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1804.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1848.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1855.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1859.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1861.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1867.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1897.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1921.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1948.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_1982.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2005.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2032.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2034.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2053.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2066.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2071.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_2077.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9365.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9375.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9385.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9392.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9396.JPG
+onlyinpgh/boilerplate/img_store/Oakland/farmers_market/IMG_9400.JPG
+onlyinpgh/boilerplate/img_store/Oakland/header/crude_brew-300x300.jpg
+onlyinpgh/boilerplate/img_store/Oakland/header/crude_brew_960.jpg
+onlyinpgh/boilerplate/img_store/apples.JPG
+onlyinpgh/boilerplate/img_store/blue_texture.jpg
+onlyinpgh/boilerplate/img_store/calendar.png
+onlyinpgh/boilerplate/img_store/date-nav.png
+onlyinpgh/boilerplate/img_store/dblue_texture.png
+onlyinpgh/boilerplate/img_store/default_place.png
+onlyinpgh/boilerplate/img_store/h/apple-touch-icon.png
+onlyinpgh/boilerplate/img_store/h/splash.png
+onlyinpgh/boilerplate/img_store/icons/black/add.png
+onlyinpgh/boilerplate/img_store/icons/black/address-book.png
+onlyinpgh/boilerplate/img_store/icons/black/album.png
+onlyinpgh/boilerplate/img_store/icons/black/alert.png
+onlyinpgh/boilerplate/img_store/icons/black/alien.png
+onlyinpgh/boilerplate/img_store/icons/black/anchor.png
+onlyinpgh/boilerplate/img_store/icons/black/apple.png
+onlyinpgh/boilerplate/img_store/icons/black/arrange-fill.png
+onlyinpgh/boilerplate/img_store/icons/black/arrange-stroke.png
+onlyinpgh/boilerplate/img_store/icons/black/arrange.png
+onlyinpgh/boilerplate/img_store/icons/black/arrow-down.png
+onlyinpgh/boilerplate/img_store/icons/black/arrow-left.png
+onlyinpgh/boilerplate/img_store/icons/black/arrow-right.png
+onlyinpgh/boilerplate/img_store/icons/black/arrow-up.png
+onlyinpgh/boilerplate/img_store/icons/black/asterisk.png
+onlyinpgh/boilerplate/img_store/icons/black/award-medal.png
+onlyinpgh/boilerplate/img_store/icons/black/award-ribbon.png
+onlyinpgh/boilerplate/img_store/icons/black/baby-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black/baby-swaddle.png
+onlyinpgh/boilerplate/img_store/icons/black/baby.png
+onlyinpgh/boilerplate/img_store/icons/black/badge-sheriff.png
+onlyinpgh/boilerplate/img_store/icons/black/bag-paper.png
+onlyinpgh/boilerplate/img_store/icons/black/bag-shopping.png
+onlyinpgh/boilerplate/img_store/icons/black/balloons.png
+onlyinpgh/boilerplate/img_store/icons/black/bandaid.png
+onlyinpgh/boilerplate/img_store/icons/black/bar-graph-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/bar-graph.png
+onlyinpgh/boilerplate/img_store/icons/black/baseball.png
+onlyinpgh/boilerplate/img_store/icons/black/basketball.png
+onlyinpgh/boilerplate/img_store/icons/black/battery-charge.png
+onlyinpgh/boilerplate/img_store/icons/black/battery-empty.png
+onlyinpgh/boilerplate/img_store/icons/black/battery-full.png
+onlyinpgh/boilerplate/img_store/icons/black/battery-half.png
+onlyinpgh/boilerplate/img_store/icons/black/beaker.png
+onlyinpgh/boilerplate/img_store/icons/black/bear-head.png
+onlyinpgh/boilerplate/img_store/icons/black/beer-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black/beer-mug.png
+onlyinpgh/boilerplate/img_store/icons/black/bell.png
+onlyinpgh/boilerplate/img_store/icons/black/bicycle.png
+onlyinpgh/boilerplate/img_store/icons/black/big-gulp.png
+onlyinpgh/boilerplate/img_store/icons/black/binoculars.png
+onlyinpgh/boilerplate/img_store/icons/black/bird-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/bird.png
+onlyinpgh/boilerplate/img_store/icons/black/birthday-cake.png
+onlyinpgh/boilerplate/img_store/icons/black/block.png
+onlyinpgh/boilerplate/img_store/icons/black/boat.png
+onlyinpgh/boilerplate/img_store/icons/black/bone.png
+onlyinpgh/boilerplate/img_store/icons/black/book-open.png
+onlyinpgh/boilerplate/img_store/icons/black/books-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/books.png
+onlyinpgh/boilerplate/img_store/icons/black/box-action.png
+onlyinpgh/boilerplate/img_store/icons/black/box-bankers.png
+onlyinpgh/boilerplate/img_store/icons/black/box-check.png
+onlyinpgh/boilerplate/img_store/icons/black/box-download.png
+onlyinpgh/boilerplate/img_store/icons/black/box-edit.png
+onlyinpgh/boilerplate/img_store/icons/black/box-expand.png
+onlyinpgh/boilerplate/img_store/icons/black/box-upload.png
+onlyinpgh/boilerplate/img_store/icons/black/box.png
+onlyinpgh/boilerplate/img_store/icons/black/bran-silo.png
+onlyinpgh/boilerplate/img_store/icons/black/bridge-covered.png
+onlyinpgh/boilerplate/img_store/icons/black/brightness.png
+onlyinpgh/boilerplate/img_store/icons/black/browser.png
+onlyinpgh/boilerplate/img_store/icons/black/brush.png
+onlyinpgh/boilerplate/img_store/icons/black/bug.png
+onlyinpgh/boilerplate/img_store/icons/black/bullseye-arrow.png
+onlyinpgh/boilerplate/img_store/icons/black/burger.png
+onlyinpgh/boilerplate/img_store/icons/black/bus.png
+onlyinpgh/boilerplate/img_store/icons/black/button.png
+onlyinpgh/boilerplate/img_store/icons/black/calculator.png
+onlyinpgh/boilerplate/img_store/icons/black/calendar-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/calendar.png
+onlyinpgh/boilerplate/img_store/icons/black/camera-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/camera.png
+onlyinpgh/boilerplate/img_store/icons/black/campfire.png
+onlyinpgh/boilerplate/img_store/icons/black/cancel.png
+onlyinpgh/boilerplate/img_store/icons/black/candle.png
+onlyinpgh/boilerplate/img_store/icons/black/car-mechanic.png
+onlyinpgh/boilerplate/img_store/icons/black/car.png
+onlyinpgh/boilerplate/img_store/icons/black/cat-head.png
+onlyinpgh/boilerplate/img_store/icons/black/chain-link.png
+onlyinpgh/boilerplate/img_store/icons/black/check-money.png
+onlyinpgh/boilerplate/img_store/icons/black/city.png
+onlyinpgh/boilerplate/img_store/icons/black/clipboard-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/clock-alarm.png
+onlyinpgh/boilerplate/img_store/icons/black/clock-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/clock.png
+onlyinpgh/boilerplate/img_store/icons/black/cloud-download.png
+onlyinpgh/boilerplate/img_store/icons/black/cloud-upload.png
+onlyinpgh/boilerplate/img_store/icons/black/coffee-mug.png
+onlyinpgh/boilerplate/img_store/icons/black/coffee-togo.png
+onlyinpgh/boilerplate/img_store/icons/black/compact-disc.png
+onlyinpgh/boilerplate/img_store/icons/black/compass.png
+onlyinpgh/boilerplate/img_store/icons/black/computer-monitor.png
+onlyinpgh/boilerplate/img_store/icons/black/connect.png
+onlyinpgh/boilerplate/img_store/icons/black/contact-cards.png
+onlyinpgh/boilerplate/img_store/icons/black/contract-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/contract.png
+onlyinpgh/boilerplate/img_store/icons/black/crate-download.png
+onlyinpgh/boilerplate/img_store/icons/black/crate-upload.png
+onlyinpgh/boilerplate/img_store/icons/black/crate.png
+onlyinpgh/boilerplate/img_store/icons/black/crayons.png
+onlyinpgh/boilerplate/img_store/icons/black/credit-card.png
+onlyinpgh/boilerplate/img_store/icons/black/crochet-hooks.png
+onlyinpgh/boilerplate/img_store/icons/black/crop.png
+onlyinpgh/boilerplate/img_store/icons/black/cross-case.png
+onlyinpgh/boilerplate/img_store/icons/black/cross-circle.png
+onlyinpgh/boilerplate/img_store/icons/black/cross.png
+onlyinpgh/boilerplate/img_store/icons/black/crown.png
+onlyinpgh/boilerplate/img_store/icons/black/cut-paste.png
+onlyinpgh/boilerplate/img_store/icons/black/dashboard.png
+onlyinpgh/boilerplate/img_store/icons/black/database-add.png
+onlyinpgh/boilerplate/img_store/icons/black/database-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/database.png
+onlyinpgh/boilerplate/img_store/icons/black/delete.png
+onlyinpgh/boilerplate/img_store/icons/black/diaper.png
+onlyinpgh/boilerplate/img_store/icons/black/dining.png
+onlyinpgh/boilerplate/img_store/icons/black/discs.png
+onlyinpgh/boilerplate/img_store/icons/black/document-add.png
+onlyinpgh/boilerplate/img_store/icons/black/document-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black/document-magnify.png
+onlyinpgh/boilerplate/img_store/icons/black/document-subtract.png
+onlyinpgh/boilerplate/img_store/icons/black/document.png
+onlyinpgh/boilerplate/img_store/icons/black/dog-head.png
+onlyinpgh/boilerplate/img_store/icons/black/dog.png
+onlyinpgh/boilerplate/img_store/icons/black/door-open.png
+onlyinpgh/boilerplate/img_store/icons/black/dryer.png
+onlyinpgh/boilerplate/img_store/icons/black/earth.png
+onlyinpgh/boilerplate/img_store/icons/black/easter-egg.png
+onlyinpgh/boilerplate/img_store/icons/black/egg-fried.png
+onlyinpgh/boilerplate/img_store/icons/black/eightball.png
+onlyinpgh/boilerplate/img_store/icons/black/eject.png
+onlyinpgh/boilerplate/img_store/icons/black/elevator.png
+onlyinpgh/boilerplate/img_store/icons/black/email-download.png
+onlyinpgh/boilerplate/img_store/icons/black/email-send.png
+onlyinpgh/boilerplate/img_store/icons/black/email.png
+onlyinpgh/boilerplate/img_store/icons/black/expand-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/expand.png
+onlyinpgh/boilerplate/img_store/icons/black/eye-dropper.png
+onlyinpgh/boilerplate/img_store/icons/black/fabric.png
+onlyinpgh/boilerplate/img_store/icons/black/face-happy.png
+onlyinpgh/boilerplate/img_store/icons/black/fastforward.png
+onlyinpgh/boilerplate/img_store/icons/black/fax.png
+onlyinpgh/boilerplate/img_store/icons/black/fence.png
+onlyinpgh/boilerplate/img_store/icons/black/file-cabinet.png
+onlyinpgh/boilerplate/img_store/icons/black/film-clapper.png
+onlyinpgh/boilerplate/img_store/icons/black/film-play.png
+onlyinpgh/boilerplate/img_store/icons/black/film-strip.png
+onlyinpgh/boilerplate/img_store/icons/black/filter-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/filter.png
+onlyinpgh/boilerplate/img_store/icons/black/fireplace.png
+onlyinpgh/boilerplate/img_store/icons/black/flag.png
+onlyinpgh/boilerplate/img_store/icons/black/flashlight.png
+onlyinpgh/boilerplate/img_store/icons/black/flip-horizontal.png
+onlyinpgh/boilerplate/img_store/icons/black/flip-vertical.png
+onlyinpgh/boilerplate/img_store/icons/black/flow-chart.png
+onlyinpgh/boilerplate/img_store/icons/black/flower.png
+onlyinpgh/boilerplate/img_store/icons/black/folder-add.png
+onlyinpgh/boilerplate/img_store/icons/black/folder-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black/folder-download.png
+onlyinpgh/boilerplate/img_store/icons/black/folder-subtract.png
+onlyinpgh/boilerplate/img_store/icons/black/folder-upload.png
+onlyinpgh/boilerplate/img_store/icons/black/folder.png
+onlyinpgh/boilerplate/img_store/icons/black/football.png
+onlyinpgh/boilerplate/img_store/icons/black/footsteps.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-flower.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-heart.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-people.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-person.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-question.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-star.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-tree.png
+onlyinpgh/boilerplate/img_store/icons/black/frame-utensils.png
+onlyinpgh/boilerplate/img_store/icons/black/frame.png
+onlyinpgh/boilerplate/img_store/icons/black/french-fries.png
+onlyinpgh/boilerplate/img_store/icons/black/frown.png
+onlyinpgh/boilerplate/img_store/icons/black/fx-effects.png
+onlyinpgh/boilerplate/img_store/icons/black/game-controller.png
+onlyinpgh/boilerplate/img_store/icons/black/gas-station.png
+onlyinpgh/boilerplate/img_store/icons/black/gavel.png
+onlyinpgh/boilerplate/img_store/icons/black/gear.png
+onlyinpgh/boilerplate/img_store/icons/black/genius.png
+onlyinpgh/boilerplate/img_store/icons/black/ghost.png
+onlyinpgh/boilerplate/img_store/icons/black/gift-present.png
+onlyinpgh/boilerplate/img_store/icons/black/glass-cup.png
+onlyinpgh/boilerplate/img_store/icons/black/globe-stand.png
+onlyinpgh/boilerplate/img_store/icons/black/globe.png
+onlyinpgh/boilerplate/img_store/icons/black/golf-hole.png
+onlyinpgh/boilerplate/img_store/icons/black/golf.png
+onlyinpgh/boilerplate/img_store/icons/black/graduation-cap.png
+onlyinpgh/boilerplate/img_store/icons/black/grid-block-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/grid-block.png
+onlyinpgh/boilerplate/img_store/icons/black/grid.png
+onlyinpgh/boilerplate/img_store/icons/black/growler.png
+onlyinpgh/boilerplate/img_store/icons/black/gym.png
+onlyinpgh/boilerplate/img_store/icons/black/hammer-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black/hand.png
+onlyinpgh/boilerplate/img_store/icons/black/hard-disk-download.png
+onlyinpgh/boilerplate/img_store/icons/black/hard-disk-network.png
+onlyinpgh/boilerplate/img_store/icons/black/hard-disk.png
+onlyinpgh/boilerplate/img_store/icons/black/headphones.png
+onlyinpgh/boilerplate/img_store/icons/black/heart-add.png
+onlyinpgh/boilerplate/img_store/icons/black/heart-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black/heart.png
+onlyinpgh/boilerplate/img_store/icons/black/hiker.png
+onlyinpgh/boilerplate/img_store/icons/black/home.png
+onlyinpgh/boilerplate/img_store/icons/black/hotdog-bun.png
+onlyinpgh/boilerplate/img_store/icons/black/hottub.png
+onlyinpgh/boilerplate/img_store/icons/black/hourglass.png
+onlyinpgh/boilerplate/img_store/icons/black/inbox-download.png
+onlyinpgh/boilerplate/img_store/icons/black/inbox-upload.png
+onlyinpgh/boilerplate/img_store/icons/black/inbox.png
+onlyinpgh/boilerplate/img_store/icons/black/info.png
+onlyinpgh/boilerplate/img_store/icons/black/insert-book.png
+onlyinpgh/boilerplate/img_store/icons/black/ipad.png
+onlyinpgh/boilerplate/img_store/icons/black/iphone-brush.png
+onlyinpgh/boilerplate/img_store/icons/black/iphone-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/iphone-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black/itunes.png
+onlyinpgh/boilerplate/img_store/icons/black/jack-o-lantern.png
+onlyinpgh/boilerplate/img_store/icons/black/journal.png
+onlyinpgh/boilerplate/img_store/icons/black/key-car.png
+onlyinpgh/boilerplate/img_store/icons/black/key.png
+onlyinpgh/boilerplate/img_store/icons/black/keyboard-down.png
+onlyinpgh/boilerplate/img_store/icons/black/keyboard-up.png
+onlyinpgh/boilerplate/img_store/icons/black/keypad.png
+onlyinpgh/boilerplate/img_store/icons/black/knitting-needles.png
+onlyinpgh/boilerplate/img_store/icons/black/laptop.png
+onlyinpgh/boilerplate/img_store/icons/black/leaf.png
+onlyinpgh/boilerplate/img_store/icons/black/ledger-money.png
+onlyinpgh/boilerplate/img_store/icons/black/ledger.png
+onlyinpgh/boilerplate/img_store/icons/black/letter-blocks.png
+onlyinpgh/boilerplate/img_store/icons/black/letter.png
+onlyinpgh/boilerplate/img_store/icons/black/life-ring.png
+onlyinpgh/boilerplate/img_store/icons/black/lightbulb-compact.png
+onlyinpgh/boilerplate/img_store/icons/black/lightbulb.png
+onlyinpgh/boilerplate/img_store/icons/black/lightning.png
+onlyinpgh/boilerplate/img_store/icons/black/line-graph.png
+onlyinpgh/boilerplate/img_store/icons/black/list.png
+onlyinpgh/boilerplate/img_store/icons/black/lock.png
+onlyinpgh/boilerplate/img_store/icons/black/lodging.png
+onlyinpgh/boilerplate/img_store/icons/black/magic-wand.png
+onlyinpgh/boilerplate/img_store/icons/black/mailbox.png
+onlyinpgh/boilerplate/img_store/icons/black/man-woman.png
+onlyinpgh/boilerplate/img_store/icons/black/map-marker.png
+onlyinpgh/boilerplate/img_store/icons/black/map.png
+onlyinpgh/boilerplate/img_store/icons/black/martini-glass.png
+onlyinpgh/boilerplate/img_store/icons/black/meeting-table.png
+onlyinpgh/boilerplate/img_store/icons/black/megaphone.png
+onlyinpgh/boilerplate/img_store/icons/black/men.png
+onlyinpgh/boilerplate/img_store/icons/black/menorah.png
+onlyinpgh/boilerplate/img_store/icons/black/mic.png
+onlyinpgh/boilerplate/img_store/icons/black/money-bag.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-first-quarter.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-full.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-last-quarter.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-new.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-waning-crescent.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-waning-gibbous.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-waxing-crescent.png
+onlyinpgh/boilerplate/img_store/icons/black/moon-waxing-gibbous.png
+onlyinpgh/boilerplate/img_store/icons/black/moon.png
+onlyinpgh/boilerplate/img_store/icons/black/motorcycle.png
+onlyinpgh/boilerplate/img_store/icons/black/movie-camera.png
+onlyinpgh/boilerplate/img_store/icons/black/museum-pillars.png
+onlyinpgh/boilerplate/img_store/icons/black/music-home.png
+onlyinpgh/boilerplate/img_store/icons/black/music.png
+onlyinpgh/boilerplate/img_store/icons/black/newspaper.png
+onlyinpgh/boilerplate/img_store/icons/black/no-entry.png
+onlyinpgh/boilerplate/img_store/icons/black/no-flash.png
+onlyinpgh/boilerplate/img_store/icons/black/no-smoking.png
+onlyinpgh/boilerplate/img_store/icons/black/note-paper-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/note-paper.png
+onlyinpgh/boilerplate/img_store/icons/black/notice.png
+onlyinpgh/boilerplate/img_store/icons/black/oven-stove.png
+onlyinpgh/boilerplate/img_store/icons/black/paddles.png
+onlyinpgh/boilerplate/img_store/icons/black/paint-roller.png
+onlyinpgh/boilerplate/img_store/icons/black/paintbrush-palette.png
+onlyinpgh/boilerplate/img_store/icons/black/paintbrush-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/palm-tree.png
+onlyinpgh/boilerplate/img_store/icons/black/pancakes.png
+onlyinpgh/boilerplate/img_store/icons/black/parking.png
+onlyinpgh/boilerplate/img_store/icons/black/path-bezier.png
+onlyinpgh/boilerplate/img_store/icons/black/pattern.png
+onlyinpgh/boilerplate/img_store/icons/black/pause.png
+onlyinpgh/boilerplate/img_store/icons/black/pen.png
+onlyinpgh/boilerplate/img_store/icons/black/pencil-paintbrush-pen.png
+onlyinpgh/boilerplate/img_store/icons/black/pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/people.png
+onlyinpgh/boilerplate/img_store/icons/black/person-add-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/person-add.png
+onlyinpgh/boilerplate/img_store/icons/black/person-cancel-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/person-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black/person-substract.png
+onlyinpgh/boilerplate/img_store/icons/black/person-subtract-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/person.png
+onlyinpgh/boilerplate/img_store/icons/black/phone-book.png
+onlyinpgh/boilerplate/img_store/icons/black/phone-dial.png
+onlyinpgh/boilerplate/img_store/icons/black/phone-touchpad.png
+onlyinpgh/boilerplate/img_store/icons/black/phone.png
+onlyinpgh/boilerplate/img_store/icons/black/photo-frame.png
+onlyinpgh/boilerplate/img_store/icons/black/photo-magnify.png
+onlyinpgh/boilerplate/img_store/icons/black/photo.png
+onlyinpgh/boilerplate/img_store/icons/black/photos.png
+onlyinpgh/boilerplate/img_store/icons/black/picnic-table.png
+onlyinpgh/boilerplate/img_store/icons/black/pie-chart.png
+onlyinpgh/boilerplate/img_store/icons/black/pixels.png
+onlyinpgh/boilerplate/img_store/icons/black/pizza.png
+onlyinpgh/boilerplate/img_store/icons/black/plane-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/plane.png
+onlyinpgh/boilerplate/img_store/icons/black/play.png
+onlyinpgh/boilerplate/img_store/icons/black/playlist.png
+onlyinpgh/boilerplate/img_store/icons/black/podcast.png
+onlyinpgh/boilerplate/img_store/icons/black/postage-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/postage.png
+onlyinpgh/boilerplate/img_store/icons/black/power-on.png
+onlyinpgh/boilerplate/img_store/icons/black/printer.png
+onlyinpgh/boilerplate/img_store/icons/black/puzzle-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/puzzle.png
+onlyinpgh/boilerplate/img_store/icons/black/question.png
+onlyinpgh/boilerplate/img_store/icons/black/quote.png
+onlyinpgh/boilerplate/img_store/icons/black/radio.png
+onlyinpgh/boilerplate/img_store/icons/black/radioactive.png
+onlyinpgh/boilerplate/img_store/icons/black/rattle.png
+onlyinpgh/boilerplate/img_store/icons/black/record.png
+onlyinpgh/boilerplate/img_store/icons/black/redo.png
+onlyinpgh/boilerplate/img_store/icons/black/reload.png
+onlyinpgh/boilerplate/img_store/icons/black/restroom.png
+onlyinpgh/boilerplate/img_store/icons/black/reticle.png
+onlyinpgh/boilerplate/img_store/icons/black/rewind.png
+onlyinpgh/boilerplate/img_store/icons/black/rip-gravestone.png
+onlyinpgh/boilerplate/img_store/icons/black/robot-head.png
+onlyinpgh/boilerplate/img_store/icons/black/rocket.png
+onlyinpgh/boilerplate/img_store/icons/black/rss.png
+onlyinpgh/boilerplate/img_store/icons/black/ruler-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/runner.png
+onlyinpgh/boilerplate/img_store/icons/black/safe.png
+onlyinpgh/boilerplate/img_store/icons/black/scale.png
+onlyinpgh/boilerplate/img_store/icons/black/scissors-knitting-needles.png
+onlyinpgh/boilerplate/img_store/icons/black/scissors.png
+onlyinpgh/boilerplate/img_store/icons/black/screwdriver-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/script-play.png
+onlyinpgh/boilerplate/img_store/icons/black/script-record.png
+onlyinpgh/boilerplate/img_store/icons/black/script-stop.png
+onlyinpgh/boilerplate/img_store/icons/black/script.png
+onlyinpgh/boilerplate/img_store/icons/black/search.png
+onlyinpgh/boilerplate/img_store/icons/black/share.png
+onlyinpgh/boilerplate/img_store/icons/black/sheep.png
+onlyinpgh/boilerplate/img_store/icons/black/shopping-cart.png
+onlyinpgh/boilerplate/img_store/icons/black/shovel-pail.png
+onlyinpgh/boilerplate/img_store/icons/black/shredder.png
+onlyinpgh/boilerplate/img_store/icons/black/shuffle.png
+onlyinpgh/boilerplate/img_store/icons/black/signs.png
+onlyinpgh/boilerplate/img_store/icons/black/ski-boot.png
+onlyinpgh/boilerplate/img_store/icons/black/skip-back.png
+onlyinpgh/boilerplate/img_store/icons/black/skip-forward.png
+onlyinpgh/boilerplate/img_store/icons/black/skis-poles.png
+onlyinpgh/boilerplate/img_store/icons/black/skull.png
+onlyinpgh/boilerplate/img_store/icons/black/sliders.png
+onlyinpgh/boilerplate/img_store/icons/black/smile-tooth.png
+onlyinpgh/boilerplate/img_store/icons/black/smile-toothless.png
+onlyinpgh/boilerplate/img_store/icons/black/smile.png
+onlyinpgh/boilerplate/img_store/icons/black/soccer.png
+onlyinpgh/boilerplate/img_store/icons/black/sound.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubble-ellipsis.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubble-exclamation.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubble-question.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubble-text.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubble.png
+onlyinpgh/boilerplate/img_store/icons/black/speech-bubbles.png
+onlyinpgh/boilerplate/img_store/icons/black/spiral-paper.png
+onlyinpgh/boilerplate/img_store/icons/black/star.png
+onlyinpgh/boilerplate/img_store/icons/black/stop-sign.png
+onlyinpgh/boilerplate/img_store/icons/black/stop.png
+onlyinpgh/boilerplate/img_store/icons/black/stopwatch.png
+onlyinpgh/boilerplate/img_store/icons/black/store-front.png
+onlyinpgh/boilerplate/img_store/icons/black/subtract.png
+onlyinpgh/boilerplate/img_store/icons/black/suitcase.png
+onlyinpgh/boilerplate/img_store/icons/black/sun-cloud.png
+onlyinpgh/boilerplate/img_store/icons/black/sun.png
+onlyinpgh/boilerplate/img_store/icons/black/swatch.png
+onlyinpgh/boilerplate/img_store/icons/black/sweep.png
+onlyinpgh/boilerplate/img_store/icons/black/switch-off.png
+onlyinpgh/boilerplate/img_store/icons/black/switch-on.png
+onlyinpgh/boilerplate/img_store/icons/black/sync.png
+onlyinpgh/boilerplate/img_store/icons/black/syrup-jug.png
+onlyinpgh/boilerplate/img_store/icons/black/tag-special.png
+onlyinpgh/boilerplate/img_store/icons/black/tag.png
+onlyinpgh/boilerplate/img_store/icons/black/takeout.png
+onlyinpgh/boilerplate/img_store/icons/black/tape-measure.png
+onlyinpgh/boilerplate/img_store/icons/black/target.png
+onlyinpgh/boilerplate/img_store/icons/black/taxi.png
+onlyinpgh/boilerplate/img_store/icons/black/teddy-bear.png
+onlyinpgh/boilerplate/img_store/icons/black/tennis.png
+onlyinpgh/boilerplate/img_store/icons/black/theater-masks.png
+onlyinpgh/boilerplate/img_store/icons/black/thread.png
+onlyinpgh/boilerplate/img_store/icons/black/thumbtack.png
+onlyinpgh/boilerplate/img_store/icons/black/ticket.png
+onlyinpgh/boilerplate/img_store/icons/black/timer.png
+onlyinpgh/boilerplate/img_store/icons/black/toilet-paper.png
+onlyinpgh/boilerplate/img_store/icons/black/toilet.png
+onlyinpgh/boilerplate/img_store/icons/black/tool-box.png
+onlyinpgh/boilerplate/img_store/icons/black/tooth.png
+onlyinpgh/boilerplate/img_store/icons/black/trailer-hookup.png
+onlyinpgh/boilerplate/img_store/icons/black/trailer.png
+onlyinpgh/boilerplate/img_store/icons/black/train.png
+onlyinpgh/boilerplate/img_store/icons/black/trash-can.png
+onlyinpgh/boilerplate/img_store/icons/black/tree.png
+onlyinpgh/boilerplate/img_store/icons/black/trophy.png
+onlyinpgh/boilerplate/img_store/icons/black/truck.png
+onlyinpgh/boilerplate/img_store/icons/black/tshirt.png
+onlyinpgh/boilerplate/img_store/icons/black/tv-flatscreen.png
+onlyinpgh/boilerplate/img_store/icons/black/tv-retro.png
+onlyinpgh/boilerplate/img_store/icons/black/typewriter.png
+onlyinpgh/boilerplate/img_store/icons/black/ufo.png
+onlyinpgh/boilerplate/img_store/icons/black/umbrella.png
+onlyinpgh/boilerplate/img_store/icons/black/undo.png
+onlyinpgh/boilerplate/img_store/icons/black/unlock.png
+onlyinpgh/boilerplate/img_store/icons/black/usb.png
+onlyinpgh/boilerplate/img_store/icons/black/vial.png
+onlyinpgh/boilerplate/img_store/icons/black/victrola.png
+onlyinpgh/boilerplate/img_store/icons/black/voicemail.png
+onlyinpgh/boilerplate/img_store/icons/black/washing-machine.png
+onlyinpgh/boilerplate/img_store/icons/black/wedding-rings.png
+onlyinpgh/boilerplate/img_store/icons/black/wheel.png
+onlyinpgh/boilerplate/img_store/icons/black/wheelchair-handicap.png
+onlyinpgh/boilerplate/img_store/icons/black/wifi.png
+onlyinpgh/boilerplate/img_store/icons/black/wine-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black/wine-glass.png
+onlyinpgh/boilerplate/img_store/icons/black/women.png
+onlyinpgh/boilerplate/img_store/icons/black/wrench-double.png
+onlyinpgh/boilerplate/img_store/icons/black/wrench-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black/wrench-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black/wrench.png
+onlyinpgh/boilerplate/img_store/icons/black/xmas-tree.png
+onlyinpgh/boilerplate/img_store/icons/black/yarn.png
+onlyinpgh/boilerplate/img_store/icons/black/zipper.png
+onlyinpgh/boilerplate/img_store/icons/black/zoom-in-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/zoom-in.png
+onlyinpgh/boilerplate/img_store/icons/black/zoom-out-alt.png
+onlyinpgh/boilerplate/img_store/icons/black/zoom-out.png
+onlyinpgh/boilerplate/img_store/icons/black_small/add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/address-book.png
+onlyinpgh/boilerplate/img_store/icons/black_small/album.png
+onlyinpgh/boilerplate/img_store/icons/black_small/alert.png
+onlyinpgh/boilerplate/img_store/icons/black_small/alien.png
+onlyinpgh/boilerplate/img_store/icons/black_small/anchor.png
+onlyinpgh/boilerplate/img_store/icons/black_small/apple.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrange-fill.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrange-stroke.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrange.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrow-down.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrow-left.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrow-right.png
+onlyinpgh/boilerplate/img_store/icons/black_small/arrow-up.png
+onlyinpgh/boilerplate/img_store/icons/black_small/asterisk.png
+onlyinpgh/boilerplate/img_store/icons/black_small/award-medal.png
+onlyinpgh/boilerplate/img_store/icons/black_small/award-ribbon.png
+onlyinpgh/boilerplate/img_store/icons/black_small/baby-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/baby-swaddle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/baby.png
+onlyinpgh/boilerplate/img_store/icons/black_small/badge-sheriff.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bag-paper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bag-shopping.png
+onlyinpgh/boilerplate/img_store/icons/black_small/balloons.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bandaid.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bar-graph-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bar-graph.png
+onlyinpgh/boilerplate/img_store/icons/black_small/baseball.png
+onlyinpgh/boilerplate/img_store/icons/black_small/basketball.png
+onlyinpgh/boilerplate/img_store/icons/black_small/battery-charge.png
+onlyinpgh/boilerplate/img_store/icons/black_small/battery-empty.png
+onlyinpgh/boilerplate/img_store/icons/black_small/battery-full.png
+onlyinpgh/boilerplate/img_store/icons/black_small/battery-half.png
+onlyinpgh/boilerplate/img_store/icons/black_small/beaker.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bear-head.png
+onlyinpgh/boilerplate/img_store/icons/black_small/beer-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/beer-mug.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bell.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bicycle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/big-gulp.png
+onlyinpgh/boilerplate/img_store/icons/black_small/binoculars.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bird-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bird.png
+onlyinpgh/boilerplate/img_store/icons/black_small/birthday-cake.png
+onlyinpgh/boilerplate/img_store/icons/black_small/block.png
+onlyinpgh/boilerplate/img_store/icons/black_small/boat.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bone.png
+onlyinpgh/boilerplate/img_store/icons/black_small/book-open.png
+onlyinpgh/boilerplate/img_store/icons/black_small/books-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/books.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-action.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-bankers.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-check.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-edit.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-expand.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box-upload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/box.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bran-silo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bridge-covered.png
+onlyinpgh/boilerplate/img_store/icons/black_small/brightness.png
+onlyinpgh/boilerplate/img_store/icons/black_small/browser.png
+onlyinpgh/boilerplate/img_store/icons/black_small/brush.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bug.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bullseye-arrow.png
+onlyinpgh/boilerplate/img_store/icons/black_small/burger.png
+onlyinpgh/boilerplate/img_store/icons/black_small/bus.png
+onlyinpgh/boilerplate/img_store/icons/black_small/button.png
+onlyinpgh/boilerplate/img_store/icons/black_small/calculator.png
+onlyinpgh/boilerplate/img_store/icons/black_small/calendar-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/calendar.png
+onlyinpgh/boilerplate/img_store/icons/black_small/camera-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/camera.png
+onlyinpgh/boilerplate/img_store/icons/black_small/campfire.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cancel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/candle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/car-mechanic.png
+onlyinpgh/boilerplate/img_store/icons/black_small/car.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cat-head.png
+onlyinpgh/boilerplate/img_store/icons/black_small/chain-link.png
+onlyinpgh/boilerplate/img_store/icons/black_small/check-money.png
+onlyinpgh/boilerplate/img_store/icons/black_small/city.png
+onlyinpgh/boilerplate/img_store/icons/black_small/clipboard-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/clock-alarm.png
+onlyinpgh/boilerplate/img_store/icons/black_small/clock-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/clock.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cloud-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cloud-upload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/coffee-mug.png
+onlyinpgh/boilerplate/img_store/icons/black_small/coffee-togo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/compact-disc.png
+onlyinpgh/boilerplate/img_store/icons/black_small/compass.png
+onlyinpgh/boilerplate/img_store/icons/black_small/computer-monitor.png
+onlyinpgh/boilerplate/img_store/icons/black_small/connect.png
+onlyinpgh/boilerplate/img_store/icons/black_small/contact-cards.png
+onlyinpgh/boilerplate/img_store/icons/black_small/contract-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/contract.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crate-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crate-upload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crate.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crayons.png
+onlyinpgh/boilerplate/img_store/icons/black_small/credit-card.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crochet-hooks.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crop.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cross-case.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cross-circle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cross.png
+onlyinpgh/boilerplate/img_store/icons/black_small/crown.png
+onlyinpgh/boilerplate/img_store/icons/black_small/cut-paste.png
+onlyinpgh/boilerplate/img_store/icons/black_small/dashboard.png
+onlyinpgh/boilerplate/img_store/icons/black_small/database-add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/database-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/database.png
+onlyinpgh/boilerplate/img_store/icons/black_small/delete.png
+onlyinpgh/boilerplate/img_store/icons/black_small/diaper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/dining.png
+onlyinpgh/boilerplate/img_store/icons/black_small/discs.png
+onlyinpgh/boilerplate/img_store/icons/black_small/document-add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/document-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/document-magnify.png
+onlyinpgh/boilerplate/img_store/icons/black_small/document-subtract.png
+onlyinpgh/boilerplate/img_store/icons/black_small/document.png
+onlyinpgh/boilerplate/img_store/icons/black_small/dog-head.png
+onlyinpgh/boilerplate/img_store/icons/black_small/dog.png
+onlyinpgh/boilerplate/img_store/icons/black_small/door-open.png
+onlyinpgh/boilerplate/img_store/icons/black_small/dryer.png
+onlyinpgh/boilerplate/img_store/icons/black_small/earth.png
+onlyinpgh/boilerplate/img_store/icons/black_small/easter-egg.png
+onlyinpgh/boilerplate/img_store/icons/black_small/egg-fried.png
+onlyinpgh/boilerplate/img_store/icons/black_small/eightball.png
+onlyinpgh/boilerplate/img_store/icons/black_small/eject.png
+onlyinpgh/boilerplate/img_store/icons/black_small/elevator.png
+onlyinpgh/boilerplate/img_store/icons/black_small/email-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/email-send.png
+onlyinpgh/boilerplate/img_store/icons/black_small/email.png
+onlyinpgh/boilerplate/img_store/icons/black_small/expand-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/expand.png
+onlyinpgh/boilerplate/img_store/icons/black_small/eye-dropper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fabric.png
+onlyinpgh/boilerplate/img_store/icons/black_small/face-happy.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fastforward.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fax.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fence.png
+onlyinpgh/boilerplate/img_store/icons/black_small/file-cabinet.png
+onlyinpgh/boilerplate/img_store/icons/black_small/film-clapper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/film-play.png
+onlyinpgh/boilerplate/img_store/icons/black_small/film-strip.png
+onlyinpgh/boilerplate/img_store/icons/black_small/filter-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/filter.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fireplace.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flag.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flashlight.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flip-horizontal.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flip-vertical.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flow-chart.png
+onlyinpgh/boilerplate/img_store/icons/black_small/flower.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder-add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder-subtract.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder-upload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/folder.png
+onlyinpgh/boilerplate/img_store/icons/black_small/football.png
+onlyinpgh/boilerplate/img_store/icons/black_small/footsteps.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-flower.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-heart.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-people.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-person.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-question.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-star.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-tree.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame-utensils.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frame.png
+onlyinpgh/boilerplate/img_store/icons/black_small/french-fries.png
+onlyinpgh/boilerplate/img_store/icons/black_small/frown.png
+onlyinpgh/boilerplate/img_store/icons/black_small/fx-effects.png
+onlyinpgh/boilerplate/img_store/icons/black_small/game-controller.png
+onlyinpgh/boilerplate/img_store/icons/black_small/gas-station.png
+onlyinpgh/boilerplate/img_store/icons/black_small/gavel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/gear.png
+onlyinpgh/boilerplate/img_store/icons/black_small/genius.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ghost.png
+onlyinpgh/boilerplate/img_store/icons/black_small/gift-present.png
+onlyinpgh/boilerplate/img_store/icons/black_small/glass-cup.png
+onlyinpgh/boilerplate/img_store/icons/black_small/globe-stand.png
+onlyinpgh/boilerplate/img_store/icons/black_small/globe.png
+onlyinpgh/boilerplate/img_store/icons/black_small/golf-hole.png
+onlyinpgh/boilerplate/img_store/icons/black_small/golf.png
+onlyinpgh/boilerplate/img_store/icons/black_small/graduation-cap.png
+onlyinpgh/boilerplate/img_store/icons/black_small/grid-block-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/grid-block.png
+onlyinpgh/boilerplate/img_store/icons/black_small/grid.png
+onlyinpgh/boilerplate/img_store/icons/black_small/growler.png
+onlyinpgh/boilerplate/img_store/icons/black_small/gym.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hammer-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hand.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hard-disk-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hard-disk-network.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hard-disk.png
+onlyinpgh/boilerplate/img_store/icons/black_small/headphones.png
+onlyinpgh/boilerplate/img_store/icons/black_small/heart-add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/heart-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/heart.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hiker.png
+onlyinpgh/boilerplate/img_store/icons/black_small/home.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hotdog-bun.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hottub.png
+onlyinpgh/boilerplate/img_store/icons/black_small/hourglass.png
+onlyinpgh/boilerplate/img_store/icons/black_small/inbox-download.png
+onlyinpgh/boilerplate/img_store/icons/black_small/inbox-upload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/inbox.png
+onlyinpgh/boilerplate/img_store/icons/black_small/info.png
+onlyinpgh/boilerplate/img_store/icons/black_small/insert-book.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ipad.png
+onlyinpgh/boilerplate/img_store/icons/black_small/iphone-brush.png
+onlyinpgh/boilerplate/img_store/icons/black_small/iphone-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/iphone-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black_small/itunes.png
+onlyinpgh/boilerplate/img_store/icons/black_small/jack-o-lantern.png
+onlyinpgh/boilerplate/img_store/icons/black_small/journal.png
+onlyinpgh/boilerplate/img_store/icons/black_small/key-car.png
+onlyinpgh/boilerplate/img_store/icons/black_small/key.png
+onlyinpgh/boilerplate/img_store/icons/black_small/keyboard-down.png
+onlyinpgh/boilerplate/img_store/icons/black_small/keyboard-up.png
+onlyinpgh/boilerplate/img_store/icons/black_small/keypad.png
+onlyinpgh/boilerplate/img_store/icons/black_small/knitting-needles.png
+onlyinpgh/boilerplate/img_store/icons/black_small/laptop.png
+onlyinpgh/boilerplate/img_store/icons/black_small/leaf.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ledger-money.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ledger.png
+onlyinpgh/boilerplate/img_store/icons/black_small/letter-blocks.png
+onlyinpgh/boilerplate/img_store/icons/black_small/letter.png
+onlyinpgh/boilerplate/img_store/icons/black_small/life-ring.png
+onlyinpgh/boilerplate/img_store/icons/black_small/lightbulb-compact.png
+onlyinpgh/boilerplate/img_store/icons/black_small/lightbulb.png
+onlyinpgh/boilerplate/img_store/icons/black_small/lightning.png
+onlyinpgh/boilerplate/img_store/icons/black_small/line-graph.png
+onlyinpgh/boilerplate/img_store/icons/black_small/list.png
+onlyinpgh/boilerplate/img_store/icons/black_small/lock.png
+onlyinpgh/boilerplate/img_store/icons/black_small/lodging.png
+onlyinpgh/boilerplate/img_store/icons/black_small/magic-wand.png
+onlyinpgh/boilerplate/img_store/icons/black_small/mailbox.png
+onlyinpgh/boilerplate/img_store/icons/black_small/man-woman.png
+onlyinpgh/boilerplate/img_store/icons/black_small/map-marker.png
+onlyinpgh/boilerplate/img_store/icons/black_small/map.png
+onlyinpgh/boilerplate/img_store/icons/black_small/martini-glass.png
+onlyinpgh/boilerplate/img_store/icons/black_small/meeting-table.png
+onlyinpgh/boilerplate/img_store/icons/black_small/megaphone.png
+onlyinpgh/boilerplate/img_store/icons/black_small/men.png
+onlyinpgh/boilerplate/img_store/icons/black_small/menorah.png
+onlyinpgh/boilerplate/img_store/icons/black_small/mic.png
+onlyinpgh/boilerplate/img_store/icons/black_small/money-bag.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-first-quarter.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-full.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-last-quarter.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-new.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-waning-crescent.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-waning-gibbous.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-waxing-crescent.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon-waxing-gibbous.png
+onlyinpgh/boilerplate/img_store/icons/black_small/moon.png
+onlyinpgh/boilerplate/img_store/icons/black_small/motorcycle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/movie-camera.png
+onlyinpgh/boilerplate/img_store/icons/black_small/museum-pillars.png
+onlyinpgh/boilerplate/img_store/icons/black_small/music-home.png
+onlyinpgh/boilerplate/img_store/icons/black_small/music.png
+onlyinpgh/boilerplate/img_store/icons/black_small/newspaper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/no-entry.png
+onlyinpgh/boilerplate/img_store/icons/black_small/no-flash.png
+onlyinpgh/boilerplate/img_store/icons/black_small/no-smoking.png
+onlyinpgh/boilerplate/img_store/icons/black_small/note-paper-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/note-paper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/notice.png
+onlyinpgh/boilerplate/img_store/icons/black_small/oven-stove.png
+onlyinpgh/boilerplate/img_store/icons/black_small/paddles.png
+onlyinpgh/boilerplate/img_store/icons/black_small/paint-roller.png
+onlyinpgh/boilerplate/img_store/icons/black_small/paintbrush-palette.png
+onlyinpgh/boilerplate/img_store/icons/black_small/paintbrush-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/palm-tree.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pancakes.png
+onlyinpgh/boilerplate/img_store/icons/black_small/parking.png
+onlyinpgh/boilerplate/img_store/icons/black_small/path-bezier.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pattern.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pause.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pen.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pencil-paintbrush-pen.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/people.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-add-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-add.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-cancel-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-cancel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-substract.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person-subtract-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/person.png
+onlyinpgh/boilerplate/img_store/icons/black_small/phone-book.png
+onlyinpgh/boilerplate/img_store/icons/black_small/phone-dial.png
+onlyinpgh/boilerplate/img_store/icons/black_small/phone-touchpad.png
+onlyinpgh/boilerplate/img_store/icons/black_small/phone.png
+onlyinpgh/boilerplate/img_store/icons/black_small/photo-frame.png
+onlyinpgh/boilerplate/img_store/icons/black_small/photo-magnify.png
+onlyinpgh/boilerplate/img_store/icons/black_small/photo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/photos.png
+onlyinpgh/boilerplate/img_store/icons/black_small/picnic-table.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pie-chart.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pixels.png
+onlyinpgh/boilerplate/img_store/icons/black_small/pizza.png
+onlyinpgh/boilerplate/img_store/icons/black_small/plane-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/plane.png
+onlyinpgh/boilerplate/img_store/icons/black_small/play.png
+onlyinpgh/boilerplate/img_store/icons/black_small/playlist.png
+onlyinpgh/boilerplate/img_store/icons/black_small/podcast.png
+onlyinpgh/boilerplate/img_store/icons/black_small/postage-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/postage.png
+onlyinpgh/boilerplate/img_store/icons/black_small/power-on.png
+onlyinpgh/boilerplate/img_store/icons/black_small/printer.png
+onlyinpgh/boilerplate/img_store/icons/black_small/puzzle-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/puzzle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/question.png
+onlyinpgh/boilerplate/img_store/icons/black_small/quote.png
+onlyinpgh/boilerplate/img_store/icons/black_small/radio.png
+onlyinpgh/boilerplate/img_store/icons/black_small/radioactive.png
+onlyinpgh/boilerplate/img_store/icons/black_small/rattle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/record.png
+onlyinpgh/boilerplate/img_store/icons/black_small/redo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/reload.png
+onlyinpgh/boilerplate/img_store/icons/black_small/restroom.png
+onlyinpgh/boilerplate/img_store/icons/black_small/reticle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/rewind.png
+onlyinpgh/boilerplate/img_store/icons/black_small/rip-gravestone.png
+onlyinpgh/boilerplate/img_store/icons/black_small/robot-head.png
+onlyinpgh/boilerplate/img_store/icons/black_small/rocket.png
+onlyinpgh/boilerplate/img_store/icons/black_small/rss.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ruler-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/runner.png
+onlyinpgh/boilerplate/img_store/icons/black_small/safe.png
+onlyinpgh/boilerplate/img_store/icons/black_small/scale.png
+onlyinpgh/boilerplate/img_store/icons/black_small/scissors-knitting-needles.png
+onlyinpgh/boilerplate/img_store/icons/black_small/scissors.png
+onlyinpgh/boilerplate/img_store/icons/black_small/screwdriver-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/script-play.png
+onlyinpgh/boilerplate/img_store/icons/black_small/script-record.png
+onlyinpgh/boilerplate/img_store/icons/black_small/script-stop.png
+onlyinpgh/boilerplate/img_store/icons/black_small/script.png
+onlyinpgh/boilerplate/img_store/icons/black_small/search.png
+onlyinpgh/boilerplate/img_store/icons/black_small/share.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sheep.png
+onlyinpgh/boilerplate/img_store/icons/black_small/shopping-cart.png
+onlyinpgh/boilerplate/img_store/icons/black_small/shovel-pail.png
+onlyinpgh/boilerplate/img_store/icons/black_small/shredder.png
+onlyinpgh/boilerplate/img_store/icons/black_small/shuffle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/signs.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ski-boot.png
+onlyinpgh/boilerplate/img_store/icons/black_small/skip-back.png
+onlyinpgh/boilerplate/img_store/icons/black_small/skip-forward.png
+onlyinpgh/boilerplate/img_store/icons/black_small/skis-poles.png
+onlyinpgh/boilerplate/img_store/icons/black_small/skull.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sliders.png
+onlyinpgh/boilerplate/img_store/icons/black_small/smile-tooth.png
+onlyinpgh/boilerplate/img_store/icons/black_small/smile-toothless.png
+onlyinpgh/boilerplate/img_store/icons/black_small/smile.png
+onlyinpgh/boilerplate/img_store/icons/black_small/soccer.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sound.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubble-ellipsis.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubble-exclamation.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubble-question.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubble-text.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubble.png
+onlyinpgh/boilerplate/img_store/icons/black_small/speech-bubbles.png
+onlyinpgh/boilerplate/img_store/icons/black_small/spiral-paper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/star.png
+onlyinpgh/boilerplate/img_store/icons/black_small/stop-sign.png
+onlyinpgh/boilerplate/img_store/icons/black_small/stop.png
+onlyinpgh/boilerplate/img_store/icons/black_small/stopwatch.png
+onlyinpgh/boilerplate/img_store/icons/black_small/store-front.png
+onlyinpgh/boilerplate/img_store/icons/black_small/subtract.png
+onlyinpgh/boilerplate/img_store/icons/black_small/suitcase.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sun-cloud.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sun.png
+onlyinpgh/boilerplate/img_store/icons/black_small/swatch.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sweep.png
+onlyinpgh/boilerplate/img_store/icons/black_small/switch-off.png
+onlyinpgh/boilerplate/img_store/icons/black_small/switch-on.png
+onlyinpgh/boilerplate/img_store/icons/black_small/sync.png
+onlyinpgh/boilerplate/img_store/icons/black_small/syrup-jug.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tag-special.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tag.png
+onlyinpgh/boilerplate/img_store/icons/black_small/takeout.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tape-measure.png
+onlyinpgh/boilerplate/img_store/icons/black_small/target.png
+onlyinpgh/boilerplate/img_store/icons/black_small/taxi.png
+onlyinpgh/boilerplate/img_store/icons/black_small/teddy-bear.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tennis.png
+onlyinpgh/boilerplate/img_store/icons/black_small/theater-masks.png
+onlyinpgh/boilerplate/img_store/icons/black_small/thread.png
+onlyinpgh/boilerplate/img_store/icons/black_small/thumbtack.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ticket.png
+onlyinpgh/boilerplate/img_store/icons/black_small/timer.png
+onlyinpgh/boilerplate/img_store/icons/black_small/toilet-paper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/toilet.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tool-box.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tooth.png
+onlyinpgh/boilerplate/img_store/icons/black_small/trailer-hookup.png
+onlyinpgh/boilerplate/img_store/icons/black_small/trailer.png
+onlyinpgh/boilerplate/img_store/icons/black_small/train.png
+onlyinpgh/boilerplate/img_store/icons/black_small/trash-can.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tree.png
+onlyinpgh/boilerplate/img_store/icons/black_small/trophy.png
+onlyinpgh/boilerplate/img_store/icons/black_small/truck.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tshirt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tv-flatscreen.png
+onlyinpgh/boilerplate/img_store/icons/black_small/tv-retro.png
+onlyinpgh/boilerplate/img_store/icons/black_small/typewriter.png
+onlyinpgh/boilerplate/img_store/icons/black_small/ufo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/umbrella.png
+onlyinpgh/boilerplate/img_store/icons/black_small/undo.png
+onlyinpgh/boilerplate/img_store/icons/black_small/unlock.png
+onlyinpgh/boilerplate/img_store/icons/black_small/usb.png
+onlyinpgh/boilerplate/img_store/icons/black_small/vial.png
+onlyinpgh/boilerplate/img_store/icons/black_small/victrola.png
+onlyinpgh/boilerplate/img_store/icons/black_small/voicemail.png
+onlyinpgh/boilerplate/img_store/icons/black_small/washing-machine.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wedding-rings.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wheel.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wheelchair-handicap.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wifi.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wine-bottle.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wine-glass.png
+onlyinpgh/boilerplate/img_store/icons/black_small/women.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wrench-double.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wrench-pencil.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wrench-screwdriver.png
+onlyinpgh/boilerplate/img_store/icons/black_small/wrench.png
+onlyinpgh/boilerplate/img_store/icons/black_small/xmas-tree.png
+onlyinpgh/boilerplate/img_store/icons/black_small/yarn.png
+onlyinpgh/boilerplate/img_store/icons/black_small/zipper.png
+onlyinpgh/boilerplate/img_store/icons/black_small/zoom-in-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/zoom-in.png
+onlyinpgh/boilerplate/img_store/icons/black_small/zoom-out-alt.png
+onlyinpgh/boilerplate/img_store/icons/black_small/zoom-out.png
+onlyinpgh/boilerplate/img_store/icons/calendar.png
+onlyinpgh/boilerplate/img_store/icons/chatter.png
+onlyinpgh/boilerplate/img_store/icons/report.png
+onlyinpgh/boilerplate/img_store/icons/star-deactivated.png
+onlyinpgh/boilerplate/img_store/icons/star.png
+onlyinpgh/boilerplate/img_store/illus/blue-scratch.png
+onlyinpgh/boilerplate/img_store/illus/cloud-1730w.png
+onlyinpgh/boilerplate/img_store/illus/cloud-2500w.png
+onlyinpgh/boilerplate/img_store/illus/pgh-150h.png
+onlyinpgh/boilerplate/img_store/illus/pgh.png
+onlyinpgh/boilerplate/img_store/illus/sign-forcloud.png
+onlyinpgh/boilerplate/img_store/illus/sign-oncloud.png
+onlyinpgh/boilerplate/img_store/illus/sign.png
+onlyinpgh/boilerplate/img_store/l/apple-touch-icon-precomposed.png
+onlyinpgh/boilerplate/img_store/l/apple-touch-icon.png
+onlyinpgh/boilerplate/img_store/l/splash.png
+onlyinpgh/boilerplate/img_store/lblue_texture.png
+onlyinpgh/boilerplate/img_store/m/apple-touch-icon.png
+onlyinpgh/boilerplate/img_store/map.png
+onlyinpgh/boilerplate/img_store/mblue_texture.png
+onlyinpgh/boilerplate/img_store/mgreen_tex.png
+onlyinpgh/boilerplate/img_store/paper/bark.jpg
+onlyinpgh/boilerplate/img_store/paper/deep_sea.jpg
+onlyinpgh/boilerplate/img_store/paper/earth.jpg
+onlyinpgh/boilerplate/img_store/paper/eggshell.jpg
+onlyinpgh/boilerplate/img_store/paper/fawn.jpg
+onlyinpgh/boilerplate/img_store/paper/fern.jpg
+onlyinpgh/boilerplate/img_store/paper/limestone.jpg
+onlyinpgh/boilerplate/img_store/paper/mushroom.jpg
+onlyinpgh/boilerplate/img_store/paper/olive.jpg
+onlyinpgh/boilerplate/img_store/paper/sand.jpg
+onlyinpgh/boilerplate/img_store/paper/sedona.jpg
+onlyinpgh/boilerplate/img_store/paper/stormy_sky.jpg
+onlyinpgh/boilerplate/img_store/search.png
+onlyinpgh/boilerplate/img_store/test-big-bkgd.jpg
+onlyinpgh/boilerplate/img_store/tex-strong.png
+onlyinpgh/boilerplate/img_store/votingarrows.png
+onlyinpgh/boilerplate/img_store/white_tex.png
