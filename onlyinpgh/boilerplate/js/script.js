@@ -31,7 +31,7 @@ jQuery(document).ready( function($) {
 			});
 		});
 	}
-	window.setInterval(rotateBroadcast,5000);
+	//window.setInterval(rotateBroadcast,5000);
 
 	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 

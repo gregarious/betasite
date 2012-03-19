@@ -34,32 +34,24 @@ whole page response should render to this.
 	</span>
 </div> -->
 	
-<header id="site-header">		
-	<!-- <img id="header-image" src="/static/img/oakland/header/crude_brew_960.jpg" /> -->
-	<div class="wrap">
-		<hgroup>
-			<h1 id="site-title" class="global-heading">Oakland</h1>
-			<h2 id="site-tagline" class="global-heading">Scene</h2>
-		</hgroup>
-		
-		<input id="site-search" type="search" placeholder="Search the scene..." />	
 
-	</div>
 
-</header>
+<div id="global-wrap">
 
-<div class="wrap">
-	
 	<nav id="site-nav">
-	    <ul>
-			<li><a href="/" id="siteHot">Hot!</a></li>
-			<li><a href="/events/" id="siteEvents">Events</a></li>
-			<li><a href="/places/" id="sitePlaces">Places</a></li>
-			<li><a href="/specials/" id="siteSpecials">Specials</a></li>
-			<li><a href="/chatter/" id="siteChatter">Chatter</a></li>
-			<li><a href="/news/" id="siteNews">News</a></li>
-			<li><a id="siteJobs">Jobs</a></li>
-		</ul>
+		<div class-"fixed-pos">
+			<!-- logo to be a home link -->
+			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
+		    <ul>
+				<li><a href="/" id="siteHot">Hot!</a></li>
+				<li><a href="/events/" id="siteEvents">Events</a></li>
+				<li><a href="/places/" id="sitePlaces">Places</a></li>
+				<li><a href="/specials/" id="siteSpecials">Specials</a></li>
+				<li><a href="/chatter/" id="siteChatter">Chatter</a></li>
+				<li><a href="/news/" id="siteNews">News</a></li>
+				<li><a id="siteJobs">Jobs</a></li>
+			</ul>
+		</div>
 	</nav>
 
 	<div id="site-content" role="main">
@@ -76,30 +68,24 @@ whole page response should render to this.
 
 	</div>
 	
-<!-- DON'T COMMIT! -->
  	<aside id="site-sidebar" role="complementary">
-		<div id="debug-user" class="meta">
-			{% if user %}
-				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | 99 Burgher | <a class="logout" href="/logout">Logout</a>
-			{% else %}
-				<a href="/login">Login</a>
-			{% endif %}
+ 		<div class="fixed-pos">
+			<h3>Scenecast</h3>
+			<ul id="broadcast">
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+				<li>Sample sidebar content</li>
+			</ul>
 		</div>
-		<h3>Scenecast</h3>
-		<ul id="broadcast">
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-			<li>Sample sidebar content</li>
-		</ul>
 	</aside>
  
 	<footer id="site-footer">

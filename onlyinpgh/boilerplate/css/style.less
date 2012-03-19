@@ -10,7 +10,7 @@ body {
   background-attachment: fixed, fixed;
   background-position: bottom right, center;
   background-repeat: no-repeat, repeat;*/
-  background: url("/static/img_store/Oakland/abbey_road_bw.jpg") no-repeat fixed center;
+  background: url("/static/img_store/paper/eggshell.jpg") fixed;
   font-family: Helvetica, sans-serif;
 
   /*font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;*/
@@ -19,8 +19,8 @@ body {
 .wrap {
   max-width: 920px;
   margin: 0 auto;
-  .border-box;
-  .clearfix;
+  .border-box();
+  .clearfix();
   position: relative;
 }
 
@@ -53,18 +53,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   text-shadow: 0 0.09em 0.04em #fff;
 }
 
-#site-title {
-  color: #111;
-  font-family: 'Gill Sans', Arial, sans-serif;
-  font-size: 1.5em;
-  margin: 0;
-}
-
-#site-tagline {
-  font-size: 1em; 
-  margin: 0;
-}
-
 .section-title {
   border-top: 2px solid #286653;
   color: #fff;
@@ -72,10 +60,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   font-style: italic;
   font-weight: bold;
   .gradient(#052951, #1A5496);
-  /*background: url(/static/img_store/paper/stormy_sky.jpg);*/
   margin: 0;
   padding: 0.5em;
-  /*text-align: center;*/
   text-shadow: 0.1em 0.1em 0.04em #000;
 }
 
@@ -84,37 +70,61 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   font-size: 1.5em;
 }
 
-
 /* 4 SITE ---------- */
 
+#global-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 #site-search {
-  .column_nm(3.5);
+  .column_r(3.5);
 }
 
 #site-header {
-  .column_nm(12);
-  .gradient(#fff, #aaa);
+  .row();
   .fixed;
-  
   padding: 0.5em 0;
   /*.b-shadow-bot(1em, 1em, 0.1em, #000);*/
-  hgroup {
-    .column(2);
-    /*background-color: #DAF7B1;*/
-    /*.b-shadow(0, 0, 3px, #fff);*/
+  background: url("/static/img_store/paper/eggshell.jpg") fixed;
+
+  .wrap {
+    background: url("/static/img/obid_logo.png") no-repeat top left;
+    height: 80px;
     /*position: absolute;
     left: -1%;
     bottom: 30%;*/
   }
 }
 
-#site-nav {
+#site-content {
+  background: @mgreen;
+  .column(7);
+  margin-left: 50px;
+  margin-top: 0.5em;
+}
+
+#logo {
   position: fixed;
-  left: auto;
+  //right: 150px;
+  width: auto;
+}
+
+#site-nav {
+  .column(2);
+  /*left: auto;
   margin-left: -40px;
-  top: 50px;
+  */margin-top: 1em; 
+  position: relative;
+
   /*border-bottom: 0.3em #fff solid;*/
   ul {
+    position: fixed;
+    top: 120px;
+    margin-left: 130px;
+    //right: 0;
     li { 
       a {
         display: block;
@@ -147,26 +157,21 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   } 
 }
 
-.current-page {
-  background-color: @green !important;
+.fixed-pos {
+  .clearfix;
+  position: fixed;
 }
 
-#site-content {
-  background: fade(#fff, 60%);
-  .column(8.5);
-  position: relative;
-  top: 73px;
+.current-page {
+  background-color: @lgreen !important;
 }
 
 #site-sidebar {
-  .column(3.5);
-  max-width: 200px;
-  float: right;
-  padding: 0.5%;
+  .column_r(2.5);
 }
 
 #site-footer {
-  .clearfix;
+  .clearfix();
   margin-top: 2em;
 }
 
@@ -174,7 +179,8 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* HEADER COMPONENTS -------- */
 
 #debug-user {
-  .column(12);
+  .column_r(3);
+  float: right;
   margin: 0.5em 0;
 }
 
@@ -205,11 +211,16 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 @import "../LESS/feed";
 
 .item {
-  border-bottom: 1px #999 dashed;
+  background: url("/static/img_store/white_tex.png");
+  .b-shadow(0.3em, 0.3em, 0, @lblue);
 }
 
 .item-title {
 
+}
+
+.item-thumb {
+  border: ;
 }
 
 /* PAGE ---------- */
@@ -272,7 +283,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .redeem-form {
-  .clearfix;
+  .clearfix();
 
   span {
     height: 22pt;
@@ -352,7 +363,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 
 .utility-nav {
-  .row;
+  .row();
   margin-top: 1em;
 }
 
@@ -430,7 +441,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 16 CHATTER SPECIFIC ---------- */
 
 #chatterPage {
-  .clearfix;
+  .clearfix();
   margin: 0.5em 0;
 
   .sub-nav ul li {
@@ -502,7 +513,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .upvote {
-  background: url('../img_store/votingarrows.png') no-repeat left top;
+  background: url(../img_store/votingarrows.png) no-repeat left top;
   &:hover {
     background-position: right top;
   }
