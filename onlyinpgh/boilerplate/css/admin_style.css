@@ -239,6 +239,71 @@ td {
   color: black;
   padding: 0.2em 0;
 }
+/* 	Stylesheet to define le icons 
+*/
+/* 	TODO: 
+		Sprite sheet
+		Background positioning will be added 
+*/
+/* To be made into sprite sheet */
+a {
+  /* Single place nav */
+
+  /* Global nav */
+
+}
+a#placeAtAGlance {
+  background: #ffffff url('/static/img_using/photo-magnify.png') no-repeat center;
+}
+a#placeEvents {
+  background: #ffffff url('/static/img_using/calendar-alt.png') no-repeat center;
+}
+a#placeSpecials {
+  background: #ffffff url('/static/img_using/tag-special.png') no-repeat center;
+}
+a#placeMap {
+  background: #ffffff url('/static/img_using/map.png') no-repeat center;
+}
+a#placeChatter {
+  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
+}
+a#placeRelated {
+  background: #ffffff url('/static/img_using/list.png') no-repeat center;
+}
+a#siteHot {
+  background: #ffffff url('/static/img_using/campfire.png') no-repeat center;
+}
+a#sitePlaces {
+  background: #ffffff url('/static/img_using/store-front.png') no-repeat center;
+}
+a#siteEvents {
+  background: #ffffff url('/static/img_using/calendar-alt.png') no-repeat center;
+}
+a#siteSpecials {
+  background: #ffffff url('/static/img_using/tag-special.png') no-repeat center;
+}
+a#siteChatter {
+  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
+}
+a#siteNews {
+  background: #ffffff url('/static/img_using/newspaper.png') no-repeat center;
+}
+a#siteJobs {
+  background: #ffffff url('/static/img_using/suitcase.png') no-repeat center;
+}
+/* Actions */
+.favbutton.remove {
+  background: #ffffff url('/static/img_using/heart-cancel.png') no-repeat center;
+}
+.favbutton.add {
+  background: #ffffff url('/static/img_using/heart-add.png') no-repeat center;
+}
+.report {
+  background: #ffffff url('/static/img_using/alert.png') no-repeat center;
+}
+.post-to-chatter {
+  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
+}
 /* Will move this to template when that happens */
 /*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
 @import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);*/
