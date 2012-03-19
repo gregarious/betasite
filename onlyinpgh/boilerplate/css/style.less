@@ -2,17 +2,15 @@
 @import "../LESS/helpers";
 @import "../LESS/normalize";
 
-
-
 /* 1 ROOT ---------- */
 
 
 body {
-  /*background-image: url(/static/img/Oakland/RGB/Oakland_Vertical_RGB_Green.png), url(/static/img/paper/eggshell.jpg);
+  /*background-image: url(/static/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green.png), url(/static/img_store/paper/eggshell.jpg);
   background-attachment: fixed, fixed;
   background-position: bottom right, center;
   background-repeat: no-repeat, repeat;*/
-  background: url("/static/img/Oakland/abbey_road_bw.jpg") no-repeat fixed center;
+  background: url("/static/img_store/Oakland/abbey_road_bw.jpg") no-repeat fixed center;
   font-family: Helvetica, sans-serif;
 
   /*font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;*/
@@ -74,7 +72,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   font-style: italic;
   font-weight: bold;
   .gradient(#052951, #1A5496);
-  /*background: url(/static/img/paper/stormy_sky.jpg);*/
+  /*background: url(/static/img_store/paper/stormy_sky.jpg);*/
   margin: 0;
   padding: 0.5em;
   /*text-align: center;*/
@@ -157,17 +155,13 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   background: fade(#fff, 60%);
   .column(8.5);
   position: relative;
-  /*padding: 1%;*/
   top: 73px;
 }
 
 #site-sidebar {
   .column(3.5);
   max-width: 200px;
-  clear: both;
-  .fixed;
-  right: auto;
-  top: 73px;
+  float: right;
   padding: 0.5%;
 }
 
@@ -209,6 +203,14 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* FEED/ITEMS ---------- */
 
 @import "../LESS/feed";
+
+.item {
+  border-bottom: 1px #999 dashed;
+}
+
+.item-title {
+
+}
 
 /* PAGE ---------- */
 
@@ -295,7 +297,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 10 NAVIGATION ---------- */
 
 #date-nav-left, #date-nav-right {
-  background: url("../img/date-nav.png");
+  background: url("../img_store/date-nav.png");
   height: 19px;
   width: 19px;
 }
@@ -314,36 +316,34 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 11 TAGS ---------- */
 
 .tag-list {
-  .column_nm(12);
-  font-size: 0.9em;
-  margin: 1% 0 0;
-  ul {
-    li a {
-      color: #888;
-      float: left;
-      margin: 0 1% 1% 0;
-      padding: 1%;
-      text-decoration: none;
-      text-shadow: 1px 1px 1px #fff;
-      .border-box;
 
-      &:hover {
+  li {
+
+    a {
+      color: #888; 
+    
+      &:hover, &:active {
         color: #fff;
         text-shadow: 0 0 0.1em #333;
-        .gradient(#aaa, #999);
-        .rounded(0.5em);  
-      }
+      }      
+    }
 
-      &:active {
+    &:hover {
+      .gradient(#aaa, #999);
+      .rounded(0.5em);  
+
+      a {
         color: #fff;
         text-shadow: 0 0 0.1em #333;
-        .gradient(#999, #aaa);
-        .rounded(0.5em);
-        position: relative;
-        top: 1px;
-        left: 1px;
       }
+    }
 
+    &:active {
+      .gradient(#999, #aaa);
+      .rounded(0.5em);
+      position: relative;
+      top: 1px;
+      left: 1px;
     }
   }
 }
@@ -352,7 +352,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 
 .utility-nav {
-  .column(12);
+  .row;
   margin-top: 1em;
 }
 
@@ -502,14 +502,14 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 }
 
 .upvote {
-  background: url('../img/votingarrows.png') no-repeat left top;
+  background: url('../img_store/votingarrows.png') no-repeat left top;
   &:hover {
     background-position: right top;
   }
 }
 
 .downvote {
-  background: url('../img/votingarrows.png') no-repeat left bottom;
+  background: url('../img_store/votingarrows.png') no-repeat left bottom;
 
   &:hover {
     background-position: right bottom;

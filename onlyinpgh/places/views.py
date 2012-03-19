@@ -77,7 +77,7 @@ def feed_page(request):
     # render the feed full of items
     content = render_list(rendered_items,
         tag_type='ul',
-        class_label='places-feed')
+        class_label='feed')
 
     return render_to_page(content, request=request)
 
