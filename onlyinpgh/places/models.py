@@ -177,10 +177,6 @@ class Location(models.Model, ViewModel):
         return s.rstrip(', ')
 
 
-class PlaceProfileNotAvailable(Exception):
-    pass
-
-
 class Place(models.Model, ViewModel):
     '''
     Handles information about places.
@@ -191,53 +187,12 @@ class Place(models.Model, ViewModel):
     dtcreated = models.DateTimeField('dt created', auto_now_add=True)
     name = models.CharField(max_length=200, blank=True)
     location = models.ForeignKey(Location, blank=True, null=True)
-    image_url = models.URLField(max_length=400)
+
+    image_url = models.URLField(max_length=400,blank=True)
+    description = models.TextField(blank=True)
+
     tags = models.ManyToManyField(Tag, blank=True)
 
-    def __unicode__(self):
-        s = self.name
-        if self.location and self.location.address:
-            s += u' (%s)' % self.location.address
-        return s
-
-    def get_profile(self):
-        """
-        Returns the associated PlaceProfile. A simplified version of
-        the code laid out in django.contrib.auth.User.get_profile.
-        """
-        if not hasattr(self, '_profile_cache'):
-            try:
-                self._profile_cache = PlaceProfile.objects.get(place__id__exact=self.id)
-            except PlaceProfile.DoesNotExist:
-                raise PlaceProfileNotAvailable
-        return self._profile_cache
-
-    def to_data(self):
-        '''
-        Overrides ViewModel's to_data to ignore dtcreated and
-        extract tags.
-        '''
-        # TODO: remove temporary placeholder
-        image_url = self.image_url or 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
-
-        return {
-            'id': self.id,
-            'name': self.name,
-            'location': self.location.to_data(),
-            'image_url': image_url,
-            'tags': [tag.to_data() for tag in self.tags.all()]
-        }
-
-
-class PlaceProfile(models.Model, ViewModel):
-    '''
-    Extended information about a place
-    '''
-    class Meta:
-        ordering = ['place']
-
-    place = models.OneToOneField(Place)
-    description = models.TextField(blank=True)
     hours = models.TextField('comma-separated Day:Hour entries', blank=True)
     parking = models.CharField(max_length=200, blank=True)
     phone = models.CharField(max_length=200, blank=True)
@@ -247,14 +202,38 @@ class PlaceProfile(models.Model, ViewModel):
     twitter_username = models.CharField(max_length=15, blank=True)
 
     def __unicode__(self):
-        return unicode(self.place)
+        s = self.name
+        if self.location and self.location.address:
+            s += u' (%s)' % self.location.address
+        return s
 
+    # def get_profile(self):
+    #     """
+    #     Returns the associated PlaceProfile. A simplified version of
+    #     the code laid out in django.contrib.auth.User.get_profile.
+    #     """
+    #     if not hasattr(self, '_profile_cache'):
+    #         try:
+    #             self._profile_cache = PlaceProfile.objects.get(place__id__exact=self.id)
+    #         except PlaceProfile.DoesNotExist:
+    #             raise PlaceProfileNotAvailable
+    #     return self._profile_cache
 
-# signal handler to automatically create a new UserProfile
-def create_place_profile(sender, instance, created, **kwargs):
-    if created:
-        PlaceProfile.objects.create(place=instance)
-post_save.connect(create_place_profile, sender=Place)
+    # def to_data(self):
+    #     '''
+    #     Overrides ViewModel's to_data to ignore dtcreated and
+    #     extract tags.
+    #     '''
+    #     # TODO: remove temporary placeholder
+    #     image_url = self.image_url or 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
+
+    #     return {
+    #         'id': self.id,
+    #         'name': self.name,
+    #         'location': self.location.to_data(),
+    #         'image_url': image_url,
+    #         'tags': [tag.to_data() for tag in self.tags.all()]
+    #     }
 
 
 class PlaceMeta(models.Model):

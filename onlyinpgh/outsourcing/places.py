@@ -8,7 +8,7 @@ import re
 import copy
 
 from onlyinpgh.outsourcing.apitools.factual import FactualAPIError
-from onlyinpgh.outsourcing.apitools import geocoding_client, factual_client
+from onlyinpgh.outsourcing.apitools import geocoding_client_factory, factual_client_factory
 from onlyinpgh.places.models import Place, Location
 
 import logging
@@ -48,7 +48,7 @@ def _geocode_result_to_location(result):
     )
 
 
-def resolve_place(partial_place=None, partial_location=None):
+def resolve_place(partial_place=None, partial_location=None, retry=None):
     '''
     Resolves a partial Place or Location object into a complete Place
     using the Factual Resolve API. Returns None if resolution was not
@@ -61,6 +61,7 @@ def resolve_place(partial_place=None, partial_location=None):
         loc = partial_location
         pl_name = None
 
+    factual_client = factual_client_factory(retry=retry)
     try:
         if loc is None:
             resp = factual_client.resolve(name=pl_name)
@@ -83,7 +84,7 @@ def resolve_place(partial_place=None, partial_location=None):
         return None
 
 
-def resolve_location(partial_location, allow_numberless=True):
+def resolve_location(partial_location, allow_numberless=True, retry=None):
     '''
     Resolves a partial Location object into a complete one using the Google
     Geocoding API. Useful for fleshing out non-named locations not in Factual's
@@ -114,6 +115,7 @@ def resolve_location(partial_location, allow_numberless=True):
         biasing_args['region'] = partial_location.country
 
     # Run the geocoding
+    geocoding_client = geocoding_client_factory(retry=retry)
     response = geocoding_client.run_geocode_request(address_text, **biasing_args)
     result = response.best_result(wrapped=True)
     # TODO: add ambiguous result handling
@@ -357,7 +359,7 @@ def smart_text_resolve(address_text, seed_location=None):
     return SmartTextResolveResult(address_text, 'FAILURE')
 
 
-def normalize_street_address(address_text):
+def normalize_street_address(address_text, timeout=None, retry=None):
     '''
     Given a free-formed address in a string, returns the normalized street
     address portion of a result obtained by Google Geocoding API.
@@ -368,6 +370,7 @@ def normalize_street_address(address_text):
 
     Returns None if normalization was not possible.
     '''
+    geocoding_client = geocoding_client_factory(timeout=timeout, retry=retry)
     response = geocoding_client.run_geocode_request(address_text)
     result = response.best_result(wrapped=True)
     # TODO: add ambiguous result handling

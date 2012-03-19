@@ -3,7 +3,7 @@ from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_respon
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.template import RequestContext
-from onlyinpgh.places.models import Place, PlaceProfile
+from onlyinpgh.places.models import Place
 #from onlyinpgh.accounts.models import FavoriteItem
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
@@ -63,9 +63,8 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
+    raise NotImplementedError('temporary out of order: new place model structure')
     # get a list of rendered items
-    # TODO: look into efficiency of this call. should we be selective about description? should we center query on Place or Profile?
-    # TODO: also consider case where place has no associated profile. think if this should even be allowed in model logic
     places = Place.objects.select_related().all()[:10]
     feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     rendered_items = [render_viewmodel(item,
@@ -124,6 +123,7 @@ def detail_page(request, pid):
 
 @jsonp_response
 def feed_app(request):
+    raise NotImplementedError('temporary out of order: new place model structure')
     profiles = PlaceProfile.objects.select_related().all()[:10]
     feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
     return [item.to_data() for item in feed_items]
@@ -131,9 +131,11 @@ def feed_app(request):
 
 @jsonp_response
 def detail_app(request, pid):
+    raise NotImplementedError('temporary out of order: new place model structure')
     profile = PlaceProfile.objects.select_related().get(place__id=pid)
     details = PlaceDetail(profile, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
+
 
 @jsonp_response
 def place_lookup(request):
@@ -147,6 +149,7 @@ def place_lookup(request):
 
 ###### MANGEMENT-RELATED VIEWS ######
 
+
 def biz_create_place(request):
     if 'fakeuser' not in request.session:
         return redirect('biz_signup')
@@ -156,6 +159,7 @@ def biz_create_place(request):
         'places/manage/create_place.html', {'form': form, 'mode': 'edit'},
         context_instance=RequestContext(request)))
     return render(request, 'manage_base.html', {'content': form_html})
+
 
 def biz_edit_place(request, pid):
     if 'fakeuser' not in request.session:
