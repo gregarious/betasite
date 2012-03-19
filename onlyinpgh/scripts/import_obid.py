@@ -125,11 +125,12 @@ def insert_row(row, idx=None):
 
     # if fb import failed, do it manually
     if not place:
-        place, created = Place.objects.get_or_create(name=row.name, location=location)
-        profile = place.get_profile()
-        profile.url = row.url[:200]
-        profile.phone = row.phone[:200]
-        profile.save()
+        place, created = Place.objects.get_or_create(
+            name=row.name,
+            location=location,
+            url=row.url[:200],
+            phone=row.phone[:200]
+            )
 
     logger.info('Imported %s as Place' % row.name)
 
