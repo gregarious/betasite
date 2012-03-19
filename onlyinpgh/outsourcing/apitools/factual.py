@@ -1,65 +1,73 @@
-# create Resolver class that has ability to create hints for fields (e.g. feed 
+# create Resolver class that has ability to create hints for fields (e.g. feed
 #   reader would use it with city fixed in Pgh)
 
 from onlyinpgh.outsourcing.apitools import APIError
 from onlyinpgh.outsourcing.apitools import build_oauth_request, delayed_retry_on_ioerror
 
-import urllib, urllib2, json, time
+import urllib
+import urllib2
+import json
 import logging
 
 outsourcing_log = logging.getLogger('onlyinpgh.outsourcing')
 
+
 class FactualAPIError(APIError):
-    def __init__(self,request,error_type,message,*args,**kwargs):
+    def __init__(self, request, error_type, message, *args, **kwargs):
         self.request = request
         self.error_type = error_type
         self.message = message
-        super(FactualAPIError,self).__init__('factual',*args,**kwargs)    
+        super(FactualAPIError, self).__init__('factual', *args, **kwargs)
+
 
 class FactualClient(object):
     RESOLVE_URL = "http://api.v3.factual.com/places/resolve"
-    def __init__(self,oauth_key,oauth_secret):
+
+    def __init__(self, oauth_key, oauth_secret, retry=None):
         self.key = oauth_key
         self.secret = oauth_secret
-    
-    def resolve(self,name=None,address=None,town=None,state=None,postcode=None,
-                latitude=None,longitude=None):
+        self.retry = retry or 5
+
+    def resolve(self, name=None, address=None, town=None, state=None, postcode=None,
+                latitude=None, longitude=None):
         '''
-        Runs a Factual Resolve API call with the given search options and 
+        Runs a Factual Resolve API call with the given search options and
         returns a ResolveResponse object. Will raise a FactualAPIError if
         response returns a non-OK status.
         '''
         query_opts = dict(
-            name = name,
-            address = address,
-            locality = town,
-            region = state,
-            postcode = postcode,
-            latitude = latitude,
-            longitude = longitude,
+            name=name,
+            address=address,
+            locality=town,
+            region=state,
+            postcode=postcode,
+            latitude=latitude,
+            longitude=longitude,
         )
 
         # make a JSON version with all None valued-parameters stripped out
-        json_query = json.dumps( {key:val for key,val in query_opts.items() if val is not None} )
+        json_query = json.dumps(dict([(key, val) for key, val in query_opts.items()
+                                if val is not None]))
 
-        full_url = FactualClient.RESOLVE_URL + '?' + urllib.urlencode({'values':json_query})
-        request = build_oauth_request(full_url,self.key,self.secret)
+        full_url = FactualClient.RESOLVE_URL + '?' + urllib.urlencode({'values': json_query})
+        request = build_oauth_request(full_url, self.key, self.secret)
 
-        response = delayed_retry_on_ioerror(lambda:ResolveResponse(urllib2.urlopen(request)),
-                                            5,5,outsourcing_log)
+        response = delayed_retry_on_ioerror(lambda: ResolveResponse(urllib2.urlopen(request)),
+                                            4, self.retry, outsourcing_log)
 
         if response.status != 'ok':
-            raise FactualAPIError(request,response.error_type,response.message)
+            raise FactualAPIError(request, response.error_type, response.message)
         return response
+
 
 class ResolveResponse(object):
     '''
     Object representation of a response received from the Resolve API
 
-    See http://developer.factual.com/display/docs/Places+API+-+Resolve 
+    See http://developer.factual.com/display/docs/Places+API+-+Resolve
     for details.
     '''
-    def __init__(self,response):
+    def __init__(self, response):
         '''response can be string or file-like object'''
         try:
             # see if it's a file-like object
@@ -73,8 +81,8 @@ class ResolveResponse(object):
             response = json.loads(response_text)
             self.version = response['version']
             self.status = response['status']
-            self.error_type = response.get('error_type',None)
-            self.message = response.get('message',None)
+            self.error_type = response.get('error_type', None)
+            self.message = response.get('message', None)
             data = response['response']['data']
         except ValueError:      # result for 02053b6a-a96b-42b4-99dd-8e865d029e2e had some bad json?
             self.results = None
@@ -85,14 +93,14 @@ class ResolveResponse(object):
             # multiple results with similarity of 1 and yet mark the first result's
             # "resolved" status is True. This seems counter to the philosophy of the
             # Resolve API, so we're hacking the resolved status to False for now.
-            if len([1 for result in data if result['similarity']==1]) > 1:
+            if len([1 for result in data if result['similarity'] == 1]) > 1:
                 data[0]['resolved'] = False
             self.results = data
 
     def get_resolved_result(self):
         '''
-        Returns the one and only "resolved" result, if it exists. Return 
-        False if it doesnt. Return value is a dict containing place 
+        Returns the one and only "resolved" result, if it exists. Return
+        False if it doesnt. Return value is a dict containing place
         components as well as resolve-specific "similarity" and "resolved"
         fields.
         '''
