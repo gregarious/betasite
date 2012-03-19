@@ -1,4 +1,5 @@
 .DS_Store
+<<<<<<< HEAD
 onlyinpgh/boilerplate/css/fonts/
 onlyinpgh/boilerplate/img/Oakland/
 onlyinpgh/boilerplate/img/icons/black/add.png
@@ -895,3 +896,7 @@ onlyinpgh/boilerplate/img/illus/sign-forcloud.png
 onlyinpgh/boilerplate/img/illus/sign-oncloud.png
 onlyinpgh/boilerplate/img/illus/sign.png
 onlyinpgh/boilerplate/img/test-big-bkgd.jpg
+=======
+onlyinpgh/boilerplate/img/*
+
+>>>>>>> refs/heads/master

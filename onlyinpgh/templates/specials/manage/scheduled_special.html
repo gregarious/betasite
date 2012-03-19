@@ -1,0 +1,25 @@
+{% extends "organizations/manage/scheduled_item.html" %}
+
+{% block item_id %}special-massage{% endblock item_id %}
+
+{% block scheduled_item_thumb %}
+	<div class="points">+5</div>
+{% endblock %}
+
+{% block scheduled_item_title %}
+	$5 for an excellent special! 
+{% endblock %}
+
+{% block scheduled_item_details %}
+	<time class="datetime meta">Good from Dec. 13 - Jan 24</time>
+	<p class="address meta">123 Excellent St. Pittsburgh</p>
+{% endblock %}
+
+{% block scheduled_item_tags %}
+	<li><a>food</a></li>
+	<li><a>casual</a></li>
+	<li><a>italian</a></li>
+{% endblock %}
+
+{% block scheduled_item_footer %}
+{% endblock %}

@@ -12,6 +12,6 @@ class Article(models.Model):
     source_url = models.URLField(max_length=400)
 
     source_name = models.CharField(max_length=100)
-    dt_published = models.DateTimeField('datetime of source publication (UTC)')
+    dt_published = models.DateTimeField('datetime of source publication')
 
     tags = models.ManyToManyField(Tag,blank=True)

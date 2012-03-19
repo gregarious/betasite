@@ -1,14 +1,27 @@
 from pytz import timezone, utc
+from onlyinpgh.settings import TIME_ZONE
 
 # cliff's notes on converting a UTC dt:
 # >>> from pytz import timezone
 # >>> utc = timezone('utc'); est = timezone('US/Eastern')
 # >>> utc_dt = utc.localize(dt)                         % change the tz-agnostic datetime into a utc datetime
 # >>> est_dt = est.normalize(utc_dt.astimezone(est))    % convert into the EST timezone
-# Note that just setting tzinfo to localize and using datetime.astimezone to convert isn't enough. the pytz 
+# Note that just setting tzinfo to localize and using datetime.astimezone to convert isn't enough. the pytz
 #   normalize/localize methods are needed to ensure Daylight savings special cases are handled
 
-def utctolocal(dt,local_tz_name,return_naive=False):
+
+def localize(dt, local_tz_name=None):
+    '''
+    Localizes a tz-naive datetime. Can manually choose timezone by
+    specifying argument, or go with server's default.
+    '''
+    if dt.tzinfo:
+        raise ValueError('Given datetime must be timezone naive!')
+    tz = local_tz_name or TIME_ZONE
+    return timezone(tz).localize(dt)
+
+
+def utctolocal(dt, local_tz_name, return_naive=False):
     '''
     Converts the given datetime to the time zone given by local_tz_name.
 
@@ -21,17 +34,18 @@ def utctolocal(dt,local_tz_name,return_naive=False):
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=utc)   # change the tz-agnostic datetime into a utc datetime
     elif dt.tzinfo != utc:
-        raise ValueError('Given datetime has non-UTC tzinfo: %s'%str(dt.tzinfo))
+        raise ValueError('Given datetime has non-UTC tzinfo: %s' % str(dt.tzinfo))
 
     dt = tz_local.normalize(dt.astimezone(tz_local))    # convert into the local timezone
-    
+
     # return either a tz naive or aware version of the new dt
     return dt if not return_naive else dt.replace(tzinfo=None)
 
-def localtoutc(dt,local_tz_name=None,return_naive=False):
+
+def localtoutc(dt, local_tz_name=None, return_naive=False):
     '''
     Converts the given datetime to UTC. If local_tz_name is given, a tzinfo-
-    naive dt will be assumed to have the given time zone (this is often more 
+    naive dt will be assumed to have the given time zone (this is often more
     convenient that just setting the dt's tzinfo manually due to the need
     to use pytz functionality).
 
@@ -47,11 +61,11 @@ def localtoutc(dt,local_tz_name=None,return_naive=False):
             dt = tz_local.localize(dt)   # change the tz-agnostic datetime into a local datetime     and dt.tzinfo != tz_local:
         elif dt.tzinfo != tz_local:
             raise ValueError('Given datetime tzinfo (%s) conflicts with local_tz_name argument (%s)' % \
-                                (str(dt.tzinfo),str(local_tz_name)))
+                                (str(dt.tzinfo), str(local_tz_name)))
     elif not dt.tzinfo:
         # no local_tz_name of dt.tzinfo. we don't know what the given datetime's timezone is.
         raise ValueError('No local tzinfo available for given datetime.')
- 
+
     dt = dt.astimezone(utc)
     # return either a tz naive or aware version of the new dt
     return dt if not return_naive else dt.replace(tzinfo=None)

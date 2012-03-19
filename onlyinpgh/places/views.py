@@ -1,26 +1,22 @@
-from django.shortcuts import render
-from django.template import Context
-from django.template.loader import get_template
-from django.utils.safestring import SafeUnicode
-from onlyinpgh.common.utils.jsontools import json_response, jsonp_response, package_json_response
+from django.utils.safestring import mark_safe
+from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
+from django.template import RequestContext
+from onlyinpgh.places.models import Place, PlaceProfile
+#from onlyinpgh.accounts.models import FavoriteItem
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
-from onlyinpgh.places.models import Place
-from onlyinpgh.identity.models import FavoriteItem
-from onlyinpgh.places.viewmodels import PlacesFeed, PlaceDetail, PlaceRelatedFeeds
-
-# for feed collection building
+from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
 
 from datetime import datetime, timedelta
-import urllib
-from time import sleep
 
-def _places_all():
-    return Place.objects.select_related().all()[:10]
 
 def _get_checkin_cutoff():
     return datetime.utcnow() - timedelta(hours=3)
 
-def _handle_place_action(request,pid,action):
+
+def _handle_place_action(request, pid, action):
     '''
     Returns a status dict that resulted from the action.
     '''
@@ -58,20 +54,35 @@ def _handle_place_action(request,pid,action):
         else:
             return failure('invalid action')
 
+
 def feed_page(request):
     '''
     View function that handles a page load request for a feed of place
-    items. 
+    items.
 
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
+    # get a list of rendered items
+    # TODO: look into efficiency of this call. should we be selective about description? should we center query on Place or Profile?
+    # TODO: also consider case where place has no associated profile. think if this should even be allowed in model logic
+    places = Place.objects.select_related().all()[:10]
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
+    rendered_items = [render_viewmodel(item,
+                            template='places/feed_item.html',
+                            tag_type='li',
+                            class_label='item')
+                        for item in feed_items]
 
-    return render(request,'page.html',
-                    {'main_content':feed.to_html(request)})
+    # render the feed full of items
+    content = render_list(rendered_items,
+        tag_type='ul',
+        class_label='places-feed')
 
-def detail_page(request,pid):
+    return render_to_page(content, request=request)
+
+
+def detail_page(request, pid):
     '''
     View displays single places as well as handling many user actions taken
     on these places.
@@ -88,7 +99,7 @@ def detail_page(request,pid):
     action = request.GET.get('action')
     if action:
         # handle the action and get a dict with details about the result
-        result = _handle_place_action(request,pid,action)
+        result = _handle_place_action(request, pid, action)
         # if the request was made via AJAX, client just expects the result dict returned as JSON
         if request.is_ajax():
             return package_json_response(result)
@@ -96,27 +107,62 @@ def detail_page(request,pid):
 
     # build and render place detail viewmodel
     place = Place.objects.select_related().get(id=pid)
-    details = PlaceDetail(place,user=request.user)
-    html = details.to_html(request)
+    details = PlaceDetail(place, user=request.user)
+    content = render_viewmodel(details,
+                template='places/single.html',
+                class_label='place-single')
 
-    html += SafeUnicode(u'\n<hr/><hr/>\n')
+    # content += SafeUnicode(u'\n<hr/><hr/>\n')
 
     # build and render related feeds viewmodel
-    related_feeds = PlaceRelatedFeeds(place,user=request.user)
-    html += related_feeds.to_html(request)
+    # related_feeds = PlaceRelatedFeeds(place, user=request.user)
+    # content += related_feeds.to_html(request)
 
-    # as long as there was no AJAX-requested action, we will return a fully rendered new page 
-    return render(request,'page.html',
-            Context({'main_content':html}))
+    # as long as there was no AJAX-requested action, we will return a fully rendered new page
+    return render_to_page(content, request=request)
 
-## APP VIEW FUNCTIONS CURRENTLY BROKEN ##
+
 @jsonp_response
 def feed_app(request):
-    feed = PlacesFeed.init_from_places(_places_all(),user=request.user)
-    return feed.to_data()   # decorator will handle JSON response wrapper
+    profiles = PlaceProfile.objects.select_related().all()[:10]
+    feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
+    return [item.to_data() for item in feed_items]
+
 
 @jsonp_response
-def detail_app(request,pid):
-    place = Place.objects.select_related().get(id=pid)
-    details = PlaceDetail(place,user=request.user)
+def detail_app(request, pid):
+    profile = PlaceProfile.objects.select_related().get(place__id=pid)
+    details = PlaceDetail(profile, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
+
+@jsonp_response
+def place_lookup(request):
+    if request.GET:
+        results = Place.objects.filter(name__icontains=request.GET.get('q', ''))
+        limit = request.GET.get('limit')
+        if limit:
+            results = results[:limit]
+
+    return [{'id':p.id, 'name':p.name} for p in results]
+
+###### MANGEMENT-RELATED VIEWS ######
+
+def biz_create_place(request):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
+    form = None
+    form_html = mark_safe(render_to_string(
+        'places/manage/create_place.html', {'form': form, 'mode': 'edit'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})
+
+def biz_edit_place(request, pid):
+    if 'fakeuser' not in request.session:
+        return redirect('biz_signup')
+
+    form = None
+    form_html = mark_safe(render_to_string(
+        'places/manage/edit_place.html', {'form': form, 'mode': 'edit'},
+        context_instance=RequestContext(request)))
+    return render(request, 'manage_base.html', {'content': form_html})

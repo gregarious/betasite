@@ -21,7 +21,6 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-
 <!-- <div id="top-bar">
 	<span id="other-scenes">
 		Related scenes:
@@ -71,10 +70,14 @@ whole page response should render to this.
 			</div>
 		</div>
 	
-		{{main_content}}
+	    {% autoescape off %}
+		    {{main_content}}
+	    {% endautoescape %}
+
 	</div>
 	
-	<aside id="site-sidebar" role="complementary">
+<!-- DON'T COMMIT!
+ 	<aside id="site-sidebar" role="complementary">
 		<div id="debug-user" class="meta">
 			{% if user %}
 				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | 99 Burgher | <a class="logout" href="/logout">Logout</a>
@@ -98,12 +101,11 @@ whole page response should render to this.
 			<li>Sample sidebar content</li>
 		</ul>
 	</aside>
-
+ -->
 	<footer id="site-footer">
 		<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
 	</footer>
 
 </div>
-
 
 {% endblock %}

@@ -352,7 +352,10 @@ header:after, section:after {
 }
 img {
   height: auto;
+  /* 
+  Greg hack: commented this out: was making images HUGE
   width: 100%;
+  */
   max-width: 800px;
 }
 /* 2 TYPOGRAPHY ---------- */

@@ -1,0 +1,81 @@
+
+<div class="content-container">
+
+	<header class="content-header">
+		<h2>Register</h2>
+	</header>
+
+	<form action="" method="POST" >
+		{% csrf_token %}
+		<div class="field-container first">
+			<fieldset>
+				{{ form.email.errors }}
+				<label class="input-label">{{ form.email.label }}</label>
+				<div class="inputs">
+					<input type="text" name="{{ form.email.html_name }}" placeholder="awesome@cool.com" value="{{ form.email.value }}"/>
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="field-container">
+			<fieldset>
+				{{ form.password1.errors }}
+				<label class="input-label">{{ form.password1.label }}</label>
+				<div class="inputs">
+					<input type="password" name="{{ form.password1.html_name }}" placeholder="Excellent password" />
+				</div>
+			</fieldset>
+
+			<fieldset>
+				{{ form.password2.errors }}
+				<label class="input-label">{{ form.password2.label }}</label>
+				<div class="inputs">
+					<input type="password" id="confirm-pass" name="{{ form.password2.html_name }}" placeholder="Confirm password" />
+				</div>
+			</fieldset>
+		</div> <!-- .field-container -->
+
+		<div class="field-container last">
+			<fieldset>
+				{{ form.business.errors }}
+				<div class="ui-widget">
+					<label class="input-label">{{ form.business.label }}</label>
+					<div class="inputs">
+						<input name="{{ form.business.html_name }}" id="{{ form.business.id_for_label }}" value="" type="text" placeholder="Your Business" class="double" />
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					$(function() {
+						$("#{{ form.business.id_for_label }}").autocomplete({
+							source: function(request,response) {
+								$.ajax({
+									url: '/places/lookup/all',
+									data: {'q':request.term, 'limit':10},
+									success: function(data) {
+										data = $.map( data, function( item ) {
+											return item.name;
+										});
+										console.log('response');
+										response(data);
+									}
+								});
+							},
+
+							open: function() {
+								$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+							},
+							close: function() {
+								$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+							}
+						});
+					});
+				</script>
+			</fieldset>
+		</div> <!-- .field-container -->
+
+		<button type="submit" class="submit-item">Submit</button>
+
+	</form>
+
+</div>

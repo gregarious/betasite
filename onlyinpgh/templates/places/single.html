@@ -5,18 +5,18 @@ Corresponding ViewModel: places.viewmodels.PlaceDetail
 
 Context variables:
     place:      		Place object with extra fields (e.g. url, hours)
+    	-- Note that place.location will have an optional directions_link field
     is_favorite:		boolean (optional)
     tag_list:			a TagList RenderableViewModel
     featured_special: 	Offer object (optional)
-    directions_link:	Google Maps link (optional)
 {% endcomment %}
 
-{% load self_render from viewmodel_tags %}
+<header class="single-header">	
 
-<header class="single-header">		
 	<h2 class="single-title">{{ place.name }}</h2>
+
 	<div class="single-thumb-container">
-		<img alt="{{ place.name }}" src="{{ place.image_url }}" height="500" width="500" />
+		<img alt="{{ place.name }}" src="{{ place.image_url }}" />
 		<ul class="utility-nav">
 			{% if is_favorite %}
 				<li><a href="?action=unfav" class="favbutton remove" title="Remove Favorite"></a></li>
@@ -27,13 +27,14 @@ Context variables:
 			<li><a href="#" class="post-to-chatter" title="Post to Chatter"></a></li>
 		</ul>
 	</div>
+
 	<div class="single-details">
 		<ul>
 			{% if place.location.address %}
 				<li class="address">
 				{{ place.location.address }}
-				{% if directions_link %}
-					<a href="{{directions_link}}">(directions)</a>
+				{% if place.location.directions_link %}
+					<a href="{{place.location.directions_link}}">(directions)</a>
 				{% endif %}
 				</li>
 			{% endif %}
@@ -53,7 +54,9 @@ Context variables:
 			{% endif %}
 
 		</ul>
-			{% self_render tag_list %}
+
+		{% include "tags/tag_list.html" with tags=place.tags %}
+
 	</div>
 </header>
 

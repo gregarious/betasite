@@ -1,0 +1,40 @@
+<div class="field-container first">
+	<fieldset>
+		<label class="input-label">Business Name</label>
+		<div class="inputs">
+			<input type="text" placeholder="Your Business Name" />
+		</div>
+	</fieldset>
+</div> <!-- .field-container -->
+
+<div class="field-container">
+	<fieldset>
+		<label>Address</label>
+		<div class="inputs">
+			<input type="text" placeholder="Address" />
+			<input type="text" placeholder="Apt or Suite #" />
+			<p class="tip">Just the essentials, we know you're in Pittsburgh :)</p>
+		</div>
+	</fieldset>
+</div> <!-- .fieldset-container -->
+
+<div class="field-container last">
+	<fieldset>
+		<label>Phone</label>
+		<div class="inputs">
+			<input type="text" placeholder="(412)...what else?" />
+		</div>
+	</fieldset>
+	<fieldset class="last">	
+		<label>Website</label>
+		<div class="inputs">
+			<input type="text" placeholder="http://coolrestaurant.com" />
+		</div>
+	</fieldset>
+</div> <!-- .field-container -->
+
+<div class="prev-next">
+	<a href="#panelTwo" name="panel-two" class="next shift-panel">Next &rarr;</a>
+</div>
+
+{% include 'places/manage/progress.html' %}

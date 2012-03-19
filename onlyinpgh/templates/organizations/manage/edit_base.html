@@ -1,0 +1,16 @@
+{% extends "manage_base.html" %}
+
+{% block content %}
+	<div class="content-container admin" id="place">
+		{% block form_contents %}
+		{% endblock %}
+		<div class="prev-next">
+			<button class="back">Cancel</button>
+			<!-- If editing existing special -->
+			<button class="next">Save Changes</button>
+			<!-- If adding an special -->
+			<!-- <button class="next">Add Special</button> -->
+		</div>
+	</div>
+
+{% endblock %}
