@@ -1,0 +1,16 @@
+Event edit form
+<form method="post" action="">
+{% csrf_token %}
+{% comment %}
+form fields:
+    name
+    description
+    dtstart
+    dtend
+    allday (checkbox - just checkbox is good for now. we'll need some jQuery later that hides dtstart/dtend if this is checked)
+    image_url
+    url
+    place
+    (no tags for now - waiting on django-autocomplete)
+{% endcomment %}
+</form>

@@ -14,7 +14,7 @@
 <body>
 
 	<header id="site-header">
-		<h1 id="site-title"><a href="/business/home">Scenable Business Account</a></h1>
+		<h1 id="site-title"><a href="{% url orgadmin.views.page_home %}">Scenable Business Account</a></h1>
 		<span id="userbar">
 			{% if user.is_authenticated %}
 				{{ user.username }} | <a href="{% url orgadmin.views.page_logout %}">Logout</a>
@@ -23,6 +23,9 @@
 				<a href="{% url orgadmin.views.page_login %}">Log In</a>
 			{% endif %}
 		</span>
+		{% if current_org %}
+			<p>Currently managing: {{ current_org.name }}</p>
+		{% endif %}
 
 	</header>
 
