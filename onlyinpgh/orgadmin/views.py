@@ -5,7 +5,6 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.forms.util import ErrorList
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
 
 from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm
 
@@ -49,6 +48,7 @@ def page_signup(request):
     else:
         form = OrgSignupForm()
 
+    request.session.set_test_cookie()
     context = RequestContext(request)
     content = render_to_string('orgadmin/signup_form.html',
         {'form': form}, context_instance=context)
