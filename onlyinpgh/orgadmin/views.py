@@ -81,7 +81,11 @@ def page_login(request):
             login(request, user)
 
             # just default to first org in the list for now
-            request.session['current_org'] = Organization.objects.filter(administrators=user)[0]
+            owned_orgs = Organization.objects.filter(administrators=user)
+            if len(owned_orgs) > 0:
+                request.session['current_org'] = owned_orgs[0]
+            else:
+                request.session['current_org'] = None
 
             # redirect to homepage
             redirect_to = reverse('orgadmin-home')
