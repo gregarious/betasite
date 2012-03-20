@@ -27,30 +27,24 @@ def to_directions_link(location):
 
 class PlaceFeedItem(ViewModel):
     def __init__(self, place, user=None):
-        raise NotImplementedError('temporary out of order: new place model structure')
         super(PlaceFeedItem, self).__init__()
         self.place = place
-        # description isn't part of core Place
-        self._description = place.get_profile().description
         # TODO: reenable favorites when user model is created
         # if user:
         #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
 
     def to_data(self):
         data = super(PlaceFeedItem, self).to_data()
-        # add description to the place entry
-        data['place']['description'] = self._description
+        place_data = data['place']
+        keys_to_output = ('name', 'location', 'image_url', 'description', 'tags',)
+        filtered_place_data = dict([(k, place_data[k]) for k in keys_to_output])
+        data['place'] = filtered_place_data
         return data
 
 
 class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
-        raise NotImplementedError('temporary out of order: new place model structure')
-        super(PlaceDetail, self).__init__()
         self.place = place
-        self._profile = place.get_profile()
-        # clean url for output
-        self._profile.url = process_external_url(self._profile.url)
 
         # TODO: reenable favorites when user model is created
         # if user:
@@ -59,8 +53,9 @@ class PlaceDetail(ViewModel):
     def to_data(self, *args, **kwargs):
         '''Manually handles setting of place data'''
         data = super(PlaceDetail, self).to_data()
-        # inject profile data into place object
-        data['place'].update(self._profile.to_data())
+        url = data['place']['url']
+        if url:
+            data['place']['url'] = process_external_url(url)
         return data
 
 

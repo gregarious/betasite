@@ -207,6 +207,17 @@ class Place(models.Model, ViewModel):
             s += u' (%s)' % self.location.address
         return s
 
+    def to_data(self):
+        '''
+        Manually handle location and tag entries.
+        '''
+        data = super(Place, self).to_data()
+        data.pop('location_id')
+        data['location'] = self.location.to_data()
+        data['tags'] = [t.to_data() for t in self.tags.all()]
+        return data
+
+
     # def get_profile(self):
     #     """
     #     Returns the associated PlaceProfile. A simplified version of
