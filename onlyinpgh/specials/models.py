@@ -21,6 +21,8 @@ class Special(models.Model):
 
     tags = models.ManyToManyField(Tag, blank=True)
 
+    def __unicode__(self):
+        return self.title
 
 class SpecialMeta(models.Model):
     special = models.ForeignKey(Special)

@@ -1,0 +1,20 @@
+Place edit form
+<form method="post" action="">
+{% csrf_token %}
+{{ form }}
+<button type="Submit">Save Changes</button>
+{% comment %}
+form fields:
+    name
+    location (text field: will just be address)
+    image_url
+    description
+    hours (just a small textarea for now)
+    parking (just a text field now: will be comma separated list)
+    phone
+    url
+    fb_id
+    twitter_username
+    (no tags for now - waiting on django-autocomplete)
+{% endcomment %}
+</form>

@@ -4,16 +4,14 @@
 
 <form method="post" action="{% url orgadmin.views.page_login %}">
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+{% comment %}
+form fields:
+    username
+    password
 
-<input type="submit" value="Login" />
+Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
+{% endcomment %}
+{{ form.username }}
+{{ form.password }}
+<input type="submit" value="login" />
 </form>

@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from onlyinpgh.places.forms import PlaceForm
 from onlyinpgh.places.models import Location
+
+from onlyinpgh.events.forms import EventForm
+from onlyinpgh.specials.forms import SpecialForm
+
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
@@ -50,7 +54,7 @@ class OrgLoginForm(AuthenticationForm):
 
     Currently assumes email address is username.
     '''
-    username = forms.EmailField(label="Email address", initial='', max_length=30)
+    username = forms.CharField(label="Email address", initial='')
 
 
 class SimpleLocationPlaceForm(PlaceForm):
@@ -65,19 +69,25 @@ class SimpleLocationPlaceForm(PlaceForm):
     location = forms.CharField(label="Address", initial='')
 
     class Meta(PlaceForm.Meta):
+        # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'location', 'tags',)
 
-    def __init__(self,  geocode_locations=True, *args, **kwargs):
+    def __init__(self, geocode_locations=True, *args, **kwargs):
         '''
         Extends base constructor to manually fill in an initial value for
         location when a model instance is given that contains location.name.
         '''
-        super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
+        # if an instance is given, and no initial value for location is given,
+        # set the initial value of the location field to the instance's address
+        instance = kwargs.get('instance')
+        if instance and instance.location:
+            initial = kwargs.setdefault('initial', {})
+            if 'location' not in initial:
+                initial['location'] = instance.location.address
+
         self.geocode_locations = geocode_locations
-        if 'instance' in kwargs:
-            place = kwargs['instance']
-            if place.location:
-                self.declared_fields['location'].initial = place.location.address
+
+        super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
 
     def clean_location(self):
         '''
@@ -127,3 +137,45 @@ class SimpleLocationPlaceForm(PlaceForm):
             place.save()
             print 'saved place id', place.id
         return place
+
+
+class SimpleEventForm(EventForm):
+    '''
+    Event edit form with place options limited to the given org's
+    establishments
+    '''
+    class Meta(EventForm.Meta):
+        # TODO: look into extending from parent meta
+        exclude = ('dtcreated', 'dtmodified', 'tags', )
+
+    def __init__(self, organization, *args, **kwargs):
+        '''
+        Limit the available places to org's own establishments
+        '''
+        super(SimpleEventForm, self).__init__(*args, **kwargs)
+        self.fields['place'].queryset = organization.establishments.all()
+
+
+class SimpleSpecialForm(SpecialForm):
+    '''
+    Specials edit form with place options limited to the given org's
+    establishments
+    '''
+    class Meta(SpecialForm.Meta):
+        # TODO: look into extending from parent meta
+        exclude = ('tags',)
+
+    def __init__(self, organization, *args, **kwargs):
+        '''
+        Limit the available places to org's own establishments
+        '''
+        super(SimpleSpecialForm, self).__init__(*args, **kwargs)
+        self.fields['place'].queryset = organization.establishments.all()
+
+
+class PlaceClaimForm(forms.Form):
+    place = forms.ChoiceField(label='Places')
+
+    def __init__(self, place_choices, *args, **kwargs):
+        super(PlaceClaimForm, self).__init__(*args, **kwargs)
+        self.fields['place'].choices = [(p.id, p.name) for p in place_choices]
