@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^places/',include('onlyinpgh.places.urls')),
+    url(r'^events/',include('onlyinpgh.events.urls')),
     url(r'^specials/',include('onlyinpgh.specials.urls')),
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 

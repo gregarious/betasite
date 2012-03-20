@@ -17,7 +17,7 @@ from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, \
         SimpleSpecialForm
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
-# from onlyinpgh.events.viewmodels import PlaceFeedItem
+from onlyinpgh.events.viewmodels import EventFeedItem
 from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
@@ -292,7 +292,7 @@ def page_list_events(request):
     establishments = org.establishments.all() if org else []
     events = Event.objects.filter(place__in=establishments)
     items = [EventFeedItem(event) for event in events]
-    list_content = render_viewmodels_as_ul(items, 'events/feed_item.html')
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/event_list.html', {'list_content': list_content},

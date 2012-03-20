@@ -1,10 +1,10 @@
 {% comment %}
-Template to render a particular event as a feed item.
+Template to render a particular event as a item in an orgadmin list.
 
 Context variables:
 	event:			Event ViewModel
 {% endcomment %}
 
-<h3><a href="{% url events-item-detail event.id %}">{{event.name}}</a></h3>
+<h3>{{event.name}}</h3>
 <h4>{{event.dtstart}} - {{event.dtend}}</h4>
 <p>{{event.description}}</p>
