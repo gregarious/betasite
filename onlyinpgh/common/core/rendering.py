@@ -94,7 +94,7 @@ def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs=
 
 
 def render_to_page(content, request=None):
-    return mark_safe(render(request, 'page.html', {'main_content': content}))
+    return render(request, 'page.html', {'main_content': mark_safe(content)})
 
 
 def render_viewmodels_as_ul(items, item_template,
