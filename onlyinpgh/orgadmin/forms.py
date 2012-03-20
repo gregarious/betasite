@@ -72,17 +72,22 @@ class SimpleLocationPlaceForm(PlaceForm):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'location', 'tags',)
 
-    def __init__(self,  geocode_locations=True, *args, **kwargs):
+    def __init__(self, geocode_locations=True, *args, **kwargs):
         '''
         Extends base constructor to manually fill in an initial value for
         location when a model instance is given that contains location.name.
         '''
-        super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
-        self.geocode_locations = geocode_locations
+        # if an instance is given, and no initial value for location is given,
+        # set the initial value of the location field to the instance's address
         instance = kwargs.get('instance')
-        if instance:
-            if instance.location:
-                self.declared_fields['location'].initial = instance.location.address
+        if instance and instance.location:
+            initial = kwargs.setdefault('initial', {})
+            if 'location' not in initial:
+                initial['location'] = instance.location.address
+
+        self.geocode_locations = geocode_locations
+
+        super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
 
     def clean_location(self):
         '''
@@ -169,5 +174,8 @@ class SimpleSpecialForm(SpecialForm):
 
 
 class PlaceClaimForm(forms.Form):
-    # TODO: make autocomplete field
-    place = forms.CharField(max_length=200)
+    place = forms.ChoiceField(label='Places')
+
+    def __init__(self, place_choices, *args, **kwargs):
+        super(PlaceClaimForm, self).__init__(*args, **kwargs)
+        self.fields['place'].choices = [(p.id, p.name) for p in place_choices]

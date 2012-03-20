@@ -23,10 +23,13 @@
 				<a href="{% url orgadmin.views.page_login %}">Log In</a>
 			{% endif %}
 		</span>
-		{% if current_org %}
-			<p>Currently managing: {{ current_org.name }}</p>
+		{% if user.is_authenticated %}
+			{% if current_org %}
+				<p>Currently managing: {{ current_org.name }}</p>
+			{% else %}
+				<p>User currently is not managing any organizations.</p>
+			{% endif %}
 		{% endif %}
-
 	</header>
 
 	<div id="site-content">
