@@ -250,7 +250,7 @@ def page_list_places(request):
     places = org.establishments.all() if org else []
 
     items = [PlaceFeedItem(place) for place in places]
-    list_content = render_viewmodels_as_ul(items, 'places/feed_item.html')
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/place_item.html')
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/place_list.html', {'list_content': list_content}, context_instance=context)
@@ -335,7 +335,7 @@ def page_list_specials(request):
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
     items = [SpecialFeedItem(special) for special in specials]
-    list_content = render_viewmodels_as_ul(items, 'specials/feed_item.html')
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/special_item.html')
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/special_list.html', {'list_content': list_content},

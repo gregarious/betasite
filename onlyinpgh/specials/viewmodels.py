@@ -3,6 +3,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 
 class SpecialFeedItem(ViewModel):
     def __init__(self, special, user=None):
+        super(SpecialFeedItem, self).__init__()
         self.special = special
 
     def to_data(self):
