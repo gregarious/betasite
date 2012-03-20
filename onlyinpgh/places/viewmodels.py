@@ -35,15 +35,17 @@ class PlaceFeedItem(ViewModel):
 
     def to_data(self):
         data = super(PlaceFeedItem, self).to_data()
-        place_data = data['place']
-        keys_to_output = ('id', 'name', 'location', 'image_url', 'description', 'tags',)
-        filtered_place_data = dict([(k, place_data[k]) for k in keys_to_output])
-        data['place'] = filtered_place_data
+        place_data = data.get('place')
+        keepers = set(('id', 'name', 'location', 'image_url', 'description', 'tags'))
+        for k in place_data.keys():
+            if k not in keepers:
+                place_data.pop(k)
         return data
 
 
 class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
+        super(PlaceDetail, self).__init__()
         self.place = place
 
         # TODO: reenable favorites when user model is created
