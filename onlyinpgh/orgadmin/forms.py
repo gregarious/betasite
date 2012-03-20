@@ -174,5 +174,8 @@ class SimpleSpecialForm(SpecialForm):
 
 
 class PlaceClaimForm(forms.Form):
-    # TODO: make autocomplete field
-    place = forms.CharField(max_length=200)
+    place = forms.ChoiceField(label='Places')
+
+    def __init__(self, place_choices, *args, **kwargs):
+        super(PlaceClaimForm, self).__init__(*args, **kwargs)
+        self.fields['place'].choices = [(p.id, p.name) for p in place_choices]

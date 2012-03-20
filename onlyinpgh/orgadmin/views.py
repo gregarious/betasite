@@ -151,9 +151,34 @@ def page_home(request):
 
 @authentication_required
 def page_claim_place(request):
+    '''
+    View displays place claim page to an authorized user with an organization.
+
+    Page includes a form for claiming a Place not already owned, or a link
+    to create a new place. The resulting action for either choice is to bring
+    up the place setup wizard.
+    '''
+    org = request.session.get('current_org')
+    if not org:
+        return redirect('orgadmin-home')
+
+    all_places = Place.objects.all()
+    owned_places = org.establishments.all()
+    unowned_places = [p for p in all_places if p not in owned_places]
+
+    if request.POST:
+        form = PlaceClaimForm(place_choices=unowned_places, data=request.POST)
+        if form.is_valid():
+            id_str = form.cleaned_data['place']
+            org.establishments.add(Place.objects.get(id=int(id_str)))
+            return redirect('orgadmin.views.page_list_places')
+    else:
+        form = PlaceClaimForm(place_choices=unowned_places)
+
     context = RequestContext(request,
-        {'current_org': request.session.get('current_org')})
-    content = render_to_string('orgadmin/place_claim.html', context_instance=context)
+        {'current_org': org})
+    content = render_to_string('orgadmin/place_claim.html', {'form': form},
+                context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -181,7 +206,7 @@ def page_setup_place_wizard(request, id=None):
             if place not in org.establishments.all():
                 org.establishments.add(place)
 
-            return HttpResponseRedirect(reverse('orgadmin-home'))
+            return redirect('orgadmin.views.page_list_places')
     else:
         form = SimpleLocationPlaceForm(instance=instance)
 

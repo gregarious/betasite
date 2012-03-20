@@ -10,7 +10,7 @@ urlpatterns = patterns('orgadmin.views',
 
     # handle new place creations, and place claiming with page_setup_place_wizard
     url(r'^places/setup/claim/$', 'page_claim_place'),
-    url(r'^places/setup/new/$', 'page_setup_place_wizard'),
+    url(r'^places/setup/new/$', 'page_setup_place_wizard', name='orgadmin-addplace'),
     url(r'^places/setup/(?P<id>\d+)/$', 'page_setup_place_wizard'),
 
     url(r'^places/edit/(?P<id>\d+)/$', 'page_edit_place'),

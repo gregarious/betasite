@@ -1,6 +1,9 @@
-Claim place form
-<form method="post" action="{% url orgadmin.views.page_place_claim %}">
+<form method="post" action="{% url orgadmin.views.page_claim_place %}">
 {% csrf_token %}
+{{ form }}
+<button type="submit">Claim</button>
+<p>or, <a href="{% url orgadmin-addplace %}">Create a new place</a></p>
+
 {% comment %}
 Just a simple form with one field: place
 
