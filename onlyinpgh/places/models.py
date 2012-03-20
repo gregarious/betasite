@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.signals import post_save
 
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.core.exceptions import ValidationError
@@ -216,35 +215,6 @@ class Place(models.Model, ViewModel):
         data['location'] = self.location.to_data()
         data['tags'] = [t.to_data() for t in self.tags.all()]
         return data
-
-
-    # def get_profile(self):
-    #     """
-    #     Returns the associated PlaceProfile. A simplified version of
-    #     the code laid out in django.contrib.auth.User.get_profile.
-    #     """
-    #     if not hasattr(self, '_profile_cache'):
-    #         try:
-    #             self._profile_cache = PlaceProfile.objects.get(place__id__exact=self.id)
-    #         except PlaceProfile.DoesNotExist:
-    #             raise PlaceProfileNotAvailable
-    #     return self._profile_cache
-
-    # def to_data(self):
-    #     '''
-    #     Overrides ViewModel's to_data to ignore dtcreated and
-    #     extract tags.
-    #     '''
-    #     # TODO: remove temporary placeholder
-    #     image_url = self.image_url or 'http://www.nasm.si.edu/images/collections/media/thumbnails/DefaultThumbnail.gif'
-
-    #     return {
-    #         'id': self.id,
-    #         'name': self.name,
-    #         'location': self.location.to_data(),
-    #         'image_url': image_url,
-    #         'tags': [tag.to_data() for tag in self.tags.all()]
-    #     }
 
 
 class PlaceMeta(models.Model):
