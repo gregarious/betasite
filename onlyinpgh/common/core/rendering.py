@@ -1,5 +1,6 @@
 from django.template.loader import get_template
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 
 # work in progress. don't use self_render template tag till fixed
 
@@ -47,7 +48,7 @@ def _wrap_content(content, tag_type=None, class_label=None, id_label=None, attrs
     attrs.update({'class': class_label, 'id': id_label})
     attr_strs = [('%s="%s"' % (key, str(val).replace(r'"', r'\"')))
                     for key, val in attrs.items() if val is not None]
-    return '<%s %s>\n%s\n</%s>' % (tag_type, ' '.join(attr_strs), content, tag_type)
+    return mark_safe('<%s %s>\n%s\n</%s>' % (tag_type, ' '.join(attr_strs), content, tag_type))
 
 
 def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_label=None, attrs={}):
@@ -93,4 +94,19 @@ def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs=
 
 
 def render_to_page(content, request=None):
-    return render(request, 'page.html', {'main_content': content})
+    return mark_safe(render(request, 'page.html', {'main_content': content}))
+
+
+def render_viewmodels_as_ul(items, item_template,
+                            container_class_label='feed',
+                            item_class_label='item'):
+    rendered_items = [render_viewmodel(item,
+                                        template=item_template,
+                                        tag_type='li',
+                                        class_label=item_class_label)
+                        for item in items]
+
+    # render the feed full of items
+    return mark_safe(render_list(rendered_items,
+                        tag_type='ul',
+                        class_label='feed'))
