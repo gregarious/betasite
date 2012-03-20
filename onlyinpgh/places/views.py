@@ -7,7 +7,7 @@ from onlyinpgh.places.models import Place
 #from onlyinpgh.accounts.models import FavoriteItem
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
-from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
+from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
 
 from datetime import datetime, timedelta
 
@@ -65,34 +65,14 @@ def feed_page(request):
     '''
     # get a list of rendered items
     places = Place.objects.all()[:10]
-    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
-    rendered_items = [render_viewmodel(item,
-                            template='places/feed_item.html',
-                            tag_type='li',
-                            class_label='item')
-                        for item in feed_items]
-
-    # render the feed full of items
-    content = render_list(rendered_items,
-        tag_type='ul',
-        class_label='feed')
-
+    items = [PlaceFeedItem(place, user=request.user) for place in places]
+    content = render_viewmodels_as_ul(items, 'places/feed_item.html')
     return render_to_page(content, request=request)
 
 
 def detail_page(request, pid):
     '''
-    View displays single places as well as handling many user actions taken
-    on these places.
-
-    The actions are specified via an 'action' GET argument. If the GET request
-    is an XMLHttpRequest (ajax), the response will be a JSON object noting the
-    status of the request. If no action or a non-AJAX request, the whole page
-    will be returned.
-
-    Supported actions:
-    - fav: User adds given place to his favorites
-    - unfav: User removes given place from favorites
+    View displays single places.
     '''
     action = request.GET.get('action')
     if action:
