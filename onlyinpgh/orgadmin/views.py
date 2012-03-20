@@ -194,17 +194,17 @@ def page_list_places(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
-    print 'list of places: '
-    print request.session['current_org'].establishments.all()
+    places = request.session['current_org'].establishments.all()
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/place_list.html', context_instance=context)
+    content = render_to_string('orgadmin/place_list.html', {'places': places}, context_instance=context)
     return response_admin_page(content, context)
 
 
 def page_edit_event(request, id):
     # must be authenticated to reach this page
+    # TODO: ensure the current_org represents the place too
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
@@ -231,17 +231,17 @@ def page_list_events(request):
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
     establishments = request.session['current_org'].establishments.all()
-    print 'list of events: '
-    print Event.objects.filter(place__in=establishments)
+    events = Event.objects.filter(place__in=establishments)
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/event_list.html', context_instance=context)
+    content = render_to_string('orgadmin/event_list.html', {'events': events}, context_instance=context)
     return response_admin_page(content, context)
 
 
 def page_edit_special(request, id):
     # must be authenticated to reach this page
+    # TODO: ensure the current_org represents the place too
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
@@ -268,10 +268,9 @@ def page_list_specials(request):
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
     establishments = request.session['current_org'].establishments.all()
-    print 'list of specials: '
-    print Special.objects.filter(place__in=establishments)
+    specials = Special.objects.filter(place__in=establishments)
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/special_list.html', context_instance=context)
+    content = render_to_string('orgadmin/special_list.html', {'specials': specials}, context_instance=context)
     return response_admin_page(content, context)
