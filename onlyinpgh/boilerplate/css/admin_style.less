@@ -54,6 +54,18 @@ ul {
 
 @import '../LESS/type';
 
+#tagline {
+	border-bottom: 1px #e1e1e1 solid;
+	color: #fff;
+	font-style: normal;
+	text-shadow: 0.01em 0.01em 0 #000;
+	padding-bottom: 8px
+}
+
+#site-title {
+	padding: 0;
+}
+
 .form-title {
 	border-bottom: 1px solid #ccc;
 }
@@ -64,7 +76,7 @@ ul {
 	width: 100%;
 	background: url("/static/img/custom/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
-	height: 70px;
+	height: 85px;
 	position: fixed;
 	top: 0;
 	z-index: 999;
@@ -72,7 +84,7 @@ ul {
 
 #userbar {
 	position: absolute;
-	top: 20px;
+	top: 1.6em;
 	right: 60px;
 	font-style: italic;
 	color: #e1e1e1;
@@ -83,28 +95,12 @@ ul {
 	}
 }
 
-/*#site-content {
-	width: 100%;
-	
-	padding-top: 10px;
-	.border-box;
-	&.admin, &.home {
-		position: relative;
-	}
-
-	&.signup {
-		position: absolute;
-		left: 0;
-		overflow-x: hidden;	
-	}
-}*/
-
 #site-content {
 	//height: 100%;
 	.b-shadow(1px, 1px, 6px, #fff);
 	background: fade(#fff, 70%);
 	.clearfix;	
-	margin: 110px auto;
+	margin: 120px auto;
 	.border-box;
 	.rounded(0.5em);
 	padding: 3%;
@@ -433,12 +429,16 @@ ul {
 
 /* UTILITY ----------- */
 
-.last {
-	border: none !important;
+.last, .inner {
+	border: none;
 }
 
 .first {
 	padding-top: 0 !important;
+}
+
+.inner {
+	padding: 0.5em 0;
 }
 
 .selected {

@@ -1,8 +1,44 @@
-Event edit form
+<header class="content-header">
+	<h2>Editing your event...</h2>
+</header>
+
 <form method="post" action="">
 {% csrf_token %}
-{{ form }}
-<button type="Submit">Save Changes</button>
+<!-- 	<div class="field-container">
+		<div class="field-single">
+			{{ form.name.label_tag }}
+			{{ form.name }}
+		</div>
+		<div class="field-single">
+			{{ form.place.label_tag }}
+			{{ form.place }}
+		</div>
+	</div> -->
+	<div class="field-container">
+		<div class="field-label">
+			{{ form.dtstart.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.dtstart }}
+		</div>
+	</div>
+		<!-- <div class="field-single">
+			{{ form.dtend.label_tag }}
+			{{ form.dtend }}
+		</div>
+
+		<div class="field-single">
+			{{ form.allday.label_tag }}
+			{{ form.allday }}
+		</div>
+	</div>
+	<div class="field-container">
+		{{ form.description.label }}
+		{{ form.description }}
+	</div> -->
+
+	<input type="submit" value="Save Changes" />
+
 {% comment %}
 form fields:
     name
