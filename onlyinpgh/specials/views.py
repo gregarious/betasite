@@ -25,16 +25,15 @@ def feed_page(request):
 
 def detail_page(request, sid):
     '''
-    View displays single places.
+    View displays single specials.
     '''
-    # build and render place detail viewmodel
+    # build and render special detail viewmodel
     special = get_object_or_404(Special, id=sid)
     details = SpecialDetail(special, user=request.user)
     content = render_viewmodel(details,
                 template='specials/single.html',
                 class_label='special-single')
 
-    # as long as there was no AJAX-requested action, we will return a fully rendered new page
     return render_to_page(content, request=request)
 
 
