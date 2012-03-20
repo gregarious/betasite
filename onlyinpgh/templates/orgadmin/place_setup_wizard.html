@@ -1,20 +1,32 @@
-Place create wizard
+<h2>Create a Place</h2>
 <form method="post" action="">
-{% csrf_token %}
-{{ form.as_table }}
-<button type="submit">All done!</button>
-{% comment %}
-form fields:
-    name
-    location (text field: will just be address)
-    image_url
-    description
-    hours (just a small textarea for now)
-    parking (just a text field now: will be comma separated list)
-    phone
-    url
-    fb_id
-    twitter_username
-    (no tags for now - waiting on django-autocomplete)
-{% endcomment %}
+    {% csrf_token %}
+    <div class="field-container first">
+        <label>{{form.name.label}}</label>
+        {{form.name}}
+        <input type="text" name="{{form.name.name}}" />
+    </div>
+    <div class="field-container">
+        <label>{{form.location.label}}</label>
+        <input type="text" name="{{form.name.name}}" />
+    </div>
+    <div class="field-container">
+        <label>{{form.location.label}}</label>
+        <input type="text" name="{{form.name.name}}" />
+    </div>
+    <button type="submit">All done!</button>
+    {% comment %}
+    form fields:
+        name
+        location (text field: will just be address)
+        image_url
+        description
+        hours (just a small textarea for now)
+        parking (just a text field now: will be comma separated list)
+        phone
+        url
+        fb_id
+        twitter_username
+        (no tags for now - waiting on django-autocomplete)
+    {% endcomment %}
 </form>

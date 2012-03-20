@@ -417,9 +417,7 @@ p {
 }
 /* 4 SITE ---------- */
 #global-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 960px;
+  width: 1140px;
   margin: 0 auto;
 }
 #site-search {
@@ -461,27 +459,22 @@ p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-left: 50px;
   margin-top: 0.5em;
+  position: relative;
+  left: 200px;
 }
 #logo {
   position: fixed;
   width: auto;
 }
+.absolute {
+  position: absolute;
+}
 #site-nav {
-  float: left;
-  width: 14.583333333333334%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  /*left: auto;
-  margin-left: -40px;
-  */
-  margin-top: 1em;
+  width: 200px;
   position: relative;
-  /*border-bottom: 0.3em #fff solid;*/
-
+  margin-top: 1em;
+  clear: both;
 }
 #site-nav ul {
   position: fixed;
@@ -517,21 +510,6 @@ p {
 #site-nav ul li a:active {
   background-color: #E6B717;
 }
-.fixed-pos {
-  *zoom: 1;
-  position: fixed;
-}
-.fixed-pos:before,
-.fixed-pos:after {
-  content: "";
-  display: table;
-}
-.fixed-pos:after {
-  clear: both;
-}
-.current-page {
-  background-color: #8fd36f !important;
-}
 #site-sidebar {
   float: right;
   width: 18.75%;
@@ -539,6 +517,13 @@ p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
+  right: 0;
+  background: green;
+}
+#site-sidebar ul,
+#site-sidebar h3 {
+  position: fixed;
 }
 #site-footer {
   *zoom: 1;
@@ -565,6 +550,7 @@ p {
 }
 /* SIDEBAR ---------- */
 #broadcast {
+  margin-top: 3em;
   overflow: hidden;
   height: 70%;
   display: none;
@@ -926,6 +912,9 @@ p {
   margin: 2%;
 }
 /* 10 NAVIGATION ---------- */
+.current-page {
+  background-color: #8fd36f !important;
+}
 #date-nav-left,
 #date-nav-right {
   background: url("../img_store/date-nav.png");
