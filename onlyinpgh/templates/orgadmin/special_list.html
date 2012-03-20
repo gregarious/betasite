@@ -1,10 +1,6 @@
-<p>Specials for {{ current_org.name }}</p>
 <ul>
 {% for special in specials %}
     <li>{{special}} <a href="{% url orgadmin.views.page_edit_special special.id %}">edit</a></li>
 {% endfor %}
 </ul>
-
-{% comment %}
-Don't worry about this yet.
-{% endcomment %}
+<a href="{% url orgadmin-addspecial %}">Add new special</a>
