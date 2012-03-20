@@ -12,7 +12,7 @@ class Event(models.Model):
         ordering = ['name']
 
     name = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
     dtmodified = models.DateTimeField('modified datetime', auto_now=True)
@@ -31,6 +31,9 @@ class Event(models.Model):
 
     tags = models.ManyToManyField(Tag, blank=True)
     invisible = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.name
 
 
 class EventMeta(models.Model):

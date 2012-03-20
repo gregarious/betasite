@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^orgadmin/', include('onlyinpgh.orgadmin.urls')),
+    url(r'^orgadmin/', include('orgadmin.urls')),
 
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -1,6 +1,8 @@
 Place create wizard
 <form method="post" action="{% url orgadmin.views.page_setup_place_wizard %}">
 {% csrf_token %}
+{{ form.as_table }}
+<button type="submit">All done!</button>
 {% comment %}
 form fields:
     name
@@ -14,5 +16,5 @@ form fields:
     fb_id
     twitter_username
     (no tags for now - waiting on django-autocomplete)
-{% comment %}
+{% endcomment %}
 </form>

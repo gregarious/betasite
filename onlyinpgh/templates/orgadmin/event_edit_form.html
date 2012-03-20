@@ -1,6 +1,8 @@
 Event edit form
 <form method="post" action="">
 {% csrf_token %}
+{{ form }}
+<button type="Submit">Save Changes</button>
 {% comment %}
 form fields:
     name
@@ -10,7 +12,7 @@ form fields:
     allday (checkbox - just checkbox is good for now. we'll need some jQuery later that hides dtstart/dtend if this is checked)
     image_url
     url
-    place
+    place (select box)
     (no tags for now - waiting on django-autocomplete)
 {% endcomment %}
 </form>

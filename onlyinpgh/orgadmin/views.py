@@ -5,9 +5,14 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.forms.util import ErrorList
 from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import get_object_or_404, redirect
 
-from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm
+from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, SimpleLocationPlaceForm, PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
+
 from onlyinpgh.organizations.models import Organization
+from onlyinpgh.places.models import Place
+from onlyinpgh.events.models import Event
+from onlyinpgh.specials.models import Special
 
 
 def render_admin_page(safe_content, context_instance=None):
@@ -130,25 +135,57 @@ def page_claim_place(request):
     return response_admin_page(content, context)
 
 
-def page_setup_place_wizard(request):
+def page_setup_place_wizard(request, id=None):
     # must be authenticated to reach this page
+    # TODO: if id, ensure the current org represents the place
+    #       else, ensure current org exists
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
+    instance = get_object_or_404(Place, id=id) if id else None
+
+    if request.POST:
+        form = SimpleLocationPlaceForm(data=request.POST,
+            instance=instance)
+        if form.is_valid():
+            place = form.save()
+
+            # if a new place, it won't be a part of the current org's
+            # list of establishments. add it now.
+            establishments = request.session['current_org'].establishments
+            if place not in establishments.all():
+                establishments.add(place)
+
+            return HttpResponseRedirect(reverse('orgadmin-home'))
+    else:
+        form = SimpleLocationPlaceForm(instance=instance)
+
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/place_setup_wizard.html', context_instance=context)
+    content = render_to_string('orgadmin/place_setup_wizard.html', {'form': form},
+        context_instance=context)
     return response_admin_page(content, context)
 
 
 def page_edit_place(request, id):
     # must be authenticated to reach this page
+    # TODO: ensure the current_org represents the place too
     if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('orgadmin-login'))
+        return redirect('orgadmin-login')
+
+    instance = get_object_or_404(Place, id=id)
+    if request.POST:
+        form = SimpleLocationPlaceForm(data=request.POST,
+            instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('orgadmin.views.page_list_places')
+    else:
+        form = SimpleLocationPlaceForm(instance=instance)
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/place_edit_form.html', context_instance=context)
+    content = render_to_string('orgadmin/place_edit_form.html', {'form': form}, context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -156,6 +193,9 @@ def page_list_places(request):
     # must be authenticated to reach this page
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
+
+    print 'list of places: '
+    print request.session['current_org'].establishments.all()
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
@@ -168,9 +208,20 @@ def page_edit_event(request, id):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
+    instance = get_object_or_404(Event, id=id)
+    if request.POST:
+        form = SimpleEventForm(organization=request.session['current_org'],
+            data=request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('orgadmin.views.page_list_events')
+    else:
+        form = SimpleEventForm(organization=request.session['current_org'],
+            instance=instance)
+
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/event_edit_form.html', context_instance=context)
+    content = render_to_string('orgadmin/event_edit_form.html', {'form': form}, context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -178,6 +229,10 @@ def page_list_events(request):
     # must be authenticated to reach this page
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
+
+    establishments = request.session['current_org'].establishments.all()
+    print 'list of events: '
+    print Event.objects.filter(place__in=establishments)
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
@@ -190,9 +245,20 @@ def page_edit_special(request, id):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
 
+    instance = get_object_or_404(Special, id=id)
+    if request.POST:
+        form = SimpleSpecialForm(organization=request.session['current_org'],
+            data=request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('orgadmin.views.page_list_specials')
+    else:
+        form = SimpleSpecialForm(organization=request.session['current_org'],
+            instance=instance)
+
     context = RequestContext(request,
         {'current_org': request.session['current_org']})
-    content = render_to_string('orgadmin/special_edit_form.html', context_instance=context)
+    content = render_to_string('orgadmin/special_edit_form.html', {'form': form}, context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -200,6 +266,10 @@ def page_list_specials(request):
     # must be authenticated to reach this page
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('orgadmin-login'))
+
+    establishments = request.session['current_org'].establishments.all()
+    print 'list of specials: '
+    print Special.objects.filter(place__in=establishments)
 
     context = RequestContext(request,
         {'current_org': request.session['current_org']})

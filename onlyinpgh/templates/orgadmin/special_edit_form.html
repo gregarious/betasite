@@ -1,12 +1,14 @@
 Special edit form
 <form method="post" action="">
 {% csrf_token %}
+{{ form }}
+<button type="Submit">Save Changes</button>
 {% comment %}
 form fields:
     title
     description
     points
-    place (simple textfield for now)
+    place (select box)
     dtexpires
 
     (the rest of the fields are all optional: don't know if you want to just hide them or denote that they're optional. your choice)
