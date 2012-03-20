@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from onlyinpgh.places.forms import PlaceForm
 from onlyinpgh.places.models import Location
+
+from onlyinpgh.events.forms import EventForm
+from onlyinpgh.specials.forms import SpecialForm
+
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
@@ -50,7 +54,7 @@ class OrgLoginForm(AuthenticationForm):
 
     Currently assumes email address is username.
     '''
-    username = forms.EmailField(label="Email address", initial='', max_length=30)
+    username = forms.CharField(label="Email address", initial='')
 
 
 class SimpleLocationPlaceForm(PlaceForm):
@@ -65,6 +69,7 @@ class SimpleLocationPlaceForm(PlaceForm):
     location = forms.CharField(label="Address", initial='')
 
     class Meta(PlaceForm.Meta):
+        # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'location', 'tags',)
 
     def __init__(self,  geocode_locations=True, *args, **kwargs):
@@ -74,10 +79,10 @@ class SimpleLocationPlaceForm(PlaceForm):
         '''
         super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
         self.geocode_locations = geocode_locations
-        if 'instance' in kwargs:
-            place = kwargs['instance']
-            if place.location:
-                self.declared_fields['location'].initial = place.location.address
+        instance = kwargs.get('instance')
+        if instance:
+            if instance.location:
+                self.declared_fields['location'].initial = instance.location.address
 
     def clean_location(self):
         '''
@@ -127,3 +132,42 @@ class SimpleLocationPlaceForm(PlaceForm):
             place.save()
             print 'saved place id', place.id
         return place
+
+
+class SimpleEventForm(EventForm):
+    '''
+    Event edit form with place options limited to the given org's
+    establishments
+    '''
+    class Meta(EventForm.Meta):
+        # TODO: look into extending from parent meta
+        exclude = ('dtcreated', 'dtmodified', 'tags', )
+
+    def __init__(self, organization, *args, **kwargs):
+        '''
+        Limit the available places to org's own establishments
+        '''
+        super(SimpleEventForm, self).__init__(*args, **kwargs)
+        self.fields['place'].queryset = organization.establishments.all()
+
+
+class SimpleSpecialForm(SpecialForm):
+    '''
+    Specials edit form with place options limited to the given org's
+    establishments
+    '''
+    class Meta(SpecialForm.Meta):
+        # TODO: look into extending from parent meta
+        exclude = ('tags',)
+
+    def __init__(self, organization, *args, **kwargs):
+        '''
+        Limit the available places to org's own establishments
+        '''
+        super(SimpleSpecialForm, self).__init__(*args, **kwargs)
+        self.fields['place'].queryset = organization.establishments.all()
+
+
+class PlaceClaimForm(forms.Form):
+    # TODO: make autocomplete field
+    place = forms.CharField(max_length=200)

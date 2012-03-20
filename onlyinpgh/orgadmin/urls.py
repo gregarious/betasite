@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('onlyinpgh.orgadmin.views',
+urlpatterns = patterns('orgadmin.views',
     url(r'^$', 'page_home'),
     url(r'^home/$', 'page_home', name='orgadmin-home'),
 
@@ -9,7 +9,7 @@ urlpatterns = patterns('onlyinpgh.orgadmin.views',
     url(r'^logout/$', 'page_logout'),
 
     # handle new place creations, and place claiming with page_setup_place_wizard
-    url(r'^places/setup/$', 'page_setup_place_wizard'),
+    url(r'^places/setup/new$', 'page_setup_place_wizard'),
     url(r'^places/setup/(?P<id>\d+)/$', 'page_setup_place_wizard'),
 
     url(r'^places/edit/(?P<id>\d+)/$', 'page_edit_place'),
