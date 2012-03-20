@@ -1,0 +1,17 @@
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url orgadmin.views.page_login %}">
+{% csrf_token %}
+{% comment %}
+form fields:
+    username
+    password
+
+Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
+{% endcomment %}
+{{ form.username }}
+{{ form.password }}
+<input type="submit" value="login" />
+</form>

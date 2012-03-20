@@ -27,6 +27,7 @@ def to_directions_link(location):
 
 class PlaceFeedItem(ViewModel):
     def __init__(self, place, user=None):
+        raise NotImplementedError('temporary out of order: new place model structure')
         super(PlaceFeedItem, self).__init__()
         self.place = place
         # description isn't part of core Place
@@ -44,6 +45,7 @@ class PlaceFeedItem(ViewModel):
 
 class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
+        raise NotImplementedError('temporary out of order: new place model structure')
         super(PlaceDetail, self).__init__()
         self.place = place
         self._profile = place.get_profile()

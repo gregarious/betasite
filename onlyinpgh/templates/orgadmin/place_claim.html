@@ -1,0 +1,12 @@
+Claim place form
+<form method="post" action="{% url orgadmin.views.page_place_claim %}">
+{% csrf_token %}
+{% comment %}
+Just a simple form with one field: place
+
+Also needs two buttons: one for submitting the place that you're claiming 
+(the default submit button), and one to just move to create a new 
+blank page. Doesn't have to be a button, could be a link, whatever. I 
+just need the submit button to be the user claiming a place.
+{% endcomment %}
+</form>

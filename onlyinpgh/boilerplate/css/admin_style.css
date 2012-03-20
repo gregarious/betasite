@@ -456,15 +456,15 @@ p {
   top: 0;
   z-index: 999;
 }
-#logout {
+#userbar {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 60px;
   font-style: italic;
   color: #e1e1e1;
   text-shadow: 0.02em, 0.02em, 0em, #fff;
 }
-#logout:hover {
+#userbar:hover {
   color: #a9c6e8;
 }
 #site-content {
