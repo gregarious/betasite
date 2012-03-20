@@ -63,9 +63,8 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    raise NotImplementedError('temporary out of order: new place model structure')
     # get a list of rendered items
-    places = Place.objects.select_related().all()[:10]
+    places = Place.objects.all()[:10]
     feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     rendered_items = [render_viewmodel(item,
                             template='places/feed_item.html',
@@ -105,7 +104,7 @@ def detail_page(request, pid):
     # TODO: return error message on action failure?
 
     # build and render place detail viewmodel
-    place = Place.objects.select_related().get(id=pid)
+    place = Place.objects.get(id=pid)
     details = PlaceDetail(place, user=request.user)
     content = render_viewmodel(details,
                 template='places/single.html',
@@ -123,17 +122,15 @@ def detail_page(request, pid):
 
 @jsonp_response
 def feed_app(request):
-    raise NotImplementedError('temporary out of order: new place model structure')
-    profiles = PlaceProfile.objects.select_related().all()[:10]
-    feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
+    places = Place.objects.all()[:10]
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     return [item.to_data() for item in feed_items]
 
 
 @jsonp_response
 def detail_app(request, pid):
-    raise NotImplementedError('temporary out of order: new place model structure')
-    profile = PlaceProfile.objects.select_related().get(place__id=pid)
-    details = PlaceDetail(profile, user=request.user)
+    place = Place.objects.get(place__id=pid)
+    details = PlaceDetail(place, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
 
 

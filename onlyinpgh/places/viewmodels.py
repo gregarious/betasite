@@ -36,7 +36,7 @@ class PlaceFeedItem(ViewModel):
     def to_data(self):
         data = super(PlaceFeedItem, self).to_data()
         place_data = data['place']
-        keys_to_output = ('name', 'location', 'image_url', 'description', 'tags',)
+        keys_to_output = ('id', 'name', 'location', 'image_url', 'description', 'tags',)
         filtered_place_data = dict([(k, place_data[k]) for k in keys_to_output])
         data['place'] = filtered_place_data
         return data
