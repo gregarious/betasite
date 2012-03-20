@@ -1,0 +1,12 @@
+{% comment %}
+Template to render a particular Special as a feed item.
+
+Compatible ViewModel: specials.viewmodels.SpecialFeedItem
+
+Context variables:
+	special:			Special ViewModel
+{% endcomment %}
+
+<h3>{{special.title}}</h3>
+<h4>+{{special.points}}</h4>
+<p>{{special.place.name}}</p>

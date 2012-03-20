@@ -1,10 +1,12 @@
 from django.db import models
 
+from onlyinpgh.common.core.viewmodels import ViewModel
+
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 
 
-class Special(models.Model):
+class Special(models.Model, ViewModel):
     class Meta:
         ordering = ['title']
 
@@ -20,6 +22,16 @@ class Special(models.Model):
     total_sold = models.IntegerField(default=0)
 
     tags = models.ManyToManyField(Tag, blank=True)
+
+    def to_data(self):
+        '''
+        Manually handle place and tag entries.
+        '''
+        data = super(Special, self).to_data()
+        data.pop('place_id')
+        data['place'] = self.place.to_data()
+        data['tags'] = [t.to_data() for t in self.tags.all()]
+        return data
 
     def __unicode__(self):
         return self.title

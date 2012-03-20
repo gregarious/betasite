@@ -18,7 +18,7 @@ from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, \
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
 # from onlyinpgh.events.viewmodels import PlaceFeedItem
-# from onlyinpgh.specials.viewmodels import PlaceFeedItem
+from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
 
@@ -334,7 +334,7 @@ def page_list_specials(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
-    items = [SpecialFeedItem(event) for special in specials]
+    items = [SpecialFeedItem(special) for special in specials]
     list_content = render_viewmodels_as_ul(items, 'specials/feed_item.html')
 
     context = RequestContext(request, {'current_org': org})
