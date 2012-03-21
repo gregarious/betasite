@@ -51,6 +51,16 @@ def _wrap_content(content, tag_type=None, class_label=None, id_label=None, attrs
     return mark_safe('<%s %s>\n%s\n</%s>' % (tag_type, ' '.join(attr_strs), content, tag_type))
 
 
+def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs={}):
+    '''
+    Simple helper to render a list of elements. Will wrap the elements
+    in an outer wrapper with attributes as specified.
+    '''
+    return _wrap_content('\n'.join(elements),
+                            tag_type=tag_type, class_label=class_label,
+                            id_label=id_label, attrs=attrs)
+
+
 def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_label=None, attrs={}):
     '''
     Returns a fully-rendered template given the context provided by the
@@ -83,30 +93,15 @@ def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_la
                             id_label=id_label, attrs=attrs)
 
 
-def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs={}):
-    '''
-    Simple helper to render a list of elements. Will wrap the elements
-    in an outer wrapper with attributes as specified.
-    '''
-    return _wrap_content('\n'.join(elements),
-                            tag_type=tag_type, class_label=class_label,
-                            id_label=id_label, attrs=attrs)
-
-
-def render_to_page(content, request=None):
-    return render(request, 'page.html', {'main_content': mark_safe(content)})
-
-
 def render_viewmodels_as_ul(items, item_template,
                             container_class_label='feed',
                             item_class_label='item'):
-    rendered_items = [render_viewmodel(item,
-                                        template=item_template,
-                                        tag_type='li',
+    '''
+    Renders a collection of ViewModel objects in an unordered list.
+
+    Returns a SafeString of the rendered content.
+    '''
+    rendered_items = [render_viewmodel(item, template=item_template, tag_type='li',
                                         class_label=item_class_label)
                         for item in items]
-
-    # render the feed full of items
-    return mark_safe(render_list(rendered_items,
-                        tag_type='ul',
-                        class_label='feed'))
+    return mark_safe(render_list(rendered_items, tag_type='ul', class_label='feed'))

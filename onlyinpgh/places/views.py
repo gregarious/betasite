@@ -1,5 +1,7 @@
+from django.shortcuts import render, get_object_or_404
+
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
@@ -62,7 +64,7 @@ def feed_page(request):
     places = Place.objects.all()[:10]
     items = [PlaceFeedItem(place, user=request.user) for place in places]
     content = render_viewmodels_as_ul(items, 'places/feed_item.html')
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 def detail_page(request, pid):
@@ -79,7 +81,7 @@ def detail_page(request, pid):
     # TODO: return error message on action failure?
 
     # build and render place detail viewmodel
-    place = Place.objects.get(id=pid)
+    place = get_object_or_404(Place,id=pid)
     details = PlaceDetail(place, user=request.user)
     content = render_viewmodel(details,
                 template='places/single.html',
@@ -90,7 +92,7 @@ def detail_page(request, pid):
     # content += related_feeds.to_html(request)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 @jsonp_response
