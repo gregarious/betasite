@@ -7,11 +7,47 @@ from decimal import Decimal
 import json
 
 
+class FlattenHandler(object):
+    '''
+    Class to handle custom "flattening" of a particular type. Describes an
+    attribute an object should be checked for, and a function that should
+    be applied to the object if the attribute exists.
+
+    e.g. For handling custom datetime flattening:
+            handler = FlattenHandler('isoformat',lambda obj: obj.strftime('%Y %m %d'))
+    '''
+    def __init__(self, attr_name, handler=None):
+        '''
+        Set the handler to use the given attribute and handler function.
+
+        If handler is not provided, the given attribute will be assumed
+        to be a callable and used as the handler function.
+        '''
+        self.attr_name = attr_name
+        if handler is None:
+            self.handler = lambda obj: getattr(obj, attr_name)()
+        else:
+            self.handler = handler
+
+    def __call__(self, obj):
+        '''
+        If obj has the given attr, return the result of running the handler
+        on it. Otherwise, raise AttributeError.
+        '''
+        if hasattr(obj, self.attr_name):
+            return self.handler(obj)
+        else:
+            raise AttributeError("obj has no attribute '%s'" % str(self.attr_name))
+
+    def __unicode__(self):
+        return u'"%s" handler' % unicode(self.attr_name)
+
+
 class ViewModel(object):
     '''
     Abstract base class for ViewModels
     '''
-    def to_data(self):
+    def to_data(self, custom_handlers=None):
         '''
         Returns a serialization-friendly dict of the member variables
         stored in this ViewModel. Base class version simply strips out
@@ -28,9 +64,18 @@ class ViewModel(object):
         Note that Django model classes that are also ViewModels will
         have their foreign key-based fields completely ignored as they
         are not stored in the instance's __dict__ (and moreover, cannot
-        be handled correctly by _flatter()).
+        be handled correctly by _flatten()).
         '''
-        return basic_data_extractor(self)
+        # when a ViewModel is encountered, flatten it with its to_data method
+        todata_handler = FlattenHandler('to_data', lambda obj: obj.to_data(custom_handlers))
+        if not custom_handlers:
+            custom_handlers = (todata_handler,)
+        else:
+            custom_handlers = custom_handlers + (todata_handler,)
+
+        return dict([(key, _flatten(val, custom_handlers))
+                        for key, val in self.__dict__.items()
+                        if not key.startswith('_')])
 
     def to_json(self):
         '''
@@ -48,31 +93,18 @@ class ViewModel(object):
         Calling this with a specific request object will not overwrite
         the internal request. Use set_request for this.
         '''
-        return RequestContext(request, self.to_data()) if request \
-                else Context(self.to_data())
+        # when a date/time/datetime is encountered, don't flatten it
+        date_handler = FlattenHandler('isoformat', lambda obj: obj)
+
+        data = self.to_data(custom_handlers=(date_handler,))
+        return RequestContext(request, data) if request else Context(data)
 
 
-def basic_data_extractor(viewmodel):
+def _flatten(obj, custom_handlers=None):
     '''
-    Simple function to extract a ViewModel's member variables to a data
-    dict. Will ignore underscore-led variable names.
-
-    See _flatten doctype for supported data types.
-    '''
-    return dict([(key, _flatten(val))
-        for key, val in viewmodel.__dict__.items()
-        if not key.startswith('_')])
-
-
-def _flatten(obj):
-    '''
-    Flattens the given object to a serialization-friendly dict. Aware of
-    the ViewModel to_data method interface and will defer to this function
-    whenever possible. If intact_viewmodels is True, ViewModels will be
-    treated like primitives.
+    Flattens the given object to a serialization-friendly dict.
 
     Datatypes are handled in this order:
-        - objects implementing to_data
         - objects implementing items() (e.g. dict)
         - objects implementing  __iter__() (e.g. set, list, tuple)
             - Note: all of these objects will be turned into lists, even sets
@@ -82,16 +114,22 @@ def _flatten(obj):
         - objects with __str__ or __unicode__ methods
 
     All others will default to unicode representations of themselves.
+
+    Now allows the specification of a collect of custom FlattenHandler
+    objects. These will be used to attempt to flatten the given object
+    before the standard methods are applied. See FlattenHandler docs.
     '''
-    # always assume object is a ViewModel first (implements to_data)
-    try:
-        return obj.to_data()
-    except AttributeError:
-        pass
+
+    if custom_handlers:
+        for handler in custom_handlers:
+            try:
+                return handler(obj)
+            except AttributeError:
+                pass
 
     # handle a dict
     try:
-        return dict([(k, _flatten(v)) for k, v in obj.items()])
+        return dict([(k, _flatten(v, custom_handlers)) for k, v in obj.items()])
     except AttributeError:
         pass
 
@@ -99,7 +137,7 @@ def _flatten(obj):
     # to not to handle a string this way
     try:
         if not isinstance(obj, basestring):
-            return [_flatten(v) for v in obj]
+            return [_flatten(v, custom_handlers) for v in obj]
     except TypeError:
         pass
 

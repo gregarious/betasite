@@ -6,8 +6,8 @@ class EventFeedItem(ViewModel):
         super(EventFeedItem, self).__init__()
         self.event = event
 
-    def to_data(self):
-        data = super(EventFeedItem, self).to_data()
+    def to_data(self, *args, **kwargs):
+        data = super(EventFeedItem, self).to_data(*args, **kwargs)
         event_data = data.get('event')
         keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image_url', 'tags'))
         for k in event_data.keys():
@@ -29,8 +29,8 @@ class EventDetail(ViewModel):
         super(EventDetail, self).__init__()
         self.event = event
 
-    def to_data(self):
-        data = super(EventDetail, self).to_data()
+    def to_data(self, *args, **kwargs):
+        data = super(EventDetail, self).to_data(*args, **kwargs)
         place_data = data['event'].get('place')
         if place_data:
             for k in place_data.keys():

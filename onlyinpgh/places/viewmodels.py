@@ -33,8 +33,8 @@ class PlaceFeedItem(ViewModel):
         # if user:
         #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
 
-    def to_data(self):
-        data = super(PlaceFeedItem, self).to_data()
+    def to_data(self, *args, **kwargs):
+        data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
         place_data = data.get('place')
         keepers = set(('id', 'name', 'location', 'image_url', 'description', 'tags'))
         for k in place_data.keys():
@@ -54,7 +54,7 @@ class PlaceDetail(ViewModel):
 
     def to_data(self, *args, **kwargs):
         '''Manually handles setting of place data'''
-        data = super(PlaceDetail, self).to_data()
+        data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
         url = data['place']['url']
         if url:
             data['place']['url'] = process_external_url(url)
