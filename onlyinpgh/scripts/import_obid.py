@@ -129,7 +129,8 @@ def insert_row(row, idx=None):
             name=row.name,
             location=location,
             url=row.url[:200],
-            phone=row.phone[:200]
+            phone=row.phone[:200],
+            fb_id=row.fb_id,
             )
 
     logger.info('Imported %s as Place' % row.name)
