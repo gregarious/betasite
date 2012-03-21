@@ -23,11 +23,11 @@ class Special(models.Model, ViewModel):
 
     tags = models.ManyToManyField(Tag, blank=True)
 
-    def to_data(self):
+    def to_data(self, *args, **kwargs):
         '''
         Manually handle place and tag entries.
         '''
-        data = super(Special, self).to_data()
+        data = super(Special, self).to_data(*args, **kwargs)
         data.pop('place_id')
         data['place'] = self.place.to_data()
         data['tags'] = [t.to_data() for t in self.tags.all()]

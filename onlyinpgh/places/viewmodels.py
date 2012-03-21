@@ -54,7 +54,7 @@ class PlaceDetail(ViewModel):
 
     def to_data(self, *args, **kwargs):
         '''Manually handles setting of place data'''
-        data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
+        data = super(PlaceDetail, self).to_data(*args, **kwargs)
         url = data['place']['url']
         if url:
             data['place']['url'] = process_external_url(url)

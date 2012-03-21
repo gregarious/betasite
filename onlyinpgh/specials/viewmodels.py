@@ -30,7 +30,7 @@ class SpecialDetail(ViewModel):
         self.special = special
 
     def to_data(self, *args, **kwargs):
-        data = super(SpecialFeedItem, self).to_data(*args, **kwargs)
+        data = super(SpecialDetail, self).to_data(*args, **kwargs)
         place_data = data['special'].get('place')
         if place_data:
             for k in place_data.keys():

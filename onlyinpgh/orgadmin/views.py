@@ -42,10 +42,8 @@ def response_admin_page(safe_content, context_instance=None):
 def authentication_required(view_func):
     def wrapper(request, *args, **kwargs):
         if request.user.is_authenticated():
-            print 'all good!'
             return view_func(request, *args, **kwargs)
         else:
-            print 'you shall not pass!'
             return HttpResponseRedirect(reverse('orgadmin-login'))
     return wrapper
 
