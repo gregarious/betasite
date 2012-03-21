@@ -13,15 +13,15 @@ urlpatterns = patterns('',
     # (r'^logout/$', 'django.contrib.auth.views.logout'),
 
     # url(r'^admin/', include(admin.site.urls)),
-    # url(r'^prelaunch_orgadmin/', include(orgadmin_urls)),
+    url(r'^prelaunch/orgadmin/', include('onlyinpgh.orgadmin.urls')),
     url(r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # url(r'^places/',include('onlyinpgh.places.urls')),
-    # url(r'^events/',include('onlyinpgh.events.urls')),
-    # url(r'^specials/',include('onlyinpgh.specials.urls')),
+    url(r'^prelaunch/places/',include('onlyinpgh.places.urls')),
+    url(r'^prelaunch/events/',include('onlyinpgh.events.urls')),
+    url(r'^prelaunch/specials/',include('onlyinpgh.specials.urls')),
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
