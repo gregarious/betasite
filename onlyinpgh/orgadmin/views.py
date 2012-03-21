@@ -177,7 +177,7 @@ def page_claim_place(request):
         if form.is_valid():
             id_str = form.cleaned_data['place']
             org.establishments.add(Place.objects.get(id=int(id_str)))
-            return redirect('orgadmin.views.page_list_places')
+            return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
@@ -212,7 +212,7 @@ def page_setup_place_wizard(request, id=None):
             if place not in org.establishments.all():
                 org.establishments.add(place)
 
-            return redirect('orgadmin.views.page_list_places')
+            return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
         form = SimpleLocationPlaceForm(instance=instance)
 
@@ -233,7 +233,7 @@ def page_edit_place(request, id):
         form = SimpleLocationPlaceForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('orgadmin.views.page_list_places')
+            return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
         form = SimpleLocationPlaceForm(instance=instance)
 
@@ -274,7 +274,7 @@ def page_edit_event(request, id=None):
         form = SimpleEventForm(organization=org, data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('orgadmin.views.page_list_events')
+            return redirect('onlyinpgh.orgadmin.views.page_list_events')
     else:
         form = SimpleEventForm(organization=org, instance=instance)
 
@@ -317,7 +317,7 @@ def page_edit_special(request, id=None):
         form = SimpleSpecialForm(organization=org, data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('orgadmin.views.page_list_specials')
+            return redirect('onlyinpgh.orgadmin.views.page_list_specials')
     else:
         form = SimpleSpecialForm(organization=org, instance=instance)
 
