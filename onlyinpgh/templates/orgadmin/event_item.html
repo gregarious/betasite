@@ -5,6 +5,22 @@ Context variables:
 	event:			Event ViewModel
 {% endcomment %}
 
-<h3>{{event.name}}</h3>
-<h4>{{event.dtstart}} - {{event.dtend}}</h4>
-<p>{{event.description}}</p>
+<div class="item-thumb">
+	<img class="item-thumb" alt="{{event.name}}" src="{{event.image_url}}" />
+</div>
+
+<section class="item-content">
+	<h4 class="item-title">
+		<a href="#">{{ event.name }}</a>
+	</h4>
+	<a class="edit-link" href="{% url orgadmin.views.page_edit_event event.id %}" title="Edit this place"><img src="/static/img/pencil.png" alt="Edit this event"></a>
+	
+	<ul class="item-details meta">	
+		<li class="address">{{event.dtstart}} - {{event.dtend}}</li>
+		<li>{{event.location.address}}</li>
+		<li class="description">{{ event.description|truncatewords:20|urlizetrunc:20 }}</li>
+  	</ul>
+
+	{% include "tags/tag_list.html" with tags=event.tags %}
+
+</section>

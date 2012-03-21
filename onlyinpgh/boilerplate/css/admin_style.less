@@ -88,22 +88,18 @@ ul {
 	font-style: italic;
 	color: #e1e1e1;
 	text-shadow: 0.02em, 0.02em, 0em, #fff;
-
-	&:hover {
-		color: @lblue;
-	}
 }
 
 #site-content {
-	
 	//.b-shadow(1px, 1px, 6px, #fff);
-	//background: #fff;
+	background: #fff;
+	.border-box;
 	.clearfix;	
 	margin: 100px auto;
-	.border-box;
+	max-width: 650px;	
 	.rounded(0.5em);
 	padding: 3%;
-	max-width: 650px;	
+	position: relative;
 	
 	&.signup {
 	
@@ -235,14 +231,15 @@ ul {
 	}
 }
 
+
 /* ADMIN ---------- */
 
-.admin {
-	.item {
-		border: none;
-		background: fade(#fff, 60%);
-	}
+
+.item {
+	border-bottom: 1px solid #ccc;
+	background: fade(#fff, 60%);
 }
+
 
 /* AUTOCOMPLETE ------ */
 
@@ -287,7 +284,7 @@ button, input[type="submit"] {
 	.rounded(0.5em);
 	border: none;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
-	background: #2C525D;
+	background: @teal;
 	color: #fff !important;
 	text-decoration: none;
 
@@ -315,6 +312,7 @@ button, input[type="submit"] {
 .submit-item {
 	float: right;
 }
+
 
 
 /* PROFILE --------- */
@@ -364,8 +362,18 @@ button, input[type="submit"] {
 	//display: none;
 }
 
+/* ACTIONS --------- */
 
-/* FORMS ------- */
+.add-item {
+	font-style: italic;
+	font-weight: bold;
+    float: right;
+    margin-top: 1em;
+
+    &:hover {
+    	color: @lblue;
+    }
+}
 
 .edit-link {
 	position: absolute;
@@ -378,23 +386,8 @@ button, input[type="submit"] {
 	}
 }
 
-/* ACTIONS --------- */
-
-.add-item-link {
-	font-size: 0.8em;
-	font-style: italic;
-	font-weight: bold;
-	margin-top: 1em;
-	position: absolute;
-    right: 0;
-    top: 0;
-    color: #B83939;
-    
-}
 
 /* UTILITY ----------- */
-
-
 
 .selected {
 	background-color: green;
@@ -408,3 +401,10 @@ img.edit-item {
 
 }
 
+div.row {
+	.row();
+
+	.add-item {
+		text-align: left;
+	}
+}
