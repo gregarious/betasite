@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('orgadmin.views',
+urlpatterns = patterns('onlyinpgh.orgadmin.views',
     url(r'^$', 'page_home'),
     url(r'^home/$', 'page_home', name='orgadmin-home'),
 

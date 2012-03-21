@@ -175,7 +175,6 @@ class SimpleSpecialForm(SpecialForm):
             'title': TextInput(attrs={'placeholder': "Short description of your special"}),
         }
 
-
     def __init__(self, organization, *args, **kwargs):
         '''
         Limit the available places to org's own establishments

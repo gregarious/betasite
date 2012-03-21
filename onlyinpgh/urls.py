@@ -13,7 +13,6 @@ urlpatterns = patterns('',
     # (r'^logout/$', 'django.contrib.auth.views.logout'),
 
     # url(r'^admin/', include(admin.site.urls)),
-
     # url(r'^prelaunch_orgadmin/', include(orgadmin_urls)),
     url(r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
 
