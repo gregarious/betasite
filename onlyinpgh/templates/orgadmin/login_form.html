@@ -8,14 +8,22 @@ form fields:
 
 Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
 {% endcomment %}
-	<div class="field-container">
-		{{ form.username.label_tag }}
-		{{ form.username }}
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.username.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.username }}
+		</div>
 	</div> 
 
-	<div class="field-container last">
-		{{ form.password.label_tag }}
-		{{ form.password }}
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.password.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.password }}
+		</div>
 	</div>
 	
 	{% if form.errors %}

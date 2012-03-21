@@ -15,8 +15,6 @@ body {
 	background: url("/static/img/custom/sky-head-tex.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
 	//background: @skyblue;
-
-	font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 	font-weight: normal;
 	height: 100%;
 	margin: 0;
@@ -96,14 +94,14 @@ ul {
 }
 
 #site-content {
-	//height: 100%;
-	.b-shadow(1px, 1px, 6px, #fff);
-	background: fade(#fff, 70%);
+	
+	//.b-shadow(1px, 1px, 6px, #fff);
+	//background: #fff;
 	.clearfix;	
 	margin: 120px auto;
 	.border-box;
 	.rounded(0.5em);
-	padding: 3%;
+	padding: 3% 7%;
 	width: 80%;
 	max-width: 650px;	
 	
@@ -139,9 +137,9 @@ ul {
 	
 	// Add queries for larger sign - this is for 1024
 	background-image: url(/static/img/pgh-250h.png);
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, repeat-x;
-	background-position: bottom left, bottom left; 
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: bottom left; 
 	/*background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
@@ -172,6 +170,7 @@ ul {
 
 @import '../LESS/forms';
 
+
 /* SIGNUP ------ */
 
 
@@ -187,26 +186,6 @@ ul {
 		}
 	}
 }
-
-/*.progress-container {
-	.column(12);
-
-	.progress {
-		width: 70px;
-		margin: auto;
-		div {
-			background: url('/static/img/inactive-progress.png') center;
-			margin: 0 3px;
-			height: 10px;
-			width: 10px;
-			float: left;
-
-			&.selected {
-				background: url('/static/img/active-progress.png') center;
-			}
-		}
-	}
-}*/
 
 /* HOME ---------- */
 
@@ -243,14 +222,6 @@ ul {
 			background: #e1e1e1;
 			.b-shadow(0.05em, 0.05em, 0.05em, #333);
 		}
-
-		/*&.top {
-			margin-top: 0;
-		}
-
-		&.bottom {
-			margin-bottom: 0;
-		}*/
 
 		&.disabled {
 			/*.no-b-shadow();
@@ -311,7 +282,7 @@ ul {
 	margin-top: 1em;
 }
 
-.next, .back, .submit-item {
+button, input[type="submit"] {
 	padding: 0.5em;
 	.rounded(0.5em);
 	border: none;
@@ -429,17 +400,7 @@ ul {
 
 /* UTILITY ----------- */
 
-.last, .inner {
-	border: none;
-}
 
-.first {
-	padding-top: 0 !important;
-}
-
-.inner {
-	padding: 0.5em 0;
-}
 
 .selected {
 	background-color: green;

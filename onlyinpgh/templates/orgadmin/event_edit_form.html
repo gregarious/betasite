@@ -4,17 +4,25 @@
 
 <form method="post" action="">
 {% csrf_token %}
-<!-- 	<div class="field-container">
-		<div class="field-single">
+	<div class="field-container inner">
+		<div class="field-label">
 			{{ form.name.label_tag }}
+		</div>
+		<div class="field">
 			{{ form.name }}
 		</div>
-		<div class="field-single">
-			{{ form.place.label_tag }}
+	</div>
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.place.label_tag }}			
+		</div>
+		<div class="field">
 			{{ form.place }}
 		</div>
-	</div> -->
-	<div class="field-container">
+	</div>
+
+	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.dtstart.label_tag }}
 		</div>
@@ -22,22 +30,55 @@
 			{{ form.dtstart }}
 		</div>
 	</div>
-		<!-- <div class="field-single">
+
+	<div class="field-container inner">
+		<div class="field-label">
 			{{ form.dtend.label_tag }}
+		</div>
+		<div class="field">
 			{{ form.dtend }}
 		</div>
-
-		<div class="field-single">
+	</div>
+	
+	<div class="field-container first">
+		<div class="field-label">
 			{{ form.allday.label_tag }}
+		</div>
+		<div class="field">
 			{{ form.allday }}
 		</div>
 	</div>
-	<div class="field-container">
-		{{ form.description.label }}
-		{{ form.description }}
-	</div> -->
 
-	<input type="submit" value="Save Changes" />
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.image_url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.image_url }}
+		</div>
+	</div>
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.description.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.description }}
+		</div>
+	</div>
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.url }}
+			<p class="tip">A link to more event info, FaceBook pages or other.
+		</div>
+
+	</div>
+
+	<input type="submit" class="submit-item" value="Save Changes" />
 
 {% comment %}
 form fields:
