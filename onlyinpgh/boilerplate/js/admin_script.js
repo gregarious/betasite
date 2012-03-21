@@ -63,6 +63,14 @@ jQuery(document).ready( function(){
 		window.history.back();
 	});
 
+	// Copied from script.js
+	loc = location.pathname;
+	menu_item = $('#page-nav').find('a[href$="'+loc+'"]');
+	
+	if(menu_item.attr('href') == loc) {
+		menu_item.addClass('current-page');
+	}
+
 });
 
 // http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery

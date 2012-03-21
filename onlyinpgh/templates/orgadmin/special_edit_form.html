@@ -2,8 +2,6 @@
 
 <form method="post" action="">
 
-    <p class="tip error">{{ form.errors }}</p>
-
     {% csrf_token %}
 
     <div class="field-container inner">
@@ -30,6 +28,9 @@
         </div>
         <div class="field">
             {{ form.points }}
+            {% for err in form.points.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -39,6 +40,9 @@
         </div>
         <div class="field">
             {{ form.dtstart }}
+            {% for err in form.dtstart.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -48,6 +52,9 @@
         </div>
         <div class="field">
             {{ form.dtexpires }}
+            {% for err in form.dtexpires.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -57,6 +64,9 @@
         </div>
         <div class="field">
             {{ form.total_available }}
+            {% for err in form.total_available.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -67,6 +77,9 @@
         </div>
         <div class="field">
             {{ form.total_sold }}
+            {% for err in form.total_sold.errors %}
+                <p class="tip error">{{ total_sold }}</p><br />
+            {% endfor %}
         </div>
     </div>
 

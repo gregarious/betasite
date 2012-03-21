@@ -16,7 +16,7 @@ body {
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
 	//background: @skyblue;
 	font-weight: normal;
-	height: 100%;
+	height: 100%; 
 	.lucida();
 	margin: 0;
 	padding-bottom: 3em;
@@ -231,6 +231,25 @@ ul {
 	}
 }
 
+#page-nav {
+	.row();
+	.clearfix();
+	ul li {
+		float: left;
+		.gradient(@mblue, @lblue);
+		padding: 0.5em;
+		margin: 0 0.5em;
+		.rounded(0.3em);
+		 a {
+		 	color: #fff;
+
+			&.current-page {
+				color: green;
+			}
+
+		 }
+	}
+}
 
 /* ADMIN ---------- */
 
@@ -367,8 +386,9 @@ button, input[type="submit"] {
 .add-item {
 	font-style: italic;
 	font-weight: bold;
-    float: right;
-    margin-top: 1em;
+    position: absolute;
+    top: 3em;
+    right: 3em;
 
     &:hover {
     	color: @lblue;
@@ -401,10 +421,3 @@ img.edit-item {
 
 }
 
-div.row {
-	.row();
-
-	.add-item {
-		text-align: left;
-	}
-}
