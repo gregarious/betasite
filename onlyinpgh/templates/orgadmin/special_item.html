@@ -7,6 +7,25 @@ Context variables:
 	special:			Special ViewModel
 {% endcomment %}
 
-<h3><a href="{% url orgadmin.views.page_edit_special special.id %}">{{special.title}}</a></h3>
-<h4>+{{special.points}}</h4>
-<p>{{special.place.name}}</p>
+<div class="item-thumb">
+	<div class="points">+{{ special.points }}</div>
+</div>
+
+<section class="item-content">
+
+	<h4 class="item-title">
+		{{special.title}}
+	</h4>
+	<a class="edit-link" href="{% url orgadmin.views.page_edit_special special.id %}"><img src="/static/img/pencil.png" alt="Edit this place"></a>
+
+	<ul class="item-details">
+		<li>{{special.place.name}}</li>
+	</ul>
+
+	<ul class="tag-list">
+		<li>coolest</li>
+		<li>lovely</li>
+		<li>happy</li>
+		<li>fantastic</li>
+	</ul>
+</section>

@@ -59,6 +59,10 @@ jQuery(document).ready( function(){
 	// 	$('.content-container').find('.edit-link').hide();
 	// });
 
+	$('.back').click(function(){
+		window.history.back();
+	});
+
 });
 
 // http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery

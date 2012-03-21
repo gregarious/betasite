@@ -1,21 +1,99 @@
-<form method="post" action="">
-{% csrf_token %}
-{{ form }}
-<button type="Submit">Save Changes</button>
-{% comment %}
-form fields:
-    title
-    description
-    points
-    place (select box)
-    dtexpires
+<h2>Editing your special...</h2>
 
-    (the rest of the fields are all optional: don't know if you want to just hide them or denote that they're optional. your choice)
+<form method="post" action="">
+
+    {% csrf_token %}
+
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.title.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.title }}
+        </div>
+    </div>
+
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.place.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.place }}
+        </div>
+    </div>
+
+    <div class="field-container first">
+        <div class="field-label">
+            {{ form.points.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.points }}
+        </div>
+    </div>
+
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.dtstart.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.dtstart }}
+        </div>
+    </div>
+
+    <div class="field-container first">
+        <div class="field-label">
+            {{ form.dtexpires.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.dtexpires }}
+        </div>
+    </div>
+
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.total_available.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.total_available }}
+        </div>
+    </div>
+
+   <!-- total_sold is an input for demo purposes, will be static text when real -->
+    <div class="field-container inner"> 
+        <div class="field-label">
+            {{ form.total_sold.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.total_sold }}
+        </div>
+    </div>
+
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.description.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.description }}
+        </div>
+    </div>
+
+    <input type="submit" class="submit-item" value="Submit" />
+    <button class="back">&larr; Back</button>
     
-    dtstart
-    total_available
-    total_sold
-    (no tags for now - waiting on django-autocomplete)
-{% endcomment %}
+    {% comment %}
+    form fields:
+        title
+        description
+        points
+        place (select box)
+        dtexpires
+
+        (the rest of the fields are all optional: don't know if you want to just hide them or denote that they're optional. your choice)
+        
+        dtstart
+        total_available
+        total_sold
+        (no tags for now - waiting on django-autocomplete)
+    {% endcomment %}
 
 </form>

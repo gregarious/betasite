@@ -1,9 +1,9 @@
-<header class="content-header">
-	<h2>Editing your event...</h2>
-</header>
+<h2>Editing your event...</h2>
 
 <form method="post" action="">
-{% csrf_token %}
+
+	{% csrf_token %}
+	
 	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.name.label_tag }}
@@ -11,7 +11,7 @@
 		<div class="field">
 			{{ form.name }}
 		</div>
-	</div>
+	</div> <!-- name -->
 
 	<div class="field-container first">
 		<div class="field-label">
@@ -20,7 +20,7 @@
 		<div class="field">
 			{{ form.place }}
 		</div>
-	</div>
+	</div> <!-- place -->
 
 	<div class="field-container inner">
 		<div class="field-label">
@@ -29,7 +29,7 @@
 		<div class="field">
 			{{ form.dtstart }}
 		</div>
-	</div>
+	</div> <!-- start date -->
 
 	<div class="field-container inner">
 		<div class="field-label">
@@ -38,7 +38,7 @@
 		<div class="field">
 			{{ form.dtend }}
 		</div>
-	</div>
+	</div> <!-- end date -->
 	
 	<div class="field-container first">
 		<div class="field-label">
@@ -47,7 +47,7 @@
 		<div class="field">
 			{{ form.allday }}
 		</div>
-	</div>
+	</div> <!-- is it all day? -->
 
 	<div class="field-container inner">
 		<div class="field-label">
@@ -56,7 +56,7 @@
 		<div class="field">
 			{{ form.image_url }}
 		</div>
-	</div>
+	</div> <!-- image url -->
 
 	<div class="field-container first">
 		<div class="field-label">
@@ -65,7 +65,7 @@
 		<div class="field">
 			{{ form.description }}
 		</div>
-	</div>
+	</div> <!-- description -->
 
 	<div class="field-container inner">
 		<div class="field-label">
@@ -75,10 +75,10 @@
 			{{ form.url }}
 			<p class="tip">A link to more event info, FaceBook pages or other.
 		</div>
-
-	</div>
+	</div> <!-- event url -->
 
 	<input type="submit" class="submit-item" value="Save Changes" />
+	<button class="back" >&larr; Back</button>
 
 {% comment %}
 form fields:
