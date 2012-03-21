@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
 
 from onlyinpgh.events.models import Event
 from onlyinpgh.events.viewmodels import EventFeedItem, EventDetail
@@ -20,7 +20,7 @@ def feed_page(request):
     items = [EventFeedItem(event, user=request.user) for event in events]
     content = render_viewmodels_as_ul(items, 'events/feed_item.html')
 
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 def detail_page(request, eid):
@@ -34,7 +34,7 @@ def detail_page(request, eid):
                 template='events/single.html',
                 class_label='event-single')
 
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 

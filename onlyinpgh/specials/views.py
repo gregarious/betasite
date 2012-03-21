@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
 
 from onlyinpgh.specials.models import Special
 from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
@@ -20,7 +20,7 @@ def feed_page(request):
     items = [SpecialFeedItem(special, user=request.user) for special in specials]
     content = render_viewmodels_as_ul(items, 'specials/feed_item.html')
 
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 def detail_page(request, sid):
@@ -34,7 +34,7 @@ def detail_page(request, sid):
                 template='specials/single.html',
                 class_label='special-single')
 
-    return render_to_page(content, request=request)
+    return render(request, 'page.html', {'main_content': content})
 
 
 # @jsonp_response
