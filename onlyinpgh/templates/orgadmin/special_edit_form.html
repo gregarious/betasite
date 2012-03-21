@@ -19,6 +19,9 @@
         </div>
         <div class="field">
             {{ form.place }}
+            {% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 

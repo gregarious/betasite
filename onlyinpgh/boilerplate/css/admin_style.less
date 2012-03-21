@@ -234,20 +234,29 @@ ul {
 #page-nav {
 	.row();
 	.clearfix();
-	ul li {
+	border-bottom: 2px @dblue solid;
+
+	ul li a {
 		float: left;
-		.gradient(@mblue, @lblue);
+		background: @lblue;
 		padding: 0.5em;
 		margin: 0 0.5em;
-		.rounded(0.3em);
-		 a {
-		 	color: #fff;
+		.tabs(0.5em);
+	 	color: #fff;
 
-			&.current-page {
-				color: green;
-			}
+		&.current-page {
+			color: #fff;
+			.gradient(@mblue, @dblue);
+			.b-shadow(0, 0, 0.3em, #777);
+		}
 
-		 }
+		&:hover {
+			background: @mblue;
+		}
+
+		&:active {
+			background: @dblue;
+		}
 	}
 }
 
@@ -298,13 +307,14 @@ ul {
 	margin-top: 1em;
 }
 
-button, input[type="submit"] {
-	padding: 0.5em;
-	.rounded(0.5em);
+button, input[type="submit"], .next, .back {
 	border: none;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
 	background: @teal;
 	color: #fff !important;
+	.lucida();
+	padding: 0.5em;
+	.rounded(0.5em);
 	text-decoration: none;
 
 	&:hover {

@@ -19,6 +19,9 @@
 		</div>
 		<div class="field">
 			{{ form.place }}
+			{% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
 		</div>
 	</div> <!-- place -->
 
@@ -28,6 +31,9 @@
 		</div>
 		<div class="field">
 			{{ form.dtstart }}
+			{% for err in dtstart.points.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
 		</div>
 	</div> <!-- start date -->
 
@@ -37,6 +43,9 @@
 		</div>
 		<div class="field">
 			{{ form.dtend }}
+			{% for err in form.dtend.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
 		</div>
 	</div> <!-- end date -->
 	
@@ -78,7 +87,7 @@
 	</div> <!-- event url -->
 
 	<input type="submit" class="submit-item" value="Save Changes" />
-	<button class="back" >&larr; Back</button>
+	<a href="/orgadmin/events/list" class="back">&larr; Back</a>
 
 {% comment %}
 form fields:
