@@ -169,12 +169,12 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
-        'debug_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'verbose',
-            'filename': to_abspath('logs/debug.log')
-        },
+        # 'debug_file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'formatter': 'verbose',
+        #     'filename': to_abspath('logs/debug.log')
+        # },
         # 'resolve_file': {
         #     'level': 'DEBUG',
         #     'class': 'logging.FileHandler',
@@ -203,14 +203,14 @@ LOGGING = {
         #     'delay': True,      # only open if message is emitted
         #     'mode': 'w'
         # }
-        'obidimport_file': {
-             'level': 'DEBUG',
-             'class': 'logging.FileHandler',
-             'formatter': 'simple_timestamped',
-             'filename': to_abspath('logs/imports/obid_%s.log' % _timestamp),
-             'delay': True,      # only open if message is emitted
-             'mode': 'w'
-        }
+        # 'obidimport_file': {
+        #      'level': 'DEBUG',
+        #      'class': 'logging.FileHandler',
+        #      'formatter': 'simple_timestamped',
+        #      'filename': to_abspath('logs/imports/obid_%s.log' % _timestamp),
+        #      'delay': True,      # only open if message is emitted
+        #      'mode': 'w'
+        # }
     },
     'loggers': {
         'django.request': {
@@ -218,16 +218,16 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'onlyinpgh.obidimport': {
-            'handlers': ['console', 'obidimport_file'],
-            'level': 'INFO',
-            'propagate': False
-        },
-        'onlyinpgh.debugging': {
-            'handlers': ['console', 'debug_file'],
-            'level': 'DEBUG',
-            'propagate': False
-        },
+        # 'onlyinpgh.obidimport': {
+        #     'handlers': ['console', 'obidimport_file'],
+        #     'level': 'INFO',
+        #     'propagate': False
+        # },
+        # 'onlyinpgh.debugging': {
+        #     'handlers': ['console', 'debug_file'],
+        #     'level': 'DEBUG',
+        #     'propagate': False
+        # },
         'onlyinpgh.resolve': {
             'handlers': ['console'],
             'level': 'DEBUG',

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import TextInput
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from onlyinpgh.places.forms import PlaceForm
@@ -71,6 +72,9 @@ class SimpleLocationPlaceForm(PlaceForm):
     class Meta(PlaceForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'location', 'tags',)
+        widgets = {
+            'name': TextInput(attrs={'placeholder': "Your place's name"}),
+        }
 
     def __init__(self, geocode_locations=True, *args, **kwargs):
         '''
@@ -147,6 +151,9 @@ class SimpleEventForm(EventForm):
     class Meta(EventForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'dtmodified', 'tags', )
+        widgets = {
+            'name': TextInput(attrs={'placeholder': "Your event's name"}),
+        }
 
     def __init__(self, organization, *args, **kwargs):
         '''
@@ -164,6 +171,9 @@ class SimpleSpecialForm(SpecialForm):
     class Meta(SpecialForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('tags',)
+        widgets = {
+            'title': TextInput(attrs={'placeholder': "Short description of your special"}),
+        }
 
     def __init__(self, organization, *args, **kwargs):
         '''
