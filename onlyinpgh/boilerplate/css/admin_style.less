@@ -17,6 +17,7 @@ body {
 	//background: @skyblue;
 	font-weight: normal;
 	height: 100%;
+	.lucida();
 	margin: 0;
 	padding-bottom: 3em;
 	overflow-x: hidden;
@@ -98,11 +99,10 @@ ul {
 	//.b-shadow(1px, 1px, 6px, #fff);
 	//background: #fff;
 	.clearfix;	
-	margin: 120px auto;
+	margin: 100px auto;
 	.border-box;
 	.rounded(0.5em);
-	padding: 3% 7%;
-	width: 80%;
+	padding: 3%;
 	max-width: 650px;	
 	
 	&.signup {
@@ -277,7 +277,7 @@ ul {
 /* NAVIGATION ------------ */
 
 .prev-next {
-	.column(12);
+	.row();
 	.clearfix;
 	margin-top: 1em;
 }
@@ -367,21 +367,15 @@ button, input[type="submit"] {
 
 /* FORMS ------- */
 
-.admin {
+.edit-link {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
 
-	.edit-link {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		cursor: pointer;
-		//.icon('pencil');
-		display: none;
-
-		img {
-			float: right;
-		}
+	img {
+		float: right;
 	}
-
 }
 
 /* ACTIONS --------- */

@@ -15,21 +15,15 @@ Context variables:
 	<h4 class="item-title">
 		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
 	</h4>
-
+	<a class="edit-link" href="{% url orgadmin.views.page_edit_place place.id %}" title="Edit this place"><img src="/static/img/pencil.png" alt="Edit this place"></a>
+	
 	<ul class="item-details meta">	
 		<li class="address">{{place.location.address}}</li>
-		<li class="description">Keytar williamsburg seitan, laborum gentrify do locavore yr put a bird on it tofu viral vice...</li>	
-		{% comment %}
-			{{ place.description|truncatewords:35|urlizetrunc:20 }}
-		{% endcomment %}
+		<li>{{place.phone}}</li>
+		<li>{{place.hours}}</li>
+		<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=place.tags %}
-
-	{% if place.description %}	
-		<section class="item-description">
-  			<p>{{ place.description|truncatewords:35|urlizetrunc:20 }}</p> 
-  		</section>
- 	{% endif %}
 
 </section>
