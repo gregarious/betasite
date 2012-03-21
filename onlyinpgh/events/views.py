@@ -1,41 +1,41 @@
+from django.shortcuts import get_object_or_404
 
-from django.shortcuts import render, redirect
-from django.utils.safestring import mark_safe
-from django.template import RequestContext
-from django.template.loader import render_to_string
+from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
+from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
 
 from onlyinpgh.events.models import Event
+from onlyinpgh.events.viewmodels import EventFeedItem, EventDetail
 
 
-def biz_edit_event(request, eid):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
+def feed_page(request):
+    '''
+    View function that handles a page load request for a feed of place
+    items.
 
-    form = None
-    form_html = mark_safe(render_to_string(
-        'events/manage/edit_event.html', {'form': form, 'mode': 'edit'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
+    Renders page.html with main_content set to the rendered HTML of
+    a feed.
+    '''
+    # get a list of rendered items
+    events = Event.objects.all()[:10]
+    items = [EventFeedItem(event, user=request.user) for event in events]
+    content = render_viewmodels_as_ul(items, 'events/feed_item.html')
+
+    return render_to_page(content, request=request)
 
 
-def biz_add_event(request):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
+def detail_page(request, eid):
+    '''
+    View displays single events.
+    '''
+    # build and render event detail viewmodel
+    event = get_object_or_404(Event, id=eid)
+    details = EventDetail(event, user=request.user)
+    content = render_viewmodel(details,
+                template='events/single.html',
+                class_label='event-single')
 
-    form = None
-    form_html = mark_safe(render_to_string(
-        'events/manage/edit_event.html', {'form': form, 'mode': 'add'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
+    return render_to_page(content, request=request)
 
-def biz_show_events(request):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
-
-    content = mark_safe(render_to_string(
-        'events/manage/events.html', {},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': content})
 
 
 # from django.shortcuts import render_to_response
@@ -118,11 +118,11 @@ def biz_show_events(request):
 #                     'start_date': split_dt(e.dtstart)[0],
 #                     'start_time': split_dt(e.dtstart)[1],
 #                     'end_time': split_dt(e.dtend)[1]}
-    
+
 #     p = e.place
 #     if p:
 #         place = {'id':   p.id,
-#                 'name': p.name}            
+#                 'name': p.name}
 #         loc = p.location
 #         if loc:
 #             place['address'] = loc.address

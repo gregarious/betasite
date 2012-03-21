@@ -1,13 +1,8 @@
-from django.utils.safestring import mark_safe
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from django.shortcuts import redirect, render
-from django.template.loader import render_to_string
-from django.template import RequestContext
-from onlyinpgh.places.models import Place
-#from onlyinpgh.accounts.models import FavoriteItem
-from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
+from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
 
-from onlyinpgh.common.core.rendering import render_viewmodel, render_list, render_to_page
+from onlyinpgh.places.models import Place
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
 from datetime import datetime, timedelta
 
@@ -63,37 +58,16 @@ def feed_page(request):
     Renders page.html with main_content set to the rendered HTML of
     a feed.
     '''
-    raise NotImplementedError('temporary out of order: new place model structure')
     # get a list of rendered items
-    places = Place.objects.select_related().all()[:10]
-    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
-    rendered_items = [render_viewmodel(item,
-                            template='places/feed_item.html',
-                            tag_type='li',
-                            class_label='item')
-                        for item in feed_items]
-
-    # render the feed full of items
-    content = render_list(rendered_items,
-        tag_type='ul',
-        class_label='feed')
-
+    places = Place.objects.all()[:10]
+    items = [PlaceFeedItem(place, user=request.user) for place in places]
+    content = render_viewmodels_as_ul(items, 'places/feed_item.html')
     return render_to_page(content, request=request)
 
 
 def detail_page(request, pid):
     '''
-    View displays single places as well as handling many user actions taken
-    on these places.
-
-    The actions are specified via an 'action' GET argument. If the GET request
-    is an XMLHttpRequest (ajax), the response will be a JSON object noting the
-    status of the request. If no action or a non-AJAX request, the whole page
-    will be returned.
-
-    Supported actions:
-    - fav: User adds given place to his favorites
-    - unfav: User removes given place from favorites
+    View displays single places.
     '''
     action = request.GET.get('action')
     if action:
@@ -105,13 +79,11 @@ def detail_page(request, pid):
     # TODO: return error message on action failure?
 
     # build and render place detail viewmodel
-    place = Place.objects.select_related().get(id=pid)
+    place = Place.objects.get(id=pid)
     details = PlaceDetail(place, user=request.user)
     content = render_viewmodel(details,
                 template='places/single.html',
                 class_label='place-single')
-
-    # content += SafeUnicode(u'\n<hr/><hr/>\n')
 
     # build and render related feeds viewmodel
     # related_feeds = PlaceRelatedFeeds(place, user=request.user)
@@ -123,17 +95,15 @@ def detail_page(request, pid):
 
 @jsonp_response
 def feed_app(request):
-    raise NotImplementedError('temporary out of order: new place model structure')
-    profiles = PlaceProfile.objects.select_related().all()[:10]
-    feed_items = [PlaceFeedItem(profile, user=request.user) for profile in profiles]
+    places = Place.objects.all()[:10]
+    feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     return [item.to_data() for item in feed_items]
 
 
 @jsonp_response
 def detail_app(request, pid):
-    raise NotImplementedError('temporary out of order: new place model structure')
-    profile = PlaceProfile.objects.select_related().get(place__id=pid)
-    details = PlaceDetail(profile, user=request.user)
+    place = Place.objects.get(place__id=pid)
+    details = PlaceDetail(place, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
 
 
@@ -146,27 +116,3 @@ def place_lookup(request):
             results = results[:limit]
 
     return [{'id':p.id, 'name':p.name} for p in results]
-
-###### MANGEMENT-RELATED VIEWS ######
-
-
-def biz_create_place(request):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
-
-    form = None
-    form_html = mark_safe(render_to_string(
-        'places/manage/create_place.html', {'form': form, 'mode': 'edit'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
-
-
-def biz_edit_place(request, pid):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
-
-    form = None
-    form_html = mark_safe(render_to_string(
-        'places/manage/edit_place.html', {'form': form, 'mode': 'edit'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})

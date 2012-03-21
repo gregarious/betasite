@@ -1,7 +1,18 @@
+<h2>Claim a place...</h2>
+
 <form method="post" action="{% url orgadmin.views.page_claim_place %}">
 {% csrf_token %}
-{{ form }}
-<button type="submit">Claim</button>
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.place.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.place }}
+		</div>
+	</div>
+	
+<input type="submit" class="submit-item" value="Claim" />
+
 <p>or, <a href="{% url orgadmin-addplace %}">Create a new place</a></p>
 
 {% comment %}

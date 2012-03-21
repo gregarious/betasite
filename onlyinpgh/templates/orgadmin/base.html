@@ -25,17 +25,15 @@
 		</span>
 		{% if user.is_authenticated %}
 			{% if current_org %}
-				<p>Currently managing: {{ current_org.name }}</p>
+				<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
 			{% else %}
-				<p>User currently is not managing any organizations.</p>
+				<h2>User currently is not managing any organizations.</h2>
 			{% endif %}
 		{% endif %}
 	</header>
 
 	<div id="site-content">
-	    {% autoescape off %}
-		    {{content}}
-	    {% endautoescape %}
+	    {{content}}
 	</div>
 
 	<!-- <footer id="site-footer">

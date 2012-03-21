@@ -7,12 +7,20 @@ from django.forms.util import ErrorList
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import get_object_or_404, redirect
 
-from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, SimpleLocationPlaceForm, PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
-
 from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
+
+from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, \
+        SimpleLocationPlaceForm, PlaceClaimForm, SimpleEventForm, \
+        SimpleSpecialForm
+
+from onlyinpgh.places.viewmodels import PlaceFeedItem
+from onlyinpgh.events.viewmodels import EventFeedItem
+from onlyinpgh.specials.viewmodels import SpecialFeedItem
+
+from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
 
 
 def render_admin_page(safe_content, context_instance=None):
@@ -241,8 +249,11 @@ def page_list_places(request):
     org = request.session.get('current_org')
     places = org.establishments.all() if org else []
 
+    items = [PlaceFeedItem(place) for place in places]
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/place_item.html')
+
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_list.html', {'places': places}, context_instance=context)
+    content = render_to_string('orgadmin/place_list.html', {'list_content': list_content}, context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -280,9 +291,11 @@ def page_list_events(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
     events = Event.objects.filter(place__in=establishments)
+    items = [EventFeedItem(event) for event in events]
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_list.html', {'events': events},
+    content = render_to_string('orgadmin/event_list.html', {'list_content': list_content},
                                     context_instance=context)
     return response_admin_page(content, context)
 
@@ -321,8 +334,10 @@ def page_list_specials(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
+    items = [SpecialFeedItem(special) for special in specials]
+    list_content = render_viewmodels_as_ul(items, 'orgadmin/special_item.html')
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_list.html', {'specials': specials},
+    content = render_to_string('orgadmin/special_list.html', {'list_content': list_content},
                                 context_instance=context)
     return response_admin_page(content, context)

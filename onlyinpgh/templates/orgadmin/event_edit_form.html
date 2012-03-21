@@ -1,8 +1,85 @@
-Event edit form
+<header class="content-header">
+	<h2>Editing your event...</h2>
+</header>
+
 <form method="post" action="">
 {% csrf_token %}
-{{ form }}
-<button type="Submit">Save Changes</button>
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.name.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.name }}
+		</div>
+	</div>
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.place.label_tag }}			
+		</div>
+		<div class="field">
+			{{ form.place }}
+		</div>
+	</div>
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.dtstart.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.dtstart }}
+		</div>
+	</div>
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.dtend.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.dtend }}
+		</div>
+	</div>
+	
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.allday.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.allday }}
+		</div>
+	</div>
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.image_url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.image_url }}
+		</div>
+	</div>
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.description.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.description }}
+		</div>
+	</div>
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.url }}
+			<p class="tip">A link to more event info, FaceBook pages or other.
+		</div>
+
+	</div>
+
+	<input type="submit" class="submit-item" value="Save Changes" />
+
 {% comment %}
 form fields:
     name

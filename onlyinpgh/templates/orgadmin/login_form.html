@@ -1,30 +1,35 @@
+<h2>Login to your Account</h2>
+<form method="post" action="{% url orgadmin.views.page_login %}">
+{% csrf_token %}
+{% comment %}
+form fields:
+    username
+    password
 
-<div class="content-container">
-	<h2>Login to your Account</h2>
-	<form method="post" action="{% url orgadmin.views.page_login %}">
-	{% csrf_token %}
-	{% comment %}
-	form fields:
-	    username
-	    password
-
-	Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
-	{% endcomment %}
-		<div class="field-container">
-			<label>{{form.username.label}}</label>
+Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
+{% endcomment %}
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.username.label_tag }}
+		</div>
+		<div class="field">
 			{{ form.username }}
 		</div>
+	</div> 
 
-		<div class="field-container last">
-			<label>{{form.password.label}}</label>
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.password.label_tag }}
+		</div>
+		<div class="field">
 			{{ form.password }}
 		</div>
-		
-		{% if form.errors %}
+	</div>
+	
+	{% if form.errors %}
 		<span class="tip error">Your username and password didn't match. Please try again.</span>
-		{% endif %}
+	{% endif %}
 
-		<input type="submit" value="login" class="submit-item"  />
+	<input type="submit" value="login" class="submit-item"  />
 
-	</form>
-</div>
+</form>

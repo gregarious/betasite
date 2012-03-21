@@ -1,22 +1,15 @@
-
-<div class="content-container">
 	<header class="content-header">
 		<h2>Editing your Event</h2> <!-- Fill with event name OR adding event -->
 	</header>
 
 	<form action="" method="POST">
 
-		<div class="field-container">
+		<div class="field-container">		
+			<label>Name</label>
+			<div class="inputs">
+				<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
+			</div>
 		
-			<fieldset id="field-1">
-				<!-- <div class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></div> -->
-				<label>Name</label>
-				<div class="inputs">
-					<input type="text" placeholder="Event name" name="{{form.name.html_name}}" value="{{form.name.value}}"/>
-				</div>
-			</fieldset>
-
-			<fieldset>
 				<!-- <a class="edit-link"><img src="/static/img_using/pencil.png" alt="Edit" /></a> -->
 				<label>Location</label>
 				<div class="inputs">
@@ -81,5 +74,4 @@
 			</div>
 		</fieldset>
 	</div>
-	</form>
-</div>
+</form>
