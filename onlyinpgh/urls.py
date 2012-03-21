@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import direct_to_template, redirect_to
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,20 +8,20 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    (r'^login/$', 'django.contrib.auth.views.login'),
-    (r'^logout/$', 'django.contrib.auth.views.logout'),
+    # (r'^login/$', 'django.contrib.auth.views.login'),
+    # (r'^logout/$', 'django.contrib.auth.views.logout'),
 
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^orgadmin/', include('orgadmin.urls')),
-
+    url(r'^prelaunch_orgadmin/', include('orgadmin.urls')),
+    url(r'^$', redirect_to('http://scenable.com/blog')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^places/',include('onlyinpgh.places.urls')),
-    url(r'^events/',include('onlyinpgh.events.urls')),
-    url(r'^specials/',include('onlyinpgh.specials.urls')),
+    # url(r'^places/',include('onlyinpgh.places.urls')),
+    # url(r'^events/',include('onlyinpgh.events.urls')),
+    # url(r'^specials/',include('onlyinpgh.specials.urls')),
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
