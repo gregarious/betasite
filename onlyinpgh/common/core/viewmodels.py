@@ -19,9 +19,16 @@ class ViewModel(object):
         calls to_data on any value that is a ViewModel instance. All
         other values are assumed to be basic enough to be serializable.
 
-        Classes derived from ViewModel that do not have member variables
-        variables simple enough for this standard (e.g. Django models with
-        ForeignKeys) should override to_data.
+        Officially, only a subset of datatypes will be extracted using
+        this default implementation, all others will need to be handled
+        explicitly via an overridden to_data method.
+
+        See _flatten doctype for supported data types.
+
+        Note that Django model classes that are also ViewModels will
+        have their foreign key-based fields completely ignored as they
+        are not stored in the instance's __dict__ (and moreover, cannot
+        be handled correctly by _flatter()).
         '''
         return basic_data_extractor(self)
 
@@ -49,6 +56,8 @@ def basic_data_extractor(viewmodel):
     '''
     Simple function to extract a ViewModel's member variables to a data
     dict. Will ignore underscore-led variable names.
+
+    See _flatten doctype for supported data types.
     '''
     return dict([(key, _flatten(val))
         for key, val in viewmodel.__dict__.items()
@@ -62,8 +71,17 @@ def _flatten(obj):
     whenever possible. If intact_viewmodels is True, ViewModels will be
     treated like primitives.
 
-    Currently not built with bulletproof robustness in mind: only made to
-    handle primitives, lists, dicts, and ViewModels.
+    Datatypes are handled in this order:
+        - objects implementing to_data
+        - objects implementing items() (e.g. dict)
+        - objects implementing  __iter__() (e.g. set, list, tuple)
+            - Note: all of these objects will be turned into lists, even sets
+        - numerics (int, float, long, Decimal)
+        - strings
+        - objects implementing isoformat() (e.g. date, time, datetime)
+        - objects with __str__ or __unicode__ methods
+
+    All others will default to unicode representations of themselves.
     '''
     # always assume object is a ViewModel first (implements to_data)
     try:
@@ -85,9 +103,21 @@ def _flatten(obj):
     except TypeError:
         pass
 
-    # handle a decimal
-    if isinstance(obj, Decimal):
+    # handle dates/times
+    try:
+        return obj.isoformat()
+    except AttributeError:
+        pass
+
+    # handle a decimal or float
+    if isinstance(obj, float) or isinstance(obj, Decimal):
         return float(obj)
 
-    # we're assuming anything that makes it to here is a primitive
-    return obj
+    # handle int or long
+    try:
+        return int(obj)
+    except (TypeError, ValueError):
+        pass
+
+    # anything that makes it to here will be returned as a unicode string
+    return unicode(obj)

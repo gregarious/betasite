@@ -1,6 +1,2 @@
-<ul>
-{% for event in events %}
-    <li>{{event}} <a href="{% url orgadmin.views.page_edit_event event.id %}">edit</a></li>
-{% endfor %}
-</ul>
+{{ list_content }}
 <a href="{% url orgadmin-addevent %}">Add new event</a>

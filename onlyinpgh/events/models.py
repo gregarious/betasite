@@ -2,12 +2,13 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
+from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.organizations.models import Organization
 
 
-class Event(models.Model):
+class Event(models.Model, ViewModel):
     class Meta:
         ordering = ['name']
 

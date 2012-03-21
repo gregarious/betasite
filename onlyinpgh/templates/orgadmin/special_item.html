@@ -1,0 +1,12 @@
+{% comment %}
+Template to render a particular Special as an item in an orgadmin list.
+
+Compatible ViewModel: specials.viewmodels.SpecialFeedItem
+
+Context variables:
+	special:			Special ViewModel
+{% endcomment %}
+
+<h3><a href="{% url orgadmin.views.page_edit_special special.id %}">{{special.title}}</a></h3>
+<h4>+{{special.points}}</h4>
+<p>{{special.place.name}}</p>

@@ -11,8 +11,8 @@
         <input type="text" name="{{form.name.name}}" />
     </div>
     <div class="field-container">
-        <label>{{form.location.label}}</label>
-        <input type="text" name="{{form.name.name}}" />
+        {{ form.location.label_tag }}
+        {{ form.location }}
     </div>
     <button type="submit">All done!</button>
     {% comment %}

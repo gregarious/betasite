@@ -1,6 +1,2 @@
-<ul>
-{% for place in places %}
-    <li>{{place}} <a href="{% url orgadmin.views.page_edit_place place.id %}">edit</a></li>
-{% endfor %}
-</ul>
+{{ list_content }}
 <a href="{% url orgadmin.views.page_claim_place %}">Claim new place</a>

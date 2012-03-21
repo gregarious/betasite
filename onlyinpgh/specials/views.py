@@ -1,49 +1,40 @@
-from django.shortcuts import render, redirect
-from django.utils.safestring import mark_safe
-from django.template import RequestContext
-from django.template.loader import render_to_string
+from django.shortcuts import get_object_or_404
+
+from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
+from onlyinpgh.common.core.rendering import render_viewmodel, render_to_page, render_viewmodels_as_ul
 
 from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
 
 
-def biz_edit_special(request, sid):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
+def feed_page(request):
+    '''
+    View function that handles a page load request for a feed of place
+    items.
 
-    form = None
-    form_html = mark_safe(render_to_string(
-        'specials/manage/edit_special.html', {'form': form, 'mode': 'edit'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
+    Renders page.html with main_content set to the rendered HTML of
+    a feed.
+    '''
+    # get a list of rendered items
+    specials = Special.objects.all()[:10]
+    items = [SpecialFeedItem(special, user=request.user) for special in specials]
+    content = render_viewmodels_as_ul(items, 'specials/feed_item.html')
 
-
-def biz_add_special(request):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
-    form = None
-    form_html = mark_safe(render_to_string(
-        'specials/manage/edit_special.html', {'form': form, 'mode': 'add'},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': form_html})
+    return render_to_page(content, request=request)
 
 
-def biz_show_specials(request):
-    if 'fakeuser' not in request.session:
-        return redirect('biz_signup')
-    content = mark_safe(render_to_string(
-        'specials/manage/specials.html', {},
-        context_instance=RequestContext(request)))
-    return render(request, 'manage_base.html', {'content': content})
+def detail_page(request, sid):
+    '''
+    View displays single specials.
+    '''
+    # build and render special detail viewmodel
+    special = get_object_or_404(Special, id=sid)
+    details = SpecialDetail(special, user=request.user)
+    content = render_viewmodel(details,
+                template='specials/single.html',
+                class_label='special-single')
 
-
-# def feed_page(request):
-#     variables = {'offers': Offer.objects.all()}
-#     return render_to_response('offers/offers_page.html', variables)
-
-
-# def detail_page(request, id):
-#     variables = {'o': Offer.objects.get(id=id)}
-#     return render_to_response('offers/offers_single.html', variables)
+    return render_to_page(content, request=request)
 
 
 # @jsonp_response

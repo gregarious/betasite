@@ -8,3 +8,5 @@ A catch all text file for things that should be considered once there's an actua
 - Root through boilerplate code for app and site to remove anything unnecessary.
 
 - Unit tests for EVERYTHING after launch. EEEEVVVERYTHING.
+
+- Consider what code needs to be marked safe and what needs to be escaped. For now just marking everything that comes from a rendering.* function as safe.
