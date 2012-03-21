@@ -88,6 +88,14 @@ ul {
 	font-style: italic;
 	color: #e1e1e1;
 	text-shadow: 0.02em, 0.02em, 0em, #fff;
+
+	a {
+		color: @yellow;
+
+		&:hover {
+			color: @lblue;
+		}
+	}
 }
 
 #site-content {
@@ -403,17 +411,6 @@ button, input[type="submit"], .next, .back {
     &:hover {
     	color: @lblue;
     }
-}
-
-.edit-link {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	cursor: pointer;
-
-	img {
-		float: right;
-	}
 }
 
 

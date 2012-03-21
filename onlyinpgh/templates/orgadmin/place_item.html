@@ -13,9 +13,13 @@ Context variables:
 
 <section class="item-content">
 	<h4 class="item-title">
-		<a href="{% url places-item-detail pid=place.id %}">{{ place.name }}</a>
+		{{ place.name }}
 	</h4>
-	<a class="edit-link" href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit this place"><img src="/static/img/pencil.png" alt="Edit this place"></a>
+
+	<div class="item-actions">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place"/></a>
+		<a href="#" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
+	</div>
 	
 	<ul class="item-details meta">	
 		<li class="address">{{place.location.address}}</li>

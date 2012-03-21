@@ -1,19 +1,6 @@
 
 jQuery(document).ready( function(){
 
-
-	// slideToggle the add event/special forms
-	// var expand_form = function(title, content) {
-	//     $(title).click(function(){
-	// 		$(content).slideToggle(500);
-	// 	});
-	// }
-
-	// expand_form('#openEventForm','#eventForm');
-	// expand_form('#openSpecialForm','#specialForm');
-	// expand_form('.scheduled-item h4','.scheduled-item > .item-content');
-
-
 	// Sliding create place wizard
 	// http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
 	// $('a.shift-panel').click(function () {
@@ -36,9 +23,11 @@ jQuery(document).ready( function(){
 
 	// Item actions
 
+	// Hide and show edit/delete buttons when hovering over item 
+	// Is this excessive?
 	// $('.item').hover(function(){
-	// 	var itemClass = '.' + $(this).attr('class');
-	// 	$(itemClass + ' .item-actions').fadeIn(200);
+	// 	var itemId = '.' + $(this).attr('id');
+	// 	$(itemId + ' .item-actions').fadeIn(200);
 	// 	//console.log(itemClass + ' .item-actions');
 	// }, function(){
 	// 	$('.item-actions').fadeOut(200);
@@ -46,21 +35,9 @@ jQuery(document).ready( function(){
 	// });
 
 	
-	// Where item-1 is unique item id
-	// $('#item-1 .delete-item').click(function(){
-	// 	alert('Are you sure you want to delete #item-1?');
-	// });
-
-	// Hide and show edit link for each field
-	// $('fieldset').hover( function() {
-	// 	$(this).children('.edit-link').fadeIn(100);
-	// 	//console.log(this);
-	// }, function() {
-	// 	$('.content-container').find('.edit-link').hide();
-	// });
-
-	$('.back').click(function(){
-		window.history.back();
+	// Click X to delete item - need a real function here obvy
+	$('.delete-item').click(function(){
+		alert('Are you sure you want to delete #item-1?');
 	});
 
 	// Copied from script.js

@@ -375,7 +375,7 @@ a {
   color: #b83939;
 }
 a:hover {
-  color: #a9c6e8;
+  color: #ded57f;
 }
 a:active {
   color: #2c525d;
@@ -476,6 +476,12 @@ p {
   font-style: italic;
   color: #e1e1e1;
   text-shadow: 0.02em, 0.02em, 0em, #fff;
+}
+#userbar a {
+  color: #ded57f;
+}
+#userbar a:hover {
+  color: #a9c6e8;
 }
 #site-content {
   background: #fff;
@@ -919,10 +925,11 @@ input[type="checkbox"] {
   color: #333;
 }
 .item-actions {
-  float: right;
+  position: absolute;
+  top: -20px;
+  right: 0;
 }
 .item-actions img {
-  display: inline;
   cursor: pointer;
 }
 .item-thumb {
@@ -1272,15 +1279,6 @@ input[type="submit"]:active,
 }
 .add-item:hover {
   color: #a9c6e8;
-}
-.edit-link {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
-}
-.edit-link img {
-  float: right;
 }
 /* UTILITY ----------- */
 .selected {

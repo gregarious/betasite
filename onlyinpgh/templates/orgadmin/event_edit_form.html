@@ -64,6 +64,9 @@
 		</div>
 		<div class="field">
 			{{ form.image_url }}
+			{% for err in form.image_url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
 		</div>
 	</div> <!-- image url -->
 
@@ -82,7 +85,10 @@
 		</div>
 		<div class="field">
 			{{ form.url }}
-			<p class="tip">A link to more event info, FaceBook pages or other.
+			<p class="tip">A link to more event info, FaceBook pages or other.</p>
+			{% for err in form.url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}	
 		</div>
 	</div> <!-- event url -->
 

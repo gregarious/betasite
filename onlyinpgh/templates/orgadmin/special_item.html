@@ -16,7 +16,11 @@ Context variables:
 	<h4 class="item-title">
 		{{special.title}}
 	</h4>
-	<a class="edit-link" href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}"><img src="/static/img/pencil.png" alt="Edit this place"></a>
+
+	<div class="item-actions">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit this special"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit special"/></a>
+		<a href="#" title="Delete Special"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Special" /></a>
+	</div>
 
 	<ul class="item-details">
 		<li>at {{special.place.name}}</li>

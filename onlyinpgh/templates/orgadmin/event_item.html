@@ -11,9 +11,13 @@ Context variables:
 
 <section class="item-content">
 	<h4 class="item-title">
-		<a href="#">{{ event.name }}</a>
+		{{ event.name }}
 	</h4>
-	<a class="edit-link" href="{% url orgadmin.views.page_edit_event event.id %}" title="Edit this place"><img src="/static/img/pencil.png" alt="Edit this event"></a>
+
+	<div class="item-actions">
+		<a href="{% url orgadmin.views.page_edit_event event.id %}" title="Edit this event"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit event"/></a>
+		<a href="#" title="Delete Event"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Event" /></a>
+	</div>
 	
 	<ul class="item-details meta">	
 		<li class="address">{{event.dtstart}} - {{event.dtend}}</li>
