@@ -3,6 +3,7 @@ from django.views.generic.simple import direct_to_template, redirect_to
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+#from onlyinpgh.orgadmin import urls as orgadmin_urls
 
 admin.autodiscover()
 
@@ -13,8 +14,8 @@ urlpatterns = patterns('',
 
     # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^prelaunch_orgadmin/', include('orgadmin.urls')),
-    url(r'^$', redirect_to('http://scenable.com/blog')),
+    # url(r'^prelaunch_orgadmin/', include(orgadmin_urls)),
+    url(r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
