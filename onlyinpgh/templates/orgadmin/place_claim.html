@@ -10,11 +10,13 @@
 			{{ form.place }}
 		</div>
 	</div>
-	
+
+<div class="div">
+	<p>or <a href="{% url orgadmin-addplace %}" class="add-item">Create a new place</a></p>	
+</div>
 <input type="submit" class="submit-item" value="Claim" />
 <button class="back">&larr; Back</button>
 
-<p>or, <a href="{% url orgadmin-addplace %}">Create a new place</a></p>
 
 {% comment %}
 Just a simple form with one field: place
