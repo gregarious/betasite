@@ -178,13 +178,13 @@ class SimpleSpecialForm(SpecialForm):
     '''
     # TODO: reduce this code. collapse datepicker-start and -end
     # Note that special_edit_form template manually describes these fields!
-    dtstart = forms.DateTimeField(
-        label=u'Start datetime',
-        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+    dstart = forms.DateField(
+        label=u'Date starts',
+        input_formats=('%m/%d/%Y',),
         widget=TextInput(attrs={'class': 'datepicker-start'}))
-    dtexpires = forms.DateTimeField(
-        label=u'Expires datetime',
-        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+    dexpires = forms.DateField(
+        label=u'Date expires',
+        input_formats=('%m/%d/%Y',),
         widget=TextInput(attrs={'class': 'datepicker-end'}))
 
     class Meta(SpecialForm.Meta):

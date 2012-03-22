@@ -15,8 +15,8 @@ class Special(models.Model, ViewModel):
     points = models.IntegerField()
     place = models.ForeignKey(Place)
 
-    dtexpires = models.DateTimeField(null=True, blank=True)
-    dtstart = models.DateTimeField(null=True, blank=True)
+    dexpires = models.DateField(null=True, blank=True)
+    dstart = models.DateField(null=True, blank=True)
 
     total_available = models.IntegerField(null=True, blank=True)
     total_sold = models.IntegerField(default=0)
