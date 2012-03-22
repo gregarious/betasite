@@ -153,11 +153,11 @@ class SimpleEventForm(EventForm):
     dtstart = forms.DateTimeField(
         label=u'Start datetime',
         input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
-        widget=TextInput(attrs={'class': 'datepicker-start'}))
+        widget=TextInput(attrs={'class': 'datetimepicker-start'}))
     dtend = forms.DateTimeField(
         label=u'End datetime',
         input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
-        widget=TextInput(attrs={'class': 'datepicker-end'}))
+        widget=TextInput(attrs={'class': 'datetimepicker-end'}))
 
     class Meta(EventForm.Meta):
         # TODO: look into extending from parent meta

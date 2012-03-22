@@ -81,19 +81,20 @@ def page_signup(request):
         if form.is_valid():
             form.save()     # saves new user
 
-        # authenticate new user, create  and log in
-        user = authenticate(username=form.username, password=form.password1)
-        login(request, user)
+            # authenticate new user, create  and log in
+            user = authenticate(username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1'])
+            login(request, user)
 
-        # create new organization for user to administer
-        org = Organization.objects.create(name=form.orgname)
-        org.administrators.add(user)
+            # create new organization for user to administer
+            org = Organization.objects.create(name=form.cleaned_data['orgname'])
+            org.administrators.add(user)
 
-        request.session['current_org'] = org
+            request.session['current_org'] = org
 
-        # redirect to home page
-        redirect_to = reverse('orgadmin-home')
-        return HttpResponseRedirect(redirect_to)
+            # redirect to home page
+            redirect_to = reverse('orgadmin-home')
+            return HttpResponseRedirect(redirect_to)
     else:
         form = OrgSignupForm()
 

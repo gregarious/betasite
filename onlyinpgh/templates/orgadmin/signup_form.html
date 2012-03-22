@@ -5,8 +5,6 @@
 <form action="{% url onlyinpgh.orgadmin.views.page_signup %}" method="POST" >
 	{% csrf_token %}
 	
-	{{ form.orgname.errors }}
-		
 	<div class="field-container first">
 		{# Note that this field is actually rendered as an email field. #}
 		{{ form.username.errors }}
@@ -35,6 +33,16 @@
 		</div>
 		<div class="field">
 			{{ form.password2 }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container last">
+		{{ form.orgname.errors }}
+		<div class="field-label">
+			{{ form.orgname.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.orgname }}
 		</div>
 	</div> <!-- .field-container -->
 
