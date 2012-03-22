@@ -2,6 +2,22 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 
 
 class EventFeedItem(ViewModel):
+    '''
+    Exposes the following data:
+        event
+            id
+            name
+            dtstart (datetime for Django, iso-formatted string for JSON)
+            dtend   (datetime for Django, iso-formatted string for JSON)
+            allday  (boolean)
+            place
+                id
+                name
+            image_url
+            [tags]
+                id
+                name
+    '''
     def __init__(self, event, user=None):
         super(EventFeedItem, self).__init__()
         self.event = event
@@ -25,6 +41,24 @@ class EventFeedItem(ViewModel):
 
 
 class EventDetail(ViewModel):
+    '''
+        event
+            id
+            name
+            dtcreated
+            dtmodified
+            dtstart (datetime for Django, iso-formatted string for JSON)
+            dtend   (datetime for Django, iso-formatted string for JSON)
+            allday  (boolean)
+            place
+                id
+                name
+            image_url
+            tags
+                id
+                name
+            invisible   (boolean)
+    '''
     def __init__(self, event, user=None):
         super(EventDetail, self).__init__()
         self.event = event

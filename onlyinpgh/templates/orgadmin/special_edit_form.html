@@ -45,7 +45,8 @@
             {{ form.dtstart.label_tag }}
         </div>
         <div class="field">
-            {{ form.dtstart }}
+            {# manually describe field, easiest way to use date filter #}
+            <input id="id_dtstart" type="text" class="datepicker-start" value="{{ form.dtstart.value|date:"m/d/Y h:i A"  }}" name="dtstart" />
             {% for err in form.dtstart.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -57,7 +58,9 @@
             {{ form.dtexpires.label_tag }}
         </div>
         <div class="field">
-            {{ form.dtexpires }}
+            {# manually describe field, easiest way to use date filter #}
+            <input id="id_dtexpires" type="text" class="datepicker-end" value="{{ form.dtexpires.value|date:"m/d/Y h:i A"  }}" name="dtexpires" />
+            
             {% for err in form.dtexpires.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}

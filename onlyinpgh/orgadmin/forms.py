@@ -148,12 +148,20 @@ class SimpleEventForm(EventForm):
     Event edit form with place options limited to the given org's
     establishments
     '''
+    # TODO: reduce this code. collapse datepicker-start and -end
+    # Note that event_edit_form template manually describes these fields!
+    dtstart = forms.DateTimeField(
+        label=u'Start datetime',
+        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        widget=TextInput(attrs={'class': 'datepicker-start'}))
+    dtend = forms.DateTimeField(
+        label=u'End datetime',
+        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        widget=TextInput(attrs={'class': 'datepicker-end'}))
+
     class Meta(EventForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'dtmodified', 'tags', )
-        widgets = {
-            'name': TextInput(attrs={'placeholder': "Your event's name"}),
-        }
 
     def __init__(self, organization, *args, **kwargs):
         '''
@@ -168,12 +176,20 @@ class SimpleSpecialForm(SpecialForm):
     Specials edit form with place options limited to the given org's
     establishments
     '''
+    # TODO: reduce this code. collapse datepicker-start and -end
+    # Note that special_edit_form template manually describes these fields!
+    dtstart = forms.DateTimeField(
+        label=u'Start datetime',
+        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        widget=TextInput(attrs={'class': 'datepicker-start'}))
+    dtexpires = forms.DateTimeField(
+        label=u'Expires datetime',
+        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        widget=TextInput(attrs={'class': 'datepicker-end'}))
+
     class Meta(SpecialForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('tags',)
-        widgets = {
-            'title': TextInput(attrs={'placeholder': "Short description of your special"}),
-        }
 
     def __init__(self, organization, *args, **kwargs):
         '''
