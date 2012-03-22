@@ -8,48 +8,67 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Special'
-        db.create_table('specials_special', (
+        # Adding model 'Location'
+        db.create_table('places_location', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=140)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('points', self.gf('django.db.models.fields.IntegerField')()),
-            ('place', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['places.Place'])),
-            ('dexpires', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
-            ('dstart', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
-            ('total_available', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('total_sold', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('country', self.gf('django.db.models.fields.CharField')(default='US', max_length=2, blank=True)),
+            ('state', self.gf('django.db.models.fields.CharField')(max_length=2, blank=True)),
+            ('town', self.gf('django.db.models.fields.CharField')(max_length=60, blank=True)),
+            ('postcode', self.gf('django.db.models.fields.CharField')(max_length=10, blank=True)),
+            ('address', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('latitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=6, blank=True)),
+            ('longitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=6, blank=True)),
         ))
-        db.send_create_signal('specials', ['Special'])
+        db.send_create_signal('places', ['Location'])
 
-        # Adding M2M table for field tags on 'Special'
-        db.create_table('specials_special_tags', (
+        # Adding model 'Place'
+        db.create_table('places_place', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('dtcreated', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['places.Location'], null=True, blank=True)),
+            ('image_url', self.gf('django.db.models.fields.URLField')(max_length=400, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('hours', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('parking', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('phone', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('fb_id', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('twitter_username', self.gf('django.db.models.fields.CharField')(max_length=15, blank=True)),
+        ))
+        db.send_create_signal('places', ['Place'])
+
+        # Adding M2M table for field tags on 'Place'
+        db.create_table('places_place_tags', (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('special', models.ForeignKey(orm['specials.special'], null=False)),
+            ('place', models.ForeignKey(orm['places.place'], null=False)),
             ('tag', models.ForeignKey(orm['tags.tag'], null=False))
         ))
-        db.create_unique('specials_special_tags', ['special_id', 'tag_id'])
+        db.create_unique('places_place_tags', ['place_id', 'tag_id'])
 
-        # Adding model 'SpecialMeta'
-        db.create_table('specials_specialmeta', (
+        # Adding model 'PlaceMeta'
+        db.create_table('places_placemeta', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('special', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['specials.Special'])),
+            ('place', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['places.Place'])),
             ('key', self.gf('django.db.models.fields.CharField')(max_length=32)),
             ('value', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal('specials', ['SpecialMeta'])
+        db.send_create_signal('places', ['PlaceMeta'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Special'
-        db.delete_table('specials_special')
+        # Deleting model 'Location'
+        db.delete_table('places_location')
 
-        # Removing M2M table for field tags on 'Special'
-        db.delete_table('specials_special_tags')
+        # Deleting model 'Place'
+        db.delete_table('places_place')
 
-        # Deleting model 'SpecialMeta'
-        db.delete_table('specials_specialmeta')
+        # Removing M2M table for field tags on 'Place'
+        db.delete_table('places_place_tags')
+
+        # Deleting model 'PlaceMeta'
+        db.delete_table('places_placemeta')
 
 
     models = {
@@ -80,24 +99,11 @@ class Migration(SchemaMigration):
             'twitter_username': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
         },
-        'specials.special': {
-            'Meta': {'ordering': "['title']", 'object_name': 'Special'},
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'dexpires': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
-            'dstart': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'place': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['places.Place']"}),
-            'points': ('django.db.models.fields.IntegerField', [], {}),
-            'tags': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['tags.Tag']", 'symmetrical': 'False', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '140'}),
-            'total_available': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'total_sold': ('django.db.models.fields.IntegerField', [], {'default': '0'})
-        },
-        'specials.specialmeta': {
-            'Meta': {'object_name': 'SpecialMeta'},
+        'places.placemeta': {
+            'Meta': {'object_name': 'PlaceMeta'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'key': ('django.db.models.fields.CharField', [], {'max_length': '32'}),
-            'special': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['specials.Special']"}),
+            'place': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['places.Place']"}),
             'value': ('django.db.models.fields.TextField', [], {})
         },
         'tags.tag': {
@@ -107,4 +113,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['specials']
+    complete_apps = ['places']

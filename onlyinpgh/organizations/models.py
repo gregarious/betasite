@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from onlyinpgh.places.models import Place
 
+
 class Organization(models.Model):
     '''
     Represents organizations in the community (business, charity, etc.)

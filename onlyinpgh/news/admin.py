@@ -1,4 +1,5 @@
 from django.contrib import admin
 from onlyinpgh.news.models import Article
 
-admin.site.register(Article)
+# renable after app has been added back to project
+# admin.site.register(Article)

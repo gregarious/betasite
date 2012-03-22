@@ -138,16 +138,12 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'django_extensions',
-    'onlyinpgh.common',
+    'onlyinpgh.accounts',
+    'onlyinpgh.tags',
     'onlyinpgh.places',
+    'onlyinpgh.organizations',
     'onlyinpgh.events',
     'onlyinpgh.specials',
-    'onlyinpgh.accounts',
-    'onlyinpgh.news',
-    'onlyinpgh.chatter',
-    'onlyinpgh.tags',
-    'onlyinpgh.organizations',
-    'onlyinpgh.outsourcing',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -169,18 +165,12 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
-        # 'debug_file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'formatter': 'verbose',
-        #     'filename': to_abspath('logs/debug.log')
-        # },
-        # 'resolve_file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'formatter': 'verbose',
-        #     'filename': to_abspath('logs/resolve.log')
-        # },
+        'debug_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': to_abspath('logs/debug.log')
+        },
         # 'outsourcing_file': {
         #     'level': 'DEBUG',
         #     'class': 'logging.FileHandler',
@@ -203,14 +193,6 @@ LOGGING = {
         #     'delay': True,      # only open if message is emitted
         #     'mode': 'w'
         # }
-        # 'obidimport_file': {
-        #      'level': 'DEBUG',
-        #      'class': 'logging.FileHandler',
-        #      'formatter': 'simple_timestamped',
-        #      'filename': to_abspath('logs/imports/obid_%s.log' % _timestamp),
-        #      'delay': True,      # only open if message is emitted
-        #      'mode': 'w'
-        # }
     },
     'loggers': {
         'django.request': {
@@ -218,36 +200,26 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        # 'onlyinpgh.obidimport': {
-        #     'handlers': ['console', 'obidimport_file'],
-        #     'level': 'INFO',
-        #     'propagate': False
-        # },
-        # 'onlyinpgh.debugging': {
-        #     'handlers': ['console', 'debug_file'],
+        'onlyinpgh.debugging': {
+            'handlers': ['console', 'debug_file'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        # 'onlyinpgh.outsourcing': {
+        #     'handlers': ['console'],
         #     'level': 'DEBUG',
         #     'propagate': False
         # },
-        'onlyinpgh.resolve': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False
-        },
-        'onlyinpgh.outsourcing': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False
-        },
-        'onlyinpgh.fb_import': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagrate': False
-        },
-        'onlyinpgh.ical_import': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagrate': False
-        },
+        # 'onlyinpgh.fb_import': {
+        #     'handlers': ['console'],
+        #     'level': 'DEBUG',
+        #     'propagrate': False
+        # },
+        # 'onlyinpgh.ical_import': {
+        #     'handlers': ['console'],
+        #     'level': 'DEBUG',
+        #     'propagrate': False
+        # },
     },
     'formatters': {
         'verbose': {
