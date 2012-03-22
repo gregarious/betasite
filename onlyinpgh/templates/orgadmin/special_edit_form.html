@@ -94,6 +94,9 @@
             {{ form.description.label_tag }}
         </div>
         <div class="field">
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
             {{ form.description }}
             {% for err in form.description.errors %}
                 <p class="tip error">{{ err }}</p><br />
