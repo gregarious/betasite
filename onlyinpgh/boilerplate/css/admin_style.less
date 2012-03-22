@@ -36,6 +36,9 @@ section, article {
 }
 
 img {
+	color: #999;
+	font-style: italic;
+	font-size: 0.8em;
 	height: auto;
 	max-width: 100%;
 }
@@ -140,10 +143,10 @@ ul {
 	pointer-events: none;
 	
 	// Add queries for larger sign - this is for 1024
-	background-image: url(/static/img/pgh-250h.png);
+	/*background-image: url(/static/img/pgh-250h.png);
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-position: bottom left; 
+	background-position: bottom left; */
 	/*background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
@@ -177,8 +180,7 @@ ul {
 
 /* SIGNUP ------ */
 
-
-#hours {
+/*#hours {
 	.hours-set {
 		.column(11);
 	}
@@ -189,7 +191,7 @@ ul {
 			margin-left: 5%;
 		}
 	}
-}
+}*/
 
 /* HOME ---------- */
 
@@ -201,7 +203,7 @@ ul {
 		padding-left: 0;
 	}
 	
-	li {
+	li a { 
 		list-style-type: none;
 		.column(3.5);
 		font-size: 1.1em;
@@ -219,12 +221,11 @@ ul {
 		}
 
 		&:hover {
-			background: #e1e1e1;
+			background: #f1f1f1;
 		}
 
 		&:active {
 			background: #e1e1e1;
-			.b-shadow(0.05em, 0.05em, 0.05em, #333);
 		}
 
 		&.disabled {
