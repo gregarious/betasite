@@ -10,6 +10,8 @@ class Special(models.Model, ViewModel):
     class Meta:
         ordering = ['title']
 
+    dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
+
     title = models.CharField(max_length=140)
     description = models.TextField(blank=True)
     points = models.IntegerField()
@@ -35,6 +37,7 @@ class Special(models.Model, ViewModel):
 
     def __unicode__(self):
         return self.title
+
 
 class SpecialMeta(models.Model):
     special = models.ForeignKey(Special)
