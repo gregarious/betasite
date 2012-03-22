@@ -15,7 +15,7 @@ from onlyinpgh.outsourcing.apitools import gplaces_client
 
 import logging
 logging.disable(logging.INFO)
-logger = logging.getLogger('onlyinpgh.obidimport')
+logger = logging.getLogger('onlyinpgh.debugging')
 
 from onlyinpgh.settings import to_abspath
 CSV_FILENAME = to_abspath('../data/obid.csv')

@@ -9,4 +9,5 @@ class CommentInline(admin.StackedInline):
 class PostAdmin(admin.ModelAdmin):
     inlines = [CommentInline]
 
-admin.site.register(Post,PostAdmin)
+# renable after app has been added back to project
+#admin.site.register(Post,PostAdmin)

@@ -8,20 +8,19 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^prelaunch/login/$', 'django.contrib.auth.views.login'),
+    (r'^prelaunch/logout/$', 'django.contrib.auth.views.logout'),
 
-    # (r'^login/$', 'django.contrib.auth.views.login'),
-    # (r'^logout/$', 'django.contrib.auth.views.logout'),
-
-    # url(r'^admin/', include(admin.site.urls)),
-    url(r'^prelaunch/orgadmin/', include('onlyinpgh.orgadmin.urls')),
-    url(r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
-
+    #url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    url(r'^prelaunch/orgadmin/', include('onlyinpgh.orgadmin.urls')),
 
     url(r'^prelaunch/places/',include('onlyinpgh.places.urls')),
     url(r'^prelaunch/events/',include('onlyinpgh.events.urls')),
     url(r'^prelaunch/specials/',include('onlyinpgh.specials.urls')),
+
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
@@ -55,22 +54,6 @@ urlpatterns = patterns('',
 
     # url(r'^ajax/hot_feed$', home_views.ajax_hot_page)
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
-
-    # Business Admin generic templates
-    # url(r'^business/signup$', 'onlyinpgh.organizations.views.biz_signup', name='biz_signup'),
-
-    # url(r'^business/home$', 'onlyinpgh.organizations.views.biz_admin_home', name='biz_admin_home'),
-
-    # url(r'^business/specials$', 'onlyinpgh.specials.views.biz_show_specials'),
-    # url(r'^business/add_special$', 'onlyinpgh.specials.views.biz_add_special'),
-    # url(r'^business/edit_special/(?P<sid>\d+)$', 'onlyinpgh.specials.views.biz_edit_special'),
-
-    # url(r'^business/events$', 'onlyinpgh.events.views.biz_show_events'),
-    # url(r'^business/add_event$', 'onlyinpgh.events.views.biz_add_event'),
-    # url(r'^business/edit_event/(?P<eid>\d+)$', 'onlyinpgh.events.views.biz_edit_event'),
-
-    # url(r'^business/create_place$', 'onlyinpgh.places.views.biz_create_place'),
-    # url(r'^business/edit_place/(?P<pid>\d+)$', 'onlyinpgh.places.views.biz_edit_place'),
 
 
 )
