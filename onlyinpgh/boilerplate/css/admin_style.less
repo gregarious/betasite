@@ -18,8 +18,8 @@ body {
 	font-weight: normal;
 	height: 100%; 
 	.lucida();
-	margin: 0;
-	padding-bottom: 3em;
+	margin-bottom: 1em;
+	//padding-bottom: 3em;
 	overflow-x: hidden;
 	/*padding: 3em 0 0;*/
 	width:100%;
@@ -106,7 +106,7 @@ ul {
 	background: #fff;
 	.border-box;
 	.clearfix;	
-	margin: 100px auto;
+	margin: 120px auto;
 	max-width: 650px;	
 	.rounded(0.5em);
 	padding: 3%;
@@ -257,6 +257,11 @@ ul {
 			color: #fff;
 			.gradient(@mblue, @dblue);
 			.b-shadow(0, 0, 0.3em, #777);
+
+			&:hover {
+				.gradient(@mblue, @dblue);
+				.b-shadow(0, 0, 0.3em, #777);				
+			}
 		}
 
 		&:hover {
@@ -425,7 +430,14 @@ img.edit-item {
 	margin-right: 10px;
 }
 
-.delete-item {
+/* JQUERY TIMEPICKER ------ */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
+.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+	font-size: 0.7em;
 }
-

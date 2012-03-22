@@ -37,7 +37,7 @@ jQuery(document).ready( function(){
 	
 	// Click X to delete item - need a real function here obvy
 	$('.delete-item').click(function(){
-		alert('Are you sure you want to delete #item-1?');
+		alert('Are you sure you want to delete this item?');
 	});
 
 	// Copied from script.js
@@ -47,6 +47,13 @@ jQuery(document).ready( function(){
 	if(menu_item.attr('href') == loc) {
 		menu_item.addClass('current-page');
 	}
+
+	$('.datepicker').datetimepicker({
+		ampm: true,
+		timeFormat: 'hh:mm',
+		stepHour: 1,
+		stepMinute: 15,
+	}, 'option', 'showAnim', 'slideDown');
 
 });
 

@@ -307,8 +307,7 @@ body {
   font-weight: normal;
   height: 100%;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
-  margin: 0;
-  padding-bottom: 3em;
+  margin-bottom: 1em;
   overflow-x: hidden;
   /*padding: 3em 0 0;*/
 
@@ -492,7 +491,7 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  margin: 100px auto;
+  margin: 120px auto;
   max-width: 650px;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -826,6 +825,30 @@ input[type="checkbox"] {
 }
 #page-nav ul li a.current-page {
   color: #fff;
+  background-color: #70a3be;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#70a3be), to(#4b7699));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #70a3be, #4b7699);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #70a3be, #4b7699);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #70a3be, #4b7699);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #70a3be, #4b7699);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #70a3be, #4b7699);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  -webkit-box-shadow: 0 0 0.3em #777777;
+  -moz-box-shadow: 0 0 0.3em #777777;
+  box-shadow: 0 0 0.3em #777777;
+}
+#page-nav ul li a.current-page:hover {
   background-color: #70a3be;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#70a3be), to(#4b7699));
   /* Saf4+, Chrome */
@@ -1280,4 +1303,30 @@ input[type="submit"]:active,
 }
 img.edit-item {
   margin-right: 10px;
+}
+/* JQUERY TIMEPICKER ------ */
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px;
+}
+.ui-timepicker-div dl {
+  text-align: left;
+}
+.ui-timepicker-div dl dt {
+  height: 25px;
+  margin-bottom: -25px;
+}
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 65px;
+}
+.ui-timepicker-div td {
+  font-size: 90%;
+}
+.ui-tpicker-grid-label {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+  font-size: 0.7em;
 }
