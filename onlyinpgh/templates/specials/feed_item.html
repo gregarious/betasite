@@ -7,6 +7,12 @@ Context variables:
 	special:			Special ViewModel
 {% endcomment %}
 
+
+<div class="item-thumb">
+	<div class="points">+{{special.points}}</div>
+	<button class="btn btn-primary">Grab It!</button>
+</div>
+
 <section class="item-content">
 	<h4 class="item-title">
 		<a href="{% url specials-item-detail special.id %}">{{special.title}}</a>
@@ -20,8 +26,3 @@ Context variables:
 	{% include "tags/tag_list.html" with tags=place.tags %}
 	
 </section>
-
-<div class="item-thumb-container">
-	<div class="points">+{{special.points}}</div>
-	<button class="btn btn-primary" id="useitButton">Use It!</button>
-</div>
