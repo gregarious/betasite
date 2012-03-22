@@ -48,12 +48,51 @@ jQuery(document).ready( function(){
 		menu_item.addClass('current-page');
 	}
 
-	$('.datepicker').datetimepicker({
+	$('.datepicker-start').datetimepicker({
 		ampm: true,
-		timeFormat: 'hh:mm',
 		stepHour: 1,
 		stepMinute: 15,
-	}, 'option', 'showAnim', 'slideDown');
+
+	    onClose: function(dateText, inst) {
+	        var endDateTextBox = $('.datepicker-end');
+	        if (endDateTextBox.val() != '') {
+	            var testStartDate = new Date(dateText);
+	            var testEndDate = new Date(endDateTextBox.val());
+	            if (testStartDate > testEndDate)
+	                endDateTextBox.val(dateText);
+	        }
+	        else {
+	            endDateTextBox.val(dateText);
+	        }
+	    },
+	    onSelect: function (selectedDateTime){
+	        var start = $(this).datetimepicker('getDate');
+	        $('.datepicker-end').datetimepicker('option', 'minDate', new Date(start.getTime()));
+	    }
+	});
+	
+	$('.datepicker-end').datetimepicker({
+		ampm: true,
+		stepHour: 1,
+		stepMinute: 15,
+
+	    onClose: function(dateText, inst) {
+	        var startDateTextBox = $('.datepicker-start');
+	        if (startDateTextBox.val() != '') {
+	            var testStartDate = new Date(startDateTextBox.val());
+	            var testEndDate = new Date(dateText);
+	            if (testStartDate > testEndDate)
+	                startDateTextBox.val(dateText);
+	        }
+	        else {
+	            startDateTextBox.val(dateText);
+	        }
+	    },
+	    onSelect: function (selectedDateTime){
+	        var end = $(this).datetimepicker('getDate');
+	        $('.datepicker-start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+	    }
+	});
 
 });
 
