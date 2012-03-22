@@ -33,7 +33,7 @@
 			{{ form.dtstart.label_tag }}
 		</div>
 		<div class="field">
-			<input id="id_dtstart" type="text" class="datepicker-start" value="{{ form.dtstart.value|date:"m/d/Y h:i A" }}" name="dtstart" />
+			<input id="id_dtstart" type="text" class="datetimepicker-start" value="{{ form.dtstart.value|date:"m/d/Y h:i A" }}" name="dtstart" />
 			{% for err in form.dtstart.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -45,7 +45,7 @@
 			{{ form.dtend.label_tag }}
 		</div>
 		<div class="field">
-			<input id="id_dtend" type="text" class="datepicker-end" value="{{ form.dtend.value|date:"m/d/Y h:i A"  }}" name="dtend" />
+			<input id="id_dtend" type="text" class="datetimepicker-end" value="{{ form.dtend.value|date:"m/d/Y h:i A"  }}" name="dtend" />
 			{% for err in form.dtend.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
