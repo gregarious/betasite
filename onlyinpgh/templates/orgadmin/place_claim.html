@@ -1,4 +1,4 @@
-<h2>Claim a place...</h2>
+<h2>Add a place...</h2>
 
 <form method="post" action="{% url onlyinpgh.orgadmin.views.page_claim_place %}">
 {% csrf_token %}
@@ -8,15 +8,9 @@
 		</div>
 		<div class="field">
 			{{ form.place }}
+			<p class="tip">or <a href="{% url orgadmin-addplace %}">Create a new place</a></p>	
 		</div>
 	</div>
-
-<div class="div">
-	<p>or <a href="{% url orgadmin-addplace %}" class="add-item">Create a new place</a></p>	
-</div>
-<input type="submit" class="submit-item" value="Claim" />
-<button class="back">&larr; Back</button>
-
 
 {% comment %}
 Just a simple form with one field: place
@@ -27,3 +21,7 @@ blank page. Doesn't have to be a button, could be a link, whatever. I
 just need the submit button to be the user claiming a place.
 {% endcomment %}
 </form>
+
+
+<input type="submit" class="submit-item" value="Claim" />
+<button class="back">&larr; Back</button>
