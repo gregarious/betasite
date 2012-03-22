@@ -18,7 +18,7 @@ logging.disable(logging.INFO)
 logger = logging.getLogger('onlyinpgh.obidimport')
 
 from onlyinpgh.settings import to_abspath
-CSV_FILENAME = to_abspath('../../../obidapp/data/obid.csv')
+CSV_FILENAME = to_abspath('../data/obid.csv')
 HAS_HEADER = True
 
 
