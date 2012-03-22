@@ -381,7 +381,7 @@ p {
 /* ELEMENTS --------- */
 .points {
   font-family: 'KomikaTitleRegular', Gill Sans, sans-serif;
-  font-size: 2.3em;
+  font-size: 2.5em;
   text-shadow: 0.05em 0.05em 0 #ded57f;
 }
 /* 3 HEADINGS ---------- */
@@ -839,7 +839,7 @@ p {
 
 }
 /* 7 FORMS/INPUTS ---------- */
-.item-thumb button {
+.btn-primary {
   border: none;
   -webkit-box-shadow: 0.02em 0.02em 0.02em #999999;
   -moz-box-shadow: 0.02em 0.02em 0.02em #999999;
@@ -866,6 +866,7 @@ p {
   background-image: linear-gradient(top, #00b945, #238b49);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
+  margin-top: 0.5em;
   padding: 0.5em;
   position: relative;
   -webkit-border-radius: 0.5em;
@@ -876,10 +877,10 @@ p {
   background-clip: padding-box;
   text-shadow: 0 0 0.05em #000;
 }
-.item-thumb button:hover {
+.btn-primary:hover {
   background: #238B49;
 }
-.item-thumb button:active {
+.btn-primary:active {
   background: #00782D;
   top: 1px;
   left: 1px;
@@ -887,12 +888,12 @@ p {
   -moz-box-shadow: 0 0 0 #ffffff;
   box-shadow: 0 0 0 #ffffff;
 }
-.item-thumb button.disabled {
+.btn-primary.disabled {
   background: #AAAAAA;
   color: #fff;
   border: 1px #999 solid;
 }
-.item-thumb button#redeemButton {
+.btn-primary#redeemButton {
   background-color: #00b945;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#00b945), to(#238b49));
   /* Saf4+, Chrome */
@@ -924,7 +925,7 @@ p {
   -moz-box-shadow: 0.1em 0.1em 0.1em #999999;
   box-shadow: 0.1em 0.1em 0.1em #999999;
 }
-.item-thumb button#redeemButton:active {
+.btn-primary#redeemButton:active {
   top: 1px;
   left: 1px;
   -webkit-box-shadow: 0 0 0 #ffffff;
