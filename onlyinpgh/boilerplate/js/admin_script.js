@@ -37,7 +37,7 @@ jQuery(document).ready( function(){
 	
 	// Click X to delete item - need a real function here obvy
 	$('.delete-item').click(function(){
-		alert('Are you sure you want to delete #item-1?');
+		alert('Are you sure you want to delete this item?');
 	});
 
 	// Copied from script.js
@@ -47,6 +47,52 @@ jQuery(document).ready( function(){
 	if(menu_item.attr('href') == loc) {
 		menu_item.addClass('current-page');
 	}
+
+	$('.datepicker-start').datetimepicker({
+		ampm: true,
+		stepHour: 1,
+		stepMinute: 15,
+
+	    onClose: function(dateText, inst) {
+	        var endDateTextBox = $('.datepicker-end');
+	        if (endDateTextBox.val() != '') {
+	            var testStartDate = new Date(dateText);
+	            var testEndDate = new Date(endDateTextBox.val());
+	            if (testStartDate > testEndDate)
+	                endDateTextBox.val(dateText);
+	        }
+	        else {
+	            endDateTextBox.val(dateText);
+	        }
+	    },
+	    onSelect: function (selectedDateTime){
+	        var start = $(this).datetimepicker('getDate');
+	        $('.datepicker-end').datetimepicker('option', 'minDate', new Date(start.getTime()));
+	    }
+	});
+	
+	$('.datepicker-end').datetimepicker({
+		ampm: true,
+		stepHour: 1,
+		stepMinute: 15,
+
+	    onClose: function(dateText, inst) {
+	        var startDateTextBox = $('.datepicker-start');
+	        if (startDateTextBox.val() != '') {
+	            var testStartDate = new Date(startDateTextBox.val());
+	            var testEndDate = new Date(dateText);
+	            if (testStartDate > testEndDate)
+	                startDateTextBox.val(dateText);
+	        }
+	        else {
+	            startDateTextBox.val(dateText);
+	        }
+	    },
+	    onSelect: function (selectedDateTime){
+	        var end = $(this).datetimepicker('getDate');
+	        $('.datepicker-start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+	    }
+	});
 
 });
 

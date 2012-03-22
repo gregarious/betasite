@@ -153,6 +153,8 @@ class SimpleEventForm(EventForm):
         exclude = ('dtcreated', 'dtmodified', 'tags', )
         widgets = {
             'name': TextInput(attrs={'placeholder': "Your event's name"}),
+            'dtstart': TextInput(attrs={'class':'datepicker-start'}),
+            'dtend': TextInput(attrs={'class':'datepicker-end'}),
         }
 
     def __init__(self, organization, *args, **kwargs):
