@@ -35,7 +35,6 @@ class FlattenHandler(object):
         on it. Otherwise, raise AttributeError.
         '''
         if hasattr(obj, self.attr_name):
-            print 'calling', unicode(self), 'on', obj
             return self.handler(obj)
         else:
             raise AttributeError("obj has no attribute '%s'" % str(self.attr_name))
