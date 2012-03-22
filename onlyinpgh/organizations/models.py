@@ -8,6 +8,7 @@ class Organization(models.Model):
     Represents organizations in the community (business, charity, etc.)
     '''
     name = models.CharField(max_length=200)
+    dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
 
     administrators = models.ManyToManyField(User, blank=True, null=True)
     establishments = models.ManyToManyField(Place, blank=True, null=True)
