@@ -177,7 +177,7 @@ def page_claim_place(request):
         if form.is_valid():
             id_str = form.cleaned_data['place']
             org.establishments.add(Place.objects.get(id=int(id_str)))
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
+            return redirect('onlyinpgh.orgadmin.views.page_edit_place', id_str)
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
@@ -223,6 +223,16 @@ def page_setup_place_wizard(request, id=None):
 
 
 @authentication_required
+def page_remove_place(request, id):
+    org = request.session.get('current_org')
+    instance = get_object_or_404(Place, id=id)
+    if not org or not org_owns(org, instance):
+        return HttpResponseForbidden()
+    org.establishments.remove(instance)
+    return redirect('onlyinpgh.orgadmin.views.page_list_places')
+
+
+@authentication_required
 def page_edit_place(request, id):
     org = request.session.get('current_org')
     instance = get_object_or_404(Place, id=id)
@@ -253,6 +263,16 @@ def page_list_places(request):
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/place_list.html', {'list_content': list_content}, context_instance=context)
     return response_admin_page(content, context)
+
+
+@authentication_required
+def page_delete_event(request, id):
+    org = request.session.get('current_org')
+    instance = get_object_or_404(Event, id=id)
+    if not org or not org_owns(org, instance):
+        return HttpResponseForbidden()
+    instance.delete()
+    return redirect('onlyinpgh.orgadmin.views.page_list_events')
 
 
 @authentication_required
@@ -296,6 +316,16 @@ def page_list_events(request):
     content = render_to_string('orgadmin/event_list.html', {'list_content': list_content},
                                     context_instance=context)
     return response_admin_page(content, context)
+
+
+@authentication_required
+def page_delete_special(request, id):
+    org = request.session.get('current_org')
+    instance = get_object_or_404(Special, id=id)
+    if not org or not org_owns(org, instance):
+        return HttpResponseForbidden()
+    instance.delete()
+    return redirect('onlyinpgh.orgadmin.views.page_list_specials')
 
 
 @authentication_required

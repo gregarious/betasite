@@ -10,6 +10,9 @@
         </div>
         <div class="field">
             {{ form.name }}
+            {% for err in form.name.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -19,6 +22,9 @@
         </div>
         <div class="field">
             {{ form.location }}
+            {% for err in form.location.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -28,6 +34,9 @@
         </div>
         <div class="field">
             {{ form.phone }}
+            {% for err in form.phone.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -38,6 +47,9 @@
         <div class="field">
             {{ form.hours }}
             <p class="tip">Like Mon-Fri 10:30am-5pm, Sat 12pm-3pm, Closed Sun</p> 
+            {% for err in form.hours.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -47,6 +59,9 @@
         </div>
         <div class="field">
             {{ form.parking }}
+            {% for err in form.parking.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -56,6 +71,9 @@
         </div>
         <div class="field">
             {{ form.url }}
+            {% for err in form.url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -65,6 +83,9 @@
         </div>
         <div class="field">
             {{ form.image_url }}
+            {% for err in form.image_url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -74,6 +95,9 @@
         </div>
         <div class="field">
             {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -85,6 +109,9 @@
             <div class="social-input">
                 {{ form.fb_id }}
                 <img src="/static/img/facebook.png" alt="Facebook icon" />
+                {% for err in form.fb_id.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -97,12 +124,15 @@
             <div class="social-input">
                 {{ form.twitter_username }}
                 <img src="/static/img/twitter.png" alt="Facebook icon" />
+                {% for err in form.twitter_username.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
             </div>
         </div>
     </div>
 
     <input type="submit" value="Save Changes" class="submit-item" />
-    <button class="back">&larr; Back</button>
+    <a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="back" title="Back to places">&larr; Back</a>
 
 {% comment %}
 form fields:

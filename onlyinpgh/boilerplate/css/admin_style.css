@@ -343,6 +343,9 @@ article:after {
   clear: both;
 }
 img {
+  color: #999;
+  font-style: italic;
+  font-size: 0.8em;
   height: auto;
   max-width: 100%;
 }
@@ -531,10 +534,11 @@ p {
   /* Can click thru div */
 
   pointer-events: none;
-  background-image: url(/static/img/pgh-250h.png);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: bottom left;
+  /*background-image: url(/static/img/pgh-250h.png);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: bottom left; */
+
   /*background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
 	background-attachment: fixed, fixed;
 	background-repeat: no-repeat, no-repeat;
@@ -728,25 +732,18 @@ input[type="checkbox"] {
   margin-top: 10px;
 }
 /* SIGNUP ------ */
-#hours .hours-set {
-  float: left;
-  width: 89.58333333333334%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#hours .container {
-  float: left;
-  width: 43.75%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#hours .container.last {
-  margin-left: 5%;
-}
+/*#hours {
+	.hours-set {
+		.column(11);
+	}
+	.container {
+		.column(5.5);
+
+		&.last {
+			margin-left: 5%;
+		}
+	}
+}*/
 /* HOME ---------- */
 .home-nav {
   margin: auto 0;
@@ -763,7 +760,7 @@ input[type="checkbox"] {
 .home-nav ul:after {
   clear: both;
 }
-.home-nav li {
+.home-nav li a {
   list-style-type: none;
   float: left;
   width: 27.083333333333332%;
@@ -776,28 +773,25 @@ input[type="checkbox"] {
   padding: 2%;
   text-align: center;
 }
-.home-nav li p {
+.home-nav li a p {
   margin-bottom: 1em;
 }
-.home-nav li img {
+.home-nav li a img {
   display: block;
   margin: 20% auto 10% auto;
 }
-.home-nav li:hover {
+.home-nav li a:hover {
+  background: #f1f1f1;
+}
+.home-nav li a:active {
   background: #e1e1e1;
 }
-.home-nav li:active {
-  background: #e1e1e1;
-  -webkit-box-shadow: 0.05em 0.05em 0.05em #333333;
-  -moz-box-shadow: 0.05em 0.05em 0.05em #333333;
-  box-shadow: 0.05em 0.05em 0.05em #333333;
-}
-.home-nav li.disabled {
+.home-nav li a.disabled {
   /*.no-b-shadow();
 			background: fade(#fff, 50%);*/
 
 }
-.home-nav li.disabled:hover {
+.home-nav li a.disabled:hover {
   background: none;
 }
 #page-nav {
