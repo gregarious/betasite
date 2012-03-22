@@ -152,7 +152,6 @@ class SimpleEventForm(EventForm):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'dtmodified', 'tags', )
         widgets = {
-            'name': TextInput(attrs={'placeholder': "Your event's name"}),
             'dtstart': TextInput(attrs={'class':'datepicker-start'}),
             'dtend': TextInput(attrs={'class':'datepicker-end'}),
         }
@@ -174,7 +173,8 @@ class SimpleSpecialForm(SpecialForm):
         # TODO: look into extending from parent meta
         exclude = ('tags',)
         widgets = {
-            'title': TextInput(attrs={'placeholder': "Short description of your special"}),
+            'dtstart': TextInput(attrs={'class':'datepicker-start'}),
+            'dtexpires': TextInput(attrs={'class':'datepicker-end'}),
         }
 
     def __init__(self, organization, *args, **kwargs):

@@ -51,7 +51,9 @@ jQuery(document).ready( function(){
 	$('.datepicker-start').datetimepicker({
 		ampm: true,
 		stepHour: 1,
-		stepMinute: 15,
+		stepMinute: 5,
+		dateFormat: 'MM d,',
+
 
 	    onClose: function(dateText, inst) {
 	        var endDateTextBox = $('.datepicker-end');
@@ -70,11 +72,12 @@ jQuery(document).ready( function(){
 	        $('.datepicker-end').datetimepicker('option', 'minDate', new Date(start.getTime()));
 	    }
 	});
-	
+
 	$('.datepicker-end').datetimepicker({
 		ampm: true,
 		stepHour: 1,
-		stepMinute: 15,
+		stepMinute: 5,
+		dateFormat: 'MM d,',
 
 	    onClose: function(dateText, inst) {
 	        var startDateTextBox = $('.datepicker-start');
