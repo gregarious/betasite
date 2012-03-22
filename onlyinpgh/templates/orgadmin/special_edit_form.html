@@ -10,6 +10,9 @@
         </div>
         <div class="field">
             {{ form.title }}
+            {% for err in form.title.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
@@ -92,11 +95,14 @@
         </div>
         <div class="field">
             {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
     </div>
 
     <input type="submit" class="submit-item" value="Submit" />
-    <button class="back">&larr; Back</button>
+    <a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}" title="Back to Specials" class="back">&larr; Back</a>
 
     {% comment %}
     form fields:
