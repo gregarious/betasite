@@ -177,7 +177,7 @@ def page_claim_place(request):
         if form.is_valid():
             id_str = form.cleaned_data['place']
             org.establishments.add(Place.objects.get(id=int(id_str)))
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
+            return redirect('onlyinpgh.orgadmin.views.page_edit_place', id_str)
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
