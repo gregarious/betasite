@@ -210,7 +210,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 @import "../LESS/feed";
 
 .item {
-  background: url("/static/img_store/white_tex.png");
+  background: url("/static/img/textures/white_tex.png");
   .b-shadow(0.3em, 0.3em, 0, @lblue);
 }
 
@@ -264,43 +264,51 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
     }
 }
 
-/* 7 FORMS ---------- */
+/* 7 FORMS/INPUTS ---------- */
 
-#post-form { 
-    .column(11.7);
-    margin-bottom: 1em;
-}
+.btn-primary {
+  border: none;
+  .b-shadow(0.02em, 0.02em, 0.02em, #999);
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: bold;
+  .gradient(#00B945, #238B49);
+  margin-top: 0.5em;
+  padding: 0.5em;
+  position: relative;
+  .rounded(0.5em);
+  text-shadow: 0 0 0.05em #000;
 
-#redeemSpecial {
-  padding: 0 1em;
-  .meta {
-    margin: 1em 0;
+  &:hover {
+    background: #238B49;
   }
-  footer {
-    margin-top: 1em;  
+
+  &:active {
+    background: #00782D;
+    top: 1px;
+    left: 1px;
+    .b-shadow(0, 0, 0, #fff);
   }
-}
 
-.redeem-form {
-  .clearfix();
+  &.disabled {
+    background: #AAAAAA;
+    color: #fff;
+    border: 1px #999 solid;
+    //text-shadow: none;
+  }
 
-  span {
-    height: 22pt;
-    font-weight: bold;
-    margin: 4% 1% 0;
-    padding: 2%;
-    width: 14%;
-    .gradient(@mblue, #000);
-    .rounded(0.5em);
+  &#redeemButton {
+    .gradient(#00B945, #238B49);
+    .column(12);
+    font-size: 2em;
+    padding: 5%;
+    .b-shadow(0.1em, 0.1em, 0.1em, #999);
 
     &:active {
-      .gradient(#000, @mblue);
+        top: 1px;
+        left: 1px;
+       .b-shadow(0, 0, 0, #fff);
     }
-  }
-
-  input {
-    .column(11);
-    margin: 2%;
   }
 }
 
@@ -405,185 +413,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* 15 VENDOR-SPECIFIC ---------- */
 /* 16 MODERNIZR ---------- */
 
-/* 16 EVENTS SPECIFIC ---------- */
-
-#eventsPage {
-  .subnav {
-    .gradient(#BCB2AC, #ECE4D8);
-    padding: 0.5em;
-    text-align: center;
-
-    time {
-      font-weight: bold;
-    }
-  }
-}
-
-#eventsSingle .single-item-desc {
-  padding: 0.5em;
-  .rounded(10px);
-}
-
-/* 16 PLACES SPECIFIC ---------- */
-
-.places {
-  
-}
-
-/* 16 SPECIALS SPECIFIC ---------- */
-
-.offers {
-  
-}
-
-#offersSingle .item-point-value {
-  font-size: 2.4em;
-  margin: 0;
-}
-
-/* 16 CHATTER SPECIFIC ---------- */
-
-#chatterPage {
-  .clearfix();
-  margin: 0.5em 0;
-
-  .sub-nav ul li {
-    margin: 0;
-    padding: 0.5em 0;
-    text-align: center;
-    .gradient(#ECE4D8, #BCB2AC);
-    float: left;
-    margin: 0 1%;
-    padding: 1%;
-    .rounded(0.2em);
-    text-align: center;
-    width: 18.25%;
-
-    &#expandPostForm {
-      width: 7%;
-    }
-
-    a {
-      color: #222;
-      font-weight: bold;
-      text-decoration: none;
-    }    
-  }
-}
-
-#chatterFeed {
-  .item-meta {
-    .column(11);
-  }
-}
-
-#chatterSingle {
-  .item-content-container {
-    float: left;
-    margin: 0 1.3em 0 1.0416666666666665%;
-    width: 62.91666666666666%;
-  }
-}
-
-.voting {
-  float: right;
-  width: 10%;
-}
-
-.post-form {
-  margin: 2em 0;
-  display: none;
-
-  input {
-    .column(11);
-    margin: 1em;
-  }
-
-  textarea {
-    .column(11);
-    margin: 0 1em 1em;
-  }
-}
-
-.voting {
-  float: left;
-  .column(1);
-  div {
-    cursor: pointer;
-    width: 18px;
-    height: 15px;
-  }
-}
-
-.upvote {
-  background: url(../img_store/votingarrows.png) no-repeat left top;
-  &:hover {
-    background-position: right top;
-  }
-}
-
-.downvote {
-  background: url('../img_store/votingarrows.png') no-repeat left bottom;
-
-  &:hover {
-    background-position: right bottom;
-  }
-}
-
-.username {
-  font-weight: bold;
-
-  &:visited {
-    color: #333;  
-    text-decoration: none;
-  }
-}
-
-.user-avatar {
-  float: left;
-  height: 20px;
-  margin-right: 0.3em;
-  width: 20px;
-}
-
-.comments {
-  margin-top: 1.5em;
-  li {
-    color: #000;
-    text-shadow: none;
-    background: #ccc;
-    margin: 0.5em 0;
-    padding: 0.5em;
-  }
-}
-
-.comment-content {
-  header {
-    border-bottom: 1px #999 solid;
-  }
-}
-
-/* 16 NEWS SPECIFIC ---------- */
-
-.news {
-  
-}
-
-#singleNewsSource {
-  margin: 0 0 0.3em 0;
-}
-
-/* 16 JOBS SPECIFIC ---------- */
-
-.jobs {
-  
-}
-
-/* 17 TEMPLATE SPECIFICS ---------- */
-
-.hot-feed {
-  
-}
 
 /* ICONS ----------- */
 

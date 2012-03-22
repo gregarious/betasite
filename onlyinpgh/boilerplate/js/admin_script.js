@@ -40,7 +40,7 @@ jQuery(document).ready( function(){
 		alert('Are you sure you want to delete this item?');
 	});
 
-	// Copied from script.js
+	// Copied from script.js - highlight current menu item based on URL
 	loc = location.pathname;
 	menu_item = $('#page-nav').find('a[href$="'+loc+'"]');
 	
@@ -74,7 +74,6 @@ jQuery(document).ready( function(){
 	        $('.datetimepicker-start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
 	    }
 	});
-
 
 	$('.datetimepicker-end').datetimepicker({
 		ampm: true,

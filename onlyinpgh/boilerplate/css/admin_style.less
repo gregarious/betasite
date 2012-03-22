@@ -12,7 +12,7 @@
 body {
 	margin: 0 auto;
 	.clearfix;
-	background: url("/static/img/custom/sky-head-tex.png");
+	background: url("/static/img/textures/sky-head-tex.png");
 	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
 	//background: @skyblue;
 	font-weight: normal;
@@ -76,7 +76,7 @@ ul {
 
 #site-header {
 	width: 100%;
-	background: url("/static/img/custom/sky-dark-tex.png");
+	background: url("/static/img/textures/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	height: 85px;
 	position: fixed;
@@ -102,8 +102,8 @@ ul {
 }
 
 #site-content {
-	//.b-shadow(1px, 1px, 6px, #fff);
-	background: #fff;
+	.b-shadow(0, 0, 0.1em, #888);
+	background: url("/static/img/textures/white_tex.png");
 	.border-box;
 	.clearfix;	
 	margin: 120px auto;
@@ -298,7 +298,10 @@ ul {
 
 @import '../LESS/feed';
 
-@import '../LESS/single';
+.item-actions {
+	top: -20px;
+	right: -15px;
+}
 
 
 /* IMAGES ------------ */
