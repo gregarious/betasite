@@ -18,7 +18,7 @@ Context variables:
 
 	<div class="item-actions">
 		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place"/></a>
-		<a href="#" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
+		<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
 	</div>
 	
 	<ul class="item-details meta">	
