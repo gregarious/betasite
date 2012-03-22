@@ -26,6 +26,25 @@ def to_directions_link(location):
 
 
 class PlaceFeedItem(ViewModel):
+    '''
+    Exposes the following data:
+        place
+            id
+            name
+            location
+                address
+                postcode
+                town
+                state
+                country
+                latitude
+                longitude
+            image_url
+            description
+            [tags]
+                id
+                name
+    '''
     def __init__(self, place, user=None):
         super(PlaceFeedItem, self).__init__()
         self.place = place
@@ -44,6 +63,32 @@ class PlaceFeedItem(ViewModel):
 
 
 class PlaceDetail(ViewModel):
+    '''
+    Exposes the following data:
+        place
+            id
+            dtcreated
+            name
+            location
+                address
+                postcode
+                town
+                state
+                country
+                latitude
+                longitude
+            image_url
+            description
+            [tags]
+                id
+                name
+            hours
+            parking
+            phone
+            url
+            fb_id
+            twitter_username
+    '''
     def __init__(self, place, user=None):
         super(PlaceDetail, self).__init__()
         self.place = place
