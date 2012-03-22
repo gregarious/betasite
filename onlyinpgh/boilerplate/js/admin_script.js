@@ -48,12 +48,10 @@ jQuery(document).ready( function(){
 		menu_item.addClass('current-page');
 	}
 
-	$('.datepicker-start').datetimepicker({
+	$('.datepicker-end').datetimepicker({
 		ampm: true,
 		stepHour: 1,
 		stepMinute: 5,
-		dateFormat: 'MM d,',
-
 
 	    onClose: function(dateText, inst) {
 	        var endDateTextBox = $('.datepicker-end');
@@ -73,11 +71,10 @@ jQuery(document).ready( function(){
 	    }
 	});
 
-	$('.datepicker-end').datetimepicker({
+	$('.datepicker-start').datetimepicker({
 		ampm: true,
 		stepHour: 1,
 		stepMinute: 5,
-		dateFormat: 'MM d,',
 
 	    onClose: function(dateText, inst) {
 	        var startDateTextBox = $('.datepicker-start');
