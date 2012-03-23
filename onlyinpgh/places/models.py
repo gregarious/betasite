@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.common.core.viewmodels import ViewModel
 
+from django.contrib.auth.models import User
+
 from math import sqrt, pow
 
 
@@ -229,3 +231,25 @@ class PlaceMeta(models.Model):
         val = self.value if len(self.value) < 20 \
                 else self.value[:16] + '...'
         return u'%s: %s' % (self.key, val)
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User)
+    place = models.ForeignKey(Place)
+    dtcreated = models.DateTimeField('Time user first added as favorite', auto_now_add=True)
+    dtmodified = models.DateTimeField('Time user changed favorite status', auto_now=True)
+
+    # This flag must be True to consider user as attending
+    # defaults to True, but can be False is user revokes attendance
+    is_favorite = models.BooleanField('Is user attending?"', default=True)
+
+    def remove_favorite(self):
+        '''
+        After using this function, Coupon should never be used again.
+        '''
+        self.is_favorite = False
+        self.save()
+
+
+    def __unicode__(self):
+        return unicode(self.user) + u'@' + unicode(self.event)
