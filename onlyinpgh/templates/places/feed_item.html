@@ -19,7 +19,7 @@ Context variables:
 	</h4>
 
 	<div class="item-actions">
-		<!-- Once things have specials, switch else content -->
+		 <!-- Once things have specials, switch else content -->
 		{% if featured_special %}
 			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
 		{% else %}
@@ -29,7 +29,9 @@ Context variables:
 
 	<ul class="item-details meta">	
 		<li class="address">{{place.location.address}}</li>
-		<li class="description">Keytar williamsburg seitan, laborum gentrify do locavore yr put a bird on it tofu viral vice...</li>	
+		{% if place.description %}
+			<li class="description">{{ place.description|truncatewords:35|urlizetrunc:20 }}</li>
+		{% endif %}	
 		{% comment %}
 			{{ place.description|truncatewords:35|urlizetrunc:20 }}
 		{% endcomment %}
@@ -37,16 +39,7 @@ Context variables:
 
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
-	{% if place.description %}	
-		<section class="item-description">
-  			<p>{{ place.description|truncatewords:35|urlizetrunc:20 }}</p> 
-  		</section>
- 	{% endif %}
-
 </section>
-
-
-
 
 
 {% comment %}

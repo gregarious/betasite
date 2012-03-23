@@ -13,8 +13,8 @@ Context variables:
 <header class="single-header">	
 
 	<h2 class="single-title">{{ place.name }}</h2>
-
-	<div class="single-thumb-container">
+	
+	<div class="item-thumb">
 		<img alt="{{ place.name }}" src="{{ place.image_url }}" />
 		<ul class="utility-nav">
 			{% if is_favorite %}
@@ -27,8 +27,9 @@ Context variables:
 		</ul>
 	</div>
 
-	<div class="single-details">
-		<ul>
+	<div class="item-content">
+
+		<ul class="item-details">
 			{% if place.location.address %}
 				<li class="address">
 				{{ place.location.address }}

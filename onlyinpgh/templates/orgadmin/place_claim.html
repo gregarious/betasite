@@ -1,7 +1,7 @@
 <h2>Add a place...</h2>
 
 <form method="post" action="{% url onlyinpgh.orgadmin.views.page_claim_place %}">
-{% csrf_token %}
+	{% csrf_token %}
 	<div class="field-container inner">
         {{ form.place.errors }}
 		<div class="field-label">
@@ -13,7 +13,7 @@
 		</div>
 	</div>
     <input type="submit" class="submit-item" value="Claim" />
-    <a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="back" title="Back to places">&larr; Back</button>
+    <a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="back" title="Back to places">&larr; Back</a>
 </form>
 
 

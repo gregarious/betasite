@@ -94,7 +94,7 @@ def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_la
 
 
 def render_viewmodels_as_ul(items, item_template,
-                            container_class_label='feed',
+                            container_class_label=None,
                             item_class_label='item'):
     '''
     Renders a collection of ViewModel objects in an unordered list.
@@ -104,4 +104,4 @@ def render_viewmodels_as_ul(items, item_template,
     rendered_items = [render_viewmodel(item, template=item_template, tag_type='li',
                                         class_label=item_class_label)
                         for item in items]
-    return mark_safe(render_list(rendered_items, tag_type='ul', class_label='feed'))
+    return mark_safe(render_list(rendered_items, tag_type='ul', class_label=container_class_label))
