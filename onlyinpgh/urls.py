@@ -10,6 +10,10 @@ urlpatterns = patterns('',
     (r'^login/$', 'django.contrib.auth.views.login'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),
 
+    url(r'^fbtests/$', 'onlyinpgh.accounts.views.home'),
+    url(r'^fbtests/fbreg/$', 'onlyinpgh.accounts.views.fb_registration_handler', name='fb_registration_handler'),
+    url(r'^fbtests/channel.html$', 'onlyinpgh.accounts.views.channel_file'),
+
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
