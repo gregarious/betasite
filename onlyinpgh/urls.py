@@ -8,6 +8,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^$', redirect_to, {'url': 'http://scenable.com/blog'}),
+
     (r'^prelaunch/login/$', 'django.contrib.auth.views.login'),
     (r'^prelaunch/logout/$', 'django.contrib.auth.views.logout'),
 
