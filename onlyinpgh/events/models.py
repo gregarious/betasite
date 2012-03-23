@@ -71,6 +71,20 @@ class Role(models.Model):
 class Attendee(models.Model):
     user = models.ForeignKey(User)
     event = models.ForeignKey(Event)
+    dtcreated = models.DateTimeField('Time user added event', auto_now_add=True)
+
+    dtmodified = models.DateTimeField('Time user changed attendance status', auto_now=True)
+    # This flag must be True to consider user as attending
+    # defaults to True, but can be False is user revokes attendance
+    is_attending = models.BooleanField('Is user attending?"', default=True)
+
+    def revoke_attendance(self):
+        '''
+        After using this function, Attendee should never be used again:
+        create new one if user wants to re-attend.
+        '''
+        self.is_attending = False
+        self.save()
 
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.event)
