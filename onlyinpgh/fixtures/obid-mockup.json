@@ -639,6 +639,24 @@
     }
   }, 
   {
+    "pk": 5, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "admin", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2012-03-23 11:22:43", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$1545d$040e2ca303031c0b93bb6c03fb5ff744f45f1fb8", 
+      "email": "admin@scenable.com", 
+      "date_joined": "2012-03-23 11:22:43"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "accounts.userprofile", 
     "fields": {
@@ -679,6 +697,17 @@
       "avatar_url": "", 
       "fb_id": "", 
       "user": 4, 
+      "points": 0
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "accounts.userprofile", 
+    "fields": {
+      "twitter_username": "", 
+      "avatar_url": "", 
+      "fb_id": "", 
+      "user": 5, 
       "points": 0
     }
   }, 
