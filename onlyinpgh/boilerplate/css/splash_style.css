@@ -286,7 +286,7 @@ hgroup {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 5%;
 }
-article {
+section {
   float: left;
   width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
@@ -336,9 +336,10 @@ p {
 #tagline {
   text-align: center;
 }
-.tip,
-.error {
+.error,
+.caption p {
   color: #555;
+  float: left;
   font-size: 0.8em;
   font-style: italic;
   display: block;
@@ -346,7 +347,6 @@ p {
 }
 .error {
   color: #C34327;
-  float: left;
 }
 /* INPUTS ---------- */
 form {
@@ -485,6 +485,13 @@ input[type="submit"]:active {
 #oakland {
   padding-left: 3%;
 }
+#oakland .screenshot {
+  -webkit-box-shadow: 0 0 0.2em #ffffff;
+  -moz-box-shadow: 0 0 0.2em #ffffff;
+  box-shadow: 0 0 0.2em #ffffff;
+  display: block;
+  margin: 0 auto;
+}
 #company {
   border-left: 1px solid #e1e1e1;
   padding-left: 3%;
@@ -495,13 +502,49 @@ input[type="submit"]:active {
 .suggest-scene {
   margin-top: 5%;
 }
+.caption {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1em;
+  margin-top: 5%;
+  *zoom: 1;
+  background: url("/static/img/textures/sky-body-tex.png");
+  border: 1px solid #a9c6e8;
+  -webkit-box-shadow: 0.02em 0.02em 0.05em #ffffff;
+  -moz-box-shadow: 0.02em 0.02em 0.05em #ffffff;
+  box-shadow: 0.02em 0.02em 0.05em #ffffff;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 2%;
+}
+.caption:before,
+.caption:after {
+  content: "";
+  display: table;
+}
+.caption:after {
+  clear: both;
+}
+.icon {
+  float: right;
+}
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
  */
 /* Styles for mobile ----------- */
 @media screen and (max-width: 700px) {
-  article {
+  section {
     width: 100%;
     margin: 0;
     -moz-box-sizing: border-box;

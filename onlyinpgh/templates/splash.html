@@ -37,15 +37,21 @@ HTML5 Boilerplate before release.
 		<h2 id="tagline">an app for local communities</h2>
 	</hgroup>
 
-	<article id="oakland">
-		<button id="obidapp"><img src="/static/img/obid_logo.png" alt="Oakland Scene Logo" /></button>
-	</article>
+	<section id="oakland">
+		<!-- <button id="obidapp"><img src="/static/img/obid_logo.png" alt="Oakland Scene Logo" /></button> -->
+		<img class="screenshot" src="/static/img/web_screenshot.png" alt="Oakland site screenshot" />
+		<div class="caption">
+			<p>Mobile app available on Android and iPhone</p><img class="icon" src="/static/img/android.png" height="50px" alt="available on Android" />
+			<img class="icon" src="/static/img/iphone.png" height="50px" alt="available on iPhone" />	
+		</div>
+		
+	</section>
 
-	<article id="company" role="main">
+	<section id="company" role="main">
 
 		<p class="about">For individual communities, the network provides an online home that pulls together the pieces of information about the community spread all over the internet, allowing the community to take ownership of its online presence and become a digital destination.</p>
 
-		<section class="suggest-scene">
+		<article class="suggest-scene">
 			<h2 class="section-title">Suggest a scene...</h2>
 			<form>
 				
@@ -78,9 +84,9 @@ HTML5 Boilerplate before release.
 
 			</form>
 
-		</section>
+		</article>
 
-	</article>
+	</section>
 
 </div>
 {% endblock %}
