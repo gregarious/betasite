@@ -13,6 +13,8 @@ class EventFeedItem(ViewModel):
             place
                 id
                 name
+                location
+                    address
             image_url
             [tags]
                 id
@@ -31,7 +33,7 @@ class EventFeedItem(ViewModel):
                 event_data.pop(k)
 
         place_data = data['event'].get('place')
-        keepers = set(('id', 'name'))
+        keepers = set(('id', 'name', 'location'))
         if place_data:
             for k in place_data.keys():
                 if k not in keepers:
@@ -53,6 +55,8 @@ class EventDetail(ViewModel):
             place
                 id
                 name
+                location
+                    address
             image_url
             tags
                 id
