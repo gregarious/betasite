@@ -1,7 +1,6 @@
 from onlyinpgh.common.core.viewmodels import ViewModel
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.identity.models import FavoriteItem
 
 from onlyinpgh.common.viewmodels import FeedCollection
 
