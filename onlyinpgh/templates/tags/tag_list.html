@@ -8,17 +8,7 @@ Context variables:
 {% endcomment %}
 
 <ul class="tag-list">
-	<li><a href="#">cookie</a></li>
-	<li><a href="#">dessert</a></li>
-	<li><a href="#">champion</a></li>
-</ul>
-
-{% comment %}
-
-<ul class="tag-list">
 {% for tag in tags %}
-    <li><a href="{% url tags-item-detail tid=tag.id %}">{{tag.name}}</a></li>
+    <li><a href="">{{tag.name}}</a></li>
 {% endfor %}
 </ul>
-
-{% endcomment %}

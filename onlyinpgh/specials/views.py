@@ -18,7 +18,7 @@ def feed_page(request):
     # get a list of rendered items
     specials = Special.objects.all()[:10]
     items = [SpecialFeedItem(special, user=request.user) for special in specials]
-    content = render_viewmodels_as_ul(items, 'specials/feed_item.html')
+    content = render_viewmodels_as_ul(items, 'specials/feed_item.html', container_class_label='specials feed')
 
     return render(request, 'page.html', {'main_content': content})
 

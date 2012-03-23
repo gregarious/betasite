@@ -329,6 +329,11 @@ p {
 .datetime {
   font-weight: bold;
 }
+.description {
+  margin-top: 0.3em;
+  font-color: #666;
+  font-style: italic;
+}
 .tip,
 .error {
   color: #555;
@@ -349,11 +354,11 @@ p {
   text-align: right;
 }
 #colophon a {
-  color: #333;
-  font-style: italic;
+  color: #2c525d;
+  font-weight: bold;
 }
 #colophon a:hover {
-  color: #666;
+  color: #b83939;
 }
 /* HEADINGS ------- */
 #site-title {
@@ -381,7 +386,8 @@ p {
 /* ELEMENTS --------- */
 .points {
   font-family: 'KomikaTitleRegular', Gill Sans, sans-serif;
-  font-size: 2.5em;
+  font-size: 3em;
+  margin-top: -0.05em;
   text-shadow: 0.05em 0.05em 0 #ded57f;
 }
 /* 3 HEADINGS ---------- */
@@ -612,10 +618,16 @@ p {
   position: relative;
 }
 .feed {
-  -webkit-box-shadow: 0 0 1em #e1e1e1;
-  -moz-box-shadow: 0 0 1em #e1e1e1;
-  box-shadow: 0 0 1em #e1e1e1;
+  *zoom: 1;
   margin: 2% 2% 0;
+}
+.feed:before,
+.feed:after {
+  content: "";
+  display: table;
+}
+.feed:after {
+  clear: both;
 }
 .item {
   float: left;
@@ -696,10 +708,6 @@ p {
 }
 .item-details:after {
   clear: both;
-}
-.item-description {
-  line-height: 1.4em;
-  margin: 20px 0;
 }
 /* 11 TAGS ---------- */
 .tag-list {
@@ -969,7 +977,7 @@ p {
   padding: 0 0.3em 0.1em;
   text-shadow: 0 0 0.2em #999;
 }
-.single-thumb-container {
+.single-thumb {
   float: left;
   width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
@@ -977,7 +985,7 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.single-thumb-container img {
+.single-thumb img {
   min-height: 90px;
   max-height: 130px;
   -webkit-box-shadow: 1px 1px 3px #000000;

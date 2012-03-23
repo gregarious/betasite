@@ -20,9 +20,15 @@ Context variables:
 
 	<ul class="item-details">
 		<li>{{special.place.name}}</li>
-		<li><time class="datetime meta">Expires {{special.dtexpires}}</time>
+		{% if special.dtexpires %}
+			<li><time class="datetime meta">Expires {{special.dtexpires}}</time>
+		{% endif %}
+		{% if special.description %}
+			<li class="description meta">{{ special.description|truncatewords:35|urlizetrunc:20 }}</li>
+		{% endif %}	
+
 	</ul>
 
-	{% include "tags/tag_list.html" with tags=place.tags %}
+	{% include "tags/tag_list.html" with tags=special.tags %}
 	
 </section>
