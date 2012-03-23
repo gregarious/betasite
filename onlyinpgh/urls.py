@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^places/',include('onlyinpgh.places.urls')),
     url(r'^events/',include('onlyinpgh.events.urls')),
     url(r'^specials/',include('onlyinpgh.specials.urls')),
+    url('splash', direct_to_template, {'template': 'splash.html'}),
+
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),

@@ -10,20 +10,10 @@
 /* ROOT --------- */
 
 body {
-	margin: 0 auto;
-	.clearfix;
 	background: url("/static/img/textures/sky-head-tex.png");
-	//background: url("/static/img/illus/blue-scratch.png") fixed no-repeat top left;
-	//background: @skyblue;
-	font-weight: normal;
-	height: 100%; 
-	.lucida();
-	margin-bottom: 1em;
-	//padding-bottom: 3em;
-	overflow-x: hidden;
-	/*padding: 3em 0 0;*/
-	width:100%;
 }
+
+@import "../LESS/root.less";
 
 #mask {
 	width:500%;
@@ -31,37 +21,25 @@ body {
 	overflow-x: hidden;
 }
 
-section, article {
-	.clearfix;
-}
-
-img {
-	color: #999;
-	font-style: italic;
-	font-size: 0.8em;
-	height: auto;
-	max-width: 100%;
-}
-
-ul {
-	margin: 0;
-	padding: 0;
-	li {
-		list-style-type: none;
-	}
-}
-
 
 /* 2 TYPOGRAPHY ---------- */
 
 @import '../LESS/type';
 
+h2 {
+	color: @teal;
+	font-style: italic;
+	text-shadow: 0.07em 0.07em 0 #ffffff;
+}
+
 #tagline {
-	border-bottom: 1px #e1e1e1 solid;
 	color: #fff;
 	font-style: normal;
 	text-shadow: 0.01em 0.01em 0 #000;
 	padding-bottom: 8px
+}
+
+#tagline {
 }
 
 #site-title {
@@ -78,6 +56,7 @@ ul {
 	width: 100%;
 	background: url("/static/img/textures/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
+	border-bottom: 1px solid #e1e1e1;
 	height: 85px;
 	position: fixed;
 	top: 0;
@@ -107,7 +86,7 @@ ul {
 	.border-box;
 	.clearfix;	
 	margin: 120px auto;
-	max-width: 650px;	
+	width: 650px;	
 	.rounded(0.5em);
 	padding: 3%;
 	position: relative;
@@ -158,9 +137,9 @@ ul {
 }
 
 #site-footer {
-	.row();
-	position: absolute;
-	bottom: 10px;
+	width: 100%;
+	position: relative;
+	top: 10px;
 	right: 10px;
 }
 
@@ -176,6 +155,69 @@ ul {
 /* FORMS & INPUTS --------------- */
 
 @import '../LESS/forms';
+
+form {
+	margin-top: 2em;
+}
+
+.field-container {
+	padding: 2em 0;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 2em;
+	&.last, &.inner {
+		border: none;
+	}
+
+	&.first {
+		padding-top: 0 !important;
+	}
+
+	&.inner {
+		padding: 0;
+	}
+}
+
+.field-label {
+	.column(3);
+	text-align: right;
+}
+
+.field {
+	.column_r(9);
+}
+
+.checkbox-label {
+	margin-bottom: 0.1em;
+	text-transform: none;
+	text-align: left;
+}
+
+#parking {
+	fieldset {
+		.column(12);
+	}
+}
+
+.check-container {
+	.column(6);
+
+	label {
+		.column(10);
+	}
+}
+
+.social-input {
+	
+	input {
+		width: 79% !important;
+		float: left;
+	}
+}
+
+
+#confirm-pass {
+	margin-top: 10px;
+}
 
 
 /* SIGNUP ------ */
@@ -299,10 +341,13 @@ ul {
 @import '../LESS/feed';
 
 .item-actions {
-	top: -20px;
+	top: -15px;
 	right: -15px;
 }
 
+.tag-list li a {
+	color: #999;
+}
 
 /* IMAGES ------------ */
 
@@ -316,7 +361,7 @@ ul {
 	max-height: 400px;
 }
 
-/* NAVIGATION ------------ */
+/* NAVIGATION ------------ a*/
 
 .prev-next {
 	.row();
@@ -325,14 +370,8 @@ ul {
 }
 
 button, input[type="submit"], .next, .back {
-	border: none;
-	.b-shadow(0.07em, 0.07em, 0.1em, #888);
 	background: @teal;
 	color: #fff !important;
-	.lucida();
-	padding: 0.5em;
-	.rounded(0.5em);
-	text-decoration: none;
 
 	&:hover {
 		.gradient(#1B333A, #2C525D);
@@ -342,8 +381,6 @@ button, input[type="submit"], .next, .back {
 		position: relative;
 		top: 1px;
 		left: 1px;
-		background: #1B333A;
-		.b-shadow(0, 0, 0, #222);
 	}
 }
 
@@ -383,10 +420,6 @@ button, input[type="submit"], .next, .back {
 	}
 }
 
-.description {
-	
-}
-
 .social-icon {
 	clear: both;
 	.column(12);
@@ -413,9 +446,14 @@ button, input[type="submit"], .next, .back {
 .add-item {
 	font-style: italic;
 	font-weight: bold;
+    float: right;
+    margin-top: -2em;
+
+/*
     position: absolute;
     top: 3em;
     right: 3em;
+*/
 
     &:hover {
     	color: @lblue;

@@ -63,7 +63,7 @@ def feed_page(request):
     # get a list of rendered items
     places = Place.objects.all()[:10]
     items = [PlaceFeedItem(place, user=request.user) for place in places]
-    content = render_viewmodels_as_ul(items, 'places/feed_item.html')
+    content = render_viewmodels_as_ul(items, 'places/feed_item.html', container_class_label='places feed')
     return render(request, 'page.html', {'main_content': content})
 
 

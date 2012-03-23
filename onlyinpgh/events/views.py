@@ -18,7 +18,7 @@ def feed_page(request):
     # get a list of rendered items
     events = Event.objects.all()[:10]
     items = [EventFeedItem(event, user=request.user) for event in events]
-    content = render_viewmodels_as_ul(items, 'events/feed_item.html')
+    content = render_viewmodels_as_ul(items, 'events/feed_item.html', container_class_label='events feed')
 
     return render(request, 'page.html', {'main_content': content})
 

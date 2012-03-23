@@ -14,14 +14,8 @@ Context variables:
 		<a href="{% url events-item-detail event.id %}">{{ event.name }}</a>
 	</h4>
 
-	<div class="item-actions">
-		 <!-- Once things have specials, switch else content -->
-		{% if featured_special %}
-			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
-		{% else %}
-			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
-		{% endif %}
-	</div>
+	<!-- <div class="item-actions">
+	</div> -->
 
 	<ul class="item-details meta">	
 		<li class="address">{{event.place.location.address}}</li>
