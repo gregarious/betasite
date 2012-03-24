@@ -526,24 +526,12 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  right: 0;
   background: green;
 }
-#site-sidebar ul,
-#site-sidebar h3 {
-  position: fixed;
-}
 #site-footer {
-  *zoom: 1;
-  margin-top: 2em;
-}
-#site-footer:before,
-#site-footer:after {
-  content: "";
-  display: table;
-}
-#site-footer:after {
-  clear: both;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 /* HEADER COMPONENTS -------- */
 #debug-user {
@@ -557,47 +545,16 @@ p {
   margin: 0.5em 0;
 }
 /* SIDEBAR ---------- */
-#broadcast {
-  margin-top: 3em;
-  overflow: hidden;
-  height: 70%;
-  display: none;
+.widget p,
+.widget ul li {
+  font-size: 0.8em;
 }
-#broadcast li {
-  background: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.6);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.6)), to(rgba(204, 204, 204, 0.6)));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(204, 204, 204, 0.6));
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(204, 204, 204, 0.6));
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(204, 204, 204, 0.6));
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(204, 204, 204, 0.6));
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.6), rgba(204, 204, 204, 0.6));
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
-  -webkit-box-shadow: 0 0 0.1em #999999;
-  -moz-box-shadow: 0 0 0.1em #999999;
-  box-shadow: 0 0 0.1em #999999;
-  margin: 0.5em 0;
-  padding: 10%;
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+.widget ul {
+  margin-left: 0.5em;
 }
-#broadcast:hover {
-  overflow: auto;
+.widget ul li {
+  list-style-type: disc;
+  padding: 0.4em;
 }
 /* FEED/ITEMS ---------- */
 /* 11 FEED/ITEMS ---------- */

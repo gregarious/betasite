@@ -126,19 +126,14 @@ body {
 #site-sidebar {
   .column_r(2.5);
   position: relative;
-  right: 0;
   background: green;
-
-  ul, h3 {
-    position: fixed;
-  }
 }
 
 #site-footer {
-  .clearfix();
-  margin-top: 2em;
+ position: absolute;
+ bottom: 0;
+ right: 0;
 }
-
 
 /* HEADER COMPONENTS -------- */
 
@@ -150,23 +145,18 @@ body {
 
 /* SIDEBAR ---------- */
 
-#broadcast {
-  margin-top: 3em;
-  li {
-    background: fade(#fff, 60%);
-    .gradient(fade(#fff, 60%), fade(#ccc, 60%));
-    .b-shadow(0, 0, 0.1em, #999);
-    margin: 0.5em 0;
-    padding: 10%;
-    .rounded(0.3em);
-  }
-  overflow: hidden;
-  height: 70%;
-  &:hover {
-    overflow: auto;
+.widget {
+  p, ul li {
+    font-size: 0.8em;
   }
 
-  display: none;
+  ul {
+    margin-left: 0.5em;
+    li {
+      list-style-type: disc;
+      padding: 0.4em;
+    }
+  }
 }
 
 
