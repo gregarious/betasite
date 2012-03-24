@@ -1,3 +1,8 @@
+{% comment %}
+Header template, simple debug version now. To be filled with
+HTML5 Boilerplate before release.
+{% endcomment %}
+
 <!doctype html>
 <head>
 	<title>Scenable</title>
@@ -24,6 +29,7 @@
 </head>
 <body>
 
+{% block content %}
 <div class="wrap" id="splash">
 
 	<hgroup>
@@ -39,6 +45,7 @@
 			<div class="icon-container">
 				<img class="icon" src="/static/img/android.png" height="50px" alt="available on Android" />
 				<img class="icon" src="/static/img/iphone.png" height="50px" alt="available on iPhone" />	
+			</div>
 		</div>
 		
 	</section>
@@ -86,5 +93,4 @@
 	</section>
 
 </div>
-</body>
-</html>
+{% endblock %}

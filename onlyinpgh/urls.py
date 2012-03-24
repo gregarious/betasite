@@ -19,7 +19,9 @@ urlpatterns = patterns('',
     url(r'^places/',include('onlyinpgh.places.urls')),
     url(r'^events/',include('onlyinpgh.events.urls')),
     url(r'^specials/',include('onlyinpgh.specials.urls')),
-    url('splash', direct_to_template, {'template': 'splash.html'}),
+    url('splash', direct_to_template, {'template': 'misc/splash.html'}),
+    url('qr_obid', direct_to_template, {'template': 'misc/obid_scan.html'}),
+    url('qr_scenable', direct_to_template, {'template': 'misc/scenable_scan.html'}),
 
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
