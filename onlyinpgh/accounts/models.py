@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     )
 
     user = models.OneToOneField(User)
-    display_name = models.TextField(max_length=30, blank=True)
+    display_name = models.CharField(max_length=30, blank=True)
 
     avatar_url = models.URLField(max_length=400, blank=True)
     points = models.IntegerField(default=0)
