@@ -27,8 +27,8 @@ Feel free to clear out the rest of this: I just have it here for the sake of bei
 		</div>
 	</div>
 	
-	{% if form.errors %}
-		<span class="tip error">Your username and password didn't match. Please try again.</span>
+	{% if form.non_field_errors %}
+		<div class="tip error">{{ form.non_field_errors }}</div>
 	{% endif %}
 
 	<input type="submit" value="Login" class="submit-item"  />

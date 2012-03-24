@@ -12,9 +12,10 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
 
-from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, \
-        SimpleLocationPlaceForm, PlaceClaimForm, SimpleEventForm, \
-        SimpleSpecialForm
+from django.contrib.auth.forms import AuthenticationForm
+from onlyinpgh.accounts.forms import FullRegistrationForm
+from onlyinpgh.orgadmin.forms import SimpleOrgForm, SimpleLocationPlaceForm, \
+                                     PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
 from onlyinpgh.events.viewmodels import EventFeedItem
@@ -70,38 +71,42 @@ def page_signup(request):
         logout(request)
 
     if request.POST:
-        form = OrgSignupForm(request.POST)
-        # test if the browser supports cookies
-        if request.session.test_cookie_worked():
-            request.session.delete_test_cookie()
-        else:
-            errors = form._errors.setdefault("__all__", ErrorList())
-            errors.append(u"Your browser must support cookies to use this site.")
+        reg_form = FullRegistrationForm(request.POST, prefix='reg')
+        org_form = SimpleOrgForm(request.POST, prefix='org')
 
-        if form.is_valid():
-            form.save()     # saves new user
+        if reg_form.is_valid() and org_form.is_valid():
+            reg_form.save()     # saves new user
+            org = org_form.save()   # saves new org
 
-            # authenticate new user, create  and log in
-            user = authenticate(username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1'])
-            login(request, user)
+            # test if the browser supports cookies
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
 
-            # create new organization for user to administer
-            org = Organization.objects.create(name=form.cleaned_data['orgname'])
-            org.administrators.add(user)
+                # authenticate new user and log in
+                user = authenticate(username=reg_form.cleaned_data['username'],
+                    password=reg_form.cleaned_data['password1'])
+                login(request, user)
 
-            request.session['current_org'] = org
+                # set user as administrator to given org
+                org.administrators.add(user)
 
-            # redirect to home page
-            redirect_to = reverse('orgadmin-home')
+                request.session['current_org'] = org
+
+                # redirect to home page
+                redirect_to = reverse('orgadmin-home')
+            else:   # if cookies aren't enabled, go to login page
+                redirect_to = reverse('orgadmin-login')
+
             return HttpResponseRedirect(redirect_to)
     else:
-        form = OrgSignupForm()
+        reg_form = FullRegistrationForm(prefix='reg')
+        org_form = SimpleOrgForm(prefix='org')
 
     request.session.set_test_cookie()
     context = RequestContext(request)
     content = render_to_string('orgadmin/signup_form.html',
-        {'form': form}, context_instance=context)
+        {'registration_form': reg_form, 'org_form': org_form},
+        context_instance=context)
 
     return response_admin_page(content, context)
 
@@ -112,7 +117,7 @@ def page_login(request):
 
     if request.POST:
         # passing in request checks for cookies
-        form = OrgLoginForm(request, data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             if request.session.test_cookie_worked():
                 request.session.delete_test_cookie()
@@ -131,7 +136,7 @@ def page_login(request):
             redirect_to = reverse('orgadmin-home')
             return HttpResponseRedirect(redirect_to)
     else:
-        form = OrgLoginForm()
+        form = AuthenticationForm()
 
     request.session.set_test_cookie()
     context = RequestContext(request)
