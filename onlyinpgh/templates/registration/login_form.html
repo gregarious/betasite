@@ -1,5 +1,5 @@
 <h2>Login to your Account</h2>
-<form method="post" action="{% url onlyinpgh.orgadmin.views.page_login %}">
+<form method="post" action="{{ form_action }}">
 {% csrf_token %}
 {% comment %}
 form fields:

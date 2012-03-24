@@ -3,7 +3,6 @@ from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
-from django.forms.util import ErrorList
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import get_object_or_404, redirect
 
@@ -13,7 +12,7 @@ from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
 
 from django.contrib.auth.forms import AuthenticationForm
-from onlyinpgh.accounts.forms import FullRegistrationForm
+from onlyinpgh.accounts.forms import RegistrationForm
 from onlyinpgh.orgadmin.forms import SimpleOrgForm, SimpleLocationPlaceForm, \
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
@@ -71,7 +70,7 @@ def page_signup(request):
         logout(request)
 
     if request.POST:
-        reg_form = FullRegistrationForm(request.POST, prefix='reg')
+        reg_form = RegistrationForm(request.POST, prefix='reg')
         org_form = SimpleOrgForm(request.POST, prefix='org')
 
         if reg_form.is_valid() and org_form.is_valid():
@@ -99,7 +98,7 @@ def page_signup(request):
 
             return HttpResponseRedirect(redirect_to)
     else:
-        reg_form = FullRegistrationForm(prefix='reg')
+        reg_form = RegistrationForm(prefix='reg')
         org_form = SimpleOrgForm(prefix='org')
 
     request.session.set_test_cookie()
@@ -140,8 +139,9 @@ def page_login(request):
 
     request.session.set_test_cookie()
     context = RequestContext(request)
-    content = render_to_string('orgadmin/login_form.html',
-        {'form': form}, context_instance=context)
+    content = render_to_string('registration/login_form.html',
+        {'form': form, 'form_action': reverse('orgadmin-login')},
+        context_instance=context)
 
     return response_admin_page(content, context)
 
