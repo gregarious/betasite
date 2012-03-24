@@ -32,6 +32,9 @@ class UserProfile(models.Model):
 
 # signal handler to automatically create a new UserProfile
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
+    # raw will be true when loaddata script is run (will run
+    # into a db uniqueness conflict if we have a fixture that
+    # tried to load corresponding profiles)
+    if created and not kwargs.get('raw', False):
         UserProfile.objects.create(user=instance)
 post_save.connect(create_user_profile, sender=User)
