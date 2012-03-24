@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from onlyinpgh.outsourcing.apitools import facebook
-
+from django.utils import safestring
 import json
 
 
@@ -13,14 +13,19 @@ def home(request):
     fb_reg_uri = request.build_absolute_uri(
         reverse('onlyinpgh.accounts.views.fb_registration_handler'))
     return render_to_response('accounts/home_test.html',
-        {'app_id': facebook.OIP_APP_ID,
+        {'app_id': facebook.SCENABLE_APP_ID,
          'channel_uri': abs_channel_uri,
          'fb_registration_handler_uri': fb_reg_uri})
 
 
 def fb_registration_handler(request):
-    print request.POST
-    print request.GET
+    s = 'POST:<br/>'
+    s += str(request.POST)
+    s += '<br/>GET:'
+    s += str(request.GET)
+    s += '<br/>request:'
+    s += str(request)
+    return HttpResponse(safestring.mark_safe(s))
 
 
 def channel_file(request):

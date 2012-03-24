@@ -1,4 +1,5 @@
 <div id="fb-root"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -8,19 +9,19 @@
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-
-    // Additional initialization code here
+    
+    FB.getLoginStatus(function(response) {
+      alert(response.status);
+    });
   };
 
   // Load the SDK Asynchronously
-  (function(d){
+  $(function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
+     js.src = "//connect.facebook.net/en_US/all.js#appId={{ app_id }}&xfbml=1";
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
 
-<fb:login-button
-registration-url="{{ fb_registration_handler_uri }}" />
