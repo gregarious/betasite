@@ -3,7 +3,6 @@
 
 /* 1 ROOT ---------- */
 
-
 body {
   /*background-image: url(/static/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green.png), url(/static/img_store/paper/eggshell.jpg);
   background-attachment: fixed, fixed;
@@ -15,42 +14,12 @@ body {
   /*font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;*/
 }
 
-.wrap {
-  max-width: 920px;
-  margin: 0 auto;
-  .border-box();
-  .clearfix();
-  position: relative;
-}
-
-/* Responsive images */
-img {
-  height: auto;
-  width: 100%;
-}
-
-textarea, input[type="search"], input[type="email"], input[type="text"] {
-  border: 1px @white solid;
-  padding: 0.5em;
-  .rounded(0.2em);
-  &:focus, &:hover {
-    border-color: #91D87D;
-  }
-}
-
+@import "../LESS/root.less";
 
 /* TYPOGRAPHY -------- */
 
 @import "../LESS/type";
 
-/* 3 HEADINGS ---------- */
-
-.global-heading {
-  font-weight: normal;
-  letter-spacing: 0.1em;
-  margin: 0.5em 0 0 0.8em;
-  text-shadow: 0 0.09em 0.04em #fff;
-}
 
 .section-title {
   border-top: 2px solid #286653;
@@ -64,17 +33,13 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   text-shadow: 0.1em 0.1em 0.04em #000;
 }
 
-.page-title {
-  display: inline;
-  font-size: 1.5em;
-}
-
 /* 4 SITE ---------- */
 
-#global-wrap {
-  //position: relative;
-  width: 1140px;
+.wrap {
+  .clearfix;
   margin: 0 auto;
+  width: 1140px;
+  
 }
 
 #site-search {
@@ -161,19 +126,14 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 #site-sidebar {
   .column_r(2.5);
   position: relative;
-  right: 0;
   background: green;
-
-  ul, h3 {
-    position: fixed;
-  }
 }
 
 #site-footer {
-  .clearfix();
-  margin-top: 2em;
+ position: absolute;
+ bottom: 0;
+ right: 0;
 }
-
 
 /* HEADER COMPONENTS -------- */
 
@@ -185,23 +145,18 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 /* SIDEBAR ---------- */
 
-#broadcast {
-  margin-top: 3em;
-  li {
-    background: fade(#fff, 60%);
-    .gradient(fade(#fff, 60%), fade(#ccc, 60%));
-    .b-shadow(0, 0, 0.1em, #999);
-    margin: 0.5em 0;
-    padding: 10%;
-    .rounded(0.3em);
-  }
-  overflow: hidden;
-  height: 70%;
-  &:hover {
-    overflow: auto;
+.widget {
+  p, ul li {
+    font-size: 0.8em;
   }
 
-  display: none;
+  ul {
+    margin-left: 0.5em;
+    li {
+      list-style-type: disc;
+      padding: 0.4em;
+    }
+  }
 }
 
 
@@ -220,24 +175,6 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 
 .item-thumb {
   border: ;
-}
-
-/* PAGE ---------- */
-
-.page-header {
-  background: @green;
-  padding: 1% 2%;
-}
-
-.add-filter {
-  .gradient(#fff, #999);
-  float: right;
-  padding: 1%;
-  .rounded(0.5em);  
-}
-
-.filter-form {
-  display: none;
 }
 
 /* 4 INPUTS ---------- */
@@ -318,7 +255,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
   background-color: @lgreen !important;
 }
 
-#date-nav-left, #date-nav-right {
+/*#date-nav-left, #date-nav-right {
   background: url("../img_store/date-nav.png");
   height: 19px;
   width: 19px;
@@ -331,7 +268,7 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 #date-nav-right {
   background-position: -17px -17px;
   float: right;
-}
+}*/
 
 @import "../LESS/single";
 
@@ -367,6 +304,14 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
       top: 1px;
       left: 1px;
     }
+  }
+}
+
+/* SPECIALS --------- */
+
+.specials.feed {
+  .item-title {
+    margin-top: 0.6em;
   }
 }
 
@@ -417,38 +362,5 @@ textarea, input[type="search"], input[type="email"], input[type="text"] {
 /* ICONS ----------- */
 
 @import "../LESS/icons";
-
-
-/* 18 MEDIA QUERIES ---------- */
-
-/*
- * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
- */
-
-/* Styles for mobile ----------- */
-
-/*@media screen and (min-width: 720px) {
-  .item {
-    .column(6);
-    margin-bottom: 1em;
-  }
-}
-
-@media screen and (max-width: 520px){
-
-  
-}
-
-@media screen and (max-width: 350px) {
-
-}*/
-
-/* Styles for desktop and large screen ----------- */
-
-@media only screen and (min-width: 720px) {
-
-
-
-}/*/mediaquery*/
 
 
