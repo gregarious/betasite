@@ -16,6 +16,14 @@ body {
 
 @import "../LESS/root.less";
 
+
+.wrap {
+  .clearfix;
+  margin: 0 auto;
+  width: 960px;
+  position: relative;
+}
+
 /* TYPOGRAPHY -------- */
 
 @import "../LESS/type";
@@ -33,84 +41,57 @@ body {
   text-shadow: 0.1em 0.1em 0.04em #000;
 }
 
-/* 4 SITE ---------- */
-
-.wrap {
-  .clearfix;
-  margin: 0 auto;
-  width: 1140px;
-  
-}
-
-#site-search {
-  .column_r(3.5);
-}
+/* HEADER ------------- */
 
 #site-header {
-  .row();
-  .fixed;
-  padding: 0.5em 0;
-  /*.b-shadow-bot(1em, 1em, 0.1em, #000);*/
-  background: url("/static/img_store/paper/eggshell.jpg") fixed;
-
-  .wrap {
-    background: url("/static/img/obid_logo.png") no-repeat top left;
-    height: 80px;
-    /*position: absolute;
-    left: -1%;
-    bottom: 30%;*/
-  }
-}
-
-#site-content {
-  background: @mgreen;
-  .column(7);
-  margin-top: 0.5em;
-  position: relative;
-  left: 200px;
+  background: green;
+  height: 120px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 
 #logo {
-  position: fixed;
-  width: auto;
+    float: left;
+  }
+
+#top-bar {
+  background: @mblue;
 }
 
-.absolute {
-  position: absolute;
+#debug-user {
+  float: right;
 }
 
 #site-nav {
-  width: 200px;
+  background: @lblue;
+  .column(8);
+  z-index: 999;
   position: relative;
-  margin-top: 1em; 
-  clear: both;
-
+  
   ul {
-    position: fixed;
-    top: 120px;
-    margin-left: 130px;
-    //right: 0;
 
     li { 
       a {
-        display: block;
-        /*.b-shadow(0, -0.12em, 0.1em, #000); */
-        -webkit-border-radius: 5px 0 0 5px;
-           -moz-border-radius: 5px 0 0 5px;
-                border-radius: 5px 0 0 5px;
-
-        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        .column_r(2);
         .b-shadow(0, 0, 2px, #000);
         color: #000;
         cursor: pointer;
-        font-size: 10px;
+        font-size: 0.8em;
         font-weight: bold;
-        width: 50px;
+        height: 80px;
         margin-top: 1em;
-        padding: 40px 0 0;
+        padding: 1em 0 0;
+        .tabs(0.5em);
         text-align: center;
         text-decoration: none;
           
+        img {
+          display: block;
+          height: 40px;
+          margin: auto auto 0.3em;
+        }
+
         &:hover {
           background-color: #ccc;
         }
@@ -123,24 +104,38 @@ body {
   } 
 }
 
+/* 4 CONTENT ---------- */
+
+#site-search {
+  .column_r(3.5);
+}
+
+#site-content {
+  background: @mgreen;
+  .column(8);
+  margin-top: 0.5em;
+  .column(8);
+}
+
+
 #site-sidebar {
-  .column_r(2.5);
-  position: relative;
-  background: green;
+  position: fixed;
+  right: 0;
+  top: 120px;
+  width: 100%;
+  z-index: 999; 
+
+  .content {
+    background: @green;
+    .column_r(4);
+    position: relative;
+  }
 }
 
 #site-footer {
  position: absolute;
  bottom: 0;
  right: 0;
-}
-
-/* HEADER COMPONENTS -------- */
-
-#debug-user {
-  .column_r(3);
-  float: right;
-  margin: 0.5em 0;
 }
 
 /* SIDEBAR ---------- */
@@ -151,7 +146,7 @@ body {
   }
 
   ul {
-    margin-left: 0.5em;
+    margin-left: 1em;
     li {
       list-style-type: disc;
       padding: 0.4em;
