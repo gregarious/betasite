@@ -122,7 +122,7 @@ LOGIN_REDIRECT_URL = '/'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 TEMPLATE_DIRS = (
-    to_abspath('templates'),
+    to_abspath('templates-final'),
 )
 
 INSTALLED_APPS = (
