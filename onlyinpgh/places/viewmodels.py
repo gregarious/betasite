@@ -1,9 +1,6 @@
 from onlyinpgh.common.core.viewmodels import ViewModel
-
 from onlyinpgh.places.models import Place
-
 from onlyinpgh.common.viewmodels import FeedCollection
-
 from onlyinpgh.common.utils import process_external_url
 
 import urllib
@@ -43,13 +40,17 @@ class PlaceFeedItem(ViewModel):
             [tags]
                 id
                 name
+        is_favorite (boolean)
     '''
     def __init__(self, place, user=None):
         super(PlaceFeedItem, self).__init__()
         self.place = place
-        # TODO: reenable favorites when user model is created
-        # if user:
-        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
+        if user:
+            self.is_favorite = place.favorite_set\
+                                    .filter(user=user, is_favorite=True)\
+                                    .count() > 0
+        else:
+            self.is_favorite = False
 
     def to_data(self, *args, **kwargs):
         data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
@@ -87,14 +88,17 @@ class PlaceDetail(ViewModel):
             url
             fb_id
             twitter_username
+        is_favorite (boolean)
     '''
     def __init__(self, place, user=None):
         super(PlaceDetail, self).__init__()
         self.place = place
-
-        # TODO: reenable favorites when user model is created
-        # if user:
-        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
+        if user:
+            self.is_favorite = place.favorite_set\
+                                    .filter(user=user, is_favorite=True)\
+                                    .count() > 0
+        else:
+            self.is_favorite = False
 
     def to_data(self, *args, **kwargs):
         '''Manually handles setting of place data'''
