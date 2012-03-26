@@ -324,6 +324,33 @@
     }
   }, 
   {
+    "pk": 64, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_favorite", 
+      "name": "Can add favorite", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_favorite", 
+      "name": "Can change favorite", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_favorite", 
+      "name": "Can delete favorite", 
+      "content_type": 22
+    }
+  }, 
+  {
     "pk": 34, 
     "model": "auth.permission", 
     "fields": {
@@ -483,6 +510,33 @@
       "codename": "delete_migrationhistory", 
       "name": "Can delete migration history", 
       "content_type": 9
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_coupon", 
+      "name": "Can add coupon", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_coupon", 
+      "name": "Can change coupon", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_coupon", 
+      "name": "Can delete coupon", 
+      "content_type": 23
     }
   }, 
   {
@@ -657,13 +711,73 @@
     }
   }, 
   {
+    "pk": 8, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "greg", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2012-03-26 17:19:02", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$56954$b85fb92ec634d83eeaf1b191ef0ca9c54294ce02", 
+      "email": "greg.nicholas@gmail.com", 
+      "date_joined": "2012-03-26 17:19:02"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "brett", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2012-03-26 17:18:46", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$99132$8680daed4afda7167abfda420ea7a6fb4882456f", 
+      "email": "brett@onlyinpgh.com", 
+      "date_joined": "2012-03-26 17:18:46"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "lara", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2012-03-26 17:18:54", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$bdbb2$fba8613e0eac4ad8e466071f0bc317637bdec0f1", 
+      "email": "lara@scenable.com", 
+      "date_joined": "2012-03-26 17:18:54"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "accounts.userprofile", 
     "fields": {
-      "twitter_username": "", 
-      "avatar_url": "", 
+      "display_name": "", 
+      "gender": "", 
       "fb_id": "", 
+      "twitter_username": "", 
+      "birth_year": null, 
+      "avatar_url": "", 
       "user": 1, 
+      "neighborhood": "", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
       "points": 0
     }
   }, 
@@ -671,10 +785,16 @@
     "pk": 2, 
     "model": "accounts.userprofile", 
     "fields": {
-      "twitter_username": "", 
-      "avatar_url": "", 
+      "display_name": "", 
+      "gender": "", 
       "fb_id": "", 
+      "twitter_username": "", 
+      "birth_year": null, 
+      "avatar_url": "", 
       "user": 2, 
+      "neighborhood": "", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
       "points": 0
     }
   }, 
@@ -682,10 +802,16 @@
     "pk": 3, 
     "model": "accounts.userprofile", 
     "fields": {
-      "twitter_username": "", 
-      "avatar_url": "", 
+      "display_name": "", 
+      "gender": "", 
       "fb_id": "", 
+      "twitter_username": "", 
+      "birth_year": null, 
+      "avatar_url": "", 
       "user": 3, 
+      "neighborhood": "", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
       "points": 0
     }
   }, 
@@ -693,10 +819,16 @@
     "pk": 4, 
     "model": "accounts.userprofile", 
     "fields": {
-      "twitter_username": "", 
-      "avatar_url": "", 
+      "display_name": "", 
+      "gender": "", 
       "fb_id": "", 
+      "twitter_username": "", 
+      "birth_year": null, 
+      "avatar_url": "", 
       "user": 4, 
+      "neighborhood": "", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
       "points": 0
     }
   }, 
@@ -704,83 +836,68 @@
     "pk": 5, 
     "model": "accounts.userprofile", 
     "fields": {
-      "twitter_username": "", 
-      "avatar_url": "", 
+      "display_name": "", 
+      "gender": "", 
       "fb_id": "", 
+      "twitter_username": "", 
+      "birth_year": null, 
+      "avatar_url": "", 
       "user": 5, 
+      "neighborhood": "", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
       "points": 0
     }
   }, 
   {
-    "pk": 1, 
-    "model": "organizations.organization", 
+    "pk": 8, 
+    "model": "accounts.userprofile", 
     "fields": {
-      "administrators": [
-        1
-      ], 
-      "dtcreated": "2012-03-22 20:26:27", 
-      "name": "Cheeks", 
-      "url": "", 
-      "fb_id": "", 
-      "establishments": [
-        10
-      ], 
-      "twitter_username": "", 
-      "image_url": ""
+      "display_name": "Greg Nicholas", 
+      "gender": "M", 
+      "fb_id": "GregNick", 
+      "twitter_username": "gregariousdev", 
+      "birth_year": 1984, 
+      "avatar_url": "https://secure.gravatar.com/avatar/7de4ab7b852b764dca2818ddbb899c30.png", 
+      "user": 8, 
+      "neighborhood": "Lawrenceville", 
+      "twitter_username_public": true, 
+      "fb_id_public": true, 
+      "points": 112
     }
   }, 
   {
-    "pk": 2, 
-    "model": "organizations.organization", 
+    "pk": 6, 
+    "model": "accounts.userprofile", 
     "fields": {
-      "administrators": [
-        2
-      ], 
-      "dtcreated": "2012-03-22 20:44:22", 
-      "name": "The Original Hot Dog Shoppe", 
-      "url": "", 
-      "fb_id": "", 
-      "establishments": [
-        198
-      ], 
+      "display_name": "Brett \"Bossman\" Wiewiora", 
+      "gender": "M", 
+      "fb_id": "14227070", 
       "twitter_username": "", 
-      "image_url": ""
+      "birth_year": 1982, 
+      "avatar_url": "http://www.gravatar.com/avatar/0d7dc366cdc26d794c684e8a6102d6b4?d=identicon&s=150", 
+      "user": 6, 
+      "neighborhood": "Greenfield", 
+      "twitter_username_public": false, 
+      "fb_id_public": true, 
+      "points": 320
     }
   }, 
   {
-    "pk": 3, 
-    "model": "organizations.organization", 
+    "pk": 7, 
+    "model": "accounts.userprofile", 
     "fields": {
-      "administrators": [
-        3
-      ], 
-      "dtcreated": "2012-03-22 22:15:05", 
-      "name": "Maggie & Stella's", 
-      "url": "", 
-      "fb_id": "", 
-      "establishments": [
-        7
-      ], 
-      "twitter_username": "", 
-      "image_url": ""
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "organizations.organization", 
-    "fields": {
-      "administrators": [
-        4
-      ], 
-      "dtcreated": "2012-03-22 22:50:48", 
-      "name": "Peter's Pub", 
-      "url": "", 
-      "fb_id": "", 
-      "establishments": [
-        16
-      ], 
-      "twitter_username": "", 
-      "image_url": ""
+      "display_name": "Lara Schenck", 
+      "gender": "F", 
+      "fb_id": "1474320316", 
+      "twitter_username": "laras126", 
+      "birth_year": 1989, 
+      "avatar_url": "http://www.gravatar.com/avatar/9eba96445dfde7f64550487f41cddb8f?d=identicon&s=150", 
+      "user": 7, 
+      "neighborhood": "Friendship", 
+      "twitter_username_public": true, 
+      "fb_id_public": false, 
+      "points": 233
     }
   }, 
   {
@@ -1378,6 +1495,19 @@
     }
   }, 
   {
+    "pk": 252, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.947487", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "1 Schenley Dr", 
+      "latitude": "40.439093"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "places.location", 
     "fields": {
@@ -1830,19 +1960,6 @@
       "postcode": "15213", 
       "address": "195 N Craig St", 
       "latitude": "40.449385"
-    }
-  }, 
-  {
-    "pk": 252, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.947487", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "1 Schenley Dr", 
-      "latitude": "40.439093"
     }
   }, 
   {
@@ -2470,19 +2587,6 @@
     }
   }, 
   {
-    "pk": 86, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.963763", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "3153 Forbes Ave", 
-      "latitude": "40.436676"
-    }
-  }, 
-  {
     "pk": 85, 
     "model": "places.location", 
     "fields": {
@@ -2493,6 +2597,19 @@
       "postcode": "15213", 
       "address": "315 N Craig St", 
       "latitude": "40.452213"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.963763", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "3153 Forbes Ave", 
+      "latitude": "40.436676"
     }
   }, 
   {
@@ -2704,6 +2821,19 @@
     }
   }, 
   {
+    "pk": 103, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.951246", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "341 S Bellefield Ave", 
+      "latitude": "40.445093"
+    }
+  }, 
+  {
     "pk": 104, 
     "model": "places.location", 
     "fields": {
@@ -2730,19 +2860,6 @@
     }
   }, 
   {
-    "pk": 103, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.951246", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "341 S Bellefield Ave", 
-      "latitude": "40.445093"
-    }
-  }, 
-  {
     "pk": 106, 
     "model": "places.location", 
     "fields": {
@@ -2753,6 +2870,19 @@
       "postcode": "15213", 
       "address": "3433 Bates St", 
       "latitude": "40.436082"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.954868", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "344 Atwood St", 
+      "latitude": "40.438566"
     }
   }, 
   {
@@ -2792,19 +2922,6 @@
       "postcode": "15213", 
       "address": "3447 Dawson St", 
       "latitude": "40.436076"
-    }
-  }, 
-  {
-    "pk": 107, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.954868", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "344 Atwood St", 
-      "latitude": "40.438566"
     }
   }, 
   {
@@ -2860,19 +2977,6 @@
     }
   }, 
   {
-    "pk": 116, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.960518", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "3471 Fifth Ave", 
-      "latitude": "40.440479"
-    }
-  }, 
-  {
     "pk": 115, 
     "model": "places.location", 
     "fields": {
@@ -2883,6 +2987,19 @@
       "postcode": "15213", 
       "address": "347 S Bouquet St", 
       "latitude": "40.440002"
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.960518", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "3471 Fifth Ave", 
+      "latitude": "40.440479"
     }
   }, 
   {
@@ -2977,6 +3094,19 @@
     }
   }, 
   {
+    "pk": 129, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.954521", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "352 Atwood St", 
+      "latitude": "40.438485"
+    }
+  }, 
+  {
     "pk": 124, 
     "model": "places.location", 
     "fields": {
@@ -3039,19 +3169,6 @@
       "postcode": "15213", 
       "address": "3529 Boulevard of the Allies", 
       "latitude": "40.435021"
-    }
-  }, 
-  {
-    "pk": 129, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.954521", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "352 Atwood St", 
-      "latitude": "40.438485"
     }
   }, 
   {
@@ -3367,6 +3484,19 @@
     }
   }, 
   {
+    "pk": 154, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.954094", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "370 Atwood St", 
+      "latitude": "40.438141"
+    }
+  }, 
+  {
     "pk": 155, 
     "model": "places.location", 
     "fields": {
@@ -3442,19 +3572,6 @@
       "postcode": "15213", 
       "address": "3708 Forbes Ave", 
       "latitude": "40.441229"
-    }
-  }, 
-  {
-    "pk": 154, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.954094", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "370 Atwood St", 
-      "latitude": "40.438141"
     }
   }, 
   {
@@ -3601,6 +3718,19 @@
     }
   }, 
   {
+    "pk": 171, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.953137", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "372 N Craig St", 
+      "latitude": "40.453960"
+    }
+  }, 
+  {
     "pk": 172, 
     "model": "places.location", 
     "fields": {
@@ -3624,19 +3754,6 @@
       "postcode": "15213", 
       "address": "3725 Forbes Ave", 
       "latitude": "40.441580"
-    }
-  }, 
-  {
-    "pk": 171, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.953137", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "372 N Craig St", 
-      "latitude": "40.453960"
     }
   }, 
   {
@@ -3809,32 +3926,6 @@
     }
   }, 
   {
-    "pk": 189, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.956293", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4000 Fifth Ave", 
-      "latitude": "40.443143"
-    }
-  }, 
-  {
-    "pk": 190, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.956573", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4001 Fifth Ave", 
-      "latitude": "40.443180"
-    }
-  }, 
-  {
     "pk": 187, 
     "model": "places.location", 
     "fields": {
@@ -3858,6 +3949,32 @@
       "postcode": "15213", 
       "address": "400 Semple St", 
       "latitude": "40.437009"
+    }
+  }, 
+  {
+    "pk": 189, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.956293", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4000 Fifth Ave", 
+      "latitude": "40.443143"
+    }
+  }, 
+  {
+    "pk": 190, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.956573", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4001 Fifth Ave", 
+      "latitude": "40.443180"
     }
   }, 
   {
@@ -3952,19 +4069,6 @@
     }
   }, 
   {
-    "pk": 199, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.955581", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4100 Bigelow Blvd", 
-      "latitude": "40.449223"
-    }
-  }, 
-  {
     "pk": 198, 
     "model": "places.location", 
     "fields": {
@@ -3975,6 +4079,19 @@
       "postcode": "15213", 
       "address": "410 Semple St", 
       "latitude": "40.436837"
+    }
+  }, 
+  {
+    "pk": 199, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.955581", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4100 Bigelow Blvd", 
+      "latitude": "40.449223"
     }
   }, 
   {
@@ -3991,19 +4108,6 @@
     }
   }, 
   {
-    "pk": 202, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.955621", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4125 Fifth Ave", 
-      "latitude": "40.443882"
-    }
-  }, 
-  {
     "pk": 201, 
     "model": "places.location", 
     "fields": {
@@ -4014,6 +4118,19 @@
       "postcode": "15213", 
       "address": "412 S Craig St", 
       "latitude": "40.444860"
+    }
+  }, 
+  {
+    "pk": 202, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.955621", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4125 Fifth Ave", 
+      "latitude": "40.443882"
     }
   }, 
   {
@@ -4043,19 +4160,6 @@
     }
   }, 
   {
-    "pk": 206, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.955549", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4141 Fifth Ave", 
-      "latitude": "40.443932"
-    }
-  }, 
-  {
     "pk": 205, 
     "model": "places.location", 
     "fields": {
@@ -4066,6 +4170,19 @@
       "postcode": "15213", 
       "address": "414 Semple St", 
       "latitude": "40.436734"
+    }
+  }, 
+  {
+    "pk": 206, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.955549", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4141 Fifth Ave", 
+      "latitude": "40.443932"
     }
   }, 
   {
@@ -4121,19 +4238,6 @@
     }
   }, 
   {
-    "pk": 212, 
-    "model": "places.location", 
-    "fields": {
-      "town": "Pittsburgh", 
-      "country": "US", 
-      "longitude": "-79.956509", 
-      "state": "PA", 
-      "postcode": "15213", 
-      "address": "4201 Bigelow Blvd", 
-      "latitude": "40.446175"
-    }
-  }, 
-  {
     "pk": 211, 
     "model": "places.location", 
     "fields": {
@@ -4144,6 +4248,19 @@
       "postcode": "15213", 
       "address": "420 S Craig St", 
       "latitude": "40.444598"
+    }
+  }, 
+  {
+    "pk": 212, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.956509", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4201 Bigelow Blvd", 
+      "latitude": "40.446175"
     }
   }, 
   {
@@ -4770,6 +4887,28 @@
     }
   }, 
   {
+    "pk": 152, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:42", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "", 
+      "fb_id": "328754675500", 
+      "hours": "", 
+      "phone": "(412) 687-4666", 
+      "image_url": "", 
+      "location": 140, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "AJ's Peruvian Chicken"
+    }
+  }, 
+  {
     "pk": 158, 
     "model": "places.place", 
     "fields": {
@@ -4810,28 +4949,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Aiken's Quality Cuts"
-    }
-  }, 
-  {
-    "pk": 152, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:42", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "", 
-      "fb_id": "328754675500", 
-      "hours": "", 
-      "phone": "(412) 687-4666", 
-      "image_url": "", 
-      "location": 140, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "AJ's Peruvian Chicken"
     }
   }, 
   {
@@ -5200,6 +5317,54 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Burma-Tokyo"
+    }
+  }, 
+  {
+    "pk": 268, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:42", 
+      "description": "", 
+      "tags": [
+        16, 
+        17, 
+        31, 
+        36, 
+        45
+      ], 
+      "url": "www.cvs.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 682-1088", 
+      "image_url": "", 
+      "location": 242, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "CVS Pharmacy"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:28", 
+      "description": "", 
+      "tags": [
+        16, 
+        17, 
+        31, 
+        36, 
+        45
+      ], 
+      "url": "www.cvs.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 687-4180", 
+      "image_url": "", 
+      "location": 108, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "CVS Pharmacy"
     }
   }, 
   {
@@ -5703,9 +5868,9 @@
       "description": "", 
       "tags": [
         7, 
+        30, 
         28, 
         29, 
-        30, 
         66, 
         67
       ], 
@@ -5784,54 +5949,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Crepes Parisiennes"
-    }
-  }, 
-  {
-    "pk": 118, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:28", 
-      "description": "", 
-      "tags": [
-        16, 
-        17, 
-        31, 
-        36, 
-        45
-      ], 
-      "url": "www.cvs.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 687-4180", 
-      "image_url": "", 
-      "location": 108, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "CVS Pharmacy"
-    }
-  }, 
-  {
-    "pk": 268, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:42", 
-      "description": "", 
-      "tags": [
-        16, 
-        17, 
-        31, 
-        36, 
-        45
-      ], 
-      "url": "www.cvs.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 682-1088", 
-      "image_url": "", 
-      "location": 242, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "CVS Pharmacy"
     }
   }, 
   {
@@ -5921,25 +6038,21 @@
     }
   }, 
   {
-    "pk": 87, 
+    "pk": 110, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-22 15:59:14", 
+      "dtcreated": "2012-03-22 15:59:24", 
       "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "http://www.eatuniquecafe.com/", 
+      "tags": [], 
+      "url": "", 
       "fb_id": "", 
       "hours": "", 
-      "phone": "(412) 683-9993", 
+      "phone": "(412) 325-3904", 
       "image_url": "", 
-      "location": 79, 
+      "location": 100, 
       "parking": "", 
       "twitter_username": "", 
-      "name": "Eat Unique"
+      "name": "E.S. Management"
     }
   }, 
   {
@@ -5964,6 +6077,28 @@
     }
   }, 
   {
+    "pk": 87, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:14", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "http://www.eatuniquecafe.com/", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 683-9993", 
+      "image_url": "", 
+      "location": 79, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Eat Unique"
+    }
+  }, 
+  {
     "pk": 133, 
     "model": "places.place", 
     "fields": {
@@ -5979,24 +6114,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Enrico's"
-    }
-  }, 
-  {
-    "pk": 110, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:24", 
-      "description": "", 
-      "tags": [], 
-      "url": "", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 325-3904", 
-      "image_url": "", 
-      "location": 100, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "E.S. Management"
     }
   }, 
   {
@@ -6022,27 +6139,6 @@
     }
   }, 
   {
-    "pk": 94, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:17", 
-      "description": "", 
-      "tags": [
-        16, 
-        17
-      ], 
-      "url": "", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412)621-1679", 
-      "image_url": "", 
-      "location": 84, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Eye Candy"
-    }
-  }, 
-  {
     "pk": 65, 
     "model": "places.place", 
     "fields": {
@@ -6065,23 +6161,24 @@
     }
   }, 
   {
-    "pk": 274, 
+    "pk": 94, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-03-22 16:00:45", 
+      "dtcreated": "2012-03-22 15:59:17", 
       "description": "", 
       "tags": [
-        31
+        16, 
+        17
       ], 
-      "url": "www.pitt.edu", 
+      "url": "", 
       "fb_id": "", 
       "hours": "", 
-      "phone": "(412) 624-4141", 
+      "phone": "(412)621-1679", 
       "image_url": "", 
-      "location": 247, 
+      "location": 84, 
       "parking": "", 
       "twitter_username": "", 
-      "name": "falk Clinic"
+      "name": "Eye Candy"
     }
   }, 
   {
@@ -6366,24 +6463,6 @@
     }
   }, 
   {
-    "pk": 188, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:07", 
-      "description": "", 
-      "tags": [], 
-      "url": "www.gnc.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 682-5008", 
-      "image_url": "", 
-      "location": 173, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "General Nutrition Center"
-    }
-  }, 
-  {
     "pk": 162, 
     "model": "places.place", 
     "fields": {
@@ -6404,6 +6483,24 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Gene's Place"
+    }
+  }, 
+  {
+    "pk": 188, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:07", 
+      "description": "", 
+      "tags": [], 
+      "url": "www.gnc.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 682-5008", 
+      "image_url": "", 
+      "location": 173, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "General Nutrition Center"
     }
   }, 
   {
@@ -6519,6 +6616,54 @@
     }
   }, 
   {
+    "pk": 4, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:58:33", 
+      "description": "", 
+      "tags": [
+        9, 
+        10, 
+        11, 
+        12, 
+        13
+      ], 
+      "url": "www.hrblock.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-2797", 
+      "image_url": "", 
+      "location": 4, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "H & R Block"
+    }
+  }, 
+  {
+    "pk": 270, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:43", 
+      "description": "", 
+      "tags": [
+        9, 
+        10, 
+        11, 
+        12, 
+        13
+      ], 
+      "url": "www.hrblock.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-2797", 
+      "image_url": "", 
+      "location": 244, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "H&R Block"
+    }
+  }, 
+  {
     "pk": 15, 
     "model": "places.place", 
     "fields": {
@@ -6590,12 +6735,12 @@
       "dtcreated": "2012-03-22 16:00:12", 
       "description": "", 
       "tags": [
-        6, 
-        7, 
-        8, 
+        30, 
         28, 
         29, 
-        30
+        7, 
+        6, 
+        8
       ], 
       "url": "http://www.hemingways-cafe.com/", 
       "fb_id": "43656360946", 
@@ -6741,54 +6886,6 @@
     }
   }, 
   {
-    "pk": 4, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:58:33", 
-      "description": "", 
-      "tags": [
-        9, 
-        10, 
-        11, 
-        12, 
-        13
-      ], 
-      "url": "www.hrblock.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-2797", 
-      "image_url": "", 
-      "location": 4, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "H & R Block"
-    }
-  }, 
-  {
-    "pk": 270, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:43", 
-      "description": "", 
-      "tags": [
-        9, 
-        10, 
-        11, 
-        12, 
-        13
-      ], 
-      "url": "www.hrblock.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-2797", 
-      "image_url": "", 
-      "location": 244, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "H&R Block"
-    }
-  }, 
-  {
     "pk": 155, 
     "model": "places.place", 
     "fields": {
@@ -6918,6 +7015,24 @@
     }
   }, 
   {
+    "pk": 143, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:38", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 687-7799", 
+      "image_url": "", 
+      "location": 131, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Jim's Amoco"
+    }
+  }, 
+  {
     "pk": 119, 
     "model": "places.place", 
     "fields": {
@@ -6937,24 +7052,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Jimmy John's"
-    }
-  }, 
-  {
-    "pk": 143, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:38", 
-      "description": "", 
-      "tags": [], 
-      "url": "", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 687-7799", 
-      "image_url": "", 
-      "location": 131, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Jim's Amoco"
     }
   }, 
   {
@@ -7420,24 +7517,6 @@
     }
   }, 
   {
-    "pk": 97, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:18", 
-      "description": "", 
-      "tags": [], 
-      "url": "http://luccaristorante.com/", 
-      "fb_id": "LuccaRistorante", 
-      "hours": "", 
-      "phone": "(412) 682-3310", 
-      "image_url": "", 
-      "location": 87, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Lucca Restaurant"
-    }
-  }, 
-  {
     "pk": 204, 
     "model": "places.place", 
     "fields": {
@@ -7457,6 +7536,24 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "LuLu's Noodle Shop"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:18", 
+      "description": "", 
+      "tags": [], 
+      "url": "http://luccaristorante.com/", 
+      "fb_id": "LuccaRistorante", 
+      "hours": "", 
+      "phone": "(412) 682-3310", 
+      "image_url": "", 
+      "location": 87, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Lucca Restaurant"
     }
   }, 
   {
@@ -7687,6 +7784,24 @@
     }
   }, 
   {
+    "pk": 117, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:27", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "fb_id": "325518643484", 
+      "hours": "", 
+      "phone": "(412) 586-7034", 
+      "image_url": "", 
+      "location": 107, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Mi Ranchito"
+    }
+  }, 
+  {
     "pk": 52, 
     "model": "places.place", 
     "fields": {
@@ -7747,24 +7862,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Miller, Werrin & Gruendel"
-    }
-  }, 
-  {
-    "pk": 117, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:27", 
-      "description": "", 
-      "tags": [], 
-      "url": "", 
-      "fb_id": "325518643484", 
-      "hours": "", 
-      "phone": "(412) 586-7034", 
-      "image_url": "", 
-      "location": 107, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Mi Ranchito"
     }
   }, 
   {
@@ -8300,6 +8397,52 @@
     }
   }, 
   {
+    "pk": 276, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:46", 
+      "description": "", 
+      "tags": [
+        11, 
+        13, 
+        32, 
+        33
+      ], 
+      "url": "www.pnc.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 683-7161", 
+      "image_url": "", 
+      "location": null, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "PNC Bank"
+    }
+  }, 
+  {
+    "pk": 209, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:17", 
+      "description": "", 
+      "tags": [
+        11, 
+        13, 
+        32, 
+        33
+      ], 
+      "url": "www.pnc.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 621-0300", 
+      "image_url": "", 
+      "location": 192, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "PNC Bank"
+    }
+  }, 
+  {
     "pk": 171, 
     "model": "places.place", 
     "fields": {
@@ -8322,28 +8465,6 @@
     }
   }, 
   {
-    "pk": 114, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:26", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "http://www.panerabread.com/", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 683-9616", 
-      "image_url": "", 
-      "location": 104, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Panera Bread"
-    }
-  }, 
-  {
     "pk": 191, 
     "model": "places.place", 
     "fields": {
@@ -8360,6 +8481,28 @@
       "phone": "(412) 683-3727", 
       "image_url": "", 
       "location": 175, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Panera Bread"
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:26", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "http://www.panerabread.com/", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 683-9616", 
+      "image_url": "", 
+      "location": 104, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Panera Bread"
@@ -8520,12 +8663,12 @@
       "dtcreated": "2012-03-22 15:58:38", 
       "description": "Peter's Pub is a fun and friendly bar located on Oakland Ave in Pittsburgh near the University of Pittsburgh campus. We offer Live Music, Great Food and Drinks. We pride ourselves on having one of the best selections of Import Brews in the Greater Pittsburgh area! Our Food Menu is way better than your average bar food. Who needs to be in Buffalo to enjoy our famous Wings!", 
       "tags": [
-        6, 
-        7, 
-        8, 
+        30, 
         28, 
         29, 
-        30
+        7, 
+        6, 
+        8
       ], 
       "url": "http://www.mypeterspub.com/", 
       "fb_id": "147938173556", 
@@ -8558,6 +8701,31 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Phipps Conservatory & Botanical Gardens"
+    }
+  }, 
+  {
+    "pk": 201, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:13", 
+      "description": "", 
+      "tags": [
+        59, 
+        58, 
+        17, 
+        16, 
+        55, 
+        57
+      ], 
+      "url": "http://store.thepittshop.com/", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 648-2606", 
+      "image_url": "", 
+      "location": 184, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Pitt Shop"
     }
   }, 
   {
@@ -8750,31 +8918,6 @@
     }
   }, 
   {
-    "pk": 201, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:13", 
-      "description": "", 
-      "tags": [
-        16, 
-        17, 
-        55, 
-        57, 
-        58, 
-        59
-      ], 
-      "url": "http://store.thepittshop.com/", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 648-2606", 
-      "image_url": "", 
-      "location": 184, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Pitt Shop"
-    }
-  }, 
-  {
     "pk": 38, 
     "model": "places.place", 
     "fields": {
@@ -8838,52 +8981,6 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "Pizza Sola"
-    }
-  }, 
-  {
-    "pk": 209, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:17", 
-      "description": "", 
-      "tags": [
-        11, 
-        13, 
-        32, 
-        33
-      ], 
-      "url": "www.pnc.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 621-0300", 
-      "image_url": "", 
-      "location": 192, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "PNC Bank"
-    }
-  }, 
-  {
-    "pk": 276, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:46", 
-      "description": "", 
-      "tags": [
-        11, 
-        13, 
-        32, 
-        33
-      ], 
-      "url": "www.pnc.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 683-7161", 
-      "image_url": "", 
-      "location": null, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "PNC Bank"
     }
   }, 
   {
@@ -9592,74 +9689,6 @@
     }
   }, 
   {
-    "pk": 163, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:53", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "www.starbucks.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 682-3868", 
-      "image_url": "", 
-      "location": 150, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Starbucks"
-    }
-  }, 
-  {
-    "pk": 218, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:20", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-5700", 
-      "image_url": "", 
-      "location": 201, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Star Of India"
-    }
-  }, 
-  {
-    "pk": 277, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:46", 
-      "description": "", 
-      "tags": [
-        7, 
-        69, 
-        70, 
-        71, 
-        72
-      ], 
-      "url": "http://www.tour.pitt.edu/tour-235.html", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 624-4100", 
-      "image_url": "", 
-      "location": 249, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Stephen Foster Memorial"
-    }
-  }, 
-  {
     "pk": 227, 
     "model": "places.place", 
     "fields": {
@@ -9769,6 +9798,74 @@
       "parking": "", 
       "twitter_username": "", 
       "name": "St. Regis Parish"
+    }
+  }, 
+  {
+    "pk": 218, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:20", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-5700", 
+      "image_url": "", 
+      "location": 201, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Star Of India"
+    }
+  }, 
+  {
+    "pk": 163, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:53", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "www.starbucks.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 682-3868", 
+      "image_url": "", 
+      "location": 150, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Starbucks"
+    }
+  }, 
+  {
+    "pk": 277, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:46", 
+      "description": "", 
+      "tags": [
+        7, 
+        69, 
+        70, 
+        71, 
+        72
+      ], 
+      "url": "http://www.tour.pitt.edu/tour-235.html", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 624-4100", 
+      "image_url": "", 
+      "location": 249, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Stephen Foster Memorial"
     }
   }, 
   {
@@ -10380,6 +10477,68 @@
     }
   }, 
   {
+    "pk": 41, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:58:53", 
+      "description": "", 
+      "tags": [
+        31, 
+        36, 
+        37
+      ], 
+      "url": "www.upmc.edu", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 674-8762", 
+      "image_url": "", 
+      "location": 37, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "UPMC Health System"
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:31", 
+      "description": "", 
+      "tags": [
+        31
+      ], 
+      "url": "www.upmc.edu", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 647-2345", 
+      "image_url": "", 
+      "location": 114, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "UPMC Montefiore"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:58:54", 
+      "description": "", 
+      "tags": [
+        31
+      ], 
+      "url": "www.upmc.edu", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 647-2345", 
+      "image_url": "", 
+      "location": 37, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "UPMC Presbyterian"
+    }
+  }, 
+  {
     "pk": 53, 
     "model": "places.place", 
     "fields": {
@@ -10587,68 +10746,6 @@
     }
   }, 
   {
-    "pk": 41, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:58:53", 
-      "description": "", 
-      "tags": [
-        31, 
-        36, 
-        37
-      ], 
-      "url": "www.upmc.edu", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 674-8762", 
-      "image_url": "", 
-      "location": 37, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "UPMC Health System"
-    }
-  }, 
-  {
-    "pk": 125, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:31", 
-      "description": "", 
-      "tags": [
-        31
-      ], 
-      "url": "www.upmc.edu", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 647-2345", 
-      "image_url": "", 
-      "location": 114, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "UPMC Montefiore"
-    }
-  }, 
-  {
-    "pk": 42, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:58:54", 
-      "description": "", 
-      "tags": [
-        31
-      ], 
-      "url": "www.upmc.edu", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 647-2345", 
-      "image_url": "", 
-      "location": 37, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "UPMC Presbyterian"
-    }
-  }, 
-  {
     "pk": 282, 
     "model": "places.place", 
     "fields": {
@@ -10811,6 +10908,435 @@
     }
   }, 
   {
+    "pk": 274, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:45", 
+      "description": "", 
+      "tags": [
+        31
+      ], 
+      "url": "www.pitt.edu", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 624-4141", 
+      "image_url": "", 
+      "location": 247, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "falk Clinic"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:12:19", 
+      "place": 203, 
+      "user": 5, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 15:12:19"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:12:24", 
+      "place": 79, 
+      "user": 5, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 15:12:24"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:12:27", 
+      "place": 143, 
+      "user": 5, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 15:12:27"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:12:30", 
+      "place": 77, 
+      "user": 5, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 15:12:30"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 276, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 220, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 122, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 165, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 161, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 18, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 176, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:30", 
+      "place": 49, 
+      "user": 8, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:30"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:41", 
+      "place": 204, 
+      "user": 6, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:41"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:41", 
+      "place": 223, 
+      "user": 6, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:41"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:41", 
+      "place": 248, 
+      "user": 6, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:41"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 118, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 98, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 158, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 284, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 250, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "places.favorite", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:50:50", 
+      "place": 238, 
+      "user": 7, 
+      "is_favorite": true, 
+      "dtmodified": "2012-03-26 17:50:50"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-03-22 20:56:12", 
+      "allday": false, 
+      "name": "Hot Dog Eating Contest", 
+      "tags": [], 
+      "url": "http://onlyinpgh.com/event/21839/", 
+      "image_url": "http://m.wsj.net/video/20100701/070110kobayashi/070110kobayashi_512x288.jpg", 
+      "dtmodified": "2012-03-22 20:56:12", 
+      "invisible": false, 
+      "place": 198, 
+      "dtend": "2012-03-30 05:00:00", 
+      "dtstart": "2012-03-30 02:00:00", 
+      "description": "You love our hot dogs, but how many can you eat? Enter the contest and the winner get free dogs for a year!"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-03-22 20:40:05", 
+      "allday": false, 
+      "name": "Meet the Staff!", 
+      "tags": [], 
+      "url": "http://onlyinpgh.com/", 
+      "image_url": "", 
+      "dtmodified": "2012-03-22 20:40:05", 
+      "invisible": false, 
+      "place": 10, 
+      "dtend": "2012-03-22 07:00:00", 
+      "dtstart": "2012-03-30 04:00:00", 
+      "description": "Come meet the Cheeks & Hocus Pocus Staff! We'll have some goodies and cool games."
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-03-22 23:29:53", 
+      "allday": false, 
+      "name": "The Bonobos LIVE at Peter's Pub", 
+      "tags": [], 
+      "url": "", 
+      "image_url": "http://t3.gstatic.com/images?q=tbn:ANd9GcQVErgQeXUhfCMVIqDG5oAdQlWqz3bxcL8mYnpDB5FKelY7BWoEclHehrFp", 
+      "dtmodified": "2012-03-22 23:29:53", 
+      "invisible": false, 
+      "place": 16, 
+      "dtend": "2012-03-30 10:00:00", 
+      "dtstart": "2012-03-30 08:00:00", 
+      "description": "The Bonobos, Pittsburgh hottest local band, is coming to Peter's Pub!"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-03-22 20:51:31", 
+      "allday": false, 
+      "name": "Tuesday Karaoke Night", 
+      "tags": [], 
+      "url": "", 
+      "image_url": "http://www.qweas.com/reviews/images/karaoke-software.jpg", 
+      "dtmodified": "2012-03-22 20:56:59", 
+      "invisible": false, 
+      "place": 198, 
+      "dtend": "2012-03-27 11:00:00", 
+      "dtstart": "2012-03-22 08:00:00", 
+      "description": "Belt out your favorite tunes at the best karaoke in Oakland!"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-03-22 20:41:57", 
+      "allday": false, 
+      "name": "Witches Ball", 
+      "tags": [], 
+      "url": "http://onlyinpgh.com/", 
+      "image_url": "", 
+      "dtmodified": "2012-03-22 20:41:57", 
+      "invisible": false, 
+      "place": 10, 
+      "dtend": "2012-04-08 04:00:00", 
+      "dtstart": "2012-04-08 12:00:00", 
+      "description": "Join us to celebrate the coming of Spring!"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 15:10:51", 
+      "dtmodified": "2012-03-26 15:10:51", 
+      "user": 5, 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 15:10:55", 
+      "dtmodified": "2012-03-26 15:10:55", 
+      "user": 5, 
+      "event": 2
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:48:39", 
+      "dtmodified": "2012-03-26 17:48:39", 
+      "user": 8, 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:48:41", 
+      "dtmodified": "2012-03-26 17:48:41", 
+      "user": 8, 
+      "event": 4
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:48:43", 
+      "dtmodified": "2012-03-26 17:48:43", 
+      "user": 8, 
+      "event": 5
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:48:51", 
+      "dtmodified": "2012-03-26 17:48:51", 
+      "user": 6, 
+      "event": 5
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:48:54", 
+      "dtmodified": "2012-03-26 17:48:54", 
+      "user": 6, 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "events.attendee", 
+    "fields": {
+      "is_attending": true, 
+      "dtcreated": "2012-03-26 17:49:03", 
+      "dtmodified": "2012-03-26 17:49:03", 
+      "user": 7, 
+      "event": 2
+    }
+  }, 
+  {
     "pk": 7, 
     "model": "specials.special", 
     "fields": {
@@ -10923,93 +11449,135 @@
     }
   }, 
   {
-    "pk": 4, 
-    "model": "events.event", 
-    "fields": {
-      "dtcreated": "2012-03-22 20:56:12", 
-      "allday": false, 
-      "name": "Hot Dog Eating Contest", 
-      "tags": [], 
-      "url": "http://onlyinpgh.com/event/21839/", 
-      "image_url": "http://m.wsj.net/video/20100701/070110kobayashi/070110kobayashi_512x288.jpg", 
-      "dtmodified": "2012-03-22 20:56:12", 
-      "invisible": false, 
-      "place": 198, 
-      "dtend": "2012-03-30 05:00:00", 
-      "dtstart": "2012-03-30 02:00:00", 
-      "description": "You love our hot dogs, but how many can you eat? Enter the contest and the winner get free dogs for a year!"
-    }
-  }, 
-  {
     "pk": 1, 
-    "model": "events.event", 
+    "model": "specials.coupon", 
     "fields": {
-      "dtcreated": "2012-03-22 20:40:05", 
-      "allday": false, 
-      "name": "Meet the Staff!", 
-      "tags": [], 
-      "url": "http://onlyinpgh.com/", 
-      "image_url": "", 
-      "dtmodified": "2012-03-22 20:40:05", 
-      "invisible": false, 
-      "place": 10, 
-      "dtend": "2012-03-22 07:00:00", 
-      "dtstart": "2012-03-30 04:00:00", 
-      "description": "Come meet the Cheeks & Hocus Pocus Staff! We'll have some goodies and cool games."
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "events.event", 
-    "fields": {
-      "dtcreated": "2012-03-22 23:29:53", 
-      "allday": false, 
-      "name": "The Bonobos LIVE at Peter's Pub", 
-      "tags": [], 
-      "url": "", 
-      "image_url": "http://t3.gstatic.com/images?q=tbn:ANd9GcQVErgQeXUhfCMVIqDG5oAdQlWqz3bxcL8mYnpDB5FKelY7BWoEclHehrFp", 
-      "dtmodified": "2012-03-22 23:29:53", 
-      "invisible": false, 
-      "place": 16, 
-      "dtend": "2012-03-30 10:00:00", 
-      "dtstart": "2012-03-30 08:00:00", 
-      "description": "The Bonobos, Pittsburgh hottest local band, is coming to Peter's Pub!"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "events.event", 
-    "fields": {
-      "dtcreated": "2012-03-22 20:51:31", 
-      "allday": false, 
-      "name": "Tuesday Karaoke Night", 
-      "tags": [], 
-      "url": "", 
-      "image_url": "http://www.qweas.com/reviews/images/karaoke-software.jpg", 
-      "dtmodified": "2012-03-22 20:56:59", 
-      "invisible": false, 
-      "place": 198, 
-      "dtend": "2012-03-27 11:00:00", 
-      "dtstart": "2012-03-22 08:00:00", 
-      "description": "Belt out your favorite tunes at the best karaoke in Oakland!"
+      "dtcreated": "2012-03-26 15:11:14", 
+      "was_used": false, 
+      "user": 5, 
+      "special": 6, 
+      "dtused": null
     }
   }, 
   {
     "pk": 2, 
-    "model": "events.event", 
+    "model": "specials.coupon", 
     "fields": {
-      "dtcreated": "2012-03-22 20:41:57", 
-      "allday": false, 
-      "name": "Witches Ball", 
-      "tags": [], 
-      "url": "http://onlyinpgh.com/", 
-      "image_url": "", 
-      "dtmodified": "2012-03-22 20:41:57", 
-      "invisible": false, 
-      "place": 10, 
-      "dtend": "2012-04-08 04:00:00", 
-      "dtstart": "2012-04-08 12:00:00", 
-      "description": "Join us to celebrate the coming of Spring!"
+      "dtcreated": "2012-03-26 15:11:16", 
+      "was_used": false, 
+      "user": 5, 
+      "special": 1, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:11:18", 
+      "was_used": false, 
+      "user": 5, 
+      "special": 7, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 15:11:20", 
+      "was_used": false, 
+      "user": 5, 
+      "special": 3, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:26", 
+      "was_used": false, 
+      "user": 6, 
+      "special": 3, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:28", 
+      "was_used": false, 
+      "user": 6, 
+      "special": 4, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:30", 
+      "was_used": false, 
+      "user": 6, 
+      "special": 1, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:37", 
+      "was_used": false, 
+      "user": 7, 
+      "special": 1, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:41", 
+      "was_used": false, 
+      "user": 7, 
+      "special": 6, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:47:59", 
+      "was_used": false, 
+      "user": 8, 
+      "special": 3, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:48:02", 
+      "was_used": false, 
+      "user": 8, 
+      "special": 5, 
+      "dtused": null
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "specials.coupon", 
+    "fields": {
+      "dtcreated": "2012-03-26 17:48:10", 
+      "was_used": false, 
+      "user": 8, 
+      "special": 1, 
+      "dtused": null
     }
   }
 ]
