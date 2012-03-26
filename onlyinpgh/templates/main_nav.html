@@ -1,0 +1,19 @@
+{% comment %}
+Template for main site content, when content includes scene navigation.
+
+Variables:
+    - scene_nav:    rendered navigation content from scene_nav.html
+    - content:      main panel content
+{% endcomment %}
+
+<nav id="scene-nav" class="fixed">
+	<div class="main-menu">
+    	{{ scene_nav }}
+	</div>
+	<div class="site-search">
+	    <input type="text" />
+	</div>
+</nav>
+<div id="site-content" role="main">
+    {{ content }}
+</div>

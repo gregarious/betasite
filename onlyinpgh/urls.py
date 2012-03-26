@@ -7,11 +7,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'onlyinpgh.views.page_home', name='home'),
+    url(r'^$', 'onlyinpgh.common.views.page_home', name='home'),
 
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page':'/'}),
+
+    url(r'^account/',include('onlyinpgh.accounts.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -23,8 +25,8 @@ urlpatterns = patterns('',
     url(r'^events/',include('onlyinpgh.events.urls')),
     url(r'^specials/',include('onlyinpgh.specials.urls')),
     url('splash', direct_to_template, {'template': 'misc/splash.html'}),
-    url('qr_obid', direct_to_template, {'template': 'misc/obid_scan.html'}),
-    url('qr_scenable', direct_to_template, {'template': 'misc/scenable_scan.html'}),
+    url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
+    url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
 
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 

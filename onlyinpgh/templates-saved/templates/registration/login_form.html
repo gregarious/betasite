@@ -1,0 +1,34 @@
+<form method="post" action="{{ form_action }}">
+{% csrf_token %}
+{% comment %}
+form fields:
+    username
+    password
+
+Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
+{% endcomment %}
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.username.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.username }}
+		</div>
+	</div> 
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.password.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.password }}
+			<p class="tip"><a href="#">Forgot your password?</a></p>
+		</div>
+	</div>
+	
+	{% if form.non_field_errors %}
+		<div class="tip error">{{ form.non_field_errors }}</div>
+	{% endif %}
+
+	<input type="submit" value="Login" class="submit-item"  />
+</form>

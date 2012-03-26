@@ -1,0 +1,13 @@
+{% comment %}
+Template to render a collection of rendered feed items, along with
+a frame to be used as a container on the user profile page.
+
+Context variables:
+    [items]:  list of rendered HTML for single feed items
+{% endcomment %}
+
+<h3>My Events</h3>
+<div class="my-feed">
+    {# pass items through to feed.html #}
+    {% include "events/feed.html" %}
+</div>

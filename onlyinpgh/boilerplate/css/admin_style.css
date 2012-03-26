@@ -500,7 +500,7 @@ h2 {
   -webkit-box-shadow: 0 0 0.1em #888888;
   -moz-box-shadow: 0 0 0.1em #888888;
   box-shadow: 0 0 0.1em #888888;
-  background: url("/static/img/textures/white_tex.png");
+  background: url("/static/img/textures/white-tex.png");
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -960,7 +960,7 @@ form {
 }
 .item {
   float: left;
-  width: 97.91666666666666%;
+  width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

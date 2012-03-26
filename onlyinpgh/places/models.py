@@ -252,4 +252,4 @@ class Favorite(models.Model):
 
 
     def __unicode__(self):
-        return unicode(self.user) + u'@' + unicode(self.event)
+        return unicode(self.user) + u'@' + unicode(self.place)

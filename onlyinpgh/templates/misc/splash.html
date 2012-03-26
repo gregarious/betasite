@@ -23,8 +23,6 @@ HTML5 Boilerplate before release.
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/static/css/splash_style.css?v=1">
 	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/arvo-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
 
 </head>
 <body>
@@ -32,19 +30,20 @@ HTML5 Boilerplate before release.
 {% block content %}
 <div class="wrap" id="splash">
 
-	<hgroup>
-		<h1 id="site-title">scenable</h1>	
-		<h2 id="tagline">an app for local communities</h2>
-	</hgroup>
+	<header id="site-header">
+		<!-- <h1 id="site-title">scenable</h1> -->
+		<img src="/static/img/scenable-cloud.png" alt="Scenable" />	
+		<!-- <h2 id="tagline">an app for local communities</h2> -->
+	</header>
 
 	<section id="oakland">
 		<!-- <button id="obidapp"><img src="/static/img/obid_logo.png" alt="Oakland Scene Logo" /></button> -->
 		<img class="screenshot" src="/static/img/web_screenshot.png" alt="Oakland site screenshot" />
 		<div class="caption">
-			<p>Mobile app available on Android and iPhone</p>
+			<p>Available on Android and iPhone</p>
 			<div class="icon-container">
-				<img class="icon" src="/static/img/android.png" height="50px" alt="available on Android" />
-				<img class="icon" src="/static/img/iphone.png" height="50px" alt="available on iPhone" />	
+				<img class="icon" src="/static/img/android.png" alt="available on Android" />
+				<img class="icon" src="/static/img/iphone.png" alt="available on iPhone" />	
 			</div>
 		</div>
 		
