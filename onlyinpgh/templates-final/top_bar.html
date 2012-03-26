@@ -2,7 +2,7 @@
     Related scenes:
 </span>
 <span id="debug-user">
-    {% if user %}
+    {% if user.is_authenticated %}
         Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
     {% else %}
         <a href="/login">Login</a>

@@ -15,10 +15,10 @@ page.html to handle the basic skeleton for page content.
 {% endcomment %}
 
 {% block content %}
-<div id="top-bar">{% topbar %}</div>
+<div id="top-bar">{{ topbar }}<hr /></div>
 <div class="wrap">
-    <div id="main">{% main %}</div>
-    <aside id="site-sidebar" role="complementary">{% sidebar %}</aside>
-    <footer id="site-footer">{% footer %}</footer>
+    <div id="main">{{ main }}<hr /></div>
+    <aside id="site-sidebar" role="complementary">{{ sidebar }}<hr /></aside>
+    <footer id="site-footer">{{ footer }}</footer>
 </div>
 {% endblock %}
