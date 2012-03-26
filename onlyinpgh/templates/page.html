@@ -22,9 +22,8 @@ whole page response should render to this.
 
 {% block content %}
 
-<header id="site-header">
-	
-	<div id="top-bar">
+<div id="top-bar">	
+	<div class="content">
 		<span id="other-scenes">
 			Related scenes: <span class="disabled">stay tuned!</span>
 		</span>
@@ -35,11 +34,13 @@ whole page response should render to this.
 				<a href="/login">Login</a>
 			{% endif %}
 		</span>
-	</div> <!-- #top-bar -->
+	</div> 
+</div> <!-- #top-bar -->
 
+<nav id="scene-nav">
 	<div class="wrap">
 
-		<nav id="site-nav">
+		<div class="main-menu">
 			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
 		    <ul>
 		    	<li><a href="/specials/" id="siteSpecials">

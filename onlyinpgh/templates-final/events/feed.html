@@ -5,9 +5,9 @@ Context variables:
     [items]:  list of rendered HTML for single feed items
 {% endcomment %}
 
-<ul class="feed feed-events">
+<ul class="feed events">
     {% for item in items %}
-    <li class="feed-item feed-item-events">
+    <li class="item">
         {{ item }}
     </li>
     {% endfor %}
