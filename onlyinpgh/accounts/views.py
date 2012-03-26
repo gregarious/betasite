@@ -3,25 +3,36 @@ from django.template import RequestContext
 
 from django.core.urlresolvers import reverse
 
-from django.contrib.auth import login, authenticate, REDIRECT_FIELD_NAME
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.common.core.rendering import render_safe
+from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
 from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
 from onlyinpgh.common.views import page_response, render_main
 import urlparse
 
+from onlyinpgh.places.models import Favorite
+from onlyinpgh.places.viewmodels import PlaceFeedItem
+
+from onlyinpgh.events.models import Attendee
+from onlyinpgh.events.viewmodels import EventFeedItem
+
+from onlyinpgh.specials.models import Coupon
+from onlyinpgh.specials.viewmodels import SpecialFeedItem
+
 
 @csrf_protect
 @never_cache
-def page_login(request, redirect_field_name=REDIRECT_FIELD_NAME):
+def page_login(request, redirect_field_name='next'):
     '''
     Renders login page.
     '''
     redirect_to = request.REQUEST.get(redirect_field_name, '')
-
+    print 'redir:', redirect_to
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -50,6 +61,7 @@ def page_login(request, redirect_field_name=REDIRECT_FIELD_NAME):
     # render login form with csrf protection
     login_form = render_safe('registration/login.html',
         form=form, form_action=reverse('login'),
+        next=redirect_to,
         context_instance=RequestContext(request))
     main_content = render_main(login_form)
     return page_response(main_content, request)
@@ -95,3 +107,49 @@ def page_signup(request):
         form_action=reverse('signup'),
         context_instance=RequestContext(request))
     return page_response(content, request)
+
+
+def render_account_panel(panel_content):
+    '''
+    Returns a rendered, suitable for direct use in a page_response call.
+    '''
+    return render_safe('accounts/account_panel.html', panel_content=panel_content)
+
+
+@login_required
+def page_profile(request):
+    main = render_account_panel('profile!')
+    return page_response(main, request)
+
+
+@login_required
+def page_my_places(request):
+    places = [fav.place for fav in Favorite.objects.filter(user=request.user, is_favorite=True)]
+    items = [PlaceFeedItem(place, user=request.user) for place in places]
+
+    rendered_items = [render_viewmodel(item, 'places/feed_item.html') for item in items]
+    main = render_account_panel(
+        render_safe('accounts/my_places.html', items=rendered_items))
+    return page_response(main, request)
+
+
+@login_required
+def page_my_events(request):
+    events = [att.event for att in Attendee.objects.filter(user=request.user, is_attending=True)]
+    items = [EventFeedItem(event, user=request.user) for event in events]
+
+    rendered_items = [render_viewmodel(item, 'events/feed_item.html') for item in items]
+    main = render_account_panel(
+        render_safe('accounts/my_events.html', items=rendered_items))
+    return page_response(main, request)
+
+
+@login_required
+def page_my_specials(request):
+    specials = [coupon.special for coupon in Coupon.objects.filter(user=request.user, was_used=False)]
+    items = [SpecialFeedItem(special, user=request.user) for special in specials]
+
+    rendered_items = [render_viewmodel(item, 'specials/feed_item.html') for item in items]
+    main = render_account_panel(
+        render_safe('accounts/my_specials.html', items=rendered_items))
+    return page_response(main, request)

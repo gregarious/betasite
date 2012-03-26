@@ -1,5 +1,4 @@
 from django.template.loader import get_template, render_to_string
-from django.shortcuts import render
 from django.utils.safestring import mark_safe
 
 # work in progress. don't use self_render template tag till fixed
@@ -68,7 +67,8 @@ def render_safe(template, context_instance=None, **kwargs):
 
     Only use templates that are safe to mark as safe!
     '''
-    return mark_safe(render_to_string(template,kwargs,context_instance))
+    return mark_safe(render_to_string(template, kwargs, context_instance))
+
 
 def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_label=None, attrs={}):
     '''
@@ -97,7 +97,7 @@ def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_la
     except AttributeError:
         rendered = get_template(template).render(viewmodel.to_context())
 
-    return mark_safe(_wrap_content(rendered, tag_type=tag_type, 
+    return mark_safe(_wrap_content(rendered, tag_type=tag_type,
         class_label=class_label, id_label=id_label, attrs=attrs))
 
 
