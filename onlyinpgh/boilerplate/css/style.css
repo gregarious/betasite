@@ -427,13 +427,20 @@ p {
   text-shadow: 0.1em 0.1em 0.04em #000;
 }
 /* HEADER ------------- */
-#site-header {
-  height: 130px;
+#debug-user {
+  float: right;
+}
+.fixed {
   position: fixed;
   width: 100%;
   z-index: 3;
 }
 #top-bar {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   background-color: #8fd36f;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#8fd36f), to(#0ebd42));
   /* Saf4+, Chrome */
@@ -454,12 +461,23 @@ p {
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   height: 30px;
+  padding: 0 1em;
   z-index: 999;
 }
-#debug-user {
-  float: right;
+#scene-nav {
+  background: #0ebd42;
+  height: 130px;
+  top: 30px;
 }
-#site-nav {
+#site-search {
+  float: right;
+  width: 22.916666666666664%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.main-menu {
   background: #fff;
   border-bottom: 10px #555 solid;
   float: left;
@@ -471,18 +489,18 @@ p {
   position: relative;
   z-index: 999;
 }
-#site-nav ul {
+.main-menu ul {
   *zoom: 1;
 }
-#site-nav ul:before,
-#site-nav ul:after {
+.main-menu ul:before,
+.main-menu ul:after {
   content: "";
   display: table;
 }
-#site-nav ul:after {
+.main-menu ul:after {
   clear: both;
 }
-#site-nav ul li a {
+.main-menu ul li a {
   float: right;
   width: 14.583333333333334%;
   margin: 0 1.0416666666666665%;
@@ -508,29 +526,21 @@ p {
   text-align: center;
   text-decoration: none;
 }
-#site-nav ul li a img {
+.main-menu ul li a img {
   display: block;
   height: 40px;
   margin: auto auto 0.3em;
 }
-#site-nav ul li a:hover {
+.main-menu ul li a:hover {
   background-color: #ccc;
 }
-#site-nav ul li a:active {
+.main-menu ul li a:active {
   background-color: #E6B717;
 }
 #logo {
   float: left;
   height: auto;
   max-width: 100%;
-}
-#site-search {
-  float: left;
-  width: 22.916666666666664%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 /* 4 CONTENT ---------- */
 #site-content {
@@ -712,7 +722,7 @@ p {
   box-sizing: border-box;
 }
 .item {
-  background: url("/static/img/textures/white_tex.png");
+  background: url("/static/img/textures/white-tex.png");
   -webkit-box-shadow: 0.3em 0.3em 0 #a9c6e8;
   -moz-box-shadow: 0.3em 0.3em 0 #a9c6e8;
   box-shadow: 0.3em 0.3em 0 #a9c6e8;

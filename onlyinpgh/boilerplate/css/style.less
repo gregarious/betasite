@@ -43,24 +43,36 @@ body {
 
 /* HEADER ------------- */
 
-#site-header {
-  height: 130px;
+#debug-user {
+  float: right;
+}
+
+.fixed {
   position: fixed;
   width: 100%;  
   z-index: 3;
 }
 
 #top-bar {
+  .row();
   .gradient(@lgreen, @dgreen);
   height: 30px;
+  padding: 0 1em;
   z-index: 999;
 }
 
-#debug-user {
-  float: right;
+#scene-nav {
+  //.row();
+  background: @dgreen;
+  height: 130px;
+  top: 30px;
 }
 
-#site-nav {
+#site-search {
+  .column_r(3);
+}
+
+.main-menu {
   background: #fff;
   border-bottom: 10px #555 solid;
   .column(9);
@@ -103,13 +115,9 @@ body {
 }
 
 #logo {
-    float: left;
-    height: auto;
-    max-width: 100%;
-  }
-
-#site-search {
-  .column(3);
+  float: left;
+  height: auto;
+  max-width: 100%;
 }
 
 /* 4 CONTENT ---------- */
@@ -160,7 +168,7 @@ body {
 @import "../LESS/feed";
 
 .item {
-  background: url("/static/img/textures/white_tex.png");
+  background: url("/static/img/textures/white-tex.png");
   .b-shadow(0.3em, 0.3em, 0, @lblue);
 }
 
