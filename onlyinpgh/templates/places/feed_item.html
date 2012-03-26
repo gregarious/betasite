@@ -4,9 +4,7 @@ Template to render a particular place as a feed item.
 Compatible ViewModels: places.viewmodels.PlaceFeedItem
 
 Context variables:
-	place:			Place object (includes image_url)
-	is_favorite:	boolean (optional)
-	tag_list:		data from a TagList ViewModel
+	place:	subset of Place model (see PlaceFeedItem ViewModel)
 {% endcomment %}
 
 <div class="item-thumb">
@@ -38,12 +36,3 @@ Context variables:
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
 </section>
-
-
-{% comment %}
-	{% if is_favorite %}
-		<div class="is-favorite">*</div>
-	{% else %}
-		<div class="favorite-star">X</div>	
-	{% endif %}
-{% endcomment %}

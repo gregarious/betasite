@@ -1,10 +1,8 @@
 {% comment %}
 Template to render a particular event as a feed item.
 
-Compatible ViewModels: places.viewmodels.EventFeedItem
-
 Context variables:
-	event:	subset of Event model (see EventFeedItem ViewModel)
+	event:			Event ViewModel
 {% endcomment %}
 
 <div class="item-thumb">
@@ -26,4 +24,14 @@ Context variables:
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=event.tags %}
+
 </section>
+
+
+{% comment %}
+	{% if is_favorite %}
+		<div class="is-favorite">*</div>
+	{% else %}
+		<div class="favorite-star">X</div>	
+	{% endif %}
+{% endcomment %}
