@@ -31,7 +31,7 @@ def render_main(rendered_content, include_scenenav=False):
         return render_safe('main_nav.html', content=rendered_content,
             scene_nav=scene_nav)
     else:
-        return render_safe('main_nav.html', content=rendered_content)
+        return render_safe('main.html', content=rendered_content)
 
 
 def page_response(main_content, request=None, topbar_content=None,
