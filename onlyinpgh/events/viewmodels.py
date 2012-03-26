@@ -24,6 +24,9 @@ class EventFeedItem(ViewModel):
     def __init__(self, event, user=None):
         super(EventFeedItem, self).__init__()
         self.event = event
+        self.is_attending = event.attendee_set\
+                                .filter(user=user, is_attending=True)\
+                                .count() > 0
 
     def to_data(self, *args, **kwargs):
         data = super(EventFeedItem, self).to_data(*args, **kwargs)
@@ -39,9 +42,6 @@ class EventFeedItem(ViewModel):
             for k in place_data.keys():
                 if k not in keepers:
                     place_data.pop(k)
-
-        data['is_attending'] = self.event.attendee_set.\
-                                filter(is_attending=True).count() > 0
 
         return data
 
@@ -71,6 +71,9 @@ class EventDetail(ViewModel):
     def __init__(self, event, user=None):
         super(EventDetail, self).__init__()
         self.event = event
+        self.is_attending = event.attendee_set\
+                                .filter(user=user, is_attending=True)\
+                                .count() > 0
 
     def to_data(self, *args, **kwargs):
         data = super(EventDetail, self).to_data(*args, **kwargs)
