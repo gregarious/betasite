@@ -15,6 +15,8 @@ from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
 from onlyinpgh.common.views import page_response, render_main
 import urlparse
 
+from onlyinpgh.accounts.viewmodels import PublicProfile
+
 from onlyinpgh.places.models import Favorite
 from onlyinpgh.places.viewmodels import PlaceFeedItem
 
@@ -109,16 +111,19 @@ def page_signup(request):
     return page_response(content, request)
 
 
-def render_account_panel(panel_content):
+def render_account_panel(panel_content, wrap_main=True):
     '''
-    Returns a rendered, suitable for direct use in a page_response call.
+    Returns a rendered account panel, suitable for direct use in a
+    page_response call if wrap_main is True.
     '''
-    return render_safe('accounts/account_panel.html', panel_content=panel_content)
+    panel = render_safe('accounts/account_panel.html', panel_content=panel_content)
+    return render_main(panel) if wrap_main else panel
 
 
 @login_required
 def page_profile(request):
-    main = render_account_panel('profile!')
+    profile = render_viewmodel(PublicProfile(request.user), 'accounts/public_profile.html')
+    main = render_account_panel(profile)
     return page_response(main, request)
 
 
