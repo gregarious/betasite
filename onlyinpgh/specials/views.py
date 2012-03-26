@@ -1,13 +1,14 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.specials.models import Special
 from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
 
 
-def feed_page(request):
+def page_feed(request):
     '''
     View function that handles a page load request for a feed of place
     items.
@@ -18,12 +19,14 @@ def feed_page(request):
     # get a list of rendered items
     specials = Special.objects.all()[:10]
     items = [SpecialFeedItem(special, user=request.user) for special in specials]
-    content = render_viewmodels_as_ul(items, 'specials/feed_item.html', container_class_label='specials feed')
 
-    return render(request, 'page.html', {'main_content': content})
+    rendered_items = [render_viewmodel(item, 'specials/feed_item.html') for item in items]
+    rendered_feed = render_safe('specials/main_feed.html', items=rendered_items)
+    main = render_main(rendered_feed, include_scenenav=True)
+    return page_response(main, request)
 
 
-def detail_page(request, sid):
+def page_details(request, sid):
     '''
     View displays single specials.
     '''
@@ -33,8 +36,8 @@ def detail_page(request, sid):
     content = render_viewmodel(details,
                 template='specials/single.html',
                 class_label='special-single')
-
-    return render(request, 'page.html', {'main_content': content})
+    main = render_main(content)
+    return page_response(main, request)
 
 
 # @jsonp_response

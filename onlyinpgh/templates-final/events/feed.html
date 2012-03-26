@@ -1,0 +1,14 @@
+{% comment %}
+Template to render a collection of rendered feed items.
+
+Context variables:
+    [items]:  list of rendered HTML for single feed items
+{% endcomment %}
+
+<ul class="feed feed-events">
+    {% for item in items %}
+    <li class="feed-item feed-item-events">
+        {{ item }}
+    </li>
+    {% endfor %}
+</ul>

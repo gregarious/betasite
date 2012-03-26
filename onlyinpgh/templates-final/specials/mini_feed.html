@@ -1,0 +1,13 @@
+{% comment %}
+Template to render a collection of rendered feed items, along with
+a frame to be used as the main page content.
+
+Context variables:
+    [items]:  list of rendered HTML for single feed items
+{% endcomment %}
+
+<h2>I'm a mini specials feed!</h2>
+<div class="mini-feed">
+    {# pass items through to feed.html #}
+    {% include "specials/feed.html" %}
+</div>

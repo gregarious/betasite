@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
@@ -52,24 +53,26 @@ def _handle_place_action(request, pid, action):
             return failure('invalid action')
 
 
-def feed_page(request):
+def page_feed(request):
     '''
     View function that handles a page load request for a feed of place
     items.
 
-    Renders page.html with main_content set to the rendered HTML of
-    a feed.
+    Returns page response with main content set to the feed.
     '''
     # get a list of rendered items
     places = Place.objects.all()[:10]
     items = [PlaceFeedItem(place, user=request.user) for place in places]
-    content = render_viewmodels_as_ul(items, 'places/feed_item.html', container_class_label='places feed')
-    return render(request, 'page.html', {'main_content': content})
+
+    rendered_items = [render_viewmodel(item, 'places/feed_item.html') for item in items]
+    rendered_feed = render_safe('places/main_feed.html', items=rendered_items)
+    main = render_main(rendered_feed, include_scenenav=True)
+    return page_response(main, request)
 
 
-def detail_page(request, pid):
+def page_details(request, pid):
     '''
-    View displays single places.
+    Returns page response with main content set to the details.
     '''
     action = request.GET.get('action')
     if action:
@@ -81,7 +84,7 @@ def detail_page(request, pid):
     # TODO: return error message on action failure?
 
     # build and render place detail viewmodel
-    place = get_object_or_404(Place,id=pid)
+    place = get_object_or_404(Place, id=pid)
     details = PlaceDetail(place, user=request.user)
     content = render_viewmodel(details,
                 template='places/single.html',
@@ -92,7 +95,8 @@ def detail_page(request, pid):
     # content += related_feeds.to_html(request)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    return render(request, 'page.html', {'main_content': content})
+    main = render_main(content, include_scenenav=False)
+    return page_response(main, request)
 
 
 @jsonp_response
