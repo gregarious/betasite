@@ -15,9 +15,9 @@ page.html to handle the basic skeleton for page content.
 {% endcomment %}
 
 {% block content %}
-<div id="top-bar">{{ topbar }}<hr /></div>
+<div id="top-bar">{{ topbar }}</div>
 <div class="wrap">
-    <div id="main">{{ main }}<hr /></div>
+    {{ main }}
     <aside id="site-sidebar" role="complementary">{{ sidebar }}<hr /></aside>
     <footer id="site-footer">{{ footer }}</footer>
 </div>

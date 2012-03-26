@@ -21,37 +21,53 @@ whole page response should render to this.
 {% endcomment %}
 
 {% block content %}
-<div id="top-bar">
-	<span id="other-scenes">
-		Related scenes:
-	</span>
-	<span id="debug-user">
-		{% if user %}
-			Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
-		{% else %}
-			<a href="/login">Login</a>
-		{% endif %}
-	</span>
-</div>
+
+<header id="site-header">
+	
+	<div id="top-bar">
+		<span id="other-scenes">
+			Related scenes: <span class="disabled">stay tuned!</span>
+		</span>
+		<span id="debug-user">
+			{% if user %}
+				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
+		</span>
+	</div> <!-- #top-bar -->
+
+	<div class="wrap">
+
+		<nav id="site-nav">
+			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
+		    <ul>
+		    	<li><a href="/specials/" id="siteSpecials">
+		    		<img src="/static/img_store/icons/black/tag-special.png" alt="Specials" />
+		    		Specials</a></li>
+		    	<li><a href="/events/" id="siteEvents">
+		    		<img src="/static/img_store/icons/black/calendar-alt.png" alt="Events" />
+		    		Events</a></li>
+		    	<li><a href="/places/" id="sitePlaces">
+					<img src="/static/img_store/icons/black/store-front.png" alt="Places" />
+		    		Places</a></li>
+				<li><a href="/" id="siteHot">
+		    		<img src="/static/img_store/icons/black/campfire.png" alt="Hot" />
+		    		Hot</a></li>
+				<!-- <li><a href="/chatter/" id="siteChatter">Chatter</a></li>
+				<li><a href="/news/" id="siteNews">News</a></li> -->
+			</ul>
+		</nav> <!-- #site-nav -->
+
+		<div class="site-search">
+			<input type="text" />
+		</div>
+
+	</div> <!-- .wrap -->
+</header> <!-- #site-header -->
 
 
 <div class="wrap">
- 
-	<nav id="site-nav">
-		<div class="absolute">
-			<!-- logo to be a home link -->
-			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
-		    <ul>
-				<li><a href="/" id="siteHot">Hot!</a></li>
-				<li><a href="/events/" id="siteEvents">Events</a></li>
-				<li><a href="/places/" id="sitePlaces">Places</a></li>
-				<li><a href="/specials/" id="siteSpecials">Specials</a></li>
-				<li><a href="/chatter/" id="siteChatter">Chatter</a></li>
-				<li><a href="/news/" id="siteNews">News</a></li>
-				<li><a id="siteJobs">Jobs</a></li>
-			</ul>
-		</div>
-	</nav>
 
 	<div id="site-content" role="main">
 		<div class="feed-header">
@@ -61,10 +77,13 @@ whole page response should render to this.
 			</div>
 		</div>	
 	    {{main_content}}
-	</div>
-	
- 	<aside id="site-sidebar" role="complementary">
- 		<div class="absolute">
+	</div> <!-- #site-content -->
+
+</div> <!-- .wrap -->
+
+<aside id="site-sidebar" role="complementary">
+	<div class="wrap">
+		<div class="content">
 			<h3>Scenecast</h3>
 			<section class="widget">
 				<h3>Coming soon!</h3>
@@ -83,11 +102,12 @@ whole page response should render to this.
 			<section class="widget">
 			</section>
 		</div>
-	</aside>
+	</div> <!-- .wrap -->
+</aside> <!-- #site-sidebar -->
  
-	<footer id="site-footer">
-		<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
-	</footer>
 
-</div>
+<footer id="site-footer">
+	<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
+</footer> <!-- #site-footer -->
+
 {% endblock %}
