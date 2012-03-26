@@ -1,27 +1,23 @@
-from django.utils.safestring import mark_safe
-from django.template.loader import render_to_string
 from django.shortcuts import render_to_response
+from onlyinpgh.common.core.rendering import render_safe
 
 
 ### UTILITY FUNCTIONS ###
 def render_topbar(user):
-    topbar_content = render_to_string('top_bar.html', {'user': user})
-    return mark_safe(topbar_content)
+    topbar_content = render_safe('top_bar.html', user=user)
+    return topbar_content
 
 
 def render_footer():
-    footer_content = render_to_string('footer.html')
-    return mark_safe(footer_content)
+    return render_safe('footer.html')
 
 
 def render_sidebar():
-    sidebar_content = render_to_string('sidebar.html')
-    return mark_safe(sidebar_content)
+    return render_safe('sidebar.html')
 
 
 def render_scenenav():
-    scenenav_content = render_to_string('scene_nav.html')
-    return mark_safe(scenenav_content)
+    return render_safe('scene_nav.html')
 
 
 def render_main(rendered_content, include_scenenav=False):
@@ -30,14 +26,12 @@ def render_main(rendered_content, include_scenenav=False):
     main_nav.html or main_nonav.html (depending on the state of
     include_scenenav)
     '''
-    content_dict = {
-        'content': rendered_content,
-    }
     if include_scenenav:
-        content_dict['scene_nav'] = render_scenenav()
-        return render_to_string('main_nav.html', content_dict)
+        scene_nav = render_scenenav()
+        return render_safe('main_nav.html', content=rendered_content,
+            scene_nav=scene_nav)
     else:
-        return render_to_string('main.html', content_dict)
+        return render_safe('main_nav.html', content=rendered_content)
 
 
 def page_response(main_content, request=None, topbar_content=None,

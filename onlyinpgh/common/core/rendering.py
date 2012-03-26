@@ -1,4 +1,4 @@
-from django.template.loader import get_template
+from django.template.loader import get_template, render_to_string
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
 
@@ -61,6 +61,15 @@ def render_list(elements, tag_type='ul', class_label=None, id_label=None, attrs=
                             id_label=id_label, attrs=attrs)
 
 
+def render_safe(template, context_instance=None, **kwargs):
+    '''
+    Wrapper around Django's render_to_string function. Uses kwargs instead of
+    dictionary.
+
+    Only use templates that are safe to mark as safe!
+    '''
+    return mark_safe(render_to_string(template,kwargs,context_instance))
+
 def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_label=None, attrs={}):
     '''
     Returns a fully-rendered template given the context provided by the
@@ -88,9 +97,8 @@ def render_viewmodel(viewmodel, template, tag_type=None, class_label=None, id_la
     except AttributeError:
         rendered = get_template(template).render(viewmodel.to_context())
 
-    return _wrap_content(rendered,
-                            tag_type=tag_type, class_label=class_label,
-                            id_label=id_label, attrs=attrs)
+    return mark_safe(_wrap_content(rendered, tag_type=tag_type, 
+        class_label=class_label, id_label=id_label, attrs=attrs))
 
 
 def render_viewmodels_as_ul(items, item_template,
