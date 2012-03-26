@@ -23,8 +23,6 @@ whole page response should render to this.
 {% block content %}
 
 <header id="site-header">
-	<div class="wrap">
-
 		<div id="top-bar">
 			<span id="other-scenes">
 				Related scenes: <span class="disabled">stay tuned!</span>
@@ -38,6 +36,7 @@ whole page response should render to this.
 			</span>
 		</div>
 
+	<div class="wrap">
 		<nav id="site-nav">
 			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
 		    <ul>
@@ -57,6 +56,9 @@ whole page response should render to this.
 				<li><a href="/news/" id="siteNews">News</a></li> -->
 			</ul>
 		</nav> <!-- #site-nav -->
+		<div class="site-search">
+			<input type="text" />
+		</div>
 
 	</div> <!-- .wrap -->
 </header> <!-- #site-header -->

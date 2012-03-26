@@ -18,8 +18,8 @@ jQuery(document).ready( function($) {
 	/// BROADCAST ///
 	/////////////////
 	
-	// Hide the broadcast for 1 secs, then slide down
-	$('#broadcast').delay(1000).slideDown(500);
+	// Hide the broadcast for 1 sec, then slide down - only on home page
+	$('#site-sidebar').hide().delay(1000).slideDown(500);
 
 	// Function to cycle through the broadcast items - eventually will be loading new ones
 	// http://stackoverflow.com/questions/5258277/rotating-an-unordered-list-automatically-with-jquery
