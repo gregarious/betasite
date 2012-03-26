@@ -1,8 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.template import RequestContext
-from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
 
 from django.core.urlresolvers import reverse
 
@@ -11,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
+from onlyinpgh.common.core.rendering import render_safe
 from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
 from onlyinpgh.common.views import page_response, render_main
 import urlparse
@@ -50,10 +48,10 @@ def page_login(request, redirect_field_name=REDIRECT_FIELD_NAME):
     request.session.set_test_cookie()
 
     # render login form with csrf protection
-    login_form = render_to_string('registration/login.html',
-        {'form': form, 'form_action': reverse('login')},
+    login_form = render_safe('registration/login.html',
+        form=form, form_action=reverse('login'),
         context_instance=RequestContext(request))
-    main_content = render_main(mark_safe(login_form))
+    main_content = render_main(login_form)
     return page_response(main_content, request)
 
 
@@ -91,9 +89,9 @@ def page_signup(request):
         profile_form = UserProfileForm(prefix='prof')
 
     request.session.set_test_cookie()
-    content = render_to_string('registration/signup.html',
-        {'registration_form': reg_form, 'profile_form': profile_form,
-         'form_action': reverse('signup')},
+    content = render_safe('registration/signup.html',
+        registration_form=reg_form,
+        profile_form=profile_form,
+        form_action=reverse('signup'),
         context_instance=RequestContext(request))
-    content = mark_safe(content)
     return page_response(content, request)
