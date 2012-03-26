@@ -24,9 +24,12 @@ class EventFeedItem(ViewModel):
     def __init__(self, event, user=None):
         super(EventFeedItem, self).__init__()
         self.event = event
-        self.is_attending = event.attendee_set\
-                                .filter(user=user, is_attending=True)\
-                                .count() > 0
+        if user:
+            self.is_attending = event.attendee_set\
+                                    .filter(user=user, is_attending=True)\
+                                    .count() > 0
+        else:
+            self.is_attending = False
 
     def to_data(self, *args, **kwargs):
         data = super(EventFeedItem, self).to_data(*args, **kwargs)
@@ -71,9 +74,12 @@ class EventDetail(ViewModel):
     def __init__(self, event, user=None):
         super(EventDetail, self).__init__()
         self.event = event
-        self.is_attending = event.attendee_set\
-                                .filter(user=user, is_attending=True)\
-                                .count() > 0
+        if user:
+            self.is_attending = event.attendee_set\
+                                    .filter(user=user, is_attending=True)\
+                                    .count() > 0
+        else:
+            self.is_attending = False
 
     def to_data(self, *args, **kwargs):
         data = super(EventDetail, self).to_data(*args, **kwargs)
