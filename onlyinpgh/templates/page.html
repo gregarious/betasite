@@ -23,20 +23,22 @@ whole page response should render to this.
 {% block content %}
 
 <header id="site-header">
-		<div id="top-bar">
-			<span id="other-scenes">
-				Related scenes: <span class="disabled">stay tuned!</span>
-			</span>
-			<span id="debug-user">
-				{% if user %}
-					Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
-				{% else %}
-					<a href="/login">Login</a>
-				{% endif %}
-			</span>
-		</div>
+	
+	<div id="top-bar">
+		<span id="other-scenes">
+			Related scenes: <span class="disabled">stay tuned!</span>
+		</span>
+		<span id="debug-user">
+			{% if user %}
+				Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
+		</span>
+	</div> <!-- #top-bar -->
 
 	<div class="wrap">
+
 		<nav id="site-nav">
 			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
 		    <ul>
@@ -56,6 +58,7 @@ whole page response should render to this.
 				<li><a href="/news/" id="siteNews">News</a></li> -->
 			</ul>
 		</nav> <!-- #site-nav -->
+
 		<div class="site-search">
 			<input type="text" />
 		</div>
@@ -75,7 +78,8 @@ whole page response should render to this.
 		</div>	
 	    {{main_content}}
 	</div> <!-- #site-content -->
-</div>
+
+</div> <!-- .wrap -->
 
 <aside id="site-sidebar" role="complementary">
 	<div class="wrap">
@@ -98,12 +102,12 @@ whole page response should render to this.
 			<section class="widget">
 			</section>
 		</div>
-	</div>
-</aside>
+	</div> <!-- .wrap -->
+</aside> <!-- #site-sidebar -->
  
 
 <footer id="site-footer">
 	<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
-</footer>
+</footer> <!-- #site-footer -->
 
 {% endblock %}
