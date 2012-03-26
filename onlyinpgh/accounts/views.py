@@ -1,69 +1,58 @@
-from django.template import render
-from django.template.loaders import get_template
-from django.template.defaultfilters import slugify
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
 
-from django.contrib.auth.models import create_user
-from onlyinpgh.places.models import Place
-from onlyinpgh.places.views import get_create_place_wizard
-
-import re
-
-# def signup(request):
-#     # if POST request, handle the form submission
-#     if request.POST:
-#         form_errors = 
-#         username = slugify(request.POST['place_name'])
-#         user = create_user(username, email=request.POST['email'],
-#             password=)
-#         # create a new user with an automatically generated username
-#         # (slugified with random suffix if necessary)
-
-#         # create a new organization with name = POST.place_name
-#         # set new user as administrator
-#         # save the organization id in the user's session vbl
-
-#         # goto create_place with pid or place_name
-#         pass
-
-#     return render(request, 'manage_base.html',
-#         {'content': signup_form})
+from django.core.urlresolvers import reverse
+from django.contrib.auth import login, authenticate
 
 
-# TEMPORARY: used if something bad happens between signup and place creation
-def login(request):
+# TODO: create this view once there's some time. default django view is ok,
+# but it doesn't test for cookies, is kind of awkward to use with our
+# module-based page building, etc.
+def page_login(request):
+    pass
+
+
+def page_signup(request):
     # if POST request, handle the form submission
     if request.POST:
-        # if user has no organizations, create one the same was as in signup, set admin, session
-        # elif user has > 1 org, set session to first one
+        reg_form = RegistrationForm(request.POST, prefix='reg')
+        profile_form = UserProfileForm(request.POST, prefix='prof')
 
-        # if org has no places attached, goto create_place()
-        # else: go to home
-        pass
+        if reg_form.is_valid() and profile_form.is_valid():
+            user = reg_form.save()     # saves new user
 
+            # reinitialize the form linked to the new user profile
+            profile_form = UserProfileForm(data=request.POST,
+                instance=user.get_profile(), prefix='prof')
+            profile_form.save()
 
-def create_place(request, pid=None, pname=None):
-    # if POST request, handle the form submission
-    if request.POST:
-        # ensure the Org has the right to edit the place if an ID is given!!!!!!!!
-        place.save()
+            # test if the browser supports cookies
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
 
-    # serve up the place creation wizard
-    # autofill the place if a pid or place name were given
-    if pid:
-        try:
-            place = Place.objects.create(pid=pid)
-        except Place.DoesNotExist:
-            place = Place(name=pname)
+                # authenticate new user and log in
+                user = authenticate(username=reg_form.cleaned_data['username'],
+                    password=reg_form.cleaned_data['password1'])
+                login(request, user)
+
+                # redirect to home page
+                redirect_to = reverse('home')
+            else:   # if cookies aren't enabled, go to login page
+                redirect_to = reverse('login')
+
+            return HttpResponseRedirect(redirect_to)
     else:
-        place = Place(name=pname)
+        reg_form = RegistrationForm(prefix='reg')
+        profile_form = UserProfileForm(prefix='prof')
 
-    creation_form = get_create_place_wizard(place=place)
+    request.session.set_test_cookie()
+    context = RequestContext(request)
+    content = render_to_string('registration/signup_form.html',
+        {'registration_form': reg_form, 'profile_form': profile_form,
+         'form_action': reverse('login')},
+        context_instance=context)
 
-    return render(request, 'manage_base.html',
-        {'content': creation_form})
-
-
-def management_home(request):
-    home_page = get_template('organizations/manage/home.html')
-    return render(request, home_page,
-        {'content': home_page})
+    return render(request, 'page.html', {'main_content': content})
