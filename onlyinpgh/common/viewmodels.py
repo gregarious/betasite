@@ -2,11 +2,11 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 
 
 class FeedCollection(ViewModel):
-    def __init__(self, feed_tuples, request=None):
+    def __init__(self, **kwargs):
         '''
-        Initialize from list of (label,FeedViewModel) tuples.
+        kwargs should be a list of feed item lists. The key names
+        in this constructor will become the keys of the data.
         '''
-        super(FeedCollection, self).__init__(request=request)
-        self.feeds = [{'label': label, 'feed_view': feed}
-                        for label, feed in feed_tuples]
-        print 'FeedCollection init: ', self.__dict__
+        super(FeedCollection, self).__init__()
+        for key, items in kwargs.items():
+            setattr(self, key, items)

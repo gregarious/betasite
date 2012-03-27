@@ -1,0 +1,16 @@
+{% comment %}
+Template for a single place page. Includes space for details
+and feeds related to the place.
+
+Context variables:
+    details_content: Rendered place details (e.g. from place/single.html)
+    related_content: Rendered HTML of related feeds and other content (e.g. from place/related.html)
+{% endcomment %}
+
+<header class="single-header">
+    {{details_content}}
+</header>
+
+<div class="place-related">
+    {{related_content}}
+</div>

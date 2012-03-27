@@ -65,7 +65,7 @@ def page_login(request, redirect_field_name='next'):
         form=form, form_action=reverse('login'),
         next=redirect_to,
         context_instance=RequestContext(request))
-    main_content = render_main(login_form, include_scenenav=True)
+    main_content = render_main(login_form)
     return page_response(main_content, request)
 
 
@@ -117,7 +117,7 @@ def render_account_panel(panel_content, wrap_main=True):
     page_response call if wrap_main is True.
     '''
     panel = render_safe('accounts/account_panel.html', panel_content=panel_content)
-    return render_main(panel, include_scenenav=True) if wrap_main else panel
+    return render_main(panel) if wrap_main else panel
 
 
 @login_required

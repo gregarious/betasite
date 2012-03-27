@@ -66,7 +66,7 @@ def page_feed(request):
 
     rendered_items = [render_viewmodel(item, 'places/feed_item.html') for item in items]
     rendered_feed = render_safe('places/main_feed.html', items=rendered_items)
-    main = render_main(rendered_feed, include_scenenav=True)
+    main = render_main(rendered_feed)
     return page_response(main, request)
 
 
@@ -86,16 +86,17 @@ def page_details(request, pid):
     # build and render place detail viewmodel
     place = get_object_or_404(Place, id=pid)
     details = PlaceDetail(place, user=request.user)
-    content = render_viewmodel(details,
-                template='places/single.html',
-                class_label='place-single')
+    details_content = render_viewmodel(details,
+                template='places/single.html')
 
     # build and render related feeds viewmodel
-    # related_feeds = PlaceRelatedFeeds(place, user=request.user)
-    # content += related_feeds.to_html(request)
+    related_feeds = PlaceRelatedFeeds(place, user=request.user)
+    related_content = render_safe('places/related.html', feeds=related_feeds)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    main = render_main(content, include_scenenav=True)
+    main = render_main(render_safe('places/main_place.html',
+                            details_content=details_content,
+                            related_content=related_content))
     return page_response(main, request)
 
 

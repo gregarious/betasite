@@ -7,20 +7,26 @@ from onlyinpgh.events.models import Event
 from onlyinpgh.events.viewmodels import EventFeedItem, EventDetail
 
 
+def render_feed(events, feed_template, user=None, item_template='events/feed_item.html'):
+    '''
+    Returns a rendered events feed.
+    '''
+    items = [EventFeedItem(event, user=user) for event in events]
+    rendered_items = [render_viewmodel(item, item_template) for item in items]
+    return render_safe(feed_template, items=rendered_items)
+
+
 def page_feed(request):
     '''
-    View function that handles a page load request for a feed of place
+    View function that handles a page load request for a feed of event
     items.
 
     Returns page response with main content set to the feed.
     '''
     # get a list of rendered items
     events = Event.objects.all()[:10]
-    items = [EventFeedItem(event, user=request.user) for event in events]
-
-    rendered_items = [render_viewmodel(item, 'events/feed_item.html') for item in items]
-    rendered_feed = render_safe('events/main_feed.html', items=rendered_items)
-    main = render_main(rendered_feed, include_scenenav=True)
+    feed = render_feed(events, 'events/main_feed.html')
+    main = render_main(feed)
     return page_response(main, request)
 
 
@@ -34,7 +40,7 @@ def page_details(request, eid):
     content = render_viewmodel(details,
                 template='events/single.html',
                 class_label='event-single')
-    main = render_main(content, include_scenenav=True)
+    main = render_main(content)
     return page_response(main, request)
 
 

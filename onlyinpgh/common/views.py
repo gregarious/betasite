@@ -20,7 +20,7 @@ def render_scenenav():
     return render_safe('scene_nav.html')
 
 
-def render_main(rendered_content, include_scenenav=False):
+def render_main(rendered_content, include_scenenav=True):
     '''
     Returns rendered HTML with the main site content wrapped in
     main_nav.html or main_nonav.html (depending on the state of

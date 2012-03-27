@@ -3,6 +3,11 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.common.utils import process_external_url
 
+from onlyinpgh.events.models import Event
+from onlyinpgh.events.views import render_feed as render_events_feed
+from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.views import render_feed as render_specials_feed
+
 import urllib
 
 
@@ -110,19 +115,18 @@ class PlaceDetail(ViewModel):
 
 
 class PlaceRelatedFeeds(FeedCollection):
+    '''
+        events_feed
+            [rendered EventFeedItems]
+        specials_feed
+            [rendered SpecialFeedItems]
+    '''
     def __init__(self, place, user=None):
-        # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here,
-        #  but using places for the sake of testing and mockup styling
-        places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-        places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-        places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-
-        feed_tuples = [('Places 1', places1_feed),
-                       ('Places 2', places2_feed),
-                       ('Places 3', places3_feed),
-                    ]
-        super(PlaceRelatedFeeds, self).__init__(feed_tuples)
-
-    def to_html(self, request=None):
-        print 'PlaceRelatedFeeds:', self.__dict__
-        return super(PlaceRelatedFeeds, self).to_html(request)
+        events_feed = render_events_feed(Event.objects.filter(place=place),
+            feed_template='events/mini_feed.html', user=user)
+        specials_feed = render_specials_feed(Special.objects.filter(place=place),
+            feed_template='specials/mini_feed.html', user=user)
+        super(PlaceRelatedFeeds, self).__init__(
+            events_feed=events_feed,
+            specials_feed=specials_feed
+        )
