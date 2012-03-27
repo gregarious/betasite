@@ -8,7 +8,7 @@ Context variables:
 {% endcomment %}
 
 <div class="item-thumb">
-	<img class="item-thumb" alt="{{event.name}}" src="{{event.image_url}}" />
+	<img class="thumbnail" alt="{{event.name}}" src="{{event.image_url}}" />
 </div>
 
 <section class="item-content">
@@ -19,9 +19,9 @@ Context variables:
 	<!-- <div class="item-actions">
 	</div> -->
 
-	<ul class="item-details meta">	
+	<ul class="item-details">	
 		<li class="address">{{event.place.location.address}}</li>
-		<li class="date">{{event.dtstart}} - {{event.dtend}}</li>
+		<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
 		<li class="description">{{event.description|truncatewords:35|urlizetrunc:20}}</li>
   	</ul>
 

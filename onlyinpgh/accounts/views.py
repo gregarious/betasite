@@ -63,7 +63,7 @@ def page_login(request, redirect_field_name='next'):
         form=form, form_action=reverse('login'),
         next=redirect_to,
         context_instance=RequestContext(request))
-    main_content = render_main(login_form)
+    main_content = render_main(login_form, include_scenenav=True)
     return page_response(main_content, request)
 
 

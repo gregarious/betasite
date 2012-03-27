@@ -5,9 +5,10 @@ an account management nav bar on top of the content.
 Context variables:
     - panel_content
 {% endcomment %}
-<div id="account-panel">
+
+<div id="site-content">
     <h2>My Scenable</h2>
-    <nav>
+    <nav id="profile-nav" class="main-menu">
         <ul>
             <li><a href="{% url onlyinpgh.accounts.views.page_profile %}">Profile</a></li>
             <li><a href="{% url onlyinpgh.accounts.views.page_my_places %}">Favorite Places</a></li>
@@ -15,5 +16,7 @@ Context variables:
             <li><a href="{% url onlyinpgh.accounts.views.page_my_specials %}">Purchased Specials</a></li>
         </ul>
     </nav>
-    {{ panel_content }}
+    <div class="profile-content">
+        {{ panel_content }}
+    </div>
 </div>
