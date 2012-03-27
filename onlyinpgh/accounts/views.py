@@ -117,7 +117,7 @@ def render_account_panel(panel_content, wrap_main=True):
     page_response call if wrap_main is True.
     '''
     panel = render_safe('accounts/account_panel.html', panel_content=panel_content)
-    return render_main(panel) if wrap_main else panel
+    return render_main(panel, include_scenenav=True) if wrap_main else panel
 
 
 @login_required

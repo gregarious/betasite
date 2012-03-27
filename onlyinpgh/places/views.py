@@ -95,7 +95,7 @@ def page_details(request, pid):
     # content += related_feeds.to_html(request)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    main = render_main(content, include_scenenav=False)
+    main = render_main(content, include_scenenav=True)
     return page_response(main, request)
 
 

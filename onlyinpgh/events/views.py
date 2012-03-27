@@ -34,7 +34,7 @@ def page_details(request, eid):
     content = render_viewmodel(details,
                 template='events/single.html',
                 class_label='event-single')
-    main = render_main(content, include_scenenav=False)
+    main = render_main(content, include_scenenav=True)
     return page_response(main, request)
 
 

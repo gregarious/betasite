@@ -36,7 +36,7 @@ def page_details(request, sid):
     content = render_viewmodel(details,
                 template='specials/single.html',
                 class_label='special-single')
-    main = render_main(content)
+    main = render_main(content, include_scenenav=True)
     return page_response(main, request)
 
 
