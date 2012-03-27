@@ -1,0 +1,36 @@
+{% comment %}
+Template for hot section
+
+Context variables:
+    - hot_feeds (HotFeedCollection VM)
+    (... more to come ...)
+{% endcomment %}
+
+{% load vmrender from vmtags %}
+
+<div class="hot">
+    <h2>Specials</h2>
+    <ul class="feed hot-feed specials">
+    {% for item in hot_feeds.specials %}
+        <li class="item">
+        {% vmrender item "specials/feed_item.html" %}
+        </li>
+    {% endfor %}
+
+    <h2>Events</h2>
+    <ul class="feed hot-feed events">
+    {% for item in hot_feeds.events %}
+        <li class="item">
+        {% vmrender item "events/feed_item.html" %}
+        </li>
+    {% endfor %}
+
+
+    <h2>Places</h2>
+    <ul class="feed hot-feed places">
+    {% for item in hot_feeds.places %}
+        <li class="item">
+        {% vmrender item "places/feed_item.html" %}
+        </li>
+    {% endfor %}
+</ul>

@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from onlyinpgh.common.core.rendering import render_safe
 
+from onlyinpgh.common.viewmodels import HotFeedCollection
+
 
 ### UTILITY FUNCTIONS ###
 def render_topbar(user):
@@ -64,5 +66,6 @@ def page_response(main_content, request=None, topbar_content=None,
 
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    main_content = render_main('Home!')
+    hot_feeds = HotFeedCollection(request.user)
+    main_content = render_main(render_safe('hot.html', hot_feeds=hot_feeds))
     return page_response(main_content, request)
