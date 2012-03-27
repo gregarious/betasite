@@ -8,15 +8,6 @@ from onlyinpgh.specials.models import Special
 from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
 
 
-def render_feed(specials, feed_template, user=None, item_template='specials/feed_item.html'):
-    '''
-    Returns a rendered specials feed.
-    '''
-    items = [SpecialFeedItem(special, user=user) for special in specials]
-    rendered_items = [render_viewmodel(item, item_template) for item in items]
-    return render_safe(feed_template, items=rendered_items)
-
-
 def page_feed(request):
     '''
     View function that handles a page load request for a feed of place
@@ -26,9 +17,9 @@ def page_feed(request):
     a feed.
     '''
     # get a list of rendered items
-    feed = render_feed(Special.objects.all()[:10],
-        feed_template='specials/main_feed.html', user=request.user)
-    main = render_main(feed)
+    specials = Special.objects.all()[:10]
+    items = [SpecialFeedItem(special, user=request.user) for special in specials]
+    main = render_main(render_safe('specials/main_feed.html', items=items))
     return page_response(main, request)
 
 

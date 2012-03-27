@@ -64,9 +64,7 @@ def page_feed(request):
     places = Place.objects.all()[:10]
     items = [PlaceFeedItem(place, user=request.user) for place in places]
 
-    rendered_items = [render_viewmodel(item, 'places/feed_item.html') for item in items]
-    rendered_feed = render_safe('places/main_feed.html', items=rendered_items)
-    main = render_main(rendered_feed)
+    main = render_main(render_safe('places/main_feed.html', items=items))
     return page_response(main, request)
 
 
