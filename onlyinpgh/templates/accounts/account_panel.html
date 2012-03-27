@@ -6,17 +6,15 @@ Context variables:
     - panel_content
 {% endcomment %}
 
-<div id="site-content">
-    <h2>My Scenable</h2>
-    <nav id="profile-nav" class="main-menu">
-        <ul>
-            <li><a href="{% url onlyinpgh.accounts.views.page_profile %}">Profile</a></li>
-            <li><a href="{% url onlyinpgh.accounts.views.page_my_places %}">Favorite Places</a></li>
-            <li><a href="{% url onlyinpgh.accounts.views.page_my_events %}">My Events</a></li>
-            <li><a href="{% url onlyinpgh.accounts.views.page_my_specials %}">Purchased Specials</a></li>
-        </ul>
-    </nav>
-    <div class="profile-content">
-        {{ panel_content }}
-    </div>
+<h2>My Scenable</h2>
+<nav id="profile-nav" class="main-menu">
+    <ul>
+        <li><a href="{% url onlyinpgh.accounts.views.page_profile %}">Profile</a></li>
+        <li><a href="{% url onlyinpgh.accounts.views.page_my_places %}">Favorite Places</a></li>
+        <li><a href="{% url onlyinpgh.accounts.views.page_my_events %}">My Events</a></li>
+        <li><a href="{% url onlyinpgh.accounts.views.page_my_specials %}">Purchased Specials</a></li>
+    </ul>
+</nav>
+<div class="profile-content">
+    {{ panel_content }}
 </div>

@@ -7,7 +7,40 @@ Context variables:
 	special:	Special ViewModel
 {% endcomment %}
 
+
+
 <h3>{{special.title}}</h3>
 <h4>+{{special.points}}</h4>
 <p>{{special.place.name}}</p>
 <p>{{special.description}}</P>
+
+<header class="single-header">
+
+	<div class="item-thumb">
+		<div class="points">+{{special.points}}</div>
+		<button class="btn btn-primary">Grab It!</button>
+	</div>
+
+	<section class="item-content">
+		<h2 class="single-title">{{special.title}}</h2>
+
+		<ul class="item-details">
+			<li>at {{special.place.name}}</li>
+			{% if special.dtexpires %}
+				<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
+			{% endif %}
+
+		</ul>
+
+		{% include "tags/tag_list.html" with tags=special.tags %}
+		
+	</section>
+
+</header>
+
+<div class="single-content">
+	<div class="map-container">
+		<img src="http://i.imgur.com/ZEVRr.jpg" />
+	</div>
+	<p class="description">{{special.description}}</p>
+</div>

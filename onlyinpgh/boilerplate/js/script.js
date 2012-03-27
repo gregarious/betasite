@@ -17,6 +17,15 @@ jQuery(document).ready( function($) {
 	// Hide the broadcast for 1 sec, then slide down - only on home page
 	//$('#site-sidebar').hide().delay(1000).slideDown(500);
 
+	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
+
+	$.each(pages, function(i, id) {
+		$('a.'+id).click(function() {
+			$('.single-section').delay(200).hide();
+			$(id+'.single-section').fadeIn(200); // Will replace this with a .get();
+		});
+	});
+
 	// Float odd feed items right to allow for columns.
 	$('.feed .item:even').addClass('left');
 	$('.feed .item:odd').addClass('right');

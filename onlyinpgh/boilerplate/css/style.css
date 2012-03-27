@@ -1219,7 +1219,7 @@ form {
   margin: 0.2em 0;
   padding: 1.5em 0.5em 0.5em;
 }
-#eventMapCanvas {
+.map-container {
   float: right;
   width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
