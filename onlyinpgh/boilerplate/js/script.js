@@ -22,8 +22,8 @@ jQuery(document).ready( function($) {
 
 	$.each(pages, function(i, id) {
 		$('a.'+id).click(function() {
-			$('.single-section').delay(200).hide();
-			$(id+'.single-section').fadeIn(200); // Will replace this with a .get();
+			$('.related-section').delay(200).hide();
+			$(id+'.related-section').fadeIn(200); // Will replace this with a .get();
 		});
 	});
 

@@ -313,10 +313,6 @@ form {
   .b-shadow(0.3em, 0.3em, 0, @lblue);
 }
 
-.item-title {
-
-}
-
 .item-thumb {
   border: ;
 }
@@ -342,7 +338,7 @@ form {
   }
 }
 
-.profile-content {
+.profile-content, .related-section {
   float: left;
   .border-box;
   width: 85%;
@@ -377,26 +373,16 @@ form {
     
       &:hover, &:active {
         color: #fff;
-        text-shadow: 0 0 0.1em #333;
       }      
     }
 
     &:hover {
       .gradient(#aaa, #999);
-      .rounded(0.5em);  
+      .rounded(0.2em);  
 
       a {
         color: #fff;
-        text-shadow: 0 0 0.1em #333;
       }
-    }
-
-    &:active {
-      .gradient(#999, #aaa);
-      .rounded(0.5em);
-      position: relative;
-      top: 1px;
-      left: 1px;
     }
   }
 }

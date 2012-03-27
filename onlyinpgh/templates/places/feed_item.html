@@ -26,11 +26,8 @@ Context variables:
 	<ul class="item-details">	
 		<li class="address">{{place.location.address}}</li>
 		{% if place.description %}
-			<li class="description">{{ place.description|truncatewords:35|urlizetrunc:20 }}</li>
+			<li class="description meta">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
 		{% endif %}	
-		{% comment %}
-			{{ place.description|truncatewords:35|urlizetrunc:20 }}
-		{% endcomment %}
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=place.tags %}
