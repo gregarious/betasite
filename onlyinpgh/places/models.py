@@ -214,8 +214,9 @@ class Place(models.Model, ViewModel):
         '''
         data = super(Place, self).to_data(*args, **kwargs)
         data.pop('location_id')
-        data['location'] = self.location.to_data()
-        data['tags'] = [t.to_data() for t in self.tags.all()]
+        if self.location:
+            data['location'] = self.location.to_data(*args, **kwargs)
+        data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
 
