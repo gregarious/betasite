@@ -7,13 +7,6 @@ Context variables:
 	special:	Special ViewModel
 {% endcomment %}
 
-
-
-<h3>{{special.title}}</h3>
-<h4>+{{special.points}}</h4>
-<p>{{special.place.name}}</p>
-<p>{{special.description}}</P>
-
 <header class="single-header">
 
 	<div class="item-thumb">
@@ -25,9 +18,12 @@ Context variables:
 		<h2 class="single-title">{{special.title}}</h2>
 
 		<ul class="item-details">
-			<li>at {{special.place.name}}</li>
+			<li>at <a href="{% url places-item-detail pid=special.place.id %}">{{special.place.name}}</a></li>
 			{% if special.dtexpires %}
 				<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
+			{% endif %}
+			{% if special.total_available %}
+				<li>{{special.total_available}} Available</li>
 			{% endif %}
 
 		</ul>

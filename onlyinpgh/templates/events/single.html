@@ -30,7 +30,7 @@ Context variables:
 
 		<ul class="item-details">
 			<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
-			<li>at {{event.place.name}}</li>
+			<li>at <a href="{% url places-item-detail pid=event.place.id %}">{{event.place.name}}</a></li>
 			<li class="address">{{event.place.location.address}}</li>
 		</ul>
 
@@ -41,7 +41,7 @@ Context variables:
 
 <div class="single-content">
 	<div class="map-container">
-		<img src="http://www.nowill-noway.com/images/SS_map1.gif" />
+		<img src="http://i.imgur.com/ZEVRr.jpg" />
 	</div>
 	<p class="description">{{event.description}}</p>
 </div>

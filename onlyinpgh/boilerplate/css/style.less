@@ -205,19 +205,16 @@ form {
   position: relative;
   z-index: 999;
   .fixed();
-  
-  .main-menu {
-    border-bottom: 10px #555 solid;
-    .column(9);
+  border-bottom: 10px #555 solid;
 
-  }
-  
-  ul {  
+  .main-menu {  
     .clearfix;
+    .column(6);
+
 
     li { 
       a {
-        .column_r(2);
+        .column(3);
         .b-shadow(0, 0, 2px, #000);
         color: #000;
         cursor: pointer;
@@ -257,9 +254,7 @@ form {
 }
 
 #logo {
-  float: left;
-  height: auto;
-  max-width: 100%;
+  .column(3);
 }
 
 /* 4 CONTENT ---------- */

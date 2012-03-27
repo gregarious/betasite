@@ -17,6 +17,7 @@ jQuery(document).ready( function($) {
 	// Hide the broadcast for 1 sec, then slide down - only on home page
 	//$('#site-sidebar').hide().delay(1000).slideDown(500);
 
+	// Hide/show single place sections
 	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 
 	$.each(pages, function(i, id) {
