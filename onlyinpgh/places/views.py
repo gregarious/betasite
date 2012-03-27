@@ -5,12 +5,7 @@ from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
 from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail
-
-from onlyinpgh.events.models import Event
-from onlyinpgh.events.views import render_feed as render_events_feed
-from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.views import render_feed as render_specials_feed
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
 
 from datetime import datetime, timedelta
 
@@ -91,23 +86,14 @@ def page_details(request, pid):
     # build and render place detail viewmodel
     place = get_object_or_404(Place, id=pid)
     details = PlaceDetail(place, user=request.user)
-    details_content = render_viewmodel(details,
-                template='places/single.html')
 
-    # build and render related feeds viewmodel
-    events_feed = render_events_feed(Event.objects.filter(place=place),
-        feed_template='events/mini_feed.html', user=request.user)
-    specials_feed = render_specials_feed(Special.objects.filter(place=place),
-        feed_template='specials/mini_feed.html', user=request.user)
-
-    related_content = render_safe('places/related.html',
-        events_feed=events_feed,
-        specials_feed=specials_feed)
+    # build related feeds viewmodel
+    related_feeds = PlaceRelatedFeeds(place, user=request.user)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
     main = render_main(render_safe('places/main_place.html',
-                            details_content=details_content,
-                            related_content=related_content))
+                            place_detail=details,
+                            related_feeds=related_feeds))
     return page_response(main, request)
 
 

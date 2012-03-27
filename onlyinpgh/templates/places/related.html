@@ -2,10 +2,15 @@
 Template to render items related to a place
 
 Context variables:
-    events_feeds:  rendered events feed
-    specials_feeds:  rendered events feed
+    related_feeds:
+        events:
+            [EventFeedItem VMs]
+        specials:  
+            [SpecialFeedItem VMs]
     (... more to come...)
 {% endcomment %}
+{% load vmrender from vmtags %}
+
 <nav class="single-nav">
     <ul>
         <li><a id="placeAtAGlance"></a></li>
@@ -20,11 +25,15 @@ Context variables:
 <section class="related-section" id="placeAtAGlance">
     At a glance
 </section>
-<section class="related-section" id="placeEvents">
-    {{ events_feed }}
+<section class="single-section" id="placeEvents">
+    {% for item in related_feeds.events %}
+        {% vmrender item 'events/feed_item.html' %}
+    {% endfor %}
 </section>
-<section class="related-section" id="placeSpecials">
-    {{ specials_feed }}
+<section class="single-section" id="placeSpecials">
+    {% for item in related_feeds.specials %}
+        {% vmrender item 'specials/feed_item.html' %}
+    {% endfor %}
 </section>
 <section class="related-section" id="placeMap">
     Map

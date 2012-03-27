@@ -1,7 +1,12 @@
 from onlyinpgh.common.core.viewmodels import ViewModel
-from onlyinpgh.places.models import Place
+
 from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.common.utils import process_external_url
+
+from onlyinpgh.events.models import Event
+from onlyinpgh.events.viewmodels import EventFeedItem
+from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 import urllib
 
@@ -107,3 +112,19 @@ class PlaceDetail(ViewModel):
         if url:
             data['place']['url'] = process_external_url(url)
         return data
+
+
+class PlaceRelatedFeeds(FeedCollection):
+    '''
+        events_feed
+            [EventFeedItems]
+        specials_feed
+            [SpecialFeedItems]
+    '''
+    def __init__(self, place, user=None):
+        events_feed = [EventFeedItem(e, user) for e in Event.objects.filter(place=place)]
+        specials_feed = [SpecialFeedItem(s, user) for s in Special.objects.filter(place=place)]
+        super(PlaceRelatedFeeds, self).__init__(
+            events=events_feed,
+            specials=specials_feed
+        )
