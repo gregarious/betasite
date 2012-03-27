@@ -6,7 +6,6 @@ url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][
 def process_external_url(url):
     if url:
         url_p = re.compile(url_pattern)
-        print url, url_pattern
         if not url_p.match(url):
             url = 'http://' + url
             if not url_p.match(url):    # if that didn't work, blank out the url

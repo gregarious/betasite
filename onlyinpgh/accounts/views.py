@@ -34,7 +34,6 @@ def page_login(request, redirect_field_name='next'):
     Renders login page.
     '''
     redirect_to = request.REQUEST.get(redirect_field_name, '')
-    print 'redir:', redirect_to
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
