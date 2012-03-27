@@ -3,11 +3,6 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.common.utils import process_external_url
 
-from onlyinpgh.events.models import Event
-from onlyinpgh.events.views import render_feed as render_events_feed
-from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.views import render_feed as render_specials_feed
-
 import urllib
 
 
@@ -112,21 +107,3 @@ class PlaceDetail(ViewModel):
         if url:
             data['place']['url'] = process_external_url(url)
         return data
-
-
-class PlaceRelatedFeeds(FeedCollection):
-    '''
-        events_feed
-            [rendered EventFeedItems]
-        specials_feed
-            [rendered SpecialFeedItems]
-    '''
-    def __init__(self, place, user=None):
-        events_feed = render_events_feed(Event.objects.filter(place=place),
-            feed_template='events/mini_feed.html', user=user)
-        specials_feed = render_specials_feed(Special.objects.filter(place=place),
-            feed_template='specials/mini_feed.html', user=user)
-        super(PlaceRelatedFeeds, self).__init__(
-            events_feed=events_feed,
-            specials_feed=specials_feed
-        )

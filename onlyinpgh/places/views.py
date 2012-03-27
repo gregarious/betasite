@@ -5,7 +5,12 @@ from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
 from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
+from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail
+
+from onlyinpgh.events.models import Event
+from onlyinpgh.events.views import render_feed as render_events_feed
+from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.views import render_feed as render_specials_feed
 
 from datetime import datetime, timedelta
 
@@ -90,8 +95,14 @@ def page_details(request, pid):
                 template='places/single.html')
 
     # build and render related feeds viewmodel
-    related_feeds = PlaceRelatedFeeds(place, user=request.user)
-    related_content = render_safe('places/related.html', feeds=related_feeds)
+    events_feed = render_events_feed(Event.objects.filter(place=place),
+        feed_template='events/mini_feed.html', user=request.user)
+    specials_feed = render_specials_feed(Special.objects.filter(place=place),
+        feed_template='specials/mini_feed.html', user=request.user)
+
+    related_content = render_safe('places/related.html',
+        events_feed=events_feed,
+        specials_feed=specials_feed)
 
     # as long as there was no AJAX-requested action, we will return a fully rendered new page
     main = render_main(render_safe('places/main_place.html',
