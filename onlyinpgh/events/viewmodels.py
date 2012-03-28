@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from onlyinpgh.common.core.viewmodels import ViewModel
 
 
@@ -24,7 +25,7 @@ class EventFeedItem(ViewModel):
     def __init__(self, event, user=None):
         super(EventFeedItem, self).__init__()
         self.event = event
-        if user:
+        if isinstance(user, User):
             self.is_attending = event.attendee_set\
                                     .filter(user=user, is_attending=True)\
                                     .count() > 0
@@ -74,7 +75,7 @@ class EventDetail(ViewModel):
     def __init__(self, event, user=None):
         super(EventDetail, self).__init__()
         self.event = event
-        if user:
+        if isinstance(user, User):
             self.is_attending = event.attendee_set\
                                     .filter(user=user, is_attending=True)\
                                     .count() > 0

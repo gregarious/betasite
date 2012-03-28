@@ -3,6 +3,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.common.viewmodels import FeedCollection
 from onlyinpgh.common.utils import process_external_url
 
+from django.contrib.auth.models import User
 from onlyinpgh.events.models import Event
 from onlyinpgh.events.viewmodels import EventFeedItem
 from onlyinpgh.specials.models import Special
@@ -50,7 +51,7 @@ class PlaceFeedItem(ViewModel):
     def __init__(self, place, user=None):
         super(PlaceFeedItem, self).__init__()
         self.place = place
-        if user:
+        if isinstance(user, User):
             self.is_favorite = place.favorite_set\
                                     .filter(user=user, is_favorite=True)\
                                     .count() > 0
@@ -98,7 +99,7 @@ class PlaceDetail(ViewModel):
     def __init__(self, place, user=None):
         super(PlaceDetail, self).__init__()
         self.place = place
-        if user:
+        if isinstance(user, User):
             self.is_favorite = place.favorite_set\
                                     .filter(user=user, is_favorite=True)\
                                     .count() > 0
