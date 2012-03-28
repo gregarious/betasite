@@ -116,9 +116,9 @@ class PlaceDetail(ViewModel):
 
 class PlaceRelatedFeeds(FeedCollection):
     '''
-        events_feed
+        events
             [EventFeedItems]
-        specials_feed
+        specials
             [SpecialFeedItems]
     '''
     def __init__(self, place, user=None):

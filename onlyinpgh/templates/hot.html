@@ -8,29 +8,41 @@ Context variables:
 
 {% load vmrender from vmtags %}
 
-<div class="hot">
-    <h2>Specials</h2>
-    <ul class="feed hot-feed specials">
-    {% for item in hot_feeds.specials %}
-        <li class="item">
-        {% vmrender item "specials/feed_item.html" %}
-        </li>
-    {% endfor %}
 
-    <h2>Events</h2>
-    <ul class="feed hot-feed events">
-    {% for item in hot_feeds.events %}
-        <li class="item">
-        {% vmrender item "events/feed_item.html" %}
-        </li>
-    {% endfor %}
+    <section class="hot specials">
+        <h3 class="section-title">Top Specials</h2>
+        <ul class="feed hot-feed specials">
+        {% for item in hot_feeds.specials|slice:"3" %}
+            <li class="item">
+            {% vmrender item "specials/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
 
+    <section class="hot map_container">
+        <img src="http://1.bp.blogspot.com/-nRsXX6nLwTI/TwzZ0ckRG_I/AAAAAAAADJw/xIZCHR-JM2Y/s1600/road-map-of-pittsburgh.jpg" />
+    </section>
 
-    <h2>Places</h2>
-    <ul class="feed hot-feed places">
-    {% for item in hot_feeds.places %}
-        <li class="item">
-        {% vmrender item "places/feed_item.html" %}
-        </li>
-    {% endfor %}
-</ul>
+    <section class="hot events">
+        <h3 class="section-title">Upcoming Events</h3>
+        <ul class="feed hot-feed events">
+        {% for item in hot_feeds.events|slice:"3" %}
+            <li class="item">
+            {% vmrender item "events/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+
+    <section class="hot places">
+        <h3 class="section-title">Hot Spots</h3>
+        <ul class="feed hot-feed places">
+        {% for item in hot_feeds.places|slice:"3" %}
+            <li class="item">
+            {% vmrender item "places/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+

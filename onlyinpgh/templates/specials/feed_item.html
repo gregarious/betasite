@@ -19,12 +19,12 @@ Context variables:
 	</h4>
 
 	<ul class="item-details">
-		<li>{{special.place.name}}</li>
+		<li>at {{special.place.name}}</li>
 		{% if special.dtexpires %}
 			<li><time class="datetime meta">Expires {{special.dtexpires}}</time>
 		{% endif %}
 		{% if special.description %}
-			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
+			<li class="description meta">{{ special.description|truncatewords:25|urlizetrunc:20 }}</li>
 		{% endif %}	
 
 	</ul>

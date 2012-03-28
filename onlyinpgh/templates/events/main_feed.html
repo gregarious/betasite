@@ -7,6 +7,10 @@ Context variables:
 {% endcomment %}
 {% load vmrender from vmtags %}
 
+<header class="feed-header">
+	<h2 class="feed-title">Events</h2>
+	<input class="feed-filter" type="text" />
+</header>
 <ul class="feed events">
 {% for item in items %}
     <li class="item">
