@@ -1,5 +1,6 @@
 from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.specials.models import Coupon
+from django.contrib.auth.models import User
 
 
 class SpecialFeedItem(ViewModel):
@@ -21,7 +22,7 @@ class SpecialFeedItem(ViewModel):
     def __init__(self, special, user=None):
         super(SpecialFeedItem, self).__init__()
         self.special = special
-        if user:
+        if isinstance(user, User):
             try:
                 special.coupon_set.get(user=user, was_used=False)
             except Coupon.DoesNotExist:
@@ -72,7 +73,7 @@ class SpecialDetail(ViewModel):
     def __init__(self, special, user=None):
         super(SpecialDetail, self).__init__()
         self.special = special
-        if user:
+        if isinstance(user, User):
             try:
                 special.coupon_set.get(user=user, was_used=False)
             except Coupon.DoesNotExist:
