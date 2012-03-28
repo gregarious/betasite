@@ -1,0 +1,33 @@
+{% comment %}
+Template to render a particular place as an item in an orgadmin list.
+
+Compatible ViewModels: places.viewmodels.PlaceFeedItem
+
+Context variables:
+	place:			Place object
+{% endcomment %}
+
+<div class="item-thumb">
+	<img class="item-thumb" alt="{{place.name}}" src="{{place.image_url}}" />
+</div>
+
+<section class="item-content">
+	<h4 class="item-title">
+		{{ place.name }}
+	</h4>
+
+	<div class="item-actions">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place"/></a>
+		<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
+	</div>
+	
+	<ul class="item-details meta">	
+		<li class="address">{{place.location.address}}</li>
+		<li>{{place.phone}}</li>
+		<li>{{place.hours}}</li>
+		<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
+  	</ul>
+
+	{% include "tags/tag_list.html" with tags=place.tags %}
+
+</section>

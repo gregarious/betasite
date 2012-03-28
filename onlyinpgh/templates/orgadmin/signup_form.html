@@ -1,0 +1,60 @@
+<header class="content-header">
+	<h2>Register</h2>
+</header>
+
+<form action="{% url onlyinpgh.orgadmin.views.page_signup %}" method="POST" >
+	{% csrf_token %}
+	
+	<div class="field-container">
+		{{ registration_form.username.errors }}
+		<div class="field-label">
+			{{ registration_form.username.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.username }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		{{ registration_form.email.errors }}
+		<div class="field-label">
+			{{ registration_form.email.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.email }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		{{ registration_form.password1.errors }}
+		<div class="field-label">
+			{{ registration_form.password1.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.password1 }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		{{ registration_form.password2.errors }}
+		<div class="field-label">
+			{{ registration_form.password2.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.password2 }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		{{ org_form.name.errors }}
+		<div class="field-label">
+			{{ org_form.name.label_tag }}
+		</div>
+		<div class="field">
+			{{ org_form.name }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<input type="submit" value="Sign Up" class="submit-item"  />
+
+</form>
