@@ -30,7 +30,7 @@ Context variables:
 
 		<ul class="item-details">
 			<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
-			<li>at <a href="{% url places-item-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+			<li>at <a href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
 			<li class="address">{{event.place.location.address}}</li>
 		</ul>
 

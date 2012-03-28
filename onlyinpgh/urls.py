@@ -24,6 +24,8 @@ urlpatterns = patterns('',
     url(r'^places/',include('onlyinpgh.places.urls')),
     url(r'^events/',include('onlyinpgh.events.urls')),
     url(r'^specials/',include('onlyinpgh.specials.urls')),
+    url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
+
     url('splash', direct_to_template, {'template': 'misc/splash.html'}),
     url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
     url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
