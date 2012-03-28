@@ -396,6 +396,18 @@ p {
   margin-top: -0.05em;
   text-shadow: 0.05em 0.05em 0 #ded57f;
 }
+a {
+  color: #4b7699;
+}
+a:hover {
+  color: #8fd36f;
+}
+a:active {
+  color: #2c525d;
+}
+a:visited {
+  color: #4b7699;
+}
 .section-title {
   border-top: 2px solid #286653;
   color: #fff;
@@ -1268,6 +1280,18 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.hot.map-container,
+.hot.events {
+  float: right;
+}
+.hot.map-container {
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 /* SPECIALS --------- */
 .specials.feed .item-title {
   margin-top: 0.6em;
@@ -1346,71 +1370,6 @@ input[type="submit"]:active,
 /* 15 VENDOR-SPECIFIC ---------- */
 /* 16 MODERNIZR ---------- */
 /* ICONS ----------- */
-/* 	Stylesheet to define le icons 
-*/
-/* 	TODO: 
-		Sprite sheet
-		Background positioning will be added 
-*/
-/* To be made into sprite sheet */
-a {
-  /* Single place nav */
-
-  /* Global nav */
-
-}
-a#placeAtAGlance {
-  background: #ffffff url('/static/img_using/photo-magnify.png') no-repeat center;
-}
-a#placeEvents {
-  background: #ffffff url('/static/img_using/calendar-alt.png') no-repeat center;
-}
-a#placeSpecials {
-  background: #ffffff url('/static/img_using/tag-special.png') no-repeat center;
-}
-a#placeMap {
-  background: #ffffff url('/static/img_using/map.png') no-repeat center;
-}
-a#placeChatter {
-  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
-}
-a#placeRelated {
-  background: #ffffff url('/static/img_using/list.png') no-repeat center;
-}
-a#siteHot {
-  background: #ffffff url('/static/img_using/campfire.png') no-repeat center;
-}
-a#sitePlaces {
-  background: #ffffff url('/static/img_using/store-front.png') no-repeat center;
-}
-a#siteEvents {
-  background: #ffffff url('/static/img_using/calendar-alt.png') no-repeat center;
-}
-a#siteSpecials {
-  background: #ffffff url('/static/img_using/tag-special.png') no-repeat center;
-}
-a#siteChatter {
-  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
-}
-a#siteNews {
-  background: #ffffff url('/static/img_using/newspaper.png') no-repeat center;
-}
-a#siteJobs {
-  background: #ffffff url('/static/img_using/suitcase.png') no-repeat center;
-}
-/* Actions */
-.favbutton.remove {
-  background: #ffffff url('/static/img_using/heart-cancel.png') no-repeat center;
-}
-.favbutton.add {
-  background: #ffffff url('/static/img_using/heart-add.png') no-repeat center;
-}
-.report {
-  background: #ffffff url('/static/img_using/alert.png') no-repeat center;
-}
-.post-to-chatter {
-  background: #ffffff url('/static/img_using/speech-bubble.png') no-repeat center;
-}
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style

@@ -13,36 +13,35 @@ Context variables:
 
 <nav class="single-nav">
     <ul>
-        <li><a id="placeAtAGlance"></a></li>
+        <li><a id="placeAtAGlance">Glance</a></li>
         <li><a id="placeEvents">Events</a></li>
         <li><a id="placeSpecials">Specials</a></li>
         <li><a id="placeMap">Map</a></li>
-        <li><a id="placeChatter">Chatter</a></li>
-        <li><a id="placeRelated">Related</a></li>
     </ul>
 </nav>
 
 <section class="related-section" id="placeAtAGlance">
-    At a glance
+    <h2 class="section-title">At a glance</h2>
+    <p class="description">{{place.description}}</p>
+    <img src="http://www.phlmetropolis.com/Cats.jpg" />
 </section>
-<section class="single-section" id="placeEvents">
+
+<section class="related-section" id="placeEvents">
+    <h2 class="section-title">Events</h2>
     {% for item in related_feeds.events %}
         {% vmrender item 'events/feed_item.html' %}
     {% endfor %}
 </section>
-<section class="single-section" id="placeSpecials">
+
+<section class="related-section" id="placeSpecials">
+    <h2 class="section-title">Specials</h2>
     {% for item in related_feeds.specials %}
         {% vmrender item 'specials/feed_item.html' %}
     {% endfor %}
 </section>
+
 <section class="related-section" id="placeMap">
-    Map
-</section>
-<section class="related-section" id="placeChatter">
-    Chatter
-</section>
-<section class="related-section" id="placeRelated">
-    Related
+    <h2 class="section-title">Map</h2>
 </section>
 
 <!--    <section class="single-section" id="{{place_section_id}}">

@@ -28,7 +28,7 @@ jQuery(document).ready( function($) {
 	});
 
 	// Float odd feed items right to allow for columns.
-	$('.feed .item:even').addClass('left');
-	$('.feed .item:odd').addClass('right');
+	// $('.feed .item:even').addClass('left');
+	// $('.feed .item:odd').addClass('right');
 
 }); // document.ready

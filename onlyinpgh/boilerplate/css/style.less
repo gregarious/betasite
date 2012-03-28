@@ -27,6 +27,22 @@ body {
 
 @import "../LESS/type";
 
+a {
+  color: @dblue;
+
+  &:hover {
+    color: @lgreen;
+  }
+
+  &:active {
+    color: @teal;
+  }
+
+  &:visited {
+    color: @dblue;
+  }
+}
+
 .section-title {
   border-top: 2px solid #286653;
   color: #fff;
@@ -432,6 +448,15 @@ button, input[type="submit"], .next, .back {
 
 .hot {
   .column(6);
+
+  &.map-container, &.events {
+    float: right
+  }
+
+}
+
+.hot.map-container {
+  .column(12);
 }
 
 /* SPECIALS --------- */
@@ -507,7 +532,7 @@ button, input[type="submit"], .next, .back {
 
 /* ICONS ----------- */
 
-@import "../LESS/icons";
+//@import "../LESS/icons";
 
 
 /* 18 MEDIA QUERIES ---------- */
