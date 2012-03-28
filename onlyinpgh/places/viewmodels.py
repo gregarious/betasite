@@ -11,6 +11,8 @@ from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 import urllib
 
+DEFAULT_IMAGE_URL = 'http://3.bp.blogspot.com/_bX6A151GK68/SrC0hBrYTXI/AAAAAAAAAE0/FQ2ELSQIrh8/s320/cute+cat+pictures+round+cat.jpg'
+
 
 def to_directions_link(location):
     daddr = ''
@@ -65,6 +67,8 @@ class PlaceFeedItem(ViewModel):
         for k in place_data.keys():
             if k not in keepers:
                 place_data.pop(k)
+        if not place_data['image_url']:
+            place_data['image_url'] = DEFAULT_IMAGE_URL
         return data
 
 
@@ -112,6 +116,9 @@ class PlaceDetail(ViewModel):
         url = data['place']['url']
         if url:
             data['place']['url'] = process_external_url(url)
+        if not data['place']['image_url']:
+            data['place']['image_url'] = DEFAULT_IMAGE_URL
+
         return data
 
 
