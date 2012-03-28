@@ -131,9 +131,8 @@ def page_my_places(request):
     places = [fav.place for fav in Favorite.objects.filter(user=request.user, is_favorite=True)]
     items = [PlaceFeedItem(place, user=request.user) for place in places]
 
-    rendered_items = [render_viewmodel(item, 'places/feed_item.html') for item in items]
     main = render_account_panel(
-        render_safe('accounts/my_places.html', items=rendered_items))
+        render_safe('accounts/my_places.html', items=items))
     return page_response(main, request)
 
 
@@ -142,9 +141,8 @@ def page_my_events(request):
     events = [att.event for att in Attendee.objects.filter(user=request.user, is_attending=True)]
     items = [EventFeedItem(event, user=request.user) for event in events]
 
-    rendered_items = [render_viewmodel(item, 'events/feed_item.html') for item in items]
     main = render_account_panel(
-        render_safe('accounts/my_events.html', items=rendered_items))
+        render_safe('accounts/my_events.html', items=items))
     return page_response(main, request)
 
 
@@ -153,7 +151,6 @@ def page_my_specials(request):
     specials = [coupon.special for coupon in Coupon.objects.filter(user=request.user, was_used=False)]
     items = [SpecialFeedItem(special, user=request.user) for special in specials]
 
-    rendered_items = [render_viewmodel(item, 'specials/feed_item.html') for item in items]
     main = render_account_panel(
-        render_safe('accounts/my_specials.html', items=rendered_items))
+        render_safe('accounts/my_specials.html', items=items))
     return page_response(main, request)

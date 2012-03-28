@@ -3,11 +3,13 @@ Template to render a collection of rendered feed items, along with
 a frame to be used as a container on the user profile page.
 
 Context variables:
-    [items]:  list of rendered HTML for single feed items
+    [items]:  list of SpecialFeedItem VMs
 {% endcomment %}
+{% load vmrender from vmtags %}
 
 <h3 class="section-title">My Unused Specials</h3>
-<div class="my-feed">
-    {# pass items through to feed.html #}
-    {% include "specials/feed.html" %}
-</div>
+<ul class="feed my-feed specials">
+    {% for item in items %}
+        <li class="item">{% vmrender item "specials/feed_item.html" %}</li>
+    {% endfor %}
+</ul>
