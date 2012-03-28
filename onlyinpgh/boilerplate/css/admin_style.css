@@ -470,6 +470,9 @@ h2 {
 .form-title {
   border-bottom: 1px solid #ccc;
 }
+.errorlist {
+  margin-bottom: 1em;
+}
 /* SITE ------------- */
 #site-header {
   width: 100%;
@@ -696,6 +699,9 @@ input[type="checkbox"] {
 }
 form {
   margin-top: 2em;
+}
+form .tip a {
+  color: #4b7699;
 }
 .field-container {
   padding: 2em 0;
@@ -945,21 +951,29 @@ form {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  *zoom: 1;
   border-bottom: 1px solid #999;
   padding: 1% 2%;
   position: relative;
 }
-.feed-title {
-  float: left;
+.feed-header:before,
+.feed-header:after {
+  content: "";
+  display: table;
 }
-.feed-filter {
+.feed-header:after {
+  clear: both;
+}
+.feed-header input[type="text"] {
   float: right;
-  float: left;
   width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.feed-title {
+  float: left;
 }
 .feed {
   *zoom: 1;

@@ -4,7 +4,7 @@
 /* 1 ROOT ---------- */
 
 body {
-  //background: url("/static/img_store/Oakland/Rick_Random/IMG_5354_1440.JPG");
+  background: url("/static/img_store/Oakland/background_pics/jpegs/DSC_1408.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -44,15 +44,19 @@ a {
 }
 
 .section-title {
-  border-top: 2px solid #286653;
+  border-bottom: 2px solid #286653;
   color: #fff;
   font-size: 1.1em;
   font-style: italic;
   font-weight: bold;
-  .gradient(#052951, #1A5496);
+  .gradient(@lgreen, @mgreen);
   margin: 0;
   padding: 0.5em;
   text-shadow: 0.1em 0.1em 0.04em #000;
+}
+
+.address {
+  font-weight: normal;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -308,9 +312,9 @@ button, input[type="submit"], .next, .back {
 /* 4 CONTENT ---------- */
 
 #site-content {
-  background: url("/static/img/textures/mgreen-tex.png") fixed;
-  //background: fade(@lgreen, 70%);
-  .b-shadow(0, 0, 0.1em, #fff);
+  //background: url("/static/img/textures/mgreen-tex.png") fixed;
+  background: fade(#fff, 60%);
+  //.b-shadow(0, 0, 0.1em, #fff);
   .column(9);
   margin-top: 130px;
   padding: 1em;
@@ -366,8 +370,31 @@ button, input[type="submit"], .next, .back {
 
 .item {
   background: url("/static/img/textures/white-tex.png");
-  //.b-shadow(0.3em, 0.3em, 0, @lblue);
-  border: 0.3em solid @lgreen;
+  .b-shadow(0.1em, 0.1em, 0.1em, #000);
+  border: 0.3em solid @mgreen;
+  
+  a {
+    color: #000;
+  }
+  
+  .host {
+    color: @red;
+    font-weight: bold;
+  }
+
+  &:hover {
+    border: 0.3em solid @lblue;
+    .gradient(#fff, #e8e8e8);
+  }
+}
+
+.item-title {
+  //line-height: 1.1em;
+  margin-bottom: 0.3em;
+  font-size: 1.1em;
+  font-family: 'ArvoItalic';
+  font-weight: normal;
+  text-shadow: 0.05em 0.05em 0.05em #999;
 }
 
 .item-thumb img {
@@ -419,6 +446,13 @@ button, input[type="submit"], .next, .back {
 
 @import "../LESS/single";
 
+.related-section {
+  display: none;
+  &#placeAtAGlance {
+    display: block;
+  }
+}
+
 /* 11 TAGS ---------- */
 
 .tag-list {
@@ -449,21 +483,33 @@ button, input[type="submit"], .next, .back {
 .hot {
   .column(6);
 
-  &.map-container, &.events {
-    float: right
+  .section-title {
+    margin-top: 1em;
   }
 
+  &.map-container {
+    img {
+      height: 400px;
+    }
+  }
+
+  &.places {
+    float: left;
+  }
+
+  &.events, &.specials {
+    float: right
+  }
+  
 }
 
-.hot.map-container {
-  .column(12);
-}
-
+/*.hot
+*/
 /* SPECIALS --------- */
 
 .specials.feed {
   .item-title {
-    margin-top: 0.6em;
+    margin-top: 0.4em;
   }
 }
 

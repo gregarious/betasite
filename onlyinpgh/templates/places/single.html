@@ -14,15 +14,11 @@ Context variables:
 
 <div class="item-thumb">
 	<img alt="{{ place.name }}" src="{{ place.image_url }}" />
-	<ul class="utility-nav">
-		{% if is_favorite %}
-			<li><a href="?action=unfav" class="favbutton remove" title="Remove Favorite"></a></li>
-		{% else %}
-			<li><a href="?action=fav" class="favbutton add" title="Add Favorite"></a></li>
-		{% endif %}
-		<li><a href="#" class="report" title="Report a problem"></a></li>
-		<li><a href="#" class="post-to-chatter" title="Post to Chatter"></a></li>
-	</ul>
+	{% if is_favorite %}
+		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite">Remove</a>
+	{% else %}
+		<a href="?action=fav" class="favbutton add" title="Add Favorite">Add</a>
+	{% endif %}
 </div>
 
 <div class="item-content">

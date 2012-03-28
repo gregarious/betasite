@@ -19,7 +19,7 @@ jQuery(document).ready( function($) {
 
 	// Hide/show single place sections
 	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
-
+	
 	$.each(pages, function(i, id) {
 		$('a.'+id).click(function() {
 			$('.related-section').delay(200).hide();

@@ -23,20 +23,26 @@ Context variables:
 <section class="related-section" id="placeAtAGlance">
     <h2 class="section-title">At a glance</h2>
     <p class="description">{{place.description}}</p>
-    <img src="http://www.phlmetropolis.com/Cats.jpg" />
+    <div class="main-container">
+    </div>
+   <!--  <img src="http://www.phlmetropolis.com/Cats.jpg" /> -->
 </section>
 
 <section class="related-section" id="placeEvents">
     <h2 class="section-title">Events</h2>
     {% for item in related_feeds.events %}
-        {% vmrender item 'events/feed_item.html' %}
+        <li class="item">
+            {% vmrender item 'events/feed_item.html' %}
+        </li>
     {% endfor %}
 </section>
 
 <section class="related-section" id="placeSpecials">
     <h2 class="section-title">Specials</h2>
     {% for item in related_feeds.specials %}
-        {% vmrender item 'specials/feed_item.html' %}
+        <li class="item">
+            {% vmrender item 'specials/feed_item.html' %}
+        </li>
     {% endfor %}
 </section>
 
