@@ -11,7 +11,8 @@ Context variables:
     
     (... more to come...)
 {% endcomment %}
-{% load vmrender from vmtags %}
+{% load vmrender from commontags %}
+{% load external_url from commontags %}
 
 <nav class="related-nav">
     <ul>
@@ -44,7 +45,7 @@ Context variables:
             <li>Parking: Street</li>
 
             {% if place_detail.place.url %}
-                <li><a href="{{ place_detail.place.url }}">See our full website</a></li>
+                <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
             {% endif %}
 
         </ul>
