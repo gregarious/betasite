@@ -266,13 +266,20 @@ button, input[type="submit"], .next, .back {
 
 #top-bar {
   .row();
-  .gradient(@lgreen, @dgreen);
+  //.gradient(@lgreen, @dgreen);
+  background: #fff;
+  .b-shadow(0.1em, 0, 0.2em, #000); 
   height: 2em;
-  padding: 0 1em;
+  padding: 0.3em 0 0;
   z-index: 999;
 }
 
 #scene-nav {
+
+  select {
+    display: none;
+  }
+
   height: 5em;
   top: 2em;
   position: relative;
@@ -284,12 +291,13 @@ button, input[type="submit"], .next, .back {
 
   .main-menu {  
     .clearfix;
-    .column(5.5);
+    .column(6.5);
+    
 
     li { 
       a {
         //background: #fff;
-        .column(3);
+        .column(2);
         border: 1px solid #999;
         color: #000;
         font-size: 0.8em;
@@ -321,8 +329,9 @@ button, input[type="submit"], .next, .back {
 }
 
 #logo {
-  .column(3);
-  margin-top: 0.5em;
+  .column(2);
+  height: 5em;
+  padding-top: 0.5em;
 }
 
 /* 4 CONTENT ---------- */
@@ -392,6 +401,13 @@ button, input[type="submit"], .next, .back {
   color: #000;
   text-shadow: 0 0 0.1em #fff;
   margin: 0;
+}
+
+.map-container.feed-page {
+  .row();
+  margin: 1em 0;
+  height: 20em;
+  overflow: hidden;
 }
 
 .item, .single-container {
@@ -536,6 +552,11 @@ button, input[type="submit"], .next, .back {
     .row();
   }
 
+  &.events, &.chatter {
+    margin: 0;
+    float: right;
+  }
+
   &.map-container {
     margin-right: 0;
     margin-top: 1em;
@@ -557,11 +578,10 @@ button, input[type="submit"], .next, .back {
     .feed {
 
       li {
-        .border-box;
-        .clearfix;
+        .column(12);
         border: 1px @lgreen solid;
         padding: 0.7em;
-        margin: 0.5em 0;
+        margin-top: 0.5em;
         font-size: 0.9em;  
         background: #fff /*url(/static/img/calendar-alt.png) 0.5em 1em no-repeat*/;
         .b-shadow(0.1em, 0.1em, 0.1em, #000);
@@ -588,8 +608,6 @@ button, input[type="submit"], .next, .back {
 
 }
 
-/*.hot
-*/
 /* SPECIALS --------- */
 
 .specials.feed {
@@ -738,26 +756,53 @@ button, input[type="submit"], .next, .back {
     font-size: 0.9em;
   }
 
+  
 }
 
 @media screen and (max-width: 480px) {
+
+.main-menu { 
+    display: none; 
+  }
+#top-bar {
+    display: none;
+  }
+  
+  #scene-nav {
+    top: 0;
+    select {
+      display: inline-block;
+      .column_r(6.5);
+      margin-top: 1em;
+    }
+  }
 
   .item-title {
     font-size: 1em;
   }
 
-  #scene-nav .main-menu {
-    .column_r(8);
-  }
-
   #logo {
-    margin-top: 0.5em;
-    .column_nm(4);
+    margin-top: 0;
+    .column_nm(5);
   }
 
   .filter {
     display: none;
   }
+
+  #site-content {
+    top: 5em;
+  } 
+
+  .map-container.hot {
+    height: 150px;
+    overflow: hidden;
+  }
+
+  #scene-nav {
+    height: 4.5em;
+  }
+
 }
 
 /*@media screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
