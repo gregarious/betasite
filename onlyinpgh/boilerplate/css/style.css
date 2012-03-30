@@ -791,9 +791,29 @@ input[type="submit"]:active,
   position: fixed;
   width: 100%;
   z-index: 3;
-  max-width: 1140px;
-  border-bottom: 10px #555 solid;
-  background: url("/static/img_store/paper/eggshell.jpg");
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#e9e9e9));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #cccccc, #e9e9e9);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #cccccc, #e9e9e9);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #cccccc, #e9e9e9);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #cccccc, #e9e9e9);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #cccccc, #e9e9e9);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  -webkit-box-shadow: 0 0 0.3em #000000;
+  -moz-box-shadow: 0 0 0.3em #000000;
+  box-shadow: 0 0 0.3em #000000;
+  border: 2px solid #999;
 }
 #scene-nav select {
   display: none;
@@ -1434,9 +1454,7 @@ input[type="submit"]:active,
 .hot.map-container {
   margin-right: 0;
   margin-top: 1em;
-}
-.hot.map-container img {
-  height: 400px;
+  height: 450px;
 }
 .hot.chatter input[type="text"] {
   float: left;
@@ -1501,6 +1519,10 @@ input[type="submit"]:active,
   box-sizing: border-box;
 }
 /* 12 UTILITY ---------- */
+.map-container {
+  background: url("http://www.scottadito.com/images/googleMap.jpg");
+  height: 200px;
+}
 .row-container {
   width: 100%;
   margin: 0;
@@ -1671,16 +1693,13 @@ a#siteJobs {
   }
 }
 @media screen and (max-width: 768px) {
-  body {
-    background: url("/static/img_store/paper/sand.jpg");
-  }
   #site-content {
     width: 100%;
     margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 1em 0;
+    padding: 1em 0.5em;
   }
   .feed {
     margin: 0.5em 0 0;
@@ -1720,14 +1739,18 @@ a#siteJobs {
   }
 }
 @media screen and (max-width: 480px) {
+  body {
+    background: url("/static/img/textures/sky-body-tex.png");
+  }
   .main-menu {
     display: none;
   }
-  #top-bar {
-    display: none;
-  }
+  /*#top-bar {
+      display: none;
+    }
+    */
   #scene-nav {
-    top: 0;
+    border: none;
   }
   #scene-nav select {
     display: inline-block;
@@ -1754,7 +1777,8 @@ a#siteJobs {
     display: none;
   }
   #site-content {
-    top: 5em;
+    background: none;
+    top: 6em;
   }
   .map-container.hot {
     height: 150px;

@@ -285,9 +285,10 @@ button, input[type="submit"], .next, .back {
   position: relative;
   z-index: 999;
   .fixed();
-  max-width: 1140px;
-  border-bottom: 10px #555 solid;
-  background: url("/static/img_store/paper/eggshell.jpg");
+  //max-width: 1140px;
+  .gradient(#ccc, #e9e9e9);
+  .b-shadow(0, 0, 0.3em, #000); 
+  border: 2px solid #999;
 
   .main-menu {  
     .clearfix;
@@ -560,10 +561,7 @@ button, input[type="submit"], .next, .back {
   &.map-container {
     margin-right: 0;
     margin-top: 1em;
-
-    img {
-      height: 400px;
-    }
+    height: 450px;
   }
 
   &.chatter {
@@ -628,6 +626,11 @@ button, input[type="submit"], .next, .back {
 }
 
 /* 12 UTILITY ---------- */
+
+.map-container {
+  background: url("http://www.scottadito.com/images/googleMap.jpg");
+  height: 200px;
+}
 
 .row-container {
   .row();
@@ -720,21 +723,29 @@ button, input[type="submit"], .next, .back {
 @media screen and (max-width: 768px){
 
   body {
-    background: url("/static/img_store/paper/sand.jpg");
+   // background: url("/static/img_store/paper/limestone.jpg");
   }
 
   #site-content {
     .row();
-    padding: 1em 0;
+    padding: 1em 0.5em;
   }
 
   .feed {
     margin: 0.5em 0 0;
   }
 
+  .feed-header {
+   // background: transparent;
+  }
+
   #site-sidebar {
     .row();
     .clearfix();
+  }
+
+  #site-content {
+    //background: none;
   }
 
   #scene-nav {
@@ -756,20 +767,26 @@ button, input[type="submit"], .next, .back {
     font-size: 0.9em;
   }
 
-  
 }
 
 @media screen and (max-width: 480px) {
 
-.main-menu { 
+  body {
+    background: url("/static/img/textures/sky-body-tex.png");
+  }
+
+  .main-menu { 
     display: none; 
   }
-#top-bar {
+
+  /*#top-bar {
     display: none;
   }
-  
+  */
   #scene-nav {
-    top: 0;
+    //top: 0;
+    border: none;
+
     select {
       display: inline-block;
       .column_r(6.5);
@@ -791,7 +808,8 @@ button, input[type="submit"], .next, .back {
   }
 
   #site-content {
-    top: 5em;
+    background: none;
+    top: 6em;
   } 
 
   .map-container.hot {
