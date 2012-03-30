@@ -590,66 +590,6 @@ input[type="submit"]:active,
   margin-top: 10px;
 }
 /* 4 INPUTS ---------- */
-.grabbit {
-  border: 2px #fff #000;
-  color: #fff;
-  cursor: pointer;
-  background-color: #70a3be;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#70a3be), to(#000000));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #70a3be, #000000);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #70a3be, #000000);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #70a3be, #000000);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #70a3be, #000000);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #70a3be, #000000);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
-  font-weight: bold;
-  margin: 0.5em auto;
-  padding: 1em;
-  text-align: center;
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  width: 50%;
-}
-.grabbit a {
-  color: #fff;
-  text-decoration: none;
-}
-.grabbit:active {
-  background-color: #000000;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#70a3be));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #000000, #70a3be);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #000000, #70a3be);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #000000, #70a3be);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #000000, #70a3be);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #000000, #70a3be);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
-}
 /* 7 FORMS/INPUTS ---------- */
 .btn-primary {
   border: none;
@@ -1728,14 +1668,84 @@ a#siteJobs {
   }
 }
 @media screen and (max-width: 480px) {
+  .btn-primary {
+    padding: 0.3em;
+  }
+  .single-content .map-container {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 1em;
+  }
   body {
-    background: url("/static/img/textures/sky-body-tex.png");
+    background: #8fd36f;
   }
   .main-menu {
     display: none;
   }
-  .related-nav ul li {
+  .related-nav {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 2px #888 solid;
+  }
+  .related-nav ul {
+    *zoom: 1;
+  }
+  .related-nav ul:before,
+  .related-nav ul:after {
+    content: "";
+    display: table;
+  }
+  .related-nav ul:after {
+    clear: both;
+  }
+  .related-nav ul li a {
     float: left;
+    width: 31.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 0.5em 0.5em 0 0;
+    -moz-border-radius: 0.5em 0.5em 0 0;
+    border-radius: 0.5em 0.5em 0 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #aaaaaa;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#dddddd));
+    /* Saf4+, Chrome */
+  
+    background-image: -webkit-linear-gradient(top, #aaaaaa, #dddddd);
+    /* Chrome 10+, Saf5.1+, iOS 5+ */
+  
+    background-image: -moz-linear-gradient(top, #aaaaaa, #dddddd);
+    /* FF3.6 */
+  
+    background-image: -ms-linear-gradient(top, #aaaaaa, #dddddd);
+    /* IE10 */
+  
+    background-image: -o-linear-gradient(top, #aaaaaa, #dddddd);
+    /* Opera 11.10+ */
+  
+    background-image: linear-gradient(top, #aaaaaa, #dddddd);
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+  
+    float: left;
+  }
+  .related-section {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.3em;
   }
   /*#top-bar {
       display: none;
@@ -1754,6 +1764,16 @@ a#siteJobs {
     box-sizing: border-box;
     margin-top: 1em;
   }
+  .item {
+    float: left;
+    width: 97.91666666666666%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #6baa55;
+    margin-bottom: 0.2em;
+  }
   .item-title {
     font-size: 1em;
   }
@@ -1770,7 +1790,8 @@ a#siteJobs {
   }
   #site-content {
     background: none;
-    top: 6em;
+    top: 6.5em;
+    padding: 0;
   }
   .map-container.hot {
     height: 150px;

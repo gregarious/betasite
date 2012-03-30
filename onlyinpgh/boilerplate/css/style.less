@@ -178,27 +178,6 @@ button, input[type="submit"], .next, .back {
 
 /* 4 INPUTS ---------- */
 
-.grabbit {
-    border: 2px #fff #000;
-    color: #fff;
-    cursor: pointer;
-    .gradient(@mblue, #000);
-    font-weight: bold;
-    margin: 0.5em auto;
-    padding: 1em;
-    text-align: center;
-    .rounded(0.3em);
-    width: 50%;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    &:active {
-      .gradient(#000, @mblue);
-    }
-}
 
 /* 7 FORMS/INPUTS ---------- */
 
@@ -775,16 +754,45 @@ button, input[type="submit"], .next, .back {
 
 @media screen and (max-width: 480px) {
 
+  .btn-primary {
+    padding: 0.3em;
+  }
+
+  .single-content {
+    .map-container {
+      .row();
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+  }
+  
   body {
-    background: url("/static/img/textures/sky-body-tex.png");
+    background: @lgreen;
   }
 
   .main-menu { 
     display: none; 
   }
 
-  .related-nav ul li {
-    float: left;
+
+  .related-nav {
+    .row();
+    border-bottom: 2px #888 solid;
+    ul {
+      .clearfix();
+       li a {
+        .column(4);
+        .tabs(0.5em);
+        .gradient(#aaa, #ddd);
+
+        float: left;
+      }
+    }
+  }
+
+  .related-section {
+    .row();
+    padding: 0.3em;
   }
 
   /*#top-bar {
@@ -802,6 +810,13 @@ button, input[type="submit"], .next, .back {
     }
   }
 
+  .item {
+    .column(12);
+    border: 1px solid @mgreen;
+    margin-bottom: 0.2em;
+    
+  }
+
   .item-title {
     font-size: 1em;
   }
@@ -817,7 +832,8 @@ button, input[type="submit"], .next, .back {
 
   #site-content {
     background: none;
-    top: 6em;
+    top: 6.5em;
+    padding: 0;
   } 
 
   .map-container.hot {
