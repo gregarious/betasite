@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.common.core.viewmodels import ViewModel
+from onlyinpgh.common.utils import CSVPickler
 
 from django.contrib.auth.models import User
 
@@ -202,6 +203,8 @@ class Place(models.Model, ViewModel):
     fb_id = models.CharField(max_length=50, blank=True)
     twitter_username = models.CharField(max_length=15, blank=True)
 
+    # listed = models.BooleanField('place publicly listed on site?', default=True)
+
     def __unicode__(self):
         s = self.name
         if self.location and self.location.address:
@@ -219,10 +222,32 @@ class Place(models.Model, ViewModel):
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
+    # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
+    def hours_unpacked(self):
+        return self.hours_as_obj().to_data()
+
+    def hours_as_obj(self):
+        return Hours.deserialize(self.hours)
+
+    def set_hours(self, hours):
+        self.hours = hours.serialize()
+
+    def parking_unpacked(self):
+        return self.parking_as_obj().to_data()
+
+    def parking_as_obj(self):
+        return Parking.deserialize(self.parking)
+
+    def set_parking(self, parking):
+        self.parking = parking.serialize()
+
 
 class PlaceMeta(models.Model):
     '''
     Handles meta information for a Place.
+
+    Current keys in use:
+    - fb_linked_image
     '''
     place = models.ForeignKey(Place)
     key = models.CharField(max_length=32)
@@ -251,6 +276,59 @@ class Favorite(models.Model):
         self.is_favorite = False
         self.save()
 
-
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.place)
+
+
+class Hours(ViewModel):
+    '''
+    Object to handle day, hours pairs.
+    '''
+    def __init__(self):
+        self.day_hours_tuples = []
+        self.pickler = CSVPickler()
+
+    def add_span(self, day, hours):
+        self.day_hours_tuples.append((day, hours))
+
+    def to_data(self):
+        return [(day, hours) for day, hours in self.day_hours_tuples]
+
+    @classmethod
+    def deserialize(cls, data):
+        inst = Hours()
+        inst.day_hours_tuples = inst.pickler.from_csv(data)
+        return inst
+
+    def serialize(self):
+        return self.pickler.to_csv(self.day_hours_tuples)
+
+    def __str__(self):
+        return self.serialize()
+
+
+class Parking(ViewModel):
+    '''
+    Object to handle parking options.
+    '''
+    def __init__(self):
+        self.parking_options = []
+        self.pickler = CSVPickler()
+
+    def add_option(self, option):
+        self.parking_options.append(option)
+
+    def to_data(self):
+        return self.parking_options
+
+    @classmethod
+    def deserialize(cls, data):
+        inst = Parking()
+        inst.parking_options = [row[0] for row in inst.pickler.from_csv(data)]
+        return inst
+
+    def serialize(self):
+        return self.pickler.to_csv([[opt] for opt in self.parking_options])
+
+    def __str__(self):
+        return self.serialize()

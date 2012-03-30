@@ -35,14 +35,23 @@ Context variables:
         <h2 class="section-title">Place Details</h2>
         <ul class="item-details">
             {% if place_detail.place.hours %}
-                <li>{{ place_detail.place.hours }}</li>
+                {# This is ugly and unintuitive. But works for now. #}
+                {% for tuples in place_detail.place.hours_unpacked %}
+                    <li>{{tuples.0}}: {{tuples.1}}</li>
+                {% endfor %}
             {% endif %}
+
+            {% if place_detail.place.parking %}
+                {# This is ugly and unintuitive. But works for now. #}
+                {% for option in place_detail.place.parking_unpacked %}
+                    <li>Parking: {{option}}</li>
+                {% endfor %}
+            {% endif %}
+
 
             {% if place_detail.place.phone %}
                 <li>Phone: {{ place_detail.place.phone }}</li>
             {% endif %}
-
-            <li>Parking: Street</li>
 
             {% if place_detail.place.url %}
                 <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
