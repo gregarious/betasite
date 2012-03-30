@@ -8,41 +8,84 @@ Context variables:
 
 {% load vmrender from vmtags %}
 
+<header class="feed-header">
+    <h2 class="feed-title">NOW in Oakland</h2>
+    <input type="text" placeholder="Filter Hot" />
+</header>
 
-<section class="hot map-container">
-    <img src="http://1.bp.blogspot.com/-nRsXX6nLwTI/TwzZ0ckRG_I/AAAAAAAADJw/xIZCHR-JM2Y/s1600/road-map-of-pittsburgh.jpg" />
-</section>
+<div class="row-container">
+    <section class="hot map-container">
+        <img src="http://www.scottadito.com/images/googleMap.jpg" />
+    </section>
+
+    <section class="hot events">
+        <h3 class="section-title">Upcoming Events</h3>
+        <ul class="feed hot-feed events">
+        {% for item in hot_feeds.events|slice:"3" %}
+            <li class="item">
+            {% vmrender item "events/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+</div>
+<div class="row-container">
+    <section class="hot chatter">
+        <h3 class="section-title">Chatterbox</h3>
+        <form class="make-post">
+            <input type="text" />
+            <input type="submit" value="Post" />
+        </form>
+        <ul class="feed">
+            <li>
+                <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/274923_28102664_6203703_q.jpg" />
+                <div class="post">
+                    Check out Uncle Sam's delicious subs!
+                    <p class="meta">posted 2 hrs ago by <a href="">jealousmuch</a></p>
+                </div>
+            </li>
+
+            <li>
+                <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/50140_307500455_1243983230_q.jpg" />
+                <div class="post">
+                    Cool cool show at Pather Hollow Inn's acoustic fiesta this evening.
+                    <p class="meta">posted 1 day ago by <a href="">chief412</a></p>
+                </div>
+            </li>
+            <li>
+                <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/173785_1149303829_199674474_q.jpg" />
+                <div class="post">
+                    Goddamnn huge pothole on Craig just busted my wheel.
+                    <p class="meta">posted 6 hrs ago by <a href="">sommerTime</a></p>
+                </div>
+            </li>
+            <li>
+                <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/173785_1149303829_199674474_q.jpg" />
+                <div class="post">
+                    Cool pic of catehedral at night - http://imgur.com/L3vo1 - Oakland is a seriously beautiful place if you know where to look :)
+                    <p class="meta">posted 6 hrs ago by <a href="">sommerTime</a></p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="hot specials">
+        <h3 class="section-title">Top Specials</h3>
+        <ul class="feed hot-feed specials">
+        {% for item in hot_feeds.specials|slice:"3" %}
+            <li class="item">
+            {% vmrender item "specials/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+
+    <section class="hot news">
+        <h3 class="section-title">News</h3>
+        <ul class="feed">
+        </ul>
+    </section>
+</div>
 
 
-<section class="hot places">
-    <h3 class="section-title">Hot Spots</h3>
-    <ul class="feed hot-feed places">
-    {% for item in hot_feeds.places|slice:"3" %}
-        <li class="item">
-        {% vmrender item "places/feed_item.html" %}
-        </li>
-    {% endfor %}
-    </ul>
-</section>
 
-<section class="hot specials">
-    <h3 class="section-title">Top Specials</h2>
-    <ul class="feed hot-feed specials">
-    {% for item in hot_feeds.specials|slice:"3" %}
-        <li class="item">
-        {% vmrender item "specials/feed_item.html" %}
-        </li>
-    {% endfor %}
-    </ul>
-</section>
-
-<section class="hot events">
-    <h3 class="section-title">Upcoming Events</h3>
-    <ul class="feed hot-feed events">
-    {% for item in hot_feeds.events|slice:"3" %}
-        <li class="item">
-        {% vmrender item "events/feed_item.html" %}
-        </li>
-    {% endfor %}
-    </ul>
-</section>

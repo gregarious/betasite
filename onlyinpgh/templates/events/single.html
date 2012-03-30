@@ -7,41 +7,40 @@ Context variables:
 	event:	Event ViewModel
 {% endcomment %}
 
-<header class="single-header">
-
-	<div class="item-thumb">
-		<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
-		<div class="favorite">	
-			{% if is_attending %}
-				<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
-					<img src="/static/img_store/icons/black/document-cancel.png" alt="Remove from Calendar"/>
-					Remove from Calendar
-				</a>
-			{% else %}
-				<a href="?action=fav" class="favbutton add" title="Add to Calendar">
-					<img src="/static/img_store/icons/black/document-add.png" alt="Add to Calendar"/>Add to Calendar
-				</a>
-			{% endif %}
+<div class="single-container">
+	<header class="single-header">
+		<div class="item-thumb">
+			<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
+			<div class="favorite">	
+				{% if is_attending %}
+					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
+						<img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/><p class="meta">Remove from Calendar</p>
+					</a>
+				{% else %}
+					<a href="?action=fav" class="favbutton add" title="Add to Calendar">
+						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><p class="meta">Add to Calendar</p>
+					</a>
+				{% endif %}
+			</div>
 		</div>
+
+		<section class="item-content">
+			<h2 class="single-title">{{event.name}}</h2>
+			<ul class="item-details">
+				<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
+				<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+				<li class="address">{{event.place.location.address}}</li>
+			</ul>
+
+			{% include "tags/tag_list.html" with tags=event.tags %}
+
+		</section>
+	</header>
+
+	<div class="single-content">
+		<div class="map-container">
+			<img src="http://newgadgetstop.com/wp-content/uploads/2011/07/Google-Maps-being-offline-doesnt-mean-being-lost.gif" />
+		</div>
+		<p class="description">{{event.description}}</p>
 	</div>
-
-	<section class="item-content">
-		<h2 class="single-title">{{event.name}}</h2>
-
-		<ul class="item-details">
-			<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
-			<li>at <a href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
-			<li class="address">{{event.place.location.address}}</li>
-		</ul>
-
-		{% include "tags/tag_list.html" with tags=event.tags %}
-
-	</section>
-</header>
-
-<div class="single-content">
-	<div class="map-container">
-		<img src="http://i.imgur.com/ZEVRr.jpg" />
-	</div>
-	<p class="description">{{event.description}}</p>
 </div>

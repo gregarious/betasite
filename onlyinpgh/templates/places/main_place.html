@@ -8,10 +8,12 @@ Context variables:
 {% endcomment %}
 {% load vmrender from vmtags %}
 
-<header class="single-header">
-    {% vmrender place_detail 'places/single.html' %}
-</header>
+<div class="single-container">
+	<header class="single-header">
+	    {% vmrender place_detail 'places/single.html' %}
+	</header>
 
-<article class="single-content">
-    {% include 'places/related.html' %}
-</article>
+	<article class="single-content places">
+	    {% include 'places/related.html' %}
+	</article>
+</div>

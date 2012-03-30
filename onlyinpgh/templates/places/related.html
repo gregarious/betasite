@@ -7,25 +7,55 @@ Context variables:
             [EventFeedItem VMs]
         specials:  
             [SpecialFeedItem VMs]
+    place_detail: PlaceDetail VM
+    
     (... more to come...)
 {% endcomment %}
 {% load vmrender from vmtags %}
 
-<nav class="single-nav">
+<nav class="related-nav">
     <ul>
-        <li><a id="placeAtAGlance">Glance</a></li>
-        <li><a id="placeEvents">Events</a></li>
-        <li><a id="placeSpecials">Specials</a></li>
-        <li><a id="placeMap">Map</a></li>
+        <li><a id="placeInfo">Info</a></li>
+        {% if not related_feeds.events %}
+            <li><a id="placeEvents" class="disabled">Events</a></li>
+        {% else %}
+            <li><a id="placeEvents">Events</a></li>
+        {% endif %}
+        {% if not related_feeds.events %}
+            <li><a id="placeSpecials" class="disabled">Specials</a></li>
+        {% else %}
+            <li><a id="placeSpecials">Specials</a></li>
+        {% endif %}
     </ul>
 </nav>
 
-<section class="related-section" id="placeAtAGlance">
-    <h2 class="section-title">At a glance</h2>
-    <p class="description">{{place.description}}</p>
-    <div class="main-container">
-    </div>
-   <!--  <img src="http://www.phlmetropolis.com/Cats.jpg" /> -->
+<section class="related-section" id="placeInfo">
+    <header class="section-header">
+        <h2 class="section-title">Place Details</h2>
+        <ul class="item-details">
+            {% if place_detail.place.hours %}
+                <li>{{ place_detail.place.hours }}</li>
+            {% endif %}
+
+            {% if place_detail.place.phone %}
+                <li>Phone: {{ place_detail.place.phone }}</li>
+            {% endif %}
+
+            <li>Parking: Street</li>
+
+            {% if place_detail.place.url %}
+                <li><a href="{{ place_detail.place.url }}">See our full website</a></li>
+            {% endif %}
+
+        </ul>
+
+        <div class="map-container">
+            <img src="http://newgadgetstop.com/wp-content/uploads/2011/07/Google-Maps-being-offline-doesnt-mean-being-lost.gif" />
+        </div>
+    </header>
+
+    <p class="description">{{place_detail.place.description}}</p>
+
 </section>
 
 <section class="related-section" id="placeEvents">
@@ -44,10 +74,6 @@ Context variables:
             {% vmrender item 'specials/feed_item.html' %}
         </li>
     {% endfor %}
-</section>
-
-<section class="related-section" id="placeMap">
-    <h2 class="section-title">Map</h2>
 </section>
 
 <!--    <section class="single-section" id="{{place_section_id}}">

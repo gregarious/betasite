@@ -18,7 +18,7 @@ jQuery(document).ready( function($) {
 	//$('#site-sidebar').hide().delay(1000).slideDown(500);
 
 	// Hide/show single place sections
-	var pages = ['#placeAtAGlance', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
+	var pages = ['#placeInfo', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 	
 	$.each(pages, function(i, id) {
 		$('a.'+id).click(function() {
