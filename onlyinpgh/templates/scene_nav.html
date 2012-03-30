@@ -1,5 +1,5 @@
-<div id="logo">
-    <img src="/static/img/obid_logo.png" alt="Oakland Logo" />
+<div id="logo">    
+    <img src="/static/img/obid_logo.png" />
 </div>
 
 <ul class="main-menu">
@@ -11,7 +11,6 @@
             </div>
         </a>
     </li>
-
 
     <li>
         <a href="{% url places-feed %}" id="sitePlaces">
@@ -37,4 +36,29 @@
         </a>
     </li>
 
+    <li>
+        <a href="#" id="siteChatter">
+            <div class="container">
+                <div class="menu-item">Chatter</div>
+            </div>    
+        </a>
+    </li>
+
+    <li>
+        <a href="#" id="siteNews">
+            <div class="container">
+                <div class="menu-item">News</div>
+            </div>    
+        </a>
+    </li>
+
 </ul>
+
+<select>
+    <option value="{% url hot %}">Now</option>
+    <option value="{% url places-feed %}">Places</option>
+    <option value="{% url events-feed %}">Events</option>
+    <option value="{% url specials-feed %}">Specials</option>
+    <option value="#">Chatter</option>
+    <option value="#">News</option>
+</select>
