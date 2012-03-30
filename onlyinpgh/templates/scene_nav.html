@@ -1,25 +1,40 @@
-<a id="logo" href="#">
+<div id="logo">
     <img src="/static/img/obid_logo.png" alt="Oakland Logo" />
-</a>
+</div>
 
 <ul class="main-menu">
-    <li><a href="{% url hot %}" id="siteHot">
-        <img src="/static/img_store/icons/black/campfire.png" alt="Hot" />
-        Now</a></li>
-    <li><a href="{% url places-feed %}" id="sitePlaces">
-        <img src="/static/img_store/icons/black/store-front.png" alt="Places" />
-        Places</a></li>
-    <li><a href="{% url events-feed %}" id="siteEvents">
-        <img src="/static/img_store/icons/black/calendar-alt.png" alt="Events" />
-        Events</a></li>
-    <li><a href="{% url specials-feed %}" id="siteSpecials">
-        <img src="/static/img_store/icons/black/tag-special.png" alt="Specials" />
-    Specials</a></li>
-    
-<!-- <li><a href="/chatter/" id="siteChatter">Chatter</a></li>
-<li><a href="/news/" id="siteNews">News</a></li> -->
-</ul>
 
-<div class="site-search">
-    <input type="text" />
-</div>
+    <li>
+        <a href="{% url hot %}" id="siteHot">
+            <div class="container">
+                <div class="menu-item">Now</div>
+            </div>
+        </a>
+    </li>
+
+
+    <li>
+        <a href="{% url places-feed %}" id="sitePlaces">
+            <div class="container">
+                <div class="menu-item">Places</div>
+            </div>    
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url events-feed %}" id="siteEvents">
+            <div class="container">
+                <div class="menu-item">Events</div>
+            </div>
+        </a>
+    </li>
+    
+    <li>
+        <a href="{% url specials-feed %}" id="siteSpecials">
+            <div class="container">
+                <div class="menu-item">Specials</div>
+            </div>    
+        </a>
+    </li>
+
+</ul>

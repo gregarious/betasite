@@ -10,7 +10,10 @@ Context variables:
 
 <header class="feed-header">
     <h2 class="feed-title">NOW in Oakland</h2>
-    <input type="text" placeholder="Filter Hot" />
+    <form class="filter">
+        <input type="search" placeholder="Filter Hot" />
+        <input type="submit" value="filter" />
+    </form>
 </header>
 
 <div class="row-container">
@@ -30,6 +33,16 @@ Context variables:
     </section>
 </div>
 <div class="row-container">
+        <section class="hot specials">
+        <h3 class="section-title">Top Specials</h3>
+        <ul class="feed hot-feed specials">
+        {% for item in hot_feeds.specials|slice:"3" %}
+            <li class="item">
+            {% vmrender item "specials/feed_item.html" %}
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
     <section class="hot chatter">
         <h3 class="section-title">Chatterbox</h3>
         <form class="make-post">
@@ -66,17 +79,6 @@ Context variables:
                     <p class="meta">posted 6 hrs ago by <a href="">sommerTime</a></p>
                 </div>
             </li>
-        </ul>
-    </section>
-
-    <section class="hot specials">
-        <h3 class="section-title">Top Specials</h3>
-        <ul class="feed hot-feed specials">
-        {% for item in hot_feeds.specials|slice:"3" %}
-            <li class="item">
-            {% vmrender item "specials/feed_item.html" %}
-            </li>
-        {% endfor %}
         </ul>
     </section>
 

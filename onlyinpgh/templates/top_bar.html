@@ -1,10 +1,11 @@
-<span id="other-scenes">
-    Related scenes:
-</span>
-<span id="debug-user">
+<div id="site-search">
+	<input type="text" />
+</div>
+
+<div id="debug-user" class="meta">
     {% if user.is_authenticated %}
-        Hey there, <a class="username" href="{% url my-profile %}">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
+        Hey, <a class="username" href="{% url my-profile %}">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
     {% else %}
         <a href="/login">Login</a>
     {% endif %}
-</span>
+</div>

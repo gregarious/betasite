@@ -9,7 +9,10 @@ Context variables:
 
 <header class="feed-header">
 	<h2 class="feed-title">Events</h2>
-	<input class="feed-filter" type="text" placeholder="Filter Events" />
+	<form class="filter">
+		<input type="search" placeholder="Filter Events" />
+		<input type="submit" value="filter" />
+	</form>
 </header>
 <ul class="feed events">
 {% for item in items %}
