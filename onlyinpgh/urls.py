@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
 
+    url(r'^/prelaunch/$', 'onlyinpgh.common.views.page_home', name='home'),
     url(r'^/prelaunch/login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^/prelaunch/signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
     url(r'^/prelaunch/logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/prelaunch/'}),
