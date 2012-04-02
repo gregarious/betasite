@@ -9,7 +9,7 @@ from onlyinpgh.places import abbreviate_state
 
 from django.db import transaction
 
-default_fb_client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
+default_client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
 
 
 class FBPage(object):
@@ -26,7 +26,7 @@ class FBPage(object):
 
         Will throw IOError or FacebookAPIError on failure response.
         '''
-        client = client or default_fb_client
+        client = client or default_client
         try:
             data = client.graph_api_page_request(fbpage_id)
             inst = cls(data)
@@ -140,7 +140,7 @@ class FBPage(object):
         fb_id = self.data.get('id')
         if fb_id is None:
             return None
-        client = self._client or default_fb_client
+        client = self._client or default_client
         return client.graph_api_picture_request(self.data['id'], size=size, timeout=timeout)
 
     def get_field(self, fbkey, default=None):
@@ -178,8 +178,12 @@ def fbpage_to_place(fbpage, save=False):
     p.phone = fbpage.get_field('phone', '').strip()
     p.url = fbpage.get_field('website', '').strip()
 
-    # TODO: download image once media is figured out
-    p.image_url = fbpage.get_picture()
+    try:
+        # TODO: download image once media is figured out
+        p.image_url = fbpage.get_picture()
+    except IOError:
+        # TODO: log network error
+        pass
 
     if save:
         p.save()
@@ -194,7 +198,7 @@ def supplement_place_data(place):
     Note that the Place is not saved here, so if Location is set here,
     it must be saved (and reassigned post-save) manually.
 
-    Beware IOError or FacebookAPIError exceptions.
+    Beware IOErrors and or non-migration FacebookAPIErrors.
     '''
     if not place.fb_id:
         raise AttributeError("This Place has no fb_id set!")
