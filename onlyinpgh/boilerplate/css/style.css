@@ -331,10 +331,9 @@ p {
 .meta {
   font-size: 0.9em;
 }
-.address,
-.datetime {
+/*.address, .datetime {
   font-weight: bold;
-}
+}*/
 .description {
   margin-top: 0.3em;
   font-color: #888;
@@ -401,7 +400,7 @@ a {
   color: #4b7699;
 }
 a:hover {
-  color: #8fd36f;
+  color: #303f14;
 }
 a:active {
   color: #2c525d;
@@ -451,7 +450,7 @@ input[type="password"],
 input[type="email"],
 input[type="search"],
 textarea {
-  border: 1px solid #8fd36f;
+  border: 1px solid #303f14;
   background: #f9f9f9;
   font-size: 1em;
   width: 93%;
@@ -871,16 +870,8 @@ input[type="submit"]:active,
   float: left;
 }
 .feed {
-  *zoom: 1;
-  margin: 2% 2% 0;
-}
-.feed:before,
-.feed:after {
-  content: "";
-  display: table;
-}
-.feed:after {
   clear: both;
+  margin: 2% 2% 0;
 }
 .item {
   float: left;
@@ -1061,7 +1052,7 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 1em 0;
-  height: 20em;
+  height: 300px;
   overflow: hidden;
 }
 .item,
@@ -1092,15 +1083,13 @@ input[type="submit"]:active,
   box-shadow: 0.05em 0.05em 0.05em #555555;
 }
 /* 10 NAVIGATION ---------- */
-#profile-nav,
 .related-nav {
-  width: 8%;
+  width: 12%;
   float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#profile-nav li a,
 .related-nav li a {
   display: block;
   -webkit-border-radius: 0.5em 0 0 0.5em;
@@ -1109,23 +1098,23 @@ input[type="submit"]:active,
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background-color: #8fd36f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#8fd36f), to(#6baa55));
+  background-color: #303f14;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#303f14), to(#6baa55));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #8fd36f, #6baa55);
+  background-image: -webkit-linear-gradient(top, #303f14, #6baa55);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #8fd36f, #6baa55);
+  background-image: -moz-linear-gradient(top, #303f14, #6baa55);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #8fd36f, #6baa55);
+  background-image: -ms-linear-gradient(top, #303f14, #6baa55);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #8fd36f, #6baa55);
+  background-image: -o-linear-gradient(top, #303f14, #6baa55);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #8fd36f, #6baa55);
+  background-image: linear-gradient(top, #303f14, #6baa55);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
   margin: 0.3em 0;
@@ -1264,7 +1253,7 @@ input[type="submit"]:active,
 }
 .related-section {
   display: none;
-  width: 92%;
+  width: 88%;
   float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1298,6 +1287,8 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  border-bottom: 1px solid #999;
+  margin-bottom: 0.3em;
 }
 .related-section#placeInfo .item-details li {
   margin-bottom: 0.5em;
@@ -1309,7 +1300,11 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 0 0 1em;
+}
+.single-content .map-container {
+  margin-left: 0.7em;
+  margin-bottom: 0.7em;
 }
 /* 11 TAGS ---------- */
 .tag-list {
@@ -1405,7 +1400,7 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px #8fd36f solid;
+  border: 1px #303f14 solid;
   padding: 0.7em;
   margin-top: 0.5em;
   font-size: 0.9em;
@@ -1428,15 +1423,12 @@ input[type="submit"]:active,
   margin-top: 0.4em;
 }
 /* 11 ACTIONS ---------- */
-.favorite .meta {
-  float: right;
-  width: 72.91666666666666%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+.favbutton {
+  display: block;
+  padding: 0.5em;
+  height: 30px;
 }
-.favorite img {
+.favbutton img {
   float: left;
   width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
@@ -1471,7 +1463,7 @@ input[type="submit"]:active,
   z-index: 3;
 }
 .current-page {
-  background-color: #8fd36f !important;
+  background-color: #303f14 !important;
 }
 .has-special {
   float: right;
@@ -1568,9 +1560,6 @@ a#siteJobs {
 .favbutton.remove {
   background: #ffffff url('/static/img_store/icons/black/heart-cancel.png') no-repeat center;
 }
-.favbutton.add {
-  background: #ffffff url('/static/img_store/icons/black/heart-add.png') no-repeat center;
-}
 .report {
   background: #ffffff url('/static/img_store/icons/black/alert.png') no-repeat center;
 }
@@ -1595,92 +1584,9 @@ a#siteJobs {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .main-menu {
-    float: left;
-    width: 52.083333333333336%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  #logo {
-    float: left;
-    width: 10.416666666666668%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-top: 1em;
-  }
-  .utility {
-    float: left;
-    width: 31.25%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  #site-sidebar {
-    float: left;
-    width: 31.25%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .single-title {
-    font-size: 1.5em;
-  }
-  .hot {
-    float: left;
-    width: 97.91666666666666%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-}
-@media screen and (max-width: 768px) {
-  .utility {
-    width: 100%;
-    margin: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  #site-content {
-    width: 100%;
-    margin: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 1em 0.5em;
-    top: 7em;
-  }
-  .feed {
-    margin: 0.5em 0 0;
-  }
-  #site-sidebar {
-    width: 100%;
-    margin: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    *zoom: 1;
-  }
-  #site-sidebar:before,
-  #site-sidebar:after {
-    content: "";
-    display: table;
-  }
-  #site-sidebar:after {
-    clear: both;
-  }
-  #scene-nav {
-    top: 2em;
-  }
   #scene-nav .main-menu {
     float: left;
-    width: 72.91666666666666%;
+    width: 47.91666666666667%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1688,65 +1594,14 @@ a#siteJobs {
   }
   #logo {
     float: left;
-    width: 22.916666666666664%;
+    width: 14.583333333333334%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
   #logo img {
-    margin-top: 0.3em;
-  }
-  .item-details {
-    font-size: 0.9em;
-  }
-  .utility {
-    position: absolute;
-    bottom: 4em;
-    background: #fff;
-    padding: 0.5em;
-    border-bottom: 1px solid #888;
-  }
-  .utility #site-search {
-    float: right;
-    width: 39.58333333333333%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .utility #site-search input {
-    padding: 0.2em;
-  }
-  .utility #debug-user {
-    float: left;
-    width: 56.25%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-top: 1em;
-    text-align: left;
-  }
-}
-@media screen and (max-width: 480px) {
-  body {
-    background: #8fd36f;
-  }
-  .btn-primary {
-    padding: 0.3em;
-  }
-  .single-content .map-container {
-    width: 100%;
-    margin: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    overflow: hidden;
-    margin-bottom: 1em;
-  }
-  .main-menu {
-    display: none;
+    height: 100%;
   }
   .related-nav {
     width: 100%;
@@ -1801,6 +1656,164 @@ a#siteJobs {
   
     float: left;
   }
+  .related-nav#profile-nav ul li a {
+    float: left;
+    width: 22.916666666666664%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .related-section {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .utility {
+    float: left;
+    width: 31.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #site-sidebar {
+    float: left;
+    width: 31.25%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .single-title {
+    font-size: 1.5em;
+  }
+  .hot {
+    float: left;
+    width: 97.91666666666666%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .hot.map-container {
+    height: 200px;
+  }
+  .map-container.feed-page,
+  .map-container.hot {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #site-content.single {
+    margin-top: 0;
+  }
+  .utility {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #site-content {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1em 0.5em;
+    top: 7em;
+  }
+  .feed {
+    margin: 0.5em 0 0;
+    clear: both;
+  }
+  #site-sidebar {
+    display: none;
+  }
+  #scene-nav {
+    top: 2em;
+  }
+  #scene-nav .main-menu {
+    float: left;
+    width: 72.91666666666666%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #logo {
+    float: left;
+    width: 22.916666666666664%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #logo img {
+    margin-top: 0.3em;
+  }
+  .item-details {
+    font-size: 0.9em;
+  }
+  .utility {
+    position: absolute;
+    bottom: 4.5em;
+    background: #303f14;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+    color: #fff;
+  }
+  .utility #site-search {
+    float: right;
+    width: 39.58333333333333%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .utility #site-search input {
+    padding: 0.1em;
+    margin: 0;
+  }
+  .utility #debug-user {
+    float: left;
+    width: 56.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 550px) {
+  .map-container.feed-page,
+  .map-container.hot {
+    margin: 0;
+  }
+  .feed-header {
+    display: none;
+  }
+  .utility {
+    bottom: 4em;
+  }
+  .btn-primary {
+    padding: 0.3em;
+  }
+  .single-content .map-container {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+  }
+  .main-menu {
+    display: none;
+  }
   .related-section {
     width: 100%;
     margin: 0;
@@ -1809,10 +1822,13 @@ a#siteJobs {
     box-sizing: border-box;
     padding: 0.3em;
   }
-  /*#top-bar {
-      display: none;
-    }
-    */
+  .related-section#placeInfo .item-details {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   #scene-nav {
     border: none;
   }
@@ -1827,13 +1843,12 @@ a#siteJobs {
     margin-top: 1.5em;
   }
   .item {
-    float: left;
-    width: 97.91666666666666%;
-    margin: 0 1.0416666666666665%;
+    width: 100%;
+    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    margin-bottom: 0.2em;
+    border-bottom: none;
   }
   .item-title {
     font-size: 1em;
@@ -1866,9 +1881,6 @@ a#siteJobs {
     height: 4.5em;
   }
 }
-/*@media screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
-  background: green;
-}*/
 /* Styles for desktop and large screen ----------- */
 @media only screen and (min-width: 1280px) {
   

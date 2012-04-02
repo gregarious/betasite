@@ -13,9 +13,9 @@ Context variables:
 <div class="item-thumb">
 	<img class="thumbnail" alt="{{ place.name }}" src="{{ place.image_url }}" />
 	{% if is_favorite %}
-		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><p class="meta">Remove from Favorites</p></a>
+		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
 	{% else %}
-		<a href="?action=fav" class="favbutton add" title="Add Favorite"><img src="/static/img_store/icons/black/heart-add.png"><p class="meta">Add to Favorites</p></a>
+		<a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="meta">Favorite</p></span></a>
 	{% endif %}
 </div>
 

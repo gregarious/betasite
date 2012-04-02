@@ -33,6 +33,10 @@ Context variables:
 <section class="related-section" id="placeInfo">
     <header class="section-header">
         <h2 class="section-title">Place Details</h2>
+        
+        <div class="map-container">
+            <!-- Background image stand in -->
+        </div>
         <ul class="item-details">
             {% if place_detail.place.hours %}
                 {# This is ugly and unintuitive. But works for now. #}
@@ -48,7 +52,6 @@ Context variables:
                 {% endfor %}
             {% endif %}
 
-
             {% if place_detail.place.phone %}
                 <li>Phone: {{ place_detail.place.phone }}</li>
             {% endif %}
@@ -59,12 +62,10 @@ Context variables:
 
         </ul>
 
-        <div class="map-container">
-            <img src="http://newgadgetstop.com/wp-content/uploads/2011/07/Google-Maps-being-offline-doesnt-mean-being-lost.gif" />
-        </div>
+        <p class="description">{{place_detail.place.description}}</p>
     </header>
 
-    <p class="description">{{place_detail.place.description}}</p>
+    
 
 </section>
 
