@@ -1,5 +1,5 @@
 from onlyinpgh.places.models import Place, Location, Hours, Parking
-from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient
+from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient, FacebookAPIError
 from onlyinpgh.tokens import FACEBOOK_ACCESS_TOKEN
 
 import re
@@ -9,16 +9,15 @@ from onlyinpgh.places import abbreviate_state
 
 from django.db import transaction
 
+default_fb_client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
+
 
 class FBPage(object):
-    def __init__(self, fbpage_data, valid=None, status_message='', dtretrieved=datetime.datetime.now()):
+    def __init__(self, fbpage_data, valid=None, api_error=None):
         self.data = fbpage_data
-        if valid is None and self.data:
-            self.valid = True
-        else:
-            self.valid = False
-        self.status_message = status_message
-        self.dtretrieved = dtretrieved
+        self.valid = (valid is True) or (valid is None and self.data)
+        self.api_error = api_error
+        self._client = None
 
     @classmethod
     def import_live(cls, fbpage_id, client=None):
@@ -27,10 +26,13 @@ class FBPage(object):
 
         Will throw IOError or FacebookAPIError on failure response.
         '''
-        if not client:
-            client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
+        client = client or default_fb_client
+        try:
             data = client.graph_api_page_request(fbpage_id)
-        inst = cls(data)
+            inst = cls(data)
+        except FacebookAPIError as e:
+            inst = cls(data, valid=False, api_error=e)
+        inst._client = client
         return inst
 
     def get_hours(self):
@@ -133,6 +135,14 @@ class FBPage(object):
                         latitude=fb_loc.get('latitude'),
                         longitude=fb_loc.get('longitude'))
 
+    def get_picture(self, size='normal', timeout=None):
+        '''Will query live service, may return IO/FB exceptions'''
+        fb_id = self.data.get('id')
+        if fb_id is None:
+            return None
+        client = self._client or default_fb_client
+        return client.graph_api_picture_request(self.data['id'], size=size, timeout=timeout)
+
     def get_field(self, fbkey, default=None):
         '''returns the data contained in the FB data specified by the fbkey'''
         return self.data.get(fbkey, default)
@@ -163,7 +173,7 @@ def fbpage_to_place(fbpage, save=False):
     p.url = fbpage.get_field('website', '').strip()
 
     # TODO: download image once media is figured out
-    p.image_url = fbpage.get_field('picture').replace('_s.jpg', '_n.jpg').strip()
+    p.image_url = fbpage.get_picture()
 
     if save:
         p.save()
@@ -183,10 +193,24 @@ def supplement_place_data(place):
     if not place.fb_id:
         raise AttributeError("This Place has no fb_id set!")
 
-    fbpage = FBPage.import_live(place.fb_id)
+    try:
+        fbpage = FBPage.import_live(place.fb_id)
+    except FacebookAPIError as fb_error:
+        # check for migration errors and fix them right now
+        if fb_error.is_migration_error():
+            new_fb_id = fb_error.get_migration_destination()
+            print 'migration!', place.fb_id, 'to', new_fb_id
+            if new_fb_id:
+                place.fb_id = new_fb_id
+                place.save()
+            # try grabbing the page again
+            fbpage = FBPage.import_live(place.fb_id)
+        else:
+            raise
+
     fbplace = fbpage_to_place(fbpage, save=False)
 
-    attrs = ('name', 'description', 'phone', 'url', 'hours', 'parking')
+    attrs = ('name', 'description', 'phone', 'url', 'image_url', 'hours', 'parking')
     for attr_name in attrs:
         fb_attr = getattr(fbplace, attr_name)
         if fb_attr and not getattr(place, attr_name):

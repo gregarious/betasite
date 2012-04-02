@@ -2,7 +2,7 @@ import urllib
 import urllib2
 import json
 import time
-import socket
+import re
 
 
 class FacebookAPIError(IOError):
@@ -14,10 +14,26 @@ class FacebookAPIError(IOError):
     - 21: page migrated
     '''
     def __init__(self, message='', error_dict={}):
-        self.code = error_dict.get('code', '')
+        self.code = str(error_dict.get('code', ''))
         self.type = error_dict.get('type', 'Unknown')
-        message = error_dict.get('message', message)
-        super(FacebookAPIError, self).__init__(message)
+        super(FacebookAPIError, self).__init__(error_dict.get('message', message))
+
+    def is_migration_error(self):
+        return self.code == '21'
+
+    def get_migration_destination(self):
+        '''
+        If the given error is a migration error, return the new ID that
+        the page has moved to.
+        '''
+        if not self.is_migration_error():
+            return None
+        match = re.search('ID (\d+) was migrated to page ID (\d+)', self.message)
+        if match:
+            return match.group(2)
+        else:
+            # TODO: need to notify admin that the migration error message may have changed
+            return None
 
 
 def get_basic_access_token(client_id, client_secret):
@@ -81,7 +97,6 @@ class GraphAPIClient(object):
         elif response is None:
             raise FacebookAPIError(u"null response returned")
         elif 'error' in response:
-            print response
             raise FacebookAPIError(error_dict=response['error'])
         # TODO: remember to handle error code 21!
         return response
