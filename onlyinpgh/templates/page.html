@@ -5,6 +5,7 @@ Template for any Scenable webpage.
 
 Context variables:
     - topbar: rendered content in top_bar.html
+    - scenenav: rendered content in scene_nav.html
     - main: rendered main page content
     - sidebar: rendered content in sidebar.html
     - footer: rendered content in footer.html
@@ -19,6 +20,9 @@ page.html to handle the basic skeleton for page content.
 <nav id="top-bar" class="fixed">
 	<div class="wrap">
 		{{ topbar }}
+        <nav id="scene-nav" class="fixed">
+            {{ scenenav }}
+        </nav>
 	</div>
 </nav>
 <div class="wrap">
