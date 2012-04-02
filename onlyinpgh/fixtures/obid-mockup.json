@@ -10445,7 +10445,7 @@
       "fb_id": "191711817521372", 
       "hours": "Mon-Fri,10:00am - 05:30pm\nSat-Sun,Closed\n", 
       "phone": "(412) 687-3867", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161897_191711817521372_62112634_s.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash3/161897_191711817521372_62112634_s.jpg", 
       "location": 175, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -10968,17 +10968,17 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 284, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "value": "2012-04-02T19:04:23.168921", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 6, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 284, 
-      "value": "2012-04-02T18:30:51.537560", 
-      "key": "fb_last_synced"
+      "place": 152, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
@@ -10986,7 +10986,7 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 152, 
-      "value": "url", 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -10995,16 +10995,16 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 152, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "value": "2012-04-02T19:04:23.924564", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 9, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 152, 
-      "value": "fb_id", 
+      "place": 249, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11012,9 +11012,9 @@
     "pk": 10, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 152, 
-      "value": "2012-04-02T18:30:52.348222", 
-      "key": "fb_last_synced"
+      "place": 249, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
@@ -11022,7 +11022,7 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 249, 
-      "value": "description", 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11031,7 +11031,7 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 249, 
-      "value": "image_url", 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11040,16 +11040,16 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 249, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "value": "2012-04-02T19:04:25.130516", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 14, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 249, 
-      "value": "parking", 
+      "place": 207, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11057,40 +11057,13 @@
     "pk": 15, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 249, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 16, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 249, 
-      "value": "2012-04-02T18:30:54.580235", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 17, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 207, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 18, 
-    "model": "places.placemeta", 
-    "fields": {
       "place": 207, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
   {
-    "pk": 19, 
+    "pk": 16, 
     "model": "places.placemeta", 
     "fields": {
       "place": 207, 
@@ -11099,25 +11072,16 @@
     }
   }, 
   {
-    "pk": 20, 
+    "pk": 17, 
     "model": "places.placemeta", 
     "fields": {
       "place": 207, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 21, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 207, 
-      "value": "2012-04-02T18:30:55.468247", 
+      "value": "2012-04-02T19:04:25.932249", 
       "key": "fb_last_synced"
     }
   }, 
   {
-    "pk": 22, 
+    "pk": 18, 
     "model": "places.placemeta", 
     "fields": {
       "place": 113, 
@@ -11126,7 +11090,7 @@
     }
   }, 
   {
-    "pk": 23, 
+    "pk": 19, 
     "model": "places.placemeta", 
     "fields": {
       "place": 113, 
@@ -11135,25 +11099,16 @@
     }
   }, 
   {
-    "pk": 24, 
+    "pk": 20, 
     "model": "places.placemeta", 
     "fields": {
       "place": 113, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 25, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 113, 
-      "value": "2012-04-02T18:30:56.459927", 
+      "value": "2012-04-02T19:04:26.807073", 
       "key": "fb_last_synced"
     }
   }, 
   {
-    "pk": 26, 
+    "pk": 21, 
     "model": "places.placemeta", 
     "fields": {
       "place": 225, 
@@ -11162,10 +11117,55 @@
     }
   }, 
   {
-    "pk": 27, 
+    "pk": 22, 
     "model": "places.placemeta", 
     "fields": {
       "place": 225, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 225, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 225, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 225, 
+      "value": "2012-04-02T19:04:27.793336", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 205, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 205, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11174,7 +11174,7 @@
     "pk": 28, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 225, 
+      "place": 205, 
       "value": "hours", 
       "key": "fb_synced_field"
     }
@@ -11183,76 +11183,13 @@
     "pk": 29, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 225, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 205, 
+      "value": "2012-04-02T19:04:28.615440", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 30, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 225, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 31, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 225, 
-      "value": "2012-04-02T18:30:57.417068", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 32, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 205, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 33, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 205, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 205, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 205, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 205, 
-      "value": "2012-04-02T18:30:58.474297", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 37, 
     "model": "places.placemeta", 
     "fields": {
       "place": 232, 
@@ -11261,7 +11198,7 @@
     }
   }, 
   {
-    "pk": 38, 
+    "pk": 31, 
     "model": "places.placemeta", 
     "fields": {
       "place": 232, 
@@ -11270,11 +11207,74 @@
     }
   }, 
   {
-    "pk": 39, 
+    "pk": 32, 
     "model": "places.placemeta", 
     "fields": {
       "place": 232, 
-      "value": "fb_id", 
+      "value": "2012-04-02T19:04:29.415456", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 265, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 265, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 265, 
+      "value": "2012-04-02T19:04:30.354057", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 233, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 233, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 233, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 233, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11282,8 +11282,8 @@
     "pk": 40, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 232, 
-      "value": "2012-04-02T18:30:59.318987", 
+      "place": 233, 
+      "value": "2012-04-02T19:04:31.325467", 
       "key": "fb_last_synced"
     }
   }, 
@@ -11291,7 +11291,7 @@
     "pk": 41, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 265, 
+      "place": 235, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -11300,7 +11300,7 @@
     "pk": 42, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 265, 
+      "place": 235, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11309,8 +11309,8 @@
     "pk": 43, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 265, 
-      "value": "fb_id", 
+      "place": 235, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11318,26 +11318,26 @@
     "pk": 44, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 265, 
-      "value": "2012-04-02T18:31:00.256608", 
-      "key": "fb_last_synced"
+      "place": 235, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 45, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 235, 
+      "value": "2012-04-02T19:04:32.144536", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 46, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "image_url", 
+      "place": 260, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11345,8 +11345,8 @@
     "pk": 47, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "hours", 
+      "place": 260, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11354,8 +11354,8 @@
     "pk": 48, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "parking", 
+      "place": 260, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11363,8 +11363,8 @@
     "pk": 49, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "fb_id", 
+      "place": 260, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11372,8 +11372,8 @@
     "pk": 50, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "2012-04-02T18:31:01.090290", 
+      "place": 260, 
+      "value": "2012-04-02T19:04:32.975800", 
       "key": "fb_last_synced"
     }
   }, 
@@ -11381,7 +11381,7 @@
     "pk": 51, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
+      "place": 17, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -11390,7 +11390,7 @@
     "pk": 52, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
+      "place": 17, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11399,17 +11399,17 @@
     "pk": 53, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 17, 
+      "value": "2012-04-02T19:04:33.771459", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 54, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
-      "value": "parking", 
+      "place": 48, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11417,8 +11417,8 @@
     "pk": 55, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
-      "value": "fb_id", 
+      "place": 48, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11426,17 +11426,17 @@
     "pk": 56, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
-      "value": "2012-04-02T18:31:02.446046", 
-      "key": "fb_last_synced"
+      "place": 48, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 57, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "description", 
+      "place": 48, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11444,17 +11444,17 @@
     "pk": 58, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 48, 
+      "value": "2012-04-02T19:04:34.588790", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 59, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "hours", 
+      "place": 67, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11462,8 +11462,8 @@
     "pk": 60, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "parking", 
+      "place": 67, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11471,26 +11471,26 @@
     "pk": 61, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 67, 
+      "value": "2012-04-02T19:04:35.373789", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 62, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "2012-04-02T18:31:03.394844", 
-      "key": "fb_last_synced"
+      "place": 35, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 63, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 17, 
-      "value": "description", 
+      "place": 35, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11498,7 +11498,7 @@
     "pk": 64, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 17, 
+      "place": 35, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11507,26 +11507,26 @@
     "pk": 65, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 17, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 35, 
+      "value": "2012-04-02T19:04:36.215425", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 66, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 17, 
-      "value": "2012-04-02T18:31:04.228221", 
-      "key": "fb_last_synced"
+      "place": 45, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 67, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "description", 
+      "place": 45, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11534,17 +11534,17 @@
     "pk": 68, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 45, 
+      "value": "2012-04-02T19:04:38.135541", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 69, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "hours", 
+      "place": 54, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11552,8 +11552,8 @@
     "pk": 70, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "parking", 
+      "place": 54, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11561,8 +11561,8 @@
     "pk": 71, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "fb_id", 
+      "place": 54, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11570,26 +11570,26 @@
     "pk": 72, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "2012-04-02T18:31:05.692071", 
-      "key": "fb_last_synced"
+      "place": 54, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 73, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 67, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 54, 
+      "value": "2012-04-02T19:04:38.891381", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 74, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 67, 
-      "value": "image_url", 
+      "place": 184, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11597,8 +11597,8 @@
     "pk": 75, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 67, 
-      "value": "fb_id", 
+      "place": 184, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11606,26 +11606,26 @@
     "pk": 76, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 67, 
-      "value": "2012-04-02T18:31:06.751325", 
-      "key": "fb_last_synced"
+      "place": 184, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 77, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 184, 
+      "value": "2012-04-02T19:04:40.085774", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 78, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
-      "value": "url", 
+      "place": 200, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11633,7 +11633,7 @@
     "pk": 79, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
+      "place": 200, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11642,8 +11642,8 @@
     "pk": 80, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
-      "value": "fb_id", 
+      "place": 200, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11651,26 +11651,26 @@
     "pk": 81, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
-      "value": "2012-04-02T18:31:07.620146", 
-      "key": "fb_last_synced"
+      "place": 200, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 82, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 45, 
-      "value": "url", 
-      "key": "fb_synced_field"
+      "place": 200, 
+      "value": "2012-04-02T19:04:40.859613", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 83, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 45, 
-      "value": "image_url", 
+      "place": 128, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11678,8 +11678,8 @@
     "pk": 84, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 45, 
-      "value": "fb_id", 
+      "place": 128, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11687,26 +11687,26 @@
     "pk": 85, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 45, 
-      "value": "2012-04-02T18:31:09.515747", 
-      "key": "fb_last_synced"
+      "place": 128, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 86, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 128, 
+      "value": "2012-04-02T19:04:41.630699", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 87, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "image_url", 
+      "place": 1, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11714,8 +11714,8 @@
     "pk": 88, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "hours", 
+      "place": 1, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11723,17 +11723,17 @@
     "pk": 89, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 1, 
+      "value": "2012-04-02T19:04:42.430783", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 90, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "fb_id", 
+      "place": 155, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11741,17 +11741,17 @@
     "pk": 91, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "2012-04-02T18:31:10.366221", 
-      "key": "fb_last_synced"
+      "place": 155, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 92, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "description", 
+      "place": 155, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11759,8 +11759,8 @@
     "pk": 93, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "image_url", 
+      "place": 155, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11768,17 +11768,17 @@
     "pk": 94, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 155, 
+      "value": "2012-04-02T19:04:43.213087", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 95, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "fb_id", 
+      "place": 85, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11786,17 +11786,17 @@
     "pk": 96, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "2012-04-02T18:31:11.841116", 
-      "key": "fb_last_synced"
+      "place": 85, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 97, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "description", 
+      "place": 85, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11804,8 +11804,8 @@
     "pk": 98, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "image_url", 
+      "place": 85, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11813,17 +11813,17 @@
     "pk": 99, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 85, 
+      "value": "2012-04-02T19:04:43.984456", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 100, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "parking", 
+      "place": 228, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11831,8 +11831,8 @@
     "pk": 101, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "fb_id", 
+      "place": 228, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11840,25 +11840,25 @@
     "pk": 102, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "2012-04-02T18:31:12.760050", 
-      "key": "fb_last_synced"
+      "place": 228, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 103, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 228, 
+      "value": "2012-04-02T19:04:44.778021", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 104, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
+      "place": 215, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -11867,17 +11867,17 @@
     "pk": 105, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 215, 
+      "value": "2012-04-02T19:04:45.658112", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 106, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
-      "value": "fb_id", 
+      "place": 24, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11885,17 +11885,17 @@
     "pk": 107, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
-      "value": "2012-04-02T18:31:13.849513", 
-      "key": "fb_last_synced"
+      "place": 24, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 108, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 1, 
-      "value": "description", 
+      "place": 24, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11903,17 +11903,17 @@
     "pk": 109, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 1, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 24, 
+      "value": "2012-04-02T19:04:46.548097", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 110, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 1, 
-      "value": "fb_id", 
+      "place": 204, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11921,26 +11921,26 @@
     "pk": 111, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 1, 
-      "value": "2012-04-02T18:31:14.701679", 
-      "key": "fb_last_synced"
+      "place": 204, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 112, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 204, 
+      "value": "2012-04-02T19:04:47.378769", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 113, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "image_url", 
+      "place": 97, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11948,8 +11948,8 @@
     "pk": 114, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "hours", 
+      "place": 97, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11957,8 +11957,8 @@
     "pk": 115, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "parking", 
+      "place": 97, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11966,8 +11966,8 @@
     "pk": 116, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "fb_id", 
+      "place": 97, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -11975,8 +11975,8 @@
     "pk": 117, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "2012-04-02T18:31:15.555343", 
+      "place": 97, 
+      "value": "2012-04-02T19:04:48.298541", 
       "key": "fb_last_synced"
     }
   }, 
@@ -11984,7 +11984,7 @@
     "pk": 118, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
+      "place": 168, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -11993,8 +11993,8 @@
     "pk": 119, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "image_url", 
+      "place": 168, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12002,8 +12002,8 @@
     "pk": 120, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "hours", 
+      "place": 168, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12011,8 +12011,8 @@
     "pk": 121, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "parking", 
+      "place": 168, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12020,8 +12020,8 @@
     "pk": 122, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "fb_id", 
+      "place": 168, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12029,8 +12029,8 @@
     "pk": 123, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "2012-04-02T18:31:16.525827", 
+      "place": 168, 
+      "value": "2012-04-02T19:04:49.184393", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12038,7 +12038,7 @@
     "pk": 124, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
+      "place": 136, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12047,8 +12047,8 @@
     "pk": 125, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
-      "value": "image_url", 
+      "place": 136, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12056,8 +12056,8 @@
     "pk": 126, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
-      "value": "hours", 
+      "place": 136, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12065,8 +12065,8 @@
     "pk": 127, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
-      "value": "fb_id", 
+      "place": 136, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12074,26 +12074,26 @@
     "pk": 128, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
-      "value": "2012-04-02T18:31:17.370127", 
-      "key": "fb_last_synced"
+      "place": 136, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 129, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 215, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 136, 
+      "value": "2012-04-02T19:04:51.264624", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 130, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 215, 
-      "value": "fb_id", 
+      "place": 213, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12101,16 +12101,16 @@
     "pk": 131, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 215, 
-      "value": "2012-04-02T18:31:18.175320", 
-      "key": "fb_last_synced"
+      "place": 213, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 132, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
+      "place": 213, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12119,7 +12119,7 @@
     "pk": 133, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
+      "place": 213, 
       "value": "hours", 
       "key": "fb_synced_field"
     }
@@ -12128,7 +12128,7 @@
     "pk": 134, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
+      "place": 213, 
       "value": "parking", 
       "key": "fb_synced_field"
     }
@@ -12137,25 +12137,25 @@
     "pk": 135, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 213, 
+      "value": "2012-04-02T19:04:53.624163", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 136, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
-      "value": "2012-04-02T18:31:19.014257", 
-      "key": "fb_last_synced"
+      "place": 117, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 137, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 204, 
+      "place": 117, 
       "value": "url", 
       "key": "fb_synced_field"
     }
@@ -12164,7 +12164,7 @@
     "pk": 138, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 204, 
+      "place": 117, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12173,8 +12173,8 @@
     "pk": 139, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 204, 
-      "value": "fb_id", 
+      "place": 117, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12182,8 +12182,8 @@
     "pk": 140, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 204, 
-      "value": "2012-04-02T18:31:20.012448", 
+      "place": 117, 
+      "value": "2012-04-02T19:04:54.450895", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12191,7 +12191,7 @@
     "pk": 141, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
+      "place": 196, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12200,7 +12200,7 @@
     "pk": 142, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
+      "place": 196, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12209,17 +12209,17 @@
     "pk": 143, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 196, 
+      "value": "2012-04-02T19:04:56.342389", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 144, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
-      "value": "parking", 
+      "place": 243, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12227,8 +12227,8 @@
     "pk": 145, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
-      "value": "fb_id", 
+      "place": 243, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12236,8 +12236,8 @@
     "pk": 146, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
-      "value": "2012-04-02T18:31:20.930735", 
+      "place": 243, 
+      "value": "2012-04-02T19:04:57.316513", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12245,7 +12245,7 @@
     "pk": 147, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
+      "place": 70, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12254,8 +12254,8 @@
     "pk": 148, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "url", 
+      "place": 70, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12263,17 +12263,17 @@
     "pk": 149, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 70, 
+      "value": "2012-04-02T19:04:58.222503", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 150, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "hours", 
+      "place": 34, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12281,17 +12281,17 @@
     "pk": 151, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 34, 
+      "value": "2012-04-02T19:04:59.424544", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 152, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "fb_id", 
+      "place": 64, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12299,8 +12299,8 @@
     "pk": 153, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "2012-04-02T18:31:21.805942", 
+      "place": 64, 
+      "value": "2012-04-02T19:05:00.325667", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12308,8 +12308,8 @@
     "pk": 154, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 7, 
-      "value": "fb_id", 
+      "place": 72, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12317,17 +12317,17 @@
     "pk": 155, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 7, 
-      "value": "2012-04-02T18:31:22.631177", 
-      "key": "fb_last_synced"
+      "place": 72, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 156, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "description", 
+      "place": 72, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12335,17 +12335,17 @@
     "pk": 157, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "url", 
-      "key": "fb_synced_field"
+      "place": 72, 
+      "value": "2012-04-02T19:05:01.637028", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 158, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "image_url", 
+      "place": 21, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12353,8 +12353,8 @@
     "pk": 159, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "hours", 
+      "place": 21, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12362,8 +12362,8 @@
     "pk": 160, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "parking", 
+      "place": 21, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12371,8 +12371,8 @@
     "pk": 161, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "fb_id", 
+      "place": 21, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12380,8 +12380,8 @@
     "pk": 162, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "2012-04-02T18:31:24.719047", 
+      "place": 21, 
+      "value": "2012-04-02T19:05:02.463784", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12389,7 +12389,7 @@
     "pk": 163, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
+      "place": 167, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12398,8 +12398,8 @@
     "pk": 164, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "url", 
+      "place": 167, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12407,8 +12407,8 @@
     "pk": 165, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "image_url", 
+      "place": 167, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12416,8 +12416,8 @@
     "pk": 166, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "hours", 
+      "place": 167, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12425,17 +12425,17 @@
     "pk": 167, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 167, 
+      "value": "2012-04-02T19:05:03.610857", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 168, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "fb_id", 
+      "place": 171, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12443,17 +12443,17 @@
     "pk": 169, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "2012-04-02T18:31:25.672328", 
-      "key": "fb_last_synced"
+      "place": 171, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 170, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "description", 
+      "place": 171, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12461,17 +12461,17 @@
     "pk": 171, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "url", 
-      "key": "fb_synced_field"
+      "place": 171, 
+      "value": "2012-04-02T19:05:04.943206", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 172, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "image_url", 
+      "place": 20, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12479,8 +12479,8 @@
     "pk": 173, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "parking", 
+      "place": 20, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12488,8 +12488,8 @@
     "pk": 174, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "fb_id", 
+      "place": 20, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12497,8 +12497,8 @@
     "pk": 175, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "2012-04-02T18:31:26.489582", 
+      "place": 20, 
+      "value": "2012-04-02T19:05:06.192526", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12506,7 +12506,7 @@
     "pk": 176, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 196, 
+      "place": 280, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12515,7 +12515,7 @@
     "pk": 177, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 196, 
+      "place": 280, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12524,26 +12524,26 @@
     "pk": 178, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 196, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 280, 
+      "value": "2012-04-02T19:05:07.517686", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 179, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 196, 
-      "value": "2012-04-02T18:31:27.350862", 
-      "key": "fb_last_synced"
+      "place": 62, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 180, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 243, 
-      "value": "url", 
+      "place": 62, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12551,8 +12551,8 @@
     "pk": 181, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 243, 
-      "value": "image_url", 
+      "place": 62, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12560,8 +12560,8 @@
     "pk": 182, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 243, 
-      "value": "fb_id", 
+      "place": 62, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12569,8 +12569,8 @@
     "pk": 183, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 243, 
-      "value": "2012-04-02T18:31:28.163298", 
+      "place": 62, 
+      "value": "2012-04-02T19:05:08.854010", 
       "key": "fb_last_synced"
     }
   }, 
@@ -12578,7 +12578,7 @@
     "pk": 184, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 70, 
+      "place": 236, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -12587,7 +12587,7 @@
     "pk": 185, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 70, 
+      "place": 236, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12596,25 +12596,25 @@
     "pk": 186, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 70, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 236, 
+      "value": "2012-04-02T19:05:09.751140", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 187, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 70, 
-      "value": "2012-04-02T18:31:29.022751", 
-      "key": "fb_last_synced"
+      "place": 262, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 188, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 34, 
+      "place": 262, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12623,25 +12623,25 @@
     "pk": 189, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 34, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 262, 
+      "value": "2012-04-02T19:05:11.335793", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 190, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 34, 
-      "value": "2012-04-02T18:31:29.815177", 
-      "key": "fb_last_synced"
+      "place": 75, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 191, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 64, 
+      "place": 75, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12650,26 +12650,26 @@
     "pk": 192, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 64, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 75, 
+      "value": "2012-04-02T19:05:12.127473", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 193, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 64, 
-      "value": "2012-04-02T18:31:31.534702", 
-      "key": "fb_last_synced"
+      "place": 61, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 194, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "description", 
+      "place": 61, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12677,8 +12677,8 @@
     "pk": 195, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "image_url", 
+      "place": 61, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12686,17 +12686,17 @@
     "pk": 196, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 61, 
+      "value": "2012-04-02T19:05:12.931979", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 197, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "fb_id", 
+      "place": 11, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12704,17 +12704,17 @@
     "pk": 198, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "2012-04-02T18:31:32.871757", 
-      "key": "fb_last_synced"
+      "place": 11, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 199, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "description", 
+      "place": 11, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12722,8 +12722,8 @@
     "pk": 200, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "image_url", 
+      "place": 11, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12731,17 +12731,17 @@
     "pk": 201, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "hours", 
-      "key": "fb_synced_field"
+      "place": 11, 
+      "value": "2012-04-02T19:05:13.715408", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 202, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "parking", 
+      "place": 194, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12749,8 +12749,8 @@
     "pk": 203, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "fb_id", 
+      "place": 194, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12758,17 +12758,17 @@
     "pk": 204, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "2012-04-02T18:31:33.716764", 
-      "key": "fb_last_synced"
+      "place": 194, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 205, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "description", 
+      "place": 194, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12776,17 +12776,17 @@
     "pk": 206, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 194, 
+      "value": "2012-04-02T19:05:14.509651", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 207, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "hours", 
+      "place": 160, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12794,8 +12794,8 @@
     "pk": 208, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "parking", 
+      "place": 160, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12803,26 +12803,26 @@
     "pk": 209, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 160, 
+      "value": "2012-04-02T19:05:15.280215", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 210, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "2012-04-02T18:31:34.590768", 
-      "key": "fb_last_synced"
+      "place": 73, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 211, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
-      "value": "description", 
+      "place": 73, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12830,7 +12830,7 @@
     "pk": 212, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
+      "place": 73, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -12839,17 +12839,17 @@
     "pk": 213, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
-      "value": "parking", 
-      "key": "fb_synced_field"
+      "place": 73, 
+      "value": "2012-04-02T19:05:16.025750", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 214, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
-      "value": "fb_id", 
+      "place": 279, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12857,17 +12857,17 @@
     "pk": 215, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
-      "value": "2012-04-02T18:31:35.953642", 
-      "key": "fb_last_synced"
+      "place": 279, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 216, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "description", 
+      "place": 279, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12875,17 +12875,17 @@
     "pk": 217, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 279, 
+      "value": "2012-04-02T19:05:16.803741", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 218, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "hours", 
+      "place": 264, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12893,35 +12893,35 @@
     "pk": 219, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 264, 
+      "value": "2012-04-02T19:05:17.646147", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 220, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "2012-04-02T18:31:37.418967", 
-      "key": "fb_last_synced"
+      "place": 107, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 221, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 280, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 107, 
+      "value": "2012-04-02T19:05:18.395725", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 222, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 280, 
-      "value": "image_url", 
+      "place": 258, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12929,8 +12929,8 @@
     "pk": 223, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 280, 
-      "value": "fb_id", 
+      "place": 258, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12938,17 +12938,17 @@
     "pk": 224, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 280, 
-      "value": "2012-04-02T18:31:39.681345", 
-      "key": "fb_last_synced"
+      "place": 258, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 225, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "description", 
+      "place": 258, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12956,17 +12956,17 @@
     "pk": 226, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
+      "place": 258, 
+      "value": "2012-04-02T19:05:19.126810", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 227, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "hours", 
+      "place": 3, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12974,8 +12974,8 @@
     "pk": 228, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "parking", 
+      "place": 3, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12983,8 +12983,8 @@
     "pk": 229, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "fb_id", 
+      "place": 3, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -12992,26 +12992,26 @@
     "pk": 230, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "2012-04-02T18:31:40.488706", 
-      "key": "fb_last_synced"
+      "place": 3, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 231, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 236, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 3, 
+      "value": "2012-04-02T19:05:19.918029", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 232, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 236, 
-      "value": "image_url", 
+      "place": 112, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13019,8 +13019,8 @@
     "pk": 233, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 236, 
-      "value": "fb_id", 
+      "place": 112, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13028,17 +13028,17 @@
     "pk": 234, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 236, 
-      "value": "2012-04-02T18:31:41.426738", 
-      "key": "fb_last_synced"
+      "place": 112, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 235, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 262, 
-      "value": "description", 
+      "place": 112, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13046,8 +13046,8 @@
     "pk": 236, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 262, 
-      "value": "image_url", 
+      "place": 112, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13055,26 +13055,26 @@
     "pk": 237, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 262, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 112, 
+      "value": "2012-04-02T19:05:20.695793", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 238, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 262, 
-      "value": "2012-04-02T18:31:42.263327", 
-      "key": "fb_last_synced"
+      "place": 223, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 239, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 75, 
-      "value": "description", 
+      "place": 223, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13082,8 +13082,8 @@
     "pk": 240, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 75, 
-      "value": "image_url", 
+      "place": 223, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13091,8 +13091,8 @@
     "pk": 241, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 75, 
-      "value": "fb_id", 
+      "place": 223, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13100,8 +13100,8 @@
     "pk": 242, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 75, 
-      "value": "2012-04-02T18:31:43.121798", 
+      "place": 223, 
+      "value": "2012-04-02T19:05:21.886849", 
       "key": "fb_last_synced"
     }
   }, 
@@ -13109,7 +13109,7 @@
     "pk": 243, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
+      "place": 208, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -13118,8 +13118,8 @@
     "pk": 244, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
-      "value": "image_url", 
+      "place": 208, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13127,8 +13127,8 @@
     "pk": 245, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
-      "value": "parking", 
+      "place": 208, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13136,8 +13136,8 @@
     "pk": 246, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
-      "value": "fb_id", 
+      "place": 208, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13145,26 +13145,26 @@
     "pk": 247, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
-      "value": "2012-04-02T18:31:44.020162", 
-      "key": "fb_last_synced"
+      "place": 208, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 248, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 208, 
+      "value": "2012-04-02T19:05:22.672716", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 249, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "image_url", 
+      "place": 80, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13172,8 +13172,8 @@
     "pk": 250, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "hours", 
+      "place": 80, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13181,8 +13181,8 @@
     "pk": 251, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "parking", 
+      "place": 80, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13190,8 +13190,8 @@
     "pk": 252, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "fb_id", 
+      "place": 80, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13199,8 +13199,8 @@
     "pk": 253, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "2012-04-02T18:31:44.911025", 
+      "place": 80, 
+      "value": "2012-04-02T19:05:23.452788", 
       "key": "fb_last_synced"
     }
   }, 
@@ -13208,7 +13208,7 @@
     "pk": 254, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
+      "place": 12, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -13217,8 +13217,8 @@
     "pk": 255, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
-      "value": "image_url", 
+      "place": 12, 
+      "value": "url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13226,8 +13226,8 @@
     "pk": 256, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
-      "value": "hours", 
+      "place": 12, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13235,7 +13235,7 @@
     "pk": 257, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
+      "place": 12, 
       "value": "parking", 
       "key": "fb_synced_field"
     }
@@ -13244,26 +13244,26 @@
     "pk": 258, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 12, 
+      "value": "2012-04-02T19:05:24.235626", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 259, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
-      "value": "2012-04-02T18:31:45.722373", 
-      "key": "fb_last_synced"
+      "place": 192, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 260, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 160, 
-      "value": "url", 
+      "place": 192, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13271,8 +13271,8 @@
     "pk": 261, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 160, 
-      "value": "image_url", 
+      "place": 192, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13280,8 +13280,8 @@
     "pk": 262, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 160, 
-      "value": "fb_id", 
+      "place": 192, 
+      "value": "parking", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13289,8 +13289,8 @@
     "pk": 263, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 160, 
-      "value": "2012-04-02T18:31:46.549717", 
+      "place": 192, 
+      "value": "2012-04-02T19:05:25.476454", 
       "key": "fb_last_synced"
     }
   }, 
@@ -13298,7 +13298,7 @@
     "pk": 264, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
+      "place": 220, 
       "value": "description", 
       "key": "fb_synced_field"
     }
@@ -13307,7 +13307,7 @@
     "pk": 265, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
+      "place": 220, 
       "value": "url", 
       "key": "fb_synced_field"
     }
@@ -13316,7 +13316,7 @@
     "pk": 266, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
+      "place": 220, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -13325,8 +13325,8 @@
     "pk": 267, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
-      "value": "fb_id", 
+      "place": 220, 
+      "value": "hours", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13334,26 +13334,26 @@
     "pk": 268, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
-      "value": "2012-04-02T18:31:47.354912", 
-      "key": "fb_last_synced"
+      "place": 220, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 269, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "description", 
-      "key": "fb_synced_field"
+      "place": 220, 
+      "value": "2012-04-02T19:05:26.254656", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 270, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "image_url", 
+      "place": 68, 
+      "value": "description", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13361,8 +13361,8 @@
     "pk": 271, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "hours", 
+      "place": 68, 
+      "value": "image_url", 
       "key": "fb_synced_field"
     }
   }, 
@@ -13370,25 +13370,25 @@
     "pk": 272, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
+      "place": 68, 
+      "value": "2012-04-02T19:05:27.044943", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 273, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "2012-04-02T18:31:48.557793", 
-      "key": "fb_last_synced"
+      "place": 206, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 274, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 264, 
+      "place": 206, 
       "value": "image_url", 
       "key": "fb_synced_field"
     }
@@ -13397,629 +13397,8 @@
     "pk": 275, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 264, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 276, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 264, 
-      "value": "2012-04-02T18:31:49.477601", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 277, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 107, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 278, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 107, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 279, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 107, 
-      "value": "2012-04-02T18:31:50.328424", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 280, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 281, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 282, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 283, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 284, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 285, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 258, 
-      "value": "2012-04-02T18:31:51.217274", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 286, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 287, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 288, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 289, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 290, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 291, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 3, 
-      "value": "2012-04-02T18:31:52.050639", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 292, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 293, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 294, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 295, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 296, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 297, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 298, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 112, 
-      "value": "2012-04-02T18:31:52.887849", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 299, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 300, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 301, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 302, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 303, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 304, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 223, 
-      "value": "2012-04-02T18:31:54.267020", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 305, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 306, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 307, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 308, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 309, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 310, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 311, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 208, 
-      "value": "2012-04-02T18:31:55.077487", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 312, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 313, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 314, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 315, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 316, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 317, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 80, 
-      "value": "2012-04-02T18:31:56.008015", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 318, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 319, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 320, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 321, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 322, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 323, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 12, 
-      "value": "2012-04-02T18:31:56.950637", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 324, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 325, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 326, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 327, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 328, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 329, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 192, 
-      "value": "2012-04-02T18:31:58.237743", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 330, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 331, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 332, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 333, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "hours", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 334, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "parking", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 335, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 336, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 220, 
-      "value": "2012-04-02T18:31:59.054957", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 337, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 68, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 338, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 68, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 339, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 68, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 340, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 68, 
-      "value": "2012-04-02T18:31:59.845540", 
-      "key": "fb_last_synced"
-    }
-  }, 
-  {
-    "pk": 341, 
-    "model": "places.placemeta", 
-    "fields": {
       "place": 206, 
-      "value": "description", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 342, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 206, 
-      "value": "image_url", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 343, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 206, 
-      "value": "fb_id", 
-      "key": "fb_synced_field"
-    }
-  }, 
-  {
-    "pk": 344, 
-    "model": "places.placemeta", 
-    "fields": {
-      "place": 206, 
-      "value": "2012-04-02T18:32:00.610340", 
+      "value": "2012-04-02T19:05:27.816150", 
       "key": "fb_last_synced"
     }
   }, 

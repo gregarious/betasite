@@ -200,7 +200,9 @@ def supplement_place_data(place, force_sync_fields=[]):
     returned by the Graph API, regardless of value. Specify location
     fields to force sync by prefixing them: i.e. 'location.FIELDNAME'
 
-    Returns a list of fields that were written to.
+    Returns a list of fields that were written to. Note that fb_id
+    won't be returned in this list, because it is overwritten with
+    the current numerical id value on every call.
 
     Beware IOErrors and or non-migration FacebookAPIErrors.
     '''
@@ -241,7 +243,6 @@ def supplement_place_data(place, force_sync_fields=[]):
     std_fb_id = fbpage.get_field('id')
     if std_fb_id:
         place.fb_id = std_fb_id
-        fields_written.append('fb_id')
 
     # handle location specially
     fbloc = fbpage.get_location()
