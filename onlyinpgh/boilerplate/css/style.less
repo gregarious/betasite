@@ -230,20 +230,7 @@ button, input[type="submit"], .next, .back {
 
 /* HEADER ------------- */
 
-#debug-user {
-  .column_r(6);
-  text-align: right;
-}
-
-#site-search {
-  .column(6);
-  font-size: 0.8em;
-  input {
-    padding: 0.2em;
-  }
-}
-
-#top-bar {
+/*#top-bar {
   .row();
   //.gradient(@lgreen, @dgreen);
   background: #fff;
@@ -251,6 +238,23 @@ button, input[type="submit"], .next, .back {
   height: 2em;
   padding: 0.3em 0 0;
   z-index: 999;
+}*/
+
+.utility {
+  .column_r(3.5);
+  padding: 0.5em 0;
+
+  #debug-user {
+    .column_nm(12);
+    padding-right: 1em;
+    text-align: right;
+  }
+
+  input {
+    .column_nm(12);
+    padding: 0.3em;
+    margin: 0.5em 0 0;
+  }
 }
 
 #scene-nav {
@@ -260,20 +264,17 @@ button, input[type="submit"], .next, .back {
   }
 
   height: 5em;
-  top: 2em;
   position: relative;
   z-index: 999;
   .fixed();
-  //max-width: 1140px;
+  max-width: 1140px;
   background: fade(#fff, 80%);
   .b-shadow(0, 0, 0.3em, #000); 
-  //border: 2px solid #999;
 
   .main-menu {  
     .clearfix;
     .column(6.5);
     
-
     li { 
       a {
         //background: #fff;
@@ -321,7 +322,7 @@ button, input[type="submit"], .next, .back {
   .column(8.5);
   padding: 1em;
   position: relative;
-  top: 7em;
+  top: 5em;
   z-index: 0;
 }
 
@@ -333,7 +334,8 @@ button, input[type="submit"], .next, .back {
   background: @mgreen;
   .column(3.5);
   position: relative;
-  top: 7em;
+  top: 5em;
+  padding-left: 2em;
 }
 
 /* SIDEBAR ---------- */
@@ -680,13 +682,21 @@ button, input[type="submit"], .next, .back {
     margin-top: 1em;
   }
 
-  #site-content, .main-menu {
+  #site-content {
     .column_nm(8);
-    //margin-top:;
+  }
+
+  .main-menu {
+    .column(6.5);
   }
 
   #logo {
-    .column(2.5);
+    .column(1.5);
+    margin-top: 1em;
+  }
+
+  .utility {
+    .column(4);
   }
 
   #site-sidebar {
@@ -709,9 +719,14 @@ button, input[type="submit"], .next, .back {
    // background: url("/static/img_store/paper/limestone.jpg");
   }
 
+  .utility {
+    .row();
+  }
+
   #site-content {
     .row();
     padding: 1em 0.5em;
+    top: 7em;
   }
 
   .feed {
@@ -732,27 +747,52 @@ button, input[type="submit"], .next, .back {
   }
 
   #scene-nav {
-
-    input {
-      display: none;
-    }
-
+    top: 2em;
     .main-menu {
       .column(9);
     }
   }
 
   #logo {
-    margin-top: 1.3em;
+    .column(3);
+    img {
+      margin-top: 0.3em;
+    }
   }
 
   .item-details {
     font-size: 0.9em;
   }
 
+  .utility {
+    position: absolute;
+    bottom: 4em;
+    background: #fff;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+
+    #site-search {
+      .column_r(5);
+
+      input {
+        padding: 0.2em;
+      }
+    }
+
+    #debug-user {
+      .column(7);
+      margin-top: 1em;
+      text-align: left;
+    }
+  }
+
 }
 
 @media screen and (max-width: 480px) {
+
+  body {
+    background: @lgreen;
+  }
 
   .btn-primary {
     padding: 0.3em;
@@ -765,15 +805,10 @@ button, input[type="submit"], .next, .back {
       margin-bottom: 1em;
     }
   }
-  
-  body {
-    background: @lgreen;
-  }
 
   .main-menu { 
     display: none; 
   }
-
 
   .related-nav {
     .row();
@@ -800,21 +835,18 @@ button, input[type="submit"], .next, .back {
   }
   */
   #scene-nav {
-    //top: 0;
     border: none;
 
     select {
       display: inline-block;
-      .column_r(6.5);
-      margin-top: 1em;
+      .column(6.5);
+      margin-top: 1.5em;
     }
   }
 
   .item {
     .column(12);
-    border: 1px solid @mgreen;
     margin-bottom: 0.2em;
-    
   }
 
   .item-title {
@@ -824,6 +856,11 @@ button, input[type="submit"], .next, .back {
   #logo {
     margin-top: 0;
     .column_nm(5);
+    margin-left: 1em;
+
+    img {
+      height: 80%;
+    }
   }
 
   .filter {

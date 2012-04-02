@@ -685,44 +685,44 @@ input[type="submit"]:active,
   box-shadow: 0 0 0 #ffffff;
 }
 /* HEADER ------------- */
-#debug-user {
-  float: right;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: right;
-}
-#site-search {
-  float: left;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 0.8em;
-}
-#site-search input {
-  padding: 0.2em;
-}
-#top-bar {
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+/*#top-bar {
+  .row();
+  //.gradient(@lgreen, @dgreen);
   background: #fff;
-  -webkit-box-shadow: 0.1em 0 0.2em #000000;
-  -moz-box-shadow: 0.1em 0 0.2em #000000;
-  box-shadow: 0.1em 0 0.2em #000000;
+  .b-shadow(0.1em, 0, 0.2em, #000); 
   height: 2em;
   padding: 0.3em 0 0;
   z-index: 999;
+}*/
+.utility {
+  float: right;
+  width: 27.083333333333332%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 0;
+}
+.utility #debug-user {
+  float: left;
+  width: 97.91666666666666%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 1em;
+  text-align: right;
+}
+.utility input {
+  float: left;
+  width: 97.91666666666666%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.3em;
+  margin: 0.5em 0 0;
 }
 #scene-nav {
   height: 5em;
-  top: 2em;
   position: relative;
   z-index: 999;
   width: 100%;
@@ -731,6 +731,7 @@ input[type="submit"]:active,
   position: fixed;
   width: 100%;
   z-index: 3;
+  max-width: 1140px;
   background: rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0 0 0.3em #000000;
   -moz-box-shadow: 0 0 0.3em #000000;
@@ -807,7 +808,7 @@ input[type="submit"]:active,
   box-sizing: border-box;
   padding: 1em;
   position: relative;
-  top: 7em;
+  top: 5em;
   z-index: 0;
 }
 #site-content.single {
@@ -822,7 +823,8 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  top: 7em;
+  top: 5em;
+  padding-left: 2em;
 }
 /* SIDEBAR ---------- */
 .widget p,
@@ -1586,17 +1588,33 @@ a#siteJobs {
   #logo {
     margin-top: 1em;
   }
-  #site-content,
-  .main-menu {
+  #site-content {
     float: left;
     width: 64.58333333333334%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .main-menu {
+    float: left;
+    width: 52.083333333333336%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   #logo {
     float: left;
-    width: 18.75%;
+    width: 10.416666666666668%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 1em;
+  }
+  .utility {
+    float: left;
+    width: 31.25%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1622,6 +1640,13 @@ a#siteJobs {
   }
 }
 @media screen and (max-width: 768px) {
+  .utility {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   #site-content {
     width: 100%;
     margin: 0;
@@ -1629,6 +1654,7 @@ a#siteJobs {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 1em 0.5em;
+    top: 7em;
   }
   .feed {
     margin: 0.5em 0 0;
@@ -1649,8 +1675,8 @@ a#siteJobs {
   #site-sidebar:after {
     clear: both;
   }
-  #scene-nav input {
-    display: none;
+  #scene-nav {
+    top: 2em;
   }
   #scene-nav .main-menu {
     float: left;
@@ -1661,13 +1687,52 @@ a#siteJobs {
     box-sizing: border-box;
   }
   #logo {
-    margin-top: 1.3em;
+    float: left;
+    width: 22.916666666666664%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #logo img {
+    margin-top: 0.3em;
   }
   .item-details {
     font-size: 0.9em;
   }
+  .utility {
+    position: absolute;
+    bottom: 4em;
+    background: #fff;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+  }
+  .utility #site-search {
+    float: right;
+    width: 39.58333333333333%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .utility #site-search input {
+    padding: 0.2em;
+  }
+  .utility #debug-user {
+    float: left;
+    width: 56.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 1em;
+    text-align: left;
+  }
 }
 @media screen and (max-width: 480px) {
+  body {
+    background: #8fd36f;
+  }
   .btn-primary {
     padding: 0.3em;
   }
@@ -1679,9 +1744,6 @@ a#siteJobs {
     box-sizing: border-box;
     overflow: hidden;
     margin-bottom: 1em;
-  }
-  body {
-    background: #8fd36f;
   }
   .main-menu {
     display: none;
@@ -1756,13 +1818,13 @@ a#siteJobs {
   }
   #scene-nav select {
     display: inline-block;
-    float: right;
+    float: left;
     width: 52.083333333333336%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    margin-top: 1em;
+    margin-top: 1.5em;
   }
   .item {
     float: left;
@@ -1771,7 +1833,6 @@ a#siteJobs {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid #6baa55;
     margin-bottom: 0.2em;
   }
   .item-title {
@@ -1784,6 +1845,10 @@ a#siteJobs {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    margin-left: 1em;
+  }
+  #logo img {
+    height: 80%;
   }
   .filter {
     display: none;
