@@ -190,13 +190,17 @@ def fbpage_to_place(fbpage, save=False):
     return p
 
 
-def supplement_place_data(place):
+def supplement_place_data(place, force_sync_fields=[]):
     '''
     Given a Place with a FB id, fleshes out all the empty entries with
-    those from Facebook.
+    those from Facebook. The given place will be saved as a result of
+    this method.
 
-    Note that the Place is not saved here, so if Location is set here,
-    it must be saved (and reassigned post-save) manually.
+    Any value in force_sync_fields will be overwritten by the value
+    returned by the Graph API, regardless of value. Specify location
+    fields to force sync by prefixing them: i.e. 'location.FIELDNAME'
+
+    Returns a list of fields that were written to.
 
     Beware IOErrors and or non-migration FacebookAPIErrors.
     '''
@@ -225,16 +229,19 @@ def supplement_place_data(place):
             raise Exception('Unkown failure building FBPage object.')
     fbplace = fbpage_to_place(fbpage, save=False)
 
+    fields_written = []
     attrs = ('name', 'description', 'phone', 'url', 'image_url', 'hours', 'parking')
     for attr_name in attrs:
         fb_attr = getattr(fbplace, attr_name)
-        if fb_attr and not getattr(place, attr_name):
+        if attr_name in force_sync_fields or (fb_attr and not getattr(place, attr_name)):
+            fields_written.append(attr_name)
             setattr(place, attr_name, fb_attr)
 
     # force the updating of the fb_id (to standardize fb ids to numbers)
     std_fb_id = fbpage.get_field('id')
     if std_fb_id:
         place.fb_id = std_fb_id
+        fields_written.append('fb_id')
 
     # handle location specially
     fbloc = fbpage.get_location()
@@ -244,14 +251,17 @@ def supplement_place_data(place):
             # since FB location is unsaved, need to save before assigning
             fbloc.save()
             place.location = fbloc
+            fields_written.append('location')
         else:
             # otherwise, new flesh out any missing entries in the current location with these
             attrs = ('address', 'town', 'postcode', 'state', 'country', 'latitude', 'longitude')
-
             for attr_name in attrs:
                 fb_attr = getattr(fbloc, attr_name)
-                if fb_attr and not getattr(place.location, attr_name):
+                attr_namespaced = 'location.' + attr_name
+                if attr_namespaced in force_sync_fields or (fb_attr and not getattr(place.location, attr_name)):
                     setattr(place.location, attr_name, fb_attr)
+                    fields_written.append(attr_namespaced)
             place.location.save()
 
-    return place
+    place.save()
+    return fields_written
