@@ -2,8 +2,11 @@ from django.db import models
 
 from onlyinpgh.common.core.viewmodels import ViewModel
 
+from django.contrib.auth.models import User
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
+
+from datetime import datetime
 
 
 class Special(models.Model, ViewModel):
@@ -48,3 +51,21 @@ class SpecialMeta(models.Model):
         val = self.value if len(self.value) < 20 \
                 else self.value[:16] + '...'
         return u'%s: %s' % (self.key, val)
+
+
+class Coupon(models.Model):
+    '''Coupon is a user-owned Special'''
+    special = models.ForeignKey(Special)
+    user = models.ForeignKey(User)
+    dtcreated = models.DateTimeField('Time user bought special', auto_now_add=True)
+
+    dtused = models.DateTimeField('Time user used special', default=None, null=True, blank=True)
+    was_used = models.BooleanField('Has coupon been used?"', default=False)
+
+    def mark_used(self):
+        '''
+        After using this function, Coupon should never be used again.
+        '''
+        self.was_used = True
+        self.dtused = datetime.now()
+        self.save()

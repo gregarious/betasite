@@ -1,31 +1,29 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 
-from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.events.models import Event
 from onlyinpgh.events.viewmodels import EventFeedItem, EventDetail
 
 
-def feed_page(request):
+def page_feed(request):
     '''
-    View function that handles a page load request for a feed of place
+    View function that handles a page load request for a feed of event
     items.
 
-    Renders page.html with main_content set to the rendered HTML of
-    a feed.
+    Returns page response with main content set to the feed.
     '''
     # get a list of rendered items
     events = Event.objects.all()[:10]
     items = [EventFeedItem(event, user=request.user) for event in events]
-    content = render_viewmodels_as_ul(items, 'events/feed_item.html')
+    main = render_main(render_safe('events/main_feed.html', items=items))
+    return page_response(main, request)
 
-    return render(request, 'page.html', {'main_content': content})
 
-
-def detail_page(request, eid):
+def page_details(request, eid):
     '''
-    View displays single events.
+    Returns page response with main content set to the details.
     '''
     # build and render event detail viewmodel
     event = get_object_or_404(Event, id=eid)
@@ -33,9 +31,8 @@ def detail_page(request, eid):
     content = render_viewmodel(details,
                 template='events/single.html',
                 class_label='event-single')
-
-    return render(request, 'page.html', {'main_content': content})
-
+    main = render_main(content)
+    return page_response(main, request)
 
 
 # from django.shortcuts import render_to_response

@@ -1,0 +1,95 @@
+{% comment %}
+Header template, simple debug version now. To be filled with
+HTML5 Boilerplate before release.
+{% endcomment %}
+
+<!doctype html>
+<head>
+	<title>Scenable</title>
+
+	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Require gives us module-like functionality for JS -->
+	<script data-main="/static/js/main" src="/static/js/require-jquery.js"></script>
+
+	<!-- Scripts -->
+	<script src="/static/js/script.js"></script>
+	<script src="/static/js/mylibs/helper.js"></script>
+	<script src="/static/js/libs/modernizr-custom.js"></script>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/static/css/splash_style.css?v=1">
+	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+
+</head>
+<body>
+
+{% block content %}
+<div class="wrap" id="splash">
+
+	<header id="site-header">
+		<!-- <h1 id="site-title">scenable</h1> -->
+		<img src="/static/img/scenable-cloud.png" alt="Scenable" />	
+		<!-- <h2 id="tagline">an app for local communities</h2> -->
+	</header>
+
+	<section id="oakland">
+		<!-- <button id="obidapp"><img src="/static/img/obid_logo.png" alt="Oakland Scene Logo" /></button> -->
+		<img class="screenshot" src="/static/img/web_screenshot.png" alt="Oakland site screenshot" />
+		<div class="caption">
+			<p>Available on Android and iPhone</p>
+			<div class="icon-container">
+				<img class="icon" src="/static/img/android.png" alt="available on Android" />
+				<img class="icon" src="/static/img/iphone.png" alt="available on iPhone" />	
+			</div>
+		</div>
+		
+	</section>
+
+	<section id="company" role="main">
+
+		<p class="about">For individual communities, the network provides an online home that pulls together the pieces of information about the community spread all over the internet, allowing the community to take ownership of its online presence and become a digital destination.</p>
+
+		<article class="suggest-scene">
+			<h2 class="section-title">Suggest a scene...</h2>
+			<form>
+				
+				<div class="field-container">
+					<div class="field-label">
+						<label>Email</label>
+					</div>
+					<div class="field">
+						<input type="email" placeholder="coolest@best.com"/>
+					</div>
+				</div>
+
+				<div class="field-container">
+					<div class="field-label">
+						<label>Scene</label>
+					</div>
+					<div class="field">
+						<input type="text" placeholder="like 'music' or 'southside'"/>
+					</div>
+				</div>
+
+				<div class="field-container">
+					<div class="field-label">
+						<label>Why?</label>
+					</div>
+					<div class="field">
+						<textarea placeholder="this scene should be on scenable because..."></textarea>
+					</div>
+				</div>
+
+			</form>
+
+			<p class="">Be sure to check out our <a href="http://scenable.com/blog">Development Blog</a> for the latest and the greatest.</p>
+		</article>
+
+	</section>
+
+</div>
+{% endblock %}

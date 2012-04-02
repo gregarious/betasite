@@ -1,0 +1,15 @@
+{% comment %}
+Template to render a collection of rendered feed items, along with
+a frame to be used as a container on the user profile page.
+
+Context variables:
+    [items]:  list of EventFeedItem VMs
+{% endcomment %}
+{% load vmrender from commontags %}
+
+<h3 class="section-title">My Events</h3>
+<ul class="feed my-feed events">
+    {% for item in items %}
+        <li class="item">{% vmrender item "events/feed_item.html" %}</li>
+    {% endfor %}
+</ul>

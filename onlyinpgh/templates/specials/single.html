@@ -5,9 +5,45 @@ Compatible ViewModel: places.viewmodels.PlaceDetail
 
 Context variables:
 	special:	Special ViewModel
+
+TODO #1: If there is a limited number available, show how many are left (3/10 available).
+
+TODO #2: Only show expiration date if there is one.
+
 {% endcomment %}
 
-<h3>{{special.title}}</h3>
-<h4>+{{special.points}}</h4>
-<p>{{special.place.name}}</p>
-<p>{{special.description}}</P>
+<div class="single-container">
+	<header class="single-header">
+
+		<div class="item-thumb">
+			<div class="points">+{{special.points}}</div>
+			<button class="btn btn-primary">Grab It!</button>
+		</div>
+
+		<section class="item-content">
+			<h2 class="single-title">{{special.title}}</h2>
+
+			<ul class="item-details">
+				<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
+				{% if special.dtexpires %}
+					<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
+				{% endif %}
+				{% if special.total_available %}
+					<li>{{special.total_available}} Available</li>
+				{% endif %}
+
+			</ul>
+
+			{% include "tags/tag_list.html" with tags=special.tags %}
+			
+		</section>
+
+	</header>
+
+	<div class="single-content">
+		<div class="map-container">
+			<!-- Map background is here for the time being -->
+		</div>
+		<p class="description">{{special.description}}</p>
+	</div>
+</div>

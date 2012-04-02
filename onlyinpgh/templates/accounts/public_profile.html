@@ -1,0 +1,21 @@
+{% comment %}
+Template for user's public profile.
+
+Compatible with viewmodels: accounts.viewmodels.PublicProfile
+
+Context variables: 
+- profile (PublicProfile)
+{% endcomment %}
+
+<img src="{{ profile.avatar_url }}" />
+<h2>{{ profile.display_name }}</h2>
+<ul>
+    <li>{{ profile.username }}</li>
+    <li>{{ profile.points }}</li>
+    {% if profile.fb_id %}
+    <li><a href="http://www.facebook.com/{{ profile.fb_id }}">Facebook</a></li>
+    {% endif %}
+    {% if profile.twitter_username %}
+    <li><a href="http://twitter.com/{{ profile.twitter_username }}">Twitter</a></li>
+    {% endif %}
+</ul>

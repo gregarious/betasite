@@ -10,18 +10,20 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
 
-    (r'^prelaunch/login/$', 'django.contrib.auth.views.login'),
-    (r'^prelaunch/logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^/prelaunch/login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
+    url(r'^/prelaunch/signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
+    url(r'^/prelaunch/logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/prelaunch/'}),
 
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^/prelaunch/account/', include('onlyinpgh.accounts.urls')),
+
+    url(r'^/prelaunch/admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^/prelaunchadmin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^prelaunch/orgadmin/', include('onlyinpgh.orgadmin.urls')),
-
-    url(r'^prelaunch/places/',include('onlyinpgh.places.urls')),
-    url(r'^prelaunch/events/',include('onlyinpgh.events.urls')),
-    url(r'^prelaunch/specials/',include('onlyinpgh.specials.urls')),
+    url(r'^/prelaunch/places/', include('onlyinpgh.places.urls')),
+    url(r'^/prelaunch/events/', include('onlyinpgh.events.urls')),
+    url(r'^/prelaunch/specials/', include('onlyinpgh.specials.urls')),
+    url(r'^/prelaunch/hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
 
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
@@ -59,3 +61,4 @@ urlpatterns = patterns('',
 
 
 )
+    

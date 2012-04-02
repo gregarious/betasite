@@ -7,7 +7,40 @@ Context variables:
 	event:	Event ViewModel
 {% endcomment %}
 
-<h3>{{event.name}}</h3>
-<h4>{{event.dtstart}} - {{event.dtend}}</h4>
-<p>{{event.description}}</p>
-<p>{{event.place.name}}</P>
+<div class="single-container">
+	<header class="single-header">
+		<div class="item-thumb">
+			<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
+			<div class="favorite">	
+				{% if is_attending %}
+					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
+						<img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/><p class="meta">Remove from Calendar</p>
+					</a>
+				{% else %}
+					<a href="?action=fav" class="favbutton add" title="Add to Calendar">
+						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><span class="meta">Add to Calendar</span>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+
+		<section class="item-content">
+			<h2 class="single-title">{{event.name}}</h2>
+			<ul class="item-details">
+				<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
+				<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+				<li class="address">{{event.place.location.address}}</li>
+			</ul>
+
+			{% include "tags/tag_list.html" with tags=event.tags %}
+
+		</section>
+	</header>
+
+	<div class="single-content">
+		<div class="map-container">
+			<!-- Map background image is here for the time being -->
+		</div>
+		<p class="description">{{event.description}}</p>
+	</div>
+</div>

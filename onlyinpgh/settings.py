@@ -119,7 +119,7 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
-AUTH_PROFILE_MODULE = 'onlyinpgh.accounts.UserProfile'
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 TEMPLATE_DIRS = (
     to_abspath('templates'),
@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'onlyinpgh.organizations',
     'onlyinpgh.events',
     'onlyinpgh.specials',
+    'onlyinpgh.common',
 )
 
 # A sample logging configuration. The only tangible logging

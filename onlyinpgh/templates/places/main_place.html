@@ -1,0 +1,19 @@
+{% comment %}
+Template for a single place page. Includes space for details
+and feeds related to the place.
+
+Context variables:
+    place_detail: PlaceDetails VM
+    related_feeds: PlaceRelatedFeeds VM
+{% endcomment %}
+{% load vmrender from commontags %}
+
+<div class="single-container">
+	<header class="single-header">
+	    {% vmrender place_detail 'places/single.html' %}
+	</header>
+
+	<article class="single-content places">
+	    {% include 'places/related.html' %}
+	</article>
+</div>

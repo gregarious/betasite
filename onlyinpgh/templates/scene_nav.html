@@ -1,0 +1,64 @@
+<div id="logo">    
+    <img src="/static/img/obid_logo.png" />
+</div>
+
+<ul class="main-menu">
+
+    <li>
+        <a href="{% url hot %}" id="siteHot">
+            <div class="container">
+                <div class="menu-item">Now</div>
+            </div>
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url places-feed %}" id="sitePlaces">
+            <div class="container">
+                <div class="menu-item">Places</div>
+            </div>    
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url events-feed %}" id="siteEvents">
+            <div class="container">
+                <div class="menu-item">Events</div>
+            </div>
+        </a>
+    </li>
+    
+    <li>
+        <a href="{% url specials-feed %}" id="siteSpecials">
+            <div class="container">
+                <div class="menu-item">Specials</div>
+            </div>    
+        </a>
+    </li>
+
+    <li>
+        <a href="#" id="siteChatter">
+            <div class="container">
+                <div class="menu-item">Chatter</div>
+            </div>    
+        </a>
+    </li>
+
+    <li>
+        <a href="#" id="siteNews">
+            <div class="container">
+                <div class="menu-item">News</div>
+            </div>    
+        </a>
+    </li>
+
+</ul>
+
+<select>
+    <option value="{% url hot %}">Now</option>
+    <option value="{% url places-feed %}">Places</option>
+    <option value="{% url events-feed %}">Events</option>
+    <option value="{% url specials-feed %}">Specials</option>
+    <option value="#">Chatter</option>
+    <option value="#">News</option>
+</select>

@@ -4,88 +4,34 @@
 Template for any Scenable webpage. 
 
 Context variables:
-	- main_content: HTML string
+    - topbar: rendered content in top_bar.html
+    - scenenav: rendered content in scene_nav.html
+    - main: rendered main page content
+    - sidebar: rendered content in sidebar.html
+    - footer: rendered content in footer.html
 
-Purposefully an trivial wrapper around base.html. base.html should handle
+Purposefully a simple extension of base.html. base.html should handle
 all the browser-based plumbing boilerplate in the header/footer, leaving 
-page.html to handle the basic skeleton for page content. Right now that
-skeleton is almost empty, but it may not always be.
-
-This will encourage to sticking to a particular page layout for all
-standard Scenable pages. If there are special cases that should follow
-their own rules, these special cases can become new base.html child 
-themes that won't have to worry about browser-level boilerplate code.
-
-Take home messsage: No views should render to base.html, but any
-whole page response should render to this.
+page.html to handle the basic skeleton for page content.
 {% endcomment %}
 
 {% block content %}
-<div id="top-bar">
-	<span id="other-scenes">
-		Related scenes:
-	</span>
-	<span id="debug-user">
-		{% if user %}
-			Hey there, <a class="username" href="/admin/auth/user/">{{user.username}}</a> | <a class="logout" href="/logout">Logout</a>
-		{% else %}
-			<a href="/login">Login</a>
-		{% endif %}
-	</span>
-</div>
 
-
-<div id="global-wrap">
- 
-	<nav id="site-nav">
-		<div class="absolute">
-			<!-- logo to be a home link -->
-			<a href="#"><img id="logo" src="/static/img/obid_logo.png" alt="Oakland Logo" /></a>
-		    <ul>
-				<li><a href="/" id="siteHot">Hot!</a></li>
-				<li><a href="/events/" id="siteEvents">Events</a></li>
-				<li><a href="/places/" id="sitePlaces">Places</a></li>
-				<li><a href="/specials/" id="siteSpecials">Specials</a></li>
-				<li><a href="/chatter/" id="siteChatter">Chatter</a></li>
-				<li><a href="/news/" id="siteNews">News</a></li>
-				<li><a id="siteJobs">Jobs</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<div id="site-content" role="main">
-		<div class="feed-header">
-			<h1 class="page-title">Places</h1> <!-- Need a var for feed name here -->
-			<span class="add-filter">Filter Places</span>
-			<div class="filter-form">
-			</div>
-		</div>	
-	    {{main_content}}
+<nav id="top-bar" class="fixed">
+	<div class="wrap">
+		
+        <nav id="scene-nav" class="fixed">
+            {{ scenenav }}
+            {{ topbar }}
+        </nav>
 	</div>
-	
- 	<aside id="site-sidebar" role="complementary">
- 		<div class="absolute">
-			<h3>Scenecast</h3>
-			<ul id="broadcast">
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-				<li>Sample sidebar content</li>
-			</ul>
-		</div>
+</nav>
+<div class="wrap">
+    {{ main }}
+    <aside id="site-sidebar" role="complementary">
+		{{ sidebar }}
 	</aside>
- 
-	<footer id="site-footer">
-		<p id="colophon">Brought to you by Onlyinpgh, made possible by OBID &amp; PPND</p>
-	</footer>
-
 </div>
+<footer id="site-footer">{{ footer }}</footer>
+
 {% endblock %}

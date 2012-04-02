@@ -1,4 +1,6 @@
 from onlyinpgh.common.core.viewmodels import ViewModel
+from onlyinpgh.specials.models import Coupon
+from django.contrib.auth.models import User
 
 
 class SpecialFeedItem(ViewModel):
@@ -15,10 +17,20 @@ class SpecialFeedItem(ViewModel):
             [tags]
                 id
                 name
+        has_coupon (boolean)
     '''
     def __init__(self, special, user=None):
         super(SpecialFeedItem, self).__init__()
         self.special = special
+        if isinstance(user, User):
+            try:
+                special.coupon_set.get(user=user, was_used=False)
+            except Coupon.DoesNotExist:
+                self.has_coupon = False
+            else:
+                self.has_coupon = True
+        else:
+            self.has_coupon = False
 
     def to_data(self, *args, **kwargs):
         data = super(SpecialFeedItem, self).to_data(*args, **kwargs)
@@ -56,10 +68,20 @@ class SpecialDetail(ViewModel):
             [tags]
                 id
                 name
+        has_coupon (boolean)
     '''
     def __init__(self, special, user=None):
         super(SpecialDetail, self).__init__()
         self.special = special
+        if isinstance(user, User):
+            try:
+                special.coupon_set.get(user=user, was_used=False)
+            except Coupon.DoesNotExist:
+                self.has_coupon = False
+            else:
+                self.has_coupon = True
+        else:
+            self.has_coupon = False
 
     def to_data(self, *args, **kwargs):
         data = super(SpecialDetail, self).to_data(*args, **kwargs)

@@ -1,43 +1,30 @@
 {% comment %}
 Template to render a particular event as a feed item.
 
+Compatible ViewModels: places.viewmodels.EventFeedItem
+
 Context variables:
-	event:			Event ViewModel
+	event:	subset of Event model (see EventFeedItem ViewModel)
+
+TODO: only show month/day for events ending on a different day
 {% endcomment %}
 
+
 <div class="item-thumb">
-	<img class="item-thumb" alt="{{event.name}}" src="{{event.image_url}}" />
+	<a href="{% url event-detail event.id %}">
+		<img class="thumbnail" alt="{{event.name}}" src="{{event.image_url}}" />
+	</a>
 </div>
 
 <section class="item-content">
-	<h4 class="item-title">
-		<a href="{% url events-item-detail event.id %}">{{ event.name }}</a>
-	</h4>
+	<a href="{% url event-detail event.id %}">
+		<h4 class="item-title">{{ event.name }}</h4>
 
-	<div class="item-actions">
-		 <!-- Once things have specials, switch else content -->
-		{% if featured_special %}
-			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
-		{% else %}
-			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
-		{% endif %}
-	</div>
-
-	<ul class="item-details meta">	
-		<li class="address">{{event.place.location.address}}</li>
-		<li class="date">{{event.dtstart}} - {{event.dtend}}</li>
-		<li class="description">{{event.description|truncatewords:35|urlizetrunc:20}}</li>
-  	</ul>
-
+		<ul class="item-details">	
+			<li class="address">{{event.place.location.address}}</li>
+			<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
+			<li class="description">{{event.description|truncatewords:35|urlizetrunc:20}}</li>
+	  	</ul>
+	</a>
 	{% include "tags/tag_list.html" with tags=event.tags %}
-
 </section>
-
-
-{% comment %}
-	{% if is_favorite %}
-		<div class="is-favorite">*</div>
-	{% else %}
-		<div class="favorite-star">X</div>	
-	{% endif %}
-{% endcomment %}

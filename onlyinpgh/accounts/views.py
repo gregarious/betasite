@@ -1,69 +1,156 @@
-from django.template import render
-from django.template.loaders import get_template
-from django.template.defaultfilters import slugify
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
-from django.contrib.auth.models import create_user
-from onlyinpgh.places.models import Place
-from onlyinpgh.places.views import get_create_place_wizard
+from django.core.urlresolvers import reverse
 
-import re
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
-# def signup(request):
-#     # if POST request, handle the form submission
-#     if request.POST:
-#         form_errors = 
-#         username = slugify(request.POST['place_name'])
-#         user = create_user(username, email=request.POST['email'],
-#             password=)
-#         # create a new user with an automatically generated username
-#         # (slugified with random suffix if necessary)
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
 
-#         # create a new organization with name = POST.place_name
-#         # set new user as administrator
-#         # save the organization id in the user's session vbl
+from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
+from onlyinpgh.common.views import page_response, render_main
+import urlparse
 
-#         # goto create_place with pid or place_name
-#         pass
+from onlyinpgh.accounts.viewmodels import PublicProfile
 
-#     return render(request, 'manage_base.html',
-#         {'content': signup_form})
+from onlyinpgh.places.models import Favorite
+from onlyinpgh.places.viewmodels import PlaceFeedItem
+
+from onlyinpgh.events.models import Attendee
+from onlyinpgh.events.viewmodels import EventFeedItem
+
+from onlyinpgh.specials.models import Coupon
+from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 
-# TEMPORARY: used if something bad happens between signup and place creation
-def login(request):
-    # if POST request, handle the form submission
-    if request.POST:
-        # if user has no organizations, create one the same was as in signup, set admin, session
-        # elif user has > 1 org, set session to first one
+@csrf_protect
+@never_cache
+def page_login(request, redirect_field_name='next'):
+    '''
+    Renders login page.
+    '''
+    redirect_to = request.REQUEST.get(redirect_field_name, '')
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            netloc = urlparse.urlparse(redirect_to)[1]
 
-        # if org has no places attached, goto create_place()
-        # else: go to home
-        pass
+            # Use default setting if redirect_to is empty
+            if not redirect_to:
+                redirect_to = reverse('home')
 
+            # Security check -- don't allow redirection to a different
+            # host.
+            elif netloc and netloc != request.get_host():
+                redirect_to = reverse('home')
 
-def create_place(request, pid=None, pname=None):
-    # if POST request, handle the form submission
-    if request.POST:
-        # ensure the Org has the right to edit the place if an ID is given!!!!!!!!
-        place.save()
+            # Okay, security checks complete. Log the user in.
+            login(request, form.get_user())
 
-    # serve up the place creation wizard
-    # autofill the place if a pid or place name were given
-    if pid:
-        try:
-            place = Place.objects.create(pid=pid)
-        except Place.DoesNotExist:
-            place = Place(name=pname)
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
+
+            return HttpResponseRedirect(redirect_to)
     else:
-        place = Place(name=pname)
+        form = AuthenticationForm(request)
+    request.session.set_test_cookie()
 
-    creation_form = get_create_place_wizard(place=place)
+    # render login form with csrf protection
+    login_form = render_safe('registration/login.html',
+        form=form, form_action=reverse('login'),
+        next=redirect_to,
+        context_instance=RequestContext(request))
+    main_content = render_main(login_form)
+    return page_response(main_content, request)
 
-    return render(request, 'manage_base.html',
-        {'content': creation_form})
+
+def page_signup(request):
+    # if POST request, handle the form submission
+    if request.POST:
+        reg_form = RegistrationForm(request.POST, prefix='reg')
+        profile_form = UserProfileForm(request.POST, prefix='prof')
+
+        if reg_form.is_valid() and profile_form.is_valid():
+            user = reg_form.save()     # saves new user
+
+            # reinitialize the form linked to the new user profile
+            profile_form = UserProfileForm(data=request.POST,
+                instance=user.get_profile(), prefix='prof')
+            profile_form.save()
+
+            # test if the browser supports cookies
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
+
+                # authenticate new user and log in
+                user = authenticate(username=reg_form.cleaned_data['username'],
+                    password=reg_form.cleaned_data['password1'])
+                login(request, user)
+
+                # redirect to home page
+                redirect_to = reverse('home')
+            else:   # if cookies aren't enabled, go to login page
+                redirect_to = reverse('login')
+
+            return HttpResponseRedirect(redirect_to)
+    else:
+        reg_form = RegistrationForm(prefix='reg')
+        profile_form = UserProfileForm(prefix='prof')
+
+    request.session.set_test_cookie()
+    content = render_safe('registration/signup.html',
+        registration_form=reg_form,
+        profile_form=profile_form,
+        form_action=reverse('signup'),
+        context_instance=RequestContext(request))
+    return page_response(content, request)
 
 
-def management_home(request):
-    home_page = get_template('organizations/manage/home.html')
-    return render(request, home_page,
-        {'content': home_page})
+def render_account_panel(panel_content, wrap_main=True):
+    '''
+    Returns a rendered account panel, suitable for direct use in a
+    page_response call if wrap_main is True.
+    '''
+    panel = render_safe('accounts/account_panel.html', panel_content=panel_content)
+    return render_main(panel) if wrap_main else panel
+
+
+@login_required
+def page_profile(request):
+    profile = render_viewmodel(PublicProfile(request.user), 'accounts/public_profile.html')
+    main = render_account_panel(profile)
+    return page_response(main, request)
+
+
+@login_required
+def page_my_places(request):
+    places = [fav.place for fav in Favorite.objects.filter(user=request.user, is_favorite=True)]
+    items = [PlaceFeedItem(place, user=request.user) for place in places]
+
+    main = render_account_panel(
+        render_safe('accounts/my_places.html', items=items))
+    return page_response(main, request)
+
+
+@login_required
+def page_my_events(request):
+    events = [att.event for att in Attendee.objects.filter(user=request.user, is_attending=True)]
+    items = [EventFeedItem(event, user=request.user) for event in events]
+
+    main = render_account_panel(
+        render_safe('accounts/my_events.html', items=items))
+    return page_response(main, request)
+
+
+@login_required
+def page_my_specials(request):
+    specials = [coupon.special for coupon in Coupon.objects.filter(user=request.user, was_used=False)]
+    items = [SpecialFeedItem(special, user=request.user) for special in specials]
+
+    main = render_account_panel(
+        render_safe('accounts/my_specials.html', items=items))
+    return page_response(main, request)

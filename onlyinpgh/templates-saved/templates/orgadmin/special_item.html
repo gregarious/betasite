@@ -1,0 +1,36 @@
+{% comment %}
+Template to render a particular Special as an item in an orgadmin list.
+
+Compatible ViewModel: specials.viewmodels.SpecialFeedItem
+
+Context variables:
+	special:			Special ViewModel
+{% endcomment %}
+
+<div class="item-thumb">
+	<div class="points">+{{ special.points }}</div>
+</div>
+
+<section class="item-content">
+
+	<h4 class="item-title">
+		{{special.title}}
+	</h4>
+
+	<div class="item-actions">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit this special"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit special"/></a>
+		<a href="{% url onlyinpgh.orgadmin.views.page_delete_special special.id %}" title="Delete Special"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Special" /></a>
+	</div>
+
+	<ul class="item-details">
+		<li>at {{special.place.name}}</li>
+		<li>at {{special.place.name}}</li>
+	</ul>
+
+	<ul class="tag-list">
+		<li>coolest</li>
+		<li>lovely</li>
+		<li>happy</li>
+		<li>fantastic</li>
+	</ul>
+</section>

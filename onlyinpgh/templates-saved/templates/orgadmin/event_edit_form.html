@@ -1,0 +1,119 @@
+<h2>Editing your event...</h2>
+
+<form method="post" action="">
+
+	{% csrf_token %}
+	
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.name.label_tag }}
+		</div>
+		<div class="field">
+            {% for err in form.name.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+			{{ form.name }}
+		</div>
+	</div> <!-- name -->
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.place.label_tag }}			
+		</div>
+		<div class="field">
+			{{ form.place }}
+			{% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- place -->
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.dtstart.label_tag }}
+		</div>
+		<div class="field">
+			<input id="id_dtstart" type="text" class="datetimepicker-start" value="{{ form.dtstart.value|date:"m/d/Y h:i A" }}" name="dtstart" />
+			{% for err in form.dtstart.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- start date -->
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.dtend.label_tag }}
+		</div>
+		<div class="field">
+			<input id="id_dtend" type="text" class="datetimepicker-end" value="{{ form.dtend.value|date:"m/d/Y h:i A"  }}" name="dtend" />
+			{% for err in form.dtend.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- end date -->
+	
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.allday.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.allday }}
+            {% for err in form.allday.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- is it all day? -->
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.image_url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.image_url }}
+			{% for err in form.image_url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- image url -->
+
+	<div class="field-container first">
+		<div class="field-label">
+			{{ form.description.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+		</div>
+	</div> <!-- description -->
+
+	<div class="field-container inner">
+		<div class="field-label">
+			{{ form.url.label_tag }}
+		</div>
+		<div class="field">
+			{{ form.url }}
+			<p class="tip">A link to more event info, FaceBook pages or other.</p>
+			{% for err in form.url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}	
+		</div>
+	</div> <!-- event url -->
+
+	<input type="submit" class="submit-item" value="Save Changes" />
+	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Back to events">&larr; Back</a>
+
+{% comment %}
+form fields:
+    name
+    description
+    dtstart
+    dtend
+    allday (checkbox - just checkbox is good for now. we'll need some jQuery later that hides dtstart/dtend if this is checked)
+    image_url
+    url
+    place (select box)
+    (no tags for now - waiting on django-autocomplete)
+{% endcomment %}
+</form>

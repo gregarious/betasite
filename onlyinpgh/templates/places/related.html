@@ -1,0 +1,111 @@
+{% comment %}
+Template to render items related to a place
+
+Context variables:
+    related_feeds:
+        events:
+            [EventFeedItem VMs]
+        specials:  
+            [SpecialFeedItem VMs]
+    place_detail: PlaceDetail VM
+    
+    (... more to come...)
+{% endcomment %}
+{% load vmrender from commontags %}
+{% load external_url from commontags %}
+
+<nav class="related-nav">
+    <ul>
+        <li><a id="placeInfo">Info</a></li>
+        {% if not related_feeds.events %}
+            <li><a id="placeEvents" class="disabled">Events</a></li>
+        {% else %}
+            <li><a id="placeEvents">Events</a></li>
+        {% endif %}
+        {% if not related_feeds.events %}
+            <li><a id="placeSpecials" class="disabled">Specials</a></li>
+        {% else %}
+            <li><a id="placeSpecials">Specials</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<section class="related-section" id="placeInfo">
+    <header class="section-header">
+        <h2 class="section-title">Place Details</h2>
+        
+        <div class="map-container">
+            <!-- Background image stand in -->
+        </div>
+        <ul class="item-details">
+            {% if place_detail.place.hours %}
+                {# This is ugly and unintuitive. But works for now. #}
+                {% for tuples in place_detail.place.hours_unpacked %}
+                    <li>{{tuples.0}}: {{tuples.1}}</li>
+                {% endfor %}
+            {% endif %}
+
+            {% if place_detail.place.parking %}
+                {# This is ugly and unintuitive. But works for now. #}
+                {% for option in place_detail.place.parking_unpacked %}
+                    <li>Parking: {{option}}</li>
+                {% endfor %}
+            {% endif %}
+
+            {% if place_detail.place.phone %}
+                <li>Phone: {{ place_detail.place.phone }}</li>
+            {% endif %}
+
+            {% if place_detail.place.url %}
+                <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
+            {% endif %}
+
+        </ul>
+
+        <p class="description">{{place_detail.place.description}}</p>
+    </header>
+
+    
+
+</section>
+
+<section class="related-section" id="placeEvents">
+    <h2 class="section-title">Events</h2>
+    {% for item in related_feeds.events %}
+        <li class="item">
+            {% vmrender item 'events/feed_item.html' %}
+        </li>
+    {% endfor %}
+</section>
+
+<section class="related-section" id="placeSpecials">
+    <h2 class="section-title">Specials</h2>
+    {% for item in related_feeds.specials %}
+        <li class="item">
+            {% vmrender item 'specials/feed_item.html' %}
+        </li>
+    {% endfor %}
+</section>
+
+<!--    <section class="single-section" id="{{place_section_id}}">
+
+    <h1 class="title">{{place_section_title}}</h1>
+    
+    {% if place.description %}  
+        <p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>     
+    {% endif %}
+-->
+        <!-- <div class="single-featured-special">
+            The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
+            <a class="grabbit">Grabbit!</a>
+        </div> -->
+    
+
+<!--    </section> -->
+
+{% if featured_special %}
+    <aside class="single-featured-special">
+        {{featured_special.description}}
+        <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
+    </aside>
+{% endif %}

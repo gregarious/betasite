@@ -3,7 +3,7 @@ Header template, simple debug version now. To be filled with
 HTML5 Boilerplate before release.
 {% endcomment %}
 
-<html>
+<!doctype html>
 <head>
 	<title>Scenable Web app</title>
 
@@ -16,15 +16,19 @@ HTML5 Boilerplate before release.
 	<script data-main="/static/js/main" src="/static/js/require-jquery.js"></script>
 
 	<!-- Scripts -->
+	<script src="/static/js/plugins.js"></script>
 	<script src="/static/js/script.js"></script>
 	<script src="/static/js/mylibs/helper.js"></script>
 	<script src="/static/js/libs/modernizr-custom.js"></script>
-
+	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/static/css/style.css?v=1">
 	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/arvo-fontfacekit/stylesheet.css">
 	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+
+	<!-- Testing these - comment out if the not errors are annoying -->
+	<link rel="stylesheet" href="/static/css/fonts/testing/bitter-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="/static/css/fonts/testing/arvo-fontfacekit/stylesheet.css">
 
 </head>
 <body>

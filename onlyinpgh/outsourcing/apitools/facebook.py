@@ -279,3 +279,8 @@ OIP_APP_ID = '203898346321665'
 OIP_APP_SECRET = '897ca9d744d43da15d40d3f793f112e3'
 # if this stops working, try calling get_basic_access_token directly
 OIP_ACCESS_TOKEN = '203898346321665|e_aVTLcJCsV3c9tiQJn0tZjWcZg'
+
+SCENABLE_APP_ID = '320468664678832'
+SCENABLE_APP_SECRET = '0dc296287dbe668954e256c43206504d'
+# if this stops working, try calling get_basic_access_token directly
+SCENABLE_ACCESS_TOKEN = '320468664678832|7NNF1gCADyl0FIsstOfNVdjfrA4'
