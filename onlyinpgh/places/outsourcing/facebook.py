@@ -1,11 +1,11 @@
-from onlyinpgh.places.models import Place, Location, Hours, Parking, PlaceMeta
-from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient, SCENABLE_ACCESS_TOKEN
+from onlyinpgh.places.models import Place, Location, Hours, Parking
+from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient
+from onlyinpgh.tokens import FACEBOOK_ACCESS_TOKEN
 
 import re
 import datetime
 
-from onlyinpgh.places import US_STATE_MAP
-state_name_to_abbrev = dict([(name, code) for code, name in US_STATE_MAP])
+from onlyinpgh.places import abbreviate_state
 
 from django.db import transaction
 
@@ -23,12 +23,13 @@ class FBPage(object):
     @classmethod
     def import_live(cls, fbpage_id, client=None):
         '''
-        Pull info for the given page from the Graph API
+        Pull info for the given page from the Graph API.
+
+        Will throw IOError or FacebookAPIError on failure response.
         '''
         if not client:
-            client = GraphAPIClient(SCENABLE_ACCESS_TOKEN)
-        data = client.graph_api_page_request(fbpage_id)
-        # TODO: improve error handling and protect other methods if bad data is retrieved
+            client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
+            data = client.graph_api_page_request(fbpage_id)
         inst = cls(data)
         return inst
 
@@ -122,8 +123,8 @@ class FBPage(object):
             return None
         state = fb_loc.get('state', '').strip()
         # State entry is often full state name
-        if state != '' and state.upper() not in US_STATE_MAP:
-            state = state_name_to_abbrev.get(state, '')
+        if state != '' and len(state) != 2:
+            state = abbreviate_state(state) or ''
 
         return Location(address=fb_loc.get('street', '').strip(),
                         town=fb_loc.get('city', '').strip(),
@@ -132,45 +133,58 @@ class FBPage(object):
                         latitude=fb_loc.get('latitude'),
                         longitude=fb_loc.get('longitude'))
 
-    def to_place(self):
-        '''returns a new places.models.Place object'''
-        p = Place()
-
-        # special parking/hours objects used to serialize to DB
-        # TODO: this is temporary. dig into django custom model field to make less hacky
-        hours = self.get_hours()
-        if hours:
-            p.set_hours(hours)
-        parking = self.get_parking()
-        if parking:
-            p.set_parking(parking)
-
-        p.location = self.get_location()
-        p.name = self.get_field('name', '').strip()
-        p.fb_id = self.get_field('id', '').strip()
-        p.description = self.get_field('description', '').strip()
-        p.phone = self.get_field('phone', '').strip()
-        p.url = self.get_field('website', '').strip()
-
-        # TODO: download image once media is figured out
-        p.image_url = self.get_field('picture').replace('_s.jpg', '_n.jpg').strip()
-        return p
-
     def get_field(self, fbkey, default=None):
         '''returns the data contained in the FB data specified by the fbkey'''
         return self.data.get(fbkey, default)
 
 
 @transaction.commit_on_success
-def complete_place_data(place, save=True):
+def fbpage_to_place(fbpage, save=False):
+    p = Place()
+
+    # special parking/hours objects used to serialize to DB
+    # TODO: this is temporary. dig into django custom model field to make less hacky
+    hours = fbpage.get_hours()
+    if hours:
+        p.set_hours(hours)
+    parking = fbpage.get_parking()
+    if parking:
+        p.set_parking(parking)
+
+    location = fbpage.get_location()
+    if location is not None and save:
+        location.save()
+
+    p.location = location
+    p.name = fbpage.get_field('name', '').strip()
+    p.fb_id = fbpage.get_field('id', '').strip()
+    p.description = fbpage.get_field('description', '').strip()
+    p.phone = fbpage.get_field('phone', '').strip()
+    p.url = fbpage.get_field('website', '').strip()
+
+    # TODO: download image once media is figured out
+    p.image_url = fbpage.get_field('picture').replace('_s.jpg', '_n.jpg').strip()
+
+    if save:
+        p.save()
+    return p
+
+
+def supplement_place_data(place):
     '''
     Given a Place with a FB id, fleshes out all the empty entries with
     those from Facebook.
+
+    Note that the Place is not saved here, so if Location is set here,
+    it must be saved (and reassigned post-save) manually.
+
+    Beware IOError or FacebookAPIError exceptions.
     '''
     if not place.fb_id:
         raise AttributeError("This Place has no fb_id set!")
+
     fbpage = FBPage.import_live(place.fb_id)
-    fbplace = fbpage.to_place()
+    fbplace = fbpage_to_place(fbpage, save=False)
 
     attrs = ('name', 'description', 'phone', 'url', 'hours', 'parking')
     for attr_name in attrs:
@@ -179,7 +193,7 @@ def complete_place_data(place, save=True):
             setattr(place, attr_name, fb_attr)
 
     # force the updating of the fb_id (to standardize fb ids to numbers)
-    std_fb_id = fbpage.get_field('fb_id')
+    std_fb_id = fbpage.get_field('id')
     if std_fb_id:
         place.fb_id = std_fb_id
 
@@ -189,10 +203,7 @@ def complete_place_data(place, save=True):
         if place.location is None:
             # if no location set, the new FB location is it.
             # since FB location is unsaved, need to save before assigning
-            if not save:
-                raise NotImplementedError("Not yet supporintg save=False when setting new location.")
-            else:
-                fbloc.save()
+            fbloc.save()
             place.location = fbloc
         else:
             # otherwise, new flesh out any missing entries in the current location with these
@@ -204,14 +215,4 @@ def complete_place_data(place, save=True):
                     setattr(place.location, attr_name, fb_attr)
             place.location.save()
 
-    # if we're using the facebook image, add a PlaceMeta entry to keep track of that
-    if not place.image_url:
-        place.image_url = fbplace.image_url
-        if not save:
-            raise NotImplementedError("Not yet supporintg save=False when setting fb_linked_image PlaceMeta.")
-        else:
-            PlaceMeta.objects.get_or_create(key='fb_linked_image', value=place.image_url, place=place)
-
-    if save:
-        place.save()
     return place

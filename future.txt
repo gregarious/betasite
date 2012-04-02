@@ -12,3 +12,5 @@ A catch all text file for things that should be considered once there's an actua
 - Consider what code needs to be marked safe and what needs to be escaped. For now just marking everything that comes from a rendering.* function as safe.
 
 - Look into automating more Model+ViewModel's to_data with new flatten handlers
+
+- Learn details about models. Lean custom fields. Learn cleaning. (e.g. application: Add state fullname to abbrev translation into Place saving core)
