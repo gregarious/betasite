@@ -58,7 +58,6 @@ import factual
 
 geocoding_client = google.GoogleGeocodingClient()
 gplaces_client = google.GooglePlacesClient(google.OIP_PLACES_ACCESS_TOKEN)
-facebook_client = facebook.GraphAPIClient(facebook.OIP_ACCESS_TOKEN)
 factual_client = factual.FactualClient(factual.OIP_OAUTH_KEY, factual.OIP_OAUTH_SECRET)
 
 
