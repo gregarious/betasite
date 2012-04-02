@@ -31,7 +31,7 @@ class FBPage(object):
             data = client.graph_api_page_request(fbpage_id)
             inst = cls(data)
         except FacebookAPIError as e:
-            inst = cls(data, valid=False, api_error=e)
+            inst = cls({}, valid=False, api_error=e)
         inst._client = client
         return inst
 
@@ -150,6 +150,9 @@ class FBPage(object):
 
 @transaction.commit_on_success
 def fbpage_to_place(fbpage, save=False):
+    if not fbpage.valid:
+        return None
+
     p = Place()
 
     # special parking/hours objects used to serialize to DB
@@ -169,6 +172,9 @@ def fbpage_to_place(fbpage, save=False):
     p.name = fbpage.get_field('name', '').strip()
     p.fb_id = fbpage.get_field('id', '').strip()
     p.description = fbpage.get_field('description', '').strip()
+    # if no description, try 'about'
+    if not p.description:
+        p.description = fbpage.get_field('about', '').strip()
     p.phone = fbpage.get_field('phone', '').strip()
     p.url = fbpage.get_field('website', '').strip()
 
@@ -208,6 +214,11 @@ def supplement_place_data(place):
         else:
             raise
 
+    if not fbpage.valid:
+        if fbpage.api_error:
+            raise fbpage.api_error
+        else:
+            raise Exception('Unkown failure building FBPage object.')
     fbplace = fbpage_to_place(fbpage, save=False)
 
     attrs = ('name', 'description', 'phone', 'url', 'image_url', 'hours', 'parking')
