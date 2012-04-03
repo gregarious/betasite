@@ -9,7 +9,6 @@ Context variables:
 TODO: only show month/day for events ending on a different day
 {% endcomment %}
 
-
 <div class="item-thumb">
 	<a href="{% url event-detail event.id %}">
 		<img class="thumbnail" alt="{{event.name}}" src="{{event.image_url}}" />
@@ -18,13 +17,15 @@ TODO: only show month/day for events ending on a different day
 
 <section class="item-content">
 	<a href="{% url event-detail event.id %}">
-		<h4 class="item-title">{{ event.name }}</h4>
-
-		<ul class="item-details">	
-			<li>at <a href="#">{{event.place.name}}</a></li>
-			<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
-			<li class="description">{{event.description|truncatewords:35|urlizetrunc:20}}</li>
-	  	</ul>
+		<h4 class="item-title">{{ event.name }}</h4>	
 	</a>
+		<ul class="item-details">	
+			<li>at <a class="host" href="{% url event-detail event.place.id %}">{{event.place.name}}</a></li>
+			<a href="{% url event-detail event.id %}">
+				<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
+				<li class="description">{{event.description|truncatewords:35|urlizetrunc:20}}</li>
+			</a>
+	  	</ul>
+	
 	{% include "tags/tag_list.html" with tags=event.tags %}
 </section>
