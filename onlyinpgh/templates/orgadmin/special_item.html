@@ -4,7 +4,7 @@ Template to render a particular Special as an item in an orgadmin list.
 Compatible ViewModel: specials.viewmodels.SpecialFeedItem
 
 Context variables:
-	special:			Special ViewModel
+	special:			SpecialFeedItem ViewModel
 {% endcomment %}
 
 <div class="item-thumb">
@@ -24,7 +24,7 @@ Context variables:
 
 	<ul class="item-details">
 		<li>at {{special.place.name}}</li>
-		<li>at {{special.place.name}}</li>
+		<li>expires {{special.dexpires}}</li>
 	</ul>
 
 	<ul class="tag-list">

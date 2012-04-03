@@ -4,16 +4,14 @@
 /* 1 ROOT ---------- */
 
 body {
-  //background: url("/static/img_store/Oakland/background_pics/jpegs/DSC_1408.jpg");
+  background: url("/static/img_store/Oakland/background_pics/jpegs/DSC_1408.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background: url("/static/img_store/paper/limestone.jpg") fixed;
+  //background: url("/static/img_store/paper/limestone.jpg") fixed;
   //font-family: Helvetica, sans-serif;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
-
-//@import "../LESS/root.less";
 
 .wrap {
   .clearfix;
@@ -66,9 +64,6 @@ a {
 }
 
 /* FORMS & INPUTS --------------- */
-
-//@import '../LESS/forms';
-
 
 ::-webkit-input-placeholder {
    color: #AAAAAA;
@@ -611,7 +606,6 @@ button, input[type="submit"], .next, .back {
       }
     }
   }
-
 }
 
 /* SPECIALS --------- */
@@ -623,8 +617,6 @@ button, input[type="submit"], .next, .back {
 }
 
 /* 11 ACTIONS ---------- */
-
-
 
 .favbutton {
   display: block; 
@@ -791,6 +783,10 @@ button, input[type="submit"], .next, .back {
 
 @media screen and (max-width: 768px){
 
+  .logout, .bar {
+    display: none;
+  }
+
   body {
    //background: @lgreen;
   }
@@ -846,7 +842,7 @@ button, input[type="submit"], .next, .back {
   #logo {
     .column(3);
     img {
-      margin-top: 0.3em;
+      height: 100%;
     }
   }
 
@@ -990,7 +986,8 @@ button, input[type="submit"], .next, .back {
     margin-left: 0.5em;
 
     img {
-      height: 80%;
+      width: auto;
+      height: auto;
     }
   }
 

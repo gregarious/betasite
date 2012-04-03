@@ -136,10 +136,15 @@ ol {
   margin: 0;
   padding: 0;
 }
+/* Responsive Images + alt text style */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
+  color: #999;
+  font-style: italic;
+  height: auto;
+  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -232,10 +237,10 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
+  background: url("/static/img_store/Oakland/background_pics/jpegs/DSC_1408.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background: url("/static/img_store/paper/limestone.jpg") fixed;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 .wrap {
@@ -285,9 +290,6 @@ p {
 .meta {
   font-size: 0.9em;
 }
-/*.address, .datetime {
-  font-weight: bold;
-}*/
 .description {
   margin-top: 0.3em;
   font-color: #888;
@@ -1632,6 +1634,10 @@ a#siteJobs {
   }
 }
 @media screen and (max-width: 768px) {
+  .logout,
+  .bar {
+    display: none;
+  }
   #site-content.single {
     margin-top: 0;
   }
@@ -1688,7 +1694,7 @@ a#siteJobs {
     box-sizing: border-box;
   }
   #logo img {
-    margin-top: 0.3em;
+    height: 100%;
   }
   .item-details {
     font-size: 0.9em;
@@ -1835,7 +1841,8 @@ a#siteJobs {
     margin-left: 0.5em;
   }
   #logo img {
-    height: 80%;
+    width: auto;
+    height: auto;
   }
   .filter {
     display: none;

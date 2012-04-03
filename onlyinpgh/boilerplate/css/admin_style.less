@@ -11,47 +11,122 @@
 
 body {
 	background: url("/static/img/textures/sky-head-tex.png");
-}
-
-@import "../LESS/root.less";
-
-#mask {
-	width:500%;
-	height:100%;
+	.clearfix;
+	font-weight: normal;
+	height: 100%; 
+	margin: 0 auto 1em auto;
+	.lucida();
 	overflow-x: hidden;
+	width:100%;
 }
-
 
 /* 2 TYPOGRAPHY ---------- */
 
-@import '../LESS/type';
+h1 {
+	font-family: 'BloklettersBalpen';
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 0;
+}
 
 h2 {
 	color: @teal;
+	font-size: 1.2em;
 	font-style: italic;
+	font-weight: normal;
+	margin: 0 0 1em;
+	padding-bottom: 0.1em;	
 	text-shadow: 0.07em 0.07em 0 #ffffff;
+}
+
+a {
+	color: @red;
+
+	&:hover {
+		color: @yellow;
+	}
+
+	&:active {
+		color: @teal;
+	}
+
+	&:visited {
+		color: @red;
+	}
+}
+
+p {
+	color: #222;
+	margin: 0.1em 0;
+	text-shadow: 0.05em 0.05em 0.05em #fff;
+}
+
+/* TYPE ELEMENTS --------- */
+
+.meta {
+  font-size: 0.9em;
+}
+
+.description {
+	margin-top: 0.3em;
+	font-color: #888;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+#colophon {
+	text-align: right;
+	a {
+		color: @teal;
+		font-weight: bold;
+	
+		&:hover {
+			color: @red;
+		}
+	}
+}
+
+/* HEADINGS ------- */
+
+#site-title {
+	margin-top: 20px;
+	padding: 0;
+	text-align: center;
+	
+	a {
+		color: #fff;
+	
+		&:hover {
+			color: #fff;
+				text-shadow: 0.05em 0.05em 0 #222;
+		}
+
+		&:active {
+			text-shadow: 0 0.03em 0.05em #000;
+		}
+
+		&:visited {
+			color: #fff;
+		}
+	}
 }
 
 #tagline {
 	color: #fff;
+	font-size: 1em;
 	font-style: normal;
 	text-shadow: 0.01em 0.01em 0 #000;
+	text-align: center;
 	padding-bottom: 8px
 }
 
-#tagline {
-}
+/* ELEMENTS --------- */
 
-#site-title {
-	padding: 0;
-}
-
-.form-title {
-	border-bottom: 1px solid #ccc;
-}
-
-.errorlist {
-	margin-bottom: 1em;
+.points {
+	font-family: 'KomikaTitleRegular', Gill Sans, sans-serif;
+	font-size: 3em;
+	margin-top: -0.05em;
+	text-shadow: 0.05em 0.05em 0 @yellow;
 }
 
 /* SITE ------------- */
@@ -65,23 +140,29 @@ h2 {
 	position: fixed;
 	top: 0;
 	z-index: 999;
-}
 
-#userbar {
-	position: absolute;
-	top: 1.6em;
-	right: 60px;
-	font-style: italic;
-	color: #e1e1e1;
-	text-shadow: 0.02em, 0.02em, 0em, #fff;
+	.third {
+		width: 33%;
+		float: left;
+	}
 
-	a {
-		color: @yellow;
+	#user {
+		.column(4);
+		color: #e1e1e1;
+		font-style: italic;
+		margin: 1.3em 1em 0 0;
+		text-align: right;
+		text-shadow: 0.02em, 0.02em, 0em, #fff;
 
-		&:hover {
-			color: @lblue;
+		a {
+			color: @yellow;
+
+			&:hover {
+				color: @lblue;
+			}
 		}
 	}
+
 }
 
 #site-content {
@@ -113,33 +194,6 @@ h2 {
 	}
 }
 
-.panel {
-	float: left;
-	width: 20%;
-}
-
-#footer-image {
-	width: 100%;
-	margin: 0;
-
-	/* Can click thru div */
-	pointer-events: none;
-	
-	// Add queries for larger sign - this is for 1024
-	/*background-image: url(/static/img/pgh-250h.png);
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: bottom left; */
-	/*background: url("/static/img/illus/sign-forcloud.png"), url("/static/img/illus/cloud-1730w.png");
-	background-attachment: fixed, fixed;
-	background-repeat: no-repeat, no-repeat;
-	background-position: bottom left, bottom left;*/
-	height: 250px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-}
-
 #site-footer {
 	width: 100%;
 	position: relative;
@@ -158,17 +212,89 @@ h2 {
 
 /* FORMS & INPUTS --------------- */
 
-@import '../LESS/forms';
-
 form {
 	margin-top: 2em;
-
+	.clearfix();
 	.tip a {
 		color: @dblue;
 	}
 }
 
+label {
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	margin-left: 1%;
+	vertical-align: bottom;
+}
+
+textarea {
+	height: 6em;
+}
+
+::-webkit-input-placeholder {
+   color: #AAAAAA;
+}
+
+:-moz-placeholder {
+   color: #AAAAAA;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
+	border: 1px #cccccc solid;
+	.b-shadow(0.05em, 0.05em, 0.1em, #fff);
+	font-size: 1em;
+	width: 93%;
+	margin: 0 5% 0 2%;
+	outline: none;
+	padding: 0.5em;
+	.rounded(0.5em);
+
+	&:focus {
+		.b-shadow(0, 0, 0.2em, #2C525D);
+	}
+}
+
+button, input[type="submit"], .next, .back {
+	border: none;
+	background: @teal;
+	color: #fff !important;
+	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	.lucida();
+	padding: 0.5em;
+	.rounded(0.5em);
+	text-decoration: none;
+
+	&:hover {
+		.gradient(#1B333A, #2C525D);
+	}
+
+	&:active {
+		position: relative;
+		.no-b-shadow;
+		top: 1px;
+		left: 1px;
+	}
+}
+
+select{
+	width: 98%;
+	float: right;
+}
+
+option {
+	.lucida();
+}
+
+input[type="checkbox"] {
+	float: left;
+	.column_nm(1);
+	margin: 0.6em 0.5em 0;
+}
+
 .field-container {
+	.row();
+	.clearfix();
 	padding: 2em 0;
 	border-bottom: 1px solid #ccc;
 	margin-bottom: 2em;
@@ -228,11 +354,31 @@ form {
 	}
 }
 
-
 #confirm-pass {
 	margin-top: 10px;
 }
 
+.tip, .error {
+	color: #555;
+	font-size: 0.8em;
+	font-style: italic;
+	display: block;
+
+	&.desc {
+		margin-top: 2%;
+	}
+
+	margin-left: 2%;
+}
+
+.error {
+	color: #C34327;
+	float: left;
+}
+
+.errorlist {
+	margin-bottom: 1em;
+}
 
 /* SIGNUP ------ */
 
@@ -330,29 +476,14 @@ form {
 	}
 }
 
-/* ADMIN ---------- */
+/* 2 FEED/ITEMS ---------- */
 
+@import '../LESS/feed';
 
 .item {
 	border-bottom: 1px solid #ccc;
 	background: fade(#fff, 60%);
 }
-
-
-/* AUTOCOMPLETE ------ */
-
-/* SCHEDULED --------- */
-
-.scheduled-items {
-	ul {
-		.clearfix;
-		padding: 0;
-	}
-}
-
-/* 2 FEED/ITEMS ---------- */
-
-@import '../LESS/feed';
 
 .item-actions {
 	top: -15px;
@@ -365,15 +496,16 @@ form {
 
 /* IMAGES ------------ */
 
-.thumbnail {
+/*.thumbnail {
 	max-width: 300px;
-}
-
+}*/
+/*
 .uploaded-image {
 	display: block;
 	max-width: 50%;
 	max-height: 400px;
 }
+*/
 
 /* NAVIGATION ------------ a*/
 
@@ -383,76 +515,12 @@ form {
 	margin-top: 1em;
 }
 
-button, input[type="submit"], .next, .back {
-	background: @teal;
-	color: #fff !important;
-
-	&:hover {
-		.gradient(#1B333A, #2C525D);
-	}
-
-	&:active {
-		position: relative;
-		top: 1px;
-		left: 1px;
-	}
-}
-
-.next {
+.next, .submit-item {
 	float: right;
 }
 
 .back {
 	float: left;
-}
-
-.submit-item {
-	float: right;
-}
-
-
-
-/* PROFILE --------- */
-
-.details {
-	float: left;
-}
-
-.thumbnail {
-	float: right;
-}
-
-.profile-section {
-	.column(12);
-	padding-bottom: 1em;
-}
-
-.details {
-	margin-top: 0;
-	li {
-		padding-top: 0.5em;
-	}
-}
-
-.social-icon {
-	clear: both;
-	.column(12);
-	margin-bottom: 0.5em;
-	padding-bottom: 0.5em;
-	border-bottom: 2px solid #ccc;
-
-	img {
-		float: left;
-	}
-	
-	.social-link {
-		float: left;
-		margin: 0.5em 0.5em 0 1em;
-	}
-}
-
-.item-content {
-	//display: none;
 }
 
 /* ACTIONS --------- */
@@ -461,31 +529,25 @@ button, input[type="submit"], .next, .back {
 	font-style: italic;
 	font-weight: bold;
     float: right;
-    margin-top: -2em;
-
-/*
+    //margin-top: 2em;
     position: absolute;
-    top: 3em;
+    top: 2.5em;
     right: 3em;
-*/
 
     &:hover {
     	color: @lblue;
     }
 }
 
-
-/* UTILITY ----------- */
-
-.selected {
-	background-color: green;
-}
-
-img.edit-item {
-	margin-right: 10px;
+.edit-item, .delete-item {
+	padding: 0.2em;
+	&:hover {
+		background: @yellow;
+	}
 }
 
 /* JQUERY TIMEPICKER ------ */
+
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
 .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
