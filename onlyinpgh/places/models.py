@@ -246,8 +246,10 @@ class PlaceMeta(models.Model):
     '''
     Handles meta information for a Place.
 
-    Current keys in use:
-    - fb_linked_image
+    Current possible keys & values:
+    - fb_synced_field: value is name of Place field retrieved from FB
+    - fb_last_synced: value is UTC time (in ISO format) fields last synced
+        with FB
     '''
     place = models.ForeignKey(Place)
     key = models.CharField(max_length=32)

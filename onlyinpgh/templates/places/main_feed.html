@@ -19,6 +19,9 @@ Context variables:
 	
 </div>
 
+{% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+{% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
+
 <ul class="feed places">
 {% for item in items %}
     <li class="item">
@@ -26,3 +29,6 @@ Context variables:
     </li>
 {% endfor %}
 </ul>
+
+{% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+{% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}

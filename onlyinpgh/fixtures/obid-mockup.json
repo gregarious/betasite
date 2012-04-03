@@ -4833,7 +4833,7 @@
       "fb_id": "161961833858809", 
       "hours": "Mon-Fri,09:00am - 05:30pm\nSat,10:00am - 02:00pm\nSun,Closed\n", 
       "phone": "(412) 682 1499", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174874_161961833858809_3570943_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174874_161961833858809_3570943_s.jpg", 
       "location": 255, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -4901,7 +4901,7 @@
       "fb_id": "328754675500", 
       "hours": "", 
       "phone": "(412) 687-4666", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50516_328754675500_8907_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50516_328754675500_8907_s.jpg", 
       "location": 140, 
       "parking": "", 
       "twitter_username": "", 
@@ -5083,7 +5083,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:34", 
-      "description": "", 
+      "description": "Auto Palace in Pittsburgh, PA treats the needs of each individual customer with paramount concern. We know that you have high expectations, and as a car dealer we enjoy the challenge of meeting and exceeding those standards each and every time.", 
       "tags": [
         16, 
         17, 
@@ -5091,10 +5091,10 @@
         77
       ], 
       "url": "http://www.auto-palace.com/ou/pittsburgh-porsche/", 
-      "fb_id": "AutoPalacePorsche", 
+      "fb_id": "118139271700", 
       "hours": "Mon-Thurs,09:00am - 06:00pm\nFri,09:00am - 05:00pm\nSat,10:00am - 02:00pm\nSun,Closed\n", 
       "phone": "(412) 687-4000", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/261166_118139271700_1293831751_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/261166_118139271700_1293831751_s.jpg", 
       "location": 227, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -5116,7 +5116,7 @@
       "fb_id": "15698372465", 
       "hours": "Mon,Closed\nTues-Fri,09:00am - 03:30pm\nSat,Closed\nSun,\"08:30am - 09:30am, 11:00am - 12:15pm\"\n", 
       "phone": "(412) 687-3222", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50254_15698372465_786754_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50254_15698372465_786754_s.jpg", 
       "location": 190, 
       "parking": "", 
       "twitter_username": "", 
@@ -5200,7 +5200,7 @@
       "fb_id": "294241040320", 
       "hours": "", 
       "phone": "(412) 622-3770", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41802_294241040320_5021354_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41802_294241040320_5021354_s.jpg", 
       "location": 103, 
       "parking": "", 
       "twitter_username": "", 
@@ -5372,7 +5372,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:23", 
-      "description": "", 
+      "description": "Used Books and New Music in Pittsburgh", 
       "tags": [
         16, 
         17, 
@@ -5384,7 +5384,7 @@
       "fb_id": "126412670722686", 
       "hours": "Mon-Wed,11:00am - 05:30pm\nThurs,11:00am - 08:00pm\nFri-Sat,11:00am - 05:30pm\nSun,01:00pm - 05:30pm\n", 
       "phone": "(412) 681-9111", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158047_126412670722686_1136040471_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158047_126412670722686_1136040471_s.jpg", 
       "location": 208, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -5432,7 +5432,7 @@
       "fb_id": "10978218110", 
       "hours": "Mon,11:00am - 04:30pm\nTues-Thurs,11:00am - 10:30pm\nFri-Sat,11:00am - 11:30pm\nSun,11:00am - 08:30pm\n", 
       "phone": "(412) 683-3200", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41798_10978218110_2267_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41798_10978218110_2267_s.jpg", 
       "location": 188, 
       "parking": "", 
       "twitter_username": "", 
@@ -5487,17 +5487,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:27", 
-      "description": "", 
+      "description": "Engaging our Community in Literacy and Learning", 
       "tags": [
         25, 
         50, 
         51
       ], 
       "url": "http://www.clpgh.org/", 
-      "fb_id": "CarnegieLibraryOfPittsburgh", 
+      "fb_id": "73877691965", 
       "hours": "", 
       "phone": "(412) 622-3114", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/157989_73877691965_505892_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/157989_73877691965_505892_s.jpg", 
       "location": 215, 
       "parking": "", 
       "twitter_username": "", 
@@ -5516,10 +5516,10 @@
         44
       ], 
       "url": "www.cmu.edu", 
-      "fb_id": "carnegiemellonu", 
+      "fb_id": "7133766387", 
       "hours": "", 
       "phone": "(412) 268-2000", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_7133766387_694144433_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_7133766387_694144433_s.jpg", 
       "location": 240, 
       "parking": "", 
       "twitter_username": "", 
@@ -5531,17 +5531,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:27", 
-      "description": "", 
+      "description": "We are open late on Thursday evenings until 8! Make it a date night or bring the family after work!", 
       "tags": [
         25, 
         50, 
         51
       ], 
       "url": "http://web.cmoa.org/", 
-      "fb_id": "CarnegieMuseumofArt", 
+      "fb_id": "38014611787", 
       "hours": "Mon-Wed,10:00am - 05:00pm\nThurs,10:00am - 08:00pm\nFri-Sat,10:00am - 05:00pm\nSun,12:00am - 05:00pm\n", 
       "phone": "(412) 622-3131", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188149_38014611787_876752_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188149_38014611787_876752_s.jpg", 
       "location": 215, 
       "parking": "lot\n", 
       "twitter_username": "", 
@@ -5553,7 +5553,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:28", 
-      "description": "", 
+      "description": "Mission Statement: To conduct scientific inquiry, generate knowledge, and promote stewardship of the Earth. Through public engagement, we share the joy of discovery about the processes that shape the diversity of our world and its inhabitants.", 
       "tags": [
         25, 
         50, 
@@ -5563,7 +5563,7 @@
       "fb_id": "31539090679", 
       "hours": "Mon,Closed\nTues-Wed,10:00am - 05:00pm\nThurs,10:00am - 08:00pm\nFri-Sat,10:00am - 05:00pm\nSun,12:00pm - 05:00pm\n", 
       "phone": "(412) 622-3131", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276402_31539090679_705447606_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276402_31539090679_705447606_s.jpg", 
       "location": 215, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -5651,7 +5651,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:39", 
-      "description": "", 
+      "description": "Central Catholic is an all-boys Catholic high school in the Lasallian tradition", 
       "tags": [
         14, 
         15
@@ -5660,7 +5660,7 @@
       "fb_id": "130802130287924", 
       "hours": "Mon-Fri,08:00am - 03:30pm\nSat-Sun,Closed\n", 
       "phone": "(412) 621-8189", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50496_130802130287924_7514_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50496_130802130287924_7514_s.jpg", 
       "location": 236, 
       "parking": "lot\n", 
       "twitter_username": "", 
@@ -5912,7 +5912,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:58:38", 
-      "description": "", 
+      "description": "Pittsburgh's favorite place for coffee and desserts!  Locally owned by life long Pittsburgher's.  \n\nFor information on any of our 27 stores, visit www.crazymocha.com.", 
       "tags": [
         6, 
         7, 
@@ -5922,7 +5922,7 @@
       "fb_id": "127771128936", 
       "hours": "", 
       "phone": "(412) 621-7440", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41608_127771128936_3155129_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41608_127771128936_3155129_s.jpg", 
       "location": 15, 
       "parking": "", 
       "twitter_username": "", 
@@ -5974,7 +5974,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:58:57", 
-      "description": "", 
+      "description": "A Pittsburgh staple since 1983. Featuring over 200 flavors of homemade ice cream and hand rolled waffle cones.", 
       "tags": [
         6, 
         7, 
@@ -5983,10 +5983,10 @@
         17
       ], 
       "url": "", 
-      "fb_id": "DaveNAndys", 
+      "fb_id": "183840534624", 
       "hours": "Mon-Fri,11:30am - 10:00pm\nSat-Sun,12:00pm - 10:00pm\n", 
       "phone": "(412) 681-9906", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/276743_183840534624_6680639_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/276743_183840534624_6680639_s.jpg", 
       "location": 43, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -6206,13 +6206,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:05", 
-      "description": "", 
+      "description": "Family House, a non-profit organization in Pittsburgh, PA, provides a special \"home away from home\" for patients and families who are in Pittsburgh for treatment of serious or life-threatening illnesses.", 
       "tags": [], 
       "url": "http://www.familyhouse.org/", 
-      "fb_id": "FamilyHousePittsburgh", 
+      "fb_id": "306452702240", 
       "hours": "", 
       "phone": "(412) 647-7777", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71155_306452702240_5228400_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71155_306452702240_5228400_s.jpg", 
       "location": 62, 
       "parking": "", 
       "twitter_username": "", 
@@ -6234,7 +6234,7 @@
       "fb_id": "108697855875679", 
       "hours": "", 
       "phone": "(412) 621-0500", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188120_108697855875679_4117878_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188120_108697855875679_4117878_s.jpg", 
       "location": 31, 
       "parking": "", 
       "twitter_username": "", 
@@ -6253,10 +6253,10 @@
         5
       ], 
       "url": "http://www.christiansciencepgh.org/", 
-      "fb_id": "christiansciencepgh", 
+      "fb_id": "118316171513854", 
       "hours": "", 
       "phone": "(412) 621-5339", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372891_118316171513854_191795840_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372891_118316171513854_191795840_s.jpg", 
       "location": 40, 
       "parking": "", 
       "twitter_username": "", 
@@ -6445,7 +6445,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:00", 
-      "description": "", 
+      "description": "It should be noted, Fuel has its first girl 500 mug cult member...Congrats Elizabeth", 
       "tags": [
         6, 
         7, 
@@ -6455,7 +6455,7 @@
       "fb_id": "52775066304", 
       "hours": "Mon-Sun,11:00am - 01:00am\n", 
       "phone": "(412) 682-3473", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71039_52775066304_2866450_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71039_52775066304_2866450_s.jpg", 
       "location": 49, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -6508,7 +6508,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:05", 
-      "description": "", 
+      "description": "We are full service florist that services dowtown Pittsburgh and surrounding suburbs. We specialize in weddings and events. We have been a family owned and operated business for 4 generations and more than 90 years.", 
       "tags": [
         16, 
         17, 
@@ -6519,7 +6519,7 @@
       "fb_id": "117969668996", 
       "hours": "Mon-Fri,07:30am - 05:00pm\nSat,09:00am - 04:00pm\nSun,Closed\n", 
       "phone": "(412) 621-1300", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71175_117969668996_3886566_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71175_117969668996_3886566_s.jpg", 
       "location": 170, 
       "parking": "", 
       "twitter_username": "", 
@@ -6733,7 +6733,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:12", 
-      "description": "", 
+      "description": "$1.50 Miller Lite Drafts, $5 Miller Lite Pitchers, $6 Yuengling Pitchers ALL DAY EVERY DAY!!!  Wednesday Night: Karaoke at 10 p.m.  Thursday Night:  DJ Donnelly at 11 p.m.", 
       "tags": [
         6, 
         7, 
@@ -6746,7 +6746,7 @@
       "fb_id": "43656360946", 
       "hours": "Mon-Fri,11:00am - 02:00am\nSat,06:00pm - 02:00am\nSun,Closed\n", 
       "phone": "(412) 621-4100", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_43656360946_6332753_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_43656360946_6332753_s.jpg", 
       "location": 183, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -6758,7 +6758,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:32", 
-      "description": "", 
+      "description": "The oldest pharmacy in Pittsburgh - Hieber's enters its 153rd year of compounding prescriptions in 2010!", 
       "tags": [
         16, 
         17, 
@@ -6767,10 +6767,10 @@
         45
       ], 
       "url": "http://www.hpharmacy.net/", 
-      "fb_id": "hieberspharmacy", 
+      "fb_id": "188001794690", 
       "hours": "Mon-Fri,09:00am - 05:00pm\nSat,09:00am - 12:00pm\nSun,Closed\n", 
       "phone": "(412) 681-6400", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276711_188001794690_1292952249_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276711_188001794690_1292952249_s.jpg", 
       "location": 117, 
       "parking": "", 
       "twitter_username": "", 
@@ -6806,7 +6806,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:58:31", 
-      "description": "", 
+      "description": "251 Guest Rooms, 100% non-smoking hotel, Comp shuttle within 3 mi radius excluding downtown", 
       "tags": [
         1, 
         2
@@ -6815,7 +6815,7 @@
       "fb_id": "130664376946254", 
       "hours": "", 
       "phone": "(412) 682-6200", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/23312_130664376946254_892_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/23312_130664376946254_892_s.jpg", 
       "location": 1, 
       "parking": "", 
       "twitter_username": "", 
@@ -6890,13 +6890,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:44", 
-      "description": "", 
+      "description": "Fresh Produce, Full Deli, and all your Grocery needs in a fun environment!", 
       "tags": [], 
       "url": "http://oaklandiga.com/", 
       "fb_id": "135390396483173", 
       "hours": "Mon-Fri,08:00am - 07:00pm\nSat-Sun,11:00am - 07:00pm\n", 
       "phone": "(412) 621-1212", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27526_135390396483173_6175_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27526_135390396483173_6175_s.jpg", 
       "location": 142, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -6952,16 +6952,16 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:13", 
-      "description": "", 
+      "description": "Established in 1978, Irish Design Center offers a unique collection of directly imported knitwear, clothing, gifts and jewelry from Ireland and Scotland. We pride ouselves on a reputation for quality products, great prices and friendly service.", 
       "tags": [
         16, 
         17
       ], 
       "url": "http://www.irishdesigncenter.com/mysitecaddy/site3/", 
-      "fb_id": "IrishDesignCenter", 
+      "fb_id": "141800975864810", 
       "hours": "Mon-Sat,10:00am - 05:30pm\nSun,Closed\n", 
       "phone": "(412) 682-6125", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41781_141800975864810_9225_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41781_141800975864810_9225_s.jpg", 
       "location": 78, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -7252,7 +7252,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:25", 
-      "description": "", 
+      "description": "Pittsburgh's beloved independent Coffee shop and cafe.", 
       "tags": [
         17, 
         16, 
@@ -7268,7 +7268,7 @@
       "fb_id": "82852692424", 
       "hours": "Mon-Fri,06:30am - 11:00pm\nSat-Sun,08:00am - 11:00pm\n", 
       "phone": "(412) 687-6355", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/41786_82852692424_3260065_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/41786_82852692424_3260065_s.jpg", 
       "location": 211, 
       "parking": "", 
       "twitter_username": "", 
@@ -7359,7 +7359,7 @@
       "fb_id": "178050436883", 
       "hours": "", 
       "phone": "(412) 687-1189", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_178050436883_7021437_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_178050436883_7021437_s.jpg", 
       "location": 198, 
       "parking": "", 
       "twitter_username": "", 
@@ -7378,10 +7378,10 @@
         8
       ], 
       "url": "", 
-      "fb_id": "leenasfood", 
+      "fb_id": "59693855755", 
       "hours": "Mon-Thurs,10:00am - 10:00pm\nFri-Sat,10:00am - 03:00am\nSun,Closed\n", 
       "phone": "(412)-480-8854", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50312_59693855755_7954_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50312_59693855755_7954_s.jpg", 
       "location": 21, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -7531,7 +7531,7 @@
       "fb_id": "188580067517", 
       "hours": "", 
       "phone": "(412) 687-7777", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41799_188580067517_3798202_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41799_188580067517_3798202_s.jpg", 
       "location": 187, 
       "parking": "", 
       "twitter_username": "", 
@@ -7543,13 +7543,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:18", 
-      "description": "", 
+      "description": "Pittsburgh's own Tuscany", 
       "tags": [], 
       "url": "http://luccaristorante.com/", 
-      "fb_id": "LuccaRistorante", 
+      "fb_id": "140184476011373", 
       "hours": "Mon-Fri,\"11:30am - 02:00pm, 05:00pm - 10:00pm\"\nSat,05:00pm - 10:00pm\nSun,04:30pm - 09:00pm\n", 
       "phone": "(412) 682-3310", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/157897_140184476011373_7299093_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/157897_140184476011373_7299093_s.jpg", 
       "location": 87, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -7568,10 +7568,10 @@
         8
       ], 
       "url": "http://bit.ly/MadMexOakland https://twitter.com/#!/MadMex_Oakland https://foursquare.com/madmex_oakland", 
-      "fb_id": "MadMexAtwood", 
+      "fb_id": "228954430508292", 
       "hours": "Mon-Sun,11:00am - 02:00am\n", 
       "phone": "(412) 681-5656", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373515_228954430508292_421576860_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373515_228954430508292_421576860_s.jpg", 
       "location": 154, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -7611,7 +7611,7 @@
         17
       ], 
       "url": "http://www.maggieandstellasgifts.com/", 
-      "fb_id": "maggieandstellas", 
+      "fb_id": "83057190581", 
       "hours": "Mon-Fri 10am-6pm\r\nSat 12pm-5pm\r\nSun Closed", 
       "phone": "(412) 648-1353", 
       "image_url": "http://www.maggieandstellasgifts.com/images/header.png", 
@@ -7700,7 +7700,7 @@
       "fb_id": "164341936930309", 
       "hours": "Mon-Fri,10:00am - 05:00pm\nSat-Sun,Closed\n", 
       "phone": "(412) 621-6773", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50265_164341936930309_5177533_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50265_164341936930309_5177533_s.jpg", 
       "location": 125, 
       "parking": "lot\n", 
       "twitter_username": "", 
@@ -7712,17 +7712,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:18", 
-      "description": "", 
+      "description": "www.mellingersbeer.com\n\nKing of beers? Champagne of beers? Beer brewed with rocky mountain water?  Dead Guy Ale? With over 500 beers we have the most recent hand crafted ales and all your old favorites.  Stop by and see our ever changing seasonals.", 
       "tags": [
         6, 
         7, 
         8
       ], 
       "url": "http://www.mellingersbeer.com", 
-      "fb_id": "Mellingers", 
+      "fb_id": "153726191337687", 
       "hours": "Mon-Wed,10:00am - 10:00pm\nThurs-Sat,10:00am - 11:00pm\nSun,12:00pm - 05:00pm\n", 
       "phone": "(412) 682-4396", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373031_153726191337687_701008727_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373031_153726191337687_701008727_s.jpg", 
       "location": 196, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -7794,7 +7794,7 @@
       "fb_id": "325518643484", 
       "hours": "", 
       "phone": "(412) 586-7034", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/27526_325518643484_4025_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/27526_325518643484_4025_s.jpg", 
       "location": 107, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -7974,16 +7974,16 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:11", 
-      "description": "", 
+      "description": "Best New Balance Selection in Pittsburgh at Two Locations: Oakland & The Waterfront", 
       "tags": [
         16, 
         17
       ], 
       "url": "http://stores.newbalance.com/pittsburgh/default.aspx?s3=ppc", 
-      "fb_id": "NewBalancePgh", 
+      "fb_id": "118061484906426", 
       "hours": "", 
       "phone": "(412) 697-1333", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158069_118061484906426_1352000626_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158069_118061484906426_1352000626_s.jpg", 
       "location": 179, 
       "parking": "", 
       "twitter_username": "", 
@@ -8005,7 +8005,7 @@
       "fb_id": "194045876982", 
       "hours": "", 
       "phone": "(412) 621-6199", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50354_194045876982_3911911_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50354_194045876982_3911911_s.jpg", 
       "location": 221, 
       "parking": "", 
       "twitter_username": "", 
@@ -8065,7 +8065,7 @@
       "fb_id": "351740933073", 
       "hours": "", 
       "phone": "(412) 683-6243", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187794_351740933073_2507124_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187794_351740933073_2507124_s.jpg", 
       "location": 65, 
       "parking": "", 
       "twitter_username": "", 
@@ -8104,7 +8104,7 @@
       "fb_id": "194864157210632", 
       "hours": "", 
       "phone": "(412) 682-6633", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187821_194864157210632_2815424_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187821_194864157210632_2815424_s.jpg", 
       "location": 30, 
       "parking": "", 
       "twitter_username": "", 
@@ -8166,7 +8166,7 @@
       "fb_id": "220336147980324", 
       "hours": "", 
       "phone": "(412) 683-0313", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174890_220336147980324_4962127_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174890_220336147980324_4962127_s.jpg", 
       "location": 59, 
       "parking": "", 
       "twitter_username": "", 
@@ -8219,13 +8219,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:07", 
-      "description": "", 
+      "description": "OPDC is a nonprofit community development corporation in Pittsburgh, PA that engages in planning and development activities to contribute to the vitality of Oakland.", 
       "tags": [], 
       "url": "www.opdc.org", 
-      "fb_id": "OPDC.org", 
+      "fb_id": "281919830556", 
       "hours": "", 
       "phone": "(412) 621-7863", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/372864_281919830556_1142582679_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/372864_281919830556_1142582679_s.jpg", 
       "location": 65, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -8291,7 +8291,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:58:44", 
-      "description": "", 
+      "description": "At Oishii Bento, we create authentic Korean/Japanese cuisine with a focus on health and well being. \n\n119 Oakland Ave. \nPittsburgh, PA 15213 \n412-687-3335\n\nM-F 10:30am-9pm \nSat 11am-10pm\n\nhttp://oishiibento.com/", 
       "tags": [
         6, 
         7, 
@@ -8301,7 +8301,7 @@
       "fb_id": "128620450510669", 
       "hours": "Mon-Fri,10:30am - 09:00pm\nSat,11:00am - 09:00pm\nSun,Closed\n", 
       "phone": "(412) 687-3335", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27541_128620450510669_2263_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27541_128620450510669_2263_s.jpg", 
       "location": 19, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -8367,7 +8367,7 @@
       "fb_id": "188053227905353", 
       "hours": "Mon-Thurs,09:00am - 07:30pm\nFri,09:00am - 09:00pm\nSat,09:00am - 07:30pm\nSun,10:00am - 07:30pm\n", 
       "phone": "(412) 683-2041", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195790_188053227905353_1134162_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195790_188053227905353_1134162_s.jpg", 
       "location": 153, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -8397,29 +8397,6 @@
     }
   }, 
   {
-    "pk": 209, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:17", 
-      "description": "", 
-      "tags": [
-        11, 
-        13, 
-        32, 
-        33
-      ], 
-      "url": "www.pnc.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 621-0300", 
-      "image_url": "", 
-      "location": 192, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "PNC Bank"
-    }
-  }, 
-  {
     "pk": 276, 
     "model": "places.place", 
     "fields": {
@@ -8443,6 +8420,29 @@
     }
   }, 
   {
+    "pk": 209, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:17", 
+      "description": "", 
+      "tags": [
+        11, 
+        13, 
+        32, 
+        33
+      ], 
+      "url": "www.pnc.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 621-0300", 
+      "image_url": "", 
+      "location": 192, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "PNC Bank"
+    }
+  }, 
+  {
     "pk": 171, 
     "model": "places.place", 
     "fields": {
@@ -8454,10 +8454,10 @@
         8
       ], 
       "url": "http://www.pamelasdiner.com/index.cfm", 
-      "fb_id": "pamelasdiner", 
+      "fb_id": "124675784895", 
       "hours": "", 
       "phone": "(412) 683-4066", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71158_124675784895_2481618_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71158_124675784895_2481618_s.jpg", 
       "location": 157, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -8564,7 +8564,7 @@
       "fb_id": "168172703239295", 
       "hours": "Mon-Fri,06:00am - 06:00pm\nSat-Sun,11:00am - 04:00pm\n", 
       "phone": "(412) 379-3930", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174878_168172703239295_1857494_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174878_168172703239295_1857494_s.jpg", 
       "location": 18, 
       "parking": "", 
       "twitter_username": "", 
@@ -8686,17 +8686,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:47", 
-      "description": "", 
+      "description": "phipps.conservatory.org\n\nOpen daily from 9:30 a.m. to 5 p.m. and until 10 p.m. on Fridays.\n\nFor info : 412/622-6914", 
       "tags": [
         7, 
         47, 
         48
       ], 
       "url": "http://phipps.conservatory.org/", 
-      "fb_id": "phippsconservatory", 
+      "fb_id": "104851729258", 
       "hours": "", 
       "phone": "(412) 622-6914", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161897_104851729258_251383402_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash3/161897_104851729258_251383402_s.jpg", 
       "location": 252, 
       "parking": "", 
       "twitter_username": "", 
@@ -8763,7 +8763,7 @@
       "fb_id": "157973787550089", 
       "hours": "Mon-Fri,10:30am - 02:00am\nSat-Sun,02:30pm - 02:00am\n", 
       "phone": "(412) 687-3330", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50435_157973787550089_1348_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50435_157973787550089_1348_s.jpg", 
       "location": 57, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -8775,13 +8775,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:29", 
-      "description": "", 
+      "description": "To buy tickets call: 412-624-4129    www.pittsburghchambermusic.org", 
       "tags": [], 
       "url": "http://www.pittsburghchambermusic.org/newSite/", 
       "fb_id": "85378651541", 
       "hours": "", 
       "phone": "(412) 624-4129", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188025_85378651541_2906254_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188025_85378651541_2906254_s.jpg", 
       "location": 215, 
       "parking": "", 
       "twitter_username": "", 
@@ -8793,16 +8793,16 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:40", 
-      "description": "", 
+      "description": "Pittsburgh's nonprofit media arts center.", 
       "tags": [
         7, 
         79
       ], 
       "url": "http://pfm.pittsburgharts.org/", 
-      "fb_id": "pghfilmmakers", 
+      "fb_id": "140954329326030", 
       "hours": "", 
       "phone": "(412) 681-5449", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_140954329326030_389787368_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_140954329326030_389787368_s.jpg", 
       "location": 237, 
       "parking": "", 
       "twitter_username": "", 
@@ -8814,17 +8814,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:09", 
-      "description": "", 
+      "description": "Nurturing Nature. Planting Possibility.", 
       "tags": [
         7, 
         47, 
         48
       ], 
       "url": "http://www.pittsburghparks.org/", 
-      "fb_id": "pittsburghparks", 
+      "fb_id": "7163241268", 
       "hours": "", 
       "phone": "(412) 682-7275", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50355_7163241268_3712_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50355_7163241268_3712_s.jpg", 
       "location": 68, 
       "parking": "", 
       "twitter_username": "", 
@@ -8842,10 +8842,10 @@
         15
       ], 
       "url": "http://www.pittsburghplayhouse.com/", 
-      "fb_id": "pittsburgh.playhouse", 
+      "fb_id": "125166184463", 
       "hours": "", 
       "phone": "(412) 621-4445", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174667_125166184463_1956988540_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174667_125166184463_1956988540_s.jpg", 
       "location": 56, 
       "parking": "lot\n", 
       "twitter_username": "", 
@@ -8973,10 +8973,10 @@
         8
       ], 
       "url": "http://www.pizzasola.com/", 
-      "fb_id": "PizzaSola", 
+      "fb_id": "349097652916", 
       "hours": "Mon-Thurs,11:00am - 12:00am\nFri,11:00am - 03:00am\nSat,11:30am - 03:00am\nSun,12:30pm - 12:00am\n", 
       "phone": "(412) 681-7652", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/211087_349097652916_4529320_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/211087_349097652916_4529320_s.jpg", 
       "location": 11, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -8988,17 +8988,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:10", 
-      "description": "", 
+      "description": "Home of the Almost Famous Sandwich! Check out 19 other locations at www.primantibros.com", 
       "tags": [
         6, 
         7, 
         8
       ], 
       "url": "http://www.primantibros.com/", 
-      "fb_id": "PrimantiBrothers", 
+      "fb_id": "15349859252", 
       "hours": "Mon-Sun,12:00am - 12:00am\n", 
       "phone": "(412) 621-4444", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373044_15349859252_1708315748_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41806_15349859252_114660431_s.jpg", 
       "location": 177, 
       "parking": "street\nlot\n", 
       "twitter_username": "", 
@@ -9020,7 +9020,7 @@
       "fb_id": "178982284869", 
       "hours": "", 
       "phone": "(412) 687-0888", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50264_178982284869_1415025_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50264_178982284869_1415025_s.jpg", 
       "location": 147, 
       "parking": "", 
       "twitter_username": "", 
@@ -9032,17 +9032,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:08", 
-      "description": "", 
+      "description": "2011 is busy busy! call before ya swing by :)  Oakland-412-621-2087 and Cranberry- 724-776-1521", 
       "tags": [
         20, 
         26, 
         27
       ], 
       "url": "www.twitter.com/salpuccini\nwww.myspace.com/salvatorepuccini", 
-      "fb_id": "salvatorepuccini", 
+      "fb_id": "163329138211", 
       "hours": "", 
       "phone": "(412) 621-2087", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41570_163329138211_5180592_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41570_163329138211_5180592_s.jpg", 
       "location": 66, 
       "parking": "", 
       "twitter_username": "", 
@@ -9094,6 +9094,24 @@
     }
   }, 
   {
+    "pk": 256, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:37", 
+      "description": "", 
+      "tags": [], 
+      "url": "www.radioshack.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-2100", 
+      "image_url": "", 
+      "location": 232, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Radio Shack"
+    }
+  }, 
+  {
     "pk": 150, 
     "model": "places.place", 
     "fields": {
@@ -9111,24 +9129,6 @@
       "phone": "(412) 681-6550", 
       "image_url": "", 
       "location": 138, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Radio Shack"
-    }
-  }, 
-  {
-    "pk": 256, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:37", 
-      "description": "", 
-      "tags": [], 
-      "url": "www.radioshack.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-2100", 
-      "image_url": "", 
-      "location": 232, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Radio Shack"
@@ -9160,7 +9160,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:47", 
-      "description": "", 
+      "description": "Those who have been there can't explain, Those who haven't been there will never understand...\n\nhttp://razzyfresh.com/", 
       "tags": [
         6, 
         7, 
@@ -9172,7 +9172,7 @@
       "fb_id": "117733734917057", 
       "hours": "Mon-Sun,12:00pm - 11:30pm\n", 
       "phone": "412-586-7924", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/23303_117733734917057_1263_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/23303_117733734917057_1263_s.jpg", 
       "location": 251, 
       "parking": "", 
       "twitter_username": "", 
@@ -9271,7 +9271,7 @@
       "fb_id": "155098914506223", 
       "hours": "", 
       "phone": "(412) 621-6566", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174604_155098914506223_168363_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174604_155098914506223_168363_s.jpg", 
       "location": 239, 
       "parking": "", 
       "twitter_username": "", 
@@ -9320,7 +9320,7 @@
       "fb_id": "110939620161", 
       "hours": "", 
       "phone": "(412) 621-4354", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50275_110939620161_6959171_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50275_110939620161_6959171_s.jpg", 
       "location": 97, 
       "parking": "", 
       "twitter_username": "", 
@@ -9342,7 +9342,7 @@
       "fb_id": "98788647369", 
       "hours": "Mon-Fri,10:30am - 07:00pm\nSat,11:00am - 07:00pm\nSun,11:00am - 06:00pm\n", 
       "phone": "(412) 621-8110", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50492_98788647369_3737268_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50492_98788647369_3737268_s.jpg", 
       "location": 234, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9422,7 +9422,7 @@
       "fb_id": "205974802752877", 
       "hours": "Mon-Sun,10:00am - 04:00pm\n", 
       "phone": "(412) 687-1800", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187994_205974802752877_7850972_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187994_205974802752877_7850972_s.jpg", 
       "location": 3, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9444,7 +9444,7 @@
       "fb_id": "117063121645059", 
       "hours": "Mon-Fri,10:00am - 07:00pm\nSat,11:00am - 04:00pm\nSun,Closed\n", 
       "phone": "(412) 687-9287", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187904_117063121645059_8206456_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187904_117063121645059_8206456_s.jpg", 
       "location": 102, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9570,10 +9570,10 @@
         72
       ], 
       "url": "http://www.soldiersandsailorshall.org/", 
-      "fb_id": "SoldiersandSailors", 
+      "fb_id": "79888000570", 
       "hours": "Mon-Sat,10:00am - 04:00pm\nSun,Closed\n", 
       "phone": "(412) 621-4253", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372831_79888000570_1362124222_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372831_79888000570_1362124222_s.jpg", 
       "location": 206, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9617,7 +9617,7 @@
       "fb_id": "120300144652011", 
       "hours": "Mon-Thurs,04:00pm - 01:00am\nFri-Sat,04:00pm - 02:00am\nSun,04:00pm - 01:00am\n", 
       "phone": "(412) 621-1153", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276489_120300144652011_5448087_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276489_120300144652011_5448087_s.jpg", 
       "location": 191, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9629,17 +9629,17 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:11", 
-      "description": "", 
+      "description": "Cuisine of Southeast Asia in a funky, festive atmosphere, featuring an eclectic selection of wines, beers, and loose teas.", 
       "tags": [
         6, 
         7, 
         8
       ], 
       "url": "http://www.spiceislandteahouse.com/Homepage.html", 
-      "fb_id": "spiceislandteahouse", 
+      "fb_id": "144419906007", 
       "hours": "Mon-Thurs,11:30am - 09:00pm\nFri-Sat,11:30am - 10:00pm\nSun,Closed\n", 
       "phone": "(412) 687-8821", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174783_144419906007_1427308_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174783_144419906007_1427308_s.jpg", 
       "location": 73, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -9909,28 +9909,6 @@
     }
   }, 
   {
-    "pk": 172, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:00", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "www.subway.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 687-7550", 
-      "image_url": "", 
-      "location": 158, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Subway"
-    }
-  }, 
-  {
     "pk": 224, 
     "model": "places.place", 
     "fields": {
@@ -9947,6 +9925,28 @@
       "phone": "(412) 687-6728", 
       "image_url": "", 
       "location": 207, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Subway"
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:00", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "www.subway.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 687-7550", 
+      "image_url": "", 
+      "location": 158, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Subway"
@@ -10043,7 +10043,7 @@
       "fb_id": "140995945974331", 
       "hours": "", 
       "phone": "(412) 235 7623", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195754_140995945974331_1443006_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195754_140995945974331_1443006_s.jpg", 
       "location": 12, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -10434,7 +10434,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:09", 
-      "description": "", 
+      "description": "We offer Saturday appointments for custom work. Please call for specifics.", 
       "tags": [
         16, 
         17, 
@@ -10445,7 +10445,7 @@
       "fb_id": "191711817521372", 
       "hours": "Mon-Fri,10:00am - 05:30pm\nSat-Sun,Closed\n", 
       "phone": "(412) 687-3867", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161897_191711817521372_62112634_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash3/161897_191711817521372_62112634_s.jpg", 
       "location": 175, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -10565,7 +10565,7 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:21", 
-      "description": "", 
+      "description": "Please visit our website for menus and more!\n\nhttp://pghdining.com/index.php?option=com_content&view=article&id=11:sample&catid=13:alphabetical-listing-a-z&Itemid=18", 
       "tags": [
         6, 
         7, 
@@ -10575,7 +10575,7 @@
       "fb_id": "107604845966237", 
       "hours": "Mon-Thurs,11:30am - 10:00pm\nFri-Sat,11:30am - 11:00pm\nSun,12:00pm - 09:00pm\n", 
       "phone": "(412) 681-8620", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50436_107604845966237_221_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50436_107604845966237_221_s.jpg", 
       "location": 203, 
       "parking": "street\n", 
       "twitter_username": "", 
@@ -10605,13 +10605,13 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 15:59:06", 
-      "description": "", 
+      "description": "At the Heart of Jewish Giving", 
       "tags": [], 
       "url": "http://www.jewishfederationpittsburgh.org/", 
-      "fb_id": "jfedpgh", 
+      "fb_id": "143774118973435", 
       "hours": "", 
       "phone": "(412) 681-8000", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/277048_143774118973435_1660632446_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/277048_143774118973435_1660632446_s.jpg", 
       "location": 63, 
       "parking": "", 
       "twitter_username": "", 
@@ -10644,16 +10644,16 @@
     "model": "places.place", 
     "fields": {
       "dtcreated": "2012-03-22 16:00:15", 
-      "description": "", 
+      "description": "Your one-stop shop for all things Pitt and more.", 
       "tags": [
         15, 
         44
       ], 
       "url": "http://www.pitt.edu/~bookctr/", 
-      "fb_id": "thebookcenter", 
+      "fb_id": "182302828453071", 
       "hours": "", 
       "phone": "(412) 648-1455", 
-      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174862_182302828453071_852360100_n.jpg", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174862_182302828453071_852360100_s.jpg", 
       "location": 189, 
       "parking": "", 
       "twitter_username": "", 
@@ -10851,24 +10851,6 @@
     }
   }, 
   {
-    "pk": 59, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:02", 
-      "description": "", 
-      "tags": [], 
-      "url": "www.pawinesandspirits.com", 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 688-1943", 
-      "image_url": "", 
-      "location": 54, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Wines & Spirits"
-    }
-  }, 
-  {
     "pk": 267, 
     "model": "places.place", 
     "fields": {
@@ -10881,6 +10863,24 @@
       "phone": "(412) 688-1938", 
       "image_url": "", 
       "location": 242, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Wines & Spirits"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:02", 
+      "description": "", 
+      "tags": [], 
+      "url": "www.pawinesandspirits.com", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 688-1943", 
+      "image_url": "", 
+      "location": 54, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Wines & Spirits"
@@ -10932,602 +10932,2474 @@
     "model": "places.placemeta", 
     "fields": {
       "place": 284, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174874_161961833858809_3570943_n.jpg", 
-      "key": "fb_linked_image"
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 2, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 152, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50516_328754675500_8907_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 284, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 3, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 249, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/261166_118139271700_1293831751_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 284, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 4, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 207, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50254_15698372465_786754_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 284, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 5, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 113, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41802_294241040320_5021354_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 284, 
+      "value": "2012-04-02T19:04:23.168921", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 6, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 225, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158047_126412670722686_1136040471_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 152, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 7, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 205, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41798_10978218110_2267_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 152, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 8, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 232, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/157989_73877691965_505892_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 152, 
+      "value": "2012-04-02T19:04:23.924564", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 9, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 265, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_7133766387_694144433_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 249, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 10, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 233, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188149_38014611787_876752_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 249, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 11, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 235, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276402_31539090679_705447606_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 249, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 12, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 260, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50496_130802130287924_7514_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 249, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 13, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 17, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41608_127771128936_3155129_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 249, 
+      "value": "2012-04-02T19:04:25.130516", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 14, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 48, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/276743_183840534624_6680639_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 207, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 15, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 67, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71155_306452702240_5228400_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 207, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 16, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 35, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188120_108697855875679_4117878_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 207, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 17, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 45, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372891_118316171513854_191795840_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 207, 
+      "value": "2012-04-02T19:04:25.932249", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 18, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 54, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71039_52775066304_2866450_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 113, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 19, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 184, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71175_117969668996_3886566_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 113, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 20, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 200, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_43656360946_6332753_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 113, 
+      "value": "2012-04-02T19:04:26.807073", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 21, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 128, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276711_188001794690_1292952249_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 225, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 22, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 1, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/23312_130664376946254_892_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 225, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 23, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 155, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27526_135390396483173_6175_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 225, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 24, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 85, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41781_141800975864810_9225_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 225, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 25, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 228, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/41786_82852692424_3260065_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 225, 
+      "value": "2012-04-02T19:04:27.793336", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 26, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 215, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41569_178050436883_7021437_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 205, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 27, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 24, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50312_59693855755_7954_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 205, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 28, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 204, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41799_188580067517_3798202_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 205, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 29, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 97, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/157897_140184476011373_7299093_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 205, 
+      "value": "2012-04-02T19:04:28.615440", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 30, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 168, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373515_228954430508292_421576860_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 232, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 31, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 136, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50265_164341936930309_5177533_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 232, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 32, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 213, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373031_153726191337687_701008727_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 232, 
+      "value": "2012-04-02T19:04:29.415456", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 33, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 117, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/27526_325518643484_4025_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 265, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 34, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 196, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158069_118061484906426_1352000626_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 265, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 35, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 243, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50354_194045876982_3911911_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 265, 
+      "value": "2012-04-02T19:04:30.354057", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 36, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 70, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187794_351740933073_2507124_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 233, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 37, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 34, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187821_194864157210632_2815424_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 233, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 38, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 64, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174890_220336147980324_4962127_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 233, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 39, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 72, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/372864_281919830556_1142582679_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 233, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 40, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 21, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/27541_128620450510669_2263_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 233, 
+      "value": "2012-04-02T19:04:31.325467", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 41, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 167, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195790_188053227905353_1134162_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 235, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 42, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 171, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/71158_124675784895_2481618_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 235, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 43, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 20, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174878_168172703239295_1857494_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 235, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 44, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 280, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161897_104851729258_251383402_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 235, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 45, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 62, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50435_157973787550089_1348_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 235, 
+      "value": "2012-04-02T19:04:32.144536", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 46, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 236, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/188025_85378651541_2906254_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 260, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 47, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 262, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_140954329326030_389787368_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 260, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 48, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 75, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50355_7163241268_3712_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 260, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 49, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 61, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174667_125166184463_1956988540_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 260, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 50, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 11, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/211087_349097652916_4529320_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 260, 
+      "value": "2012-04-02T19:04:32.975800", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 51, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 194, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373044_15349859252_1708315748_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 17, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 52, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 160, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50264_178982284869_1415025_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 17, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 53, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 73, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41570_163329138211_5180592_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 17, 
+      "value": "2012-04-02T19:04:33.771459", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 54, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 279, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/23303_117733734917057_1263_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 48, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 55, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 264, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174604_155098914506223_168363_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 48, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 56, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 107, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50275_110939620161_6959171_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 48, 
+      "value": "hours", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 57, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 258, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50492_98788647369_3737268_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 48, 
+      "value": "parking", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 58, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 3, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187994_205974802752877_7850972_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 48, 
+      "value": "2012-04-02T19:04:34.588790", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 59, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 112, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/187904_117063121645059_8206456_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 67, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 60, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 223, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/372831_79888000570_1362124222_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 67, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 61, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 208, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/276489_120300144652011_5448087_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 67, 
+      "value": "2012-04-02T19:04:35.373789", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 62, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 80, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174783_144419906007_1427308_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 35, 
+      "value": "description", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 63, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 12, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/195754_140995945974331_1443006_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 35, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 64, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 192, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161897_191711817521372_62112634_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 35, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 65, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 220, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50436_107604845966237_221_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 35, 
+      "value": "2012-04-02T19:04:36.215425", 
+      "key": "fb_last_synced"
     }
   }, 
   {
     "pk": 66, 
     "model": "places.placemeta", 
     "fields": {
-      "place": 68, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/277048_143774118973435_1660632446_n.jpg", 
-      "key": "fb_linked_image"
+      "place": 45, 
+      "value": "url", 
+      "key": "fb_synced_field"
     }
   }, 
   {
     "pk": 67, 
     "model": "places.placemeta", 
     "fields": {
+      "place": 45, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 45, 
+      "value": "2012-04-02T19:04:38.135541", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 54, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 54, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 54, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 54, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 54, 
+      "value": "2012-04-02T19:04:38.891381", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 184, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 184, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 184, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 184, 
+      "value": "2012-04-02T19:04:40.085774", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 200, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 200, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 200, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 200, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 200, 
+      "value": "2012-04-02T19:04:40.859613", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 128, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 128, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 128, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 128, 
+      "value": "2012-04-02T19:04:41.630699", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 1, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 1, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 1, 
+      "value": "2012-04-02T19:04:42.430783", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 155, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 155, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 155, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 155, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 155, 
+      "value": "2012-04-02T19:04:43.213087", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 85, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 85, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 85, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 85, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 85, 
+      "value": "2012-04-02T19:04:43.984456", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 228, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 228, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 228, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 228, 
+      "value": "2012-04-02T19:04:44.778021", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 215, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 215, 
+      "value": "2012-04-02T19:04:45.658112", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 24, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 24, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 24, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 24, 
+      "value": "2012-04-02T19:04:46.548097", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 204, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 204, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 204, 
+      "value": "2012-04-02T19:04:47.378769", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 97, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 97, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 97, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 97, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 97, 
+      "value": "2012-04-02T19:04:48.298541", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 168, 
+      "value": "2012-04-02T19:04:49.184393", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 136, 
+      "value": "2012-04-02T19:04:51.264624", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 213, 
+      "value": "2012-04-02T19:04:53.624163", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 117, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 117, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 117, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 117, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 117, 
+      "value": "2012-04-02T19:04:54.450895", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 196, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 196, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 196, 
+      "value": "2012-04-02T19:04:56.342389", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 243, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 145, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 243, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 146, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 243, 
+      "value": "2012-04-02T19:04:57.316513", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 147, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 70, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 148, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 70, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 149, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 70, 
+      "value": "2012-04-02T19:04:58.222503", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 150, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 34, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 151, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 34, 
+      "value": "2012-04-02T19:04:59.424544", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 152, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 64, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 153, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 64, 
+      "value": "2012-04-02T19:05:00.325667", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 154, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 72, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 155, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 72, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 156, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 72, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 157, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 72, 
+      "value": "2012-04-02T19:05:01.637028", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 158, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 21, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 159, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 21, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 160, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 21, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 161, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 21, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 162, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 21, 
+      "value": "2012-04-02T19:05:02.463784", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 163, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 167, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 164, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 167, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 165, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 167, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 166, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 167, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 167, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 167, 
+      "value": "2012-04-02T19:05:03.610857", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 168, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 171, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 169, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 171, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 170, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 171, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 171, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 171, 
+      "value": "2012-04-02T19:05:04.943206", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 20, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 173, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 20, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 174, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 20, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 175, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 20, 
+      "value": "2012-04-02T19:05:06.192526", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 176, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 280, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 177, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 280, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 178, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 280, 
+      "value": "2012-04-02T19:05:07.517686", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 179, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 62, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 180, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 62, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 181, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 62, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 182, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 62, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 183, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 62, 
+      "value": "2012-04-02T19:05:08.854010", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 184, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 236, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 185, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 236, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 186, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 236, 
+      "value": "2012-04-02T19:05:09.751140", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 187, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 262, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 188, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 262, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 189, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 262, 
+      "value": "2012-04-02T19:05:11.335793", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 190, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 75, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 191, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 75, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 192, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 75, 
+      "value": "2012-04-02T19:05:12.127473", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 193, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 61, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 194, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 61, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 195, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 61, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 196, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 61, 
+      "value": "2012-04-02T19:05:12.931979", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 197, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 11, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 198, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 11, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 199, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 11, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 200, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 11, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 201, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 11, 
+      "value": "2012-04-02T19:05:13.715408", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 202, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 194, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 203, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 194, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 204, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 194, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 205, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 194, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 206, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 194, 
+      "value": "2012-04-02T19:05:14.509651", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 207, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 160, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 208, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 160, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 209, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 160, 
+      "value": "2012-04-02T19:05:15.280215", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 210, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 73, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 211, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 73, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 212, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 73, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 213, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 73, 
+      "value": "2012-04-02T19:05:16.025750", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 214, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 279, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 215, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 279, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 216, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 279, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 217, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 279, 
+      "value": "2012-04-02T19:05:16.803741", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 218, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 264, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 219, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 264, 
+      "value": "2012-04-02T19:05:17.646147", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 220, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 107, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 221, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 107, 
+      "value": "2012-04-02T19:05:18.395725", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 222, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 258, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 223, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 258, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 224, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 258, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 225, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 258, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 226, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 258, 
+      "value": "2012-04-02T19:05:19.126810", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 227, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 3, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 228, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 3, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 229, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 3, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 230, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 3, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 231, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 3, 
+      "value": "2012-04-02T19:05:19.918029", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 232, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 233, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 234, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 235, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 236, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 237, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 112, 
+      "value": "2012-04-02T19:05:20.695793", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 238, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 223, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 239, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 223, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 240, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 223, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 241, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 223, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 242, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 223, 
+      "value": "2012-04-02T19:05:21.886849", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 243, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 244, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 245, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 246, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 247, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 248, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 208, 
+      "value": "2012-04-02T19:05:22.672716", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 249, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 80, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 250, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 80, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 251, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 80, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 252, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 80, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 253, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 80, 
+      "value": "2012-04-02T19:05:23.452788", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 254, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 12, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 255, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 12, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 256, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 12, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 257, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 12, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 258, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 12, 
+      "value": "2012-04-02T19:05:24.235626", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 259, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 192, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 260, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 192, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 261, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 192, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 262, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 192, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 263, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 192, 
+      "value": "2012-04-02T19:05:25.476454", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 264, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 265, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 266, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 267, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 268, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "parking", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 269, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 220, 
+      "value": "2012-04-02T19:05:26.254656", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 270, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 68, 
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 271, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 68, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 272, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 68, 
+      "value": "2012-04-02T19:05:27.044943", 
+      "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 273, 
+    "model": "places.placemeta", 
+    "fields": {
       "place": 206, 
-      "value": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174862_182302828453071_852360100_n.jpg", 
-      "key": "fb_linked_image"
+      "value": "description", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 274, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 206, 
+      "value": "image_url", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 275, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 206, 
+      "value": "2012-04-02T19:05:27.816150", 
+      "key": "fb_last_synced"
     }
   }, 
   {

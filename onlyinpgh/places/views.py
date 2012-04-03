@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
@@ -60,11 +61,25 @@ def page_feed(request):
 
     Returns page response with main content set to the feed.
     '''
-    # get a list of rendered items
-    places = Place.objects.all()[:10]
-    items = [PlaceFeedItem(place, user=request.user) for place in places]
+    all_places = Place.objects.all()
+    paginator = Paginator(all_places, 10)
+    try:
+        page_num = int(request.GET.get('p', '1'))
+    except ValueError:
+        page_num = 1
 
-    main = render_main(render_safe('places/main_feed.html', items=items))
+    try:
+        page = paginator.page(page_num)
+    except (EmptyPage, InvalidPage):
+        page = paginator.page(paginator.num_pages)
+
+    items = [PlaceFeedItem(place, user=request.user) for place in page.object_list]
+
+    main = render_main(render_safe('places/main_feed.html', 
+        items=items,
+        prev_p=page.previous_page_number() if page.has_previous() else None,
+        next_p=page.next_page_number() if page.has_next() else None))
+    
     return page_response(main, request)
 
 
