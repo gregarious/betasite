@@ -66,3 +66,9 @@ from onlyinpgh.hot.views import page_hot
 
 def page_home(request):
     return page_hot(request)
+
+
+def example_chatter(request):
+    return page_response(render_main(render_safe('chatter_example.html')),request)
+def example_news(request):
+    return page_response(render_main(render_safe('news_example.html')),request)

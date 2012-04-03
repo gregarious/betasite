@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
     url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
 
+    url('chatter_example', 'onlyinpgh.common.views.example_chatter'),
+    url('news_example', 'onlyinpgh.common.views.example_news'),
+
     #url(r'^tags/',include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),

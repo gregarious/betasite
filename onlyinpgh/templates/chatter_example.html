@@ -1,50 +1,4 @@
-{% comment %}
-Template for hot section
-
-Context variables:
-    - hot_feeds (HotFeedCollection VM)
-    (... more to come ...)
-{% endcomment %}
-
-{% load vmrender from commontags %}
-
-<header class="feed-header">
-    <h2 class="feed-title">NOW in Oakland</h2>
-    <form class="filter">
-        <input type="search" placeholder="Filter Hot" />
-        <input type="submit" value="filter" />
-    </form>
-</header>
-
-<div class="row-container">
-    <section class="hot map-container">
-        
-    </section>
-
-    <section class="hot events">
-        <h3 class="section-title">Upcoming Events</h3>
-        <ul class="feed hot-feed events">
-        {% for item in hot_feeds.events|slice:"2" %}
-            <li class="item">
-            {% vmrender item "events/related_item.html" %}
-            </li>
-        {% endfor %}
-        </ul>
-    </section>
-</div>
-<div class="row-container">
-        <section class="hot specials">
-        <h3 class="section-title">Top Specials</h3>
-        <ul class="feed hot-feed specials">
-        {% for item in hot_feeds.specials|slice:"3" %}
-            <li class="item">
-            {% vmrender item "specials/related_item.html" %}
-            </li>
-        {% endfor %}
-        </ul>
-    </section>
-    <section class="hot chatter">
-        <h3 class="section-title">Chatterbox</h3>
+ <section class="hot chatter">
         <form class="make-post">
             <input type="text" />
             <input type="submit" value="Post" />
@@ -81,13 +35,3 @@ Context variables:
             </li>
         </ul>
     </section>
-
-    <section class="hot news">
-        <h3 class="section-title">News</h3>
-        <ul class="feed">
-        </ul>
-    </section>
-</div>
-
-
-
