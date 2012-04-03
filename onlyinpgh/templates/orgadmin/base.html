@@ -1,7 +1,15 @@
 <!doctype html>
 
 <head>
-	<title>Scenable | Manage bus_name</title>
+	<title>Scenable | 
+			{% if user.is_authenticated %}
+				{% if current_org %}
+					{{current_org.name}}
+				{% else %}
+					Business Account
+				{% endif %}
+			{% endif %}
+	</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 

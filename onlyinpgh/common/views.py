@@ -64,11 +64,11 @@ def page_response(main_content, request=None, topbar_content=None,
 def page_home(request):
     return page_hot(request)
 
-# this is a temporary hack -- should be in hot module but causes circular dependancy
-from onlyinpgh.hot.viewmodels import HotFeedCollection
-hot_feeds = HotFeedCollection(request.user)
-main_content = render_main(render_safe('hot.html', hot_feeds=hot_feeds))
-return page_response(main_content, request)
+    # this is a temporary hack -- should be in hot module but causes circular dependancy
+    from onlyinpgh.hot.viewmodels import HotFeedCollection
+    hot_feeds = HotFeedCollection(request.user)
+    main_content = render_main(render_safe('hot.html', hot_feeds=hot_feeds))
+    return page_response(main_content, request)
 
 def example_chatter(request):
     return page_response(render_main(render_safe('chatter_example.html')),request)
