@@ -28,8 +28,16 @@ Context variables:
 			<h2 class="single-title">{{event.name}}</h2>
 			<ul class="item-details">
 				<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
-				<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+				<li>at
+					{% if event.place %}
+					<a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a>
+					{% else %}
+					{{event.place_primitive}}
+					{% endif %}
+					</li>
+				{% if event.place %}
 				<li class="address">{{event.place.location.address}}</li>
+				{% endif %}
 			</ul>
 
 			{% include "tags/tag_list.html" with tags=event.tags %}
