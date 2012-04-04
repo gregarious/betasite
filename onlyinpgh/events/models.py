@@ -42,8 +42,8 @@ class Event(models.Model, ViewModel):
         '''
         data = super(Event, self).to_data(*args, **kwargs)
         data.pop('place_id')
-        data['place'] = self.place.to_data()
-        data['tags'] = [t.to_data() for t in self.tags.all()]
+        data['place'] = self.place.to_data(*args, **kwargs) if self.place else None
+        data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
 
