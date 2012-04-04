@@ -237,7 +237,7 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
-  background: url("/static/img_store/Oakland/background_pics/jpegs/DSC_1402.jpg");
+  background: url("/static/img/DSC_1402.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -1327,27 +1327,28 @@ a {
 
   /* #scene-nav */
 
+  /*&#siteJobs {
+		.icon(suitcase);
+	}*/
+
 }
 a#siteHot {
-  background: #ffffff url('/static/img_store/icons/black/city.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/city.png') no-repeat center 9px;
 }
 a#sitePlaces {
-  background: #ffffff url('/static/img_store/icons/black/store-front.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/store-front.png') no-repeat center 9px;
 }
 a#siteEvents {
-  background: #ffffff url('/static/img_store/icons/black/calendar-alt.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/calendar-alt.png') no-repeat center 9px;
 }
 a#siteSpecials {
-  background: #ffffff url('/static/img_store/icons/black/tag-special.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/tag-special.png') no-repeat center 9px;
 }
 a#siteChatter {
-  background: #ffffff url('/static/img_store/icons/black/speech-bubble.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/speech-bubble.png') no-repeat center 9px;
 }
 a#siteNews {
-  background: #ffffff url('/static/img_store/icons/black/newspaper.png') no-repeat center 9px;
-}
-a#siteJobs {
-  background: #ffffff url('/static/img_store/icons/black/suitcase.png') no-repeat center;
+  background: #ffffff url('/static/img/menu_icons/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
 /* MEDIA QUERIES --------- */
