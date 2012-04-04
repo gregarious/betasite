@@ -38,36 +38,8 @@ jQuery(document).ready( function($) {
 	});
 
 	// Make feed items links to singles
-	$('.item').click(function(){
-		window.location=$(this).find('a').attr('href');
-	});
-
-	//window.location = $(this).find("option:value").val();
-	
-
-
-	// Make menu a dropdown for mobile
-	// http://css-tricks.com/convert-menu-to-dropdown/
-	// $("<select />").appendTo("#scene-nav");
-
-	// // Create default option "Go to..."
-	// $("<option />", {
-	//    "selected": "selected",
-	//    "value"   : "",
-	//    "text"    : "Go to..."
-	// }).appendTo("#scene-nav select");
-
-	// // Populate dropdown with menu items
-	// $("#scene-nav a").each(function() {
-	//  var el = $(this);
-	//  $("<option />", {
-	//      "value"   : el.attr("href"),
-	//      "text"    : el.text()
-	//  }).appendTo("nav select");
-	// });
-
-	// $("#scene-nav select").change(function() {
-	//   window.location = $(this).find("option:selected").val();
+	// $('.item').click(function(){
+	// 	window.location=$(this).find('a').attr('href');
 	// });
 
 }); // document.ready
