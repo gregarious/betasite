@@ -11,7 +11,7 @@ from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 import urllib
 
-DEFAULT_IMAGE_URL = 'http://3.bp.blogspot.com/_bX6A151GK68/SrC0hBrYTXI/AAAAAAAAAE0/FQ2ELSQIrh8/s320/cute+cat+pictures+round+cat.jpg'
+DEFAULT_IMAGE_URL = '/static/img/default-place.png'
 
 
 def to_directions_link(location):

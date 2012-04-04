@@ -1,37 +1,51 @@
 <!doctype html>
 
 <head>
+	<title>Scenable | 
+			{% if user.is_authenticated %}
+				{% if current_org %}
+					{{current_org.name}}
+				{% else %}
+					Business Account
+				{% endif %}
+			{% endif %}
+	</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Scenable | Manage bus_name</title>
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/static/css/admin_style.css?v=1">
 	<link rel="stylesheet" href="/static/css/jquery-ui-1.8.18.custom.css">
+
+	<!--  Fonts -->
 	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
 	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
-	<script src="/static/js/libs/modernizr-custom.js"></script>
 </head>
 
 <body>
 
 	<header id="site-header">
-		<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
-		<span id="userbar">
+		<div class="third">&nbsp;</div>
+		<hgroup class="third">
+			<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
+			{% if user.is_authenticated %}
+				{% if current_org %}
+					<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
+				{% else %}
+					<h2 id="tagline">You are not currently managing any organizations.</h2>
+				{% endif %}
+			{% endif %}
+		</hgroup>
+		<div id="user" class="third">
 			{% if user.is_authenticated %}
 				{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
 			{% else %}
 				<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
 				<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
 			{% endif %}
-		</span>
-		{% if user.is_authenticated %}
-			{% if current_org %}
-				<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
-			{% else %}
-				<h2 id="tagline">You are not currently managing any organizations.</h2>
-			{% endif %}
-		{% endif %}
+		</div>
+
 	</header>
 
 	<div id="site-content">
@@ -42,13 +56,16 @@
 		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C.</p>
 	</footer>
 
-	<!-- <div id="footer-image"></div> -->
+	<!-- Include jQuery with fallback to local copy -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
+	<script src="/static/js/libs/modernizr-custom.js"></script>
 
-	<!-- Scripts -->
+	<!-- Scenable Scripts -->
 	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
 	<script src="/static/js/admin_script.js"></script>	
 
-	<!-- jQuery UI -->
+	<!-- jQuery UI and Timepicker plugin-->
 	<script src="/static/js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
 	<script src="/static/js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
 

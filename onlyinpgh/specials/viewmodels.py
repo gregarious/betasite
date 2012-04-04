@@ -11,6 +11,7 @@ class SpecialFeedItem(ViewModel):
             title
             description
             points
+            dexpires
             place
                 id
                 name
@@ -35,7 +36,7 @@ class SpecialFeedItem(ViewModel):
     def to_data(self, *args, **kwargs):
         data = super(SpecialFeedItem, self).to_data(*args, **kwargs)
         special_data = data.get('special')
-        keepers = set(('id', 'title', 'points', 'place', 'tags', 'description'))
+        keepers = set(('id', 'title', 'points', 'place', 'tags', 'description', 'dexpires'))
         for k in special_data.keys():
             if k not in keepers:
                 special_data.pop(k)

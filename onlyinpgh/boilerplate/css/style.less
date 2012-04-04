@@ -8,13 +8,10 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  //background: url("/static/img_store/paper/sand.jpg") fixed;
+  //background: url("/static/img_store/paper/limestone.jpg") fixed;
   //font-family: Helvetica, sans-serif;
-
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
-
-@import "../LESS/root.less";
 
 .wrap {
   .clearfix;
@@ -45,11 +42,13 @@ a {
 
 .section-title {
   border-bottom: 2px solid #999;
+  border-top: 4px solid @mgreen;
   color: #000;
   font-size: 1.1em;
   font-style: italic;
   font-weight: bold;
-  //.gradient(@lgreen, @mgreen);
+  background: fade(#fff, 40%);
+  //.gradient(#aaa, #e1e1e1);
   margin: 0;
   padding: 0.5em;
   text-shadow: 0.1em 0.1em 0.04em #fff;
@@ -66,9 +65,6 @@ a {
 
 /* FORMS & INPUTS --------------- */
 
-//@import '../LESS/forms';
-
-
 ::-webkit-input-placeholder {
    color: #AAAAAA;
 }
@@ -84,7 +80,7 @@ form {
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
-  border: 1px solid @lgreen;
+  border: 1px solid #999;
   background: #f9f9f9;
   font-size: 1em;
   width: 93%;
@@ -101,8 +97,9 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 button, input[type="submit"], .next, .back {
   border: 0.1em #e1e1e1 solid;
-  .gradient(#fff, #e1e1e1);
+  .gradient(#aaa, #e1e1e1);
   .lucida();
+  border: 1px #999;
   padding: 0.3em;
   .rounded(0.3em);
   text-decoration: none;
@@ -268,7 +265,7 @@ button, input[type="submit"], .next, .back {
   z-index: 999;
   .fixed();
   max-width: 1140px;
-  background: fade(#fff, 80%);
+  background: #e1e1e1;
   .b-shadow(0, 0, 0.3em, #000); 
 
   .main-menu {  
@@ -277,16 +274,20 @@ button, input[type="submit"], .next, .back {
     
     li { 
       a {
-        //background: #fff;
+        //background: #e1e1e1;
+        //.tabs(0.5em);
         .column(2);
-        border: 1px solid #999;
+        //border: 1px solid #999;
         color: #000;
-        font-size: 0.8em;
-        font-weight: bold;
+        font-size: 0.75em;
+        //font-weight: bold;
         height: 5em;
         margin-top: 1em;
         position: relative;
 
+        &.current-page {
+          background-color: @mgreen;
+        }
         .container {
           position: absolute; 
           left: 50%;  
@@ -318,7 +319,7 @@ button, input[type="submit"], .next, .back {
 /* 4 CONTENT ---------- */
 
 #site-content {
-  background: fade(#fff, 70%);
+  background: fade(#fff, 50%);
   .column(8.5);
   padding: 1em;
   position: relative;
@@ -378,10 +379,10 @@ button, input[type="submit"], .next, .back {
 }
 
 .feed-title {
-  font-size: 2em;
+  font-size: 1.8em;
   font-family: 'BitterRegular';
   color: #000;
-  text-shadow: 0 0 0.1em #fff;
+  text-shadow: 0 0 0.05em #999;
   margin: 0;
 }
 
@@ -412,13 +413,18 @@ button, input[type="submit"], .next, .back {
 .item-title {
   margin-bottom: 0.3em;
   font-size: 1.1em;
-  font-family: 'BitterItalic', Georgia, sans-serif;
+  //font-family: Georgia, sans-serif;
+  font-style: italic;
   font-weight: normal;
   text-shadow: 0.05em 0.05em 0.05em #999;
 }
 
 .thumbnail {
   .b-shadow(0.05em, 0.05em, 0.05em, #555);
+}
+
+.feed.news .item-content {
+  .column(12);
 }
 
 /* 10 NAVIGATION ---------- */
@@ -435,10 +441,15 @@ button, input[type="submit"], .next, .back {
           border-radius: 0.5em 0 0 0.5em; 
 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-    .gradient(@lgreen, @mgreen);
+    background: #444;
+    color: #fff;
     margin: 0.3em 0;
     padding: 0.3em;
     .border-box;
+
+    &.current-page {
+      background-color: @yellow
+    }
   }
 }
 
@@ -483,7 +494,6 @@ button, input[type="submit"], .next, .back {
 
   &#placeInfo .item-details {
     .column_nm(6);
-    border-bottom: 1px solid #999;
     margin-bottom: 0.3em;
 
     li {
@@ -559,7 +569,12 @@ button, input[type="submit"], .next, .back {
     }
     input[type="submit"] {
       .column(2);
+      background: @mgreen;
+      color: #fff;
+      font-weight: bold;
+      .b-shadow(0.1em, 0.1em, 0.3em, #000);
     }
+    padding: 0 0.5em;
 
     .feed {
 
@@ -569,7 +584,7 @@ button, input[type="submit"], .next, .back {
         padding: 0.7em;
         margin-top: 0.5em;
         font-size: 0.9em;  
-        background: #fff /*url(/static/img/calendar-alt.png) 0.5em 1em no-repeat*/;
+        background: url(/static/img/textures/white-tex.png);
         .b-shadow(0.1em, 0.1em, 0.1em, #000);
 
         img {
@@ -591,7 +606,6 @@ button, input[type="submit"], .next, .back {
       }
     }
   }
-
 }
 
 /* SPECIALS --------- */
@@ -604,20 +618,19 @@ button, input[type="submit"], .next, .back {
 
 /* 11 ACTIONS ---------- */
 
-
-
 .favbutton {
   display: block; 
-  padding: 0.5em;
+  //padding: 0.5em;
   height: 30px;
-  
+  font-size: 0.7em;
+
   .meta {
     //font-size: 0.7em;
-    
-  }
+  }/*
+
   img {
     .column(3); 
-  }
+  }*/
 }
 
 /* 12 UTILITY ---------- */
@@ -625,6 +638,7 @@ button, input[type="submit"], .next, .back {
 .map-container {
   background: url("http://www.scottadito.com/images/googleMap.jpg");
   height: 200px;
+  border: 1px solid #888;
 }
 
 .row-container {
@@ -636,10 +650,6 @@ button, input[type="submit"], .next, .back {
   position: fixed;
   width: 100%;  
   z-index: 3;
-}
-
-.current-page {
-  background-color: @lgreen !important;
 }
 
 .has-special {
@@ -707,7 +717,7 @@ button, input[type="submit"], .next, .back {
   #logo {
     .column(2);
     img {
-      height: 100%;
+      width: 100%;
     }
   }
 
@@ -719,10 +729,16 @@ button, input[type="submit"], .next, .back {
        li a {
         .column(4);
         .tabs(0.5em);
-        .gradient(#aaa, #ddd);
-
+        color: #000;
+        text-shadow: 0.05em 0.05em 0em #fff;
+        background: @mgreen;
+        text-align: center;
+        font-weight: bold;
         float: left;
+
+
       }
+
     }
 
     &#profile-nav {
@@ -731,9 +747,11 @@ button, input[type="submit"], .next, .back {
       }
     }
   }
+
   .related-section {
     .row();
   }
+
   .utility {
     .column(4);
   }
@@ -747,7 +765,7 @@ button, input[type="submit"], .next, .back {
   }
 
   .hot {
-    .column(12);
+    .row();
 
     &.map-container {
       height: 200px;
@@ -765,6 +783,10 @@ button, input[type="submit"], .next, .back {
 
 @media screen and (max-width: 768px){
 
+  .logout, .bar {
+    display: none;
+  }
+
   body {
    //background: @lgreen;
   }
@@ -773,23 +795,33 @@ button, input[type="submit"], .next, .back {
     margin-top: 0;
   }
 
+  .map-container{
+    &.feed-page, &.hot {
+      margin: 0;
+    }
+  }
+
   .utility {
     .row();
+    a {
+      color: @yellow;
+    }
   }
 
   #site-content {
     .row();
-    padding: 1em 0.5em;
+    padding: 0;
     top: 7em;
   }
 
   .feed {
-    margin: 0.5em 0 0;
+    margin: 0 0;
     clear: both;
   }
 
   .feed-header {
-   // background: transparent;
+   //background: transparent;
+   padding-top: 0.7em;
   }
 
   #site-sidebar {
@@ -810,7 +842,7 @@ button, input[type="submit"], .next, .back {
   #logo {
     .column(3);
     img {
-      margin-top: 0.3em;
+      height: 100%;
     }
   }
 
@@ -820,8 +852,8 @@ button, input[type="submit"], .next, .back {
 
   .utility {
     position: absolute;
-    bottom: 4.5em;
-    background: @lgreen;
+    bottom: 4.6em;
+    background: #444;
     padding: 0.5em;
     border-bottom: 1px solid #888;
     color: #fff;
@@ -841,18 +873,38 @@ button, input[type="submit"], .next, .back {
     }
   }
 
-}
+  .item {
+    .row();
+    border-bottom: none;
 
-@media screen and (max-width: 550px) {
-
-  body {
-   
+    &:hover {
+      border-bottom: none;
+      background: #e1e1e1;
+    }
   }
 
-  .map-container{
-    &.feed-page, &.hot {
-      margin: 0;
-    }
+  .section-title {
+    //background: #fff;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .single-container {
+    padding: 0;
+    border: none;
+    background: url("/static/img/textures/white-tex.png");
+  }
+
+  .single-header {
+    padding: 1em 1em 0 1em;
+    border: none;
+  }
+
+  .single-title {
+    line-height: 1;
+    font-size: 1.3em;
   }
 
   .feed-header {
@@ -860,7 +912,7 @@ button, input[type="submit"], .next, .back {
   }
 
   .utility {
-    bottom: 4em;
+    bottom: 4.1em;
   }
 
   .btn-primary {
@@ -868,11 +920,16 @@ button, input[type="submit"], .next, .back {
   }
 
   .single-content {
-    .map-container {
+    .map-container {  
+      height: 100px;
       .row();
       overflow: hidden;
-      margin: 0;
+      margin-bottom: 1em;
     }
+  }
+
+  .single-content.places {
+    .row();
   }
 
   .main-menu { 
@@ -882,11 +939,31 @@ button, input[type="submit"], .next, .back {
   .related-section {
     .row();
     padding: 0.3em;
+    //background: none;
+    
+    .map-container {
+      margin: 1em 0;
+    }
+
+    .section-title {
+      display: none;
+    }
 
     &#placeInfo {
+      padding: 0 1em 1em;
       .item-details {
         .row();
+
+        ul {
+          li {
+            margin: 0;
+          }
+        }
       }
+    }
+
+    .map-container {
+      height: 100px;
     }
   }
 
@@ -899,12 +976,6 @@ button, input[type="submit"], .next, .back {
       margin-top: 1.5em;
     }
   }
-
-  .item {
-    .row();
-    border-bottom: none;
-  }
-
   .item-title {
     font-size: 1em;
   }
@@ -912,10 +983,11 @@ button, input[type="submit"], .next, .back {
   #logo {
     margin-top: 0;
     .column_nm(5);
-    margin-left: 1em;
+    margin-left: 0.5em;
 
     img {
-      height: 80%;
+      width: auto;
+      height: auto;
     }
   }
 
@@ -937,7 +1009,12 @@ button, input[type="submit"], .next, .back {
   #scene-nav {
     height: 4.5em;
   }
+}
 
+@media only screen and (max-width: 320px) {
+  #debug-user {
+    //font-size: 0.7em;
+  }
 }
 
 /* Styles for desktop and large screen ----------- */

@@ -16,7 +16,7 @@ Context variables:
 
 <nav class="related-nav">
     <ul>
-        <li><a id="placeInfo">Info</a></li>
+        <li><a id="placeInfo" class="current-page">Info</a></li>
         {% if not related_feeds.events %}
             <li><a id="placeEvents" class="disabled">Events</a></li>
         {% else %}
@@ -31,41 +31,39 @@ Context variables:
 </nav>
 
 <section class="related-section" id="placeInfo">
-    <header class="section-header">
-        <h2 class="section-title">Place Details</h2>
-        
-        <div class="map-container">
-            <!-- Background image stand in -->
-        </div>
-        <ul class="item-details">
-            {% if place_detail.place.hours %}
-                {# This is ugly and unintuitive. But works for now. #}
-                {% for tuples in place_detail.place.hours_unpacked %}
-                    <li>{{tuples.0}}: {{tuples.1}}</li>
-                {% endfor %}
-            {% endif %}
 
-            {% if place_detail.place.parking %}
-                {# This is ugly and unintuitive. But works for now. #}
-                {% for option in place_detail.place.parking_unpacked %}
-                    <li>Parking: {{option}}</li>
-                {% endfor %}
-            {% endif %}
+    <h2 class="section-title">Place Details</h2>
 
-            {% if place_detail.place.phone %}
-                <li>Phone: {{ place_detail.place.phone }}</li>
-            {% endif %}
+    <div class="map-container">
+        <!-- Background image stand in -->
+    </div>
 
-            {% if place_detail.place.url %}
-                <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
-            {% endif %}
+    <ul class="item-details">
+        {% if place_detail.place.hours %}
+            {# This is ugly and unintuitive. But works for now. #}
+            {% for tuples in place_detail.place.hours_unpacked %}
+                <li>{{tuples.0}}: {{tuples.1}}</li>
+            {% endfor %}
+        {% endif %}
 
-        </ul>
+        {% if place_detail.place.parking %}
+            {# This is ugly and unintuitive. But works for now. #}
+            {% for option in place_detail.place.parking_unpacked %}
+                <li>Parking: {{option}}</li>
+            {% endfor %}
+        {% endif %}
 
-        <p class="description">{{place_detail.place.description}}</p>
-    </header>
+        {% if place_detail.place.phone %}
+            <li>Phone: {{ place_detail.place.phone }}</li>
+        {% endif %}
 
-    
+        {% if place_detail.place.url %}
+            <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
+        {% endif %}
+
+    </ul>
+
+    <p class="description">{{place_detail.place.description}}</p>
 
 </section>
 
@@ -73,7 +71,7 @@ Context variables:
     <h2 class="section-title">Events</h2>
     {% for item in related_feeds.events %}
         <li class="item">
-            {% vmrender item 'events/feed_item.html' %}
+            {% vmrender item 'events/related_item.html' %}
         </li>
     {% endfor %}
 </section>
@@ -82,7 +80,7 @@ Context variables:
     <h2 class="section-title">Specials</h2>
     {% for item in related_feeds.specials %}
         <li class="item">
-            {% vmrender item 'specials/feed_item.html' %}
+            {% vmrender item 'specials/related_item.html' %}
         </li>
     {% endfor %}
 </section>
