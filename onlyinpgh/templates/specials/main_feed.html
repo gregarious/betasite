@@ -8,21 +8,22 @@ Context variables:
 {% load vmrender from commontags %}
 
 <header class="feed-header">
-	<h2 class="feed-title">Specials</h2>
+	<h1 class="feed-title">Specials</h1>
 	<form class="filter">
 		<input type="search" placeholder="Filter Specials" />
 		<input type="submit" value="filter" />
 	</form>
 </header>
 
-<div class="map-container feed-page">
-	
-</div>
+<article class="feed-content">
+	<div class="map-container">
+	</div>
 
-<ul class="feed specials">
-{% for item in items %}
-    <li class="item">
-    {% vmrender item "specials/feed_item.html" %}
-    </li>
-{% endfor %}
-</ul>
+	<ul class="feed specials">
+	{% for item in items %}
+	    <li class="item">
+	    {% vmrender item "specials/feed_item.html" %}
+	    </li>
+	{% endfor %}
+	</ul>
+</article> <!-- .feed-content -->

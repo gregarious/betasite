@@ -1,26 +1,42 @@
 <nav class="home-nav">
 	<ul>
 		
-		<li>
-			<a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="top">
-				<img src="/static/img/home_place.png" />
-				<p>Places</p>
-			</a>
-		</li>
+		<a href="{% url onlyinpgh.orgadmin.views.page_list_places %}">
+			<li>
+				<div class="menu-icon">
+					<img src="/static/img/home_place.png" />
+					<p>Places</p>
+				</div>
+				<div class="menu-description">
+					<p>Scenable has a thorough database of all businesses in Oakland. Claim your business or create a new one in case we missed anything.</p>
+				</div>
+			</li>
+		</a>
 		
-		<li>
-			<a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}" class="top">
-				<img src="/static/img/home_special.png" />
-				<p>Specials</p>
-			</a>
-		</li>
-		
-		<li>
-			<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="bottom">
-				<img src="/static/img/home_events.png" />
-				<p>Events</p>
-			</a>
-		</li>
+
+		<a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}">
+			<li>
+				<div class="menu-icon">
+					<img src="/static/img/home_special.png" />
+					<p>Specials</p>
+				</div>
+				<div class="menu-description">
+					<p>Add specials to your business profile. Each special will be assigned a point, or scene cred, value based on its dollar amount (a $12 special equals 12 scene cred). You will also be able to add an expiration date and number available, if applicable.</p>
+				</div>
+			</li>
+		</a>
+
+		<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}">
+			<li class="bottom">
+				<div class="menu-icon">
+					<img src="/static/img/home_events.png" />
+					<p>Events</p>
+				</div>
+				<div class="menu-description">
+					<p>Does your business host events? Add events to your business page here. If you've added them to your Facebook page, we have them. You'll be able to edit any info here.</p>
+				</div>
+			</li>
+		</a>
 		
 
 		<!-- <li>

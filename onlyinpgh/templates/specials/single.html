@@ -12,7 +12,7 @@ TODO #2: Only show expiration date if there is one.
 
 {% endcomment %}
 
-<div class="single-container">
+<div class="single-container" id="special-single">
 	<header class="single-header">
 
 		<div class="item-thumb">
@@ -21,7 +21,7 @@ TODO #2: Only show expiration date if there is one.
 		</div>
 
 		<section class="item-content">
-			<h2 class="single-title">{{special.title}}</h2>
+			<h1 class="single-title">{{special.title}}</h1>
 
 			<ul class="item-details">
 				<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>

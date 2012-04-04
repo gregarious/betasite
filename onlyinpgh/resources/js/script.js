@@ -37,6 +37,11 @@ jQuery(document).ready( function($) {
 		window.location = $(this).attr('value');
 	});
 
+	// Make feed items links to singles
+	$('.item').click(function(){
+		window.location=$(this).find('a').attr('href');
+	});
+
 	//window.location = $(this).find("option:value").val();
 	
 

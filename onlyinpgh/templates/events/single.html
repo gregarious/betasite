@@ -7,7 +7,7 @@ Context variables:
 	event:	Event ViewModel
 {% endcomment %}
 
-<div class="single-container">
+<div class="single-container" id="event-single">
 	<header class="single-header">
 		<div class="item-thumb">
 			<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
@@ -25,7 +25,7 @@ Context variables:
 		</div>
 
 		<section class="item-content">
-			<h2 class="single-title">{{event.name}}</h2>
+			<h1 class="single-title">{{event.name}}</h1>
 			<ul class="item-details">
 				<li class="datetime">March 30, 8pm - 11pm</li>
 				{% if event.place %}
