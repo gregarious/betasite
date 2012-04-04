@@ -62,7 +62,7 @@ def page_response(main_content, request=None, topbar_content=None,
 
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    return page_hot(request)
+    #return page_hot(request)
 
     # this is a temporary hack -- should be in hot module but causes circular dependancy
     from onlyinpgh.hot.viewmodels import HotFeedCollection
