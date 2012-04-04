@@ -18,3 +18,5 @@ A catch all text file for things that should be considered once there's an actua
 - Another good model edition: address normalization for each Location. Or at least a flag to mark one as normalized.
 
 - Take a big look at events/outsourcing/facebook code. missing a lot of error checking i fear
+
+- Field-specific sync Meta for Facebook/iCal events. Doing this right will mean really making the link between Facebook/iCal and Scenable easy for two way communication.
