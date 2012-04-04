@@ -3,14 +3,14 @@
 @import '../LESS/icons';
 
 /* Will move this to template when that happens */
-/*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
-@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);*/
-@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
+/*@import url(@{static_url}css/fonts/arvo-fontfacekit/stylesheet.css);
+@import url(@{static_url}css/fonts/nunito-fontfacekit/stylesheet.css);*/
+@import url("@{static_url}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css");
 
 /* ROOT --------- */
 
 body {
-	background: url("/static/img/textures/sky-head-tex.png");
+	background: url("@{static_url}img/textures/sky-head-tex.png");
 	.clearfix;
 	font-weight: normal;
 	height: 100%; 
@@ -133,7 +133,7 @@ p {
 
 #site-header {
 	width: 100%;
-	background: url("/static/img/textures/sky-dark-tex.png");
+	background: url("@{static_url}img/textures/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	border-bottom: 1px solid #e1e1e1;
 	height: 85px;
@@ -167,7 +167,7 @@ p {
 
 #site-content {
 	.b-shadow(0, 0, 0.1em, #888);
-	background: url("/static/img/textures/white-tex.png");
+	background: url("@{static_url}img/textures/white-tex.png");
 	.border-box;
 	.clearfix;	
 	margin: 120px auto;

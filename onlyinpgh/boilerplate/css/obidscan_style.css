@@ -136,10 +136,15 @@ ol {
   margin: 0;
   padding: 0;
 }
+/* Responsive Images + alt text style */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
+  color: #999;
+  font-style: italic;
+  height: auto;
+  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -235,52 +240,6 @@ body {
   background: url("/static/img_store/paper/eggshell.jpg");
   width: 100%;
   height: 100%;
-}
-body {
-  *zoom: 1;
-  font-weight: normal;
-  height: 100%;
-  margin: 0 auto 1em auto;
-  font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
-  overflow-x: hidden;
-  width: 100%;
-}
-body:before,
-body:after {
-  content: "";
-  display: table;
-}
-body:after {
-  clear: both;
-}
-section,
-article {
-  *zoom: 1;
-}
-section:before,
-article:before,
-section:after,
-article:after {
-  content: "";
-  display: table;
-}
-section:after,
-article:after {
-  clear: both;
-}
-img {
-  color: #999;
-  font-style: italic;
-  font-size: 0.8em;
-  height: auto;
-  max-width: 100%;
-}
-ul {
-  margin: 0;
-  padding: 0;
-}
-ul li {
-  list-style-type: none;
 }
 hgroup {
   border-bottom: 1px solid #e1e1e1;

@@ -1,4 +1,4 @@
-@import url(/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css);
+@import url("@{static_url}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css");
 /* =============================================================================
    HTML5 Boilerplate CSS: h5bp.com/css
    ========================================================================== */
@@ -261,32 +261,33 @@ a {
 
   /* #scene-nav */
 
+  /*&#siteJobs {
+		.icon(suitcase);
+	}*/
+
 }
 a#siteHot {
-  background: #ffffff url('/static/img_store/icons/black/city.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/city.png') no-repeat center 9px;
 }
 a#sitePlaces {
-  background: #ffffff url('/static/img_store/icons/black/store-front.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/store-front.png') no-repeat center 9px;
 }
 a#siteEvents {
-  background: #ffffff url('/static/img_store/icons/black/calendar-alt.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/calendar-alt.png') no-repeat center 9px;
 }
 a#siteSpecials {
-  background: #ffffff url('/static/img_store/icons/black/tag-special.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/tag-special.png') no-repeat center 9px;
 }
 a#siteChatter {
-  background: #ffffff url('/static/img_store/icons/black/speech-bubble.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/menu_icons/speech-bubble.png') no-repeat center 9px;
 }
 a#siteNews {
-  background: #ffffff url('/static/img_store/icons/black/newspaper.png') no-repeat center 9px;
-}
-a#siteJobs {
-  background: #ffffff url('/static/img_store/icons/black/suitcase.png') no-repeat center;
+  background: #ffffff url('/static/img/menu_icons/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
 /* Will move this to template when that happens */
-/*@import url(/static/css/fonts/arvo-fontfacekit/stylesheet.css);
-@import url(/static/css/fonts/nunito-fontfacekit/stylesheet.css);*/
+/*@import url(@{static_url}css/fonts/arvo-fontfacekit/stylesheet.css);
+@import url(@{static_url}css/fonts/nunito-fontfacekit/stylesheet.css);*/
 /* ROOT --------- */
 body {
   background: url("/static/img/textures/sky-head-tex.png");
