@@ -693,24 +693,6 @@
     }
   }, 
   {
-    "pk": 5, 
-    "model": "auth.user", 
-    "fields": {
-      "username": "admin", 
-      "first_name": "", 
-      "last_name": "", 
-      "is_active": true, 
-      "is_superuser": true, 
-      "is_staff": true, 
-      "last_login": "2012-03-23 11:22:43", 
-      "groups": [], 
-      "user_permissions": [], 
-      "password": "sha1$1545d$040e2ca303031c0b93bb6c03fb5ff744f45f1fb8", 
-      "email": "admin@scenable.com", 
-      "date_joined": "2012-03-23 11:22:43"
-    }
-  }, 
-  {
     "pk": 8, 
     "model": "auth.user", 
     "fields": {
@@ -762,6 +744,24 @@
       "password": "sha1$bdbb2$fba8613e0eac4ad8e466071f0bc317637bdec0f1", 
       "email": "lara@scenable.com", 
       "date_joined": "2012-03-26 17:18:54"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "admin", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2012-04-04 10:27:31", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$1545d$040e2ca303031c0b93bb6c03fb5ff744f45f1fb8", 
+      "email": "admin@scenable.com", 
+      "date_joined": "2012-03-23 11:22:43"
     }
   }, 
   {
@@ -5402,31 +5402,6 @@
     }
   }, 
   {
-    "pk": 118, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:28", 
-      "description": "", 
-      "tags": [
-        16, 
-        17, 
-        31, 
-        36, 
-        45
-      ], 
-      "url": "www.cvs.com", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 687-4180", 
-      "image_url": "", 
-      "location": 108, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "CVS Pharmacy"
-    }
-  }, 
-  {
     "pk": 268, 
     "model": "places.place", 
     "fields": {
@@ -5446,6 +5421,31 @@
       "phone": "(412) 682-1088", 
       "image_url": "", 
       "location": 242, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "CVS Pharmacy"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:28", 
+      "description": "", 
+      "tags": [
+        16, 
+        17, 
+        31, 
+        36, 
+        45
+      ], 
+      "url": "www.cvs.com", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 687-4180", 
+      "image_url": "", 
+      "location": 108, 
       "parking": "", 
       "twitter_username": "", 
       "name": "CVS Pharmacy"
@@ -6409,30 +6409,6 @@
     }
   }, 
   {
-    "pk": 245, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:33", 
-      "description": "", 
-      "tags": [
-        11, 
-        13, 
-        32, 
-        33
-      ], 
-      "url": "www.fnfg.com", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-4200", 
-      "image_url": "", 
-      "location": 223, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "First Niagara Bank"
-    }
-  }, 
-  {
     "pk": 169, 
     "model": "places.place", 
     "fields": {
@@ -6451,6 +6427,30 @@
       "phone": "(412) 687-7670", 
       "image_url": "", 
       "location": 155, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "First Niagara Bank"
+    }
+  }, 
+  {
+    "pk": 245, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:33", 
+      "description": "", 
+      "tags": [
+        11, 
+        13, 
+        32, 
+        33
+      ], 
+      "url": "www.fnfg.com", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-4200", 
+      "image_url": "", 
+      "location": 223, 
       "parking": "", 
       "twitter_username": "", 
       "name": "First Niagara Bank"
@@ -6961,7 +6961,7 @@
       "url": "http://www.hocuspocus13.net/store.html", 
       "listed": true, 
       "fb_id": "", 
-      "hours": "Mon-Fri 10am-8pm, Sat 11am-5pm, Closed Sun\r\n", 
+      "hours": "", 
       "phone": "(412) 622-0113", 
       "image_url": "", 
       "location": 10, 
@@ -7819,7 +7819,7 @@
       "url": "http://www.maggieandstellasgifts.com/", 
       "listed": true, 
       "fb_id": "83057190581", 
-      "hours": "Mon-Fri 10am-6pm\r\nSat 12pm-5pm\r\nSun Closed", 
+      "hours": "Mon-Thurs,09:00am - 06:00pm\nFri,09:00am - 05:00pm\nSat,10:00am - 05:00pm\nSun,Closed\n", 
       "phone": "(412) 648-1353", 
       "image_url": "http://www.maggieandstellasgifts.com/images/header.png", 
       "location": 7, 
@@ -8631,37 +8631,13 @@
       "url": "http://en.wikipedia.org/wiki/Essie%27s_Original_Hot_Dog_shop", 
       "listed": true, 
       "fb_id": "143319765710644", 
-      "hours": "Mon-Sat 10am-12pm\r\nSun 11am-5pm", 
+      "hours": "", 
       "phone": "(412) 621-7388", 
       "image_url": "", 
       "location": 181, 
       "parking": "Street", 
       "twitter_username": "", 
       "name": "Original Hot Dog Shop"
-    }
-  }, 
-  {
-    "pk": 276, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:46", 
-      "description": "", 
-      "tags": [
-        11, 
-        13, 
-        32, 
-        33
-      ], 
-      "url": "www.pnc.com", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 683-7161", 
-      "image_url": "", 
-      "location": null, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "PNC Bank"
     }
   }, 
   {
@@ -8683,6 +8659,30 @@
       "phone": "(412) 621-0300", 
       "image_url": "", 
       "location": 192, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "PNC Bank"
+    }
+  }, 
+  {
+    "pk": 276, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:46", 
+      "description": "", 
+      "tags": [
+        11, 
+        13, 
+        32, 
+        33
+      ], 
+      "url": "www.pnc.com", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 683-7161", 
+      "image_url": "", 
+      "location": null, 
       "parking": "", 
       "twitter_username": "", 
       "name": "PNC Bank"
@@ -8712,29 +8712,6 @@
     }
   }, 
   {
-    "pk": 191, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:08", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "http://www.panerabread.com/", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 683-3727", 
-      "image_url": "", 
-      "location": 175, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Panera Bread"
-    }
-  }, 
-  {
     "pk": 114, 
     "model": "places.place", 
     "fields": {
@@ -8752,6 +8729,29 @@
       "phone": "(412) 683-9616", 
       "image_url": "", 
       "location": 104, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Panera Bread"
+    }
+  }, 
+  {
+    "pk": 191, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:08", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "http://www.panerabread.com/", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 683-3727", 
+      "image_url": "", 
+      "location": 175, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Panera Bread"
@@ -8929,7 +8929,7 @@
       "url": "http://www.mypeterspub.com/", 
       "listed": true, 
       "fb_id": "147938173556", 
-      "hours": "Mon-Sat 11am-12am\r\nSun 11am-10pm", 
+      "hours": "", 
       "phone": "(412) 681-7465", 
       "image_url": "http://www.yourareacode.com/images/gdi/barimg.php?file=6b026fd5894262bc9bea049c42ea7f4e1265661543.jpg&maxwidth=500&maxheight=500", 
       "location": 14, 
@@ -9370,6 +9370,25 @@
     }
   }, 
   {
+    "pk": 256, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:37", 
+      "description": "", 
+      "tags": [], 
+      "url": "www.radioshack.com", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-2100", 
+      "image_url": "", 
+      "location": 232, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Radio Shack"
+    }
+  }, 
+  {
     "pk": 150, 
     "model": "places.place", 
     "fields": {
@@ -9388,25 +9407,6 @@
       "phone": "(412) 681-6550", 
       "image_url": "", 
       "location": 138, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Radio Shack"
-    }
-  }, 
-  {
-    "pk": 256, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:37", 
-      "description": "", 
-      "tags": [], 
-      "url": "www.radioshack.com", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-2100", 
-      "image_url": "", 
-      "location": 232, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Radio Shack"
@@ -9485,31 +9485,6 @@
     }
   }, 
   {
-    "pk": 170, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 15:59:59", 
-      "description": "", 
-      "tags": [
-        16, 
-        17, 
-        31, 
-        36, 
-        45
-      ], 
-      "url": "http://www.riteaid.com/", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 681-1332", 
-      "image_url": "", 
-      "location": 156, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Rite Aid"
-    }
-  }, 
-  {
     "pk": 51, 
     "model": "places.place", 
     "fields": {
@@ -9529,6 +9504,31 @@
       "phone": "(412) 621-4338", 
       "image_url": "", 
       "location": 46, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Rite Aid"
+    }
+  }, 
+  {
+    "pk": 170, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 15:59:59", 
+      "description": "", 
+      "tags": [
+        16, 
+        17, 
+        31, 
+        36, 
+        45
+      ], 
+      "url": "http://www.riteaid.com/", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 681-1332", 
+      "image_url": "", 
+      "location": 156, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Rite Aid"
@@ -10222,29 +10222,6 @@
     }
   }, 
   {
-    "pk": 172, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-03-22 16:00:00", 
-      "description": "", 
-      "tags": [
-        6, 
-        7, 
-        8
-      ], 
-      "url": "www.subway.com", 
-      "listed": true, 
-      "fb_id": "", 
-      "hours": "", 
-      "phone": "(412) 687-7550", 
-      "image_url": "", 
-      "location": 158, 
-      "parking": "", 
-      "twitter_username": "", 
-      "name": "Subway"
-    }
-  }, 
-  {
     "pk": 224, 
     "model": "places.place", 
     "fields": {
@@ -10262,6 +10239,29 @@
       "phone": "(412) 687-6728", 
       "image_url": "", 
       "location": 207, 
+      "parking": "", 
+      "twitter_username": "", 
+      "name": "Subway"
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-03-22 16:00:00", 
+      "description": "", 
+      "tags": [
+        6, 
+        7, 
+        8
+      ], 
+      "url": "www.subway.com", 
+      "listed": true, 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "(412) 687-7550", 
+      "image_url": "", 
+      "location": 158, 
       "parking": "", 
       "twitter_username": "", 
       "name": "Subway"
@@ -13807,6 +13807,24 @@
       "place": 287, 
       "value": "fb_event:308873475842113", 
       "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 279, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 7, 
+      "value": "hours", 
+      "key": "fb_synced_field"
+    }
+  }, 
+  {
+    "pk": 280, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 7, 
+      "value": "2012-04-04T12:24:44.467753", 
+      "key": "fb_last_synced"
     }
   }, 
   {
