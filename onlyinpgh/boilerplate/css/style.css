@@ -142,6 +142,7 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
+  font-size: 0.9em;
   font-style: italic;
   height: auto;
   max-width: 100%;
@@ -1028,6 +1029,7 @@ input[type="submit"]:active,
   display: block;
   width: 100%;
   height: auto;
+  min-height: 70px;
 }
 .item-content {
   float: left;
@@ -1144,7 +1146,7 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-bottom: 1px #e1e1e1 solid;
-  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
 }
 .single-header .item-thumb {
   border: none;
@@ -1361,7 +1363,6 @@ input[type="submit"]:active,
 /* Places */
 #place-single .single-header {
   border: none;
-  padding-bottom: 0;
 }
 #place-single .single-content {
   margin-top: 0.5em;
@@ -1633,6 +1634,9 @@ a#siteNews {
   .logout,
   .bar {
     display: none;
+  }
+  body {
+    background-image: none;
   }
   #site-content.single {
     margin-top: 0;
