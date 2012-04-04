@@ -76,8 +76,8 @@ class ViewModel(object):
         be handled correctly by _flatten()).
         '''
         # if not already present, add a flattener that will use a ViewModel object's to_data method
+        custom_handlers = list(custom_handlers) if custom_handlers else []
         if 'to_data' not in [h.attr_name for h in custom_handlers]:
-            custom_handlers = list(custom_handlers) if custom_handlers else []
             custom_handlers.append(FlattenHandler('to_data',
                                     lambda obj: obj.to_data(custom_handlers)))
 
