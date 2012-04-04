@@ -8,6 +8,11 @@ from onlyinpgh.tags.models import Tag
 from onlyinpgh.organizations.models import Organization
 
 
+class ListedEventManager(models.Manager):
+    def get_query_set(self):
+        return super(ListedEventManager, self).get_query_set().filter(listed=True)
+
+
 class Event(models.Model, ViewModel):
     class Meta:
         ordering = ['name']
@@ -30,8 +35,14 @@ class Event(models.Model, ViewModel):
     url = models.URLField(blank=True)
     place = models.ForeignKey(Place, null=True, blank=True)
 
+    # simple plaintext field to be used as a fallback when only unlinkable, text-based place info is available (e.g. from an iCal feed)
+    place_primitive = models.CharField(max_length=200, blank=True)
+
     tags = models.ManyToManyField(Tag, blank=True)
-    invisible = models.BooleanField(default=False)
+    listed = models.BooleanField(default=True)
+
+    objects = models.Manager()
+    listed_objects = ListedEventManager()
 
     def __unicode__(self):
         return self.name
@@ -42,8 +53,8 @@ class Event(models.Model, ViewModel):
         '''
         data = super(Event, self).to_data(*args, **kwargs)
         data.pop('place_id')
-        data['place'] = self.place.to_data()
-        data['tags'] = [t.to_data() for t in self.tags.all()]
+        data['place'] = self.place.to_data(*args, **kwargs) if self.place else None
+        data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
 
@@ -60,8 +71,7 @@ class EventMeta(models.Model):
 
 class Role(models.Model):
     ROLE_TYPES = (
-        ('organizer', 'Organizer'),
-        ('referer', 'Referer'),
+        ('owner', 'Owner'),
     )
     event = models.ForeignKey(Event)
     role_type = models.CharField(max_length=50, choices=ROLE_TYPES)

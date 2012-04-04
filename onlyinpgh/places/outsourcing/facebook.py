@@ -15,7 +15,7 @@ default_client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
 class FBPage(object):
     def __init__(self, fbpage_data, valid=None, api_error=None):
         self.data = fbpage_data
-        self.valid = (valid is True) or (valid is None and self.data)
+        self.valid = bool((valid is True) or (valid is None and self.data))
         self.api_error = api_error
         self._client = None
 

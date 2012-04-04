@@ -123,7 +123,12 @@ def resolve_location(partial_location, allow_numberless=True, retry=None):
         return None
 
     # convert geocoding result to Location
-    return _geocode_result_to_location(result)
+    location = _geocode_result_to_location(result)
+
+    # TODO: REMOVE HACK FROM GOOGLE PLACES INSERTING UNIVERSITY NAME
+    if partial_location.address and 'university' not in partial_location.address and 'university' in location.address.lower():
+        location.address = ','.join(location.address.split(',')[1:]).strip()
+    return location
 
 
 def text_to_location(address_text, seed_location=None, allow_numberless=True):

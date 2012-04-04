@@ -14,3 +14,7 @@ A catch all text file for things that should be considered once there's an actua
 - Look into automating more Model+ViewModel's to_data with new flatten handlers
 
 - Learn details about models. Lean custom fields. Learn cleaning. (e.g. application: Add state fullname to abbrev translation into Place saving core)
+
+- Another good model edition: address normalization for each Location. Or at least a flag to mark one as normalized.
+
+- Take a big look at events/outsourcing/facebook code. missing a lot of error checking i fear
