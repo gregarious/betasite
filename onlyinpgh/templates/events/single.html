@@ -30,10 +30,9 @@ Context variables:
 				<li class="datetime">March 30, 8pm - 11pm</li>
 				{% if event.place %}
 					<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+					<li class="address">{{event.place.location.address}}</li>
 				{% else %}
 					<li>at {{event.place_primitive}}</li>
-				{% endif %}
-				<li class="address">{{event.place.location.address}}</li>
 				{% endif %}
 			</ul>
 
