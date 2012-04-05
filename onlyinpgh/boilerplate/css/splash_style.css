@@ -241,11 +241,12 @@ body {
   background: url("/static/img/textures/sky-body-tex.png");
   width: 100%;
   height: 100%;
+  color: #222;
   margin: 3% 0;
   font-family: 'DroidSerifRegular';
 }
 section {
-  float: left;
+  float: right;
   width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
@@ -261,14 +262,23 @@ h1 {
   margin: 0;
   padding-bottom: 0;
   text-align: center;
-  text-shadow: 0.02em 0.02em 0 #fff;
+  text-shadow: 0.05em 0.05em 0 #ffffff;
+}
+h2 {
+  margin-top: 0.4em;
+  text-shadow: 0.04em 0.04em 0 #ffffff;
+}
+.oakland-heading {
+  font-family: 'DroidSerifItalic', Georgia, serif;
+  font-size: 1.2em;
+  margin-top: 1.5em;
 }
 h3 {
   font-size: 1em;
   font-style: italic;
   font-weight: normal;
   text-align: left;
-  text-shadow: 0.02em 0.02em 0 #ffffff;
+  text-shadow: 0.04em 0.04em 0 #ffffff;
   font-family: 'DroidSerifBoldItalic', serif;
   font-style: normal;
 }
@@ -286,8 +296,8 @@ a:visited {
 }
 p {
   color: #222;
-  margin: 0.1em 0 0.5em;
-  text-shadow: 0.05em 0.05em 0.05em #fff;
+  margin: 1em 0;
+  text-shadow: 0.04em 0.04em 0 #ffffff;
 }
 .highlight {
   color: #b83939;
@@ -334,12 +344,12 @@ form:after {
   clear: both;
 }
 label {
-  color: #2C525D;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 0.9em;
   font-weight: bold;
   margin-bottom: 0.5em;
   margin-left: 1%;
-  text-shadow: 0.07em 0.07em 0 #ffffff;
+  text-shadow: 0.04em 0.04em 0 #ffffff;
   text-transform: uppercase;
   vertical-align: bottom;
 }
@@ -383,9 +393,9 @@ textarea:focus {
 button,
 input[type="submit"] {
   border: none;
-  -webkit-box-shadow: 0.07em 0.07em 0.1em #888888;
-  -moz-box-shadow: 0.07em 0.07em 0.1em #888888;
-  box-shadow: 0.07em 0.07em 0.1em #888888;
+  -webkit-box-shadow: 0.04em 0.04em 0.1em #888888;
+  -moz-box-shadow: 0.04em 0.04em 0.1em #888888;
+  box-shadow: 0.04em 0.04em 0.1em #888888;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -464,6 +474,7 @@ input[type="submit"]:active {
   margin-bottom: 5%;
 }
 #site-header img {
+  margin-top: 0.4em;
   display: block;
   margin: auto;
 }
@@ -475,7 +486,7 @@ input[type="submit"]:active {
   -moz-box-shadow: 0 0 0.2em #ffffff;
   box-shadow: 0 0 0.2em #ffffff;
   display: block;
-  margin: 0 auto;
+  margin: 1em auto auto;
 }
 #company {
   border-left: 1px solid #fff;
@@ -525,7 +536,7 @@ input[type="submit"]:active {
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
  */
 /* Styles for mobile ----------- */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   section {
     width: 100%;
     margin: 0;
