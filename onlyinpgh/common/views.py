@@ -13,7 +13,7 @@ def render_footer():
 
 
 def render_sidebar():
-    return render_safe('sidebar.html')
+    return render_safe('sidebar_base.html')
 
 
 def render_scenenav():

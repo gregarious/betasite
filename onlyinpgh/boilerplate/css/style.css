@@ -631,7 +631,7 @@ input[type="submit"]:active,
 .favbutton {
   display: block;
   height: 30px;
-  font-size: 0.7em;
+  font-size: 0.9em;
   /*
 
   img {
@@ -646,7 +646,6 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: left;
-  text-transform: uppercase;
   font-size: 0.8em;
   font-weight: bold;
   color: #444;
@@ -870,12 +869,13 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.5em 1.5em;
+  margin: 0;
 }
 .widget p,
 .widget ul li {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  margin-bottom: 1em;
 }
 .widget ul {
   margin-left: 1em;
