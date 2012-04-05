@@ -257,7 +257,7 @@ button, input[type="submit"], .next, .back {
   color: #fff;
   font-size: 0.8em;
   font-weight: bold;
-  .gradient(#00B945, #238B49);
+  .gradient(@mgreen, @dgreen);
   margin-top: 0.5em;
   padding: 0.5em;
   position: relative;
@@ -265,11 +265,11 @@ button, input[type="submit"], .next, .back {
   text-shadow: 0 0 0.05em #000;
 
   &:hover {
-    background: #238B49;
+    background: @dgreen;
   }
 
   &:active {
-    background: #00782D;
+    background: @ddgreen;
     top: 1px;
     left: 1px;
     .b-shadow(0, 0, 0, #fff);
