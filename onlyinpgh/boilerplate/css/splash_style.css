@@ -469,7 +469,7 @@ input[type="submit"]:active {
   clear: both;
 }
 #site-header {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #a9c6e8;
   padding-bottom: 3%;
   margin-bottom: 5%;
 }
@@ -477,9 +477,6 @@ input[type="submit"]:active {
   margin-top: 0.4em;
   display: block;
   margin: auto;
-}
-#oakland {
-  padding-left: 3%;
 }
 #oakland .screenshot {
   -webkit-box-shadow: 0 0 0.2em #ffffff;
@@ -489,7 +486,6 @@ input[type="submit"]:active {
   margin: 1em auto auto;
 }
 #company {
-  border-left: 1px solid #fff;
   padding-left: 3%;
 }
 .suggest-scene {

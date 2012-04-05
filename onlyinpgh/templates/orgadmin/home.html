@@ -8,23 +8,23 @@
 					<p>Places</p>
 				</div>
 				<div class="menu-description">
-					<p>Scenable has a thorough database of all businesses in Oakland. Claim your business or create a new one in case we missed anything.</p>
+					<p>Where is your business located? Scenable has an extensive database with most of the storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</p>
 				</div>
 			</li>
 		</a>
 		
 
-		<a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}">
 			<li>
-				<div class="menu-icon">
-					<img src="/static/img/home_special.png" />
-					<p>Specials</p>
-				</div>
+				<a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}">
+					<div class="menu-icon">
+						<img src="/static/img/home_special.png" />
+						<p>Specials</p>
+					</div>
+				</a>
 				<div class="menu-description">
-					<p>Add specials to your business profile. Each special will be assigned a point, or scene cred, value based on its dollar amount (a $12 special equals 12 scene cred). You will also be able to add an expiration date and number available, if applicable.</p>
+					<p><a class="ugh-hack" href="{% url onlyinpgh.orgadmin.views.page_list_specials %}">Have a special or coupon you'd like to make available on Scenable? Specials can be purchased by users of the app and then redeemed at your location. Payment processing is done through PayPal, and you must have a PayPal account in order to receive funds. Don't have one? Click here to make a </a><a href="https://www.paypal.com/webapps/mpp/product-selection">free Standard PayPal account</a>.</p>
 				</div>
 			</li>
-		</a>
 
 		<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}">
 			<li class="bottom">
@@ -33,7 +33,7 @@
 					<p>Events</p>
 				</div>
 				<div class="menu-description">
-					<p>Does your business host events? Add events to your business page here. If you've added them to your Facebook page, we have them. You'll be able to edit any info here.</p>
+					<p>Do you have events you'd like to get the word out about in Oakland? Click here to add or edit your events on Scenable! If your Facebook page is already linked up, we'll already have them listed for you.</p>
 				</div>
 			</li>
 		</a>
