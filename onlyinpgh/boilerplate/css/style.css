@@ -238,7 +238,7 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
-  background: #e1e1e1 url("/static/img_store/Oakland/RGB/Oakland_Vertical_RGB_Green.png") fixed bottom right no-repeat;
+  background: #e1e1e1 url("/static/img/Oakland_bkgd_630.png") fixed bottom right no-repeat;
   font-family: Helvetica, Arial, sans-serif;
 }
 /* TYPOGRAPHY -------- */
@@ -349,7 +349,7 @@ a:visited {
 .feed-title,
 .single-title {
   font-size: 1.8em;
-  font-family: 'BitterItalic', 'Gerogia', serif;
+  font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   text-shadow: 0 0 0.05em #999;
   margin: 0;
@@ -394,7 +394,7 @@ a:visited {
 }
 .widget-title {
   margin: 0.5em 0;
-  font-family: 'BitterItalic', 'Gerogia', serif;
+  font-family: 'DroidSerifItalic', 'Gerogia', serif;
   border-bottom: 1px solid #e1e1e1;
 }
 /* FORMS & INPUTS --------------- */
@@ -631,7 +631,7 @@ input[type="submit"]:active,
 .favbutton {
   display: block;
   height: 30px;
-  font-size: 0.7em;
+  font-size: 0.9em;
   /*
 
   img {
@@ -646,7 +646,6 @@ input[type="submit"]:active,
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: left;
-  text-transform: uppercase;
   font-size: 0.8em;
   font-weight: bold;
   color: #444;
@@ -870,12 +869,13 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.5em 1.5em;
+  margin: 0;
 }
 .widget p,
 .widget ul li {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  margin-bottom: 1em;
 }
 .widget ul {
   margin-left: 1em;
@@ -996,11 +996,11 @@ input[type="submit"]:active,
   color: #000;
 }
 .item-title {
-  font-family: 'BitterItalic';
+  font-family: 'DroidSerifBoldItalic';
   font-weight: normal;
   margin: 0;
   text-shadow: 0 0 0.01em #999;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .item-actions {
   position: absolute;
@@ -1534,6 +1534,9 @@ a#siteNews {
 /*******************************//*******************************/
 /*******************************//*******************************/
 @media screen and (max-width: 1140px) {
+  body {
+    background-image: url("/static/img/Oakland_bkgd_450.png");
+  }
   #scene-nav {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1658,7 +1661,7 @@ a#siteNews {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
-    top: 7em;
+    top: 7.5em;
   }
   .feed {
     margin: 0 0;
@@ -1676,6 +1679,11 @@ a#siteNews {
   }
   #site-sidebar {
     display: none;
+  }
+  #site-content {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
   }
   #scene-nav {
     top: 2em;
@@ -1704,7 +1712,7 @@ a#siteNews {
   }
   #utility {
     position: absolute;
-    bottom: 4.6em;
+    bottom: 5.1em;
     background: #444;
     padding: 0.5em;
     border-bottom: 1px solid #888;
@@ -1732,12 +1740,20 @@ a#siteNews {
     margin: 0;
     text-align: left;
   }
+  .feed {
+    padding: 0.5em;
+  }
   .item {
     width: 100%;
     margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    border: 1px #8fd36f solid;
+    -webkit-box-shadow: 0.1em 0.1em 0.1em #444444;
+    -moz-box-shadow: 0.1em 0.1em 0.1em #444444;
+    box-shadow: 0.1em 0.1em 0.1em #444444;
+    margin: 0.5em 0;
     background-color: #f9f9f9;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ffffff));
     /* Saf4+, Chrome */
@@ -1760,6 +1776,17 @@ a#siteNews {
   }
   .item:hover {
     background: #fff;
+  }
+  .section-title {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  .feed-content {
+    padding: 0;
   }
 }
 @media screen and (max-width: 700px) {

@@ -57,6 +57,7 @@ a {
 
 p {
 	color: #222;
+	font-size: 0.95em;
 	margin: 0.1em 0;
 	text-shadow: 0.05em 0.05em 0.05em #fff;
 }
@@ -397,7 +398,7 @@ input[type="checkbox"] {
 
 /* NAVIGATION ---------- */
 
-.home-nav ul a li {
+.home-nav ul li {
 	border-bottom: 1px solid #ccc;
 
 	&:hover {
@@ -432,12 +433,11 @@ input[type="checkbox"] {
 		margin: 1em auto;
 	}
 
-	&.disabled {
-		/*.no-b-shadow();
-		background: fade(#fff, 50%);*/
+	.ugh-hack {
+		color: #000;
 
 		&:hover {
-			background: none;					
+			color: #000;
 		}
 	}
 }

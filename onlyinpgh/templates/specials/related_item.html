@@ -14,16 +14,14 @@ Context variables:
 </div>
 
 <section class="item-content">
-		<a href="{% url special-detail special.id %}">
-			<h4 class="item-title">{{special.title}}</h4>
-		</a>
-		<ul class="item-details">
-			{% if special.dtexpires %}
-				<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
-			{% endif %}
-			{% if special.description %}
-				<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
-			{% endif %}	
+	<h4 class="item-title"><a href="{% url special-detail special.id %}">{{special.title}}</a></h4>
+	<ul class="item-details">
+		{% if special.dtexpires %}
+			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
+		{% endif %}
+		{% if special.description %}
+			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% endif %}	
 
-		</ul>
+	</ul>
 </section>
