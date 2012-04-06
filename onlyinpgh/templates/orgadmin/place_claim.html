@@ -1,19 +1,146 @@
-<h2>Add a place...</h2>
+<h2>Claim your place...</h2>
 
-<form method="post" action="{% url onlyinpgh.orgadmin.views.page_claim_place %}">
-	{% csrf_token %}
-	<div class="field-container inner">
+<form method="POST" action="{% url orgadmin-claimplace %}">
+    {% csrf_token %}
+    <div class="field-container inner">
         {{ form.place.errors }}
-		<div class="field-label">
-			{{ form.place.label_tag }}
-		</div>
-		<div class="field">
-			{{ form.place }}
-			<p class="tip">or <a href="{% url orgadmin-addplace %}">Create a new place</a></p>	
-		</div>
-	</div>
-    <input type="submit" class="submit-item" value="Claim" />
-    <a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="back" title="Back to places">&larr; Back</a>
+        <div class="field-label">
+            {{ form.place.label_tag }}
+        </div>
+        <div class="field">
+            <input id="id_place-text">
+            <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
+            <a id="place-clear" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
+            <input type="hidden" name="{{ form.place.html_name }}" id="id_place">            
+            {% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="confirm-box" style="display:none">
+        <p>Great! We've found your establishment!</p>
+        <div id="confirm-content"></div>
+        <p>If this is correct, click Claim. Otherwise, choose again.</p>
+    </div>
+    <button type="submit" disabled="disabled">Claim</button>
 </form>
 
+<script type="text/javascript">
+$(function(){
+    var place_ac_text = $('#id_place-text'),
+        place_ac_value = $('#id_place'),
+        place_ac_clear_btn = $('#place-clear'),
+        place_ac_spinner = $('.spinner'),
+        place_ac_confirmbox = $('#confirm-box'),
+        place_ac_confirmcontent = $('#confirm-content');
 
+    place_ac_spinner.hide();
+    place_ac_clear_btn.on('click', on_ac_deselect)
+                      .hide();
+
+    function on_ac_select(ui) {
+        place_ac_text.val(ui.item.selectedLabel);
+        place_ac_value.val(ui.item.value);
+        place_ac_clear_btn.show();
+        $("form :submit").removeAttr('disabled');
+
+        $.ajax({
+            url: "/orgadmin/ajax/place_confirm/",
+            dataType: 'html',
+            data: {
+                'pid': ui.item.value
+            },
+            timeout: 3000,
+            success: function(html_response) {
+                place_ac_confirmcontent.html(html_response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {   
+                place_ac_confirmcontent.html(ui.item.selectedLabel);
+            },
+            complete: function(jqXHR, textStatus) {
+                place_ac_confirmbox.show();
+            }
+        });
+    }
+
+    function on_ac_deselect(ui) {
+        place_ac_text.val('');
+        place_ac_value.val('');
+        remove_confirmation();
+    }
+
+    function remove_confirmation() {
+        place_ac_confirmbox.hide();
+        place_ac_clear_btn.hide();
+        $("form :submit").attr('disabled',true);        
+    }
+
+    place_ac_text.autocomplete({
+        html: true,
+        //autoFocus: true,
+        minLength: 2,
+        
+        source: function(request, response) {
+            $.ajax({
+                url: "/orgadmin/ajax/placeclaim_ac/",
+                dataType: 'json',
+                data: {
+                    'term': request.term
+                },
+                timeout: 3000,
+                success: function(data) {
+                    responses = $.map(data, function(item) {
+                        return { 
+                            label: item.name + '<br/>' + '<small><i>' + item.address + '</i></small>',
+                            value: item.id,
+                            selectedLabel: item.name
+                        };
+                    });
+                    responses.push({
+                        label: '<b>Create a new place<b>',
+                        value:'!newplace'
+                    });
+                    response(responses);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // TODO: what to do here?
+                    console.log('failed!');
+                },
+                complete: function(jqXHR, textStatus) {
+                    place_ac_spinner.hide();
+                }
+            });
+        },
+        
+        search: function(event, ui) {
+            remove_confirmation();
+            place_ac_spinner.show();
+        },
+
+        select: function(event, ui) {
+            if(ui.item.value === '!newplace') {
+                window.location.href = "{% url orgadmin-addplace %}"
+            }
+            else {
+                on_ac_select(ui);   // function will show the confirmation dialog
+            }
+            return false;
+        },
+
+        focus: function(event, ui) {
+            return false;   // makes it so text doesn't show up in form till selection
+        },
+
+        change: function(event, ui) {
+            // if something was changed in the text field after a select, the selectedItem will be 
+            // cleared out. If no selected item, the inputs get reset.
+            var item = $(this).data().autocomplete.selectedItem;
+            console.log('change');
+            if(!item) {
+                on_ac_deselect();
+            }
+        },
+    });
+});
+</script>

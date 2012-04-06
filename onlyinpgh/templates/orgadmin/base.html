@@ -14,12 +14,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="/static/css/admin_style.css?v=1">
-	<link rel="stylesheet" href="/static/css/jquery-ui-1.8.18.custom.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
+	<!-- <link rel="stylesheet" href="{{STATIC_URL}}js/themes/base/jquery.ui.all.css"> -->
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui-1.8.18.custom.css">
 
 	<!--  Fonts -->
-	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+
+	<!-- Include jQuery with fallback to local copy -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.1.js"><\/script>')</script>
+	<script src="{{STATIC_URL}}js/libs/modernizr-custom.js"></script>
 
 </head>
 
@@ -56,18 +62,21 @@
 		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C.</p>
 	</footer>
 
-	<!-- Include jQuery with fallback to local copy -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
-	<script src="/static/js/libs/modernizr-custom.js"></script>
-
 	<!-- Scenable Scripts -->
-	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
-	<script src="/static/js/admin_script.js"></script>	
+	<!-- <script type="text/javascript" src="{{STATIC_URL}}js/libs/jquery.scrollTo.js"></script> -->
+	<!-- <script src="{{STATIC_URL}}js/admin_script.js"></script>	-->
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.core.js"></script>
+
+	<!-- for Autocomplete -->
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.widget.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.position.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.autocomplete.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.autocomplete.html.js"></script>
+
 
 	<!-- jQuery UI and Timepicker plugin-->
-	<script src="/static/js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
-	<script src="/static/js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
+	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
 
 </body>
 </html>

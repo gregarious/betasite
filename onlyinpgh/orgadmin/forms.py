@@ -172,7 +172,14 @@ class SimpleSpecialForm(SpecialForm):
 
 
 class PlaceClaimForm(forms.Form):
-    place = forms.ChoiceField(label='Places')
+    '''
+    Form with just a place choice input.
+
+    Will default to using a select widget for the field, but practically,
+    an Autocomplete field should be used. Currently, this requires some
+    manual configuration in the form template.
+    '''
+    place = forms.ChoiceField(label='Place name')
 
     def __init__(self, place_choices, *args, **kwargs):
         super(PlaceClaimForm, self).__init__(*args, **kwargs)
