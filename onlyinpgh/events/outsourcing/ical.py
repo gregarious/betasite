@@ -141,8 +141,8 @@ class FeedImporter(object):
 
                     # start off with the whole string
                     all_fields = [place_primitive.strip().lower()]
-                    # split by commas and semicolons, or dashes
-                    for delim in (',;', '-'):
+                    # split by commassemicolons, or dashes
+                    for delim in (',', ';', '-'):
                         all_fields.append([s.strip().lower() for s in place_primitive.split(delim)])
                     # if parenthesis, grab the inside and outside content
                     p_match = re.match(r'^(.+)\((.+)\)', place_primitive)
@@ -163,9 +163,6 @@ class FeedImporter(object):
             event.dtstart = process_time(entry['dtstart'], default_tz_str)
             event.dtend = process_time(entry['dtend'], default_tz_str)
             event.description = entry.get('description', '').strip()
-
-            print 'start:', event.dtstart
-            print 'end:', event.dtend
 
             event.save()
 
