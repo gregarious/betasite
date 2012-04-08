@@ -9,6 +9,7 @@ from onlyinpgh.places.models import Location
 from onlyinpgh.events.forms import EventForm
 from onlyinpgh.specials.forms import SpecialForm
 
+from onlyinpgh.places.models import Parking, Hours
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
@@ -40,10 +41,18 @@ class SimpleLocationPlaceForm(PlaceForm):
     All logic is short circuited: see method docs for details.
     '''
     location = forms.CharField(label="Address", initial='')
+    hr_days_1, hr_hours_1 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_2, hr_hours_2 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_3, hr_hours_3 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_4, hr_hours_4 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_5, hr_hours_5 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_6, hr_hours_6 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    hr_days_7, hr_hours_7 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    parking = forms.MultipleChoiceField(choices=Parking.choices, widget=forms.CheckboxSelectMultiple())
 
     class Meta(PlaceForm.Meta):
         # TODO: look into extending from parent meta
-        exclude = ('dtcreated', 'location', 'tags',)
+        exclude = ('dtcreated', 'location', 'tags', 'hours', 'parking')
         widgets = {
             'name': TextInput(attrs={'placeholder': "Your place's name"}),
         }
@@ -55,11 +64,24 @@ class SimpleLocationPlaceForm(PlaceForm):
         '''
         # if an instance is given, and no initial value for location is given,
         # set the initial value of the location field to the instance's address
+        # also set the hours and parking in the roundabout way we do...
         instance = kwargs.get('instance')
         if instance and instance.location:
             initial = kwargs.setdefault('initial', {})
             if 'location' not in initial:
                 initial['location'] = instance.location.address
+            if 'parking' not in initial:
+                # TODO: hackilicious!
+                initial['parking'] = instance.parking_as_obj().parking_options
+
+            day_hrs_tuples = instance.hours_as_obj().day_hours_tuples
+            print day_hrs_tuples
+            for i in range(1, len(day_hrs_tuples) + 1):
+                days_field, hours_field = 'hr_days_%d' % i, 'hr_hours_%d' % i
+                if days_field not in initial:
+                    initial[days_field] = day_hrs_tuples[i - 1][0]
+                if hours_field not in initial:
+                    initial[hours_field] = day_hrs_tuples[i - 1][1]
 
         self.geocode_locations = geocode_locations
 
@@ -87,10 +109,8 @@ class SimpleLocationPlaceForm(PlaceForm):
         if self.geocode_locations:
             # TODO: make this stuff happen after response is sent, maybe via a signal?
             try:
-                print 'attempting resolve'
                 resolved = resolve_location(location, retry=0)
                 if resolved:
-                    print 'new one resolved!', resolved.longitude, resolved.latitude
                     location = resolved
             except APIError:
                 pass    # do nothing, just go with basic Location
@@ -104,11 +124,25 @@ class SimpleLocationPlaceForm(PlaceForm):
         '''
         place = super(SimpleLocationPlaceForm, self).save(commit=False)
 
+        # process location
         location = self.cleaned_data['location']
         if commit:
             location.save()
-
         place.location = location
+
+        hours_obj = Hours()
+        for i in range(1, 8):
+            day = self.cleaned_data.get('hr_days_%d' % i, '')
+            hrs = self.cleaned_data.get('hr_hours_%d' % i, '')
+            if day or hrs:
+                hours_obj.add_span(day, hrs)
+        place.set_hours(hours_obj)
+
+        parking_obj = Parking()
+        for opt in self.cleaned_data['parking']:
+            parking_obj.add_option(opt)
+        place.set_parking(parking_obj)
+
         if commit:
             place.save()
             print 'saved place id', place.id

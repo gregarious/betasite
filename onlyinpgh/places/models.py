@@ -354,15 +354,23 @@ class Parking(ViewModel):
     '''
     Object to handle parking options.
     '''
+    choices = (('street', 'Street'),
+               ('lot', 'Lot'),
+               ('garage', 'Garage'),
+               ('valet', 'Valet'))
+
     def __init__(self):
         self.parking_options = []
         self.pickler = CSVPickler()
 
     def add_option(self, option):
+        if option not in [c[0] for c in Parking.choices]:
+            raise ValueError('Invalid parking option')
         self.parking_options.append(option)
 
     def to_data(self):
-        return self.parking_options
+        choice_map = dict(Parking.choices)
+        return [choice_map[option_key] for option_key in self.parking_options]
 
     @classmethod
     def deserialize(cls, data):

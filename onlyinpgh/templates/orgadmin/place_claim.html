@@ -19,7 +19,7 @@
     </div>
 
     <div id="confirm-box" style="display:none">
-        <p>Great! We've found your establishment!</p>
+        <p>Great! We've already got your place on record!</p>
         <div id="confirm-content"></div>
         <p>If this is correct, click Claim. Otherwise, choose again.</p>
     </div>
@@ -78,7 +78,7 @@ $(function(){
 
     place_ac_text.autocomplete({
         html: true,
-        //autoFocus: true,
+        autoFocus: true,
         minLength: 2,
         
         source: function(request, response) {
