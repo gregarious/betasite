@@ -3,13 +3,13 @@ from django.forms import TextInput
 from django.contrib.auth.forms import AuthenticationForm
 
 from onlyinpgh.organizations.forms import OrganizationForm
-from onlyinpgh.places.forms import PlaceForm
+from onlyinpgh.places.forms import PlaceForm, LocationForm
 from onlyinpgh.places.models import Location
 
 from onlyinpgh.events.forms import EventForm
 from onlyinpgh.specials.forms import SpecialForm
 
-from onlyinpgh.places.models import Parking, Hours
+from onlyinpgh.places.models import Place, Parking, Hours
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
@@ -31,7 +31,7 @@ class OrgLoginForm(AuthenticationForm):
     username = forms.CharField(label="Username/Email", initial='')
 
 
-class SimpleLocationPlaceForm(PlaceForm):
+class OrgAdminPlaceForm(PlaceForm):
     '''
     PlaceForm with the interface to the Location objects simplified
     as a single text address field. All addresses assumed to be in Oakland.
@@ -57,7 +57,7 @@ class SimpleLocationPlaceForm(PlaceForm):
             'name': TextInput(attrs={'placeholder': "Your place's name"}),
         }
 
-    def __init__(self, geocode_locations=True, *args, **kwargs):
+    def __init__(self, geocode_location=True, *args, **kwargs):
         '''
         Extends base constructor to manually fill in an initial value for
         location when a model instance is given that contains location.name.
@@ -83,9 +83,9 @@ class SimpleLocationPlaceForm(PlaceForm):
                 if hours_field not in initial:
                     initial[hours_field] = day_hrs_tuples[i - 1][1]
 
-        self.geocode_locations = geocode_locations
+        self.geocode_location = geocode_location
 
-        super(SimpleLocationPlaceForm, self).__init__(*args, **kwargs)
+        super(OrgAdminPlaceForm, self).__init__(*args, **kwargs)
 
     def clean_location(self):
         '''
@@ -106,7 +106,7 @@ class SimpleLocationPlaceForm(PlaceForm):
             town='Pittsburgh', state='PA')
 
         # if the form is set to geocode new locations
-        if self.geocode_locations:
+        if self.geocode_location:
             # TODO: make this stuff happen after response is sent, maybe via a signal?
             try:
                 resolved = resolve_location(location, retry=0)
@@ -122,7 +122,7 @@ class SimpleLocationPlaceForm(PlaceForm):
         Extends the base save by saving the cleaned location entry and
         adding it to the ModelForm's internal place.
         '''
-        place = super(SimpleLocationPlaceForm, self).save(commit=False)
+        place = super(OrgAdminPlaceForm, self).save(commit=False)
 
         # process location
         location = self.cleaned_data['location']
@@ -149,10 +149,58 @@ class SimpleLocationPlaceForm(PlaceForm):
         return place
 
 
+class SimplePlaceForm(LocationForm):
+    '''
+    A Place name + Location form. Actually subclasses LocationForm, easier
+    implementation that way.
+    '''
+    class Meta(LocationForm.Meta):
+        exclude = ('latitude', 'longitude', 'country')
+        widgets = {'address': forms.TextInput()}
+
+    name = forms.CharField(label=u'Place name', required=False)
+
+    def __init__(self, geocode_location=True, instance=None, *args, **kwargs):
+        '''
+        Note that instance should be a Place instance, despite the
+        subclassing implementation.
+        '''
+        if instance:
+            self.place_instance = instance
+            kwargs['instance'] = instance.location
+        else:
+            self.place_instance = None
+
+        super(SimplePlaceForm, self).__init__(*args, **kwargs)
+
+        self.geocode_location = geocode_location
+
+    def save(self, commit=False):
+        location = super(SimplePlaceForm, self).save(commit=False)
+
+        if self.geocode_location:
+            # TODO: make this stuff happen after response is sent, maybe via a signal?
+            try:
+                resolved = resolve_location(location, retry=0)
+                if resolved:
+                    location = resolved
+            except APIError:
+                pass    # do nothing, just go with basic Location
+
+        if commit:
+            location.save()
+
+        place = self.place_instance if self.place_instance else Place(location=location)
+        place.name = self.cleaned_data.get('name', '')
+
+        if commit:
+            place.save()
+        return place
+
+
 class SimpleEventForm(EventForm):
     '''
-    Event edit form with place options limited to the given org's
-    establishments
+    Basic event edit form.
     '''
     # TODO: reduce this code. collapse datepicker-start and -end
     # Note that event_edit_form template manually describes these fields!
@@ -168,13 +216,6 @@ class SimpleEventForm(EventForm):
     class Meta(EventForm.Meta):
         # TODO: look into extending from parent meta
         exclude = ('dtcreated', 'dtmodified', 'tags', )
-
-    def __init__(self, organization, *args, **kwargs):
-        '''
-        Limit the available places to org's own establishments
-        '''
-        super(SimpleEventForm, self).__init__(*args, **kwargs)
-        self.fields['place'].queryset = organization.establishments.all()
 
 
 class SimpleSpecialForm(SpecialForm):

@@ -33,4 +33,6 @@ urlpatterns += patterns('onlyinpgh.orgadmin.ajax',
     url(r'^ajax/place_ac/$', 'place_autocomplete'),
 
     url(r'^ajax/place_confirm/$', 'place_confirm_div'),
+
+    url(r'^ajax/newplace_submit/$', 'newplace_form_submission'),
 )

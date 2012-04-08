@@ -13,7 +13,7 @@ from onlyinpgh.specials.models import Special
 
 from django.contrib.auth.forms import AuthenticationForm
 from onlyinpgh.accounts.forms import RegistrationForm
-from onlyinpgh.orgadmin.forms import SimpleOrgForm, SimpleLocationPlaceForm, \
+from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
@@ -208,7 +208,7 @@ def page_setup_place_wizard(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST,
+        form = OrgAdminPlaceForm(data=request.POST,
             instance=instance)
         if form.is_valid():
             place = form.save()
@@ -220,7 +220,7 @@ def page_setup_place_wizard(request, id=None):
 
             return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
-        form = SimpleLocationPlaceForm(instance=instance)
+        form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/place_setup_wizard.html', {'form': form},
@@ -246,12 +246,12 @@ def page_edit_place(request, id):
         return HttpResponseForbidden()
 
     if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST, instance=instance)
+        form = OrgAdminPlaceForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
-        form = SimpleLocationPlaceForm(instance=instance)
+        form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/place_edit_form.html', {'form': form}, context_instance=context)
@@ -297,16 +297,19 @@ def page_edit_event(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
-        form = SimpleEventForm(organization=org, data=request.POST, instance=instance)
+        form = SimpleEventForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
     else:
-        form = SimpleEventForm(organization=org, instance=instance)
+        form = SimpleEventForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_edit_form.html', {'form': form},
-                                    context_instance=context)
+    content = render_to_string('orgadmin/event_edit_form.html', {
+            'form': form,
+            'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'})
+        },
+        context_instance=context)
     return response_admin_page(content, context)
 
 

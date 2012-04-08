@@ -7,6 +7,9 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseForbidden, HttpResponse
 from onlyinpgh.common.core.rendering import render_viewmodel
 
+from django.views.decorators.csrf import csrf_protect
+
+from onlyinpgh.orgadmin.forms import SimplePlaceForm
 
 ### Shotcuts for authentication ###
 def authentication_required_403(view_func):
@@ -71,7 +74,8 @@ def place_autocomplete(request):
     term = request.GET.get('term')
     if not term:
         return []
-    return _autocomplete_response(Place.objects.all(), term, 4)
+    places = Place.objects.filter(name__icontains=term)
+    return _autocomplete_response(places, term, 4)
 
 
 @authentication_required_403
@@ -80,8 +84,31 @@ def place_confirm_div(request):
     Returns a rendered place_confirm.html template for the place id in
     GET['pid'].
     '''
-    print request.GET
     pid = request.GET.get('pid', '-1')   # will trigger 404 below
     place = get_object_or_404(Place, id=pid)
     return HttpResponse(render_viewmodel(PlaceFeedItem(place),
         'orgadmin/place_confirm.html'))
+
+
+@authentication_required_403
+@csrf_protect
+@jsonp_response
+def newplace_form_submission(request):
+    if request.POST:
+        print request.POST
+        form = SimplePlaceForm(data=request.POST, prefix='newplace')
+        if form.is_valid():
+            # if the form didn't give at least a place name or addres, don't save the junk
+            if form.cleaned_data['name'] != '' or form.cleaned_data['address'] != '':
+                place = form.save(commit=False)
+                place.listed = False
+                # save manully, including inner model reassign hack
+                place.location.save()
+                place.location = place.location
+                place.save()
+                return {
+                    'id': place.id,
+                    'name': place.name,
+                    'address': place.location.address,
+                }
+    return False
