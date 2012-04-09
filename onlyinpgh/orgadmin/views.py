@@ -20,7 +20,7 @@ from onlyinpgh.places.viewmodels import PlaceFeedItem
 from onlyinpgh.events.viewmodels import EventFeedItem
 from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
-from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodels_as_ul, render_safe
 
 
 def render_admin_page(safe_content, context_instance=None):
@@ -296,37 +296,37 @@ def page_edit_event(request, id=None):
         if not org:
             return redirect('orgadmin-home')
 
+    initial_place = None
     if request.POST:
         form = SimpleEventForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
 
-        # TODO: fix this "initial_place" hack for autocomplete display
+        # TODO: fix this "initial_selected" hack for autocomplete display
         initial_place_id = request.POST.get('place')
         if initial_place_id is not None:
-            print 'option 1', initial_place_id
             try:
                 initial_place = Place.objects.get(id=request.POST['place'])
             except Place.DoesNotExist:
-                initial_place = ''
+                pass
         elif instance and instance.place:
-            print 'option 2', instance.place
-            initial_place = instance.place.name
-        else:
-            initial_place = ''
+            initial_place = instance.place
     else:
         form = SimpleEventForm(instance=instance)
         if instance and instance.place:
-            initial_place = instance.place.name
-        else:
-            initial_place = ''
+            initial_place = instance.place
+
+    if initial_place is not None:
+        initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+    else:
+        initial_selected = None
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/event_edit_form.html', {
             'form': form,
             'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
-            'initial_place': initial_place,
+            'initial_selected': initial_selected,
         },
         context_instance=context)
     return response_admin_page(content, context)

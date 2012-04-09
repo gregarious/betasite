@@ -2,14 +2,17 @@
 from onlyinpgh.common.utils.jsontools import jsonp_response
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.viewmodels import PlaceFeedItem
+from onlyinpgh.common.core.rendering import render_safe
 
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404
+
 from django.http import HttpResponseForbidden, HttpResponse
 from onlyinpgh.common.core.rendering import render_viewmodel
 
 from django.views.decorators.csrf import csrf_protect
 
 from onlyinpgh.orgadmin.forms import SimplePlaceForm
+
 
 ### Shotcuts for authentication ###
 def authentication_required_403(view_func):
@@ -41,7 +44,8 @@ def _autocomplete_response(place_choices, term, limit=4):
     return [
         {'id': p.id,
          'name': p.name,
-         'address': p.location.address if p.location else None
+         'address': p.location.address if p.location else '',
+         'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
         }
         for p in [p for _, p in sorted(zip(match_status, place_choices))][:limit]
     ]
@@ -81,13 +85,13 @@ def place_autocomplete(request):
 @authentication_required_403
 def place_confirm_div(request):
     '''
-    Returns a rendered place_confirm.html template for the place id in
+    Returns a rendered ac_place_confirm.html template for the place id in
     GET['pid'].
     '''
     pid = request.GET.get('pid', '-1')   # will trigger 404 below
     place = get_object_or_404(Place, id=pid)
     return HttpResponse(render_viewmodel(PlaceFeedItem(place),
-        'orgadmin/place_confirm.html'))
+        'orgadmin/ac_place_confirm.html'))
 
 
 @authentication_required_403
@@ -110,5 +114,6 @@ def newplace_form_submission(request):
                     'id': place.id,
                     'name': place.name,
                     'address': place.location.address,
+                    'selected': render_safe('orgadmin/ac_place_selected.html', place=place)
                 }
     return False
