@@ -101,7 +101,8 @@ class OrgAdminPlaceForm(PlaceForm):
         Parses a string of comma-separated tags and returned a list
         of Tag instances
         '''
-        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        input_names = map(slugify, self.cleaned_data['tags'].split(','))
+        input_names = set(name for name in input_names if name != '')
         tags = list(Tag.objects.filter(name__in=input_names))
         new_names = input_names.difference([tag.name for tag in tags])
         tags += [Tag(name=tag_name) for tag_name in new_names]
@@ -271,7 +272,8 @@ class SimpleEventForm(EventForm):
         Parses a string of comma-separated tags and returned a list
         of Tag instances
         '''
-        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        input_names = map(slugify, self.cleaned_data['tags'].split(','))
+        input_names = set(name for name in input_names if name != '')
         tags = list(Tag.objects.filter(name__in=input_names))
         new_names = input_names.difference([tag.name for tag in tags])
         tags += [Tag(name=tag_name) for tag_name in new_names]
@@ -350,7 +352,8 @@ class SimpleSpecialForm(SpecialForm):
         Parses a string of comma-separated tags and returned a list
         of Tag instances
         '''
-        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        input_names = map(slugify, self.cleaned_data['tags'].split(','))
+        input_names = set(name for name in input_names if name != '')
         tags = list(Tag.objects.filter(name__in=input_names))
         new_names = input_names.difference([tag.name for tag in tags])
         tags += [Tag(name=tag_name) for tag_name in new_names]

@@ -10,6 +10,7 @@ from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
+from onlyinpgh.tags.models import Tag
 
 from django.contrib.auth.forms import AuthenticationForm
 from onlyinpgh.accounts.forms import RegistrationForm
@@ -223,7 +224,8 @@ def page_setup_place_wizard(request, id=None):
         form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_setup_wizard.html', {'form': form},
+    content = render_to_string('orgadmin/place_setup_wizard.html', 
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
         context_instance=context)
     return response_admin_page(content, context)
 
@@ -254,7 +256,9 @@ def page_edit_place(request, id):
         form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_edit_form.html', {'form': form}, context_instance=context)
+    content = render_to_string('orgadmin/place_edit_form.html',
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
+        context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -380,8 +384,9 @@ def page_edit_special(request, id=None):
         form = SimpleSpecialForm(organization=org, instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_edit_form.html', {'form': form},
-                                context_instance=context)
+    content = render_to_string('orgadmin/special_edit_form.html',
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
+        context_instance=context)
     return response_admin_page(content, context)
 
 
