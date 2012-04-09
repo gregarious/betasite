@@ -24,7 +24,7 @@ class Special(models.Model, ViewModel):
     dstart = models.DateField(null=True, blank=True)
 
     total_available = models.IntegerField(null=True, blank=True)
-    total_sold = models.IntegerField(default=0)
+    total_sold = models.IntegerField(default=0, editable=False)
 
     tags = models.ManyToManyField(Tag, blank=True)
 

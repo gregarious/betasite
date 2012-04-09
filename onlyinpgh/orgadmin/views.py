@@ -10,17 +10,18 @@ from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
+from onlyinpgh.tags.models import Tag
 
 from django.contrib.auth.forms import AuthenticationForm
 from onlyinpgh.accounts.forms import RegistrationForm
-from onlyinpgh.orgadmin.forms import SimpleOrgForm, SimpleLocationPlaceForm, \
+from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
 from onlyinpgh.events.viewmodels import EventFeedItem
 from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
-from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
+from onlyinpgh.common.core.rendering import render_viewmodels_as_ul, render_safe
 
 
 def render_admin_page(safe_content, context_instance=None):
@@ -208,7 +209,7 @@ def page_setup_place_wizard(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST,
+        form = OrgAdminPlaceForm(data=request.POST,
             instance=instance)
         if form.is_valid():
             place = form.save()
@@ -220,10 +221,11 @@ def page_setup_place_wizard(request, id=None):
 
             return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
-        form = SimpleLocationPlaceForm(instance=instance)
+        form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_setup_wizard.html', {'form': form},
+    content = render_to_string('orgadmin/place_setup_wizard.html', 
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
         context_instance=context)
     return response_admin_page(content, context)
 
@@ -246,15 +248,17 @@ def page_edit_place(request, id):
         return HttpResponseForbidden()
 
     if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST, instance=instance)
+        form = OrgAdminPlaceForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_places')
     else:
-        form = SimpleLocationPlaceForm(instance=instance)
+        form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_edit_form.html', {'form': form}, context_instance=context)
+    content = render_to_string('orgadmin/place_edit_form.html',
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
+        context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -296,17 +300,39 @@ def page_edit_event(request, id=None):
         if not org:
             return redirect('orgadmin-home')
 
+    initial_place = None
     if request.POST:
-        form = SimpleEventForm(organization=org, data=request.POST, instance=instance)
+        form = SimpleEventForm(data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
+
+        # TODO: fix this "initial_selected" hack for autocomplete display
+        initial_place_id = request.POST.get('place')
+        if initial_place_id is not None:
+            try:
+                initial_place = Place.objects.get(id=request.POST['place'])
+            except Place.DoesNotExist:
+                pass
+        elif instance and instance.place:
+            initial_place = instance.place
     else:
-        form = SimpleEventForm(organization=org, instance=instance)
+        form = SimpleEventForm(instance=instance)
+        if instance and instance.place:
+            initial_place = instance.place
+
+    if initial_place is not None:
+        initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+    else:
+        initial_selected = None
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_edit_form.html', {'form': form},
-                                    context_instance=context)
+    content = render_to_string('orgadmin/event_edit_form.html', {
+            'form': form,
+            'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
+            'initial_selected': initial_selected,
+        },
+        context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -358,8 +384,9 @@ def page_edit_special(request, id=None):
         form = SimpleSpecialForm(organization=org, instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_edit_form.html', {'form': form},
-                                context_instance=context)
+    content = render_to_string('orgadmin/special_edit_form.html',
+        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
+        context_instance=context)
     return response_admin_page(content, context)
 
 

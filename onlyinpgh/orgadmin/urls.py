@@ -9,7 +9,7 @@ urlpatterns = patterns('onlyinpgh.orgadmin.views',
     url(r'^logout/$', 'page_logout'),
 
     # handle new place creations, and place claiming with page_setup_place_wizard
-    url(r'^places/setup/claim/$', 'page_claim_place'),
+    url(r'^places/setup/claim/$', 'page_claim_place', name='orgadmin-claimplace'),
     url(r'^places/setup/new/$', 'page_setup_place_wizard', name='orgadmin-addplace'),
     url(r'^places/setup/(?P<id>\d+)/$', 'page_setup_place_wizard'),
 
@@ -26,4 +26,13 @@ urlpatterns = patterns('onlyinpgh.orgadmin.views',
     url(r'^specials/edit/(?P<id>\d+)/$', 'page_edit_special'),
     url(r'^specials/delete/(?P<id>\d+)/$', 'page_delete_special'),
     url(r'^specials/list/$', 'page_list_specials'),
+)
+
+urlpatterns += patterns('onlyinpgh.orgadmin.ajax',
+    url(r'^ajax/placeclaim_ac/$', 'place_claim_autocomplete'),
+    url(r'^ajax/place_ac/$', 'place_autocomplete'),
+
+    url(r'^ajax/place_confirm/$', 'place_confirm_div'),
+
+    url(r'^ajax/newplace_submit/$', 'newplace_form_submission'),
 )

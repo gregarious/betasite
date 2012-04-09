@@ -1,3 +1,8 @@
+{% comment %}
+    form: SimpleSpecialForm
+    tag_names: Temporary list of all tag names
+{% endcomment %}
+
 <h2>Editing your special...</h2>
 
 <form method="post" action="">
@@ -79,29 +84,25 @@
         </div>
     </div>
 
-   <!-- total_sold is an input for demo purposes, will be static text when real -->
-    <div class="field-container inner"> 
+    <div class="field-container inner">
         <div class="field-label">
-            {{ form.total_sold.label_tag }}
+            {{ form.description.label_tag }}
         </div>
         <div class="field">
-            {{ form.total_sold }}
-            {% for err in form.total_sold.errors %}
-                <p class="tip error">{{ total_sold }}</p><br />
+            {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
     </div>
 
     <div class="field-container inner">
         <div class="field-label">
-            {{ form.description.label_tag }}
+            {{ form.tags.label_tag }}
         </div>
         <div class="field">
-            {% for err in form.description.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
-            {{ form.description }}
-            {% for err in form.description.errors %}
+            {{ form.tags }}
+            {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
@@ -127,3 +128,73 @@
     {% endcomment %}
 
 </form>
+
+<script type="text/javascript">
+$(function(){
+    /*** TAG AUTO COMPLETE ***/
+    var tagNames = [
+        {% for name in tag_names %}
+            "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    function split( val ) {
+        return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+        return split( term ).pop();
+    }
+
+    $('#id_{{form.tags.name}}')
+        .on( "keydown", function( event ) {
+            if(event.keyCode === $.ui.keyCode.TAB && 
+                $(this).data("autocomplete").menu.active ) {
+                    event.preventDefault();
+                }
+        })
+        .focus( function( event ) {
+            var curVal = $(this).val().replace(/\s+$/,'');
+            if(curVal.length > 0 && curVal[curVal.length-1] !== ',') {
+                $(this).val(curVal+', ');
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            delay: 0,
+            autoFocus: true,
+            html: true,
+            source: function( request, response ) {
+                var term = extractLast( request.term );
+                if(term.replace(/\s/g,'').length === 0) {
+                    response([]);
+                    return false;
+                }
+                var re = $.ui.autocomplete.escapeRegex(term);
+                var matcher = new RegExp( "^" + re, "i" );
+                var matches = $.grep( tagNames, function(item,index){
+                    return matcher.test(item);
+                }).slice(0,4);
+                response( $.map( matches, function(item) {
+                    return {
+                        value: item,
+                        label: item.replace(matcher, '<b>'+term+'</b>')
+                    }
+                }) );
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function( event, ui ) {
+                var terms = split( this.value );
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push( ui.item.value );
+                // add placeholder to get the comma-and-space at the end
+                terms.push( "" );
+                this.value = terms.join( ", " );
+                return false;
+            }
+        });
+});
+</script>

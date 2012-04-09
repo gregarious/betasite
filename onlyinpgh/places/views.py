@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.common.core.rendering import render_safe
 from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.places.models import Place
@@ -127,9 +127,9 @@ def detail_app(request, pid):
 @jsonp_response
 def place_lookup(request):
     if request.GET:
-        results = Place.listed_objects.filter(name__icontains=request.GET.get('q', ''))
+        results = Place.listed_objects.filter(name__icontains=request.GET.get('term', ''))
         limit = request.GET.get('limit')
         if limit:
             results = results[:limit]
 
-    return [{'id':p.id, 'name':p.name} for p in results]
+    return [{'id':p.id, 'name':p.name, 'address':p.location.address if p.location else None} for p in results]

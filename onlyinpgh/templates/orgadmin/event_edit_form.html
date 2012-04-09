@@ -1,3 +1,11 @@
+{% comment %}
+Org admin place editing form.
+
+Context variables:
+    form: SimpleEventForm object
+    newplace_form: SimplePlaceForm object
+    initial_selected: string for initial place text value if one exists (this is a temporary hack)
+{% endcomment %}
 <h2>Editing your event...</h2>
 
 <form method="post" action="">
@@ -21,7 +29,11 @@
 			{{ form.place.label_tag }}			
 		</div>
 		<div class="field">
-			{{ form.place }}
+            <input id="id_place-text">
+            <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
+            <div id='id_place-display' style="display:none">{{initial_selected}}</div>
+            <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
+            <input type="hidden" name="{{ form.place.html_name }}" id="id_place" value="{{ form.place.value }}">
 			{% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -52,7 +64,7 @@
 		</div>
 	</div> <!-- end date -->
 	
-	<div class="field-container first">
+<!-- 	<div class="field-container first">
 		<div class="field-label">
 			{{ form.allday.label_tag }}
 		</div>
@@ -62,8 +74,8 @@
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
 		</div>
-	</div> <!-- is it all day? -->
-
+	</div> --> <!-- is it all day? -->
+ 
 	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.image_url.label_tag }}
@@ -88,6 +100,18 @@
 		</div>
 	</div> <!-- description -->
 
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.tags.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.tags }}
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
 	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.url.label_tag }}
@@ -103,17 +127,259 @@
 
 	<input type="submit" class="submit-item" value="Save Changes" />
 	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Back to events">&larr; Back</a>
-
-{% comment %}
-form fields:
-    name
-    description
-    dtstart
-    dtend
-    allday (checkbox - just checkbox is good for now. we'll need some jQuery later that hides dtstart/dtend if this is checked)
-    image_url
-    url
-    place (select box)
-    (no tags for now - waiting on django-autocomplete)
-{% endcomment %}
 </form>
+
+<div id="newplace-dialog-form" style="display:none">
+    <form id="newplace-form" action="{% url onlyinpgh.orgadmin.ajax.newplace_form_submission %}" method="POST">
+    {% csrf_token %}
+    {{ newplace_form }}
+    </form>
+    <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
+</div>
+
+<script type="text/javascript">
+// Prerequesites: jQuery, jQuery UI autocomplete
+$(function(){
+    var place_ac_text = $('#id_place-text'),
+        place_ac_value = $('#id_place'),
+        place_ac_sel_display = $('#id_place-display'),
+        place_ac_clear_btn = $('#place-clear'),
+        place_ac_spinner = $('.spinner');
+    
+    var tag_ac = $('#id_tags');
+    var newplace_dialog_form = $("#newplace-dialog-form"),
+        newplace_form_name_input = newplace_dialog_form.find('input[name={{newplace_form.name.html_name}}]');
+        newplace_form_address_input = newplace_dialog_form.find('input[name={{newplace_form.address.html_name}}]');
+
+    place_ac_spinner.hide();
+    place_ac_clear_btn.hide()
+        .on('click', function(event){
+            on_ac_deselect();
+            $(this).hide()
+                   .parent().find('#id_place-text').focus();
+            return false
+        });
+    place_ac_sel_display.hide();
+
+    function on_ac_select(ui) {
+        place_ac_text.val('').hide();
+        place_ac_value.val(ui.item.value);
+        place_ac_sel_display.show().html(ui.item.selectedDisplay);
+        place_ac_clear_btn.show();
+    }
+
+    function on_ac_deselect(ui) {
+        place_ac_text.val('').show();
+        place_ac_value.val('');
+        place_ac_sel_display.html('').hide();
+        place_ac_clear_btn.hide();
+    }
+
+    place_ac_text.autocomplete({
+        html: true,
+        autoFocus: true,
+        minLength: 2,
+        
+        source: function(request, response) {
+            $.ajax({
+                url: "/orgadmin/ajax/place_ac/",
+                dataType: 'json',
+                data: {
+                    'term': request.term
+                },
+                timeout: 3000,
+                success: function(data) {
+                    responses = $.map(data, function(item) {
+                        return { 
+                            label: item.name + '<br/>' + '<small><i>' + item.address + '</i></small>',
+                            value: item.id,
+                            selectedDisplay: item.selected
+                        };
+                    });
+                    responses.push({
+                        label: '<b>Create a new place<b>',
+                        value:'!newplace'
+                    });
+                    response(responses);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // TODO: what to do here?
+                    console.log('failed!');
+                },
+                complete: function(jqXHR, textStatus) {
+                    place_ac_spinner.hide();
+                }
+            });
+        },
+        
+        search: function(event, ui) {
+            place_ac_spinner.show();
+        },
+
+        select: function(event, ui) {
+            if(ui.item.value === '!newplace') {
+                newplace_dialog_form.dialog( "open" );
+            }
+            else {
+                on_ac_select(ui);
+            }
+            return false;
+        },
+
+        focus: function(event, ui) {
+            return false;   // makes it so text doesn't show up in form till selection
+        },
+
+        change: function(event, ui) {
+            // if something was changed in the text field after a select, the selectedItem will be 
+            // cleared out. If no selected item, the inputs get reset.
+            var item = $(this).data().autocomplete.selectedItem;
+            console.log('change');
+            if(!item) {
+                on_ac_deselect();
+            }
+        },
+    });
+
+    {# TODO: remove initial selected autocomplete hack #}
+    {% if initial_selected %}
+    on_ac_select( {
+        'item': {
+            label: '',
+            value: '{{form.place.value}}',
+            selectedDisplay: '{{initial_selected|escapejs}}'
+        }
+    });
+    {% endif %}
+
+    newplace_dialog_form.dialog({
+        autoOpen: false,
+        height: 500,
+        width: 350,
+        title: "Create a new place",
+        modal: true,
+        position: "bottom",
+        buttons: {
+            "Create the new place": function() {
+                var bValid = true;//newplace_form_name_input.val() !== '' || newplace_form_address_input.val() !== '';
+                // TODO: any client side validation?
+                if ( bValid ) {
+                    // dynamically build the form data from the markup itself
+                    var formData = {};
+                    newplace_dialog_form.find('input')
+                                .each(function(){
+                                    formData[$(this).attr('name')] = $(this).val();
+                                });
+                    // send the form via an AJAX request, close form if successful
+                    $.ajax({
+                        type: 'POST',
+                        // grab the URL from the form markup
+                        url: newplace_dialog_form.find('form').attr('action'),
+                        data: formData,
+                        success: function(response) {
+                            if(response) {
+                                // response from server will be a single JSON object with keys 'id', 'name', 'address'
+                                var ui = {
+                                    'item': {
+                                        'label': '',    // no dropdown, won't be displayed
+                                        'value': response['id'],
+                                        'selectedDisplay': response['selected']
+                                    }
+                                };
+                                on_ac_select(ui);
+                                newplace_dialog_form.dialog("close");
+                                console.log('all done!');
+                            }
+                            else {
+                                console.log('server returned false');
+                                // TODO: what here?
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            // TODO: what here?
+                            console.log('error');
+                        },
+                        complete: function(jqXHR, textStatus) {
+                            newplace_dialog_form.find('.spinner').hide();
+                        }
+                    });
+                    newplace_dialog_form.find('.spinner').show();
+                }
+                else {
+                    // TODO: inform user to input a name or location
+                }
+            },
+            "Cancel": function() {
+                //$('#field').trigger('autocompletechanged');
+                $(this).dialog("close");
+            }
+        },
+    });
+
+    /*** TAG AUTO COMPLETE ***/
+    var tagNames = [
+        {% for name in tag_names %}
+            "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    function split( val ) {
+        return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+        return split( term ).pop();
+    }
+
+    $('#id_{{form.tags.name}}')
+        .on( "keydown", function( event ) {
+            if(event.keyCode === $.ui.keyCode.TAB && 
+                $(this).data("autocomplete").menu.active ) {
+                    event.preventDefault();
+                }
+        })
+        .focus( function( event ) {
+            var curVal = $(this).val().replace(/\s+$/,'');
+            if(curVal.length > 0 && curVal[curVal.length-1] !== ',') {
+                $(this).val(curVal+', ');
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            delay: 0,
+            autoFocus: true,
+            html: true,
+            source: function( request, response ) {
+                var term = extractLast( request.term );
+                if(term.replace(/\s/g,'').length === 0) {
+                    response([]);
+                    return false;
+                }
+                var re = $.ui.autocomplete.escapeRegex(term);
+                var matcher = new RegExp( "^" + re, "i" );
+                var matches = $.grep( tagNames, function(item,index){
+                    return matcher.test(item);
+                }).slice(0,4);
+                response( $.map( matches, function(item) {
+                    return {
+                        value: item,
+                        label: item.replace(matcher, '<b>'+term+'</b>')
+                    }
+                }) );
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function( event, ui ) {
+                var terms = split( this.value );
+                // remove the current input
+                terms.pop();
+                // add the selected item
+                terms.push( ui.item.value );
+                // add placeholder to get the comma-and-space at the end
+                terms.push( "" );
+                this.value = terms.join( ", " );
+                return false;
+            }
+        });
+});
+</script>
