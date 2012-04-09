@@ -301,13 +301,32 @@ def page_edit_event(request, id=None):
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
+
+        # TODO: fix this "initial_place" hack for autocomplete display
+        initial_place_id = request.POST.get('place')
+        if initial_place_id is not None:
+            print 'option 1', initial_place_id
+            try:
+                initial_place = Place.objects.get(id=request.POST['place'])
+            except Place.DoesNotExist:
+                initial_place = ''
+        elif instance and instance.place:
+            print 'option 2', instance.place
+            initial_place = instance.place.name
+        else:
+            initial_place = ''
     else:
         form = SimpleEventForm(instance=instance)
+        if instance and instance.place:
+            initial_place = instance.place.name
+        else:
+            initial_place = ''
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/event_edit_form.html', {
             'form': form,
-            'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'})
+            'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
+            'initial_place': initial_place,
         },
         context_instance=context)
     return response_admin_page(content, context)

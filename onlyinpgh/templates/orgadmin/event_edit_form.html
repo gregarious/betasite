@@ -4,6 +4,7 @@ Org admin place editing form.
 Context variables:
     form: SimpleEventForm object
     newplace_form: SimplePlaceForm object
+    initial_place: string for initial place text value if one exists (this is a temporary hack)
 {% endcomment %}
 <h2>Editing your event...</h2>
 
@@ -28,10 +29,10 @@ Context variables:
 			{{ form.place.label_tag }}			
 		</div>
 		<div class="field">
-            <input id="id_place-text">
+            <input id="id_place-text" value="{{initial_place}}">
             <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
-            <input type="hidden" name="{{ form.place.html_name }}" id="id_place">
+            <input type="hidden" name="{{ form.place.html_name }}" id="id_place" value="{{ form.place.value }}">
 			{% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -152,7 +153,8 @@ $(function(){
     place_ac_clear_btn.hide()
         .on('click', function(event){
             on_ac_deselect();
-            $(this).parent().find('#id_place-text').focus();
+            $(this).hide()
+                   .parent().find('#id_place-text').focus();
             return false
         });       
 
@@ -232,6 +234,17 @@ $(function(){
             }
         },
     });
+
+    // initial_place autocomplete hack
+    {% if initial_place %}
+    on_ac_select( {
+        'item': {
+            label: '',
+            value: '{{form.place.value}}',
+            selectedLabel: "{{initial_place|escapejs}}"
+        }
+    });
+    {% endif %}
 
     newplace_dialog_form.dialog({
         autoOpen: false,
