@@ -98,6 +98,18 @@ Context variables:
 		</div>
 	</div> <!-- description -->
 
+    <div class="field-container inner">
+        <div class="field-label">
+            {{ form.tags.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.tags }}
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
 	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.url.label_tag }}
@@ -130,8 +142,10 @@ $(function(){
         place_ac_value = $('#id_place'),
         place_ac_clear_btn = $('#place-clear'),
         place_ac_spinner = $('.spinner');
-        newplace_dialog_form = $("#newplace-dialog-form");
-    var newplace_form_name_input = newplace_dialog_form.find('input[name={{newplace_form.name.html_name}}]');
+    
+    var tag_ac = $('#id_tags');
+    var newplace_dialog_form = $("#newplace-dialog-form"),
+        newplace_form_name_input = newplace_dialog_form.find('input[name={{newplace_form.name.html_name}}]');
         newplace_form_address_input = newplace_dialog_form.find('input[name={{newplace_form.address.html_name}}]');
 
     place_ac_spinner.hide();

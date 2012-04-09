@@ -79,29 +79,25 @@
         </div>
     </div>
 
-   <!-- total_sold is an input for demo purposes, will be static text when real -->
-    <div class="field-container inner"> 
+    <div class="field-container inner">
         <div class="field-label">
-            {{ form.total_sold.label_tag }}
+            {{ form.description.label_tag }}
         </div>
         <div class="field">
-            {{ form.total_sold }}
-            {% for err in form.total_sold.errors %}
-                <p class="tip error">{{ total_sold }}</p><br />
+            {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
     </div>
 
     <div class="field-container inner">
         <div class="field-label">
-            {{ form.description.label_tag }}
+            {{ form.tags.label_tag }}
         </div>
         <div class="field">
-            {% for err in form.description.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
-            {{ form.description }}
-            {% for err in form.description.errors %}
+            {{ form.tags }}
+            {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>

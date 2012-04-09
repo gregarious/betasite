@@ -97,6 +97,18 @@
         </div>
     </div>
 
+    <div class="field-container first">
+        <div class="field-label">
+            {{ form.tags.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.tags }}
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
     <div class="field-container inner">
         <div class="field-label">
             {{ form.fb_id.label_tag }}

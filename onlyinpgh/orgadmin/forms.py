@@ -1,6 +1,8 @@
 from django import forms
+from django.db import transaction
 from django.forms import TextInput
 from django.contrib.auth.forms import AuthenticationForm
+from django.template.defaultfilters import slugify
 
 from onlyinpgh.organizations.forms import OrganizationForm
 from onlyinpgh.places.forms import PlaceForm, LocationForm
@@ -10,6 +12,7 @@ from onlyinpgh.events.forms import EventForm
 from onlyinpgh.specials.forms import SpecialForm
 
 from onlyinpgh.places.models import Place, Parking, Hours
+from onlyinpgh.tags.models import Tag
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
@@ -28,7 +31,7 @@ class OrgLoginForm(AuthenticationForm):
 
     Currently assumes email address is username.
     '''
-    username = forms.CharField(label="Username/Email", initial='')
+    username = forms.CharField(label="Username/Email", initial=u'')
 
 
 class OrgAdminPlaceForm(PlaceForm):
@@ -40,19 +43,21 @@ class OrgAdminPlaceForm(PlaceForm):
     excluded field, a non-model linked CharField is declared in it's place.
     All logic is short circuited: see method docs for details.
     '''
-    location = forms.CharField(label="Address", initial='')
-    hr_days_1, hr_hours_1 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_2, hr_hours_2 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_3, hr_hours_3 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_4, hr_hours_4 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_5, hr_hours_5 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_6, hr_hours_6 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
-    hr_days_7, hr_hours_7 = forms.CharField(initial='', required=False), forms.CharField(initial='', required=False)
+    location = forms.CharField(label=u"Address", initial=u'')
+    hr_days_1, hr_hours_1 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_2, hr_hours_2 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_3, hr_hours_3 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_4, hr_hours_4 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_5, hr_hours_5 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_6, hr_hours_6 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
+    hr_days_7, hr_hours_7 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
     parking = forms.MultipleChoiceField(choices=Parking.choices, widget=forms.CheckboxSelectMultiple())
 
+    tags = forms.CharField(label=u"Tags (comma-separated)")
+
     class Meta(PlaceForm.Meta):
-        # TODO: look into extending from parent meta
-        exclude = ('dtcreated', 'location', 'tags', 'hours', 'parking')
+        # manually handle the more complex fields
+        exclude = ('location', 'tags', 'hours', 'parking')
         widgets = {
             'name': TextInput(attrs={'placeholder': "Your place's name"}),
         }
@@ -66,26 +71,41 @@ class OrgAdminPlaceForm(PlaceForm):
         # set the initial value of the location field to the instance's address
         # also set the hours and parking in the roundabout way we do...
         instance = kwargs.get('instance')
-        if instance and instance.location:
+        if instance:
             initial = kwargs.setdefault('initial', {})
-            if 'location' not in initial:
+            if 'location' not in initial and instance.location:
                 initial['location'] = instance.location.address
+
             if 'parking' not in initial:
                 # TODO: hackilicious!
                 initial['parking'] = instance.parking_as_obj().parking_options
 
-            day_hrs_tuples = instance.hours_as_obj().day_hours_tuples
-            print day_hrs_tuples
-            for i in range(1, len(day_hrs_tuples) + 1):
-                days_field, hours_field = 'hr_days_%d' % i, 'hr_hours_%d' % i
-                if days_field not in initial:
-                    initial[days_field] = day_hrs_tuples[i - 1][0]
-                if hours_field not in initial:
-                    initial[hours_field] = day_hrs_tuples[i - 1][1]
+            if 'hours' not in initial:
+                day_hrs_tuples = instance.hours_as_obj().day_hours_tuples
+                for i in range(1, len(day_hrs_tuples) + 1):
+                    days_field, hours_field = 'hr_days_%d' % i, 'hr_hours_%d' % i
+                    if days_field not in initial:
+                        initial[days_field] = day_hrs_tuples[i - 1][0]
+                    if hours_field not in initial:
+                        initial[hours_field] = day_hrs_tuples[i - 1][1]
+
+            if 'tags' not in initial:
+                initial['tags'] = ', '.join([tag.name for tag in instance.tags.all()])
 
         self.geocode_location = geocode_location
 
         super(OrgAdminPlaceForm, self).__init__(*args, **kwargs)
+
+    def clean_tags(self):
+        '''
+        Parses a string of comma-separated tags and returned a list
+        of Tag instances
+        '''
+        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        tags = list(Tag.objects.filter(name__in=input_names))
+        new_names = input_names.difference([tag.name for tag in tags])
+        tags += [Tag(name=tag_name) for tag_name in new_names]
+        return tags
 
     def clean_location(self):
         '''
@@ -117,17 +137,21 @@ class OrgAdminPlaceForm(PlaceForm):
 
         return location
 
-    def save(self, commit=True):
+    @transaction.commit_on_success
+    def save(self):
         '''
         Extends the base save by saving the cleaned location entry and
         adding it to the ModelForm's internal place.
+
+        commit=False is not supported. Supporting this may require
+        emulating how Django handles defering m2m saving for the tags
+        since we're not having hte ModelForm handle them directly.
         '''
         place = super(OrgAdminPlaceForm, self).save(commit=False)
 
         # process location
         location = self.cleaned_data['location']
-        if commit:
-            location.save()
+        location.save()
         place.location = location
 
         hours_obj = Hours()
@@ -143,9 +167,24 @@ class OrgAdminPlaceForm(PlaceForm):
             parking_obj.add_option(opt)
         place.set_parking(parking_obj)
 
-        if commit:
-            place.save()
-            print 'saved place id', place.id
+        if place.id is None:
+            place.save()    # save if new now so we can add m2m
+
+        # handle tags manually
+        new_tags = set(self.cleaned_data['tags'])
+        # save all the tags that aren't in the DB yet
+        [t.save() for t in new_tags if t.id is None]
+
+        # figure out which tags need to be added and removed
+        existing_tags = set(place.tags.all())
+        # remove all tags that didn't get submitted in the form
+        [place.tags.remove(tag_to_rm)
+            for tag_to_rm in existing_tags.difference(new_tags)]
+        # add all new tags
+        [place.tags.add(tag_to_add)
+            for tag_to_add in new_tags.difference(existing_tags)]
+
+        place.save()
         return place
 
 
@@ -175,6 +214,7 @@ class SimplePlaceForm(LocationForm):
 
         self.geocode_location = geocode_location
 
+    @transaction.commit_on_success
     def save(self, commit=False):
         location = super(SimplePlaceForm, self).save(commit=False)
 
@@ -213,9 +253,62 @@ class SimpleEventForm(EventForm):
         input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
         widget=TextInput(attrs={'class': 'datetimepicker-end'}))
 
+    tags = forms.CharField()
+
+    def __init__(self, *args, **kwargs):
+        # first set manual initial values from a given model instance
+        instance = kwargs.get('instance')
+        initial = kwargs.setdefault('initial', {})
+        if instance and 'tags' not in initial:
+            initial['tags'] = ', '.join([tag.name for tag in instance.tags.all()])
+        super(SimpleEventForm, self).__init__(*args, **kwargs)
+
     class Meta(EventForm.Meta):
-        # TODO: look into extending from parent meta
-        exclude = ('dtcreated', 'dtmodified', 'tags', )
+        exclude = ('tags',)
+
+    def clean_tags(self):
+        '''
+        Parses a string of comma-separated tags and returned a list
+        of Tag instances
+        '''
+        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        tags = list(Tag.objects.filter(name__in=input_names))
+        new_names = input_names.difference([tag.name for tag in tags])
+        tags += [Tag(name=tag_name) for tag_name in new_names]
+        return tags
+
+    @transaction.commit_on_success
+    def save(self):
+        '''
+        commit=False is not supported. Supporting this may require
+        emulating how Django handles defering m2m saving for the tags
+        since we're not having hte ModelForm handle them directly.
+        '''
+        event = super(SimpleEventForm, self).save(commit=False)
+
+        if event.place:
+            event.place.save()
+            event.place = event.place
+
+        if event.id is None:
+            event.save()  # save if new now so we can add m2m
+
+        # handle tags manually
+        new_tags = set(self.cleaned_data['tags'])
+        # save all the tags that aren't in the DB yet
+        [t.save() for t in new_tags if t.id is None]
+
+        # figure out which tags need to be added and removed
+        existing_tags = set(event.tags.all())
+        # remove all tags that didn't get submitted in the form
+        [event.tags.remove(tag_to_rm)
+            for tag_to_rm in existing_tags.difference(new_tags)]
+        # add all new tags
+        [event.tags.add(tag_to_add)
+            for tag_to_add in new_tags.difference(existing_tags)]
+
+        event.save()
+        return event
 
 
 class SimpleSpecialForm(SpecialForm):
@@ -234,16 +327,65 @@ class SimpleSpecialForm(SpecialForm):
         input_formats=('%m/%d/%Y',),
         widget=TextInput(attrs={'class': 'datepicker-end'}))
 
+    tags = forms.CharField()
+
     class Meta(SpecialForm.Meta):
-        # TODO: look into extending from parent meta
-        exclude = ('tags',)
+        exclude = ('tags',)     # manually handle these
 
     def __init__(self, organization, *args, **kwargs):
         '''
         Limit the available places to org's own establishments
         '''
+        # first set manual initial values from a given model instance
+        instance = kwargs.get('instance')
+        initial = kwargs.setdefault('initial', {})
+        if instance and 'tags' not in initial:
+            initial['tags'] = ', '.join([tag.name for tag in instance.tags.all()])
+
         super(SimpleSpecialForm, self).__init__(*args, **kwargs)
         self.fields['place'].queryset = organization.establishments.all()
+
+    def clean_tags(self):
+        '''
+        Parses a string of comma-separated tags and returned a list
+        of Tag instances
+        '''
+        input_names = set(map(slugify, self.cleaned_data['tags'].split(',')))
+        tags = list(Tag.objects.filter(name__in=input_names))
+        new_names = input_names.difference([tag.name for tag in tags])
+        tags += [Tag(name=tag_name) for tag_name in new_names]
+        return tags
+
+    @transaction.commit_on_success
+    def save(self):
+        '''
+        commit=False is not supported. Supporting this may require
+        emulating how Django handles defering m2m saving for the tags
+        since we're not having hte ModelForm handle them directly.
+        '''
+        special = super(SimpleSpecialForm, self).save(commit=False)
+
+        special.place.save()
+        special.place = special.place
+        if special.id is None:
+            special.save()  # save if new now so we can add m2m
+
+        # handle tags manually
+        new_tags = set(self.cleaned_data['tags'])
+        # save all the tags that aren't in the DB yet
+        [t.save() for t in new_tags if t.id is None]
+
+        # figure out which tags need to be added and removed
+        existing_tags = set(special.tags.all())
+        # remove all tags that didn't get submitted in the form
+        [special.tags.remove(tag_to_rm)
+            for tag_to_rm in existing_tags.difference(new_tags)]
+        # add all new tags
+        [special.tags.add(tag_to_add)
+            for tag_to_add in new_tags.difference(existing_tags)]
+
+        special.save()
+        return special
 
 
 class PlaceClaimForm(forms.Form):
