@@ -224,7 +224,7 @@ def page_setup_place_wizard(request, id=None):
         form = OrgAdminPlaceForm(instance=instance)
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_setup_wizard.html', 
+    content = render_to_string('orgadmin/place_edit_form.html',
         {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
         context_instance=context)
     return response_admin_page(content, context)
