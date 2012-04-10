@@ -10,8 +10,13 @@ Context variables:
     featured_special: 	Offer object (optional)
 {% endcomment %}
 
+{% load thumbnail %}
 <div class="item-thumb">
-	<img class="thumbnail" alt="{{ place.name }}" src="{{ place.image_url }}" />
+	{% if place.image %}
+	<img class="thumbnail" alt="{{place.name}}" src="{{place.image}}"/>
+	{% else %}
+	<img class="thumbnail" alt="{{place.name}}" src="/media/img/p/default-place.png"/>
+	{% endif %}
 	{% if is_favorite %}
 		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
 	{% else %}

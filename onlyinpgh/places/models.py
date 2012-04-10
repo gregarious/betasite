@@ -256,6 +256,8 @@ class Place(models.Model, ViewModel):
         '''
         Manually handle location and tag entries.
         '''
+        # TODO: WTF? get rid of ViewModels.
+        self.image.__class__
         data = super(Place, self).to_data(*args, **kwargs)
         data.pop('location_id')
         if self.location:

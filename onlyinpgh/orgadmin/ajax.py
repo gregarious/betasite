@@ -1,7 +1,7 @@
 '''Views for AJAX purposes'''
 from onlyinpgh.common.utils.jsontools import jsonp_response
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.viewmodels import PlaceFeedItem, DEFAULT_IMAGE_URL
+from onlyinpgh.places.viewmodels import PlaceFeedItem
 from onlyinpgh.common.core.rendering import render_safe
 
 from django.shortcuts import get_object_or_404
@@ -44,7 +44,7 @@ def _autocomplete_response(place_choices, term, limit=4):
     return [
         {'id': p.id,
          'name': p.name,
-         'image_url': p.image_url or DEFAULT_IMAGE_URL,
+         'image_url': p.image_url or '/media/img/p/default-place.png',
          'address': p.location.address if p.location else '',
          'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
         }

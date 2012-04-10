@@ -108,8 +108,10 @@ class ViewModel(object):
         '''
         # when a date/time/datetime is encountered, don't flatten it
         date_handler = FlattenHandler('isoformat', lambda obj: obj)
+        # same for FieldFiles
+        fieldfile_handler = FlattenHandler('file', lambda obj: obj)
 
-        data = self.to_data(custom_handlers=(date_handler,))
+        data = self.to_data(custom_handlers=(date_handler, fieldfile_handler,))
         return RequestContext(request, data) if request else Context(data)
 
 

@@ -66,6 +66,12 @@ urlpatterns = patterns('',
 
     # url(r'^ajax/hot_feed$', home_views.ajax_hot_page)
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
-
-
 )
+
+from onlyinpgh import settings
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+   )
