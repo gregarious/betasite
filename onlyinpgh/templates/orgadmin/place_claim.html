@@ -1,4 +1,4 @@
-<h2>Claim your place...</h2>
+<h2>Add a place...</h2>
 
 <form method="POST" action="{% url orgadmin-claimplace %}">
     {% csrf_token %}
@@ -9,8 +9,6 @@
         </div>
         <div class="field">
             <input id="id_place-text">
-            <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
-            <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
             <input type="hidden" name="{{ form.place.html_name }}" id="id_place">            
             {% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
@@ -19,11 +17,13 @@
     </div>
 
     <div id="confirm-box" style="display:none">
-        <p>Great! We've already got your place on record!</p>
-        <div id="confirm-content"></div>
-        <p>If this is correct, click Claim. Otherwise, choose again.</p>
+        <p>Great! We've already got your place on record. If this is correct, choose Claim. Otherwise click the "X" and choose again.</p>
+        <div id="confirm-content" class="item"></div>
+        <div class="item-actions">
+          <a id="place-clear" href="#"><img src="{{STATIC_URL}}img/icon_x.gif" /></a>
+        </div>
+        <button type="submit" disabled="disabled" class="submit-item">Claim</button>
     </div>
-    <button type="submit" disabled="disabled">Claim</button>
 </form>
 
 <script type="text/javascript">
@@ -48,7 +48,7 @@ $(function(){
         place_ac_value.val(ui.item.value);
         place_ac_clear_btn.show();
         $("form :submit").removeAttr('disabled');
-
+        $(".field-container").fadeOut(200);
         $.ajax({
             url: "/orgadmin/ajax/place_confirm/",
             dataType: 'html',
@@ -63,7 +63,8 @@ $(function(){
                 place_ac_confirmcontent.html(ui.item.selectedLabel);
             },
             complete: function(jqXHR, textStatus) {
-                place_ac_confirmbox.show();
+                place_ac_confirmbox.delay(200).fadeIn(200);
+                $('form').css('margin-top', '0');
             }
         });
     }
@@ -75,9 +76,11 @@ $(function(){
     }
 
     function remove_confirmation() {
-        place_ac_confirmbox.hide();
+        place_ac_confirmbox.fadeOut(200);
         place_ac_clear_btn.hide();
-        $("form :submit").attr('disabled',true);        
+        $("form :submit").attr('disabled',true);
+        $("form").css('margin-top', '2em');
+        $(".field-container").delay(200).fadeIn(200);
     }
 
     place_ac_text.autocomplete({
@@ -96,13 +99,19 @@ $(function(){
                 success: function(data) {
                     responses = $.map(data, function(item) {
                         return { 
-                            label: item.name + '<br/>' + '<small><i>' + item.address + '</i></small>',
+                            label: '<div class="item-thumb">' +
+                                        '<img src=' + item.image_url + ' alt="' + item.name + '" />' +
+                                    '</div>' + 
+                                    '<div class="item-content">' +
+                                        '<h4 class="item-title">'+ item.name + '</h4>' +
+                                        '<p class="address">' + item.address + '</p>' +
+                                    '</div>',
                             value: item.id,
                             selectedLabel: item.name
                         };
                     });
                     responses.push({
-                        label: '<b>Create a new place<b>',
+                        label: '<p>Is your place not listed? Create it here.<p>',
                         value:'!newplace'
                     });
                     response(responses);

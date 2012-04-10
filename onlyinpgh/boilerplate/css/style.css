@@ -254,6 +254,9 @@ h3 {
   font-weight: normal;
   margin: 0;
 }
+h4 {
+  font-family: 'DroidSerifBoldItalic';
+}
 p {
   color: #222;
   margin: 0.1em 0;
@@ -996,11 +999,15 @@ input[type="submit"]:active,
   color: #000;
 }
 .item-title {
-  font-family: 'DroidSerifBoldItalic';
-  font-weight: normal;
   margin: 0;
+}
+.item-title a {
   text-shadow: 0 0 0.01em #999;
   font-size: 1.2em;
+  font-weight: normal;
+}
+.item-title a:hover {
+  color: #b83939;
 }
 .item-actions {
   position: absolute;
@@ -1020,7 +1027,7 @@ input[type="submit"]:active,
   overflow: hidden;
   text-align: center;
   max-height: 130px;
-  border: 2px #444 solid;
+  border: 2px #e1e1e1 solid;
 }
 .item-thumb .thumbnail {
   -moz-box-sizing: border-box;
@@ -1327,17 +1334,14 @@ input[type="submit"]:active,
   float: left;
   height: 300px;
 }
-.hot .item-title {
+.hot .item-title a {
   font-size: 1em;
-}
-.hot .item-title:hover {
-  color: #b83939;
 }
 .hot .item-content {
   margin-right: 0;
   padding-left: 1em;
 }
-.hot .item-details {
+.hot .item-content .item-details {
   font-size: 0.9em;
 }
 /* Specials */

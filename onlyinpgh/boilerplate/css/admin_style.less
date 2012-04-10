@@ -2,12 +2,11 @@
 @import '../LESS/normalize';
 @import '../LESS/icons';
 
-/* Will move this to template when that happens */
-/*@import url(@{static_url}css/fonts/arvo-fontfacekit/stylesheet.css);
-@import url(@{static_url}css/fonts/nunito-fontfacekit/stylesheet.css);*/
-@import url("@{static_url}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css");
-
 /* ROOT --------- */
+
+html {
+	height: 101%;
+}
 
 body {
 	background: url("@{static_url}img/textures/sky-head-tex.png");
@@ -73,6 +72,11 @@ p {
 	font-color: #888;
 	font-style: italic;
 	font-size: 0.9em;
+}
+
+.address {
+	font-weight: normal;
+	margin: 0;
 }
 
 #colophon {
@@ -245,11 +249,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	border: 1px #cccccc solid;
 	.b-shadow(0.05em, 0.05em, 0.1em, #fff);
 	font-size: 1em;
-	width: 93%;
 	margin: 0 5% 0 2%;
 	outline: none;
 	padding: 0.5em;
 	.rounded(0.5em);
+	width: 93%;
 
 	&:focus {
 		.b-shadow(0, 0, 0.2em, #2C525D);
@@ -325,6 +329,15 @@ input[type="checkbox"] {
 
 .field {
 	.column_r(9);
+}
+
+#event-dates .field {
+	width: 46.5%;
+	float: left;
+
+	&.last {
+		float: right;
+	}
 }
 
 .checkbox-label {
@@ -498,7 +511,6 @@ input[type="checkbox"] {
 
 .item {
 	border-bottom: 1px solid #ccc;
-	background: fade(#fff, 60%);
 }
 
 .item-actions {
@@ -543,6 +555,72 @@ input[type="checkbox"] {
 	padding: 0.2em;
 	&:hover {
 		background: @yellow;
+	}
+}
+
+/* AUTOCOMPLETE -------- */
+
+#confirm-box {
+
+	p {
+		margin: 1.5em 0 1.5em 1.5em;
+	}
+
+	.item {
+		border: 1px solid #f1f1f1;
+		background: #fff;
+		margin-bottom: 2em;
+		.rounded(0.5em);
+		
+	}
+}
+
+.ui-autocomplete.ui-menu.ui-widget.ui-widget-content {
+	font-size: 0.9em;
+	position: absolute;
+	width: 300px;
+}
+
+#id_place-text {
+	width: 93%;
+	float: right;
+}
+
+.ui-autocomplete.ui-menu.ui-widget.ui-widget-content, .ui-autocomplete-input {
+	background: #fff;
+	//.b-shadow(0.1em, 0.1em, 0.2em, #444);
+	border: 1px #cccccc solid;
+	outline: none;
+	padding: 0.5em;
+	.rounded(0.5em);
+	
+	.clearfix();
+
+  /*	-webkit-border-radius: 0 0 0.2em 0.2em; 
+    	-moz-border-radius: 0 0 0.2em 0.2em; 
+			border-radius: 0 0 0.2em 0.2em; 
+  
+  	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
+	
+	li {
+		cursor: pointer;
+
+		&:hover {
+			background: @vlblue;
+			-webkit-transition:background 0.25s ease-in;  
+   			-moz-transition:background 0.25s ease-in;  
+   			-o-transition:background 0.25s ease-in;  
+   			transition: background 0.25s ease-in;  
+		}
+		
+		-webkit-transition:background 0.25s ease-in;  
+		-moz-transition:background 0.25s ease-in;  
+		-o-transition:background 0.25s ease-in;  
+		transition: background 0.25s ease-in;  
+
+		a {
+			color: #000;
+		}
 	}
 }
 

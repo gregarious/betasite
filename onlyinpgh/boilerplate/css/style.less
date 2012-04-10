@@ -33,6 +33,10 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  font-family: 'DroidSerifBoldItalic';
+}
+
 p {
   color: #222;
   margin: 0.1em 0;
@@ -556,11 +560,16 @@ button, input[type="submit"], .next, .back {
 }
 
 .item-title {
-  font-family: 'DroidSerifBoldItalic';
-  font-weight: normal;
   margin: 0;
-  text-shadow: 0 0 0.01em #999;
-  font-size: 1.2em;
+  
+  a {
+    text-shadow: 0 0 0.01em #999;
+    font-size: 1.2em;
+    font-weight: normal;
+    &:hover {
+      color: @red;
+    }
+  }
 }
 
 .item-actions {
@@ -579,7 +588,7 @@ button, input[type="submit"], .next, .back {
   //padding: 0 1% 1%;
   text-align: center;
   max-height: 130px;
-  border: 2px #444 solid;
+  border: 2px #e1e1e1 solid;
   
   .thumbnail {
     .border-box();
@@ -775,7 +784,7 @@ button, input[type="submit"], .next, .back {
 .hot {
   .column(6);
 
-  .feed{
+  .feed {
     margin-left: 0;
     margin-right: 0;
   }
@@ -796,20 +805,21 @@ button, input[type="submit"], .next, .back {
     height: 300px;
   }
 
-  .item-title {
+  .item-thumb {
+
+  }
+
+  .item-title a {
     font-size: 1em;
-    &:hover {
-      color: @red;
-    }
   }
 
   .item-content {
     margin-right: 0;
     padding-left: 1em;
-  }
-
-  .item-details {
-    font-size: 0.9em;
+    
+    .item-details {
+      font-size: 0.9em;
+    }
   }
 
 }
