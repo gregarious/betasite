@@ -147,12 +147,12 @@
 // Prerequesites: jQuery, jQuery UI autocomplete
 $(function() {
     $(".hour-day-container").on('click', '.add-hour-row-btn', function(event){
-        $(this).hide()
-               .parent().next().show();
+        $(this).hide()                  // hides the + button
+               .parent().next().show(); // shows the next input
         return false;
     });
 
-        /*** TAG AUTO COMPLETE ***/
+    /*** TAG AUTO COMPLETE ***/
     var tagNames = [
         {% for name in tag_names %}
             "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
