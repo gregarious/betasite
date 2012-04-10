@@ -8,9 +8,7 @@ Template variables:
 {% endcomment %}
 
 <div class="item-thumb">
-	<a href="{% url place-detail pid=place.id %}">
-		<img class="thumbnail" alt="{{place.name}}" src="{{place.image_url}}" />
-	</a>
+	<img class="thumbnail" alt="{{place.name}}" src="{{place.image_url}}" />
 </div>
 <section class="item-content">
 	<div class="item-actions">

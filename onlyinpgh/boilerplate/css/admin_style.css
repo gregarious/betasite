@@ -327,7 +327,7 @@ a {
   color: #b83939;
 }
 a:hover {
-  color: #ded57f;
+  color: #70a3be;
 }
 a:active {
   color: #2c525d;
@@ -620,7 +620,7 @@ input[type="checkbox"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0.6em 0.5em 0;
+  margin: 0.4em 0.5em 0;
 }
 .field-container {
   width: 100%;
@@ -632,6 +632,7 @@ input[type="checkbox"] {
   padding: 2em 0;
   border-bottom: 1px solid #ccc;
   margin-bottom: 2em;
+  position: relative;
 }
 .field-container:before,
 .field-container:after {
@@ -673,41 +674,12 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#event-dates .field {
+.double .field {
   width: 46.5%;
   float: left;
 }
-#event-dates .field.last {
+.double .field.last {
   float: right;
-}
-.checkbox-label {
-  margin-bottom: 0.1em;
-  text-transform: none;
-  text-align: left;
-}
-#parking fieldset {
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.check-container {
-  float: left;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.check-container label {
-  float: left;
-  width: 81.25%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .social-input input {
   width: 79% !important;
@@ -1127,6 +1099,13 @@ input[type="checkbox"] {
 .delete-item:hover {
   background: #ded57f;
 }
+.add-hour-row-btn {
+  position: absolute;
+  font-size: 1.5em;
+  font-weight: bold;
+  right: -15px;
+  top: 0em;
+}
 /* AUTOCOMPLETE -------- */
 #confirm-box p {
   margin: 1.5em 0 1.5em 1.5em;
@@ -1142,14 +1121,55 @@ input[type="checkbox"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+#ui-active-menuitem {
+  background: #e1f3fa;
+}
 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content {
   font-size: 0.9em;
   position: absolute;
   width: 300px;
 }
+.ui-autocomplete .item-thumb {
+  float: left;
+  width: 14.583333333333334%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-autocomplete .item-content {
+  float: left;
+  width: 81.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-autocomplete li {
+  cursor: pointer;
+  -webkit-transition: background 0.25s ease-in;
+  -moz-transition: background 0.25s ease-in;
+  -o-transition: background 0.25s ease-in;
+  transition: background 0.25s ease-in;
+}
+.ui-autocomplete li:hover {
+  background: #e1f3fa;
+  -webkit-transition: background 0.25s ease-in;
+  -moz-transition: background 0.25s ease-in;
+  -o-transition: background 0.25s ease-in;
+  transition: background 0.25s ease-in;
+}
+.ui-autocomplete li a {
+  color: #000;
+}
 #id_place-text {
-  width: 93%;
   float: right;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
 }
 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
 .ui-autocomplete-input {
@@ -1181,26 +1201,6 @@ input[type="checkbox"] {
 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content:after,
 .ui-autocomplete-input:after {
   clear: both;
-}
-.ui-autocomplete.ui-menu.ui-widget.ui-widget-content li,
-.ui-autocomplete-input li {
-  cursor: pointer;
-  -webkit-transition: background 0.25s ease-in;
-  -moz-transition: background 0.25s ease-in;
-  -o-transition: background 0.25s ease-in;
-  transition: background 0.25s ease-in;
-}
-.ui-autocomplete.ui-menu.ui-widget.ui-widget-content li:hover,
-.ui-autocomplete-input li:hover {
-  background: #e1f3fa;
-  -webkit-transition: background 0.25s ease-in;
-  -moz-transition: background 0.25s ease-in;
-  -o-transition: background 0.25s ease-in;
-  transition: background 0.25s ease-in;
-}
-.ui-autocomplete.ui-menu.ui-widget.ui-widget-content li a,
-.ui-autocomplete-input li a {
-  color: #000;
 }
 /* JQUERY TIMEPICKER ------ */
 .ui-timepicker-div .ui-widget-header {

@@ -7,19 +7,26 @@
 {% endcomment %}
   
     <div class="field-container hour-day-container inner" style="display:{%if field_days.value or field_hours.value or number = 1%}inherit{%else%}none{%endif%}">
-        <div class="field">
-            {{ field_days }}
-            {% for err in field_days.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
+        <div class="field-label">
+            <label>Hours</label>
         </div>
-        <div class="field">
-            {{ field_hours }}
-            {% for err in field_hours.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
+        <div class="field double">
+            <div class="field">
+                {{ field_days }}
+                <p class="tip">Days, like Mon-Fri.</p>
+                {% for err in field_days.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ field_hours }}
+                <p class="tip">Hours, like 9am-5pm</p>
+                {% for err in field_hours.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not omit_plus %}
+            <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
         </div>
-        {% if not omit_plus %}
-        <a href="#" class="add-hour-row-btn">+</a>
-        {% endif %}
     </div>

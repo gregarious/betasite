@@ -43,7 +43,7 @@ Context variables:
 		<div class="field-label">
 			<label>Date</label>
 		</div>
-		<div class="field" id="event-dates">
+		<div class="field double">
             <div class="field">
                 <input id="id_dtstart" type="text" class="datetimepicker-start" value="{{ form.dtstart.value|date:"m/d/Y h:i A" }}" name="dtstart" />
                 <p class="tip">Start Date</p>
@@ -103,7 +103,7 @@ Context variables:
         </div>
         <div class="field">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your event i.e. 'music, concert, dancing'.
+            <p class="tip">Enter some terms describing your event.
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -117,7 +117,7 @@ Context variables:
 		</div>
 		<div class="field">
 			{{ form.url }}
-			<p class="tip">A link to more event info, FaceBook pages or other.</p>
+			<p class="tip">A link to more event info - like a Facebook or Eventbrite page.</p>
 			{% for err in form.url.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}	
@@ -190,13 +190,19 @@ $(function(){
                 success: function(data) {
                     responses = $.map(data, function(item) {
                         return { 
-                            label: item.name + '<br/>' + '<small><i>' + item.address + '</i></small>',
+                            label: '<div class="item-thumb">' +
+                                        '<img src=' + item.image_url + ' alt="' + item.name + '" />' +
+                                    '</div>' + 
+                                    '<div class="item-content">' +
+                                        '<h4 class="item-title">'+ item.name + '</h4>' +
+                                        '<p class="address">' + item.address + '</p>' +
+                                    '</div>',
                             value: item.id,
                             selectedDisplay: item.selected
                         };
                     });
                     responses.push({
-                        label: '<b>Create a new place<b>',
+                        label: '<p>Place not listed? Create it!<p>',
                         value:'!newplace'
                     });
                     response(responses);
