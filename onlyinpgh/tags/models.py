@@ -4,7 +4,8 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 
 class Tag(models.Model, ViewModel):
     '''also extends ViewModel: base class's to_data handles everything'''
-    name = models.SlugField()
+    dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
+    name = models.SlugField(unique=True)
 
     def __unicode__(self):
         return self.name
