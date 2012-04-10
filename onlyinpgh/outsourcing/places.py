@@ -6,6 +6,7 @@ places-related tasks.
 from itertools import chain
 import re
 import copy
+from decimal import Decimal
 
 from onlyinpgh.outsourcing.apitools.factual import FactualAPIError
 from onlyinpgh.outsourcing.apitools import geocoding_client_factory, factual_client_factory
@@ -94,7 +95,7 @@ def resolve_location(partial_location, allow_numberless=True, retry=None):
 
     Returns None if resolution was not possible.
     '''
-    LAT_BUFFER, LONG_BUFFER = 0.005, 0.005
+    LAT_BUFFER, LONG_BUFFER = Decimal('0.005'), Decimal('0.005')
 
     # need to combine most Location fields into a string
     state = partial_location.state
@@ -106,9 +107,11 @@ def resolve_location(partial_location, allow_numberless=True, retry=None):
     biasing_args = {}
     # use the location's lat/long to create a bounding window biaser
     if partial_location.latitude is not None and partial_location.longitude is not None:
-        biasing_args['bounds'] = \
-            ((partial_location.latitude - LAT_BUFFER, partial_location.longitude - LONG_BUFFER),
-             (partial_location.latitude + LAT_BUFFER, partial_location.longitude + LONG_BUFFER))
+        biasing_args['bounds'] = (
+            (Decimal(partial_location.latitude) - LAT_BUFFER,
+             Decimal(partial_location.longitude) - LONG_BUFFER),
+            (Decimal(partial_location.latitude) + LAT_BUFFER,
+             Decimal(partial_location.longitude) + LONG_BUFFER))
 
     # use country as a region biaser
     if partial_location.country:
