@@ -8,23 +8,23 @@ Context variables:
 
 <div class="item-thumb">
 	{% thumbnail event.image "130x130" crop="center" as im %}
-	<img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
 	{% empty %}
-	<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="/static/img/default-event.png" />
 	{% endthumbnail %}
 </div>
 
 <section class="item-content">
 	<h4 class="item-title">
 		<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit this event">
-			{{ event.name }}
+			{{event.name|truncatewords:10}}
 		</a>
 	</h4>
 	
 	<ul class="item-details meta">	
 		<li class="address">{{event.dtstart}} - {{event.dtend}}</li>
 		<li>{{event.location.address}}</li>
-		<li class="description">{{ event.description|truncatewords:20|urlizetrunc:20 }}</li>
+		<li class="description">{{ event.description|truncatewords:15|urlizetrunc:20 }}</li>
   	</ul>
   	
 	{% include "tags/tag_list.html" with tags=event.tags %}
@@ -32,7 +32,7 @@ Context variables:
 </section>
 
 <div class="item-actions">
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="See event page"><img src="/static/img/browser.png" alt="See event page"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event page"><img class="edit-item" src="/static/img/edit.png" alt="See event page"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" title="Delete Event"><img class="delete-item" src="/static/img/icon_x.gif" alt="Delete Event" /></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="See event page"><img class="item-action" src="/static/img/browser.png" alt="See event page"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event page"><img class="item-action" src="/static/img/pencil.png" alt="Edit event"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" title="Delete Event"><img class="item-action" src="/static/img/icon_x.gif" alt="Delete event" /></a>
 </div>
