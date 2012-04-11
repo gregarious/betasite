@@ -75,11 +75,11 @@
 
     <div class="field-container inner">
         <div class="field-label">
-            {{ form.image_url.label_tag }}
+            {{ form.image.label_tag }}
         </div>
         <div class="field">
-            {{ form.image_url }}
-            {% for err in form.image_url.errors %}
+            {{ form.image }}
+            {% for err in form.image.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>

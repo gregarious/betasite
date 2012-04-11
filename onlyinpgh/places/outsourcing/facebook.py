@@ -1,6 +1,7 @@
 from onlyinpgh.places.models import Place, Location, Hours, Parking
 from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient, FacebookAPIError
 from onlyinpgh.tokens import FACEBOOK_ACCESS_TOKEN
+from onlyinpgh.common.utils import imagefile_from_url
 
 import re
 import datetime
@@ -135,7 +136,7 @@ class FBPage(object):
                         latitude=fb_loc.get('latitude'),
                         longitude=fb_loc.get('longitude'))
 
-    def get_picture(self, size='normal', timeout=None):
+    def get_picture_url(self, size='normal', timeout=None):
         '''Will query live service, may return IO/FB exceptions'''
         fb_id = self.data.get('id')
         if fb_id is None:
@@ -169,20 +170,22 @@ def fbpage_to_place(fbpage, save=False):
         location.save()
 
     p.location = location
-    p.name = fbpage.get_field('name', '').strip()
-    p.fb_id = fbpage.get_field('id', '').strip()
+    p.name = fbpage.get_field('name', '').strip()[:200]
+    p.fb_id = fbpage.get_field('id', '').strip()[:50]
     p.description = fbpage.get_field('description', '').strip()
     # if no description, try 'about'
     if not p.description:
         p.description = fbpage.get_field('about', '').strip()
-    p.phone = fbpage.get_field('phone', '').strip()
+    p.phone = fbpage.get_field('phone', '').strip()[:200]
     p.url = fbpage.get_field('website', '').strip()
+    if p.url:
+        p.url = p.url.split()[0][:200]
 
     try:
-        # TODO: download image once media is figured out
-        p.image_url = fbpage.get_picture()
+        im_url = fbpage.get_picture_url(size='large')
+        p.image = imagefile_from_url(im_url)
     except IOError:
-        # TODO: log network error
+        # TODO: log network/image format error
         pass
 
     if save:
@@ -190,7 +193,7 @@ def fbpage_to_place(fbpage, save=False):
     return p
 
 
-def supplement_place_data(place, force_sync_fields=[]):
+def supplement_place_data(place, force_sync_fields=[], exclude_fields=[]):
     '''
     Given a Place with a FB id, fleshes out all the empty entries with
     those from Facebook. The given place will be saved as a result of
@@ -199,6 +202,8 @@ def supplement_place_data(place, force_sync_fields=[]):
     Any value in force_sync_fields will be overwritten by the value
     returned by the Graph API, regardless of value. Specify location
     fields to force sync by prefixing them: i.e. 'location.FIELDNAME'
+
+    Any value in exclude_fields will NOT be updated by Facebook.
 
     Returns a list of fields that were written to. Note that fb_id
     won't be returned in this list, because it is overwritten with
@@ -232,12 +237,13 @@ def supplement_place_data(place, force_sync_fields=[]):
     fbplace = fbpage_to_place(fbpage, save=False)
 
     fields_written = []
-    attrs = ('name', 'description', 'phone', 'url', 'image_url', 'hours', 'parking')
+    attrs = ('name', 'description', 'phone', 'url', 'image', 'hours', 'parking')
     for attr_name in attrs:
-        fb_attr = getattr(fbplace, attr_name)
-        if attr_name in force_sync_fields or (fb_attr and not getattr(place, attr_name)):
-            fields_written.append(attr_name)
-            setattr(place, attr_name, fb_attr)
+        if attr_name not in exclude_fields:
+            fb_attr = getattr(fbplace, attr_name)
+            if attr_name in force_sync_fields or (fb_attr and not getattr(place, attr_name)):
+                fields_written.append(attr_name)
+                setattr(place, attr_name, fb_attr)
 
     # force the updating of the fb_id (to standardize fb ids to numbers)
     std_fb_id = fbpage.get_field('id')
@@ -245,24 +251,28 @@ def supplement_place_data(place, force_sync_fields=[]):
         place.fb_id = std_fb_id
 
     # handle location specially
-    fbloc = fbpage.get_location()
-    if fbloc is not None:
-        if place.location is None:
-            # if no location set, the new FB location is it.
-            # since FB location is unsaved, need to save before assigning
-            fbloc.save()
-            place.location = fbloc
-            fields_written.append('location')
-        else:
-            # otherwise, new flesh out any missing entries in the current location with these
-            attrs = ('address', 'town', 'postcode', 'state', 'country', 'latitude', 'longitude')
-            for attr_name in attrs:
-                fb_attr = getattr(fbloc, attr_name)
-                attr_namespaced = 'location.' + attr_name
-                if attr_namespaced in force_sync_fields or (fb_attr and not getattr(place.location, attr_name)):
-                    setattr(place.location, attr_name, fb_attr)
-                    fields_written.append(attr_namespaced)
-            place.location.save()
+    if 'location' not in exclude_fields:
+        fbloc = fbpage.get_location()
+        if fbloc is not None:
+            if place.location is None:
+                # if no location set, the new FB location is it.
+                # since FB location is unsaved, need to save before assigning
+                fbloc.save()
+                place.location = fbloc
+                fields_written.append('location')
+            else:
+                # otherwise, new flesh out any missing entries in the current location with these
+                attrs = ('address', 'town', 'postcode', 'state', 'country', 'latitude', 'longitude')
+                for attr_name in attrs:
+                    fb_attr = getattr(fbloc, attr_name)
+                    attr_namespaced = 'location.' + attr_name
+                    if attr_namespaced in force_sync_fields or (fb_attr and not getattr(place.location, attr_name)):
+                        setattr(place.location, attr_name, fb_attr)
+                        fields_written.append(attr_namespaced)
+                place.location.save()
 
     place.save()
+    if place.image:
+        place.image.close()
+
     return fields_written

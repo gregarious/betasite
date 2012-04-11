@@ -7,11 +7,13 @@ Context variables:
 	place:			Place object
 {% endcomment %}
 
-
+{% load thumbnail %}
 <div class="item-thumb">
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place" class="link-block">
-		<img class="thumbnail" alt="{{place.name}}" src="{{place.image_url}}" />
-	</a>
+	{% thumbnail place.image "130x130" as im %}
+	<img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
+	{% empty %}
+	<img class="thumbnail" alt="{{place.name}}" src="/media/img/p/default-place.png" />
+	{% endthumbnail %}
 </div>
 
 <section class="item-content">
