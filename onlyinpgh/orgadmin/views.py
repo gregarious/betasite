@@ -209,7 +209,7 @@ def page_setup_place_wizard(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
-        form = OrgAdminPlaceForm(request.POST, request.FILES,
+        form = OrgAdminPlaceForm(data=request.POST, files=request.FILES,
             instance=instance)
         if form.is_valid():
             place = form.save()
@@ -248,10 +248,12 @@ def page_edit_place(request, id):
         return HttpResponseForbidden()
 
     if request.POST:
-        form = OrgAdminPlaceForm(request.POST, request.FILES, instance=instance)
+        form = OrgAdminPlaceForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_places')
+        else:
+            print form.errors
     else:
         form = OrgAdminPlaceForm(instance=instance)
 
@@ -302,7 +304,7 @@ def page_edit_event(request, id=None):
 
     initial_place = None
     if request.POST:
-        form = SimpleEventForm(request.POST, request.FILES, instance=instance)
+        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
