@@ -38,8 +38,8 @@ Context variables:
 		</div>
 		<div class="field">
             <input id="id_place-text">
-            <div id='id_place-display' style="display:none">{{initial_selected}}</div>
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
+            <div id="id_place-display" style="display:none">{{initial_selected}}</div>
             {{form.place}}
 			{% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />

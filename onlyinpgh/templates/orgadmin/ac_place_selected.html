@@ -10,17 +10,16 @@ Template variables:
 
 <img class="spinner" src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none" />
 
-<div class="item-thumb">
+<div class="ac-item-thumb">
     {% thumbnail place.image "50x50" crop="center" as im %}
-    <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" width="{{im.width}}" height="{{im.height}}"/>
+    	<img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" width="{{im.width}}" height="{{im.height}}"/>
     {% empty %}
-    <img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" width="50" height="50"/>
+    	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" width="50" height="50"/>
     {% endthumbnail %}
 </div>
 
-<section class="item-content">
+<section class="ac-item-content">
 	<h4 class="item-title">{{ place.name }}</h4>
 	<p class="address">{{place.location.address}}</p>
     {% include "tags/tag_list.html" with tags=event.tags %}
 </section>
-

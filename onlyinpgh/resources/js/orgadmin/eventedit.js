@@ -15,8 +15,7 @@ $(function(){
     place_ac_clear_btn.hide()
         .on('click', function(event){
             onACDeselect();
-            $(this).hide()
-                   .parent().find('#id_place-text').focus();
+            $(this).hide();
             return false;
         });
     place_ac_sel_display.hide();
@@ -29,7 +28,7 @@ $(function(){
     }
 
     function onACDeselect(ui) {
-        place_ac_text.val('').show();
+        place_ac_text.val('').show().focus();
         place_ac_value.val('');
         place_ac_sel_display.html('').hide();
         place_ac_clear_btn.hide();

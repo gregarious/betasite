@@ -199,12 +199,12 @@ p {
 #site-content {
 	.b-shadow(0, 0, 0.1em, #888);
 	background: url("@{static_url}img/textures/white-tex.png");
-	.border-box;
-	.clearfix;	
-	margin: 120px auto auto;
+	.border-box();
+	.clearfix();
+	margin: 120px auto 100px auto;
 	width: 650px;	
 	.rounded(0.5em);
-	padding: 2%;
+	padding: 4% 2% 2%;
 	position: relative;
 	
 	&.signup {
@@ -479,34 +479,37 @@ input[type="checkbox"] {
 	border-bottom: 2px @dblue solid;
 
 	ul li {
+
 		float: left;
-		background: @lblue;
-		padding: 0.3em 0.5em;
-		margin: 0 0.5em;
-		.tabs(0.5em);
-
+		
 		a {
+			background: @lblue;
+			padding: 0.5em;
+			margin: 0 0.5em;
+			.tabs(0.5em);
 			color: #fff;	
-		}
+			position: relative;
+			bottom: 0.4em;
+			&.current-page {
+				color: #fff;
+				.gradient(@mblue, @dblue);
+				.b-shadow(0, 0, 0.3em, #777);
 
-		&.current-page {
-			color: #fff;
-			.gradient(@mblue, @dblue);
-			.b-shadow(0, 0, 0.3em, #777);
+				&:hover {
+					.gradient(@mblue, @dblue);
+					.b-shadow(0, 0, 0.3em, #777);				
+				}
+			}
 
 			&:hover {
-				.gradient(@mblue, @dblue);
-				.b-shadow(0, 0, 0.3em, #777);				
+				background: @mblue;
 			}
-		}
 
-		&:hover {
-			background: @mblue;
-		}
-
-		&:active {
-			background: @dblue;
-		}
+			&:active {
+				background: @dblue;
+			}
+			
+		}	
 	}
 }
 
@@ -540,7 +543,7 @@ input[type="checkbox"] {
 }
 
 .item-title {
-  margin: 0 30px 0 0;
+  margin: 0;
 
   a {
     font-size: 1.1em;
@@ -557,6 +560,10 @@ input[type="checkbox"] {
       color: #333;
     }
   }
+}
+
+.in-feed {
+	 margin: 0 60px 0 0;
 }
 
 .item-actions {
@@ -663,6 +670,10 @@ input[type="checkbox"] {
 	top: 45px;
 }
 
+#place-clear {
+	.column_r(1);
+}
+
 /* AUTOCOMPLETE -------- */
 
 #confirm-box {
@@ -676,8 +687,11 @@ input[type="checkbox"] {
 		background: #fff;
 		margin-bottom: 2em;
 		.rounded(0.5em);
-		
 	}
+}
+
+#id_place-display {
+	.column(11);
 }
 
 .ui-menu-item {
@@ -747,6 +761,19 @@ input[type="checkbox"] {
 	.rounded(0.5em);
 	.clearfix();
 }
+
+.ac-item-thumb {
+	.column(1.6);
+	//max-height: none;
+
+	img {
+		width: 100%;
+	}
+}
+
+.ac-item-content {
+	.column(10.4);
+}	
 
 /* DIALOG ---------- */
 
