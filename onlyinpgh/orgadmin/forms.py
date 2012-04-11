@@ -75,7 +75,7 @@ class OrgAdminPlaceForm(PlaceForm):
     hr_days_5, hr_hours_5 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
     hr_days_6, hr_hours_6 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
     hr_days_7, hr_hours_7 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
-    parking = forms.MultipleChoiceField(choices=Parking.choices, widget=forms.CheckboxSelectMultiple())
+    parking = forms.MultipleChoiceField(choices=Parking.choices, widget=forms.CheckboxSelectMultiple(), required=False)
 
     tags = forms.CharField(label=u"Tags (comma-separated)")
 
