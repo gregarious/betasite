@@ -150,7 +150,6 @@ $(function(){
             // if something was changed in the text field after a select, the selectedItem will be 
             // cleared out. If no selected item, the inputs get reset.
             var item = $(this).data().autocomplete.selectedItem;
-            console.log('change');
             if(!item) {
                 on_ac_deselect();
             }

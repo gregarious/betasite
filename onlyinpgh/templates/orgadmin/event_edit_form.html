@@ -5,6 +5,7 @@ Context variables:
     form: SimpleEventForm object
     newplace_form: SimplePlaceForm object
     initial_selected: string for initial place text value if one exists (this is a temporary hack)
+    tag_names: another hack for the Tags autocomplete
 {% endcomment %}
 <h2>Editing your event...</h2>
 
@@ -32,7 +33,7 @@ Context variables:
             <input id="id_place-text">
             <div id='id_place-display' style="display:none">{{initial_selected}}</div>
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
-            <input type="hidden" name="{{ form.place.html_name }}" id="id_place" value="{{ form.place.value }}">
+            {{form.place}}
 			{% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -341,12 +342,6 @@ $(function(){
                 $(this).data("autocomplete").menu.active ) {
                     event.preventDefault();
                 }
-        })
-        .focus( function( event ) {
-            var curVal = $(this).val().replace(/\s+$/,'');
-            if(curVal.length > 0 && curVal[curVal.length-1] !== ',') {
-                $(this).val(curVal+', ');
-            }
         })
         .autocomplete({
             minLength: 1,

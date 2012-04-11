@@ -149,7 +149,7 @@
 $(function() {
     $(".hour-day-container").on('click', '.add-hour-row-btn', function(event){
             $(this).hide() // hides the + button
-               .next('.hour-day-container').show(); // shows the next input
+               .parent().next('.hour-day-container').show(); // shows the next input
             return false;
     });
 
@@ -172,12 +172,6 @@ $(function() {
                 $(this).data("autocomplete").menu.active ) {
                     event.preventDefault();
                 }
-        })
-        .focus( function( event ) {
-            var curVal = $(this).val().replace(/\s+$/,'');
-            if(curVal.length > 0 && curVal[curVal.length-1] !== ',') {
-                $(this).val(curVal+', ');
-            }
         })
         .autocomplete({
             minLength: 1,

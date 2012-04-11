@@ -8,6 +8,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.common.utils import CSVPickler
 
 from django.contrib.auth.models import User
+from onlyinpgh.common.utils import get_std_thumbnail
 
 import math
 
@@ -252,12 +253,22 @@ class Place(models.Model, ViewModel):
             s += u' (%s)' % self.location.address
         return s
 
+    def save(self, *args, **kwargs):
+        super(Place, self).save(*args, **kwargs)
+        if self.image:
+            # pre-cache common sized thumbnails
+            try:
+                get_std_thumbnail(self.image, 'autocomplete')
+                get_std_thumbnail(self.image, 'standard')
+            # never let these lines interrupt anything
+            except Exception as e:
+                print 'error caching thumbnails', e
+                # TODO: log error
+
     def to_data(self, *args, **kwargs):
         '''
         Manually handle location and tag entries.
         '''
-        # TODO: WTF? get rid of ViewModels.
-        self.image.__class__
         data = super(Place, self).to_data(*args, **kwargs)
         data.pop('location_id')
         if self.location:
