@@ -1,5 +1,4 @@
 import csv
-
 import os
 import re
 import decimal
@@ -11,18 +10,15 @@ from django.template.defaultfilters import slugify
 
 from onlyinpgh.places.models import Location, Place, PlaceMeta
 from onlyinpgh.outsourcing.places import resolve_location
-
 from onlyinpgh.common import utils
 
 from onlyinpgh.tags.models import Tag
-from onlyinpgh.tags.categories import load_category_map
-from onlyinpgh.outsourcing.apitools import gplaces_client
+#from onlyinpgh.tags.categories import load_category_map
+#from onlyinpgh.outsourcing.apitools import gplaces_client
 
 from scripts import places_fb_import
 
 import logging
-logging.disable(logging.INFO)
-logger = logging.getLogger('onlyinpgh.debugging')
 logging.root.setLevel(logging.INFO)
 
 from onlyinpgh.settings import to_abspath
@@ -56,10 +52,6 @@ def run():
 
 @transaction.commit_on_success
 def insert_row(row, idx):
-    if not row.get('name', ''):
-        logging.error('Row %d: No name listed. Skipping.')
-        return
-
     logging.info(u'Importing row %d (%s)' % (int(idx), row['name']))
 
     try:
@@ -161,14 +153,14 @@ def insert_row(row, idx):
     #         elif typ in gplaces_category_map:
     #             all_tags.update(gplaces_category_map[typ])
     #         else:
-    #             logger.warning('Unknown Google Places type: "%s"' % typ)
+    #             logging.warning('Unknown Google Places type: "%s"' % typ)
     #     for tagstr in all_tags:
     #         tag, _ = Tag.objects.get_or_create(name=tagstr.lower())
     #         place.tags.add(tag)
     #     if len(all_tags) > 0:
-    #         logger.debug('Row %d ("%s"): Tags [%s]' % (idx, str(row.name), ', '.join(all_tags)))
+    #         logging.debug('Row %d ("%s"): Tags [%s]' % (idx, str(row.name), ', '.join(all_tags)))
     # else:
-    #     logger.warning('Row %d ("%s"): Cannot tag, no Google Places result within %dm of (%f,%f)' % \
+    #     logging.warning('Row %d ("%s"): Cannot tag, no Google Places result within %dm of (%f,%f)' % \
     #         (idx, row.name, radius, coords[0], coords[1]))
 
     # print 'added', place

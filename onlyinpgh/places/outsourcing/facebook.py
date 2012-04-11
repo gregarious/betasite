@@ -1,6 +1,7 @@
 from onlyinpgh.places.models import Place, Location, Hours, Parking
 from onlyinpgh.outsourcing.apitools.facebook import GraphAPIClient, FacebookAPIError
 from onlyinpgh.tokens import FACEBOOK_ACCESS_TOKEN
+from onlyinpgh.common.utils import imagefile_from_url
 
 import re
 import datetime
@@ -135,7 +136,7 @@ class FBPage(object):
                         latitude=fb_loc.get('latitude'),
                         longitude=fb_loc.get('longitude'))
 
-    def get_picture(self, size='normal', timeout=None):
+    def get_picture_url(self, size='normal', timeout=None):
         '''Will query live service, may return IO/FB exceptions'''
         fb_id = self.data.get('id')
         if fb_id is None:
@@ -181,10 +182,10 @@ def fbpage_to_place(fbpage, save=False):
         p.url = p.url.split()[0][:200]
 
     try:
-        # TODO: download image once media is figured out
-        p.image_url = fbpage.get_picture()
+        im_url = fbpage.get_picture_url(size='large')
+        p.image = imagefile_from_url(im_url)
     except IOError:
-        # TODO: log network error
+        # TODO: log network/image format error
         pass
 
     if save:
@@ -236,7 +237,7 @@ def supplement_place_data(place, force_sync_fields=[], exclude_fields=[]):
     fbplace = fbpage_to_place(fbpage, save=False)
 
     fields_written = []
-    attrs = ('name', 'description', 'phone', 'url', 'image_url', 'hours', 'parking')
+    attrs = ('name', 'description', 'phone', 'url', 'image', 'hours', 'parking')
     for attr_name in attrs:
         if attr_name not in exclude_fields:
             fb_attr = getattr(fbplace, attr_name)
@@ -271,4 +272,7 @@ def supplement_place_data(place, force_sync_fields=[], exclude_fields=[]):
                 place.location.save()
 
     place.save()
+    if place.image:
+        place.image.close()
+
     return fields_written

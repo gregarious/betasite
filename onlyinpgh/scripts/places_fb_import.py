@@ -40,8 +40,6 @@ def commit_place(place, corporate=False):
         else:
             last_synced.value = datetime.datetime.now().isoformat()
             last_synced.save()
-    else:
-        print 'nothing changed'
 
 
 def run():

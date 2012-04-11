@@ -120,7 +120,7 @@ class FBEvent(object):
         '''
         return self.data.get('venue', {}).get('id')
 
-    def get_picture(self, size='normal', timeout=None):
+    def get_picture_url(self, size='normal', timeout=None):
         '''Will query live service, may return IO/FB exceptions'''
         fb_id = self.data.get('id')
         if fb_id is None:
@@ -168,7 +168,7 @@ def fbevent_to_event(fbevent, allow_place_import=True, save=False):
             # worst case, we get a location string to use as a primitive
             e.place_primitive = fbevent.get_field('location', '')
     try:
-        e.image_url = fbevent.get_picture()
+        e.image_url = fbevent.get_picture_url()
     except IOError:
         # TODO: log network error
         pass

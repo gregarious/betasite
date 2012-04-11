@@ -11,8 +11,6 @@ from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 import urllib
 
-DEFAULT_IMAGE_URL = '/static/img/default-place.png'
-
 
 def to_directions_link(location):
     daddr = ''
@@ -43,7 +41,7 @@ class PlaceFeedItem(ViewModel):
                 country
                 latitude
                 longitude
-            image_url
+            image
             description
             [tags]
                 id
@@ -63,12 +61,10 @@ class PlaceFeedItem(ViewModel):
     def to_data(self, *args, **kwargs):
         data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
         place_data = data.get('place')
-        keepers = set(('id', 'name', 'location', 'image_url', 'description', 'tags'))
+        keepers = set(('id', 'name', 'location', 'image', 'description', 'tags'))
         for k in place_data.keys():
             if k not in keepers:
                 place_data.pop(k)
-        if not place_data['image_url']:
-            place_data['image_url'] = DEFAULT_IMAGE_URL
         return data
 
 
@@ -87,7 +83,7 @@ class PlaceDetail(ViewModel):
                 country
                 latitude
                 longitude
-            image_url
+            image
             description
             [tags]
                 id
@@ -116,8 +112,6 @@ class PlaceDetail(ViewModel):
         url = data['place']['url']
         if url:
             data['place']['url'] = process_external_url(url)
-        if not data['place']['image_url']:
-            data['place']['image_url'] = DEFAULT_IMAGE_URL
 
         return data
 
