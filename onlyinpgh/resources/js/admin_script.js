@@ -47,58 +47,6 @@ jQuery(document).ready( function(){
     if(menu_item.attr('href') == loc + '/list') {
         menu_item.addClass('current-page');
     }
-
-    // Datepicker for specials
-    $('.datepicker-start, .datepicker-end').datepicker();
-
-    // Datetimepicker for events
-    $('.datetimepicker-start').datetimepicker({
-        ampm: true,
-        stepHour: 1,
-        stepMinute: 5,
-
-        onClose: function(dateText, inst) {
-            var endBox = $('.datetimepicker-end');
-            if (endBox.val() !== '') {
-                if(new Date(dateText) > new Date(endBox.val())) {
-                    endBox.val(dateText);
-                }
-            }
-            else {
-                endBox.val(dateText);
-            }
-        },
-        onSelect: function (selectedDateTime){
-            var start = $(this).datetimepicker('getDate');
-            $('.datetimepicker-end').datetimepicker('option', 'minDate',
-                                                    new Date(start.getTime()) );
-        }
-    });
-
-    $('.datetimepicker-end').datetimepicker({
-        ampm: true,
-        stepHour: 1,
-        stepMinute: 5,
-
-        onClose: function(dateText, inst) {
-            var startBox = $('.datetimepicker-start');
-            if (startBox.val() !== '') {
-                if(new Date(dateText) < new Date(startBox.val())) {
-                    startBox.val(dateText);
-                }
-            }
-            else {
-                startBox.val(dateText);
-            }
-        },
-        onSelect: function (selectedDateTime){
-            var end = $(this).datetimepicker('getDate');
-            $('.datetimepicker-start').datetimepicker('option', 'maxDate',
-                                                    new Date(end.getTime()) );
-
-        }
-    });
-
 });
 
 // http://www.queness.com/post/356/create-a-vertical-horizontal-and-diagonal-sliding-content-website-with-jquery
