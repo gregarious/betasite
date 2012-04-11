@@ -203,7 +203,7 @@ $(function(){
                         };
                     });
                     responses.push({
-                        label: '<p>Place not listed? Create it!<p>',
+                        label: '<p class="ac-item">Place not listed? Create it!</p></div>',
                         value:'!newplace'
                     });
                     response(responses);
@@ -266,7 +266,7 @@ $(function(){
         modal: true,
         position: "bottom",
         buttons: {
-            "Create the new place": function() {
+            "Create": function() {
                 var bValid = true;//newplace_form_name_input.val() !== '' || newplace_form_address_input.val() !== '';
                 // TODO: any client side validation?
                 if ( bValid ) {

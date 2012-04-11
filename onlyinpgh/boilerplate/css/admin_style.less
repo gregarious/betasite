@@ -28,10 +28,10 @@ h1 {
 	margin: 0;
 }
 
-h2 {
+h2, .ui-dialog-title {
 	color: @teal;
 	/*font-family: 'DroidSerifRegular';*/
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-style: italic;
 	font-weight: normal;
 	margin: 0 1em;
@@ -239,11 +239,14 @@ form {
 }
 
 label {
+	color: #2C525D;
 	font-size: 0.9em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
 	margin-left: 1%;
 	vertical-align: bottom;
+	text-shadow: 0.07em 0.07em 0 #ffffff;
+	text-transform: uppercase;
 }
 
 textarea {
@@ -266,7 +269,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	outline: none;
 	padding: 0.5em;
 	.rounded(0.5em);
-	width: 93%;
+	.row();
 
 	&:focus {
 		.b-shadow(0, 0, 0.2em, #2C525D);
@@ -333,12 +336,6 @@ input[type="checkbox"] {
 .field-label {
 	.column(3);
 	text-align: right;
-
-	label {
-		color: #2C525D;
-		text-shadow: 0.07em 0.07em 0 #ffffff;
-		text-transform: uppercase;
-	}
 }
 
 .field, .double {
@@ -663,6 +660,10 @@ input[type="checkbox"] {
 		width: 300px;
 	}
 
+	.ui-menu-item {
+		.clearfix;
+	}
+
 	.item-thumb {
 		.column(2);
 	}
@@ -694,19 +695,60 @@ input[type="checkbox"] {
 }
 
 #id_place-text {
-	.column_r(12);
+	.row();
 	margin: 0;
 }
 
 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content, .ui-autocomplete-input {
 	background: #fff;
-	//.b-shadow(0.1em, 0.1em, 0.2em, #444);
 	border: 1px #cccccc solid;
 	outline: none;
 	padding: 0.5em;
 	.rounded(0.5em);
 	.clearfix();
 }
+
+/* DIALOG ---------- */
+
+.ui-dialog {
+	background: url('@{static_url}img/textures/white-tex.png');
+	border: 5px #cccccc solid;
+	.rounded(0.6em);
+	padding: 2%;
+	top: -200px;
+}
+
+.ui-widget-overlay { 
+	background: #aaaaaa url('@{static_url}img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x; 
+	position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+	opacity: .30;
+	filter:Alpha(Opacity=30); 
+}
+
+.ui-dialog-title {
+	border-bottom: 1px @teal solid;
+	margin: 0;
+	display: block;
+}
+
+.ui-icon.ui-icon-closethick {
+	//.icon();
+	display: none;
+}
+
+.ui-dialog-titlebar {
+	color: @teal;
+}
+
+#newplace-form {
+	label {
+
+	}
+	input {
+		margin-bottom: 1em;
+	}
+}
+
 
 /* JQUERY TIMEPICKER ------ */
 

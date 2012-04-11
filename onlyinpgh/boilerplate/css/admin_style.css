@@ -314,11 +314,12 @@ h1 {
   font-weight: normal;
   margin: 0;
 }
-h2 {
+h2,
+.ui-dialog-title {
   color: #2c525d;
   /*font-family: 'DroidSerifRegular';*/
 
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-style: italic;
   font-weight: normal;
   margin: 0 1em;
@@ -527,11 +528,14 @@ form .tip a {
   color: #4b7699;
 }
 label {
+  color: #2C525D;
   font-size: 0.9em;
   font-weight: bold;
   margin-bottom: 0.5em;
   margin-left: 1%;
   vertical-align: bottom;
+  text-shadow: 0.07em 0.07em 0 #ffffff;
+  text-transform: uppercase;
 }
 textarea {
   height: 6em;
@@ -561,7 +565,11 @@ textarea {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  width: 93%;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -681,11 +689,6 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: right;
-}
-.field-label label {
-  color: #2C525D;
-  text-shadow: 0.07em 0.07em 0 #ffffff;
-  text-transform: uppercase;
 }
 .field,
 .double {
@@ -1082,6 +1085,17 @@ input[type="checkbox"] {
   position: absolute;
   width: 300px;
 }
+.ui-autocomplete .ui-menu-item {
+  *zoom: 1;
+}
+.ui-autocomplete .ui-menu-item:before,
+.ui-autocomplete .ui-menu-item:after {
+  content: "";
+  display: table;
+}
+.ui-autocomplete .ui-menu-item:after {
+  clear: both;
+}
 .ui-autocomplete .item-thumb {
   float: left;
   width: 14.583333333333334%;
@@ -1125,9 +1139,8 @@ input[type="checkbox"] {
   clear: both;
 }
 #id_place-text {
-  float: right;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
+  width: 100%;
+  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1157,6 +1170,43 @@ input[type="checkbox"] {
 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content:after,
 .ui-autocomplete-input:after {
   clear: both;
+}
+/* DIALOG ---------- */
+.ui-dialog {
+  background: url('/static/img/textures/white-tex.png');
+  border: 5px #cccccc solid;
+  -webkit-border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  border-radius: 0.6em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 2%;
+  top: -200px;
+}
+.ui-widget-overlay {
+  background: #aaaaaa url('/static/img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .30;
+  filter: alpha(opacity=30);
+}
+.ui-dialog-title {
+  border-bottom: 1px #2c525d solid;
+  margin: 0;
+  display: block;
+}
+.ui-icon.ui-icon-closethick {
+  display: none;
+}
+.ui-dialog-titlebar {
+  color: #2c525d;
+}
+#newplace-form input {
+  margin-bottom: 1em;
 }
 /* JQUERY TIMEPICKER ------ */
 .ui-timepicker-div .ui-widget-header {
