@@ -1122,10 +1122,12 @@ input[type="checkbox"] {
 }
 .ui-autocomplete .ac-item {
   cursor: pointer;
-  -webkit-transition: background 0.25s ease-in;
-  -moz-transition: background 0.25s ease-in;
-  -o-transition: background 0.25s ease-in;
-  transition: background 0.25s ease-in;
+  /*		-webkit-transition:background 0.25s ease-in;  
+		-moz-transition:background 0.25s ease-in;  
+		-o-transition:background 0.25s ease-in;  
+		transition: background 0.25s ease-in;  
+*/
+
 }
 .ui-autocomplete .ac-item .item-title {
   color: #000;
@@ -1133,10 +1135,10 @@ input[type="checkbox"] {
 #ui-active-menuitem .ac-item {
   *zoom: 1;
   background: #e1f3fa;
-  -webkit-transition: background 0.25s ease-in;
-  -moz-transition: background 0.25s ease-in;
-  -o-transition: background 0.25s ease-in;
-  transition: background 0.25s ease-in;
+  /*	-webkit-transition:background 0.25s ease-in;  
+		-moz-transition:background 0.25s ease-in;  
+			-o-transition:background 0.25s ease-in;  
+	transition: background 0.25s ease-in;*/
 }
 #ui-active-menuitem .ac-item:before,
 #ui-active-menuitem .ac-item:after {

@@ -26,12 +26,13 @@ Context variables:
 		<li>{{event.location.address}}</li>
 		<li class="description">{{ event.description|truncatewords:20|urlizetrunc:20 }}</li>
   	</ul>
-
+  	
 	{% include "tags/tag_list.html" with tags=event.tags %}
 
 </section>
 
 <div class="item-actions">
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="See event page"><img class="edit-item" src="/static/img/browser.png" alt="See event page"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="See event page"><img src="/static/img/browser.png" alt="See event page"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event page"><img class="edit-item" src="/static/img/edit.png" alt="See event page"/></a>
 	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" title="Delete Event"><img class="delete-item" src="/static/img/icon_x.gif" alt="Delete Event" /></a>
 </div>

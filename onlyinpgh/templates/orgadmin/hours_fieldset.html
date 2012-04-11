@@ -25,10 +25,9 @@
                 {% for err in field_hours.errors %}
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
-                {% if not omit_plus %}
-                    <a href="#" class="add-hour-row-btn">+</a>
-                {% endif %}
             </div>
-            
         </div> <!-- .double -->
+         {% if not omit_plus %}
+            <a href="#" class="add-hour-row-btn">+</a>
+        {% endif %}
     </div>

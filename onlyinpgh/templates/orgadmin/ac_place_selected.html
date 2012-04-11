@@ -20,11 +20,7 @@ Template variables:
 
 <section class="item-content">
 	<h4 class="item-title">{{ place.name }}</h4>
-	<ul class="item-details">	
-		<li class="address">{{place.location.address}}</li>
-		{% if place.description %}
-			<li class="description meta">{{ place.description|truncatewords:15 }}</li>
-		{% endif %}	
-  	</ul>
+	<p class="address">{{place.location.address}}</p>
+    {% include "tags/tag_list.html" with tags=event.tags %}
 </section>
 
