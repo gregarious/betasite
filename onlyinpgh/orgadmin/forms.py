@@ -281,7 +281,8 @@ class SimpleEventForm(EventForm):
     # this is a hidden char field becausd we're assuming autocomplete will handle things
     place = forms.CharField(
         label=u'Place',
-        widget=forms.HiddenInput())
+        widget=forms.HiddenInput(),
+        required=False)
 
     tags = forms.CharField()
 
@@ -297,7 +298,17 @@ class SimpleEventForm(EventForm):
         exclude = ('tags',)
         widgets = {
             'image': ImageWidget(),
+
         }
+
+    def clean_place(self):
+        pid = self.cleaned_data['place']
+        if not pid:
+            return None
+        try:
+            return Place.objects.get(id=pid)
+        except Place.DoesNotExist:
+            raise forms.ValidationError("Invalid choice")
 
     def clean_tags(self):
         '''
