@@ -703,8 +703,12 @@ input[type="checkbox"] {
 .double .field.last {
   float: right;
 }
+.social-input img {
+  margin-top: 0.5em;
+  float: right;
+}
 .social-input input {
-  width: 79% !important;
+  width: 90% !important;
   float: left;
 }
 #confirm-pass {
@@ -1062,7 +1066,7 @@ input[type="checkbox"] {
   position: absolute;
   font-size: 1.5em;
   font-weight: bold;
-  right: -15px;
+  right: 0px;
   top: 45px;
 }
 /* AUTOCOMPLETE -------- */

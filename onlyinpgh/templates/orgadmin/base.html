@@ -1,12 +1,10 @@
 <!doctype html>
 
 <head>
-	<title>Scenable | 
+	<title>Scenable Business Account
 			{% if user.is_authenticated %}
 				{% if current_org %}
-					{{current_org.name}}
-				{% else %}
-					Business Account
+					| {{current_org.name}}
 				{% endif %}
 			{% endif %}
 	</title>
