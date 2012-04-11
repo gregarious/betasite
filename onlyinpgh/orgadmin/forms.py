@@ -271,11 +271,11 @@ class SimpleEventForm(EventForm):
     # Note that event_edit_form template manually describes these fields!
     dtstart = forms.DateTimeField(
         label=u'Start datetime',
-        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        input_formats=('%m/%d/%Y %I:%M %p', '%m/%d/%Y %I:%M%p',),
         widget=TextInput(attrs={'class': 'datetimepicker-start'}))
     dtend = forms.DateTimeField(
         label=u'End datetime',
-        input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
+        input_formats=('%m/%d/%Y %I:%M %p', '%m/%d/%Y %I:%M%p',),
         widget=TextInput(attrs={'class': 'datetimepicker-end'}))
 
     # this is a hidden char field becausd we're assuming autocomplete will handle things

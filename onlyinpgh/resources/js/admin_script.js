@@ -58,20 +58,20 @@ jQuery(document).ready( function(){
         stepMinute: 5,
 
         onClose: function(dateText, inst) {
-            var startDateTextBox = $('.datetimepicker-start');
-            if (startDateTextBox.val() !== '') {
-                var testStartDate = new Date(startDateTextBox.val());
-                var testEndDate = new Date(dateText);
-                if (testStartDate > testEndDate)
-                    startDateTextBox.val(dateText);
+            var endBox = $('.datetimepicker-end');
+            if (endBox.val() !== '') {
+                if(new Date(dateText) > new Date(endBox.val())) {
+                    endBox.val(dateText);
+                }
             }
             else {
-                startDateTextBox.val(dateText);
+                endBox.val(dateText);
             }
         },
         onSelect: function (selectedDateTime){
-            var end = $(this).datetimepicker('getDate');
-            $('.datetimepicker-start').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+            var start = $(this).datetimepicker('getDate');
+            $('.datetimepicker-end').datetimepicker('option', 'minDate',
+                                                    new Date(start.getTime()) );
         }
     });
 
@@ -81,20 +81,21 @@ jQuery(document).ready( function(){
         stepMinute: 5,
 
         onClose: function(dateText, inst) {
-            var endDateTextBox = $('.datetimepicker-end');
-            if (endDateTextBox.val() !== '') {
-                var testStartDate = new Date(dateText);
-                var testEndDate = new Date(endDateTextBox.val());
-                if (testStartDate > testEndDate)
-                    endDateTextBox.val(dateText);
+            var startBox = $('.datetimepicker-start');
+            if (startBox.val() !== '') {
+                if(new Date(dateText) < new Date(startBox.val())) {
+                    startBox.val(dateText);
+                }
             }
             else {
-                endDateTextBox.val(dateText);
+                startBox.val(dateText);
             }
         },
         onSelect: function (selectedDateTime){
-            var start = $(this).datetimepicker('getDate');
-            $('.datetimepicker-end').datetimepicker('option', 'minDate', new Date(start.getTime()));
+            var end = $(this).datetimepicker('getDate');
+            $('.datetimepicker-start').datetimepicker('option', 'maxDate',
+                                                    new Date(end.getTime()) );
+
         }
     });
 
