@@ -15,8 +15,7 @@ $(function(){
     place_ac_clear_btn.hide()
         .on('click', function(event){
             onACDeselect();
-            $(this).hide()
-                   .parent().find('#id_place-text').focus();
+            $(this).hide();
             return false;
         });
     place_ac_sel_display.hide();
@@ -29,7 +28,7 @@ $(function(){
     }
 
     function onACDeselect(ui) {
-        place_ac_text.val('').show();
+        place_ac_text.val('').show().focus();
         place_ac_value.val('');
         place_ac_sel_display.html('').hide();
         place_ac_clear_btn.hide();
@@ -110,12 +109,16 @@ $(function(){
 
     newplace_dialog_form.dialog({
         autoOpen: false,
-        height: 550,
-        width: 450,
+        height: 400,
+        width: 300,
         title: "Create a new place",
         modal: true,
-        position: "top",
+        position: "bottom",
         buttons: {
+             "Cancel": function() {
+                //$('#field').trigger('autocompletechanged');
+                $(this).dialog("close");
+            },
             "Create": function() {
                 var bValid = true;//newplace_form_name_input.val() !== '' || newplace_form_address_input.val() !== '';
                 // TODO: any client side validation?
@@ -164,10 +167,6 @@ $(function(){
                 else {
                     // TODO: inform user to input a name or location
                 }
-            },
-            "Cancel": function() {
-                //$('#field').trigger('autocompletechanged');
-                $(this).dialog("close");
             }
         }
     });

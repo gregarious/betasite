@@ -38,8 +38,8 @@ Context variables:
 		</div>
 		<div class="field">
             <input id="id_place-text">
-            <div id='id_place-display' style="display:none">{{initial_selected}}</div>
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
+            <div id="id_place-display" style="display:none">{{initial_selected}}</div>
             {{form.place}}
 			{% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
@@ -138,31 +138,49 @@ Context variables:
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
+    <p class="tip">Please endter as place or sasdnesss, daaj sammisty snape harry hermione ron.</p>
     <form id="newplace-form" action="{% url onlyinpgh.orgadmin.ajax.newplace_form_submission %}" method="POST">
     {% csrf_token %}
 
         <div class="field-container">
-            
-                <label for="id_{{ newplace_form.name.html_name }}">Place Name</label>
-            
-                {{newplace_form.name}}
-                {% for err in newplace_form.name.errors %}
-                    <p class="tip error">{{ err }}</p><br />
-                {% endfor %}
-            
+            <label for="id_{{ newplace_form.name.html_name }}">Place Name</label>
+            {{newplace_form.name}}
+            {% for err in newplace_form.name.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
 
         <div class="field-container">
-            <div class="field-label">
-                <label for="id_{{newplace_form.address.html_name}}">Street Address</label>
-            </div>
-            <div class="field">
-                {{newplace_form.address}}
-                {% for err in newplace_form.address.errors %}
-                    <p class="tip error">{{ err }}</p><br />
-                {% endfor %}
-            </div> 
+            <label for="id_{{newplace_form.address.html_name}}">Street Address</label>
+            {{newplace_form.address}}
+            {% for err in newplace_form.address.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
         </div>
+
+        <div class="field-container">
+            <label for="id_{{newplace_form.town.html_name}}">City</label>
+            {{newplace_form.town}}
+            {% for err in newplace_form.town.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+
+        <div class="field-container">
+            <label for="id_{{newplace_form.postcode.html_name}}">Zipcode</label>
+            {{newplace_form.postcode}}
+            {% for err in newplace_form.postcode.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+
+        <div class="field-container" style="display: none">
+            <label for="id_{{newplace_form.state.html_name}}">State</label>
+            {{newplace_form.state}}
+            {% for err in newplace_form.state.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>        
     </form>
     <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
 </div>

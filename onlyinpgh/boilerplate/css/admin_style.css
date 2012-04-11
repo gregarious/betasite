@@ -475,7 +475,7 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  margin: 120px auto auto;
+  margin: 120px auto 100px auto;
   width: 650px;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -483,7 +483,7 @@ p {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 2%;
+  padding: 4% 2% 2%;
   position: relative;
 }
 #site-content:before,
@@ -856,8 +856,10 @@ input[type="checkbox"] {
 }
 #page-nav ul li {
   float: left;
+}
+#page-nav ul li a {
   background: #a9c6e8;
-  padding: 0.3em 0.5em;
+  padding: 0.5em;
   margin: 0 0.5em;
   -webkit-border-radius: 0.5em 0.5em 0 0;
   -moz-border-radius: 0.5em 0.5em 0 0;
@@ -865,11 +867,11 @@ input[type="checkbox"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-}
-#page-nav ul li a {
   color: #fff;
+  position: relative;
+  bottom: 0.4em;
 }
-#page-nav ul li.current-page {
+#page-nav ul li a.current-page {
   color: #fff;
   background-color: #70a3be;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#70a3be), to(#4b7699));
@@ -894,7 +896,7 @@ input[type="checkbox"] {
   -moz-box-shadow: 0 0 0.3em #777777;
   box-shadow: 0 0 0.3em #777777;
 }
-#page-nav ul li.current-page:hover {
+#page-nav ul li a.current-page:hover {
   background-color: #70a3be;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#70a3be), to(#4b7699));
   /* Saf4+, Chrome */
@@ -918,10 +920,10 @@ input[type="checkbox"] {
   -moz-box-shadow: 0 0 0.3em #777777;
   box-shadow: 0 0 0.3em #777777;
 }
-#page-nav ul li:hover {
+#page-nav ul li a:hover {
   background: #70a3be;
 }
-#page-nav ul li:active {
+#page-nav ul li a:active {
   background: #4b7699;
 }
 .prev-next {
@@ -960,7 +962,7 @@ input[type="checkbox"] {
   border-bottom: 1px solid #ccc;
 }
 .item-title {
-  margin: 0 30px 0 0;
+  margin: 0;
 }
 .item-title a {
   font-size: 1.1em;
@@ -973,6 +975,9 @@ input[type="checkbox"] {
 }
 .item-title a:visited {
   color: #333;
+}
+.in-feed {
+  margin: 0 60px 0 0;
 }
 .item-actions {
   position: absolute;
@@ -1094,6 +1099,14 @@ input[type="checkbox"] {
   right: 0px;
   top: 45px;
 }
+#place-clear {
+  float: right;
+  width: 6.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 /* AUTOCOMPLETE -------- */
 #confirm-box p {
   margin: 1.5em 0 1.5em 1.5em;
@@ -1108,6 +1121,14 @@ input[type="checkbox"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+}
+#id_place-display {
+  float: left;
+  width: 89.58333333333334%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-menu-item a {
   display: block;
@@ -1212,10 +1233,26 @@ input[type="checkbox"] {
 .ui-autocomplete-input:after {
   clear: both;
 }
-/* DIALOG ---------- */
-.ui-dialog-titlebar-close {
-  background: green;
+.ac-item-thumb {
+  float: left;
+  width: 11.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
+.ac-item-thumb img {
+  width: 100%;
+}
+.ac-item-content {
+  float: left;
+  width: 84.58333333333333%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* DIALOG ---------- */
 .ui-dialog {
   background: url('/static/img/textures/white-tex.png');
   border: 5px #cccccc solid;
@@ -1226,18 +1263,28 @@ input[type="checkbox"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: 2%;
-  top: -700px !important;
+}
+.ui-dialog form {
+  margin-top: 0.3em;
 }
 .ui-dialog label {
   font-size: 0.8em;
   text-transform: none;
-  margin-bottom: 0.5em;
 }
 .ui-dialog input[type="text"] {
-  padding: 0.1em;
+  margin-top: 0.3em;
+  padding: 0.2em;
+  font-size: 0.9em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 .ui-dialog .field-container {
   padding-right: 0;
+  margin-bottom: 0.5em;
 }
 .ui-dialog .ui-widget-header {
   background: none;
@@ -1258,6 +1305,9 @@ input[type="checkbox"] {
 .ui-dialog .ui-dialog-buttonset:after {
   clear: both;
 }
+.ui-dialog .tip {
+  margin: 0.5em 0;
+}
 .ui-widget-overlay {
   background: #aaaaaa url('/static/img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x;
   position: absolute;
@@ -1271,15 +1321,25 @@ input[type="checkbox"] {
 .ui-dialog-title {
   border-bottom: 1px #2c525d solid;
   margin: 0;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-style: italic;
   display: block;
   color: #2c525d;
 }
+.ui-dialog-titlebar-close:hover {
+  border: none;
+}
 .ui-icon.ui-icon-closethick {
-  float: right;
-  position: relative;
-  bottom: 2em;
+  top: 0.8em;
+  right: 1em;
+  height: 1em;
+  width: 1em;
+  position: absolute;
+  background: url('/static/img/cancel.png') center no-repeat;
+  text-indent: -9999px;
+}
+.ui-icon.ui-icon-closethick:hover {
+  background-color: #a9c6e8;
 }
 .ui-dialog-buttonset button {
   margin: 0 3%;
