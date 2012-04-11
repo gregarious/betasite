@@ -71,7 +71,7 @@ Context variables:
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
 		</div>
-	</div> <!-- is it all day? -->
+	</div> --> <!-- is it all day? -->
  
 	<div class="field-container inner">
 		<div class="field-label">
@@ -103,7 +103,7 @@ Context variables:
         </div>
         <div class="field">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your event.
+            <p class="tip">Enter some terms describing your event like 'music' or 'food'</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -125,7 +125,7 @@ Context variables:
 	</div> <!-- event url -->
 
 	<input type="submit" class="submit-item" value="Save Changes" />
-	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Back to events">&larr; Back</a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
@@ -190,13 +190,14 @@ $(function(){
                 success: function(data) {
                     responses = $.map(data, function(item) {
                         return { 
-                            label: '<div class="item-thumb">' +
+                            label: '<div class="ac-item">' + 
+                                    '<div class="item-thumb">' +
                                         '<img src=' + item.image_url + ' alt="' + item.name + '" />' +
                                     '</div>' + 
                                     '<div class="item-content">' +
                                         '<h4 class="item-title">'+ item.name + '</h4>' +
                                         '<p class="address">' + item.address + '</p>' +
-                                    '</div>',
+                                    '</div></div>',
                             value: item.id,
                             selectedDisplay: item.selected
                         };
