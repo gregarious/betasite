@@ -750,29 +750,31 @@ input[type="checkbox"] {
 
 /* DIALOG ---------- */
 
-.ui-dialog-titlebar-close {
-	background: green;
-}
-
 .ui-dialog {
 	background: url('@{static_url}img/textures/white-tex.png');
 	border: 5px #cccccc solid;
 	.rounded(0.6em);
 	padding: 2%;
-	top: -700px !important;
+
+	form {
+		margin-top: 0.3em;
+	}
 
 	label {
 		font-size: 0.8em;
 		text-transform: none;
-		margin-bottom: 0.5em;
 	}
 
 	input[type="text"] {
-		padding: 0.1em;
+		margin-top: 0.3em;
+		padding: 0.2em;
+		font-size: 0.9em;
+		.rounded(0.3em);
 	}
 
 	.field-container {
 		padding-right: 0;
+		margin-bottom: 0.5em;
 	}
 
 	.ui-widget-header {
@@ -788,6 +790,10 @@ input[type="checkbox"] {
 	.ui-dialog-buttonset {
 		.clearfix();
 	}
+
+	.tip {
+		margin: 0.5em 0;
+	}
 }
 
 .ui-widget-overlay { 
@@ -800,16 +806,28 @@ input[type="checkbox"] {
 .ui-dialog-title {
 	border-bottom: 1px @teal solid;
 	margin: 0;
-	font-size: 1.3em;
+	font-size: 1.1em;
 	font-style: italic;
 	display: block;
 	color: @teal;
 }
 
+.ui-dialog-titlebar-close:hover {
+	border: none;
+}
+
 .ui-icon.ui-icon-closethick {
-	float: right;
-	position: relative;
-	bottom: 2em;
+	top: 0.8em;
+	right: 1em;
+	height: 1em;
+	width: 1em;
+	position: absolute;
+	background: url('@{static_url}img/cancel.png') center no-repeat;
+	text-indent: -9999px;
+
+	&:hover {
+		background-color: @lblue;
+	}
 }
 
 .ui-dialog-buttonset {

@@ -1213,9 +1213,6 @@ input[type="checkbox"] {
   clear: both;
 }
 /* DIALOG ---------- */
-.ui-dialog-titlebar-close {
-  background: green;
-}
 .ui-dialog {
   background: url('/static/img/textures/white-tex.png');
   border: 5px #cccccc solid;
@@ -1226,18 +1223,28 @@ input[type="checkbox"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: 2%;
-  top: -700px !important;
+}
+.ui-dialog form {
+  margin-top: 0.3em;
 }
 .ui-dialog label {
   font-size: 0.8em;
   text-transform: none;
-  margin-bottom: 0.5em;
 }
 .ui-dialog input[type="text"] {
-  padding: 0.1em;
+  margin-top: 0.3em;
+  padding: 0.2em;
+  font-size: 0.9em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 .ui-dialog .field-container {
   padding-right: 0;
+  margin-bottom: 0.5em;
 }
 .ui-dialog .ui-widget-header {
   background: none;
@@ -1258,6 +1265,9 @@ input[type="checkbox"] {
 .ui-dialog .ui-dialog-buttonset:after {
   clear: both;
 }
+.ui-dialog .tip {
+  margin: 0.5em 0;
+}
 .ui-widget-overlay {
   background: #aaaaaa url('/static/img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x;
   position: absolute;
@@ -1271,15 +1281,25 @@ input[type="checkbox"] {
 .ui-dialog-title {
   border-bottom: 1px #2c525d solid;
   margin: 0;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-style: italic;
   display: block;
   color: #2c525d;
 }
+.ui-dialog-titlebar-close:hover {
+  border: none;
+}
 .ui-icon.ui-icon-closethick {
-  float: right;
-  position: relative;
-  bottom: 2em;
+  top: 0.8em;
+  right: 1em;
+  height: 1em;
+  width: 1em;
+  position: absolute;
+  background: url('/static/img/cancel.png') center no-repeat;
+  text-indent: -9999px;
+}
+.ui-icon.ui-icon-closethick:hover {
+  background-color: #a9c6e8;
 }
 .ui-dialog-buttonset button {
   margin: 0 3%;

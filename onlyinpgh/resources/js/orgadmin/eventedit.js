@@ -110,12 +110,16 @@ $(function(){
 
     newplace_dialog_form.dialog({
         autoOpen: false,
-        height: 550,
-        width: 450,
+        height: 400,
+        width: 300,
         title: "Create a new place",
         modal: true,
-        position: "top",
+        position: "bottom",
         buttons: {
+             "Cancel": function() {
+                //$('#field').trigger('autocompletechanged');
+                $(this).dialog("close");
+            },
             "Create": function() {
                 var bValid = true;//newplace_form_name_input.val() !== '' || newplace_form_address_input.val() !== '';
                 // TODO: any client side validation?
@@ -164,10 +168,6 @@ $(function(){
                 else {
                     // TODO: inform user to input a name or location
                 }
-            },
-            "Cancel": function() {
-                //$('#field').trigger('autocompletechanged');
-                $(this).dialog("close");
             }
         }
     });
