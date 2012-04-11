@@ -23,6 +23,7 @@ from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 from onlyinpgh.common.core.rendering import render_viewmodels_as_ul, render_safe
 
+import re
 
 def render_admin_page(safe_content, context_instance=None):
     '''
@@ -293,6 +294,7 @@ def page_edit_event(request, id=None):
     Edit an Event. If id is None, the form is for a new Event entry.
     '''
     org = request.session.get('current_org')
+    initial = {}
     if id is not None:
         instance = get_object_or_404(Event, id=id)
         if not org or not org_owns(org, instance):
@@ -301,32 +303,25 @@ def page_edit_event(request, id=None):
         instance = None
         if not org:
             return redirect('orgadmin-home')
+        if org and org.establishments.count() == 1:
+            initial['place'] = org.establishments.all()[0].id
 
-    initial_place = None
-    print request.POST, request.FILES
     if request.POST or request.FILES:
-        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance)
+        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance, initial=initial)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
-        else:
-            print form._errors
-        # TODO: fix this "initial_selected" hack for autocomplete display
-        initial_place_id = request.POST.get('place')
-        if initial_place_id:
-            try:
-                initial_place = Place.objects.get(id=initial_place_id)
-            except Place.DoesNotExist:
-                pass
-        elif instance and instance.place:
-            initial_place = instance.place
     else:
-        form = SimpleEventForm(instance=instance)
-        if instance and instance.place:
-            initial_place = instance.place
+        form = SimpleEventForm(instance=instance, initial=initial)
 
-    if initial_place is not None:
-        initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+    # TODO: awesome "initial_selected" hack for autocomplete display!!!!
+    match = re.search('name="place" value="(\d+)"', form.as_ul())
+    if match:
+        try:
+            initial_place = Place.objects.get(id=match.group(1))
+            initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+        except Place.DoesNotExist:
+            initial_selected = None
     else:
         initial_selected = None
 

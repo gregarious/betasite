@@ -387,8 +387,13 @@ class SimpleSpecialForm(SpecialForm):
         if instance and 'tags' not in initial:
             initial['tags'] = ', '.join([tag.name for tag in instance.tags.all()])
 
+        place_choices = organization.establishments.all()
+        if 'place' not in initial and (not instance or not instance.place):
+            if place_choices.count() == 1:
+                initial['place'] = place_choices[0]
+
         super(SimpleSpecialForm, self).__init__(*args, **kwargs)
-        self.fields['place'].queryset = organization.establishments.all()
+        self.fields['place'].queryset = place_choices
 
     def clean_tags(self):
         '''
