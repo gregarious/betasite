@@ -3,7 +3,7 @@ import csv
 import tempfile
 from PIL import Image
 import urllib2 as urllib
-from cStringIO import StringIO
+from StringIO import StringIO
 
 from django.core.files import File
 
@@ -70,9 +70,10 @@ def imagefile_from_url(url):
         'jpeg': 'jpg',
         'jpg': 'jpg',
         'png': 'png',
+        'gif': 'gif',
     }
     im = Image.open(StringIO(urllib.urlopen(url).read()))
-    suffix = '.' + suffix_map.get(im.format.lower(), 'jpg')
+    suffix = '.' + suffix_map.get(im.format.lower(), im.format.lower())
     tmp = tempfile.NamedTemporaryFile(prefix='', suffix=suffix)
     im.save(tmp)
     return File(tmp)

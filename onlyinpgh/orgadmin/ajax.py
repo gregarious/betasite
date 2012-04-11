@@ -44,7 +44,7 @@ def _autocomplete_response(place_choices, term, limit=4):
     return [
         {'id': p.id,
          'name': p.name,
-         'image_url': p.image_url or '/media/img/p/default-place.png',
+         'image_url': p.image.url if p.image else '/media/img/p/default-place.png',
          'address': p.location.address if p.location else '',
          'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
         }

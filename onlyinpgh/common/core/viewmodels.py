@@ -107,11 +107,13 @@ class ViewModel(object):
         the internal request. Use set_request for this.
         '''
         # when a date/time/datetime is encountered, don't flatten it
-        date_handler = FlattenHandler('isoformat', lambda obj: obj)
-        # same for FieldFiles
-        fieldfile_handler = FlattenHandler('file', lambda obj: obj)
+        # date_handler = FlattenHandler('isoformat', lambda obj: obj)
+        # # same for FieldFiles
+        # fieldfile_handler = FlattenHandler('file', lambda obj: obj)
 
-        data = self.to_data(custom_handlers=(date_handler, fieldfile_handler,))
+        # data = self.to_data(custom_handlers=(date_handler, fieldfile_handler,))
+        data = dict([(key, val) for key, val in self.__dict__.items()
+                        if not key.startswith('_')])
         return RequestContext(request, data) if request else Context(data)
 
 

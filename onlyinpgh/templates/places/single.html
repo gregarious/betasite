@@ -10,10 +10,9 @@ Context variables:
     featured_special: 	Offer object (optional)
 {% endcomment %}
 
-{% load thumbnail %}
 <div class="item-thumb">
 	{% if place.image %}
-	<img class="thumbnail" alt="{{place.name}}" src="{{place.image}}"/>
+	<img class="thumbnail" alt="{{place.name}}" src="{{place.image.url}}"/>
 	{% else %}
 	<img class="thumbnail" alt="{{place.name}}" src="/media/img/p/default-place.png"/>
 	{% endif %}
