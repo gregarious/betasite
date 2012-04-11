@@ -684,7 +684,7 @@
       "is_active": true, 
       "is_superuser": true, 
       "is_staff": true, 
-      "last_login": "2012-04-10 20:49:08", 
+      "last_login": "2012-04-10 21:08:04", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$99255$e5124ef5594500b99786e432e547d60b87072b44", 
@@ -1854,6 +1854,19 @@
     }
   }, 
   {
+    "pk": 271, 
+    "model": "places.location", 
+    "fields": {
+      "town": "East Washington", 
+      "country": "US", 
+      "longitude": "-80.234337", 
+      "state": "PA", 
+      "postcode": "", 
+      "address": "", 
+      "latitude": "40.171747"
+    }
+  }, 
+  {
     "pk": 218, 
     "model": "places.location", 
     "fields": {
@@ -1864,6 +1877,19 @@
       "postcode": "15213", 
       "address": "", 
       "latitude": "40.444597"
+    }
+  }, 
+  {
+    "pk": 270, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.953664", 
+      "state": "PA", 
+      "postcode": "", 
+      "address": "", 
+      "latitude": "40.445617"
     }
   }, 
   {
@@ -2192,6 +2218,19 @@
     }
   }, 
   {
+    "pk": 273, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Hopwood", 
+      "country": "US", 
+      "longitude": "-79.702163", 
+      "state": "PA", 
+      "postcode": "15401", 
+      "address": "123 Buttermilk Ln", 
+      "latitude": "39.862400"
+    }
+  }, 
+  {
     "pk": 22, 
     "model": "places.location", 
     "fields": {
@@ -2254,6 +2293,19 @@
       "postcode": "15213", 
       "address": "128 Oakland Ave", 
       "latitude": "40.441645"
+    }
+  }, 
+  {
+    "pk": 266, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.926310", 
+      "state": "PA", 
+      "postcode": "15206", 
+      "address": "130 S Whitfield St", 
+      "latitude": "40.461028"
     }
   }, 
   {
@@ -4168,6 +4220,19 @@
     }
   }, 
   {
+    "pk": 272, 
+    "model": "places.location", 
+    "fields": {
+      "town": "West View", 
+      "country": "US", 
+      "longitude": "-80.030192", 
+      "state": "PA", 
+      "postcode": "15229", 
+      "address": "386 Perry Hwy", 
+      "latitude": "40.517697"
+    }
+  }, 
+  {
     "pk": 160, 
     "model": "places.location", 
     "fields": {
@@ -4597,6 +4662,19 @@
     }
   }, 
   {
+    "pk": 268, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.880476", 
+      "state": "PA", 
+      "postcode": "15238", 
+      "address": "423 Fox Chapel Rd", 
+      "latitude": "40.522379"
+    }
+  }, 
+  {
     "pk": 186, 
     "model": "places.location", 
     "fields": {
@@ -4948,6 +5026,19 @@
     }
   }, 
   {
+    "pk": 269, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-79.947676", 
+      "state": "PA", 
+      "postcode": "15213", 
+      "address": "4729 Ellsworth Ave", 
+      "latitude": "40.448258"
+    }
+  }, 
+  {
     "pk": 202, 
     "model": "places.location", 
     "fields": {
@@ -4997,6 +5088,19 @@
       "postcode": "15213", 
       "address": "5000 Forbes Ave", 
       "latitude": "40.444423"
+    }
+  }, 
+  {
+    "pk": 267, 
+    "model": "places.location", 
+    "fields": {
+      "town": "Pittsburgh", 
+      "country": "US", 
+      "longitude": "-80.002053", 
+      "state": "PA", 
+      "postcode": "15222", 
+      "address": "510 Market St", 
+      "latitude": "40.441433"
     }
   }, 
   {
@@ -5533,6 +5637,25 @@
     }
   }, 
   {
+    "pk": 400, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:36", 
+      "description": "<p><b>Alumni Hall</b> at the <a href=\"/pages/w/103721419666144\">University of Pittsburgh</a> is a <a href=\"/pages/w/137104802976972\">Pittsburgh History and Landmarks Foundation</a> Historic Landmark that was formerly known as the <b>Masonic Temple</b> in <a href=\"/pages/w/107849519242700\">Pittsburgh</a>. Constructed in 1914-1915, it was designed by renowned architect <a href=\"/pages/w/113339828715130\">Benno Janssen</a> of Janssen & Abbot Architects. Other buildings in <a href=\"/pages/w/107849519242700\">Pittsburgh\u2019s</a> <a href=\"/pages/w/120017098044789\">Oakland</a> Cultural District designed by Janssen include the <a href=\"/pages/w/103110366395904\">Pittsburgh Athletic Association</a>, <a href=\"/pages/w/112061378812569\">Mellon Institute</a>, and Pitt\u2019s <a href=\"/pages/w/111017818950110\">Eberly Hall</a> (which was known as Alumni Hall prior to 1998).</p><p>The building\u2019s design is that of a classical temple with a well-defined base, midsection and ornamental terra cotta pediment, topped with a clay tile roof. The structure is steel, clad primarily in limestone with terra cotta details. The rear elevation is brick.</p><h2>Dimensions</h2><p>Alumni Hall spans 200 feet (61 m) along <a href=\"/pages/w/110225835694913\">Fifth Avenue</a> on Pitt\u2019s campus and runs 120 feet (37 m) deep. It is nine stories high with two-story spaces throughout, has 98,000 square feet (9,100 m2) of functional space as well as an additional 12,000 square feet (1,100 m2) accommodating entrances, corridors, stairwells, and elevators. There are three main entrances on Fifth, Lytton, and Tennyson Avenues.</p>", 
+      "tags": [], 
+      "url": "", 
+      "image": "img/p/UQuRLL.gif", 
+      "fb_id": "108904389133986", 
+      "hours": "", 
+      "phone": "", 
+      "twitter_username": "", 
+      "location": 270, 
+      "parking": "", 
+      "listed": false, 
+      "name": "Alumni Hall"
+    }
+  }, 
+  {
     "pk": 346, 
     "model": "places.place", 
     "fields": {
@@ -5572,6 +5695,25 @@
       "parking": "", 
       "listed": false, 
       "name": "Alumni House"
+    }
+  }, 
+  {
+    "pk": 403, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:44", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "image": "", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "", 
+      "twitter_username": "", 
+      "location": 273, 
+      "parking": "", 
+      "listed": false, 
+      "name": "AmVets Post 103"
     }
   }, 
   {
@@ -6142,6 +6284,25 @@
     }
   }, 
   {
+    "pk": 396, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:44", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "image": "", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "", 
+      "twitter_username": "", 
+      "location": 266, 
+      "parking": "", 
+      "listed": false, 
+      "name": "CLP - East Liberty"
+    }
+  }, 
+  {
     "pk": 220, 
     "model": "places.place", 
     "fields": {
@@ -6617,6 +6778,25 @@
       "parking": "", 
       "listed": true, 
       "name": "Church of Jesus Christ of Latter Day Saints"
+    }
+  }, 
+  {
+    "pk": 399, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:28", 
+      "description": "", 
+      "tags": [], 
+      "url": "www.ascensionpittsburgh.org", 
+      "image": "img/p/xcrxhU.jpg", 
+      "fb_id": "111584942214189", 
+      "hours": "", 
+      "phone": "+1 (412) 621-4361", 
+      "twitter_username": "", 
+      "location": 269, 
+      "parking": "", 
+      "listed": false, 
+      "name": "Church of The Ascension"
     }
   }, 
   {
@@ -7281,6 +7461,25 @@
     }
   }, 
   {
+    "pk": 397, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:56", 
+      "description": "Located at 510 Market Street, Fairmont Pittsburgh is situated in the heart of Downtown Pittsburgh and within walking distance to the city\u2019s thriving Cultural District, the newly renovated Market Square, eclectic shopping and world-class sporting venues.  The Four Diamond, 185-room property is LEED certified at the Gold level and features a contemporary art and industry design theme.", 
+      "tags": [], 
+      "url": "www.fairmont.com/pittsburgh", 
+      "image": "img/p/oGoatH.jpg", 
+      "fb_id": "169064927035", 
+      "hours": "", 
+      "phone": "+1 412 773 8800", 
+      "twitter_username": "", 
+      "location": 267, 
+      "parking": "lot\nvalet\n", 
+      "listed": false, 
+      "name": "Fairmont Pittsburgh"
+    }
+  }, 
+  {
     "pk": 119, 
     "model": "places.place", 
     "fields": {
@@ -7304,22 +7503,22 @@
     }
   }, 
   {
-    "pk": 246, 
+    "pk": 57, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-04-10 20:52:52", 
+      "dtcreated": "2012-04-10 20:49:49", 
       "description": "Family House, a non-profit organization in Pittsburgh, PA, provides a special \"home away from home\" for patients and families who are in Pittsburgh for treatment of serious or life-threatening illnesses.", 
       "tags": [
         2, 
         57
       ], 
-      "url": "http://www.familyhouse.org", 
-      "image": "img/p/eAgFG8.jpg", 
+      "url": "http://www.familyhouse.org/", 
+      "image": "img/p/Pl_6qB.jpg", 
       "fb_id": "306452702240", 
       "hours": "", 
-      "phone": "", 
+      "phone": "(412) 647-7777", 
       "twitter_username": "", 
-      "location": 22, 
+      "location": 55, 
       "parking": "", 
       "listed": true, 
       "name": "Family House"
@@ -7348,22 +7547,22 @@
     }
   }, 
   {
-    "pk": 57, 
+    "pk": 246, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-04-10 20:49:49", 
+      "dtcreated": "2012-04-10 20:52:52", 
       "description": "Family House, a non-profit organization in Pittsburgh, PA, provides a special \"home away from home\" for patients and families who are in Pittsburgh for treatment of serious or life-threatening illnesses.", 
       "tags": [
         2, 
         57
       ], 
-      "url": "http://www.familyhouse.org/", 
-      "image": "img/p/Pl_6qB.jpg", 
+      "url": "http://www.familyhouse.org", 
+      "image": "img/p/eAgFG8.jpg", 
       "fb_id": "306452702240", 
       "hours": "", 
-      "phone": "(412) 647-7777", 
+      "phone": "", 
       "twitter_username": "", 
-      "location": 55, 
+      "location": 22, 
       "parking": "", 
       "listed": true, 
       "name": "Family House"
@@ -8989,6 +9188,25 @@
     }
   }, 
   {
+    "pk": 401, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:41", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "image": "img/p/ngWvbH.png", 
+      "fb_id": "215736895125587", 
+      "hours": "", 
+      "phone": "", 
+      "twitter_username": "", 
+      "location": 271, 
+      "parking": "", 
+      "listed": false, 
+      "name": "Lew Hays Pony Field"
+    }
+  }, 
+  {
     "pk": 108, 
     "model": "places.place", 
     "fields": {
@@ -10071,13 +10289,13 @@
       "dtcreated": "2012-04-10 20:49:47", 
       "description": "", 
       "tags": [
-        6, 
         15, 
         16, 
-        52, 
-        53, 
+        55, 
         54, 
-        55
+        53, 
+        52, 
+        6
       ], 
       "url": "", 
       "image": "img/p/3w8S90.jpg", 
@@ -10336,30 +10554,6 @@
     }
   }, 
   {
-    "pk": 226, 
-    "model": "places.place", 
-    "fields": {
-      "dtcreated": "2012-04-10 20:52:34", 
-      "description": "PNC Bank, a member of The PNC Financial Services Group, is one of the nation\u2019s largest diversified financial services organizations, serving approximately 5.8 million customers through 2,900 branches and 6,800 ATMs in 19 states (and Washington, D.C.). \n\nFor more than 150 years, we have been committed to providing our clients with great service and powerful financial expertise to help them meet their financial goals. We offer a wide range of services for all our customers, from individuals and small businesses, to corporations and government entities. No matter how simple or complicated your needs, we're sure to have the products, knowledge and resources necessary for financial success.\n\nWeb: www.pnc.com\nTwitter: www.twitter.com/pncnews\nYouTube: www.youtube.com/pnc\n\nUpdated:  4/7/12", 
-      "tags": [
-        10, 
-        11, 
-        47, 
-        48
-      ], 
-      "url": "www.pnc.com", 
-      "image": "img/p/jomqzO.jpg", 
-      "fb_id": "224986157558341", 
-      "hours": "", 
-      "phone": "(412) 683-7161", 
-      "twitter_username": "", 
-      "location": null, 
-      "parking": "", 
-      "listed": true, 
-      "name": "PNC Bank"
-    }
-  }, 
-  {
     "pk": 178, 
     "model": "places.place", 
     "fields": {
@@ -10378,6 +10572,30 @@
       "phone": "(412) 621-0300", 
       "twitter_username": "", 
       "location": 170, 
+      "parking": "", 
+      "listed": true, 
+      "name": "PNC Bank"
+    }
+  }, 
+  {
+    "pk": 226, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 20:52:34", 
+      "description": "PNC Bank, a member of The PNC Financial Services Group, is one of the nation\u2019s largest diversified financial services organizations, serving approximately 5.8 million customers through 2,900 branches and 6,800 ATMs in 19 states (and Washington, D.C.). \n\nFor more than 150 years, we have been committed to providing our clients with great service and powerful financial expertise to help them meet their financial goals. We offer a wide range of services for all our customers, from individuals and small businesses, to corporations and government entities. No matter how simple or complicated your needs, we're sure to have the products, knowledge and resources necessary for financial success.\n\nWeb: www.pnc.com\nTwitter: www.twitter.com/pncnews\nYouTube: www.youtube.com/pnc\n\nUpdated:  4/7/12", 
+      "tags": [
+        10, 
+        11, 
+        47, 
+        48
+      ], 
+      "url": "www.pnc.com", 
+      "image": "img/p/jomqzO.jpg", 
+      "fb_id": "224986157558341", 
+      "hours": "", 
+      "phone": "(412) 683-7161", 
+      "twitter_username": "", 
+      "location": null, 
       "parking": "", 
       "listed": true, 
       "name": "PNC Bank"
@@ -12449,10 +12667,10 @@
     }
   }, 
   {
-    "pk": 190, 
+    "pk": 143, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-04-10 20:51:49", 
+      "dtcreated": "2012-04-10 20:50:54", 
       "description": "Welcome to the official U.S. SUBWAY\u00ae Facebook page. Get to know the restaurant that offers better-for-you choices, built fresh the way you like at a price you'll love.", 
       "tags": [
         6, 
@@ -12460,12 +12678,12 @@
         38
       ], 
       "url": "www.subway.com", 
-      "image": "img/p/iCkMFe.jpg", 
+      "image": "img/p/rhnYku.jpg", 
       "fb_id": "224383614973", 
       "hours": "", 
-      "phone": "(412) 687-6728", 
+      "phone": "(412) 687-7550", 
       "twitter_username": "", 
-      "location": 182, 
+      "location": 138, 
       "parking": "", 
       "listed": true, 
       "name": "Subway"
@@ -12495,10 +12713,10 @@
     }
   }, 
   {
-    "pk": 143, 
+    "pk": 190, 
     "model": "places.place", 
     "fields": {
-      "dtcreated": "2012-04-10 20:50:54", 
+      "dtcreated": "2012-04-10 20:51:49", 
       "description": "Welcome to the official U.S. SUBWAY\u00ae Facebook page. Get to know the restaurant that offers better-for-you choices, built fresh the way you like at a price you'll love.", 
       "tags": [
         6, 
@@ -12506,12 +12724,12 @@
         38
       ], 
       "url": "www.subway.com", 
-      "image": "img/p/rhnYku.jpg", 
+      "image": "img/p/iCkMFe.jpg", 
       "fb_id": "224383614973", 
       "hours": "", 
-      "phone": "(412) 687-7550", 
+      "phone": "(412) 687-6728", 
       "twitter_username": "", 
-      "location": 138, 
+      "location": 182, 
       "parking": "", 
       "listed": true, 
       "name": "Subway"
@@ -12545,14 +12763,14 @@
       "dtcreated": "2012-04-10 20:49:36", 
       "description": "", 
       "tags": [
-        56, 
         6, 
+        16, 
         55, 
         54, 
+        56, 
         53, 
         52, 
-        47, 
-        16
+        47
       ], 
       "url": "www.sunoco.com", 
       "image": "", 
@@ -12857,6 +13075,25 @@
       "parking": "", 
       "listed": true, 
       "name": "The Exchange"
+    }
+  }, 
+  {
+    "pk": 398, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:50", 
+      "description": "Celebrating our Sixth Season of live community and professional performing arts!", 
+      "tags": [], 
+      "url": "www.thehillman.org", 
+      "image": "img/p/N3vYd4.jpg", 
+      "fb_id": "43587112789", 
+      "hours": "Mon-Fri,09:00am - 09:00pm\nSat-Sun,Closed\n", 
+      "phone": "412-968-3040", 
+      "twitter_username": "", 
+      "location": 268, 
+      "parking": "", 
+      "listed": false, 
+      "name": "The Hillman Center for Performing Arts"
     }
   }, 
   {
@@ -13609,6 +13846,25 @@
       "parking": "", 
       "listed": false, 
       "name": "Welch House"
+    }
+  }, 
+  {
+    "pk": 402, 
+    "model": "places.place", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:42", 
+      "description": "", 
+      "tags": [], 
+      "url": "", 
+      "image": "", 
+      "fb_id": "", 
+      "hours": "", 
+      "phone": "", 
+      "twitter_username": "", 
+      "location": 272, 
+      "parking": "", 
+      "listed": false, 
+      "name": "West View VFW Post 2754"
     }
   }, 
   {
@@ -19000,6 +19256,806 @@
       "place": 286, 
       "value": "2012-04-10T20:55:08.742515", 
       "key": "fb_last_synced"
+    }
+  }, 
+  {
+    "pk": 588, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 396, 
+      "value": "fb_event:174330602687048", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 589, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 397, 
+      "value": "fb_event:125882994204318", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 590, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 398, 
+      "value": "fb_event:308873475842113", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 591, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 399, 
+      "value": "fb_event:277431875675466", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 592, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 400, 
+      "value": "fb_event:203070436470769", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 593, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 401, 
+      "value": "fb_event:109806982484940", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 594, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 402, 
+      "value": "fb_event:200495003392491", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 595, 
+    "model": "places.placemeta", 
+    "fields": {
+      "place": 403, 
+      "value": "fb_event:369230166443949", 
+      "key": "dynamically_generated"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:25", 
+      "allday": false, 
+      "name": "A Taste of Oakland presented by Hurley Associates, Hurley Insurance Brokers", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Oakland Central Business District", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/157904_414026435290572_113862470_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:05:25", 
+      "place": null, 
+      "dtend": "2012-05-19 15:30:00", 
+      "dtstart": "2012-05-19 11:30:00", 
+      "description": ""
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:44", 
+      "allday": false, 
+      "name": "After Hours @ the Library: Late Night", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373039_174330602687048_1037564034_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:04:44", 
+      "place": 396, 
+      "dtend": "2012-05-18 22:30:00", 
+      "dtstart": "2012-05-18 19:00:00", 
+      "description": "Join us after the library closes for After Hours @ the Library: Late Night, on Friday, May 18 at 7 pm at Carnegie Library of Pittsburgh - East Liberty! \n\nWhile supporting Carnegie Library of Pittsburgh, you'll get to hang out in this unique, newly renovated library space and enjoy great food and drinks from local restaurants, beer from Full Pint, a library furniture auction, a DJ and dancing, a live band and a one-of-a-kind game of Live Action Where's Waldo game! \n\nTickets: $35 before April 15, $40 before May 15 and $50 at the door (if they don't sell out!!)\n\nFor tickets visit http://www.carnegielibrary.org/afterhours\n\nAfter Hours @ the Library SOLD OUT in February! So buy your tickets now! See you there!"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:47", 
+      "allday": false, 
+      "name": "Avengers VS. X-Men Pre-Release party!", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373025_197279153719073_4818347_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:05:47", 
+      "place": 241, 
+      "dtend": "2012-04-03 21:30:00", 
+      "dtstart": "2012-04-03 20:00:00", 
+      "description": "Issue #1 of the Avengers Vs. X-Men will be on sale at 8 PM this Tuesday. We will have some exclusive variants, posters, and some other fun stuff. There might even be cake!"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:45", 
+      "allday": false, 
+      "name": "Backyard Coops:  Urban Chicken Farming", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "city-wide (see details)", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/158089_288005317935574_881560426_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:04:45", 
+      "place": null, 
+      "dtend": "2012-04-22 16:00:00", 
+      "dtstart": "2012-04-22 13:00:00", 
+      "description": "Interested in keeping backyard chickens?  Join representatives from the Uniontown Poultry Association and a few of their feathered friends to learn about the ins and outs of chicken coops, feed, local laws, and guidelines.\n\nTuesday, March 20 - 6 pm\nCLP - Brooklne\n\nFriday, March 23 - 1 pm\nCLP - Hill District\n\nSaturday, March 24 - 11 am\nCLP - West End\n\nSaturday, March 24 - 2 pm\nCLP - Knoxville\n\nTuesday, March 27 - 6 pm\nCLP - Lawrenceville\n\nSaturday, March 31 - 1 pm\nCLP - Woods Run\n\nWednesday, April 4 - 5 pm\nCLP - Homewood\n\nThursday, April 5 - 6 pm\nCLP - Squirrel Hill\n\nSaturday, April 7 - 1 pm\nCLP - East Liberty\n\nSaturday, April 14 - 10 am\nCLP - Carrick\n\nSaturday, April 21 - 12 noon\nCLP - Allegheny\n\nSunday, April 22 - 1 pm\nPittsburgh Public Market\n\nAll programs are free and open to the public!"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:19", 
+      "allday": false, 
+      "name": "Buy One Get One FREE", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Participating U.S. SUBWAY\u00ae restaurants", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373015_140405242755966_728773757_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:19", 
+      "place": null, 
+      "dtend": "2012-04-30 09:00:00", 
+      "dtstart": "2012-04-01 07:00:00", 
+      "description": "Come in before 9AM and get a FREE 6\u201d sandwich of your choice when you buy any 6\u201d sandwich, this April only. From the toasty Steak, Egg & Cheese to the tender Turkey Breast. That\u2019s right, buy one get one FREE. Hurry in by 9AM to score YOUR FREE sandwich."
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:47", 
+      "allday": false, 
+      "name": "Cave Canem Poetry Reading", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174808_101484189984947_1495075792_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:04:47", 
+      "place": 196, 
+      "dtend": "2012-03-29 21:00:00", 
+      "dtstart": "2012-03-29 19:00:00", 
+      "description": "Carnegie Museum of Art collaborates with Brooklyn-based African American literary and poetry organization Cave Canem for an evening of poetry reading and conversation\nled by poets inspired by Teenie Harris, Photographer: An American Story."
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:12", 
+      "allday": false, 
+      "name": "Chocolate Lava Cakes & A Suitcase Full of Chocolate", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Hillel and Frick Fine Arts Building ", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50280_271851616226494_2061524235_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:05:12", 
+      "place": null, 
+      "dtend": "2012-03-29 21:00:00", 
+      "dtstart": "2012-03-29 18:00:00", 
+      "description": "The 19th Annual JFilm Festival is coming to the University of Pittsburgh!\n\nOn Thursday, March 29, come to Hillel at 6pm for yummy dessert, followed by a quick walk to the Frick Fine Arts building to see the film \"A Suitcase Full of Chocolate\"'\nCheck out the film: http://jfedpgh.org/suitcase.aspx\n\nRSVP to Jamie  (jak158@pitt.edu) or by commenting on this facebook group that you want to reserve a ticket! (we need to buy tickets in advance)"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:10", 
+      "allday": false, 
+      "name": "Chocolate Seder!", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373037_425078507509459_1723942130_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:05:10", 
+      "place": 236, 
+      "dtend": "2012-04-04 22:30:00", 
+      "dtstart": "2012-04-04 19:30:00", 
+      "description": "Indulge yourself before Passover! Join us for the annual Chocolate Seder at Hillel - enjoy candy and chocolate and meet other Jewish students. \n\nEmail Julie at jdc96@pitt.edu for more information"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:39", 
+      "allday": false, 
+      "name": "Consolidation Building Dedication", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373042_251487561613454_1934145077_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:06:39", 
+      "place": 232, 
+      "dtend": "2012-05-02 12:30:00", 
+      "dtstart": "2012-05-02 11:00:00", 
+      "description": "A mission advanced. A legacy honored. A promise kept.\n\nIntroducing the new standard in comprehensive, Veteran-focused care. Please join us on May 2 at 11 a.m. as we ceremoniously cut the ribbon for our Consolidation Building on our University Drive campus.\n\nCheck out our website for building details and a photo slideshow:\nwww.pittsburgh.va.gov/construction/UniversityDrive.asp\n\nWhen programming GPS for directions, use the following information:\nBrackenridge St. & Allequippa St., Pittsburgh, PA 15219"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:54", 
+      "allday": false, 
+      "name": "Everything is Terrible Presents: DoggieWoggiez! PoochieWoochiez!", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Melwood Screening Room", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50260_310509389003759_1014185478_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:05:54", 
+      "place": null, 
+      "dtend": "2012-04-02 23:00:00", 
+      "dtstart": "2012-04-02 20:00:00", 
+      "description": "The artist collective known as \u201cEverything is Terrible!\u201d has made a career out of re-editing found VHS footage, then unleashing it on the Internet. Hip, hilarious, and out-there, the group's newest feature is not only made entirely from dog-related footage, it's been re-configured into a version of Jodorowsky's Holy Mountain, a cult film from 1973. Touring the US with a whacky performance component as well (guys in furry costumes) we guarantee this will be a one-of-a-kind experience. Tickets $10"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:24", 
+      "allday": false, 
+      "name": "Fair an' Lucky, Chris Norman & David Greenberg", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Synod Hall, 125 North Craig Street, 15213. Corner of Fifth Ave and N. Craig Streets in Oakland.", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373037_374939569217845_987307436_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:24", 
+      "place": null, 
+      "dtend": "2012-04-21 21:30:00", 
+      "dtstart": "2012-04-21 20:00:00", 
+      "description": "Final concert on the 2011-2012 season! Pittsburgh favorites Chris Norman & David Greenberg return with a constellation of Celtic and North American folk music as well as some Baroque tunes. Join us to listen to these stars of pipe and violin as they shine again on the stage of Synod Hall.\n\nDetailed program information and tickets: www.rbsp.org; 412-361-2048"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:11", 
+      "allday": false, 
+      "name": "Funniest Jew in NYC Performs at Hillel!", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/161997_391995324146168_1298542086_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:05:11", 
+      "place": 236, 
+      "dtend": "2012-03-31 00:00:00", 
+      "dtstart": "2012-03-30 21:00:00", 
+      "description": "After Shabbat Dinner, Hillel welcomes Aaron Friedman - voted the Funniest Jew in NYC! This event is free for students - bring your friends!!"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:15", 
+      "allday": false, 
+      "name": "Global Month of Service 2012", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Your neighborhood", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373013_119793474810940_618904696_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:15", 
+      "place": null, 
+      "dtend": "2012-04-30 23:30:00", 
+      "dtstart": "2012-04-01 00:00:00", 
+      "description": "By working together, we can create positive change in our own communities and around the world. Join us in reaching our goal of 1 million community service hours per year by 2015.  Every hour can make an enormous difference. Find a local project and sign up to volunteer with us today! http://community.starbucks.com"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:36", 
+      "allday": false, 
+      "name": "Graduation Central", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373041_203070436470769_946438173_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:36", 
+      "place": 400, 
+      "dtend": "2012-04-10 19:00:00", 
+      "dtstart": "2012-04-10 11:00:00", 
+      "description": "It's \"Grad Central\" time again! Graduating students will be able to purchase academic regalia, general graduation announcements, class rings, and diploma frames and covers.\n\nGraduation Central is sponsored by the Pitt Alumni Association in conjunction with The Book Center and the Office of Special Events"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:28", 
+      "allday": false, 
+      "name": "Jam Session with Chris Norman & David Greenberg", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41803_277431875675466_2004818660_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:28", 
+      "place": 399, 
+      "dtend": "2012-04-20 22:00:00", 
+      "dtstart": "2012-04-20 20:00:00", 
+      "description": "EVERYONE IS WELCOME - NO EXPERIENCE NECESSARY\n    FREE, NO REGISTRATION NEEDED\n    COME TO PLAY OR COME TO LISTEN\n    FREE COFFEE BY THE CAFE N' CREAMERY \n    FREE PASTRY COUPONS FOR THE FIRST 50 PEOPLE   \n\nWHAT: play/hear Cape Breton, Scottish & Irish music with two masters of the art form\n\nWHO: instrumentalists, singers, dancers, listeners; anyone familiar with the music  or anyone who wants to give it a try\n\nWHERE: Fellowship Hall, Church of the Ascension\n              4729 Ellsworth Ave, 15213\n              (corner of Ellsworth and Neville St in Oakland)\n\nDETAILS:\n    Chris and David will bring music for those new to playing this music\n    Sponsored by Renaissance and Baroque\n    Coffee and pastries by The Caf\u00e9 'n' Creamery"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:53", 
+      "allday": false, 
+      "name": "Lorraine Vullo- Studio Sale", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373044_360734197303404_909199346_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:05:53", 
+      "place": 214, 
+      "dtend": "2012-04-15 17:00:00", 
+      "dtstart": "2012-04-13 16:00:00", 
+      "description": "After more than 30 years of making art, it's time for me to thin the herd by having a studio sale. I have many lovely images tucked away in boxes, closets and a large storage locker. They have been kept in the dark for far too many years. I would love for them to \"see the light\" and fill as many spaces as possible. Please stop by Pittsburgh Filmmakers starting Friday April 13th through Sunday April 15th. Pieces will be marked down significantly from earlier prices.\n\n\nHours:\nFriday, April 13th: 4 - 9pm\nSaturday, April 14th: 10am - 5pm\nSunday, April 15th: 12 - 5pm"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:44", 
+      "allday": false, 
+      "name": "Meet the VA: AmVets Post 103", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/162008_369230166443949_1704825599_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:44", 
+      "place": 403, 
+      "dtend": "2012-04-14 14:00:00", 
+      "dtstart": "2012-04-14 10:00:00", 
+      "description": "Our Outreach team will be at the AmVets Post 103 to answer your VA health care and benefits questions. We'll be set up to help you enroll and get your photo ID plus we'll be doing blood pressure and blood sugar checks."
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:08", 
+      "allday": false, 
+      "name": "Passover Mid-Week Meal", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373033_402671169745018_1771746692_s.jpg", 
+      "listed": true, 
+      "dtmodified": "2012-04-10 21:05:08", 
+      "place": 236, 
+      "dtend": "2012-04-11 21:00:00", 
+      "dtstart": "2012-04-11 18:00:00", 
+      "description": "Come to Hillel for a delicious mid-week kosher for Passover meal.\nIn order to make sure there's plenty of food, please RSVP to Jamie at jak158@pitt.edu by Friday, April 6th."
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:17", 
+      "allday": false, 
+      "name": "SUBWAY\u00ae on The Pitch", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "On AMC", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373015_361201987249841_1140324175_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:17", 
+      "place": null, 
+      "dtend": "2012-04-30 23:00:00", 
+      "dtstart": "2012-04-30 22:00:00", 
+      "description": "How\u2019s this for a pitch?  The series premiere isn\u2019t until Sunday, April 30, but you can watch the SUBWAY\u00ae episode of The Pitch online right now!  Sneak a peek of top ad agencies battling it out in a delicious drama.\n\nGo to http://www.youtube.com/playlist?list=PL1B90C26310B64FFA&feature=plcp to watch."
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:18", 
+      "allday": false, 
+      "name": "SUBWAY\u00ae on The Pitch", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "On AMC", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/373014_215883938513669_1134855890_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:18", 
+      "place": null, 
+      "dtend": "2012-04-09 01:00:00", 
+      "dtstart": "2012-04-08 23:00:00", 
+      "description": "How would you advertise SUBWAY\u00ae?  Tune in to watch two ad agencies compete to answer that question, and catch SUBWAY\u00ae in a special preview of the new series The Pitch on AMC, Sunday April 8th.  Why not get creative yourself and build your favorite SUBWAY\u00ae sub for the occasion?!"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:14", 
+      "allday": false, 
+      "name": "Starbucks Petites 2 for $2", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Your Local Starbucks", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373012_327722050621676_1457643879_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:14", 
+      "place": null, 
+      "dtend": "2012-04-22 22:00:00", 
+      "dtstart": "2012-04-09 05:00:00", 
+      "description": "Starbucks Petites are just the right amount of delicious.  From April 9 \u2013 22 get 2 for $2 at participating stores. \n\nStarbucks Petites are just the right size for those moments when you need a little something sweet, delivering a whopping bite of satisfaction. The Brown Sugar Walnut Tart, Cherry Pie and Raspberry Truffle Cake Pop Petite \u2013 we have a treat for every sweet craving."
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:07", 
+      "allday": false, 
+      "name": "The Bubbe Club!", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "Hillel JUC", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-ash2/373014_182473725205240_1011232650_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:05:07", 
+      "place": null, 
+      "dtend": "2012-04-15 16:00:00", 
+      "dtstart": "2012-04-15 14:00:00", 
+      "description": "Do you enjoy crocheting, and/or knitting, or would you like to learn? You are in luck! On Sunday, April 15, 2012, the Hillel JSU Arts and Culture committee is having The Bubbe Club meet to crochet, knit, drink tea, and just relax before the end of the semester. We will also be able to give beginner lessons.\n \nIf you are interested in attending, please e-mail Jamie at jak158@pitt.edu."
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:42", 
+      "allday": false, 
+      "name": "Veterans Employment Outreach Day", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/static-ak/rsrc.php/v1/yi/r/zSnTif5Rf_V.png", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:42", 
+      "place": 402, 
+      "dtend": "2012-04-20 14:30:00", 
+      "dtstart": "2012-04-20 09:00:00", 
+      "description": "Veterans are invited to attend presentations and individual information sessions on civil service employment opportunities with the Commonwealth of Pennsylvania.\n\nMake sure to bring your resume, transcripts and DD214! There is free parking on 8-Perryville Bus Line.\n\nVA Pittsburgh's Outreach team will also be on hand to answer questions about VA benefits and health care services.\n\nQuestions? Call 412-565-7666 or visit the Commission's website at www.scsc.state.pa.us"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:05:50", 
+      "allday": false, 
+      "name": "Western Pennsylvania Garden and Landscape Symposium", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174862_308873475842113_1081337258_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:05:50", 
+      "place": 398, 
+      "dtend": "2012-04-14 16:30:00", 
+      "dtstart": "2012-04-14 08:00:00", 
+      "description": "Join Phipps, Penn State Extension and Shady Side Academy for a day of discussion and presentations from special guests, as well as opportunities to shop for unique plants and accessories, at the Shady Side Academy in the Hillman Center for Performing Arts in Fox Chapel.\n\nRegister by contacting us at sbertovich@phipps.conservatory.org or 412/441-4442, ext. 3925. Tickets cost $99 per person before March 23, 2012 and $115 after; includes continental breakfast and lunch. A limited number of scholarships are also available. Call 412/441-4442, ext. 3925 for an application.  \n\nSCHEDULE\n\n(Full Audience)\n\nGarden Marketplace\nShady Side Ice Skating Rink\n8:30\u20139 a.m.\n\nRegistration/Continental Breakfast\nHillman Center for Performing Arts\n9 a.m.\n\nWelcome/Introductions\nHillman Center for Performing Arts\n9:15\u201310:30 a.m. \n\n(All Lectures Take Place at the Hillman Center for Performing Arts)\n\nForgotten Elements of Good Design: Texture, Movement and Fragrance\nDan Hinkley\n10:45 a.m.\u20131:30 p.m.\nFar from being static, sterile and frozen in time, a garden is a dynamic entity that ebbs and flows throughout the seasons and years.  Dan Hinkley will discuss how to take advantage of these changes while siting plants in the landscape. Using inspiration from nature, as well as imagery from his garden, he will show you how to employ and gain enjoyment from movement, texture and fragrance.\n\n(Choose a Track for the Following Portion of the Day\u2019s Schedule)\n\nTrack A\n\nShrubs Through the Season\nRuth Rogers Clausen\n10:45\u201311:45 a.m.\nAs the seasons change, so should your garden, which often gains interest from shrubs selected for their color, textural foliage and, in many cases, their flowers, fruits and fall color. This talk examines some of the best specimens for growing in the Pittsburgh area, as well as more recent introductions to the marketplace. Combinations and potential companions will also be covered.\n\nGarden Marketplace and Ten Minute Tips\nVarious Local Experts\nNoon\u201312:45 p.m.\n\nLunch\n12:45\u20131:30 p.m.\n\nTrack B\n\nGarden Marketplace and Ten Minute Tips\nVarious Local Experts\n10:45\u201311:30 a.m.\n\nLunch\n11:30 a.m. \u2013 12:15 p.m.\n\nWiser Living Through Gardening: Using Edibles in the Landscape\nBarbara Pleasant\n12:30\u20131:30 p.m.\nOrganic gardening is just the beginning for a new generation of gardeners. When growing food becomes a central element of your life, the pursuit of a truly sustainable garden becomes a primary goal. In this presentation, Barbara will explore what organic means in terms of soil care and selecting crops and varieties that thrive when grown in the Pittsburgh area.\n\n(Full Audience)\n\nSmall Garden Smarts\nKirk Brown\n1:45\u20132:45 p.m. \nSmall gardens are opportunities for big ideas. The fundamentals of elements and principles of design help sell the bigger concepts of quality of life, sustainable practices and resource management. This talk covers how to combine horticulture with hardscape, mixed borders with vegetable production, and seating with containers to create beautiful courtyards, pocket retreats, verandas, and more on a budget.\n\nPlant Marriages: Exceptional Combinations of Foliage and Flowers\nDan Hinkley\n2:50\u20134 p.m. \nUsing images from the gardens he has created\u2014Heronswood and Windcliff\u2014and drawing on his experiences working in natural and crafted landscapes around the world, Dan Hinkley will share the personal parameters he references when siting plants in the garden. He will also discuss how his attention to scale, height, differential, repetition, and communication between landscape components has resulted in a more satisfying garden through the seasons.\n\nConcluding Remarks\n4 p.m.\n\nThis conference qualifies for Landscape Architecture CEUs, four recertification credits for Pennsylvania Certified Horticulturist, and elective credits for Phipps\u2019 Sustainable Horticulture and Landscape & Garden Design certificate programs.\n\nSPEAKERS\n\nKirk Brown is a graduate of Cornell University and a recipient of the Pennsylvania Nursery and Landscape Association Green Achiever Award for advancing horticulture in Pennsylvania. He serves as business manager of the award-winning Joanne Kostecky Garden Design, Inc., is the author of Landscape Contractor\u2014which is distributed to high school guidance programs throughout the U.S. and Canada\u2014 and is the secretary and executive committee member for the Garden Writers Association. Kirk has also been chairman of the Penn State/PLNA winter education conference committee, part of the marketing committee for the American Nursery and Landscape Association, and a judge of major exhibits for the Philadelphia Flower Show.\n\nRuth Rogers Clausen\u2019s Perennials for American Gardens received the 1990 Quill and Trowel Award from the Garden Writers Association. She has written for the American Garden guide series, which includes Perennial Gardening with the New York Botanical Garden, Annual Gardening with the Missouri Botanical Garden, and Trees with the Chicago Botanic Garden. A former horticulture editor for Country Living Gardener, she has also contributed to Country Gardens, Horticulture and Organic Gardening. Ruth was trained in horticulture at Studley College in England and received her M.S. in botany from Kent State University. Since 1976, she has free-lanced as a teacher, lecturer and author in the U.S. and Canada.\n\nDan Hinkley\u2019s fascination with plants goes back to his childhood in Michigan, where he studied horticulture before moving west to Washington to earn his master\u2019s degree. He writes for numerous horticultural publications and is in high demand as a speaker throughout North America, Europe, Australia, New Zealand, and Japan. Dan has received the Scott Medal, the Liberty Hyde Bailey Award and the Veitch Memorial Medal, among other awards. Founder of the original Heronswood Nursery, he now brings his expertise to Monrovia Growers, as well as to several design firms, including Gustafson Guthrie Nichol, Portico, and the Berger Partnership, where he serves as a horticultural consultant.\n\nBorn and raised in Mobile, Alabama, Barbara Pleasant is a four-time winner of Garden Globe awards from the Garden Writers Association and her 2010 article on organic pest control recently won a FOLIO Eddie award. She has written numerous books on a wide range of subjects from vegetables to weeds. Her newest book, Starter Vegetable Gardens, presents a compelling argument for growing a beautiful, productive garden filled with vegetables and herbs. Barbara is also a contributing editor for Mother Earth News, for which she has written the top-rated \u201cGardening Know-How\u201d column for several years."
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:04:56", 
+      "allday": false, 
+      "name": "Wings of Hope Gifting Gala", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/174567_125882994204318_335435539_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:04:56", 
+      "place": 397, 
+      "dtend": "2012-04-14 22:30:00", 
+      "dtstart": "2012-04-14 18:30:00", 
+      "description": "6:30pm Cocktails, Dinner and dancing to follow.\nDress: Formal/Cocktail attire\nThere is a butterfly motif - so, think spring!"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "events.event", 
+    "fields": {
+      "dtcreated": "2012-04-10 21:06:41", 
+      "allday": false, 
+      "name": "Wounded Warrior Amputee Softball game", 
+      "tags": [], 
+      "url": "", 
+      "place_primitive": "", 
+      "image_url": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/41606_109806982484940_1688110791_s.jpg", 
+      "listed": false, 
+      "dtmodified": "2012-04-10 21:06:41", 
+      "place": 401, 
+      "dtend": "2012-04-21 16:00:00", 
+      "dtstart": "2012-04-21 13:30:00", 
+      "description": "Wounded Warrior Amputee Softball team vs. State Correctional Institution Greene Softball team.\n\nAdults - $20 | Children 12 and under - $5\nAll proceeds go directly to the team. To get tickets, go to www.woundedwarriorssoftball.com or call 412-835-7387.\n\nFood and beverages can be purchased at the concession stand. Limited bleacher seats are available. Bring your lawn chairs and blankets for field seating.\n\nFor more information about the team, visit www.woundedwarrioramputeesoftballteam.org."
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "174330602687048", 
+      "event": 1, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "288005317935574", 
+      "event": 2, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "101484189984947", 
+      "event": 3, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "125882994204318", 
+      "event": 4, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "182473725205240", 
+      "event": 5, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "402671169745018", 
+      "event": 6, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "425078507509459", 
+      "event": 7, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "391995324146168", 
+      "event": 8, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "271851616226494", 
+      "event": 9, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "414026435290572", 
+      "event": 10, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "197279153719073", 
+      "event": 11, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "308873475842113", 
+      "event": 12, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "360734197303404", 
+      "event": 13, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "310509389003759", 
+      "event": 14, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "327722050621676", 
+      "event": 15, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "119793474810940", 
+      "event": 16, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "361201987249841", 
+      "event": 17, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "215883938513669", 
+      "event": 18, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "140405242755966", 
+      "event": 19, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "374939569217845", 
+      "event": 20, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "277431875675466", 
+      "event": 21, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "203070436470769", 
+      "event": 22, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "251487561613454", 
+      "event": 23, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "109806982484940", 
+      "event": 24, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "200495003392491", 
+      "event": 25, 
+      "key": "fb_synced_event"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "events.eventmeta", 
+    "fields": {
+      "value": "369230166443949", 
+      "event": 26, 
+      "key": "fb_synced_event"
     }
   }
 ]
