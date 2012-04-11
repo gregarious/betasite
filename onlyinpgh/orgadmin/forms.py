@@ -83,7 +83,7 @@ class OrgAdminPlaceForm(PlaceForm):
         # manually handle the more complex fields
         exclude = ('location', 'tags', 'hours', 'parking')
         widgets = {
-            'name': TextInput(attrs={'placeholder': "Your place's name"}),
+            'name': TextInput(attrs={}),
             'image': ImageWidget(),
         }
 

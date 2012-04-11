@@ -4,7 +4,7 @@
 
 {% csrf_token %}
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.name.label_tag }}
         </div>
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.location.label_tag }}
         </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="field-container first">
+    <div class="field-container last">
         <div class="field-label">
             {{ form.phone.label_tag }}
         </div>
@@ -48,12 +48,11 @@
     {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_5 field_hours=form.hr_hours_5 number=5 omit_plus=form.hr_hours_6.value%}
     {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_6 field_hours=form.hr_hours_6 number=6 omit_plus=form.hr_hours_7.value%}
     {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_7 field_hours=form.hr_hours_7 number=7 omit_plus=1 %}
-
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.parking.label_tag }}
         </div>
-        <div class="field">
+        <div class="field" id="parking">
             {{ form.parking }}
             {% for err in form.parking.errors %}
                 <p class="tip error">{{ err }}</p><br />
@@ -61,7 +60,7 @@
         </div>
     </div>
 
-    <div class="field-container first">
+    <div class="field-container last">
         <div class="field-label">
             {{ form.url.label_tag }}
         </div>
@@ -73,7 +72,7 @@
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.image.label_tag }}
         </div>
@@ -85,7 +84,7 @@
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.description.label_tag }}
         </div>
@@ -101,7 +100,7 @@
         <div class="field-label">
             {{ form.tags.label_tag }}
         </div>
-        <div class="field">
+        <div class="field tag-input">
             {{ form.tags }}
             <p class="tip">Enter some terms describing your place like 'bar' or 'retail'</p>
             {% for err in form.tags.errors %}
@@ -110,7 +109,7 @@
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.fb_id.label_tag }}
         </div>
@@ -125,7 +124,7 @@
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.twitter_username.label_tag }}
         </div>

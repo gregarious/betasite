@@ -249,6 +249,13 @@ label {
 	text-transform: uppercase;
 }
 
+#parking {
+	label {
+		text-transform: none;
+		color: #333;
+	}
+}
+
 textarea {
 	height: 6em;
 }
@@ -316,20 +323,13 @@ input[type="checkbox"] {
 .field-container {
 	.row();
 	.clearfix();
-	padding: 2em 0;
-	border-bottom: 1px solid #ccc;
+	padding: 0;
 	margin-bottom: 2em;
 	position: relative;
-	&.last, &.inner {
-		border: none;
-	}
-
-	&.first {
-		padding-top: 0 !important;
-	}
-
-	&.inner {
-		padding: 0;
+	
+	&.last {
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 2em;
 	}
 }
 
@@ -365,7 +365,7 @@ input[type="checkbox"] {
 
 .tip, .error {
 	color: #555;
-	font-size: 0.8em;
+	font-size: 0.75em;
 	display: block;
 
 	&.desc {
@@ -383,6 +383,10 @@ input[type="checkbox"] {
 }
 
 .errorlist {
+	margin-bottom: 1em;
+}
+
+.hour-day-container .tip {
 	margin-bottom: 1em;
 }
 
@@ -454,7 +458,7 @@ input[type="checkbox"] {
 	ul li {
 		float: left;
 		background: @lblue;
-		padding: 0.5em;
+		padding: 0.3em 0.5em;
 		margin: 0 0.5em;
 		.tabs(0.5em);
 
@@ -535,7 +539,7 @@ input[type="checkbox"] {
 .item-actions {
   position: absolute;
   //display: none;
-  top: 0;
+  top: 10px;
   right: 0;
   
   img {
@@ -633,7 +637,7 @@ input[type="checkbox"] {
 	font-size: 1.5em;
 	font-weight: bold;
 	right: -15px;
-	top: 0em;
+	top: 45px;
 }
 
 /* AUTOCOMPLETE -------- */
@@ -650,6 +654,13 @@ input[type="checkbox"] {
 		margin-bottom: 2em;
 		.rounded(0.5em);
 		
+	}
+}
+
+.ui-menu-item {
+	a {
+		display: block;
+		cursor: pointer;
 	}
 }
 
@@ -694,6 +705,10 @@ input[type="checkbox"] {
 	transition: background 0.25s ease-in;  
 }
 
+#ui-active-menuitem {
+	color: @teal;
+}
+
 #id_place-text {
 	.row();
 	margin: 0;
@@ -715,7 +730,7 @@ input[type="checkbox"] {
 	border: 5px #cccccc solid;
 	.rounded(0.6em);
 	padding: 2%;
-	top: -200px;
+	top: -700px !important;
 }
 
 .ui-widget-overlay { 
@@ -733,11 +748,19 @@ input[type="checkbox"] {
 
 .ui-icon.ui-icon-closethick {
 	//.icon();
-	display: none;
+	float: right;
+	position: relative;
+	bottom: 2em;
 }
 
 .ui-dialog-titlebar {
 	color: @teal;
+}
+
+.ui-dialog-buttonset {
+	button {
+		margin: 0 3%;
+	}
 }
 
 #newplace-form {

@@ -11,22 +11,24 @@
             <label>Hours</label>
         </div>
         <div class="double">
+            <p class="tip">Add a set of hours for your place. To add another set, click the '+' to the right.</p>
             <div class="field">
                 {{ field_days }}
-                <p class="tip">Days, like Mon-Fri.</p>
+                <p class="tip">Days e.g. Mon-Fri or Sun.</p>
                 {% for err in field_days.errors %}
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
             </div>
             <div class="field">
                 {{ field_hours }}
-                <p class="tip">Hours, like 9am-5pm</p>
+                <p class="tip">Hours e.g. 9am-5pm or Closed</p>
                 {% for err in field_hours.errors %}
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
+                {% if not omit_plus %}
+                    <a href="#" class="add-hour-row-btn">+</a>
+                {% endif %}
             </div>
-        </div>
-        {% if not omit_plus %}
-        <a href="#" class="add-hour-row-btn">+</a>
-        {% endif %}
+            
+        </div> <!-- .double -->
     </div>

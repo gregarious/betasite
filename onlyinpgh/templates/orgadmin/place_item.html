@@ -18,7 +18,7 @@ Context variables:
 
 <section class="item-content">
 	<h4 class="item-title">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place" class="link-block">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place">
 			{{ place.name }}
 		</a>
 	</h4>
@@ -40,6 +40,6 @@ Context variables:
 </section>
 	
 <div class="item-actions">
-	<img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place" />
-	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="See Place page"><img class="edit-item" src="/static/img/browser.png" alt="See place page" /></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/icon_x.gif" alt="Delete Place" /></a>
 </div>

@@ -9,28 +9,26 @@ Context variables:
 
 <div class="item-thumb">
 	<div class="points">+{{ special.points }}</div>
+	<p class="tip">Total sold: {{special.total_sold}}</p>
 </div>
 
 <section class="item-content">
 
 	<h4 class="item-title">
-		{{special.title}}
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit Special">{{special.title}}</a>
 	</h4>
-
-	<div class="item-actions">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit this special"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit special"/></a>
-		<a href="{% url onlyinpgh.orgadmin.views.page_delete_special special.id %}" title="Delete Special"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Special" /></a>
-	</div>
 
 	<ul class="item-details">
 		<li>at {{special.place.name}}</li>
-		<li>expires {{special.dexpires}}</li>
+		{% if special.dexpires %}
+			<li>Expires {{special.dexpires}}</li>
+		{% endif %}
 	</ul>
 
-	<ul class="tag-list">
-		<li>coolest</li>
-		<li>lovely</li>
-		<li>happy</li>
-		<li>fantastic</li>
-	</ul>
+	{% include "tags/tag_list.html" with tags=special.tags %}
 </section>
+
+<div class="item-actions">
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="See special page"><img class="edit-item" src="/static/img/browser.png" alt="See special page"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_delete_special special.id %}" title="Delete Special"><img class="delete-item" src="/static/img/icon_x.gif" alt="Delete Special" /></a>
+</div>
