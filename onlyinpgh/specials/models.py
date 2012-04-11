@@ -17,7 +17,7 @@ class Special(models.Model, ViewModel):
 
     title = models.CharField(max_length=140)
     description = models.TextField(blank=True)
-    points = models.IntegerField()
+    points = models.IntegerField(blank=True, default=0)
     place = models.ForeignKey(Place)
 
     dexpires = models.DateField(null=True, blank=True)

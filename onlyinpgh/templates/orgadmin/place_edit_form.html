@@ -40,12 +40,11 @@
         </div>
     </div>
 
-
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
-            <label>Hours</label>
+            <label for="id_{{ form.hr_days_1.html_name }}">Hours</label>
         </div>
-        <p class="tip">Add a set of hours for your place. The first field is four hours, the second for days. To add another set, click the '+' to the right.</p>
+        <p class="tip" id="hours-tip">Add a set of hours for your place. The first field is four hours, the second for days. To add another set, click the '+' to the right.</p>
         <div class="double hour-day-container">
             <div class="field">
                 <p class="tip">Days e.g. Mon-Fri or Sun.</p>
@@ -225,11 +224,11 @@
 
     <div class="field-container first">
         <div class="field-label">
-            {{ form.tags.label_tag }}
+            <label for="id_{{ form.tags.html_name }}">Tags</label>
         </div>
         <div class="field tag-input">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your place like 'bar' or 'retail'</p>
+            <p class="tip">Enter some terms describing your place such as 'bar, food, casual'.</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -238,31 +237,33 @@
 
     <div class="field-container">
         <div class="field-label">
-            {{ form.fb_id.label_tag }}
+            <label for="id_{{ form.fb_id.html_name }}">Facebook</label>
         </div>
         <div class="field">
             <div class="social-input">
                 {{ form.fb_id }}
                 <img src="/static/img/facebook.png" alt="Facebook icon" />
-                {% for err in form.fb_id.errors %}
-                    <p class="tip error">{{ err }}</p><br />
-                {% endfor %}
             </div>
+            {% for err in form.fb_id.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+            <p class="tip social">Enter your Facebook ID. Not sure how to find it? Go to your Facebook page and copy and paste the number or username as seen <a href="/static/img/fb-id-instructions.png" title="Find your Facebook ID">here</a>.</p>
         </div>
     </div>
 
     <div class="field-container">
         <div class="field-label">
-            {{ form.twitter_username.label_tag }}
+            <label for="id_{{ form.twitter_username.html_name }}">Twitter</label>
         </div>
         <div class="field">
             <div class="social-input">
                 {{ form.twitter_username }}
                 <img src="/static/img/twitter.png" alt="Facebook icon" />
-                {% for err in form.twitter_username.errors %}
-                    <p class="tip error">{{ err }}</p><br />
-                {% endfor %}
             </div>
+            {% for err in form.twitter_username.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+            <p class="tip social">Without the @ symbol, what is your Twitter name?</p>
         </div>
     </div>
 

@@ -226,9 +226,10 @@ p {
 
 #site-footer {
 	.row();
-	position: absolute;
+	margin: 1em;
+	/*position: absolute;
 	bottom: 10px;
-	right: 10px;
+	right: 10px;*/
 }
 
 /* CONTENT ----------- */
@@ -245,10 +246,6 @@ p {
 form {
 	margin-top: 2em;
 	.clearfix();
-
-	.tip a {
-		color: @dblue;
-	}
 }
 
 label {
@@ -388,13 +385,12 @@ input[type="checkbox"] {
 	color: #555;
 	font-size: 0.75em;
 	display: block;
+	margin: 0.3em 0 0.3em 1%;
 
 	&.desc {
 		margin-top: 2%;
 		font-style: italic;
 	}
-
-	margin-left: 2%;
 }
 
 .error, .errorlist {
@@ -409,10 +405,17 @@ input[type="checkbox"] {
 	margin: 1em;
 }
 
-.hour-day-container .tip {
-	margin-bottom: 1em;
+.hour-day-container {
+	margin-bottom: 0.5em;
 }
 
+.tip.social {
+	clear: both;
+}
+
+#hours-tip {
+	margin: 0 0 1em 27.5% ;
+}
 /* SIGNUP ------ */
 
 /*#hours {
@@ -432,28 +435,27 @@ input[type="checkbox"] {
 
 .home-nav ul li {
 
-	&:hover {
-		background: #f1f1f1;
-	}
-	&:active {
-		background: #e8e8e8;
-	}
-
 	.clearfix();
-	.row();
+	.column(4);
 	//.column(4);
 	margin: 0 1%;
-	padding: 2%;
 
 	.menu-icon {
 		font-size: 1.1em;
 		text-align: center;
-		.column(4);
+		padding: 3% 2%;
+
+		&:hover {
+			background: #e8e8e8;
+		}
+		&:active {
+			background: #e1e1e1;
+		}
 	}
 
 	.menu-description {
 		font-size: 0.9em;
-		.column(8);
+		//.column(8);
 		margin-top: 1em;
 
 	}
@@ -584,13 +586,12 @@ input[type="checkbox"] {
   text-align: center;
 
   .thumbnail {
-    border: 2px #e1e1e1 solid;
+    border: 2px #fff solid;
     display: block;
     margin: 0 1%;
-    width: 100%;
-    height: auto;
-    min-height: 70px;
+    max-width: 130px;
     max-height: 130px;
+    overflow: hidden;
   }
 
 }

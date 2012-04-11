@@ -401,6 +401,8 @@ def page_edit_special(request, id=None):
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_specials')
+        else:
+            print form.errors
     else:
         form = SimpleSpecialForm(organization=org, instance=instance)
 
