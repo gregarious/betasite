@@ -315,16 +315,22 @@ h1 {
   margin: 0;
 }
 h2,
+h3,
 .ui-dialog-title {
   color: #2c525d;
   /*font-family: 'DroidSerifRegular';*/
 
-  font-size: 1.3em;
-  font-style: italic;
   font-weight: normal;
   margin: 0 1em;
   padding-bottom: 0.1em;
   text-shadow: 0.07em 0.07em 0 #ffffff;
+}
+h2 {
+  font-size: 1.3em;
+  font-style: italic;
+}
+h3 {
+  font-size: 1em;
 }
 a {
   color: #b83939;
@@ -397,6 +403,10 @@ p {
   text-shadow: 0.01em 0.01em 0 #000;
   text-align: center;
   padding-bottom: 8px;
+}
+.welcome-text {
+  margin-top: 2em;
+  text-align: center;
 }
 /* ELEMENTS --------- */
 .points {
@@ -662,7 +672,7 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  padding: 0;
+  padding-right: 2em;
   margin-bottom: 2em;
   position: relative;
 }
@@ -695,6 +705,11 @@ input[type="checkbox"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  /*	&.login {
+		.column(7);
+		//margin-right: 30%;
+	}*/
+
 }
 .double .field {
   width: 46.5%;
@@ -715,24 +730,41 @@ input[type="checkbox"] {
   margin-top: 10px;
 }
 .tip,
-.error {
+.error,
+.errorlist {
   color: #555;
   font-size: 0.75em;
   display: block;
   margin-left: 2%;
 }
 .tip.desc,
-.error.desc {
+.error.desc,
+.errorlist.desc {
   margin-top: 2%;
   font-style: italic;
 }
-.error {
+.error,
+.errorlist {
   color: #C34327;
   font-style: italic;
   float: left;
 }
 .errorlist {
-  margin-bottom: 1em;
+  *zoom: 1;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em;
+}
+.errorlist:before,
+.errorlist:after {
+  content: "";
+  display: table;
+}
+.errorlist:after {
+  clear: both;
 }
 .hour-day-container .tip {
   margin-bottom: 1em;
@@ -893,13 +925,9 @@ input[type="checkbox"] {
   background: #4b7699;
 }
 .prev-next {
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  width: 90%;
   *zoom: 1;
-  margin-top: 1em;
+  margin: 1em 5% 0;
 }
 .prev-next:before,
 .prev-next:after {
@@ -909,8 +937,7 @@ input[type="checkbox"] {
 .prev-next:after {
   clear: both;
 }
-.next,
-.submit-item {
+.next {
   float: right;
 }
 .back {

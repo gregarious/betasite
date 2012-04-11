@@ -126,9 +126,10 @@ Context variables:
             {% endfor %}	
 		</div>
 	</div> <!-- event url -->
-
-	<input type="submit" class="submit-item" value="Save Changes" />
-	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
+    <nav class="prev-next">
+	   <input type="submit" value="Save Changes" class="next" />
+	   <a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
+    </nav>
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
