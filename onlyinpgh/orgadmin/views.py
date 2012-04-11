@@ -49,7 +49,6 @@ def authentication_required(view_func):
             return HttpResponseRedirect(reverse('orgadmin-login'))
     return wrapper
 
-
 def org_owns(org, instance):
     '''
     Ensures the given organization has access to edit instance.
@@ -60,6 +59,10 @@ def org_owns(org, instance):
     '''
     establishments = org.establishments.all()
 
+    # short circuit for event instances: also allow Role ownership over the event
+    if isinstance(instance, Event):
+        if Role.objects.filter(event=instance, organization=org, role_type='owner').count() > 0:
+            return True
     try:
         return instance.place in establishments
     except AttributeError:
@@ -341,7 +344,9 @@ def page_edit_event(request, id=None):
 def page_list_events(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
-    events = Event.objects.filter(place__in=establishments)
+    
+    events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
+    events = set(events).union(Event.objects.filter(place__in=establishments))
     items = [EventFeedItem(event) for event in events]
     list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
