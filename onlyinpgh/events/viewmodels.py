@@ -2,8 +2,6 @@ from django.contrib.auth.models import User
 from onlyinpgh.common.core.viewmodels import ViewModel
 from django.template import RequestContext, Context
 
-DEFAULT_IMAGE_URL = 'http://www.lolmore.com/wp-content/gallery/cute-animals-awesome-overload/013q.jpg'
-
 
 class EventFeedItem(ViewModel):
     '''
@@ -20,7 +18,7 @@ class EventFeedItem(ViewModel):
                 location
                     address
             place_primitive (should only exist if place doesn't)
-            image_url
+            image
             [tags]
                 id
                 name
@@ -40,12 +38,10 @@ class EventFeedItem(ViewModel):
         print 'to data on', unicode(self.event)
         data = super(EventFeedItem, self).to_data(*args, **kwargs)
         event_data = data.get('event')
-        keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image_url', 'tags', 'place_primitive'))
+        keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image', 'tags', 'place_primitive'))
         for k in event_data.keys():
             if k not in keepers:
                 event_data.pop(k)
-        if not event_data['image_url']:
-            event_data['image_url'] = DEFAULT_IMAGE_URL
 
         place_data = data['event'].get('place')
         keepers = set(('id', 'name', 'location'))
@@ -73,7 +69,7 @@ class EventDetail(ViewModel):
                 location
                     address
             place_primitive (should only exist if place doesn't)
-            image_url
+            image
             tags
                 id
                 name
@@ -97,8 +93,6 @@ class EventDetail(ViewModel):
             for k in place_data.keys():
                 if k not in ('id', 'name'):
                     place_data.pop(k)
-        if not data['event']['image_url']:
-            data['event']['image_url'] = DEFAULT_IMAGE_URL
 
         data['is_attending'] = self.event.attendee_set.\
                         filter(is_attending=True).count() > 0

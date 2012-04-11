@@ -6,11 +6,16 @@ Compatible ViewModel: events.viewmodels.EventDetail
 Context variables:
 	event:	Event ViewModel
 {% endcomment %}
+{% load thumbnail %}
 
 <div class="single-container" id="event-single">
 	<header class="single-header">
 		<div class="item-thumb">
-			<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
+			{% if event.image %}
+			<img alt="{{event.name}}" class="thumbnail" src="{{event.image.url}}" />
+			{% else %}
+			<img alt="{{event.name}}" class="thumbnail" src="/static/img/default-event.png" />
+			{% endif %}
 			<div class="favorite">	
 				{% if is_attending %}
 					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">

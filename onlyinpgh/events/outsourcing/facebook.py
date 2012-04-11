@@ -8,6 +8,7 @@ from onlyinpgh.places import abbreviate_state
 from onlyinpgh.outsourcing.places import resolve_location
 
 from dateutil import parser as dtparser
+from onlyinpgh.common.utils import imagefile_from_url
 from onlyinpgh.common.utils.time import localize
 
 from django.db import transaction
@@ -168,7 +169,8 @@ def fbevent_to_event(fbevent, allow_place_import=True, save=False):
             # worst case, we get a location string to use as a primitive
             e.place_primitive = fbevent.get_field('location', '')
     try:
-        e.image_url = fbevent.get_picture_url()
+        im_url = fbevent.get_picture_url(size='large')
+        e.image = imagefile_from_url(im_url)
     except IOError:
         # TODO: log network error
         pass

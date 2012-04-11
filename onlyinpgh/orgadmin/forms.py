@@ -295,6 +295,9 @@ class SimpleEventForm(EventForm):
 
     class Meta(EventForm.Meta):
         exclude = ('tags',)
+        widgets = {
+            'image': ImageWidget(),
+        }
 
     def clean_tags(self):
         '''

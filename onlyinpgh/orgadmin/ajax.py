@@ -45,7 +45,7 @@ def _autocomplete_response(place_choices, term, limit=4):
     results = []
     for _, p in sorted(zip(match_status, place_choices))[:limit]:
         thumb = get_std_thumbnail(p.image, 'autocomplete') if p.image else None
-        image_url = thumb.url if thumb else '/media/img/p/default-place.png'
+        image_url = thumb.url if thumb else '/static/img/default-place.png'
         results.append({
             'id': p.id,
              'name': p.name,

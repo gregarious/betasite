@@ -14,7 +14,7 @@ Context variables:
 	{% if place.image %}
 	<img class="thumbnail" alt="{{place.name}}" src="{{place.image.url}}"/>
 	{% else %}
-	<img class="thumbnail" alt="{{place.name}}" src="/media/img/p/default-place.png"/>
+	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png"/>
 	{% endif %}
 	{% if is_favorite %}
 		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
