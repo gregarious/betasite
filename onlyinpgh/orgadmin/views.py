@@ -213,6 +213,14 @@ def page_setup_place_wizard(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
+        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
+        fb_id = request.POST.get('fb_id')
+        if 'facebook.com' in fb_id:
+            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
+        twitter = request.POST.get('twitter_username').strip()
+        if twitter.startswith('@'):
+            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
+
         form = OrgAdminPlaceForm(data=request.POST, files=request.FILES,
             instance=instance)
         if form.is_valid():
@@ -252,6 +260,13 @@ def page_edit_place(request, id):
         return HttpResponseForbidden()
 
     if request.POST or request.FILES:
+        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
+        fb_id = request.POST.get('fb_id')
+        if 'facebook.com' in fb_id:
+            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
+        twitter = request.POST.get('twitter_username').strip()
+        if twitter.startswith('@'):
+            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
         form = OrgAdminPlaceForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
