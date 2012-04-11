@@ -12,6 +12,7 @@ from onlyinpgh.common.core.rendering import render_viewmodel
 from django.views.decorators.csrf import csrf_protect
 
 from onlyinpgh.orgadmin.forms import SimplePlaceForm
+from onlyinpgh.common.utils import get_std_thumbnail
 
 
 ### Shotcuts for authentication ###
@@ -41,15 +42,18 @@ def _autocomplete_response(place_choices, term, limit=4):
         else:
             match_status.append(3)
 
-    return [
-        {'id': p.id,
-         'name': p.name,
-         'image_url': p.image.url if p.image else '/media/img/p/default-place.png',
-         'address': p.location.address if p.location else '',
-         'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
-        }
-        for p in [p for _, p in sorted(zip(match_status, place_choices))][:limit]
-    ]
+    results = []
+    for _, p in sorted(zip(match_status, place_choices))[:limit]:
+        thumb = get_std_thumbnail(p.image, 'autocomplete') if p.image else None
+        image_url = thumb.url if thumb else '/media/img/p/default-place.png'
+        results.append({
+            'id': p.id,
+             'name': p.name,
+             'image_url': image_url,
+             'address': p.location.address if p.location else '',
+             'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
+        })
+    return results
 
 
 @authentication_required_403

@@ -6,7 +6,7 @@ import urllib2 as urllib
 from StringIO import StringIO
 
 from django.core.files import File
-
+from sorl.thumbnail import get_thumbnail
 
 url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
@@ -77,3 +77,18 @@ def imagefile_from_url(url):
     tmp = tempfile.NamedTemporaryFile(prefix='', suffix=suffix)
     im.save(tmp)
     return File(tmp)
+
+
+def get_std_thumbnail(image, type):
+    '''
+    Returns a sorl ImageFile for a preset thumbnail type
+    types:
+        - 'autocomplete' (50x50, center crop)
+        - 'standard' (130x130, center crop)
+    '''
+    if type.lower() == 'autocomplete':
+        return get_thumbnail(image, '50x50', crop='center')
+    elif type.lower() == 'standard':
+        return get_thumbnail(image, '130x130', crop='center')
+    else:
+        return None
