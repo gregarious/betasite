@@ -1175,7 +1175,9 @@ input[type="checkbox"] {
   clear: both;
 }
 #ui-active-menuitem {
-  color: #2c525d;
+  color: #b83939;
+  background: none;
+  border: none;
 }
 #id_place-text {
   width: 100%;
@@ -1223,6 +1225,25 @@ input[type="checkbox"] {
   padding: 2%;
   top: -700px !important;
 }
+.ui-dialog .ui-widget-header {
+  background: none;
+  border: none;
+}
+.ui-dialog .ui-widget-content {
+  border: none;
+  background: none;
+}
+.ui-dialog .ui-dialog-buttonset {
+  *zoom: 1;
+}
+.ui-dialog .ui-dialog-buttonset:before,
+.ui-dialog .ui-dialog-buttonset:after {
+  content: "";
+  display: table;
+}
+.ui-dialog .ui-dialog-buttonset:after {
+  clear: both;
+}
 .ui-widget-overlay {
   background: #aaaaaa url('/static/img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x;
   position: absolute;
@@ -1236,15 +1257,14 @@ input[type="checkbox"] {
 .ui-dialog-title {
   border-bottom: 1px #2c525d solid;
   margin: 0;
+  font-style: italic;
   display: block;
+  color: #2c525d;
 }
 .ui-icon.ui-icon-closethick {
   float: right;
   position: relative;
   bottom: 2em;
-}
-.ui-dialog-titlebar {
-  color: #2c525d;
 }
 .ui-dialog-buttonset button {
   margin: 0 3%;
@@ -1252,7 +1272,7 @@ input[type="checkbox"] {
 #newplace-form input {
   margin-bottom: 1em;
 }
-/* JQUERY TIMEPICKER ------ */
+/* JQUERY DATETIMEPICKER ------ */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }

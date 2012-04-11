@@ -20,10 +20,10 @@ Context variables:
 			{{ form.name.label_tag }}
 		</div>
 		<div class="field">
+			{{ form.name }}
             {% for err in form.name.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-			{{ form.name }}
 		</div>
 	</div> <!-- name -->
 
