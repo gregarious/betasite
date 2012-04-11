@@ -110,11 +110,11 @@ $(function(){
 
     newplace_dialog_form.dialog({
         autoOpen: false,
-        height: 500,
-        width: 350,
+        height: 550,
+        width: 450,
         title: "Create a new place",
         modal: true,
-        position: "bottom",
+        position: "top",
         buttons: {
             "Create": function() {
                 var bValid = true;//newplace_form_name_input.val() !== '' || newplace_form_address_input.val() !== '';

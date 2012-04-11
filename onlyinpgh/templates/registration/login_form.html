@@ -1,5 +1,11 @@
 <img src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
 
+<!-- <h2>Are you a business in Oakland?</h2> -->
+<hgroup class="welcome-text">
+	<h2>Are you a local business or organization in Oakland?</h2>
+	<h3> Sign up or login to start getting the word out about yourself on Scenable!</h3>
+</hgroup>
+
 <form method="post" action="{{ form_action }}">
 {% csrf_token %}
 {% comment %}
@@ -9,37 +15,34 @@ form fields:
 
 Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
 {% endcomment %}
-	<!-- <h2>Are you a business in Oakland?</h2> -->
-	<hgroup>
-		<h2>Are you a local business or organization in Oakland?</h2>
-		<h3> Sign up or login to start getting the word out about yourself on Scenable!</h3>
-	</hgroup>
 
-	<div class="field-container inner">
+	<div class="field-container">
 		<div class="field-label">
 			{{ form.username.label_tag }}
 		</div>
-		<div class="field">
+		<div class="field login">
 			{{ form.username }}
 		</div>
 	</div> 
 
-	<div class="field-container inner">
+	<div class="field-container">
 		<div class="field-label">
 			{{ form.password.label_tag }}
 		</div>
-		<div class="field">
+		<div class="field login">
 			{{ form.password }}
 			<p class="tip"><a href="#">Forgot your password or username?</a></p>
+			{% if form.non_field_errors %}
+				{{ form.non_field_errors }}
+			{% endif %}
 		</div>
+
 	</div>
 	
-	{% if form.non_field_errors %}
-		<div class="tip error">{{ form.non_field_errors }}</div>
-	{% endif %}
-
-	<input type="submit" value="Sign Up" class="submit-item back" />
-	<input type="submit" value="Login" class="submit-item" />
+	<nav class="prev-next">
+		<input type="submit" value="Sign Up" class="submit-item back" />
+		<input type="submit" value="Login" class="submit-item next" />
+	</nav>
 
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>

@@ -28,15 +28,22 @@ h1 {
 	margin: 0;
 }
 
-h2, .ui-dialog-title {
+h2, h3, .ui-dialog-title {
 	color: @teal;
 	/*font-family: 'DroidSerifRegular';*/
-	font-size: 1.3em;
-	font-style: italic;
 	font-weight: normal;
 	margin: 0 1em;
 	padding-bottom: 0.1em;	
 	text-shadow: 0.07em 0.07em 0 #ffffff;
+}
+
+h2 {
+	font-size: 1.3em;
+	font-style: italic;
+}
+
+h3 {
+	font-size: 1em;
 }
 
 a {
@@ -127,6 +134,11 @@ p {
 	text-shadow: 0.01em 0.01em 0 #000;
 	text-align: center;
 	padding-bottom: 8px;
+}
+
+.welcome-text {
+	margin-top: 2em;
+	text-align: center;
 }
 
 
@@ -233,6 +245,7 @@ p {
 form {
 	margin-top: 2em;
 	.clearfix();
+
 	.tip a {
 		color: @dblue;
 	}
@@ -323,7 +336,7 @@ input[type="checkbox"] {
 .field-container {
 	.row();
 	.clearfix();
-	padding: 0;
+	padding-right: 2em;
 	margin-bottom: 2em;
 	position: relative;
 	
@@ -340,6 +353,11 @@ input[type="checkbox"] {
 
 .field, .double {
 	.column_r(9);
+
+/*	&.login {
+		.column(7);
+		//margin-right: 30%;
+	}*/
 }
 
 .double .field {
@@ -366,7 +384,7 @@ input[type="checkbox"] {
 	margin-top: 10px;
 }
 
-.tip, .error {
+.tip, .error, .errorlist {
 	color: #555;
 	font-size: 0.75em;
 	display: block;
@@ -379,14 +397,16 @@ input[type="checkbox"] {
 	margin-left: 2%;
 }
 
-.error {
+.error, .errorlist {
 	color: #C34327;
 	font-style: italic;
 	float: left;
 }
 
 .errorlist {
-	margin-bottom: 1em;
+	.clearfix();
+	.row();
+	margin: 1em;
 }
 
 .hour-day-container .tip {
@@ -491,12 +511,12 @@ input[type="checkbox"] {
 }
 
 .prev-next {
-	.row();
+	width: 90%;
 	.clearfix;
-	margin-top: 1em;
+	margin: 1em 5% 0;
 }
 
-.next, .submit-item {
+.next {
 	float: right;
 }
 
@@ -709,7 +729,9 @@ input[type="checkbox"] {
 }
 
 #ui-active-menuitem {
-	color: @teal;
+	color: @red;
+	background: none;
+	border: none;
 }
 
 #id_place-text {
@@ -728,12 +750,44 @@ input[type="checkbox"] {
 
 /* DIALOG ---------- */
 
+.ui-dialog-titlebar-close {
+	background: green;
+}
+
 .ui-dialog {
 	background: url('@{static_url}img/textures/white-tex.png');
 	border: 5px #cccccc solid;
 	.rounded(0.6em);
 	padding: 2%;
 	top: -700px !important;
+
+	label {
+		font-size: 0.8em;
+		text-transform: none;
+		margin-bottom: 0.5em;
+	}
+
+	input[type="text"] {
+		padding: 0.1em;
+	}
+
+	.field-container {
+		padding-right: 0;
+	}
+
+	.ui-widget-header {
+		background: none;
+		border: none;
+	}
+
+	.ui-widget-content {
+		border: none;
+		background: none;
+	}
+
+	.ui-dialog-buttonset {
+		.clearfix();
+	}
 }
 
 .ui-widget-overlay { 
@@ -746,18 +800,16 @@ input[type="checkbox"] {
 .ui-dialog-title {
 	border-bottom: 1px @teal solid;
 	margin: 0;
+	font-size: 1.3em;
+	font-style: italic;
 	display: block;
+	color: @teal;
 }
 
 .ui-icon.ui-icon-closethick {
-	//.icon();
 	float: right;
 	position: relative;
 	bottom: 2em;
-}
-
-.ui-dialog-titlebar {
-	color: @teal;
 }
 
 .ui-dialog-buttonset {
@@ -766,17 +818,8 @@ input[type="checkbox"] {
 	}
 }
 
-#newplace-form {
-	label {
 
-	}
-	input {
-		margin-bottom: 1em;
-	}
-}
-
-
-/* JQUERY TIMEPICKER ------ */
+/* JQUERY DATETIMEPICKER ------ */
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }

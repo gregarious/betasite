@@ -4,6 +4,11 @@ Org admin place editing form.
 Context variables:
     form: SimpleEventForm object
     newplace_form: SimplePlaceForm object
+        name
+        address
+        postcode
+        town
+        state
     initial_selected: string for initial place text value if one exists (this is a temporary hack)
     tag_names: another hack for the Tags autocomplete
 {% endcomment %}
@@ -20,10 +25,10 @@ Context variables:
 			{{ form.name.label_tag }}
 		</div>
 		<div class="field">
+			{{ form.name }}
             {% for err in form.name.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-			{{ form.name }}
 		</div>
 	</div> <!-- name -->
 
@@ -116,7 +121,7 @@ Context variables:
 
 	<div class="field-container">
 		<div class="field-label">
-			{{ form.url.label_tag }}
+            <label for="id_{{ form.url.html_name }}">Website</label>
 		</div>
 		<div class="field">
 			{{ form.url }}
@@ -126,15 +131,38 @@ Context variables:
             {% endfor %}	
 		</div>
 	</div> <!-- event url -->
-
-	<input type="submit" class="submit-item" value="Save Changes" />
-	<a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
+    <nav class="prev-next">
+	   <input type="submit" value="Save Changes" class="next" />
+	   <a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
+    </nav>
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
     <form id="newplace-form" action="{% url onlyinpgh.orgadmin.ajax.newplace_form_submission %}" method="POST">
     {% csrf_token %}
-    {{ newplace_form }}
+
+        <div class="field-container">
+            
+                <label for="id_{{ newplace_form.name.html_name }}">Place Name</label>
+            
+                {{newplace_form.name}}
+                {% for err in newplace_form.name.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            
+        </div>
+
+        <div class="field-container">
+            <div class="field-label">
+                <label for="id_{{newplace_form.address.html_name}}">Street Address</label>
+            </div>
+            <div class="field">
+                {{newplace_form.address}}
+                {% for err in newplace_form.address.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div> 
+        </div>
     </form>
     <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
 </div>

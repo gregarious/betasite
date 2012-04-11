@@ -315,16 +315,22 @@ h1 {
   margin: 0;
 }
 h2,
+h3,
 .ui-dialog-title {
   color: #2c525d;
   /*font-family: 'DroidSerifRegular';*/
 
-  font-size: 1.3em;
-  font-style: italic;
   font-weight: normal;
   margin: 0 1em;
   padding-bottom: 0.1em;
   text-shadow: 0.07em 0.07em 0 #ffffff;
+}
+h2 {
+  font-size: 1.3em;
+  font-style: italic;
+}
+h3 {
+  font-size: 1em;
 }
 a {
   color: #b83939;
@@ -397,6 +403,10 @@ p {
   text-shadow: 0.01em 0.01em 0 #000;
   text-align: center;
   padding-bottom: 8px;
+}
+.welcome-text {
+  margin-top: 2em;
+  text-align: center;
 }
 /* ELEMENTS --------- */
 .points {
@@ -662,7 +672,7 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  padding: 0;
+  padding-right: 2em;
   margin-bottom: 2em;
   position: relative;
 }
@@ -695,6 +705,11 @@ input[type="checkbox"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  /*	&.login {
+		.column(7);
+		//margin-right: 30%;
+	}*/
+
 }
 .double .field {
   width: 46.5%;
@@ -715,24 +730,41 @@ input[type="checkbox"] {
   margin-top: 10px;
 }
 .tip,
-.error {
+.error,
+.errorlist {
   color: #555;
   font-size: 0.75em;
   display: block;
   margin-left: 2%;
 }
 .tip.desc,
-.error.desc {
+.error.desc,
+.errorlist.desc {
   margin-top: 2%;
   font-style: italic;
 }
-.error {
+.error,
+.errorlist {
   color: #C34327;
   font-style: italic;
   float: left;
 }
 .errorlist {
-  margin-bottom: 1em;
+  *zoom: 1;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em;
+}
+.errorlist:before,
+.errorlist:after {
+  content: "";
+  display: table;
+}
+.errorlist:after {
+  clear: both;
 }
 .hour-day-container .tip {
   margin-bottom: 1em;
@@ -893,13 +925,9 @@ input[type="checkbox"] {
   background: #4b7699;
 }
 .prev-next {
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  width: 90%;
   *zoom: 1;
-  margin-top: 1em;
+  margin: 1em 5% 0;
 }
 .prev-next:before,
 .prev-next:after {
@@ -909,8 +937,7 @@ input[type="checkbox"] {
 .prev-next:after {
   clear: both;
 }
-.next,
-.submit-item {
+.next {
   float: right;
 }
 .back {
@@ -1148,7 +1175,9 @@ input[type="checkbox"] {
   clear: both;
 }
 #ui-active-menuitem {
-  color: #2c525d;
+  color: #b83939;
+  background: none;
+  border: none;
 }
 #id_place-text {
   width: 100%;
@@ -1184,6 +1213,9 @@ input[type="checkbox"] {
   clear: both;
 }
 /* DIALOG ---------- */
+.ui-dialog-titlebar-close {
+  background: green;
+}
 .ui-dialog {
   background: url('/static/img/textures/white-tex.png');
   border: 5px #cccccc solid;
@@ -1195,6 +1227,36 @@ input[type="checkbox"] {
   background-clip: padding-box;
   padding: 2%;
   top: -700px !important;
+}
+.ui-dialog label {
+  font-size: 0.8em;
+  text-transform: none;
+  margin-bottom: 0.5em;
+}
+.ui-dialog input[type="text"] {
+  padding: 0.1em;
+}
+.ui-dialog .field-container {
+  padding-right: 0;
+}
+.ui-dialog .ui-widget-header {
+  background: none;
+  border: none;
+}
+.ui-dialog .ui-widget-content {
+  border: none;
+  background: none;
+}
+.ui-dialog .ui-dialog-buttonset {
+  *zoom: 1;
+}
+.ui-dialog .ui-dialog-buttonset:before,
+.ui-dialog .ui-dialog-buttonset:after {
+  content: "";
+  display: table;
+}
+.ui-dialog .ui-dialog-buttonset:after {
+  clear: both;
 }
 .ui-widget-overlay {
   background: #aaaaaa url('/static/img/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png') 50% 50% repeat-x;
@@ -1209,23 +1271,20 @@ input[type="checkbox"] {
 .ui-dialog-title {
   border-bottom: 1px #2c525d solid;
   margin: 0;
+  font-size: 1.3em;
+  font-style: italic;
   display: block;
+  color: #2c525d;
 }
 .ui-icon.ui-icon-closethick {
   float: right;
   position: relative;
   bottom: 2em;
 }
-.ui-dialog-titlebar {
-  color: #2c525d;
-}
 .ui-dialog-buttonset button {
   margin: 0 3%;
 }
-#newplace-form input {
-  margin-bottom: 1em;
-}
-/* JQUERY TIMEPICKER ------ */
+/* JQUERY DATETIMEPICKER ------ */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
