@@ -375,7 +375,7 @@ class SimpleSpecialForm(SpecialForm):
     tags = forms.CharField(label=u"Tags (comma-separated)", required=False)
 
     class Meta(SpecialForm.Meta):
-        exclude = ('tags',)     # manually handle these
+        exclude = ('tags', 'points')     # manually handle tags
 
     def __init__(self, organization, *args, **kwargs):
         '''

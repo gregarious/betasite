@@ -49,7 +49,7 @@ Context variables:
 
 	<div class="field-container last">
 		<div class="field-label">
-			<label>Date</label>
+			<label for="id_{{form.dtstart.html_name}}">Date</label>
 		</div>
 		<div class="double">
             <div class="field">
@@ -107,7 +107,7 @@ Context variables:
 
     <div class="field-container">
         <div class="field-label">
-            {{ form.tags.label_tag }}
+            <label for="id_{{ form.tags.html_name }}">Tags</label>
         </div>
         <div class="field">
             {{ form.tags }}

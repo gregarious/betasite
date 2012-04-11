@@ -34,22 +34,11 @@
         </div>
     </div>
 
-<!--     <div class="field-container first">
+    <div class="field-container last">
         <div class="field-label">
-            {{ form.points.label_tag }}
+            <label for="id_{{form.dtstart.html_name">Dates</label>
         </div>
-        <div class="field">
-            {{ form.points }}
-            {% for err in form.points.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
-        </div>
-    </div> -->
-
-        <div class="field-container">
-            <div class="field-label">
-                {{ form.dstart.label_tag }}
-            </div>
+        <div class="double">
             <div class="field">
                 {{ form.dstart }}
                 <p class="tip">Special begins</p>
@@ -57,18 +46,13 @@
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
             </div>
-        </div>
-
-    <div class="field-container last">
-        <div class="field-label">
-            {{ form.dexpires.label_tag }}
-        </div>
-        <div class="field">
-            {{ form.dexpires }}
-            <p class="tip">Special ends</p>
-            {% for err in form.dexpires.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
+            <div class="field">
+                {{ form.dexpires }}
+                <p class="tip">Special expires</p>
+                {% for err in form.dexpires.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
         </div>
     </div>
 
@@ -98,11 +82,11 @@
 
     <div class="field-container tags">
         <div class="field-label">
-            {{ form.tags.label_tag }}
+            <label for="id_{{ form.tags.html_name }}">Tags</label>
         </div>
         <div class="field">
             {{ form.tags }}
-            <p class="tip">Add some terms describing your special - like 'restaurant' or 'theater'.
+            <p class="tip">Add some terms describing your special like 'theater, culture, ballet'.
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}

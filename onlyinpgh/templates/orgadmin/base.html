@@ -34,7 +34,7 @@
 </head>
 
 <body>
-
+<div class="wrap">
 	<header id="site-header">
 		<div class="wrap">
 <!-- 		<div class="third">&nbsp;</div>
@@ -59,17 +59,17 @@
 				{% endif %}
 			{% endif %}
 		</div>
-	</div>
+		</div>
 	</header>
-	<div class="wrap">
-	<div id="site-content">
-	    {{content}}
-	</div>
 
-	<!-- <footer id="site-footer">
+	
+		<div id="site-content">
+		    {{content}}
+		</div>
+	</div>
+	<footer id="site-footer">
 		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C.</p>
-	</footer> -->
-</div>
+	</footer>
 	<!-- Scenable Scripts -->
 	<!-- <script type="text/javascript" src="{{STATIC_URL}}js/libs/jquery.scrollTo.js"></script> -->
 	<script src="{{STATIC_URL}}js/ui/jquery.ui.core.js"></script>
