@@ -247,7 +247,7 @@ def page_edit_place(request, id):
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
 
-    if request.POST:
+    if request.POST or request.FILES:
         form = OrgAdminPlaceForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
@@ -303,15 +303,17 @@ def page_edit_event(request, id=None):
             return redirect('orgadmin-home')
 
     initial_place = None
-    if request.POST:
+    print request.POST, request.FILES
+    if request.POST or request.FILES:
         form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
-
+        else:
+            print form._errors
         # TODO: fix this "initial_selected" hack for autocomplete display
         initial_place_id = request.POST.get('place')
-        if initial_place_id is not None:
+        if initial_place_id:
             try:
                 initial_place = Place.objects.get(id=initial_place_id)
             except Place.DoesNotExist:
