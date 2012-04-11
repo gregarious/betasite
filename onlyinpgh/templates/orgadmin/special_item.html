@@ -8,18 +8,18 @@ Context variables:
 {% endcomment %}
 
 <div class="item-thumb">
-	<div class="points">+{{ special.points }}</div>
+	<div class="points">+{{special.points}}</div>
 	<p class="tip">Total sold: {{special.total_sold}}</p>
 </div>
 
 <section class="item-content">
 
 	<h4 class="item-title">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit Special">{{special.title}}</a>
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit Special">{{special.title|truncatewords:10}}</a>
 	</h4>
 
 	<ul class="item-details">
-		<li>at {{special.place.name}}</li>
+		<li>at {{special.place.name|truncatewords:10}}</li>
 		{% if special.dexpires %}
 			<li>Expires {{special.dexpires}}</li>
 		{% endif %}

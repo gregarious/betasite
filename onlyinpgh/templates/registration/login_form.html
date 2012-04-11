@@ -9,6 +9,11 @@ form fields:
 
 Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
 {% endcomment %}
+	<!-- <h2>Are you a business in Oakland?</h2> -->
+	<hgroup>
+		<h2>Are you a local business or organization in Oakland?</h2>
+		<h3> Sign up or login to start getting the word out about yourself on Scenable!</h3>
+	</hgroup>
 
 	<div class="field-container inner">
 		<div class="field-label">
@@ -33,6 +38,8 @@ Feel free to clear out the rest of this: I just have it here for the sake of bei
 		<div class="tip error">{{ form.non_field_errors }}</div>
 	{% endif %}
 
-	<input type="submit" value="Login" class="submit-item"  />
+	<input type="submit" value="Sign Up" class="submit-item back" />
+	<input type="submit" value="Login" class="submit-item" />
+
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>
