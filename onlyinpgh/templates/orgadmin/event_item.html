@@ -4,9 +4,14 @@ Template to render a particular event as a item in an orgadmin list.
 Context variables:
 	event:			Event ViewModel
 {% endcomment %}
+{% load thumbnail %}
 
 <div class="item-thumb">
-	<img class="thumbnail" alt="{{event.name}}" src="{{event.image_url}}" />
+	{% thumbnail event.image "130x130" crop="center" as im %}
+	<img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+	{% empty %}
+	<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+	{% endthumbnail %}
 </div>
 
 <section class="item-content">

@@ -15,8 +15,7 @@ class Organization(models.Model):
     establishments = models.ManyToManyField(Place, verbose_name=u'Establishments owned',
         blank=True, null=True)
 
-    image_url = models.URLField(u'Link to image',
-        max_length=400, blank=True)
+    image = models.ImageField(upload_to='img/o', null=True, blank=True)
     url = models.URLField('Website', blank=True)
     fb_id = models.CharField('Facebook ID', max_length=50, blank=True)
     twitter_username = models.CharField(u'Twitter username', max_length=15, blank=True)

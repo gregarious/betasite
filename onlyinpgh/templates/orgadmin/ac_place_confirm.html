@@ -13,7 +13,7 @@ Template variables:
 		{% thumbnail place.image "130x130" crop="center" as im %}
 	    <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" width="{{im.width}}" height="{{im.height}}"/>
 	    {% empty %}
-	    <img class="thumbnail" alt="{{place.name}}" src="/media/img/p/default-place.png" width="130" height="130">
+	    <img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" width="130" height="130">
 	    {% endthumbnail %}
 	</a>
 </div>

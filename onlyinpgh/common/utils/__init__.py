@@ -85,6 +85,8 @@ def get_std_thumbnail(image, type):
     types:
         - 'autocomplete' (50x50, center crop)
         - 'standard' (130x130, center crop)
+
+    Will throw IOError if image file doesn't exist.
     '''
     if type.lower() == 'autocomplete':
         return get_thumbnail(image, '50x50', crop='center')
