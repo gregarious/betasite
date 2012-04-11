@@ -40,14 +40,141 @@
         </div>
     </div>
 
-    {# Print out all 7 day-hours fields. Hacky, but works for now #}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_1 field_hours=form.hr_hours_1 number=1 omit_plus=form.hr_hours_2.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_2 field_hours=form.hr_hours_2 number=2 omit_plus=form.hr_hours_3.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_3 field_hours=form.hr_hours_3 number=3 omit_plus=form.hr_hours_4.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_4 field_hours=form.hr_hours_4 number=4 omit_plus=form.hr_hours_5.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_5 field_hours=form.hr_hours_5 number=5 omit_plus=form.hr_hours_6.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_6 field_hours=form.hr_hours_6 number=6 omit_plus=form.hr_hours_7.value%}
-    {% include "orgadmin/hours_fieldset.html" with field_days=form.hr_days_7 field_hours=form.hr_hours_7 number=7 omit_plus=1 %}
+
+    <div class="field-container inner">
+        <div class="field-label">
+            <label>Hours</label>
+        </div>
+        <p class="tip">Add a set of hours for your place. The first field is four hours, the second for days. To add another set, click the '+' to the right.</p>
+        <div class="double hour-day-container">
+            <div class="field">
+                <p class="tip">Days e.g. Mon-Fri or Sun.</p>
+                {{ form.hr_hours_1 }}
+                {% for err in form.hr_hours_1.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                <p class="tip">Hours e.g. 9am-5pm or Closed</p>
+                {{ form.hr_days_1 }}
+                {% for err in form.hr_days_1.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_2.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if form.hr_hours_2 or form.hr_days_2%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_2 }}
+                {% for err in form.hr_hours_2.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_2 }}
+                {% for err in form.hr_days_2.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_3.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if form.hr_hours_3 or form.hr_days_3%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_3 }}
+                {% for err in form.hr_hours_3.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_3 }}
+                {% for err in form.hr_days_3.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_4.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if form.hr_hours_4 or form.hr_days_4%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_4 }}
+                {% for err in form.hr_hours_4.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_4 }}
+                {% for err in form.hr_days_4.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_5.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if form.hr_hours_5 or form.hr_days_5%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_5 }}
+                {% for err in form.hr_hours_5.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_5 }}
+                {% for err in form.hr_days_5.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_6.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if form.hr_hours_6 or form.hr_days_6%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_6 }}
+                {% for err in form.hr_hours_6.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_6 }}
+                {% for err in form.hr_days_6.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_7.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if form.hr_hours_7 or form.hr_days_7%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_7 }}
+                {% for err in form.hr_hours_7.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_7 }}
+                {% for err in form.hr_days_7.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="field-container">
         <div class="field-label">
             {{ form.parking.label_tag }}
