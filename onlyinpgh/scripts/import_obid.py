@@ -66,7 +66,7 @@ def insert_row(row, idx):
 
     location = Location(address=address, postcode='15213', latitude=lat, longitude=lng)
     # want to resolve location if we have an address worht normalizing and/or we don't have geocoded values
-    if location.address is not None or location.latitude is None or location.longitude is None:
+    if location.address or location.latitude is None or location.longitude is None:
         logging.info('Resolving location "%s"' % unicode(location))
         resolved = resolve_location(location)
         if resolved:
@@ -81,7 +81,7 @@ def insert_row(row, idx):
             except Location.DoesNotExist:
                 location = resolved
                 location.save()
-        elif location.address is not None:
+        else:
             logging.warning('Geocoding failed')
 
     has_corporate_fb = row.get('fb_id', '').startswith('corporate')
@@ -125,7 +125,7 @@ def insert_row(row, idx):
         try:
             places_fb_import.commit_place(place, corporate=has_corporate_fb)
         except places_fb_import.FacebookAPIError as e:
-            logging.error('Facebook API error (fb id %s): %s', (str(place.fb_id), unicode(e)))
+            logging.error('Facebook API error (fb id %s): %s' % (str(place.fb_id), unicode(e)))
         except IOError as e:
             logging.error(unicode(e))
 
