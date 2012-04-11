@@ -18,21 +18,28 @@ Context variables:
 
 <section class="item-content">
 	<h4 class="item-title">
-		{{ place.name }}
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place" class="link-block">
+			{{ place.name }}
+		</a>
 	</h4>
-
-	<div class="item-actions">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place"/></a>
-		<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
-	</div>
-	
 	<ul class="item-details meta">	
 		<li class="address">{{place.location.address}}</li>
-		<li>{{place.phone}}</li>
-		<li>{{place.hours}}</li>
-		<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% if place.phone %}
+			<li>{{place.phone}}</li>
+		{% endif %}
+		{% if place.hours %}
+			<li>{{place.hours}}</li>
+		{% endif %}
+		{% if place.description %}
+			<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% endif %}
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
 </section>
+	
+<div class="item-actions">
+	<img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place" />
+	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
+</div>

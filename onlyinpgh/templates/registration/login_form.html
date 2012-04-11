@@ -1,3 +1,5 @@
+<img src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
+
 <form method="post" action="{{ form_action }}">
 {% csrf_token %}
 {% comment %}
@@ -7,6 +9,7 @@ form fields:
 
 Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
 {% endcomment %}
+
 	<div class="field-container inner">
 		<div class="field-label">
 			{{ form.username.label_tag }}

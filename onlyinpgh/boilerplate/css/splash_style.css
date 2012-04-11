@@ -265,6 +265,7 @@ h1 {
   text-shadow: 0.05em 0.05em 0 #ffffff;
 }
 h2 {
+  font-weight: normal;
   margin-top: 0.4em;
   text-shadow: 0.04em 0.04em 0 #ffffff;
 }
@@ -548,10 +549,16 @@ input[type="submit"]:active {
     border: none;
     padding: 5% 0 0;
   }
+  h1 {
+    font-size: 1.4em;
+  }
 }
 @media screen and (max-width: 520px) {
   #site-title {
     font-size: 4em;
+  }
+  h1 {
+    font-size: 1em;
   }
 }
 @media screen and (max-width: 350px) {

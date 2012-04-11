@@ -44,7 +44,7 @@ jQuery(document).ready( function(){
     loc = location.pathname;
     menu_item = $('#page-nav').find('a[href$="'+loc+'"]');
     
-    if(menu_item.attr('href') == loc) {
+    if(menu_item.attr('href') == loc + '/list') {
         menu_item.addClass('current-page');
     }
 
