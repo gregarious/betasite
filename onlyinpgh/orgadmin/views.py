@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
-from onlyinpgh.events.models import Event
+from onlyinpgh.events.models import Event, Role
 from onlyinpgh.specials.models import Special
 from onlyinpgh.tags.models import Tag
 
@@ -309,7 +309,8 @@ def page_edit_event(request, id=None):
     if request.POST or request.FILES:
         form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance, initial=initial)
         if form.is_valid():
-            form.save()
+            event = form.save()
+            Role.objects.get_or_create(role_type='owner', organization=org, event=event)
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
     else:
         form = SimpleEventForm(instance=instance, initial=initial)
