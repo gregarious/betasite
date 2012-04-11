@@ -77,7 +77,7 @@ class OrgAdminPlaceForm(PlaceForm):
     hr_days_7, hr_hours_7 = forms.CharField(initial=u'', required=False), forms.CharField(initial=u'', required=False)
     parking = forms.MultipleChoiceField(choices=Parking.choices, widget=forms.CheckboxSelectMultiple(), required=False)
 
-    tags = forms.CharField(label=u"Tags (comma-separated)")
+    tags = forms.CharField(label=u"Tags (comma-separated)", required=False)
 
     class Meta(PlaceForm.Meta):
         # manually handle the more complex fields
@@ -284,7 +284,7 @@ class SimpleEventForm(EventForm):
         widget=forms.HiddenInput(),
         required=False)
 
-    tags = forms.CharField()
+    tags = forms.CharField(label=u"Tags (comma-separated)", required=False)
 
     def __init__(self, *args, **kwargs):
         # first set manual initial values from a given model instance
@@ -372,7 +372,7 @@ class SimpleSpecialForm(SpecialForm):
         input_formats=('%m/%d/%Y',),
         widget=TextInput(attrs={'class': 'datepicker-end'}))
 
-    tags = forms.CharField()
+    tags = forms.CharField(label=u"Tags (comma-separated)", required=False)
 
     class Meta(SpecialForm.Meta):
         exclude = ('tags',)     # manually handle these
