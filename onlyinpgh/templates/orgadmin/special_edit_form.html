@@ -151,12 +151,6 @@ $(function(){
                     event.preventDefault();
                 }
         })
-        .focus( function( event ) {
-            var curVal = $(this).val().replace(/\s+$/,'');
-            if(curVal.length > 0 && curVal[curVal.length-1] !== ',') {
-                $(this).val(curVal+', ');
-            }
-        })
         .autocomplete({
             minLength: 1,
             delay: 0,

@@ -311,7 +311,7 @@ def page_edit_event(request, id=None):
         initial_place_id = request.POST.get('place')
         if initial_place_id is not None:
             try:
-                initial_place = Place.objects.get(id=request.POST['place'])
+                initial_place = Place.objects.get(id=initial_place_id)
             except Place.DoesNotExist:
                 pass
         elif instance and instance.place:
@@ -331,6 +331,7 @@ def page_edit_event(request, id=None):
             'form': form,
             'newplace_form': SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
             'initial_selected': initial_selected,
+            'tag_names': [t.name for t in Tag.objects.all()],
         },
         context_instance=context)
     return response_admin_page(content, context)

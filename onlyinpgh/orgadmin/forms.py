@@ -119,7 +119,6 @@ class OrgAdminPlaceForm(PlaceForm):
         # if there's already a location stored in this form's instance, just return it assuming the field hasn't changed
         if self.instance.location:
             if self.instance.location.address.strip() == address:
-                print 'address unchanged'
                 return self.instance.location
 
         # otherwise, we have to create a new location
@@ -253,6 +252,11 @@ class SimpleEventForm(EventForm):
         label=u'End datetime',
         input_formats=('%m/%d/%Y %H:%M %p', '%m/%d/%Y %I:%M %p'),
         widget=TextInput(attrs={'class': 'datetimepicker-end'}))
+
+    # this is a hidden char field becausd we're assuming autocomplete will handle things
+    place = forms.CharField(
+        label=u'Place',
+        widget=forms.HiddenInput())
 
     tags = forms.CharField()
 
