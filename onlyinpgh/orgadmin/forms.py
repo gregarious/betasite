@@ -16,6 +16,30 @@ from onlyinpgh.tags.models import Tag
 from onlyinpgh.outsourcing.places import resolve_location
 from onlyinpgh.outsourcing.apitools import APIError
 
+from sorl.thumbnail import get_thumbnail
+from django.utils.safestring import mark_safe
+
+
+class ImageWidget(forms.FileInput):
+    """
+    An ImageField Widget for django.contrib.admin that shows a thumbnailed
+    image as well as a link to the current one if it hase one.
+    """
+    def render(self, name, value, attrs=None):
+        output = super(ImageWidget, self).render(name, value, attrs)
+        if value and hasattr(value, 'url'):
+            try:
+                mini = get_thumbnail(value, 'x80', upscale=False)
+            except Exception:
+                pass
+            else:
+                output = (
+                    u'<div style="float:left">'
+                    u'<a style="width:%spx;display:block;margin:0 0 10px" class="thumbnail" target="_blank" href="%s">'
+                    u'<img src="%s"></a>%s</div>'
+                    ) % (mini.width, value.url, mini.url, output)
+        return mark_safe(output)
+
 
 class SimpleOrgForm(OrganizationForm):
     '''
@@ -60,6 +84,7 @@ class OrgAdminPlaceForm(PlaceForm):
         exclude = ('location', 'tags', 'hours', 'parking')
         widgets = {
             'name': TextInput(attrs={'placeholder': "Your place's name"}),
+            'image': ImageWidget(),
         }
 
     def __init__(self, geocode_location=True, *args, **kwargs):
