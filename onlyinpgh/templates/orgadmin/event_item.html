@@ -32,7 +32,7 @@ Context variables:
 </section>
 
 <div class="item-actions">
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="See event page"><img class="item-action" src="/static/img/browser.png" alt="See event page"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event page"><img class="item-action" src="/static/img/pencil.png" alt="Edit event"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" title="Delete Event"><img class="item-action" src="/static/img/icon_x.gif" alt="Delete event" /></a>
+	<a href="#" title="See event page"><img class="item-action" src="/static/img/browser.png" alt="view"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" class="delete-item" title="Delete event"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
 </div>

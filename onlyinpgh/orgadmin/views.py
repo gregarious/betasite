@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
-from onlyinpgh.events.models import Event
+from onlyinpgh.events.models import Event, Role
 from onlyinpgh.specials.models import Special
 from onlyinpgh.tags.models import Tag
 
@@ -23,6 +23,7 @@ from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
 from onlyinpgh.common.core.rendering import render_viewmodels_as_ul, render_safe
 
+import re
 
 def render_admin_page(safe_content, context_instance=None):
     '''
@@ -48,7 +49,6 @@ def authentication_required(view_func):
             return HttpResponseRedirect(reverse('orgadmin-login'))
     return wrapper
 
-
 def org_owns(org, instance):
     '''
     Ensures the given organization has access to edit instance.
@@ -59,6 +59,10 @@ def org_owns(org, instance):
     '''
     establishments = org.establishments.all()
 
+    # short circuit for event instances: also allow Role ownership over the event
+    if isinstance(instance, Event):
+        if Role.objects.filter(event=instance, organization=org, role_type='owner').count() > 0:
+            return True
     try:
         return instance.place in establishments
     except AttributeError:
@@ -209,6 +213,14 @@ def page_setup_place_wizard(request, id=None):
             return redirect('orgadmin-home')
 
     if request.POST:
+        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
+        fb_id = request.POST.get('fb_id')
+        if 'facebook.com' in fb_id:
+            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
+        twitter = request.POST.get('twitter_username').strip()
+        if twitter.startswith('@'):
+            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
+
         form = OrgAdminPlaceForm(data=request.POST, files=request.FILES,
             instance=instance)
         if form.is_valid():
@@ -248,6 +260,13 @@ def page_edit_place(request, id):
         return HttpResponseForbidden()
 
     if request.POST or request.FILES:
+        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
+        fb_id = request.POST.get('fb_id')
+        if 'facebook.com' in fb_id:
+            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
+        twitter = request.POST.get('twitter_username').strip()
+        if twitter.startswith('@'):
+            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
         form = OrgAdminPlaceForm(data=request.POST, files=request.FILES, instance=instance)
         if form.is_valid():
             form.save()
@@ -293,6 +312,7 @@ def page_edit_event(request, id=None):
     Edit an Event. If id is None, the form is for a new Event entry.
     '''
     org = request.session.get('current_org')
+    initial = {}
     if id is not None:
         instance = get_object_or_404(Event, id=id)
         if not org or not org_owns(org, instance):
@@ -301,32 +321,26 @@ def page_edit_event(request, id=None):
         instance = None
         if not org:
             return redirect('orgadmin-home')
+        if org and org.establishments.count() == 1:
+            initial['place'] = org.establishments.all()[0].id
 
-    initial_place = None
-    print request.POST, request.FILES
     if request.POST or request.FILES:
-        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance)
+        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance, initial=initial)
         if form.is_valid():
-            form.save()
+            event = form.save()
+            Role.objects.get_or_create(role_type='owner', organization=org, event=event)
             return redirect('onlyinpgh.orgadmin.views.page_list_events')
-        else:
-            print form._errors
-        # TODO: fix this "initial_selected" hack for autocomplete display
-        initial_place_id = request.POST.get('place')
-        if initial_place_id:
-            try:
-                initial_place = Place.objects.get(id=initial_place_id)
-            except Place.DoesNotExist:
-                pass
-        elif instance and instance.place:
-            initial_place = instance.place
     else:
-        form = SimpleEventForm(instance=instance)
-        if instance and instance.place:
-            initial_place = instance.place
+        form = SimpleEventForm(instance=instance, initial=initial)
 
-    if initial_place is not None:
-        initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+    # TODO: awesome "initial_selected" hack for autocomplete display!!!!
+    match = re.search('name="place" value="(\d+)"', form.as_ul())
+    if match:
+        try:
+            initial_place = Place.objects.get(id=match.group(1))
+            initial_selected = render_safe('orgadmin/ac_place_selected.html', place=initial_place)
+        except Place.DoesNotExist:
+            initial_selected = None
     else:
         initial_selected = None
 
@@ -345,7 +359,9 @@ def page_edit_event(request, id=None):
 def page_list_events(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
-    events = Event.objects.filter(place__in=establishments)
+    
+    events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
+    events = set(events).union(Event.objects.filter(place__in=establishments))
     items = [EventFeedItem(event) for event in events]
     list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
