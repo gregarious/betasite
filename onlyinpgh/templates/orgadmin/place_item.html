@@ -40,6 +40,7 @@ Context variables:
 </section>
 	
 <div class="item-actions">
-	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="See Place page"><img class="edit-item" src="/static/img/browser.png" alt="See place page" /></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/icon_x.gif" alt="Delete Place" /></a>
+	<a href="#" title="See place page"><img class="item-action" src="/static/img/browser.png" alt="view"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit place"><img class="item-action" src="/static/img/pencil.png" alt="edit" /></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" class="delete-item" title="Unclaim place"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
 </div>

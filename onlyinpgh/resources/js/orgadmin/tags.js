@@ -13,10 +13,14 @@ $(function(){
         }
 
         $(selector)
+            /* disable TAB from moving to next field if dropdown is open
+             * also, prevent ENTER from submitting the form here. too easy
+             * to accidentally submit the form when the menu is inactive
+             */
             .on( "keydown", function( event ) {
-                if((event.keyCode === $.ui.keyCode.TAB ||
-                    event.keyCode === $.ui.keyCode.ENTER) &&
-                    $(this).data("autocomplete").menu.active ) {
+                if((event.keyCode === $.ui.keyCode.TAB &&
+                    $(this).data("autocomplete").menu.active ) ||
+                    (event.keyCode === $.ui.keyCode.ENTER)) {
                         event.preventDefault();
                     }
             })
