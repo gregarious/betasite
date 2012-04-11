@@ -24,7 +24,7 @@ class Special(models.Model, ViewModel):
     dstart = models.DateField(null=True, blank=True)
 
     total_available = models.IntegerField(null=True, blank=True)
-    total_sold = models.IntegerField(default=0)
+    total_sold = models.IntegerField(default=0, editable=False)
 
     tags = models.ManyToManyField(Tag, blank=True)
 
@@ -34,7 +34,7 @@ class Special(models.Model, ViewModel):
         '''
         data = super(Special, self).to_data(*args, **kwargs)
         data.pop('place_id')
-        data['place'] = self.place.to_data()
+        data['place'] = self.place.to_data(*args, **kwargs)
         data['tags'] = [t.to_data() for t in self.tags.all()]
         return data
 

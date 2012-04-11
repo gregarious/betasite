@@ -57,3 +57,11 @@ US_STATE_MAP = {
     'WV': 'West Virginia',
     'WY': 'Wyoming'
 }
+
+state_name_to_abbrev = dict([(name.lower(), code) for code, name in US_STATE_MAP])
+def abbreviate_state(state_name):
+    '''
+    Translate full state name to abbreviation. Returns None if state not
+    recognized
+    '''
+    return state_name_to_abbrev.get(state_name.lower())

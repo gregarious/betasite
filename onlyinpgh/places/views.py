@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
+from onlyinpgh.common.core.rendering import render_safe
 from onlyinpgh.common.views import page_response, render_main
 
 from onlyinpgh.places.models import Place
@@ -60,11 +61,25 @@ def page_feed(request):
 
     Returns page response with main content set to the feed.
     '''
-    # get a list of rendered items
-    places = Place.objects.all()[:10]
-    items = [PlaceFeedItem(place, user=request.user) for place in places]
+    all_places = Place.listed_objects.all()
+    paginator = Paginator(all_places, 10)
+    try:
+        page_num = int(request.GET.get('p', '1'))
+    except ValueError:
+        page_num = 1
 
-    main = render_main(render_safe('places/main_feed.html', items=items))
+    try:
+        page = paginator.page(page_num)
+    except (EmptyPage, InvalidPage):
+        page = paginator.page(paginator.num_pages)
+
+    items = [PlaceFeedItem(place, user=request.user) for place in page.object_list]
+
+    main = render_main(render_safe('places/main_feed.html',
+        items=items,
+        prev_p=page.previous_page_number() if page.has_previous() else None,
+        next_p=page.next_page_number() if page.has_next() else None))
+
     return page_response(main, request)
 
 
@@ -97,14 +112,14 @@ def page_details(request, pid):
 
 @jsonp_response
 def feed_app(request):
-    places = Place.objects.all()[:10]
+    places = Place.list_objects.all()[:10]
     feed_items = [PlaceFeedItem(place, user=request.user) for place in places]
     return [item.to_data() for item in feed_items]
 
 
 @jsonp_response
 def detail_app(request, pid):
-    place = Place.objects.get(place__id=pid)
+    place = Place.listed_objects.get(place__id=pid)
     details = PlaceDetail(place, user=request.user)
     return details.to_data()    # decorator will handle JSON response wrapper
 
@@ -112,9 +127,9 @@ def detail_app(request, pid):
 @jsonp_response
 def place_lookup(request):
     if request.GET:
-        results = Place.objects.filter(name__icontains=request.GET.get('q', ''))
+        results = Place.listed_objects.filter(name__icontains=request.GET.get('term', ''))
         limit = request.GET.get('limit')
         if limit:
             results = results[:limit]
 
-    return [{'id':p.id, 'name':p.name} for p in results]
+    return [{'id':p.id, 'name':p.name, 'address':p.location.address if p.location else None} for p in results]

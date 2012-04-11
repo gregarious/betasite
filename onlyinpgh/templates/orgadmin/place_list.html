@@ -1,6 +1,13 @@
 {% include "orgadmin/page_nav.html" %}
 
-<a href="{% url onlyinpgh.orgadmin.views.page_claim_place %}" class="add-item">+ Add a place</a>
+<a href="{% url orgadmin-claimplace %}" class="add-item">+ Add a place</a>
 
 {{ list_content }}
 
+<script type="text/javascript">
+$(function(){
+    $('.delete-item').on('click', function(event) {
+        return confirm('Are you sure you want to unclaim this place?');
+    });
+});
+</script>

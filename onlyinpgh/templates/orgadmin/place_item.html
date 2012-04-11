@@ -7,27 +7,40 @@ Context variables:
 	place:			Place object
 {% endcomment %}
 
+{% load thumbnail %}
 <div class="item-thumb">
-	<img class="thumbnail" alt="{{place.name}}" src="{{place.image_url}}" />
+	{% thumbnail place.image "130x130" crop="center" as im %}
+	<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{im.url}}" />
+	{% empty %}
+	<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="/static/img/default-place.png" />
+	{% endthumbnail %}
 </div>
 
 <section class="item-content">
-	<h4 class="item-title">
-		{{ place.name }}
+	<h4 class="item-title in-feed">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place">
+			{{place.name|truncatewords:10}}
+		</a>
 	</h4>
-
-	<div class="item-actions">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit Place"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit Place"/></a>
-		<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" title="Delete Place"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Place" /></a>
-	</div>
-	
 	<ul class="item-details meta">	
 		<li class="address">{{place.location.address}}</li>
-		<li>{{place.phone}}</li>
-		<li>{{place.hours}}</li>
-		<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% if place.phone %}
+			<li>{{place.phone}}</li>
+		{% endif %}
+		{% if place.hours %}
+			<li>{{place.hours}}</li>
+		{% endif %}
+		{% if place.description %}
+			<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% endif %}
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
 </section>
+	
+<div class="item-actions">
+	<a href="#" title="See place page"><img class="item-action" src="/static/img/browser.png" alt="view"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_place place.id %}" title="Edit place"><img class="item-action" src="/static/img/pencil.png" alt="edit" /></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_remove_place place.id %}" class="delete-item" title="Unclaim place"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+</div>

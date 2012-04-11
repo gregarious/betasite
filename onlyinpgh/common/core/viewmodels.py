@@ -6,6 +6,15 @@ from django.template import Context, RequestContext
 from decimal import Decimal
 import json
 
+# import logging
+# logging.root.setLevel(logging.INFO)
+
+
+class HandlerAttributeFailure(AttributeError):
+    def __init__(self, attr_name):
+        super(HandlerAttributeFailure, self).__init__(
+            "obj has no attribute '%s'" % str(attr_name))
+
 
 class FlattenHandler(object):
     '''
@@ -32,12 +41,12 @@ class FlattenHandler(object):
     def __call__(self, obj):
         '''
         If obj has the given attr, return the result of running the handler
-        on it. Otherwise, raise AttributeError.
+        on it. Otherwise, raise HandlerAttributeFailure.
         '''
         if hasattr(obj, self.attr_name):
             return self.handler(obj)
         else:
-            raise AttributeError("obj has no attribute '%s'" % str(self.attr_name))
+            raise HandlerAttributeFailure(self.attr_name)
 
     def __unicode__(self):
         return u'"%s" handler' % unicode(self.attr_name)
@@ -66,12 +75,16 @@ class ViewModel(object):
         are not stored in the instance's __dict__ (and moreover, cannot
         be handled correctly by _flatten()).
         '''
-        # when a ViewModel is encountered, flatten it with its to_data method
-        todata_handler = FlattenHandler('to_data', lambda obj: obj.to_data(custom_handlers))
-        if not custom_handlers:
-            custom_handlers = (todata_handler,)
-        else:
-            custom_handlers = custom_handlers + (todata_handler,)
+        # if not already present, add a flattener that will use a ViewModel object's to_data method
+        custom_handlers = list(custom_handlers) if custom_handlers else []
+        if 'to_data' not in [h.attr_name for h in custom_handlers]:
+            custom_handlers.append(FlattenHandler('to_data',
+                                    lambda obj: obj.to_data(custom_handlers)))
+
+        # logging.info('Reached base to_data for %s object.' % str(self.__class__))
+        # item_descriptions = ['%s: %s (%s)' % (key, str(val), str(val.__class__))
+        #                         for key, val in self.__dict__.items() if not key.startswith('_')]
+        # logging.info('Items that will be flattened:\n\t%s' % '\n\t'.join(item_descriptions))
 
         return dict([(key, _flatten(val, custom_handlers))
                         for key, val in self.__dict__.items()
@@ -94,12 +107,28 @@ class ViewModel(object):
         the internal request. Use set_request for this.
         '''
         # when a date/time/datetime is encountered, don't flatten it
-        date_handler = FlattenHandler('isoformat', lambda obj: obj)
+        # date_handler = FlattenHandler('isoformat', lambda obj: obj)
+        # # same for FieldFiles
+        # fieldfile_handler = FlattenHandler('file', lambda obj: obj)
 
-        data = self.to_data(custom_handlers=(date_handler,))
+        # data = self.to_data(custom_handlers=(date_handler, fieldfile_handler,))
+        data = dict([(key, val) for key, val in self.__dict__.items()
+                        if not key.startswith('_')])
         return RequestContext(request, data) if request else Context(data)
 
 
+# use this decorator to see the inputs and outputs to _flatten. SUPER USEFUL.
+# def inout(f):
+#     def wrapper(obj, custom_handlers=None):
+        # handlers_str = ', '.join(unicode(h.attr_name) for h in custom_handlers)
+        # logging.info(' Input: %s (%s) [Handlers: %s]' % (obj, obj.__class__, handlers_str))
+        # result = f(obj, custom_handlers)
+        # logging.info(' Output: %s (%s)' % (result, result.__class__))
+    #     return result
+    # return wrapper
+
+
+# @inout
 def _flatten(obj, custom_handlers=None):
     '''
     Flattens the given object to a serialization-friendly dict.
@@ -119,13 +148,20 @@ def _flatten(obj, custom_handlers=None):
     objects. These will be used to attempt to flatten the given object
     before the standard methods are applied. See FlattenHandler docs.
     '''
-
     if custom_handlers:
         for handler in custom_handlers:
             try:
-                return handler(obj)
-            except AttributeError:
+                result = handler(obj)
+                # if result:
+                #     logging.info('%s triggered.' % unicode(handler))
+                return result
+            except HandlerAttributeFailure:
+                # logging.info('%s failed.' % unicode(handler))
                 pass
+
+    # return None and boolean values as-is
+    if obj is None or obj is True or obj is False:
+        return obj
 
     # handle a dict
     try:

@@ -8,21 +8,28 @@ Context variables:
 {% load vmrender from commontags %}
 
 <header class="feed-header">
-	<h2 class="feed-title">Places</h2>
+	<h1 class="feed-title">Places</h1>
 	<form class="filter" >
 		<input type="search" placeholder="Filter Places" />
 		<input type="submit" value="filter" />
 	</form>
 </header>
 
-<div class="map-container feed-page">
-	
-</div>
+<article class="feed-content">
+	<div class="map-container">	
+	</div>
 
-<ul class="feed places">
-{% for item in items %}
-    <li class="item">
-    {% vmrender item "places/feed_item.html" %}
-    </li>
-{% endfor %}
-</ul>
+	{% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+	{% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
+
+	<ul class="feed places">
+	{% for item in items %}
+	    <li class="item">
+	    {% vmrender item "places/feed_item.html" %}
+	    </li>
+	{% endfor %}
+	</ul>
+
+	{% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+	{% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
+</article> <!-- .feed-content -->

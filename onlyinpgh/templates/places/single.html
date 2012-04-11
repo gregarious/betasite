@@ -11,16 +11,20 @@ Context variables:
 {% endcomment %}
 
 <div class="item-thumb">
-	<img class="thumbnail" alt="{{ place.name }}" src="{{ place.image_url }}" />
+	{% if place.image %}
+	<img class="thumbnail" alt="{{place.name}}" src="{{place.image.url}}"/>
+	{% else %}
+	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png"/>
+	{% endif %}
 	{% if is_favorite %}
 		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
 	{% else %}
-		<a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="meta">Favorite</p></span></a>
+		<a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
 	{% endif %}
 </div>
 
 <section class="item-content">
-	<h2 class="single-title">{{ place.name }}</h2>
+	<h1 class="single-title">{{ place.name }}</h1>
 	<ul class="item-details">	
 		<li class="address">{{place.location.address}}</li>
   	</ul>

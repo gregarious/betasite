@@ -4,27 +4,35 @@ Template to render a particular event as a item in an orgadmin list.
 Context variables:
 	event:			Event ViewModel
 {% endcomment %}
+{% load thumbnail %}
 
 <div class="item-thumb">
-	<img class="thumbnail" alt="{{event.name}}" src="{{event.image_url}}" />
+	{% thumbnail event.image "130x130" crop="center" as im %}
+	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
+	{% empty %}
+	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="/static/img/default-event.png" />
+	{% endthumbnail %}
 </div>
 
 <section class="item-content">
-	<h4 class="item-title">
-		{{ event.name }}
+	<h4 class="item-title in-feed">
+		<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit this event">
+			{{event.name|truncatewords:10}}
+		</a>
 	</h4>
-
-	<div class="item-actions">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit this event"><img class="edit-item" src="/static/img/box-edit.png" alt="Edit event"/></a>
-		<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" title="Delete Event"><img class="delete-item" src="/static/img/cancel.png" alt="Delete Event" /></a>
-	</div>
 	
 	<ul class="item-details meta">	
 		<li class="address">{{event.dtstart}} - {{event.dtend}}</li>
 		<li>{{event.location.address}}</li>
-		<li class="description">{{ event.description|truncatewords:20|urlizetrunc:20 }}</li>
+		<li class="description">{{ event.description|truncatewords:15|urlizetrunc:20 }}</li>
   	</ul>
-
+  	
 	{% include "tags/tag_list.html" with tags=event.tags %}
 
 </section>
+
+<div class="item-actions">
+	<a href="#" title="See event page"><img class="item-action" src="/static/img/browser.png" alt="view"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_edit_event event.id %}" title="Edit event"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
+	<a href="{% url onlyinpgh.orgadmin.views.page_delete_event event.id %}" class="delete-item" title="Delete event"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+</div>

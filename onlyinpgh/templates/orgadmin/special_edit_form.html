@@ -1,22 +1,28 @@
+{% comment %}
+    form: SimpleSpecialForm
+    tag_names: Temporary list of all tag names
+{% endcomment %}
+
 <h2>Editing your special...</h2>
 
 <form method="post" action="">
 
     {% csrf_token %}
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.title.label_tag }}
         </div>
         <div class="field">
             {{ form.title }}
+            <p class="tip">What is your special? 140 characters max.
             {% for err in form.title.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
     </div>
 
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.place.label_tag }}
         </div>
@@ -28,7 +34,7 @@
         </div>
     </div>
 
-    <div class="field-container first">
+<!--     <div class="field-container first">
         <div class="field-label">
             {{ form.points.label_tag }}
         </div>
@@ -38,36 +44,35 @@
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
-    </div>
+    </div> -->
 
-    <div class="field-container inner">
-        <div class="field-label">
-            {{ form.dstart.label_tag }}
+        <div class="field-container">
+            <div class="field-label">
+                {{ form.dstart.label_tag }}
+            </div>
+            <div class="field">
+                {{ form.dstart }}
+                <p class="tip">Special begins</p>
+                {% for err in form.dstart.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
         </div>
-        <div class="field">
-            {# manually describe field, easiest way to use date filter #}
-            <input id="id_dstart" type="text" class="datepicker-start" value="{{ form.dstart.value|date:"m/d/Y"  }}" name="dstart" />
-            {% for err in form.dstart.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
-        </div>
-    </div>
 
-    <div class="field-container first">
+    <div class="field-container last">
         <div class="field-label">
             {{ form.dexpires.label_tag }}
         </div>
         <div class="field">
-            {# manually describe field, easiest way to use date filter #}
-            <input id="id_dexpires" type="text" class="datepicker-end" value="{{ form.dexpires.value|date:"m/d/Y"  }}" name="dexpires" />
-            
+            {{ form.dexpires }}
+            <p class="tip">Special ends</p>
             {% for err in form.dexpires.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
     </div>
 
-    <div class="field-container inner">
+<!--     <div class="field-container inner">
         <div class="field-label">
             {{ form.total_available.label_tag }}
         </div>
@@ -77,29 +82,13 @@
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
-    </div>
+    </div> -->
 
-   <!-- total_sold is an input for demo purposes, will be static text when real -->
-    <div class="field-container inner"> 
-        <div class="field-label">
-            {{ form.total_sold.label_tag }}
-        </div>
-        <div class="field">
-            {{ form.total_sold }}
-            {% for err in form.total_sold.errors %}
-                <p class="tip error">{{ total_sold }}</p><br />
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="field-container inner">
+    <div class="field-container">
         <div class="field-label">
             {{ form.description.label_tag }}
         </div>
         <div class="field">
-            {% for err in form.description.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}
             {{ form.description }}
             {% for err in form.description.errors %}
                 <p class="tip error">{{ err }}</p><br />
@@ -107,8 +96,23 @@
         </div>
     </div>
 
-    <input type="submit" class="submit-item" value="Submit" />
-    <a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}" title="Back to Specials" class="back">&larr; Back</a>
+    <div class="field-container tags">
+        <div class="field-label">
+            {{ form.tags.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.tags }}
+            <p class="tip">Add some terms describing your special - like 'restaurant' or 'theater'.
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <nav class="prev-next">
+        <input type="submit" class="next" value="Submit" />
+        <a href="{% url onlyinpgh.orgadmin.views.page_list_specials %}" title="Cancel" class="back">Cancel</a>
+    </nav>
 
     {% comment %}
     form fields:
@@ -127,3 +131,27 @@
     {% endcomment %}
 
 </form>
+
+<script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/tags.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.datepicker-start, .datepicker-end').datepicker();
+
+    var tagNames = [
+        {% for name in tag_names %}
+            "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
+    {# TODO: remove initial selected autocomplete hack #}
+    {% if initial_selected %}
+    scenable.onACSelect( {
+        'item': {
+            label: '',
+            value: '{{form.place.value}}',
+            selectedDisplay: '{{initial_selected|escapejs}}'
+        }
+    });
+    {% endif %}
+});
+</script>

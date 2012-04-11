@@ -1,56 +1,92 @@
 <!doctype html>
 
 <head>
+	<title>Scenable Business Account
+			{% if user.is_authenticated %}
+				{% if current_org %}
+					| {{current_org.name}}
+				{% endif %}
+			{% endif %}
+	</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui-1.8.18.custom.css">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
+	
+	<!--[if lt IE 8]>
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/ie-sucks-admin.css?v=1" />
+		
+	<![endif]-->
 
-	<title>Scenable | Manage bus_name</title>
-	<link rel="stylesheet" href="/static/css/admin_style.css?v=1">
-	<link rel="stylesheet" href="/static/css/jquery-ui-1.8.18.custom.css">
-	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+	<!-- <link rel="stylesheet" href="{{STATIC_URL}}js/themes/base/jquery.ui.all.css"> -->
 
+	<!--  Fonts -->
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="/static/css/fonts/testing/Droid-Serif-fontfacekit/stylesheet.css">
+
+	<!-- Include jQuery with fallback to local copy -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
-	<script src="/static/js/libs/modernizr-custom.js"></script>
+	<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.1.js"><\/script>')</script>
+	<script src="{{STATIC_URL}}js/libs/modernizr-custom.js"></script>
+
 </head>
 
 <body>
 
 	<header id="site-header">
-		<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
-		<span id="userbar">
+		<div class="wrap">
+<!-- 		<div class="third">&nbsp;</div>
+		<div class="third"> -->
+			<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
+		<!-- </div> -->
+			<div id="user">
+				{% if user.is_authenticated %}
+					{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
+				{% else %}
+					<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
+					<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
+				{% endif %}
+			</div>
+		</div>
+		<div class="wrap">
 			{% if user.is_authenticated %}
-				{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
-			{% else %}
-				<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
-				<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
+				{% if current_org %}
+					<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
+				{% else %}
+					<h2 id="tagline">You are not currently managing any organizations.</h2>
+				{% endif %}
 			{% endif %}
-		</span>
-		{% if user.is_authenticated %}
-			{% if current_org %}
-				<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
-			{% else %}
-				<h2 id="tagline">You are not currently managing any organizations.</h2>
-			{% endif %}
-		{% endif %}
+		</div>
+	</div>
 	</header>
-
+	<div class="wrap">
 	<div id="site-content">
 	    {{content}}
 	</div>
 
-	<footer id="site-footer">
+	<!-- <footer id="site-footer">
 		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C.</p>
-	</footer>
+	</footer> -->
+</div>
+	<!-- Scenable Scripts -->
+	<!-- <script type="text/javascript" src="{{STATIC_URL}}js/libs/jquery.scrollTo.js"></script> -->
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.core.js"></script>
 
-	<!-- <div id="footer-image"></div> -->
+	<!-- for Autocomplete -->
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.widget.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.position.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.autocomplete.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.autocomplete.html.js"></script>
+	<script src="{{STATIC_URL}}js/ui/jquery.ui.dialog.js"></script>
 
-	<!-- Scripts -->
-	<script type="text/javascript" src="/static/js/libs/jquery.scrollTo.js"></script>
-	<script src="/static/js/admin_script.js"></script>	
 
-	<!-- jQuery UI -->
-	<script src="/static/js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
-	<script src="/static/js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+	<!-- jQuery UI and Timepicker plugin-->
+	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
+	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+	
+	<script src="{{STATIC_URL}}js/admin_script.js"></script>
 
 </body>
 </html>

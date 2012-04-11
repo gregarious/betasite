@@ -4,3 +4,10 @@
 
 {{ list_content }}
 
+<script type="text/javascript">
+$(function(){
+    $('.delete-item').on('click', function(event) {
+        return confirm('Are you sure you want to delete this event?');
+    });
+});
+</script>

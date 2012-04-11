@@ -6,30 +6,39 @@ Compatible ViewModel: events.viewmodels.EventDetail
 Context variables:
 	event:	Event ViewModel
 {% endcomment %}
+{% load thumbnail %}
 
-<div class="single-container">
+<div class="single-container" id="event-single">
 	<header class="single-header">
 		<div class="item-thumb">
-			<img alt="{{event.name}}" class="thumbnail" src="{{event.image_url}}" />
+			{% if event.image %}
+			<img alt="{{event.name}}" class="thumbnail" src="{{event.image.url}}" />
+			{% else %}
+			<img alt="{{event.name}}" class="thumbnail" src="/static/img/default-event.png" />
+			{% endif %}
 			<div class="favorite">	
 				{% if is_attending %}
 					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
-						<img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/><p class="meta">Remove from Calendar</p>
+						<!-- <img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/> --><!-- <p class="meta">Remove from Calendar</p> -->Add to Calendar
 					</a>
 				{% else %}
 					<a href="?action=fav" class="favbutton add" title="Add to Calendar">
-						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><span class="meta">Add to Calendar</span>
+						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
 					</a>
 				{% endif %}
 			</div>
 		</div>
 
 		<section class="item-content">
-			<h2 class="single-title">{{event.name}}</h2>
+			<h1 class="single-title">{{event.name}}</h1>
 			<ul class="item-details">
-				<li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
-				<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
-				<li class="address">{{event.place.location.address}}</li>
+				<li class="datetime">March 30, 8pm - 11pm</li>
+				{% if event.place %}
+					<li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+					<li class="address">{{event.place.location.address}}</li>
+				{% else %}
+					<li>at {{event.place_primitive}}</li>
+				{% endif %}
 			</ul>
 
 			{% include "tags/tag_list.html" with tags=event.tags %}
@@ -41,6 +50,6 @@ Context variables:
 		<div class="map-container">
 			<!-- Map background image is here for the time being -->
 		</div>
-		<p class="description">{{event.description}}</p>
+		<p class="description">{{event.description|linebreaksbr}}</p>
 	</div>
 </div>

@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from onlyinpgh.common.core.viewmodels import ViewModel
-
-DEFAULT_IMAGE_URL = 'http://www.lolmore.com/wp-content/gallery/cute-animals-awesome-overload/013q.jpg'
+from django.template import RequestContext, Context
 
 
 class EventFeedItem(ViewModel):
@@ -18,7 +17,8 @@ class EventFeedItem(ViewModel):
                 name
                 location
                     address
-            image_url
+            place_primitive (should only exist if place doesn't)
+            image
             [tags]
                 id
                 name
@@ -35,14 +35,13 @@ class EventFeedItem(ViewModel):
             self.is_attending = False
 
     def to_data(self, *args, **kwargs):
+        print 'to data on', unicode(self.event)
         data = super(EventFeedItem, self).to_data(*args, **kwargs)
         event_data = data.get('event')
-        keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image_url', 'tags'))
+        keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image', 'tags', 'place_primitive'))
         for k in event_data.keys():
             if k not in keepers:
                 event_data.pop(k)
-        if not event_data['image_url']:
-            event_data['image_url'] = DEFAULT_IMAGE_URL
 
         place_data = data['event'].get('place')
         keepers = set(('id', 'name', 'location'))
@@ -69,7 +68,8 @@ class EventDetail(ViewModel):
                 name
                 location
                     address
-            image_url
+            place_primitive (should only exist if place doesn't)
+            image
             tags
                 id
                 name
@@ -93,8 +93,6 @@ class EventDetail(ViewModel):
             for k in place_data.keys():
                 if k not in ('id', 'name'):
                     place_data.pop(k)
-        if not data['event']['image_url']:
-            data['event']['image_url'] = DEFAULT_IMAGE_URL
 
         data['is_attending'] = self.event.attendee_set.\
                         filter(is_attending=True).count() > 0

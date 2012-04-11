@@ -1,0 +1,27 @@
+{% comment %}
+Template to render a particular Special as a related feed item in a single place page.
+
+Compatible ViewModel: specials.viewmodels.SpecialFeedItem
+
+Context variables:
+	special:	subset of Special model (see SpecialFeedItem ViewModel)
+{% endcomment %}
+
+
+<div class="item-thumb">
+	<div class="points">+{{special.points}}</div>
+	<button class="btn btn-primary">Grab It!</button>
+</div>
+
+<section class="item-content">
+	<h4 class="item-title"><a href="{% url special-detail special.id %}">{{special.title}}</a></h4>
+	<ul class="item-details">
+		{% if special.dtexpires %}
+			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
+		{% endif %}
+		{% if special.description %}
+			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
+		{% endif %}	
+
+	</ul>
+</section>

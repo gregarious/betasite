@@ -1,19 +1,29 @@
 <h2>Add a place...</h2>
 
-<form method="post" action="{% url onlyinpgh.orgadmin.views.page_claim_place %}">
-	{% csrf_token %}
-	<div class="field-container inner">
+<form method="POST" action="{% url orgadmin-claimplace %}">
+    {% csrf_token %}
+    <div class="field-container inner">
         {{ form.place.errors }}
-		<div class="field-label">
-			{{ form.place.label_tag }}
-		</div>
-		<div class="field">
-			{{ form.place }}
-			<p class="tip">or <a href="{% url orgadmin-addplace %}">Create a new place</a></p>	
-		</div>
-	</div>
-    <input type="submit" class="submit-item" value="Claim" />
-    <a href="{% url onlyinpgh.orgadmin.views.page_list_places %}" class="back" title="Back to places">&larr; Back</a>
+        <div class="field-label">
+            {{ form.place.label_tag }}
+        </div>
+        <div class="field">
+            <input id="id_place-text">
+            <input type="hidden" name="{{ form.place.html_name }}" id="id_place">            
+            {% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="confirm-box" style="display:none">
+        <p>Great! We've already got your place on record. If this is correct, choose Claim. Otherwise click the "X" and choose again.</p>
+        <div id="confirm-content" class="item"></div>
+        <div class="item-actions">
+          <a id="place-clear" href="#"><img src="{{STATIC_URL}}img/icon_x.gif" /></a>
+        </div>
+        <button type="submit" disabled="disabled" class="next">Claim</button>
+    </div>
 </form>
 
-
+<script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/claimplace.js"></script>

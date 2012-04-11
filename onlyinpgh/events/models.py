@@ -6,6 +6,11 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.organizations.models import Organization
+from onlyinpgh.common.utils import get_std_thumbnail
+
+class ListedEventManager(models.Manager):
+    def get_query_set(self):
+        return super(ListedEventManager, self).get_query_set().filter(listed=True)
 
 
 class Event(models.Model, ViewModel):
@@ -25,16 +30,34 @@ class Event(models.Model, ViewModel):
     dtend = models.DateTimeField('end datetime')
     allday = models.BooleanField('all day?', default=False)
 
-    image_url = models.URLField(max_length=400, blank=True)
+    image = models.ImageField(upload_to='img/e', null=True, blank=True)
 
     url = models.URLField(blank=True)
     place = models.ForeignKey(Place, null=True, blank=True)
 
+    # simple plaintext field to be used as a fallback when only unlinkable, text-based place info is available (e.g. from an iCal feed)
+    place_primitive = models.CharField(max_length=200, blank=True)
+
     tags = models.ManyToManyField(Tag, blank=True)
-    invisible = models.BooleanField(default=False)
+    listed = models.BooleanField(default=True)
+
+    objects = models.Manager()
+    listed_objects = ListedEventManager()
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        super(Event, self).save(*args, **kwargs)
+        if self.image:
+            # pre-cache common sized thumbnails
+            try:
+                get_std_thumbnail(self.image, 'autocomplete')
+                get_std_thumbnail(self.image, 'standard')
+            # never let these lines interrupt anything
+            except Exception as e:
+                print 'error caching thumbnails', e
+                # TODO: log error
 
     def to_data(self, *args, **kwargs):
         '''
@@ -42,8 +65,8 @@ class Event(models.Model, ViewModel):
         '''
         data = super(Event, self).to_data(*args, **kwargs)
         data.pop('place_id')
-        data['place'] = self.place.to_data()
-        data['tags'] = [t.to_data() for t in self.tags.all()]
+        data['place'] = self.place.to_data(*args, **kwargs) if self.place else None
+        data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
 
@@ -60,8 +83,7 @@ class EventMeta(models.Model):
 
 class Role(models.Model):
     ROLE_TYPES = (
-        ('organizer', 'Organizer'),
-        ('referer', 'Referer'),
+        ('owner', 'Owner'),
     )
     event = models.ForeignKey(Event)
     role_type = models.CharField(max_length=50, choices=ROLE_TYPES)
@@ -88,3 +110,14 @@ class Attendee(models.Model):
 
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.event)
+
+
+class ICalendarFeed(models.Model):
+    url = models.URLField(max_length=300)
+    owner = models.ForeignKey(Organization, null=True, blank=True)
+    name = models.CharField(max_length=100, blank=True)
+    candidate_places = models.ManyToManyField(Place,
+        verbose_name=u'A collection of Places that are likely venues for events in this feed')
+
+    def __unicode__(self):
+        return self.name
