@@ -334,7 +334,7 @@ a {
   color: #b83939;
 }
 a:hover {
-  color: #70a3be;
+  color: #70a3be !important;
 }
 a:active {
   color: #2c525d;

@@ -18,7 +18,7 @@ Feel free to clear out the rest of this: I just have it here for the sake of bei
 
 	<div class="field-container">
 		<div class="field-label">
-			{{ form.username.label_tag }}
+			<label for="{{ form.username.html_name }}">Email or Username</label>
 		</div>
 		<div class="field login">
 			{{ form.username }}
@@ -31,7 +31,7 @@ Feel free to clear out the rest of this: I just have it here for the sake of bei
 		</div>
 		<div class="field login">
 			{{ form.password }}
-			<p class="tip"><a href="#">Forgot your password or username?</a></p>
+			<p class="tip"><a href="#">Forgot your password?</a></p>
 			{% if form.non_field_errors %}
 				{{ form.non_field_errors }}
 			{% endif %}
