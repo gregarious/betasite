@@ -178,7 +178,7 @@ def page_home(request):
         notification_type = None
     context = RequestContext(request,
         {'current_org': request.session.get('current_org')})
-    content = render_to_string('orgadmin/home.html', {'notification_type': '1'},#notification_type},
+    content = render_to_string('orgadmin/home.html', {'notification_type': notification_type},
         context_instance=context)
     return response_admin_page(content, context)
 
