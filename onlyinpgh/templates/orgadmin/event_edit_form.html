@@ -138,7 +138,8 @@ Context variables:
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
-    <p class="tip">Please endter as place or sasdnesss, daaj sammisty snape harry hermione ron.</p>
+    <p class="tip">Please enter details for the place at which your event will occur.</p>
+    <p class="tip">If all of these fields don't apply, that's fine! Just enter as much information as you've got.</p>
     <form id="newplace-form" action="{% url orgadmin-addplace %}" method="POST">
     {% csrf_token %}
 
