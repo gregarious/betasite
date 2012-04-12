@@ -26,5 +26,5 @@ urlpatterns = patterns('',
     url(r'^prelaunch/specials/', include('onlyinpgh.specials.urls')),
     url(r'^prelaunch/hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
 
-    url(r'^orgadmin/', include('onlyinpgh.orgadmin.urls')),
+    url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
 )
