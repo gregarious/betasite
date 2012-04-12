@@ -11,7 +11,6 @@ body {
 	height: 100%; 
 	margin: 0 auto 1em auto;
 	.lucida();
-	overflow-x: hidden;
 }
 
 /* 2 TYPOGRAPHY ---------- */
@@ -280,6 +279,7 @@ button, input[type="submit"], .next, .back {
 	background: @teal;
 	color: #fff !important;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	font-size: 1em;
 	.lucida();
 	padding: 0.5em;
 	.rounded(0.5em);
@@ -489,7 +489,6 @@ input[type="checkbox"] {
 	float: left;
 }
 
-
 /* 2 FEED/ITEMS ---------- */
 
 .item, .ac-item {
@@ -650,6 +649,9 @@ input[type="checkbox"] {
 
 	h2 {
 		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+		font-style: normal;
+		font-size: 1.8em;
+		margin-bottom: 0.5em;
 	}
 
 }
@@ -850,7 +852,6 @@ input[type="checkbox"] {
 	}
 }
 
-
 /* JQUERY DATETIMEPICKER ------ */
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -866,4 +867,49 @@ input[type="checkbox"] {
 
 .ui-datepicker-current, .ui-datepicker-close {
 	color: #000 !important;
+}
+
+/* SPLASH ------------- */
+
+#splash {
+	
+	&.wrap {
+	/*	max-width: 800px;*/
+	}
+
+	h2, h3 {
+		color: #333;
+		text-shadow: 0.03em 0.03em 0.01em #fff;
+	}
+
+	#site-content {
+		margin-top: 30px;
+		background: none;
+		border: none;
+		width: 720px;
+		.no-b-shadow();
+	}
+
+	.prev-next {
+		width: 60%;
+		margin: 3em auto;
+
+		a {
+			padding: 1em;
+			.gradient(@dblue, @teal);
+			font-size: 2em;
+
+			&:hover {
+				background: @teal;
+			}
+
+			&:active {
+				.gradient(@teal, #24494E);
+			}
+		}
+
+		.next {
+
+		}
+	}
 }

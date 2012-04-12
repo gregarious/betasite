@@ -1,0 +1,57 @@
+<!doctype html>
+
+<head>
+	<title>Scenable Business Account</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" type="image/png" href="/static/img/favicon.png">
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/static/css/jquery-ui-1.8.18.custom.css">
+
+	<link rel="stylesheet" href="/static/css/admin_style.css?v=1">
+
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/ie7.css">
+	<![endif]-->
+
+	<!--  Fonts -->
+	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="/static/css/fonts/testing/Droid-Serif-fontfacekit/stylesheet.css">
+
+	<!-- Include jQuery with fallback to local copy -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
+	
+	<script src="/static/js/libs/modernizr-custom.js"></script>
+
+</head>
+
+<body>
+	<div class="wrap" id="splash">
+
+		<div id="site-content">
+			<img id="header-logo" src="/static/img/scenable-cloud-pgh-sky-splash.png">
+
+			<hgroup class="welcome-text">
+				<h2>Are you a local business or organization in Oakland?</h2>
+				<h3> Sign up or login to start getting the word out on Scenable!</h3>
+			</hgroup>
+
+			<nav class="prev-next" id="splash">
+				<a href="{% url orgadmin-signup %}" title="Sign Up" class="back">Sign Up</a>
+				<a href="{% url orgadmin-login %}" title="Login" class="next">Login</a>
+			</nav>
+
+		</div>
+
+	</div> <!-- .wrap.site -->
+
+	<footer id="site-footer">
+		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C. Drop us a line at <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Business%20Admin">contact@scenable.com</a>.</p>
+	</footer>
+
+</body>
+</html>

@@ -6,11 +6,7 @@ form fields:
 
 <img id="header-logo" src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
 
-<!-- <h2>Are you a business in Oakland?</h2> -->
-<hgroup class="welcome-text">
-	<h2>Are you a local business or organization in Oakland?</h2>
-	<h3> Sign up or login to start getting the word out on Scenable!</h3>
-</hgroup>
+<h2>Login to your Account...</h2>
 
 <form method="post" action="{{ form_action }}">
 	{% csrf_token %}
@@ -36,11 +32,7 @@ form fields:
 		</div>
 	</div>
 	
-
-	<nav class="prev-next">
-		<a href="{% url orgadmin-signup %}" title="Sign Up" class="back">Sign Up</a>
-		<input type="submit" value="Login" class="submit-item next" />
-	</nav>
+	<input type="submit" value="Login" class="submit-item next" />
 
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>

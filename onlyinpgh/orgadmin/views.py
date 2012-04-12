@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.shortcuts import get_object_or_404, redirect, render
 
 from onlyinpgh.organizations.models import Organization
 from onlyinpgh.places.models import Place
@@ -81,7 +81,7 @@ def page_index(request):
     if request.user.is_authenticated():
         return redirect('orgadmin-home')
     else:
-        return render_to_response('orgadmin/splash.html')
+        return render(request, 'orgadmin/splash.html')
 
 def page_signup(request):
     if request.user.is_authenticated():
