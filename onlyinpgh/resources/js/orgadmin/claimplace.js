@@ -13,7 +13,7 @@ $(function(){
             on_ac_deselect();
             $(this).parent().find('#id_place-text').focus();
             return false;
-        });       
+        });
 
     function on_ac_select(ui) {
         place_ac_text.val(ui.item.selectedLabel);
@@ -31,7 +31,7 @@ $(function(){
             success: function(html_response) {
                 place_ac_confirmcontent.html(html_response);
             },
-            error: function(jqXHR, textStatus, errorThrown) {   
+            error: function(jqXHR, textStatus, errorThrown) {
                 place_ac_confirmcontent.html(ui.item.selectedLabel);
             },
             complete: function(jqXHR, textStatus) {
