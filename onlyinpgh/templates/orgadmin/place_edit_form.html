@@ -281,11 +281,15 @@
             <label for="id_{{ form.listed.html_name }}">Listed?</label>
         </div>
         <div class="field">
-            {{ form.listed }}
-            <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
-            {% for err in form.listed.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}    
+            <div class="check-container">
+                {{ form.listed }}
+            </div>
+            <div class="check-desc-container">
+                <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
+                {% for err in form.listed.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}    
+            </div>
         </div>
     </div> <!-- event url -->
 

@@ -1053,6 +1053,9 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.ui-state-hover {
+  border: none;
+}
 /* HELP TEXT ---------- */
 #notifications {
   border: 1px #ded57f solid;
@@ -1179,6 +1182,24 @@ input[type="checkbox"] {
 }
 .ui-autocomplete .ac-item .item-title {
   color: #000;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button,
+.ui-widget {
+  font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
+}
+.ui-corner-all {
+  *zoom: 1;
+}
+.ui-corner-all:before,
+.ui-corner-all:after {
+  content: "";
+  display: table;
+}
+.ui-corner-all:after {
+  clear: both;
 }
 #ui-active-menuitem .ac-item {
   *zoom: 1;
