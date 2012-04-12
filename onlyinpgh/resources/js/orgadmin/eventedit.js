@@ -109,7 +109,7 @@ $(function(){
 
     newplace_dialog_form.dialog({
         autoOpen: false,
-        height: 400,
+        height: 420,
         width: 300,
         title: "Create a new place",
         modal: true,
