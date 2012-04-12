@@ -1,8 +1,22 @@
+{% comment %}
+Context variables:
+- items: PlaceFeedItem objects
+{% endcomment %}
+{% load vmrender from commontags %}
+
 {% include "orgadmin/page_nav.html" %}
 
 <a href="{% url orgadmin-claimplace %}" class="add-item" title="Add a Place">+ Add a place</a>
 
-{{ list_content }}
+<ul>
+{% for item in items %}
+    <li class="item">
+    {% vmrender item 'orgadmin/place_item.html' %}
+    </li>
+{% empty %}
+    <li class="no-items">No locations found for your organization. <a href="{% url orgadmin-addplace %}">Click here to create one!</a></li>
+{% endfor %}
+</ul>
 
 <script type="text/javascript">
 $(function(){
