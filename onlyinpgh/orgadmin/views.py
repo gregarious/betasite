@@ -20,9 +20,10 @@ from onlyinpgh.places.viewmodels import PlaceFeedItem
 from onlyinpgh.events.viewmodels import EventFeedItem
 from onlyinpgh.specials.viewmodels import SpecialFeedItem
 
-from onlyinpgh.common.core.rendering import render_viewmodels_as_ul, render_safe
+from onlyinpgh.common.core.rendering import render_safe
 
 import re
+
 
 def render_admin_page(safe_content, context_instance=None):
     '''
@@ -288,10 +289,9 @@ def page_list_places(request):
     places = org.establishments.all() if org else []
 
     items = [PlaceFeedItem(place) for place in places]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/place_item.html')
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_list.html', {'list_content': list_content}, context_instance=context)
+    content = render_to_string('orgadmin/place_list.html', {'items': items}, context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -358,14 +358,13 @@ def page_edit_event(request, id=None):
 def page_list_events(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
-    
+
     events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
     events = set(events).union(Event.objects.filter(place__in=establishments))
     items = [EventFeedItem(event) for event in events]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_list.html', {'list_content': list_content},
+    content = render_to_string('orgadmin/event_list.html', {'items': items},
                                     context_instance=context)
     return response_admin_page(content, context)
 
@@ -418,9 +417,7 @@ def page_list_specials(request):
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
     items = [SpecialFeedItem(special) for special in specials]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/special_item.html')
-
     context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_list.html', {'list_content': list_content},
+    content = render_to_string('orgadmin/special_list.html', {'items': items},
                                 context_instance=context)
     return response_admin_page(content, context)
