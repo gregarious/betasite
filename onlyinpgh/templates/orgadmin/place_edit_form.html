@@ -45,16 +45,22 @@
             <label for="id_{{ form.hr_days_1.html_name }}">Hours</label>
         </div>
         <p class="tip" id="hours-tip">Add a set of hours for your place. The first field is four hours, the second for days. To add another set, click the '+' to the right.</p>
-        <div class="double hour-day-container">
+        <div class="double">
             <div class="field">
                 <p class="tip">Days e.g. Mon-Fri or Sun.</p>
+            </div>
+            <div class="field">
+                <p class="tip">Hours e.g. 9am-5pm or Closed</p>
+            </div>
+        </div> <!-- Hours/Days tips -->
+        <div class="double hour-day-container">
+            <div class="field">
                 {{ form.hr_hours_1 }}
                 {% for err in form.hr_hours_1.errors %}
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
             </div>
             <div class="field">
-                <p class="tip">Hours e.g. 9am-5pm or Closed</p>
                 {{ form.hr_days_1 }}
                 {% for err in form.hr_days_1.errors %}
                     <p class="tip error">{{ err }}</p><br />
