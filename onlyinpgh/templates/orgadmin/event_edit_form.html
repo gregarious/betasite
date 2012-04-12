@@ -111,7 +111,7 @@ Context variables:
         </div>
         <div class="field">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your event like 'music' or 'food'</p>
+            <p class="tip">Add keywords or search terms like 'music, concert, bluegrass'. Separate with commas.</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}

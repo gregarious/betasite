@@ -18,10 +18,11 @@
 
     <div class="field-container">
         <div class="field-label">
-            {{ form.location.label_tag }}
+            <label for="id_{{ form.location.html_name }}">Street Address</label>
         </div>
         <div class="field">
             {{ form.location }}
+            <p class="tip">Just the street address, we know you're in Pittsburgh :)</p>
             {% for err in form.location.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -234,7 +235,7 @@
         </div>
         <div class="field tag-input">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your place such as 'bar, food, casual'.</p>
+            <p class="tip">Add keywords or search terms like 'bar, food, casual'. Separate with commas.</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -269,7 +270,6 @@
             {% for err in form.twitter_username.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-            <p class="tip social">Without the @ symbol, what is your Twitter name?</p>
         </div>
     </div>
 

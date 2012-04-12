@@ -4,8 +4,7 @@
 <form method="POST" action="{% url orgadmin-claimplace %}">
     {% csrf_token %}
 
-    <div class="field-container">
-
+    <div class="field-container" id="place-claim">
         <p class="form-help">Scenable has a record of most storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</p>
 
         {{ form.place.errors }}
@@ -19,6 +18,7 @@
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
         </div>
+        <a class="back" href="{% url orgadmin-listplaces %}">Back</a>
     </div>
 
     <div id="confirm-box" style="display:none">
@@ -26,8 +26,12 @@
         <a id="place-clear" href="#"><img src="{{STATIC_URL}}img/icon_x.gif" /></a>
         <div id="confirm-content" class="item"></div>
         
-        <button type="submit" disabled="disabled" class="next">Claim</button>
+        <nav class="pre-next">
+            <button type="submit" disabled="disabled" class="next">Claim</button>
+            <a class="back" href="{% url orgadmin-claimplace %}">Back</a>
+        </nav>
     </div>
 </form>
+
 
 <script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/claimplace.js"></script>

@@ -984,7 +984,6 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
-  padding: 0 1% 1%;
   text-align: center;
 }
 .item-thumb .thumbnail {
@@ -1118,6 +1117,9 @@ input[type="checkbox"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+#place-claim .back {
+  margin-top: 2em;
+}
 #id_place-display {
   float: left;
   width: 89.58333333333334%;
@@ -1170,7 +1172,7 @@ input[type="checkbox"] {
 }
 #ui-active-menuitem .ac-item {
   *zoom: 1;
-  background: #e1f3fa;
+  background: #e1e1e1;
 }
 #ui-active-menuitem .ac-item:before,
 #ui-active-menuitem .ac-item:after {
@@ -1181,8 +1183,7 @@ input[type="checkbox"] {
   clear: both;
 }
 #ui-active-menuitem {
-  color: #b83939;
-  background: none;
+  background: #e1e1e1;
   border: none;
 }
 #id_place-text {
