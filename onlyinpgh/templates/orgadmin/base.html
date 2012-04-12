@@ -12,16 +12,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="icon" type="image/png" href="{{STATIC_URL}}/img/favicon.png">
-	<link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui-1.8.18.custom.css">
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
 	
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/ie-sucks-admin.css?v=1" />
-		
-	<![endif]-->
-
-	<!-- <link rel="stylesheet" href="{{STATIC_URL}}js/themes/base/jquery.ui.all.css"> -->
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui-1.8.18.custom.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
 
 	<!--  Fonts -->
 	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
@@ -36,42 +30,43 @@
 </head>
 
 <body>
-<div class="wrap">
-	<header id="site-header">
-		<div class="wrap">
-<!-- 		<div class="third">&nbsp;</div>
-		<div class="third"> -->
-			<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
-		<!-- </div> -->
-			<div id="user">
+	<div class="wrap site">
+		
+		<header id="site-header">
+			<div class="wrap">
+	<!-- 		<div class="third">&nbsp;</div>
+			<div class="third"> -->
+				<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
+			<!-- </div> -->
+				<div id="user">
+					{% if user.is_authenticated %}
+						{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
+					{% else %}
+						<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
+						<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
+					{% endif %}
+				</div>
+			</div>
+			<div class="wrap">
 				{% if user.is_authenticated %}
-					{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
-				{% else %}
-					<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
-					<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
+					{% if current_org %}
+						<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
+					{% else %}
+						<h2 id="tagline">You are not currently managing any organizations.</h2>
+					{% endif %}
 				{% endif %}
 			</div>
-		</div>
-		<div class="wrap">
-			{% if user.is_authenticated %}
-				{% if current_org %}
-					<h2 id="tagline">Currently managing: {{ current_org.name }}</h2>
-				{% else %}
-					<h2 id="tagline">You are not currently managing any organizations.</h2>
-				{% endif %}
-			{% endif %}
-		</div>
-		</div>
-	</header>
+		</header>
 
-	
 		<div id="site-content">
 		    {{content}}
 		</div>
-	</div>
+	</div> <!-- .wrap.site -->
+
 	<footer id="site-footer">
 		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C.</p>
 	</footer>
+
 	<!-- Scenable Scripts -->
 	<!-- <script type="text/javascript" src="{{STATIC_URL}}js/libs/jquery.scrollTo.js"></script> -->
 	<script src="{{STATIC_URL}}js/ui/jquery.ui.core.js"></script>
