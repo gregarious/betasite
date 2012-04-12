@@ -392,22 +392,29 @@ p {
   text-align: center;
   padding-bottom: 8px;
 }
-.welcome-text {
+.welcome-text,
+.about-text {
   padding-bottom: 1em;
   *zoom: 1;
   text-align: center;
 }
 .welcome-text:before,
-.welcome-text:after {
+.about-text:before,
+.welcome-text:after,
+.about-text:after {
   content: "";
   display: table;
 }
-.welcome-text:after {
+.welcome-text:after,
+.about-text:after {
   clear: both;
 }
-.welcome-text h2 {
-  color: #444;
+.welcome-text h2,
+.about-text h2 {
   text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+}
+.form-help {
+  margin: 0 0 2em 2em;
 }
 /* ELEMENTS --------- */
 .points {
@@ -1106,14 +1113,6 @@ input[type="checkbox"] {
   right: 0px;
   top: 45px;
 }
-#place-clear {
-  float: right;
-  width: 6.25%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 /* NOTIFICATIONS ---------- */
 #notifications {
   border: 1px #ded57f solid;
@@ -1130,6 +1129,10 @@ input[type="checkbox"] {
 /* AUTOCOMPLETE -------- */
 #confirm-box p {
   margin: 1.5em 0 1.5em 1.5em;
+  float: left;
+}
+#confirm-box #place-clear {
+  float: right;
 }
 #confirm-box .item {
   border: 1px solid #f1f1f1;

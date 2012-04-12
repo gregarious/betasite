@@ -119,15 +119,19 @@ p {
 	padding-bottom: 8px;
 }
 
-.welcome-text {
+.welcome-text, .about-text {
 	padding-bottom: 1em;
 	.clearfix();
 	text-align: center;
 
 	h2 {
-		color: #444;
 		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
 	}
+
+}
+
+.form-help {
+	margin: 0 0 2em 2em;
 }
 
 
@@ -684,10 +688,6 @@ input[type="checkbox"] {
 	top: 45px;
 }
 
-#place-clear {
-	.column_r(1);
-}
-
 /* NOTIFICATIONS ---------- */
 
 #notifications {
@@ -705,6 +705,11 @@ input[type="checkbox"] {
 
 	p {
 		margin: 1.5em 0 1.5em 1.5em;
+		float: left;
+	}
+
+	#place-clear {
+		float: right;
 	}
 
 	.item {
