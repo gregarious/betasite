@@ -25,7 +25,7 @@
         </div>
         <div class="field">
             {{ form.location }}
-            <p class="tip">Just the street address, we know you're in Pittsburgh :)</p>
+            <p class="tip">Just the street address, we know you're in Oakland :)</p>
             {% for err in form.location.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -198,7 +198,7 @@
 
     <div class="field-container last">
         <div class="field-label">
-            {{ form.url.label_tag }}
+            <label for="id_{{ form.url.html_name }}">Website</label>
         </div>
         <div class="field">
             {{ form.url }}
@@ -281,11 +281,15 @@
             <label for="id_{{ form.listed.html_name }}">Listed?</label>
         </div>
         <div class="field">
-            {{ form.listed }}
-            <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
-            {% for err in form.listed.errors %}
-                <p class="tip error">{{ err }}</p><br />
-            {% endfor %}    
+            <div class="check-container">
+                {{ form.listed }}
+            </div>
+            <div class="check-desc-container">
+                <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
+                {% for err in form.listed.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}    
+            </div>
         </div>
     </div> <!-- event url -->
 
