@@ -40,6 +40,12 @@ def response_admin_page(safe_content, context_instance=None):
     return HttpResponse(render_admin_page(safe_content, context_instance))
 
 
+def _redirect_home(request, notification_type=None):
+    if notification_type is not None:
+        request.session['home-notification'] = notification_type
+    return redirect('orgadmin-home')
+
+
 ### Shotcuts for authentication ###
 def authentication_required(view_func):
     def wrapper(request, *args, **kwargs):
@@ -48,6 +54,7 @@ def authentication_required(view_func):
         else:
             return HttpResponseRedirect(reverse('orgadmin-login'))
     return wrapper
+
 
 def org_owns(org, instance):
     '''
@@ -97,11 +104,9 @@ def page_signup(request):
                 request.session['current_org'] = org
 
                 # redirect to home page
-                redirect_to = reverse('orgadmin-home')
+                return _redirect_home(request, notification_type=1)
             else:   # if cookies aren't enabled, go to login page
-                redirect_to = reverse('orgadmin-login')
-
-            return HttpResponseRedirect(redirect_to)
+                return redirect('orgadmin-login')
     else:
         reg_form = RegistrationForm(prefix='reg')
         org_form = SimpleOrgForm(prefix='org')
@@ -160,9 +165,21 @@ def page_logout(request):
 
 @authentication_required
 def page_home(request):
+    '''
+    notification types:
+    1: Welcome message
+    2: No org warning
+    3: No place message for special adding
+    '''
+    try:
+        notification_type = str(request.session.pop('home-notification'))
+        print 'notification', notification_type
+    except KeyError:
+        notification_type = None
     context = RequestContext(request,
         {'current_org': request.session.get('current_org')})
-    content = render_to_string('orgadmin/home.html', context_instance=context)
+    content = render_to_string('orgadmin/home.html', {'notification_type': '1'},#notification_type},
+        context_instance=context)
     return response_admin_page(content, context)
 
 
@@ -177,7 +194,7 @@ def page_claim_place(request):
     '''
     org = request.session.get('current_org')
     if not org:
-        return redirect('orgadmin-home')
+        return _redirect_home(request, notification_type=2)
 
     all_places = Place.objects.all()
     owned_places = org.establishments.all()
@@ -188,7 +205,7 @@ def page_claim_place(request):
         if form.is_valid():
             id_str = form.cleaned_data['place']
             org.establishments.add(Place.objects.get(id=int(id_str)))
-            return redirect('onlyinpgh.orgadmin.views.page_edit_place', id_str)
+            return redirect('orgadmin-editplace', id_str)
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
@@ -200,7 +217,7 @@ def page_claim_place(request):
 
 
 @authentication_required
-def page_setup_place_wizard(request, id=None):
+def page_edit_place(request, id=None):
     org = request.session.get('current_org')
     if id is not None:
         instance = get_object_or_404(Place, id=id)
@@ -208,9 +225,8 @@ def page_setup_place_wizard(request, id=None):
             return HttpResponseForbidden()
     else:
         instance = None
-        # TODO: home page needs some kind of message if user has no org
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
 
     if request.POST:
         # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
@@ -228,10 +244,10 @@ def page_setup_place_wizard(request, id=None):
 
             # if a new place, it won't be a part of the current org's
             # list of establishments. add it now.
-            if place not in org.establishments.all():
+            if not instance and place not in org.establishments.all():
                 org.establishments.add(place)
 
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
+            return redirect('orgadmin-listplaces')
     else:
         form = OrgAdminPlaceForm(instance=instance)
 
@@ -249,38 +265,7 @@ def page_remove_place(request, id):
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     org.establishments.remove(instance)
-    return redirect('onlyinpgh.orgadmin.views.page_list_places')
-
-
-@authentication_required
-def page_edit_place(request, id):
-    org = request.session.get('current_org')
-    instance = get_object_or_404(Place, id=id)
-    if not org or not org_owns(org, instance):
-        return HttpResponseForbidden()
-
-    if request.POST or request.FILES:
-        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
-        fb_id = request.POST.get('fb_id')
-        if 'facebook.com' in fb_id:
-            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
-        twitter = request.POST.get('twitter_username').strip()
-        if twitter.startswith('@'):
-            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
-        form = OrgAdminPlaceForm(data=request.POST, files=request.FILES, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
-        else:
-            print form.errors
-    else:
-        form = OrgAdminPlaceForm(instance=instance)
-
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_edit_form.html',
-        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]},
-        context_instance=context)
-    return response_admin_page(content, context)
+    return redirect('orgadmin-listplaces')
 
 
 @authentication_required
@@ -302,7 +287,7 @@ def page_delete_event(request, id):
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     instance.delete()
-    return redirect('onlyinpgh.orgadmin.views.page_list_events')
+    return redirect('orgadmin-listevents')
 
 
 @authentication_required
@@ -319,7 +304,7 @@ def page_edit_event(request, id=None):
     else:
         instance = None
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
         if org and org.establishments.count() == 1:
             initial['place'] = org.establishments.all()[0].id
 
@@ -328,7 +313,7 @@ def page_edit_event(request, id=None):
         if form.is_valid():
             event = form.save()
             Role.objects.get_or_create(role_type='owner', organization=org, event=event)
-            return redirect('onlyinpgh.orgadmin.views.page_list_events')
+            return redirect('orgadmin-listevents')
     else:
         form = SimpleEventForm(instance=instance, initial=initial)
 
@@ -376,7 +361,7 @@ def page_delete_special(request, id):
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     instance.delete()
-    return redirect('onlyinpgh.orgadmin.views.page_list_specials')
+    return redirect('orgadmin-listspecials')
 
 
 @authentication_required
@@ -392,13 +377,15 @@ def page_edit_special(request, id=None):
     else:
         instance = None
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
+        if org.establishments.count() == 0:
+            return _redirect_home(request, notification_type=3)
 
     if request.POST:
         form = SimpleSpecialForm(organization=org, data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('onlyinpgh.orgadmin.views.page_list_specials')
+            return redirect('orgadmin-listspecials')
         else:
             print form.errors
     else:
