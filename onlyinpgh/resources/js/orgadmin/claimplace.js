@@ -70,8 +70,8 @@ $(function(){
                 timeout: 3000,
                 success: function(data) {
                     responses = $.map(data, function(item) {
-                        return { 
-                            label: '<div class="ac-item">' + 
+                        return {
+                            label: '<div class="ac-item">' +
                                     '<div class="item-thumb">' +
                                         '<img src=' + item.image_url + ' alt="' + item.name + ' height="50" width="50" />' +
                                     '</div>' + 
@@ -106,7 +106,7 @@ $(function(){
 
         select: function(event, ui) {
             if(ui.item.value === '!newplace') {
-                window.location.href = "{% url orgadmin-addplace %}";
+                window.location.href = "/orgadmin/places/setup/new/";
             }
             else {
                 on_ac_select(ui);   // function will show the confirmation dialog

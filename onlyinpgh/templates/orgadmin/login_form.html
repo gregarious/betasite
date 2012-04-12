@@ -1,3 +1,9 @@
+{% comment %}
+form fields:
+    username
+    password
+{% endcomment %}
+
 <img id="header-logo" src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
 
 <!-- <h2>Are you a business in Oakland?</h2> -->
@@ -8,13 +14,6 @@
 
 <form method="post" action="{{ form_action }}">
 {% csrf_token %}
-{% comment %}
-form fields:
-    username
-    password
-
-Feel free to clear out the rest of this: I just have it here for the sake of being able to log into the site.
-{% endcomment %}
 
 	<div class="field-container">
 		<div class="field-label">
@@ -36,11 +35,10 @@ Feel free to clear out the rest of this: I just have it here for the sake of bei
 				{{ form.non_field_errors }}
 			{% endif %}
 		</div>
-
 	</div>
 	
 	<nav class="prev-next">
-		<input type="submit" value="Sign Up" class="submit-item back" />
+		<a href="{% url orgadmin-signup %}" title="Sign Up">Sign Up</a>
 		<input type="submit" value="Login" class="submit-item next" />
 	</nav>
 
