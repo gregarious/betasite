@@ -37,5 +37,5 @@ Context variables:
 <div class="item-actions">
 	<a href="#" title="View listing (coming soon)"><img src="/static/img/browser.png" alt="view"/></a>
 	<a href="{% url orgadmin-editspecial special.id %}" title="Edit special"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
-	<a href="{% url orgadmin-delspecial %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+	<a href="{% url orgadmin-delspecial special.id %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
 </div>
