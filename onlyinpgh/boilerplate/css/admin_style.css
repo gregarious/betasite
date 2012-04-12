@@ -582,6 +582,7 @@ input[type="submit"],
   -webkit-box-shadow: 0.07em 0.07em 0.1em #888888;
   -moz-box-shadow: 0.07em 0.07em 0.1em #888888;
   box-shadow: 0.07em 0.07em 0.1em #888888;
+  font-size: 1em;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -899,6 +900,57 @@ input[type="checkbox"] {
 .prev-next:after {
   clear: both;
 }
+.prev-next#splash {
+  width: 60%;
+  margin: 3em auto;
+}
+.prev-next#splash a {
+  padding: 1em;
+  background-color: #4b7699;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4b7699), to(#2c525d));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #4b7699, #2c525d);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #4b7699, #2c525d);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #4b7699, #2c525d);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #4b7699, #2c525d);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #4b7699, #2c525d);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+  font-size: 2em;
+}
+.prev-next#splash a:hover {
+  background: #2c525d;
+}
+.prev-next#splash a:active {
+  background-color: #2c525d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2c525d), to(#24494e));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #2c525d, #24494e);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #2c525d, #24494e);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #2c525d, #24494e);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #2c525d, #24494e);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #2c525d, #24494e);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
+}
 .next {
   float: right;
 }
@@ -1096,6 +1148,9 @@ input[type="checkbox"] {
 .welcome-text h2,
 .about-text h2 {
   text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+  font-style: normal;
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
 }
 .form-help {
   margin: 0 0 2em 2em;

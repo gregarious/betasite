@@ -280,6 +280,7 @@ button, input[type="submit"], .next, .back {
 	background: @teal;
 	color: #fff !important;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	font-size: 1em;
 	.lucida();
 	padding: 0.5em;
 	.rounded(0.5em);
@@ -479,6 +480,29 @@ input[type="checkbox"] {
 	width: 90%;
 	.clearfix;
 	margin: 1em 5% 0;
+
+	&#splash {
+		width: 60%;
+		margin: 3em auto;
+
+		a {
+			padding: 1em;
+			.gradient(@dblue, @teal);
+			font-size: 2em;
+
+			&:hover {
+				background: @teal;
+			}
+
+			&:active {
+				.gradient(@teal, #24494E);
+			}
+		}
+
+		.next {
+
+		}
+	}
 }
 
 .next {
@@ -488,7 +512,6 @@ input[type="checkbox"] {
 .back {
 	float: left;
 }
-
 
 /* 2 FEED/ITEMS ---------- */
 
@@ -650,6 +673,9 @@ input[type="checkbox"] {
 
 	h2 {
 		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+		font-style: normal;
+		font-size: 1.8em;
+		margin-bottom: 0.5em;
 	}
 
 }
