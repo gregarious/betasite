@@ -8,15 +8,24 @@ Context variables:
 
 <a href="{% url orgadmin-addspecial %}" title="Add a special" class="add-item">+ Add special</a>
 
-<ul>
-{% for item in items %}
-    <li class="item">
-    {% vmrender item 'orgadmin/special_item.html' %}
-    </li>
-{% empty %}
-    <li class="no-items">No specials found for your organization. <a href="{% url orgadmin-addspecial %}">Click here to create one!</a></li>
-{% endfor %}
-</ul>
+{% if items %}
+
+	<ul>
+		{% for item in items %}
+			<li class="item">
+	    		{% vmrender item 'orgadmin/special_item.html' %}
+	    	</li>
+	    {% endfor %}
+    </ul>
+
+{% else %}
+
+    <section class="no-items">
+            <img src="/static/img/home_special.png" alt="Special" />
+    	   <p>We don't have any specials on record for you yet. During this private beta period, the specials will act as coupons that users can present at your store. Click <a href="{% url orgadmin-addspecial %}">here</a> to add a new special!</p>
+    </section>
+
+{% endif %}
 
 <script type="text/javascript">
 $(function(){

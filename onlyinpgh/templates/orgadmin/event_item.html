@@ -7,11 +7,13 @@ Context variables:
 {% load thumbnail %}
 
 <div class="item-thumb">
-	{% thumbnail event.image "130x130" crop="center" as im %}
-	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
-	{% empty %}
-	<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="/static/img/default-event.png" />
-	{% endthumbnail %}
+	<a href="{% url orgadmin-editevent event.id %}" title="Edit this event">
+		{% thumbnail event.image "130x130" crop="center" as im %}
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
+		{% empty %}
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="/static/img/default-event.png" />
+		{% endthumbnail %}
+	</a>
 </div>
 
 <section class="item-content">

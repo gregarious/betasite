@@ -419,7 +419,6 @@ input[type="checkbox"] {
 
 	.clearfix();
 	.column(4);
-	//.column(4);
 	margin: 0 1%;
 
 	.menu-icon {
@@ -433,13 +432,6 @@ input[type="checkbox"] {
 		&:active {
 			background: #e1e1e1;
 		}
-	}
-
-	.menu-description {
-		font-size: 0.9em;
-		//.column(8);
-		margin-top: 1em;
-
 	}
 
 	img {
@@ -618,9 +610,8 @@ input[type="checkbox"] {
 	font-style: italic;
 	font-weight: bold;
     float: right;
-    //margin-top: 2em;
-    position: absolute;
-    top: 2.5em;
+    position: relative;
+    bottom: 2.5em;
     right: 3em;
 
     &:hover {
@@ -642,7 +633,7 @@ input[type="checkbox"] {
 
 }
 
-/* NOTIFICATIONS ---------- */
+/* HELP TEXT ---------- */
 
 #notifications {
 	border: 1px @yellow solid;
@@ -650,6 +641,19 @@ input[type="checkbox"] {
 	.rounded(0.5em);
 	padding: 0.3em 0.9em;
 	margin-bottom: 2em;
+}
+
+.no-items {
+	padding: 3em;
+
+	img {
+		float: left;
+		margin-right: 2em;
+	}
+
+	h3 {
+		margin: 0;
+	}
 }
 
 /* AUTOCOMPLETE -------- */

@@ -8,15 +8,25 @@ Context variables:
 
 <a href="{% url orgadmin-claimplace %}" class="add-item" title="Add a Place">+ Add a place</a>
 
-<ul>
-{% for item in items %}
-    <li class="item">
-    {% vmrender item 'orgadmin/place_item.html' %}
-    </li>
-{% empty %}
-    <li class="no-items">No locations found for your organization. <a href="{% url orgadmin-addplace %}">Click here to create one!</a></li>
-{% endfor %}
-</ul>
+{% if items %}
+
+	<ul>
+		{% for item in items %}
+			<li class="item">
+	    		{% vmrender item 'orgadmin/place_item.html' %}
+	    	</li>
+	    {% endfor %}
+    </ul>
+
+{% else %}
+
+    <section class="no-items">
+    	<img src="/static/img/home_place.png" alt="Store front" />
+    	<p>We don't have any locations for you yet. Scenable has an extensive record of most storefronts and buildings in Oakland. Click <a href="{% url orgadmin-claimplace %}">here</a> to claim your location or create a new one in case we missed anything.
+    </section>
+
+{% endif %}
+
 
 <script type="text/javascript">
 $(function(){
