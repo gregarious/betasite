@@ -73,8 +73,8 @@ $(function(){
                         return {
                             label: '<div class="ac-item">' +
                                     '<div class="item-thumb">' +
-                                        '<img src=' + item.image_url + ' alt="' + item.name + '" />' +
-                                    '</div>' +
+                                        '<img src=' + item.image_url + ' alt="' + item.name + ' height="50" width="50" />' +
+                                    '</div>' + 
                                     '<div class="item-content">' +
                                         '<h4 class="item-title">'+ item.name + '</h4>' +
                                         '<p class="address">' + item.address + '</p>' +

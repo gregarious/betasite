@@ -18,7 +18,7 @@ Context variables:
 <section class="item-content">
 
 	<h4 class="item-title in-feed">
-		<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit Special">{{special.title|truncatewords:10}}</a>
+		<a href="{% url orgadmin-editspecial special.id %}" title="Edit Special">{{special.title|truncatewords:10}}</a>
 	</h4>
 
 	<ul class="item-details">
@@ -35,7 +35,7 @@ Context variables:
 </section>
 
 <div class="item-actions">
-	<a href="#" title="Coming Soon!"><img class="item-action" src="/static/img/browser.png" alt="view"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_edit_special special.id %}" title="Edit special"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
-	<a href="{% url onlyinpgh.orgadmin.views.page_delete_special special.id %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+	<a href="#" title="View listing (coming soon)"><img src="/static/img/browser.png" alt="view"/></a>
+	<a href="{% url orgadmin-editspecial special.id %}" title="Edit special"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
+	<a href="{% url orgadmin-delspecial %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
 </div>

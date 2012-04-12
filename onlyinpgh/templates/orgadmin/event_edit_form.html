@@ -133,13 +133,14 @@ Context variables:
 	</div> <!-- event url -->
     <nav class="prev-next">
 	   <input type="submit" value="Save Changes" class="next" />
-	   <a href="{% url onlyinpgh.orgadmin.views.page_list_events %}" class="back" title="Cancel">Cancel</a>
+	   <a href="{% url orgadmin-listevents %}" class="back" title="Cancel">Cancel</a>
     </nav>
 </form>
 
 <div id="newplace-dialog-form" style="display:none">
-    <p class="tip">Please endter as place or sasdnesss, daaj sammisty snape harry hermione ron.</p>
-    <form id="newplace-form" action="{% url onlyinpgh.orgadmin.ajax.newplace_form_submission %}" method="POST">
+    <p class="tip">Please enter details for the place at which your event will occur.</p>
+    <p class="tip">If all of these fields don't apply, that's fine! Just enter as much information as you've got.</p>
+    <form id="newplace-form" action="{% url orgadmin-addplace %}" method="POST">
     {% csrf_token %}
 
         <div class="field-container">
