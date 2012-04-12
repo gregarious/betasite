@@ -41,7 +41,7 @@ $(function(){
         
         source: function(request, response) {
             $.ajax({
-                url: "/orgadmin/ajax/place_ac/",
+                url: "/manage/ajax/place_ac/",
                 dataType: 'json',
                 data: {
                     'term': request.term

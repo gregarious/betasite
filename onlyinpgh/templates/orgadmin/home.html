@@ -1,7 +1,7 @@
 {% if notification_type in '123' %}
 <div id="notifications">
 {% if notification_type == '1' %}
-<p>Welcome to the Scenable Business Admin Panel!</p>
+<p>Welcome to the Scenable Business Management Panel!</p>
 <p>Get started by <a href="{% url orgadmin-claimplace %}">clicking here to claim your Oakland business location.</a></p>
 {% endif %}
 
@@ -10,7 +10,7 @@
 {% endif %}
 
 {% if notification_type == '3' %}
-<p>You can't add specials without owning a place. <a href="{% url orgadmin-claimplace %}">Click here to create one.</a></p>
+<p>Sorry, you can't create specials without managing a location. <a href="{% url orgadmin-claimplace %}">Click here to claim your location.</a></p>
 {% endif %}
 </div>
 {% endif %}

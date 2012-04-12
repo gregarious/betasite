@@ -397,11 +397,13 @@ class SimpleSpecialForm(SpecialForm):
     dstart = forms.DateField(
         label=u'Date starts',
         input_formats=('%m/%d/%Y',),
-        widget=TextInput(attrs={'class': 'datepicker-start'}))
+        widget=TextInput(attrs={'class': 'datepicker-start'}),
+        required=False)
     dexpires = forms.DateField(
         label=u'Date expires',
         input_formats=('%m/%d/%Y',),
-        widget=TextInput(attrs={'class': 'datepicker-end'}))
+        widget=TextInput(attrs={'class': 'datepicker-end'}),
+        required=False)
 
     tags = forms.CharField(label=u"Tags (comma-separated)", required=False)
 
