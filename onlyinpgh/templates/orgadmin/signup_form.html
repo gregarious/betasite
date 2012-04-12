@@ -1,8 +1,8 @@
-<img src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
+<img id="header-logo" src="{{STATIC_URL}}img/scenable-cloud-pgh-sky.png">
 
-<header class="content-header">
+<!-- <hgroup class="welcome-text"> -->
 	<h2>Register for a Scenable Business Account...</h2>
-</header>
+<!-- </hgroup> -->
 
 <form action="{% url onlyinpgh.orgadmin.views.page_signup %}" method="POST" >
 	{% csrf_token %}
@@ -40,7 +40,7 @@
 	<div class="field-container last">
 		{{ registration_form.password2.errors }}
 		<div class="field-label">
-			{{ registration_form.password2.label_tag }}
+			<label for="id_{{registration_form.password2.html_name}}">Confirm Password</label>
 		</div>
 		<div class="field">
 			{{ registration_form.password2 }}
