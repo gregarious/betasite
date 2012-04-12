@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('onlyinpgh.orgadmin.views',
-    url(r'^$', 'page_home'),
+    url(r'^$', 'page_index'),
     url(r'^home/$', 'page_home', name='orgadmin-home'),
 
     url(r'^signup/$', 'page_signup', name='orgadmin-signup'),
