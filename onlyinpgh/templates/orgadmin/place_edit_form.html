@@ -25,7 +25,7 @@
         </div>
         <div class="field">
             {{ form.location }}
-            <p class="tip">Just the street address, we know you're in Pittsburgh :)</p>
+            <p class="tip">Just the street address, we know you're in Oakland :)</p>
             {% for err in form.location.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -198,7 +198,7 @@
 
     <div class="field-container last">
         <div class="field-label">
-            {{ form.url.label_tag }}
+            <label for="id_{{ form.url.html_name }}">Website</label>
         </div>
         <div class="field">
             {{ form.url }}
