@@ -276,6 +276,19 @@
         </div>
     </div>
 
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.listed.html_name }}">Listed?</label>
+        </div>
+        <div class="field">
+            {{ form.listed }}
+            <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
+            {% for err in form.listed.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}    
+        </div>
+    </div> <!-- event url -->
+
     <nav class="prev-next">
         <input type="submit" value="Save Changes" class="next" />
         <a href="{% url orgadmin-listplaces %}" class="back" title="Cancel">Cancel</a>

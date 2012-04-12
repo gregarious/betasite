@@ -326,7 +326,7 @@ class SimpleEventForm(EventForm):
         super(SimpleEventForm, self).__init__(*args, **kwargs)
 
     class Meta(EventForm.Meta):
-        exclude = ('tags',)
+        exclude = ('tags', 'listed')
         widgets = {
             'image': ImageWidget(),
 
