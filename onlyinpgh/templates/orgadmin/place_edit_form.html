@@ -1,4 +1,7 @@
-<h2>Editing your place...</h2>
+<header class="form-header">
+    <!-- <img src="/static/img/home_place.png" alt="Storefront" /> -->
+    <h2>Editing your location...</h2>
+</header>
 
 <form enctype="multipart/form-data" method="post" action="">
 
@@ -18,10 +21,11 @@
 
     <div class="field-container">
         <div class="field-label">
-            {{ form.location.label_tag }}
+            <label for="id_{{ form.location.html_name }}">Street Address</label>
         </div>
         <div class="field">
             {{ form.location }}
+            <p class="tip">Just the street address, we know you're in Pittsburgh :)</p>
             {% for err in form.location.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -44,7 +48,7 @@
         <div class="field-label">
             <label for="id_{{ form.hr_days_1.html_name }}">Hours</label>
         </div>
-        <p class="tip" id="hours-tip">Add a set of hours for your place. The first field is four hours, the second for days. To add another set, click the '+' to the right.</p>
+        <p class="tip" id="hours-tip">Add a set of hours for your place. The first field is for hours, the second for days. To add another set, click the '+' to the right.</p>
         <div class="double">
             <div class="field">
                 <p class="tip">Days e.g. Mon-Fri or Sun.</p>
@@ -234,7 +238,7 @@
         </div>
         <div class="field tag-input">
             {{ form.tags }}
-            <p class="tip">Enter some terms describing your place such as 'bar, food, casual'.</p>
+            <p class="tip">Add keywords or search terms like 'bar, food, casual'. Separate with commas.</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
@@ -269,7 +273,6 @@
             {% for err in form.twitter_username.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-            <p class="tip social">Without the @ symbol, what is your Twitter name?</p>
         </div>
     </div>
 

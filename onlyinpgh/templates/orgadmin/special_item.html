@@ -12,7 +12,9 @@ Context variables:
 		<div class="points">+{{special.points}}</div>
 		<p class="tip">Total sold: {{special.total_sold}}</p>
 	{% endcomment %}
-	<img class="thumbnail" src="/static/img/default-special.png" alt="Special" />
+	<a href="{% url orgadmin-editspecial special.id %}" title="Edit Special">
+		<img class="thumbnail" src="/static/img/default-special.png" alt="Special" />
+	</a>
 </div>
 
 <section class="item-content">

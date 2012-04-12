@@ -1,8 +1,31 @@
+{% comment %}
+Context variables:
+- items: EventFeedItem objects
+{% endcomment %}
+{% load vmrender from commontags %}
+
 {% include "orgadmin/page_nav.html" %}
 
 <a href="{% url orgadmin-addevent %}" title="Add event" class="add-item">+ Add new event</a>
 
-{{ list_content }}
+{% if items %}
+
+	<ul>
+		{% for item in items %}
+			<li class="item">
+	    		{% vmrender item 'orgadmin/event_item.html' %}
+	    	</li>
+	    {% endfor %}
+    </ul>
+
+{% else %}
+
+    <section class="no-items">
+    	<img src="{{STATIC_URL}}img/home_events.png" alt="Calendar" />
+		<p>We don't currently have any events on record for your location or organization. If we have your Facebook ID, any events you've posted will show up here in 24hrs. Otherwise, click <a href="{% url orgadmin-addevent %}" title="Add Event">here</a> to add one.</p>
+    </section>
+
+{% endif %}
 
 <script type="text/javascript">
 $(function(){

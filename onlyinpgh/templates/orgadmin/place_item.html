@@ -9,11 +9,13 @@ Context variables:
 
 {% load thumbnail %}
 <div class="item-thumb">
-	{% thumbnail place.image "130x130" crop="center" as im %}
-	<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{im.url}}" />
-	{% empty %}
-	<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="/static/img/default-place.png" />
-	{% endthumbnail %}
+	<a href="{% url orgadmin-editplace place.id %}" title="Edit Place">
+		{% thumbnail place.image "130x130" crop="center" as im %}
+		<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{im.url}}" />
+		{% empty %}
+		<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="/static/img/default-place.png" />
+		{% endthumbnail %}
+	</a>
 </div>
 
 <section class="item-content">

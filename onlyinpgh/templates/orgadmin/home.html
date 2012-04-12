@@ -1,44 +1,41 @@
+{% if notification_type in '123' %}
 <div id="notifications">
-	<p>Your trial is about to expire...click here to renew for $10!</p>
+{% if notification_type == '1' %}
+<p>Welcome to the Scenable Business Admin Panel!</p>
+<p>Get started by <a href="{% url orgadmin-claimplace %}">clicking here to claim your Oakland business location.</a></p>
+{% endif %}
+
+{% if notification_type == '2' %}
+<p>Sorry, you can't complete this action without having any organizations associated with your account. If you are a business, please send a message to <a href="contact@scenable.com">contact@scenable.com</a> to alert us of this problem.</p>
+{% endif %}
+
+{% if notification_type == '3' %}
+<p>You can't add specials without owning a place. <a href="{% url orgadmin-claimplace %}">Click here to create one.</a></p>
+{% endif %}
 </div>
+{% endif %}
 
 <nav id="home-nav">
 	<ul>
 		<li>
-			<div class="menu-icon">
-				<a href="{% url orgadmin-listplaces %}">
-					<img src="/static/img/home_place.png" />
-					<p>Places</p>
-				</a>
-			</div>
-			<!-- <div class="menu-description">
-				<p>Scenable has an extensive record of most storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</p>
-			</div> -->
+			<a href="{% url orgadmin-listplaces %}">
+				<img src="/static/img/home_place.png" alt="Store front" />
+				<p>Locations</p>
+			</a>
 		</li>
 
 		<li>
-			<div class="menu-icon">
-				<a href="{% url orgadmin-listspecials %}">
-					<img src="/static/img/home_special.png" />
-					<p>Specials</p>
-				</a>
-			</div>
-		
-			<!-- <div class="menu-description">
-				<p>Have a special or coupon you'd like to make available on Scenable? Specials can be purchased by users of the app and then redeemed at your location. Payment processing is done through PayPal, and you must have a PayPal account in order to receive funds. Don't have one? Click here to make a <a href="https://www.paypal.com/webapps/mpp/product-selection" title="Sign up for PayPal">free Standard PayPal account</a>.</p>
-			</div> -->
+			<a href="{% url orgadmin-listspecials %}">
+				<img src="/static/img/home_special.png" alt="Special" />
+				<p>Specials</p>
+			</a>
 		</li>
 
 		<li>
-			<div class="menu-icon">
-				<a href="{% url orgadmin-listevents %}">
-					<img src="/static/img/home_events.png" />
-					<p>Events</p>
-				</a>
-			</div>
-			<div class="menu-description">
-				<!-- <p>Do you have events you'd like to get the word out about in Oakland? Click here to add or edit your events on Scenable! If your Facebook page is already linked up, we'll already have them listed for you.</p> -->
-			</div>
+			<a href="{% url orgadmin-listevents %}">
+				<img src="/static/img/home_events.png" alt="Calendar"/>
+				<p>Events</p>
+			</a>
 		</li>
 
 	</ul>

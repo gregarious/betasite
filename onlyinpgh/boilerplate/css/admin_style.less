@@ -11,7 +11,6 @@ body {
 	height: 100%; 
 	margin: 0 auto 1em auto;
 	.lucida();
-	overflow-x: hidden;
 }
 
 /* 2 TYPOGRAPHY ---------- */
@@ -117,21 +116,6 @@ p {
 	text-shadow: 0.01em 0.01em 0 #000;
 	text-align: center;
 	padding-bottom: 8px;
-}
-
-.welcome-text, .about-text {
-	padding-bottom: 1em;
-	.clearfix();
-	text-align: center;
-
-	h2 {
-		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
-	}
-
-}
-
-.form-help {
-	margin: 0 0 2em 2em;
 }
 
 
@@ -295,6 +279,7 @@ button, input[type="submit"], .next, .back {
 	background: @teal;
 	color: #fff !important;
 	.b-shadow(0.07em, 0.07em, 0.1em, #888);
+	font-size: 1em;
 	.lucida();
 	padding: 0.5em;
 	.rounded(0.5em);
@@ -419,28 +404,21 @@ input[type="checkbox"] {
 
 	.clearfix();
 	.column(4);
-	//.column(4);
 	margin: 0 1%;
 
-	.menu-icon {
+	a {
 		font-size: 1.1em;
 		text-align: center;
 		padding: 3% 2%;
+	}
 
 		&:hover {
 			background: #e8e8e8;
 		}
+		
 		&:active {
 			background: #e1e1e1;
 		}
-	}
-
-	.menu-description {
-		font-size: 0.9em;
-		//.column(8);
-		margin-top: 1em;
-
-	}
 
 	img {
 		display: block;
@@ -511,7 +489,6 @@ input[type="checkbox"] {
 	float: left;
 }
 
-
 /* 2 FEED/ITEMS ---------- */
 
 .item, .ac-item {
@@ -563,7 +540,7 @@ input[type="checkbox"] {
 .item-thumb {
   .column(3);
   overflow: hidden;
-  padding: 0 1% 1%;
+  //padding: 0 1% 1%;
   text-align: center;
 
   .thumbnail {
@@ -618,9 +595,8 @@ input[type="checkbox"] {
 	font-style: italic;
 	font-weight: bold;
     float: right;
-    //margin-top: 2em;
-    position: absolute;
-    top: 2.5em;
+    position: relative;
+    bottom: 2.5em;
     right: 3em;
 
     &:hover {
@@ -639,10 +615,10 @@ input[type="checkbox"] {
 	font-size: 1.5em;
 	font-weight: bold;
 	.column_r(0.5);
-	
+
 }
 
-/* NOTIFICATIONS ---------- */
+/* HELP TEXT ---------- */
 
 #notifications {
 	border: 1px @yellow solid;
@@ -650,6 +626,38 @@ input[type="checkbox"] {
 	.rounded(0.5em);
 	padding: 0.3em 0.9em;
 	margin-bottom: 2em;
+	text-align: center;
+}
+
+.no-items {
+	padding: 3em;
+
+	img {
+		float: left;
+		margin-right: 2em;
+	}
+
+	h3 {
+		margin: 0;
+	}
+}
+
+.welcome-text, .about-text {
+	padding-bottom: 1em;
+	.clearfix();
+	text-align: center;
+
+	h2 {
+		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+		font-style: normal;
+		font-size: 1.8em;
+		margin-bottom: 0.5em;
+	}
+
+}
+
+.form-help {
+	margin: 0 0 2em 2em;
 }
 
 /* AUTOCOMPLETE -------- */
@@ -675,6 +683,10 @@ input[type="checkbox"] {
 		margin-bottom: 2em;
 		.rounded(0.5em);
 	}
+}
+
+#place-claim .back {
+	margin-top: 2em;
 }
 
 #id_place-display {
@@ -717,12 +729,11 @@ input[type="checkbox"] {
 
 #ui-active-menuitem .ac-item {
 	.clearfix();
-	background: @vlblue;
+	background: #e1e1e1;
 }
 
 #ui-active-menuitem {
-	color: @red;
-	background: none;
+	background: #e1e1e1;
 	border: none;
 }
 
@@ -841,7 +852,6 @@ input[type="checkbox"] {
 	}
 }
 
-
 /* JQUERY DATETIMEPICKER ------ */
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -857,4 +867,49 @@ input[type="checkbox"] {
 
 .ui-datepicker-current, .ui-datepicker-close {
 	color: #000 !important;
+}
+
+/* SPLASH ------------- */
+
+#splash {
+	
+	&.wrap {
+	/*	max-width: 800px;*/
+	}
+
+	h2, h3 {
+		color: #333;
+		text-shadow: 0.03em 0.03em 0.01em #fff;
+	}
+
+	#site-content {
+		margin-top: 30px;
+		background: none;
+		border: none;
+		width: 720px;
+		.no-b-shadow();
+	}
+
+	.prev-next {
+		width: 60%;
+		margin: 3em auto;
+
+		a {
+			padding: 1em;
+			.gradient(@dblue, @teal);
+			font-size: 2em;
+
+			&:hover {
+				background: @teal;
+			}
+
+			&:active {
+				.gradient(@teal, #24494E);
+			}
+		}
+
+		.next {
+
+		}
+	}
 }
