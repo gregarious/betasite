@@ -22,7 +22,7 @@ $(function(){
         $("form :submit").removeAttr('disabled');
         $(".field-container").fadeOut(200);
         $.ajax({
-            url: "/orgadmin/ajax/place_confirm/",
+            url: "/manage/ajax/place_confirm/",
             dataType: 'html',
             data: {
                 'pid': ui.item.value
@@ -62,7 +62,7 @@ $(function(){
         
         source: function(request, response) {
             $.ajax({
-                url: "/orgadmin/ajax/placeclaim_ac/",
+                url: "/manage/ajax/placeclaim_ac/",
                 dataType: 'json',
                 data: {
                     'term': request.term
@@ -106,7 +106,7 @@ $(function(){
 
         select: function(event, ui) {
             if(ui.item.value === '!newplace') {
-                window.location.href = "/orgadmin/places/setup/new/";
+                window.location.href = "/manage/places/setup/new/";
             }
             else {
                 on_ac_select(ui);   // function will show the confirmation dialog
