@@ -36,14 +36,14 @@
 			<div class="wrap">
 	<!-- 		<div class="third">&nbsp;</div>
 			<div class="third"> -->
-				<h1 id="site-title"><a href="{% url onlyinpgh.orgadmin.views.page_home %}">Scenable Business Account</a></h1>
+				<h1 id="site-title"><a href="{% url orgadmin-home %}">Scenable Business Account</a></h1>
 			<!-- </div> -->
 				<div id="user">
 					{% if user.is_authenticated %}
-						{{ user.username }} | <a href="{% url onlyinpgh.orgadmin.views.page_logout %}">Logout</a>
+						{{ user.username }} | <a href="{% url orgadmin-logout %}">Logout</a>
 					{% else %}
-						<a href="{% url onlyinpgh.orgadmin.views.page_signup %}">Sign Up</a> |
-						<a href="{% url onlyinpgh.orgadmin.views.page_login %}">Log In</a>
+						<a href="{% url orgadmin-signup %}">Sign Up</a> |
+						<a href="{% url orgadmin-login %}">Log In</a>
 					{% endif %}
 				</div>
 			</div>

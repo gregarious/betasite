@@ -144,7 +144,7 @@ def page_login(request):
 
     request.session.set_test_cookie()
     context = RequestContext(request)
-    content = render_to_string('registration/login_form.html',
+    content = render_to_string('orgadmin/login_form.html',
         {'form': form, 'form_action': reverse('orgadmin-login')},
         context_instance=context)
 
