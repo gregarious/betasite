@@ -1,13 +1,13 @@
 
-<hgroup class="help-text">
-    <h2>Add a place...</h2>
-    <h3>Scenable has an extensive record of most storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</h3>
-</hgroup>
-
-
+<h2>Add a place...</h2>
+    
 <form method="POST" action="{% url orgadmin-claimplace %}">
     {% csrf_token %}
-    <div class="field-container inner">
+
+    <div class="field-container">
+
+        <p class="form-help">Scenable has a record of most storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</p>
+
         {{ form.place.errors }}
         <div class="field-label">
             {{ form.place.label_tag }}
@@ -23,10 +23,9 @@
 
     <div id="confirm-box" style="display:none">
         <p>Great! We've already got your place on record. If this is correct, choose Claim. Otherwise click the "X" and choose again.</p>
+        <a id="place-clear" href="#"><img src="{{STATIC_URL}}img/icon_x.gif" /></a>
         <div id="confirm-content" class="item"></div>
-        <div class="item-actions">
-          <a id="place-clear" href="#"><img src="{{STATIC_URL}}img/icon_x.gif" /></a>
-        </div>
+        
         <button type="submit" disabled="disabled" class="next">Claim</button>
     </div>
 </form>
