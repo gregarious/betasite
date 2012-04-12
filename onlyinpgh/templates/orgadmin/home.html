@@ -1,6 +1,19 @@
+{% if notification_type in '123' %}
 <div id="notifications">
-	<p>Your trial is about to expire...click here to renew for $10!</p>
+{% if notification_type == '1' %}
+<p>Welcome to the Scenable Business Admin Panel!</p>
+<p>Get started by <a href="{% url orgadmin-claimplace %}">clicking here to claim your Oakland business location.</a></p>
+{% endif %}
+
+{% if notification_type == '2' %}
+<p>Sorry, you can't complete this action without having any organizations associated with your account. If you are a business, please send a message to <a href="contact@scenable.com">contact@scenable.com</a> to alert us of this problem.</p>
+{% endif %}
+
+{% if notification_type == '3' %}
+<p>You can't add specials without owning a place. <a href="{% url orgadmin-claimplace %}">Click here to create one.</a></p>
+{% endif %}
 </div>
+{% endif %}
 
 <nav id="home-nav">
 	<ul>
