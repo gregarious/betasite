@@ -36,18 +36,19 @@
 
     <div class="field-container last">
         <div class="field-label">
-            <label for="id_{{form.dtstart.html_name">Dates</label>
+            <label for="id_{{form.dstart.html_name}}">Dates</label>
         </div>
         <div class="double">
             <div class="field">
-                {{ form.dstart }}
+                <input id="id_{{form.dstart.html_name}}" type="text" class="datepicker-start" value="{{ form.dstart.value|date:"m/d/Y" }}" name="{{form.dstart.html_name}}" />
                 <p class="tip">Special begins</p>
                 {% for err in form.dstart.errors %}
                     <p class="tip error">{{ err }}</p><br />
                 {% endfor %}
             </div>
             <div class="field">
-                {{ form.dexpires }}
+                <input id="id_{{form.dexpires.html_name}}" type="text" class="datepicker-end" value="{{ form.dexpires.value|date:"m/d/Y" }}" name="{{form.dexpires.html_name}}" />
+
                 <p class="tip">Special expires</p>
                 {% for err in form.dexpires.errors %}
                     <p class="tip error">{{ err }}</p><br />

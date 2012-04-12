@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^orgadmin/', include('onlyinpgh.orgadmin.urls')),
+    url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
 
     url(r'^places/',include('onlyinpgh.places.urls')),
     url(r'^events/',include('onlyinpgh.events.urls')),
