@@ -146,7 +146,6 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
-  font-size: 0.9em;
   font-style: italic;
 }
 svg:not(:root) {
@@ -391,30 +390,6 @@ p {
   text-shadow: 0.01em 0.01em 0 #000;
   text-align: center;
   padding-bottom: 8px;
-}
-.welcome-text,
-.about-text {
-  padding-bottom: 1em;
-  *zoom: 1;
-  text-align: center;
-}
-.welcome-text:before,
-.about-text:before,
-.welcome-text:after,
-.about-text:after {
-  content: "";
-  display: table;
-}
-.welcome-text:after,
-.about-text:after {
-  clear: both;
-}
-.welcome-text h2,
-.about-text h2 {
-  text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
-}
-.form-help {
-  margin: 0 0 2em 2em;
 }
 /* ELEMENTS --------- */
 .points {
@@ -800,15 +775,15 @@ input[type="checkbox"] {
 #home-nav ul li:after {
   clear: both;
 }
-#home-nav ul li .menu-icon {
+#home-nav ul li a {
   font-size: 1.1em;
   text-align: center;
   padding: 3% 2%;
 }
-#home-nav ul li .menu-icon:hover {
+#home-nav ul li:hover {
   background: #e8e8e8;
 }
-#home-nav ul li .menu-icon:active {
+#home-nav ul li:active {
   background: #e1e1e1;
 }
 #home-nav ul li img {
@@ -1089,6 +1064,7 @@ input[type="checkbox"] {
   background-clip: padding-box;
   padding: 0.3em 0.9em;
   margin-bottom: 2em;
+  text-align: center;
 }
 .no-items {
   padding: 3em;
@@ -1099,6 +1075,30 @@ input[type="checkbox"] {
 }
 .no-items h3 {
   margin: 0;
+}
+.welcome-text,
+.about-text {
+  padding-bottom: 1em;
+  *zoom: 1;
+  text-align: center;
+}
+.welcome-text:before,
+.about-text:before,
+.welcome-text:after,
+.about-text:after {
+  content: "";
+  display: table;
+}
+.welcome-text:after,
+.about-text:after {
+  clear: both;
+}
+.welcome-text h2,
+.about-text h2 {
+  text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+}
+.form-help {
+  margin: 0 0 2em 2em;
 }
 /* AUTOCOMPLETE -------- */
 #confirm-box p {

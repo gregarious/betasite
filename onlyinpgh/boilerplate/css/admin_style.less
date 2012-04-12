@@ -119,21 +119,6 @@ p {
 	padding-bottom: 8px;
 }
 
-.welcome-text, .about-text {
-	padding-bottom: 1em;
-	.clearfix();
-	text-align: center;
-
-	h2 {
-		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
-	}
-
-}
-
-.form-help {
-	margin: 0 0 2em 2em;
-}
-
 
 /* ELEMENTS --------- */
 
@@ -421,18 +406,19 @@ input[type="checkbox"] {
 	.column(4);
 	margin: 0 1%;
 
-	.menu-icon {
+	a {
 		font-size: 1.1em;
 		text-align: center;
 		padding: 3% 2%;
+	}
 
 		&:hover {
 			background: #e8e8e8;
 		}
+		
 		&:active {
 			background: #e1e1e1;
 		}
-	}
 
 	img {
 		display: block;
@@ -641,6 +627,7 @@ input[type="checkbox"] {
 	.rounded(0.5em);
 	padding: 0.3em 0.9em;
 	margin-bottom: 2em;
+	text-align: center;
 }
 
 .no-items {
@@ -654,6 +641,21 @@ input[type="checkbox"] {
 	h3 {
 		margin: 0;
 	}
+}
+
+.welcome-text, .about-text {
+	padding-bottom: 1em;
+	.clearfix();
+	text-align: center;
+
+	h2 {
+		text-shadow: 0.05em 0.05em 0.05em #e1e1e1;
+	}
+
+}
+
+.form-help {
+	margin: 0 0 2em 2em;
 }
 
 /* AUTOCOMPLETE -------- */

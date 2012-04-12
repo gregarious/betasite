@@ -1,15 +1,14 @@
 
-<h2>Add a place...</h2>
+<h2>Add a location...</h2>
     
 <form method="POST" action="{% url orgadmin-claimplace %}">
     {% csrf_token %}
 
     <div class="field-container" id="place-claim">
-        <p class="form-help">Scenable has a record of most storefronts and buildings in Oakland. Click here to claim your location or create a new one in case we missed anything.</p>
-
+        <p class="form-help">Scenable has a record of most storefronts and buildings in Oakland. Claim your location or create a new one in case we missed anything.</p>
         {{ form.place.errors }}
         <div class="field-label">
-            {{ form.place.label_tag }}
+            <label for="id_{{ form.place.html_name }}">Name</label>
         </div>
         <div class="field">
             <input id="id_place-text">
