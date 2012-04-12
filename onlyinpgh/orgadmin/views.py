@@ -77,6 +77,15 @@ def org_owns(org, instance):
 
 
 ### URL-linked page views ###
+def page_index(request):
+    if request.user.is_authenticated():
+        return redirect('orgadmin-home')
+    else:
+        content = render_to_string('orgadmin/splash.html',
+            context_instance=RequestContext(request))
+        return response_admin_page(content)
+
+
 def page_signup(request):
     if request.user.is_authenticated():
         logout(request)
