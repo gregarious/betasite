@@ -13,8 +13,7 @@ form fields:
 </hgroup>
 
 <form method="post" action="{{ form_action }}">
-{% csrf_token %}
-
+	{% csrf_token %}
 	<div class="field-container">
 		<div class="field-label">
 			<label for="{{ form.username.html_name }}">Email or Username</label>
@@ -37,6 +36,7 @@ form fields:
 		</div>
 	</div>
 	
+
 	<nav class="prev-next">
 		<a href="{% url orgadmin-signup %}" title="Sign Up" class="back">Sign Up</a>
 		<input type="submit" value="Login" class="submit-item next" />

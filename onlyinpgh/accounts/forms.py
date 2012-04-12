@@ -7,7 +7,11 @@ from onlyinpgh.accounts.models import UserProfile
 class RegistrationForm(UserCreationForm):
     '''
     Overrides UserCreationForm to include email address.
+    Also disallows @ symbols in usernames.
     '''
+    username = forms.RegexField(label="Username", max_length=30, regex=r'^[\w.+-]+$',
+        help_text="Required. 30 characters or fewer. Letters, digits and ./+/-/_ only.",
+        error_messages={'invalid': "This value may contain only letters, numbers and ./+/-/_ characters."})
     email = forms.EmailField(label="Email address", required=True)
 
     class Meta(UserCreationForm.Meta):

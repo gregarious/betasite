@@ -12,9 +12,8 @@ from onlyinpgh.events.models import Event, Role
 from onlyinpgh.specials.models import Special
 from onlyinpgh.tags.models import Tag
 
-from django.contrib.auth.forms import AuthenticationForm
 from onlyinpgh.accounts.forms import RegistrationForm
-from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgAdminPlaceForm, SimplePlaceForm,\
+from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgLoginForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
 from onlyinpgh.places.viewmodels import PlaceFeedItem
@@ -121,7 +120,7 @@ def page_login(request):
 
     if request.POST:
         # passing in request checks for cookies
-        form = AuthenticationForm(request, data=request.POST)
+        form = OrgLoginForm(request, data=request.POST)
         if form.is_valid():
             if request.session.test_cookie_worked():
                 request.session.delete_test_cookie()
@@ -140,7 +139,7 @@ def page_login(request):
             redirect_to = reverse('orgadmin-home')
             return HttpResponseRedirect(redirect_to)
     else:
-        form = AuthenticationForm()
+        form = OrgLoginForm()
 
     request.session.set_test_cookie()
     context = RequestContext(request)
