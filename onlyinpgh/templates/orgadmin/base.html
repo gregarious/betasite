@@ -23,7 +23,6 @@
 	<!--  Fonts -->
 	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="/static/css/fonts/Droid-Serif-fontfacekit/stylesheet.css">
 
 	<!-- Include jQuery with fallback to local copy -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
@@ -79,8 +78,16 @@
 	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery.ui.autocomplete.html.js"></script>
 	<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
 	
-	<!-- Scenable Scripts -->
-	<script src="{{STATIC_URL}}js/admin_script.js"></script>
+	<!-- Scenable Scripts: inline for now -->
+	<script type="text/javascript">
+    // Copied from script.js - highlight current menu item based on URL
+    var loc = location.pathname;
+    var menu_item = $('#page-nav').find('a[href$="'+loc+'"]');
+    
+    if(menu_item.attr('href') == loc) {
+        menu_item.addClass('current-page');
+    }
+    </script>
 
 </body>
 </html>

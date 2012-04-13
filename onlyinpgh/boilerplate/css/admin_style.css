@@ -759,6 +759,16 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.check-container input[type="checkbox"] {
+  float: left;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0.4em 0 0.5em 0;
+}
 .check-desc-container {
   float: left;
   width: 89.58333333333334%;
