@@ -179,7 +179,6 @@ def page_home(request):
     '''
     try:
         notification_type = str(request.session.pop('home-notification'))
-        print 'notification', notification_type
     except KeyError:
         notification_type = None
     context = RequestContext(request,
@@ -392,8 +391,6 @@ def page_edit_special(request, id=None):
         if form.is_valid():
             form.save()
             return redirect('orgadmin-listspecials')
-        else:
-            print form.errors
     else:
         form = SimpleSpecialForm(organization=org, instance=instance)
 
