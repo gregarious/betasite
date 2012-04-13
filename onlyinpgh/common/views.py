@@ -66,14 +66,11 @@ def qr_redirect(request, key=None):
         key = request.GET.get('id')
 
     if key == 'oakland':
-        print 'redirecting to oakland'
-        return redirect('splash')
+        return redirect('oakland-tease')
     elif key == 'shirt':
-        print 'redirecting to shirt'
-        return redirect('splash')
+        return redirect('mobile-about')
     elif key == 'card':
-        print 'redirecting to card'
-        return redirect('splash')
+        return redirect('mobile-about')
     else:
         print 'not found', key
         raise Http404

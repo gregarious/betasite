@@ -32,9 +32,12 @@ urlpatterns = patterns('',
     url(r'^qr/(\w+)/$', 'onlyinpgh.common.views.qr_redirect'),
     url(r'^qr/(\w+)$', 'onlyinpgh.common.views.qr_redirect'),
 
-    url('splash', direct_to_template, {'template': 'misc/splash.html'}, name='splash'),
-    url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
-    url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
+    # Scenable and Oakland shirt QRs
+    url('mobile-about', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
+    url('oakland-teaser', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
+
+    # Static about page for the scenable.com - not in use
+    url('about', direct_to_template, {'template': 'qr/about.html'}, name='about'),    
                        
     url('chatter_example', 'onlyinpgh.common.views.example_chatter'),
     url('news_example', 'onlyinpgh.common.views.example_news'),

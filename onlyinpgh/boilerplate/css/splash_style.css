@@ -243,21 +243,22 @@ body {
   width: 100%;
   height: 100%;
   color: #222;
-  margin: 3% 0;
   font-family: 'DroidSerifRegular';
 }
 section {
-  float: right;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
+  width: 100%;
+  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+hr {
+  border-color: #fff;
+}
 /* TYPOGRAPHY --------- */
 h1 {
   font-family: 'DroidSerifItalic', serif;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: normal;
   line-height: 100%;
   margin: 0;
@@ -464,8 +465,8 @@ input[type="submit"]:active {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1140px;
-  padding: 3% 5%;
+  max-width: 600px;
+  padding: 3%;
   *zoom: 1;
 }
 .wrap:before,
@@ -477,14 +478,14 @@ input[type="submit"]:active {
   clear: both;
 }
 #site-header {
-  border-bottom: 1px solid #a9c6e8;
-  padding-bottom: 3%;
-  margin-bottom: 3%;
+  padding: 3% 0;
+  margin-bottom: 2%;
 }
 #site-header img {
   margin-top: 0.4em;
   display: block;
   margin: auto;
+  max-width: 500px;
 }
 #oakland .screenshot {
   display: block;
@@ -553,17 +554,11 @@ input[type="submit"]:active {
     border: none;
     padding: 5% 0 0;
   }
-  h1 {
-    font-size: 1.4em;
-  }
 }
 @media screen and (max-width: 520px) {
   #site-title {
     font-size: 4em;
   }
-  /*h1 {
-   		font-size: 1em;
-   	} */
   .field-label {
     width: 100%;
     margin: 0;
