@@ -16,12 +16,18 @@ DEBUG = settings_local.DEBUG
 TEMPLATE_DEBUG = settings_local.TEMPLATE_DEBUG
 
 ADMINS = settings_local.ADMINS
-MANAGERS = settings_local.ADMINS
+MANAGERS = settings_local.MANAGERS
 
 DATABASES = {
     'default': settings_local.DB_DEFAULT
 }
 DATABASES['default']['TEST_CHARSET'] = 'utf8'
+
+EMAIL_HOST = settings_local.EMAIL_HOST
+EMAIL_HOST_USER = settings_local.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
+SERVER_EMAIL = settings_local.SERVER_EMAIL
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
