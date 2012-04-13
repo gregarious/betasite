@@ -4,13 +4,15 @@ $(function(){
         place_ac_value = $('#id_place'),
         place_ac_sel_display = $('#id_place-display'),
         place_ac_clear_btn = $('#place-clear'),
-        place_ac_spinner = $('.spinner');
-        place_ac_tip = $('#event-place-tip');
+        place_ac_spinner = $('#id_place-text').siblings('.spinner');
+        place_ac_tip = $('#event-place-tip'),
+        place_ac_error_div = $('#id_place-text').siblings('.submit-error');
     
     var tag_ac = $('#id_tags');
     var newplace_dialog_form = $("#newplace-dialog-form"),
         newplace_form_name_input = newplace_dialog_form.find('input[name=newplace-name]');
         newplace_form_address_input = newplace_dialog_form.find('input[name=newplace-address]');
+        newplace_form_spinner = $('#newplace-form + .spinner');
 
     place_ac_spinner.hide();
     place_ac_clear_btn.hide()
@@ -72,8 +74,7 @@ $(function(){
                     response(responses);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    // TODO: what to do here?
-                    console.log('failed!');
+                    place_ac_error_div.html('<i>server error (code 1)<i>').show();
                 },
                 complete: function(jqXHR, textStatus) {
                     place_ac_spinner.hide();
@@ -82,6 +83,7 @@ $(function(){
         },
         
         search: function(event, ui) {
+            place_ac_error_div.hide();
             place_ac_spinner.show();
         },
 
@@ -150,21 +152,19 @@ $(function(){
                                 };
                                 onACSelect(ui);
                                 newplace_dialog_form.dialog("close");
-                                console.log('all done!');
                             }
                             else {
-                                console.log('server returned false');
-                                // TODO: what here?
+                                newplace_dialog_form.find('.submit-error').html('<i>server error (code 2)<i>').show();
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
-                            // TODO: what here?
-                            console.log('error');
+                            newplace_dialog_form.find('.submit-error').html('<i>server error (code 1)<i>').show();
                         },
                         complete: function(jqXHR, textStatus) {
                             newplace_dialog_form.find('.spinner').hide();
                         }
                     });
+                    newplace_dialog_form.find('.submit-error').hide();
                     newplace_dialog_form.find('.spinner').show();
                 }
                 else {
