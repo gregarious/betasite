@@ -75,7 +75,7 @@ class OrgLoginForm(AuthenticationForm):
                 auth_users = [authenticate(username=username, password=password) for username in usernames]
                 if not any(auth_users):
                     raise forms.ValidationError("Please enter a correct email address and password. Note that both fields are case-sensitive.")
-                if len(auth_users):
+                if len(auth_users) > 1:
                     raise forms.ValidationError("This email address is associated with more than one user. Please use a username.")
                 self.user_cache = auth_users[0]
             else:
