@@ -32,6 +32,10 @@ html {
   -ms-text-size-adjust: 100%;
 }
 html,
+body {
+  height: 100%;
+}
+html,
 button,
 input,
 select,
@@ -142,10 +146,7 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
-  font-size: 0.9em;
   font-style: italic;
-  height: auto;
-  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -272,7 +273,6 @@ h2 {
 .oakland-heading {
   font-family: 'DroidSerifItalic', Georgia, serif;
   font-size: 1.2em;
-  margin-top: 1.5em;
 }
 h3 {
   font-size: 1em;
@@ -299,6 +299,10 @@ p {
   color: #222;
   margin: 1em 0;
   text-shadow: 0.04em 0.04em 0 #ffffff;
+}
+img {
+  width: 100%;
+  height: auto;
 }
 .highlight {
   color: #b83939;
@@ -327,6 +331,9 @@ p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.caption .icon-container img {
+  width: auto;
 }
 .error {
   color: #C34327;
@@ -373,7 +380,7 @@ textarea {
   box-shadow: 0 0 0.01em #ffffff;
   font-size: 1em;
   width: 93%;
-  margin: 0 5% 0 2%;
+  margin: 0 5% 0 0;
   outline: none;
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -472,7 +479,7 @@ input[type="submit"]:active {
 #site-header {
   border-bottom: 1px solid #a9c6e8;
   padding-bottom: 3%;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 #site-header img {
   margin-top: 0.4em;
@@ -480,11 +487,8 @@ input[type="submit"]:active {
   margin: auto;
 }
 #oakland .screenshot {
-  -webkit-box-shadow: 0 0 0.2em #ffffff;
-  -moz-box-shadow: 0 0 0.2em #ffffff;
-  box-shadow: 0 0 0.2em #ffffff;
   display: block;
-  margin: 1em auto auto;
+  margin: auto;
 }
 #company {
   padding-left: 3%;
@@ -557,8 +561,22 @@ input[type="submit"]:active {
   #site-title {
     font-size: 4em;
   }
-  h1 {
-    font-size: 1em;
+  /*h1 {
+   		font-size: 1em;
+   	} */
+  .field-label {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .field {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 350px) {

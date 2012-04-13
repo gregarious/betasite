@@ -30,7 +30,7 @@ TODO: only show month/day for events ending on a different day
 		{% endif %}
 		<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
 		<li class="description">{{event.description|truncatewords:20|urlizetrunc:20}}</li>
-		</ul>
+	</ul>
 	{% include "tags/tag_list.html" with tags=event.tags %}
 	
 </section>

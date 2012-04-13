@@ -32,6 +32,10 @@ html {
   -ms-text-size-adjust: 100%;
 }
 html,
+body {
+  height: 100%;
+}
+html,
 button,
 input,
 select,
@@ -142,10 +146,7 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
-  font-size: 0.9em;
   font-style: italic;
-  height: auto;
-  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -238,6 +239,7 @@ td {
 }
 /* ROOT --------- */
 body {
+  font-family: 'DroidSerifRegular', Georgia, serif;
   background: #333;
   width: 100%;
   height: 100%;
@@ -257,16 +259,16 @@ section {
 /* TYPOGRAPHY --------- */
 h1 {
   color: #fff;
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-family: 'DroidSerifItalic', 'Georgia', serif;
   font-weight: normal;
-  margin: 2% 0 0;
+  margin: 2% 5%;
   padding-bottom: 0;
   text-align: center;
   text-shadow: 0.1em 0.1em 0.05em #000;
 }
 a {
-  color: #b83939;
+  color: #8fd36f;
 }
 a:hover {
   color: #ded57f;
@@ -275,7 +277,12 @@ a:active {
   color: #2c525d;
 }
 a:visited {
-  color: #b83939;
+  color: #8fd36f;
+}
+#more-link {
+  font-size: 1.3em;
+  text-align: right;
+  display: block;
 }
 p {
   color: #222;
@@ -283,18 +290,19 @@ p {
   text-shadow: 0.05em 0.05em 0.05em #fff;
 }
 img {
-  padding-bottom: 1.5em;
+  padding-bottom: 2em;
+  display: block;
+  margin: auto;
 }
 /* SITE ---------- */
 .wrap {
   margin: 10% auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 500px;
   padding: 3% 5%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  text-align: center;
 }
 button {
   border: none;
@@ -367,22 +375,3 @@ button:active {
   left: 1px;
   background: #238b49;
 }
-/* 18 MEDIA QUERIES ---------- */
-/*
- * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
- */
-/* Styles for mobile ----------- */
-@media screen and (max-width: 700px) {
-  
-}
-@media screen and (max-width: 520px) {
-  
-}
-@media screen and (max-width: 350px) {
-  
-}
-/* Styles for desktop and large screen ----------- */
-@media only screen and (min-width: 720px) {
-  
-}
-/*/mediaquery*/

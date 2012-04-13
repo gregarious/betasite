@@ -27,8 +27,8 @@ urlpatterns = patterns('',
     url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
 
     url('splash', direct_to_template, {'template': 'misc/splash.html'}),
-    url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
-    url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
+    url('qr/oakland', direct_to_template, {'template': 'qr/oakland_scene.html'}),
+    url('scenable_scan', direct_to_template, {'template': 'qr/scenable_splash.html'}),
 
     url('chatter_example', 'onlyinpgh.common.views.example_chatter'),
     url('news_example', 'onlyinpgh.common.views.example_news'),
