@@ -41,11 +41,13 @@ Context variables:
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icon_x.gif"></a>
             <div id="id_place-display" style="display:none">{{initial_selected}}</div>
             {{form.place}}
+		</div>
+        <div class="field" id="event-place-tip">
             <p class="tip">Type the name of your event's location.</p>
-			{% for err in form.place.errors %}
+            {% for err in form.place.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-		</div>
+        </div>
 	</div> <!-- place -->
 
 	<div class="field-container last">
