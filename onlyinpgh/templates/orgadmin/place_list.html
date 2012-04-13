@@ -10,7 +10,7 @@ Context variables:
 
 {% if items %}
 
-	<ul>
+	<ul class="feed">
 		{% for item in items %}
 			<li class="item">
 	    		{% vmrender item 'orgadmin/place_item.html' %}

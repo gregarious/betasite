@@ -5,6 +5,7 @@ $(function(){
         place_ac_sel_display = $('#id_place-display'),
         place_ac_clear_btn = $('#place-clear'),
         place_ac_spinner = $('.spinner');
+        place_ac_tip = $('#event-place-tip');
     
     var tag_ac = $('#id_tags');
     var newplace_dialog_form = $("#newplace-dialog-form"),
@@ -25,6 +26,7 @@ $(function(){
         place_ac_value.val(ui.item.value);
         place_ac_sel_display.show().html(ui.item.selectedDisplay);
         place_ac_clear_btn.show();
+        place_ac_tip.hide();
     }
 
     function onACDeselect(ui) {
@@ -32,6 +34,7 @@ $(function(){
         place_ac_value.val('');
         place_ac_sel_display.html('').hide();
         place_ac_clear_btn.hide();
+        place_ac_tip.show();
     }
 
     place_ac_text.autocomplete({
