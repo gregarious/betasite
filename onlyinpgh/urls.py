@@ -11,9 +11,9 @@ urlpatterns = patterns('',
 
     url(r'^login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page':'/'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
 
-    url(r'^account/',include('onlyinpgh.accounts.urls')),
+    url(r'^account/', include('onlyinpgh.accounts.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -21,12 +21,18 @@ urlpatterns = patterns('',
 
     url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
 
-    url(r'^places/',include('onlyinpgh.places.urls')),
-    url(r'^events/',include('onlyinpgh.events.urls')),
-    url(r'^specials/',include('onlyinpgh.specials.urls')),
+    url(r'^places/', include('onlyinpgh.places.urls')),
+    url(r'^events/', include('onlyinpgh.events.urls')),
+    url(r'^specials/', include('onlyinpgh.specials.urls')),
     url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
 
-    url('splash', direct_to_template, {'template': 'misc/splash.html'}),
+    # QR-code redirect handling
+    url(r'^qr/$', 'onlyinpgh.common.views.qr_redirect'),
+    url(r'^qr$', 'onlyinpgh.common.views.qr_redirect'),
+    url(r'^qr/(\w+)/$', 'onlyinpgh.common.views.qr_redirect'),
+    url(r'^qr/(\w+)$', 'onlyinpgh.common.views.qr_redirect'),
+
+    url('splash', direct_to_template, {'template': 'misc/splash.html'}, name='splash'),
     url('obid_scan', direct_to_template, {'template': 'misc/obid_scan.html'}),
     url('scenable_scan', direct_to_template, {'template': 'misc/scenable_scan.html'}),
 
