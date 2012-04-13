@@ -933,6 +933,10 @@ input[type="checkbox"] {
   float: left;
 }
 /* 2 FEED/ITEMS ---------- */
+.feed {
+  position: relative;
+  bottom: 0.5em;
+}
 .item,
 .ac-item {
   float: left;
