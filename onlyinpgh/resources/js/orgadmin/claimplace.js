@@ -5,8 +5,8 @@ $(function(){
         place_ac_clear_btn = $('#place-clear'),
         place_ac_spinner = $('.spinner'),
         place_ac_confirmbox = $('#confirm-box'),
-        place_ac_confirmcontent = $('#confirm-content');
-
+        place_ac_confirmcontent = $('#confirm-content'),
+        place_ac_error_div = $('.submit-error');
     place_ac_spinner.hide();
     place_ac_clear_btn.hide()
         .on('click', function(event){
@@ -90,8 +90,7 @@ $(function(){
                     response(responses);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    // TODO: what to do here?
-                    console.log('failed!');
+                    place_ac_error_div.html('<i>server error (code 1)<i>').show();
                 },
                 complete: function(jqXHR, textStatus) {
                     place_ac_spinner.hide();
@@ -102,6 +101,7 @@ $(function(){
         search: function(event, ui) {
             remove_confirmation();
             place_ac_spinner.show();
+            place_ac_error_div.hide();
         },
 
         select: function(event, ui) {

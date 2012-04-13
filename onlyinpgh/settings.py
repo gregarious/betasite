@@ -29,6 +29,8 @@ EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
 SERVER_EMAIL = settings_local.SERVER_EMAIL
 
+SEND_BROKEN_LINK_EMAILS = True
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
