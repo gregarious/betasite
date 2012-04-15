@@ -10,7 +10,7 @@ TODO: only show month/day for events ending on a different day
 {% endcomment %}
 {% load thumbnail %}
 
-<div class="item-thumb">
+<!-- <div class="item-thumb">
 	<a href="{% url event-detail event.id %}">
     {% thumbnail event.image "130x130" crop="center" as im %}
     <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
@@ -18,9 +18,20 @@ TODO: only show month/day for events ending on a different day
     <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
     {% endthumbnail %}
 	</a>
+</div> -->
+
+{% thumbnail event.image "70x70" crop="center" as im %}
+<div class="related-item-thumb" style="background:url('{{im.url}}') center no-repeat;">
+    <!-- {# {% thumbnail event.image "130x130" crop="center" as im %} #}
+    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" /> -->
+{% empty %}
+<div class="related-item-thumb" style="background:url('/static/img/default-event.png') center no-repeat;">
+<!--     <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" /> -->
+{% endthumbnail %}
 </div>
 
-<section class="item-content">
+
+<section class="related-item-content">
 	<h4 class="item-title"><a href="{% url event-detail event.id %}">{{ event.name }}</a></h4>
 	<ul class="item-details">	
 		<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>

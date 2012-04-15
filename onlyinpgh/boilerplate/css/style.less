@@ -9,7 +9,7 @@ body {
               fixed 
               bottom right 
               no-repeat;
-  font-family: Helvetica, Arial, sans-serif;
+  .lucida();
   //font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
@@ -32,7 +32,8 @@ h3 {
 }
 
 h4 {
-  font-family: 'DroidSerifBoldItalic';
+  //font-family: 'DroidSerifBold';
+  font-weight: bold;
 }
 
 p {
@@ -129,9 +130,10 @@ a {
 }
 
 .feed-title, .single-title {
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
+  //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
-  text-shadow: 0 0 0.05em #999;
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em 0.1em #999;
   margin: 0;
 }
 
@@ -155,8 +157,9 @@ a {
 
 .widget-title {
   margin: 0.5em 0;
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
+  //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   border-bottom: 1px solid #e1e1e1;
+  font-style: italic;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -382,6 +385,7 @@ button, input[type="submit"], .next, .back {
         margin-top: 1em;
         position: relative;
         .rounded(0.2em);
+        
         &.current-page {
           background-color: @lgreen;
         }
@@ -562,8 +566,8 @@ button, input[type="submit"], .next, .back {
   
   a {
     text-shadow: 0 0 0.01em #999;
-    font-size: 1.2em;
-    font-weight: normal;
+    font-size: 1.1em;
+    //font-weight: bold;
     &:hover {
       color: @red;
     }
@@ -580,20 +584,16 @@ button, input[type="submit"], .next, .back {
   }
 }
 
-.item-thumb {
+.item-thumb, .related-item-thumb {
   .column(2.75);
   overflow: hidden;
   text-align: center;
-  
-  .thumbnail {
-    border: 2px #e1e1e1 solid;
-    height: 130px;
-    width: 130px;
-    display: block;
-  }
+  float: left;
+  height: 130px;
+  max-width: 130px;
 }
 
-.item-content {
+.item-content, .related-item-content {
   .column_nm(9.25);
   margin-right: 2%;
   padding-left: 2%;
@@ -680,11 +680,11 @@ button, input[type="submit"], .next, .back {
   .item-thumb {
     .column(3.5);
   }
-
+/*
   .thumbnail {
     height: 170px;
     width: 170px;
-  }
+  }*/
 
   .item-content {
     .column(8.5);
@@ -793,8 +793,8 @@ button, input[type="submit"], .next, .back {
 
   &.events, &.chatter {    
     float: right;
-    .thumbnail {
-      max-height: 70px; 
+    .related-item-thumb {
+      height: 70px;
     }
   }
 
@@ -807,9 +807,9 @@ button, input[type="submit"], .next, .back {
     font-size: 1em;
   }
 
-  .item-content {
+  .related-item-content {
     margin-right: 0;
-    padding-left: 1em;
+    padding-left: 0.5em;
     
     .item-details {
       font-size: 0.9em;

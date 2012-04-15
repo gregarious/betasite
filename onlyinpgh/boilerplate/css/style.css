@@ -240,7 +240,7 @@ td {
 /* 1 ROOT ---------- */
 body {
   background: #e1e1e1 url("/static/img/Oakland_bkgd_630.png") fixed bottom right no-repeat;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 }
 /* TYPOGRAPHY -------- */
 h1 {
@@ -256,7 +256,7 @@ h3 {
   margin: 0;
 }
 h4 {
-  font-family: 'DroidSerifBoldItalic';
+  font-weight: bold;
 }
 p {
   color: #222;
@@ -352,9 +352,9 @@ a:visited {
 }
 .feed-title,
 .single-title {
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
-  text-shadow: 0 0 0.05em #999;
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em 0.1em #999;
   margin: 0;
 }
 .single-title {
@@ -398,8 +398,8 @@ a:visited {
 }
 .widget-title {
   margin: 0.5em 0;
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
   border-bottom: 1px solid #e1e1e1;
+  font-style: italic;
 }
 /* FORMS & INPUTS --------------- */
 ::-webkit-input-placeholder {
@@ -1003,8 +1003,7 @@ input[type="submit"]:active,
 }
 .item-title a {
   text-shadow: 0 0 0.01em #999;
-  font-size: 1.2em;
-  font-weight: normal;
+  font-size: 1.1em;
 }
 .item-title a:hover {
   color: #b83939;
@@ -1017,7 +1016,8 @@ input[type="submit"]:active,
 .item-actions img {
   cursor: pointer;
 }
-.item-thumb {
+.item-thumb,
+.related-item-thumb {
   float: left;
   width: 20.833333333333336%;
   margin: 0 1.0416666666666665%;
@@ -1026,14 +1026,12 @@ input[type="submit"]:active,
   box-sizing: border-box;
   overflow: hidden;
   text-align: center;
-}
-.item-thumb .thumbnail {
-  border: 2px #e1e1e1 solid;
+  float: left;
   height: 130px;
-  width: 130px;
-  display: block;
+  max-width: 130px;
 }
-.item-content {
+.item-content,
+.related-item-content {
   float: left;
   width: 75%;
   -moz-box-sizing: border-box;
@@ -1149,6 +1147,12 @@ input[type="submit"]:active,
   box-sizing: border-box;
   border-bottom: 1px #e1e1e1 solid;
   padding-bottom: 1.5em;
+  /*
+  .thumbnail {
+    height: 170px;
+    width: 170px;
+  }*/
+
 }
 .single-header .item-thumb {
   float: left;
@@ -1157,10 +1161,6 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-.single-header .thumbnail {
-  height: 170px;
-  width: 170px;
 }
 .single-header .item-content {
   float: left;
@@ -1335,9 +1335,9 @@ input[type="submit"]:active,
 .hot.chatter {
   float: right;
 }
-.hot.events .thumbnail,
-.hot.chatter .thumbnail {
-  max-height: 70px;
+.hot.events .related-item-thumb,
+.hot.chatter .related-item-thumb {
+  height: 70px;
 }
 .hot.map-container {
   float: left;
@@ -1346,11 +1346,11 @@ input[type="submit"]:active,
 .hot .item-title a {
   font-size: 1em;
 }
-.hot .item-content {
+.hot .related-item-content {
   margin-right: 0;
-  padding-left: 1em;
+  padding-left: 0.5em;
 }
-.hot .item-content .item-details {
+.hot .related-item-content .item-details {
   font-size: 0.9em;
 }
 /* Specials */
@@ -1559,7 +1559,15 @@ a#siteNews {
     background-clip: padding-box;
   }
 }
+@media screen and (max-width: 1082px) {
+  .item-thumb {
+    height: 120px;
+  }
+}
 @media screen and (max-width: 992px) {
+  .item-thumb {
+    height: 110px;
+  }
   #logo {
     padding-top: 1em;
   }
@@ -1638,6 +1646,14 @@ a#siteNews {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .hot.events,
+  .hot.chatter {
+    float: right;
+  }
+  .hot.events .item-thumb,
+  .hot.chatter .item-thumb {
+    height: 110px;
+  }
   .hot.map-container {
     height: 200px;
   }
@@ -1645,8 +1661,19 @@ a#siteNews {
   .map-container.hot {
     height: 200px;
   }
+  .item-title a {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 864px) {
+  .item-thumb {
+    height: 90px;
+  }
 }
 @media screen and (max-width: 768px) {
+  .item-thumb {
+    height: 130px;
+  }
   .logout,
   .bar {
     display: none;
@@ -1807,7 +1834,10 @@ a#siteNews {
     height: auto;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+  .item-thumb {
+    height: 100px;
+  }
   .single-container {
     padding: 0;
     border: none;
@@ -1893,7 +1923,7 @@ a#siteNews {
     box-sizing: border-box;
     margin-top: 1.5em;
   }
-  .item-title {
+  .item-title a {
     font-size: 1em;
   }
   #logo {
@@ -1925,8 +1955,10 @@ a#siteNews {
     height: 4.5em;
   }
 }
-@media only screen and (max-width: 320px) {
-  
+@media only screen and (max-width: 440px) {
+  .item-thumb {
+    height: 80px;
+  }
 }
 /* Styles for desktop and large screen ----------- */
 @media only screen and (min-width: 1280px) {
