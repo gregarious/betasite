@@ -32,6 +32,10 @@ html {
   -ms-text-size-adjust: 100%;
 }
 html,
+body {
+  height: 100%;
+}
+html,
 button,
 input,
 select,
@@ -142,10 +146,7 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
-  font-size: 0.9em;
   font-style: italic;
-  height: auto;
-  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -351,13 +352,13 @@ a:visited {
 }
 .feed-title,
 .single-title {
-  font-size: 1.8em;
   font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   text-shadow: 0 0 0.05em #999;
   margin: 0;
 }
 .single-title {
+  font-size: 1.5em;
   border-bottom: 1px #ccc solid;
   margin: 0 0 2%;
   padding: 0 0.3em 0.1em;
@@ -686,8 +687,6 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 5em;
-  padding-top: 0.4em;
 }
 #scene-nav {
   background: #444;
@@ -920,6 +919,7 @@ input[type="submit"]:active,
 }
 .feed-header .feed-title {
   float: left;
+  font-size: 1.8em;
 }
 .feed-header .filter {
   float: right;
@@ -1019,28 +1019,23 @@ input[type="submit"]:active,
 }
 .item-thumb {
   float: left;
-  width: 18.75%;
+  width: 20.833333333333336%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
   text-align: center;
-  max-height: 130px;
-  border: 2px #e1e1e1 solid;
 }
 .item-thumb .thumbnail {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  border: 2px #e1e1e1 solid;
+  height: 130px;
+  width: 130px;
   display: block;
-  width: 100%;
-  height: auto;
-  min-height: 70px;
 }
 .item-content {
   float: left;
-  width: 77.08333333333334%;
+  width: 75%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1156,10 +1151,24 @@ input[type="submit"]:active,
   padding-bottom: 1.5em;
 }
 .single-header .item-thumb {
-  border: none;
+  float: left;
+  width: 27.083333333333332%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .single-header .thumbnail {
-  max-height: 100%;
+  height: 170px;
+  width: 170px;
+}
+.single-header .item-content {
+  float: left;
+  width: 68.75%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .single-header ul {
   padding-left: 0.5em;

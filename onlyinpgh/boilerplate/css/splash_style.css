@@ -32,6 +32,10 @@ html {
   -ms-text-size-adjust: 100%;
 }
 html,
+body {
+  height: 100%;
+}
+html,
 button,
 input,
 select,
@@ -142,10 +146,7 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
   color: #999;
-  font-size: 0.9em;
   font-style: italic;
-  height: auto;
-  max-width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -242,21 +243,22 @@ body {
   width: 100%;
   height: 100%;
   color: #222;
-  margin: 3% 0;
   font-family: 'DroidSerifRegular';
 }
 section {
-  float: right;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
+  width: 100%;
+  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+hr {
+  border-color: #fff;
+}
 /* TYPOGRAPHY --------- */
 h1 {
   font-family: 'DroidSerifItalic', serif;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: normal;
   line-height: 100%;
   margin: 0;
@@ -272,7 +274,6 @@ h2 {
 .oakland-heading {
   font-family: 'DroidSerifItalic', Georgia, serif;
   font-size: 1.2em;
-  margin-top: 1.5em;
 }
 h3 {
   font-size: 1em;
@@ -299,6 +300,10 @@ p {
   color: #222;
   margin: 1em 0;
   text-shadow: 0.04em 0.04em 0 #ffffff;
+}
+img {
+  width: 100%;
+  height: auto;
 }
 .highlight {
   color: #b83939;
@@ -327,6 +332,9 @@ p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.caption .icon-container img {
+  width: auto;
 }
 .error {
   color: #C34327;
@@ -373,7 +381,7 @@ textarea {
   box-shadow: 0 0 0.01em #ffffff;
   font-size: 1em;
   width: 93%;
-  margin: 0 5% 0 2%;
+  margin: 0 5% 0 0;
   outline: none;
   padding: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -457,8 +465,8 @@ input[type="submit"]:active {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1140px;
-  padding: 3% 5%;
+  max-width: 600px;
+  padding: 3%;
   *zoom: 1;
 }
 .wrap:before,
@@ -470,21 +478,18 @@ input[type="submit"]:active {
   clear: both;
 }
 #site-header {
-  border-bottom: 1px solid #a9c6e8;
-  padding-bottom: 3%;
-  margin-bottom: 5%;
+  padding: 3% 0;
+  margin-bottom: 2%;
 }
 #site-header img {
   margin-top: 0.4em;
   display: block;
   margin: auto;
+  max-width: 500px;
 }
 #oakland .screenshot {
-  -webkit-box-shadow: 0 0 0.2em #ffffff;
-  -moz-box-shadow: 0 0 0.2em #ffffff;
-  box-shadow: 0 0 0.2em #ffffff;
   display: block;
-  margin: 1em auto auto;
+  margin: auto;
 }
 #company {
   padding-left: 3%;
@@ -549,16 +554,24 @@ input[type="submit"]:active {
     border: none;
     padding: 5% 0 0;
   }
-  h1 {
-    font-size: 1.4em;
-  }
 }
 @media screen and (max-width: 520px) {
   #site-title {
     font-size: 4em;
   }
-  h1 {
-    font-size: 1em;
+  .field-label {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .field {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 350px) {

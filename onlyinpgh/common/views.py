@@ -1,5 +1,6 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from onlyinpgh.common.core.rendering import render_safe
+from django.http import Http404
 
 
 ### UTILITY FUNCTIONS ###
@@ -58,6 +59,21 @@ def page_response(main_content, request=None, topbar_content=None,
     }
 
     return render_to_response('page.html', content_dict)
+
+
+def qr_redirect(request, key=None):
+    if key is None:
+        key = request.GET.get('id')
+
+    if key == 'oakland':
+        return redirect('oakland-tease')
+    elif key == 'shirt':
+        return redirect('mobile-about')
+    elif key == 'card':
+        return redirect('mobile-about')
+    else:
+        print 'not found', key
+        raise Http404
 
 
 ### URL-LINKED VIEWS ###

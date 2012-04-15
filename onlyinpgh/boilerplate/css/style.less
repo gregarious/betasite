@@ -129,7 +129,6 @@ a {
 }
 
 .feed-title, .single-title {
-  font-size: 1.8em;
   font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   text-shadow: 0 0 0.05em #999;
@@ -137,6 +136,7 @@ a {
 }
 
 .single-title {
+  font-size: 1.5em;
   border-bottom: 1px #ccc solid;
   margin: 0 0 2%;
   padding: 0 0.3em 0.1em;
@@ -343,8 +343,7 @@ button, input[type="submit"], .next, .back {
 
 #logo {
   .column(2);
-  height: 5em;
-  padding-top: 0.4em;
+  //height: 5em;
 }
 
 #scene-nav {
@@ -505,6 +504,7 @@ button, input[type="submit"], .next, .back {
 
   .feed-title {
     float: left;
+    font-size: 1.8em;
   }
 
   .filter {
@@ -581,24 +581,20 @@ button, input[type="submit"], .next, .back {
 }
 
 .item-thumb {
-  .column(2.5);
+  .column(2.75);
   overflow: hidden;
-  //padding: 0 1% 1%;
   text-align: center;
-  max-height: 130px;
-  border: 2px #e1e1e1 solid;
   
   .thumbnail {
-    .border-box();
+    border: 2px #e1e1e1 solid;
+    height: 130px;
+    width: 130px;
     display: block;
-    width: 100%;
-    height: auto;
-    min-height: 70px;
   }
 }
 
 .item-content {
-  .column_nm(9.5);
+  .column_nm(9.25);
   margin-right: 2%;
   padding-left: 2%;
   position: relative;
@@ -682,11 +678,16 @@ button, input[type="submit"], .next, .back {
   padding-bottom: 1.5em;
 
   .item-thumb {
-    border: none;
+    .column(3.5);
   }
 
   .thumbnail {
-    max-height: 100%;
+    height: 170px;
+    width: 170px;
+  }
+
+  .item-content {
+    .column(8.5);
   }
 
   ul {
@@ -741,34 +742,34 @@ button, input[type="submit"], .next, .back {
   .clearfix;
   font-size: 0.8em;
   margin: 1% 0 0;
-  
-    li {
-      color: #888;
-      float: left;
-      margin: 0.1em 0.4em;
-      padding: 0.1em 0.2em;
-      text-decoration: none;
-      .border-box;   
+
+  li {
+    color: #888;
+    float: left;
+    margin: 0.1em 0.4em;
+    padding: 0.1em 0.2em;
+    text-decoration: none;
+    .border-box;   
+
+    a {
+      color: #888; 
+    }
+
+    &:hover {
+      .gradient(#aaa, #999);
+      .rounded(0.2em);  
 
       a {
-        color: #888; 
+        color: #fff;
       }
+    }
 
-      &:hover {
-        .gradient(#aaa, #999);
-        .rounded(0.2em);  
-
-        a {
-          color: #fff;
-        }
-      }
-
-      &:active {
-        .gradient(#999, #aaa);
-        position: relative;
-        top: 1px;
-        left: 1px;
-      }
+    &:active {
+      .gradient(#999, #aaa);
+      position: relative;
+      top: 1px;
+      left: 1px;
+    }
   }
 }
 
@@ -800,10 +801,6 @@ button, input[type="submit"], .next, .back {
   &.map-container {
     float: left;
     height: 300px;
-  }
-
-  .item-thumb {
-
   }
 
   .item-title a {
