@@ -10,18 +10,16 @@ Context variables:
 {% load thumbnail %}
 
 <div class="item-thumb">
-	<a href="{% url place-detail pid=place.id %}">
-		{% thumbnail place.image "130x130" crop="center" as im %}
-			<img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
-		{% empty %}
-			<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" />
-		{% endthumbnail %}
-	</a>
+	{% thumbnail place.image "130x130" crop="center" as im %}
+    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+	{% empty %}
+	<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+    {% endthumbnail %}
 </div>
 
 <section class="item-content">
 		
-	<h4 class="item-title"><a href="{% url place-detail pid=place.id %}">{{ place.name }}</a></h4>
+	<h4 class="item-title"><a href="{% url place-detail pid=place.id %}">{{ place.name|truncatewords:7 }}</a></h4>
 	<div class="item-actions">
 		 <!-- Once things have specials, switch else content -->
 		{% if featured_special %}
