@@ -15,26 +15,31 @@ TODO #2: Only show expiration date if there is one.
 <div class="single-container" id="special-single">
 	<header class="single-header">
 
-		<div class="item-thumb">
-			<div class="points">+{{special.points}}</div>
-			<button class="btn btn-primary">Grab It!</button>
-		</div>
+		<div class="single-thumb-container">
+			<div class="item-thumb">
+				<div class="points">+{{special.points}}</div>
+			</div>
+			<div class="fav-container">
+				<button class="btn btn-primary">Grab It!</button>
+			</div>
+		</div> <!-- .single-thumb-container -->
 
-		<section class="item-content">
-			<h1 class="single-title">{{special.title}}</h1>
+			<section class="item-content">
+				<h1 class="single-title">{{special.title}}</h1>
 
-			<ul class="item-details">
-				<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
-				{% if special.dtexpires %}
-					<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
-				{% endif %}
-				{% if special.total_available %}
-					<li>{{special.total_available}} Available</li>
-				{% endif %}
+				<ul class="item-details">
+					<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
+					{% if special.dtexpires %}
+						<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
+					{% endif %}
+					{% if special.total_available %}
+						<li>{{special.total_available}} Available</li>
+					{% endif %}
 
-			</ul>
+				</ul>
 
-			{% include "tags/tag_list.html" with tags=special.tags %}
+				{% include "tags/tag_list.html" with tags=special.tags %}
+
 			
 		</section>
 

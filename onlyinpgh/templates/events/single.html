@@ -10,13 +10,16 @@ Context variables:
 
 <div class="single-container" id="event-single">
 	<header class="single-header">
-		<div class="item-thumb">
-			{% if event.image %}
-			<img alt="{{event.name}}" class="thumbnail" src="{{event.image.url}}" />
-			{% else %}
-			<img alt="{{event.name}}" class="thumbnail" src="/static/img/default-event.png" />
-			{% endif %}
-			<div class="favorite">	
+
+		<div class="single-thumb-container">
+			<div class="item-thumb">
+				{% thumbnail event.image "130x130" crop="center" as im %}
+				<img alt="{{event.name}}" class="thumbnail" src="{{im.url}}" />
+				{% empty %}
+				<img src="/static/img/default-event.png" class="thumbnail" alt="{{event.name}}" />
+				{% endthumbnail %}
+			</div> <!-- .item-thumb -->
+			<div class="fav-container">	
 				{% if is_attending %}
 					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
 						<!-- <img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/> --><!-- <p class="meta">Remove from Calendar</p> -->Add to Calendar
@@ -26,8 +29,8 @@ Context variables:
 						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
 					</a>
 				{% endif %}
-			</div>
-		</div>
+			</div> <!-- .fav-container -->
+		</div> <!-- .single-thumb-container -->
 
 		<section class="item-content">
 			<h1 class="single-title">{{event.name}}</h1>
@@ -40,10 +43,10 @@ Context variables:
 					<li>at {{event.place_primitive}}</li>
 				{% endif %}
 			</ul>
-
+			
 			{% include "tags/tag_list.html" with tags=event.tags %}
 
-		</section>
+		</section> <!-- .item-content -->
 	</header>
 
 	<div class="single-content">

@@ -133,7 +133,7 @@ a {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   font-weight: bold;
-  text-shadow: 0.05em 0.05em 0.05em #999;
+  text-shadow: 0.03em 0.03em 0.03em #999;
   margin: 0;
 }
 
@@ -298,7 +298,7 @@ button, input[type="submit"], .next, .back {
 .favbutton {
   display: block; 
   //padding: 0.5em;
-  height: 30px;
+  //height: 30px;
   font-size: 0.9em;
 
   .meta {
@@ -346,6 +346,9 @@ button, input[type="submit"], .next, .back {
 
 #logo {
   .column(2);
+  height: 100%;
+  max-width: 150px;
+  min-width: 100px;
   //height: 5em;
 }
 
@@ -364,7 +367,7 @@ button, input[type="submit"], .next, .back {
         border-radius: 0 0 0.5em 0.5em;
   
 
-  select {
+  #select-nav {
     display: none;
   }
 
@@ -492,9 +495,6 @@ button, input[type="submit"], .next, .back {
 /* FEED ---------- */
 
 .feed-header {
-  //margin: 0 2%;
-  //background: #fff;
-  //.b-shadow(0, 0, 0.1em, #888);
   .row();
   .border-box();
   .clearfix();
@@ -584,19 +584,16 @@ button, input[type="submit"], .next, .back {
   }
 }
 
-.item-thumb, .related-item-thumb {
+.feed .item-thumb {
   .column(2.75);
   overflow: hidden;
   text-align: center;
-  float: left;
-  height: 130px;
-  max-width: 130px;
+  border: 1px solid #444;
 }
 
-.item-content, .related-item-content {
+.item-content {
   .column_nm(9.25);
-  margin-right: 2%;
-  padding-left: 2%;
+  margin-left: 2%;
   position: relative;
   overflow: hidden;
 }
@@ -604,7 +601,11 @@ button, input[type="submit"], .next, .back {
 .item-details {
   .row();
   .clearfix;
-  //font-size: 0.9em;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
 }
 
 /* 10 NAVIGATION ---------- */
@@ -656,6 +657,10 @@ button, input[type="submit"], .next, .back {
   .clearfix();
 }
 
+.single-thumb-container {
+  .column(3);
+}
+
 .single-content {
   .column(12);
   margin: 3% 0;
@@ -678,9 +683,6 @@ button, input[type="submit"], .next, .back {
   border-bottom: 1px #e1e1e1 solid;
   padding-bottom: 1.5em;
 
-  .item-thumb {
-    .column(3);
-  }
 /*
   .thumbnail {
     height: 170px;
@@ -704,7 +706,7 @@ button, input[type="submit"], .next, .back {
   display: none;
   width: 88%;
   float: left;
-  .border-box;
+  .border-box();
   background: #f9f9f9;
   .rounded(0.5em);
   padding: 2% 4% 4%;
@@ -794,8 +796,11 @@ button, input[type="submit"], .next, .back {
 
   &.events, &.chatter {    
     float: right;
-    .related-item-thumb {
-      height: 70px;
+  }
+
+  &.events {
+    .item-details {
+      font-size: 0.9em;
     }
   }
 
@@ -807,12 +812,6 @@ button, input[type="submit"], .next, .back {
   .item-title a {
     font-size: 1em;
   }
-/*
-  .related-item-content {
-    margin-right: 0;
-    padding-left: 0.5em;
-  }*/
-
 }
 
 /* Specials */
@@ -825,8 +824,6 @@ button, input[type="submit"], .next, .back {
 
   .item-thumb {
     border: none;
-    .no-b-shadow();
-    height: auto;
   }
 }
 

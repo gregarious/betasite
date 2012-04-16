@@ -9,18 +9,23 @@ Context variables:
     is_favorite:		boolean (optional)
     featured_special: 	Offer object (optional)
 {% endcomment %}
+{% load thumbnail %}
 
-<div class="item-thumb">
-	{% if place.image %}
-	<img class="thumbnail" alt="{{place.name}}" src="{{place.image.url}}"/>
-	{% else %}
-	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png"/>
-	{% endif %}
-	{% if is_favorite %}
-		<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
-	{% else %}
-		<a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
-	{% endif %}
+<div class="single-thumb-container">
+	<div class="item-thumb">
+		{% thumbnail place.image "130x130" crop="center" as im %}
+	    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+		{% empty %}
+		<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+	    {% endthumbnail %}
+	</div>
+	<div class="fav-container">
+		{% if is_favorite %}
+			<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
+		{% else %}
+			<a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
+		{% endif %}
+	</div>
 </div>
 
 <section class="item-content">
