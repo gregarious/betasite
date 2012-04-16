@@ -1,0 +1,435 @@
+
+/*******************************//*******************************/
+/*******************************//*******************************/
+/*******************************//*******************************/
+/* 18 MEDIA QUERIES ---------- *//*******************************/
+/*******************************//*******************************/
+/*******************************//*******************************/
+/*******************************//*******************************/
+
+// Styles for desktop and larger
+@media screen and (max-width: 1140px) {
+  body {
+    background-image: url("@{static_url}img/Oakland_bkgd_450.png");
+  }
+  #scene-nav {
+    .rounded(0);
+  }
+}
+
+@media screen and (max-width: 1082px) {
+/*
+  .item-thumb {
+    height: 120px;
+    //width: 100px;
+  }*/
+
+}
+
+// Styles for smaller desktop/larger tablet
+@media screen and (max-width: 992px) {
+
+  /*.item-thumb {
+    height: 110px;
+    //width: 100px;
+  }*/
+
+  #logo {
+    padding-top: 1em;
+  }
+
+  #logo {
+    .column(2);
+    img {
+      width: 100%;
+    }
+  }
+
+  .related-nav {
+    .row();
+    border-bottom: 2px #888 solid;
+    ul {
+      .clearfix();
+       li a {
+        .column(4);
+        .tabs(0.5em);
+        color: #000;
+        text-shadow: 0.05em 0.05em 0em #fff;
+        background: @mgreen;
+        text-align: center;
+        font-weight: bold;
+        float: left;
+      }
+
+    }
+
+    &#profile-nav {
+      ul li a {
+        .column(3);
+      }
+    }
+  }
+
+  .related-section {
+    .row();
+  }
+
+  .single-title {
+    font-size: 1.5em;
+  }
+
+  .hot {
+    .row();
+
+    &.events, &.chatter {    
+      float: right;
+      /*.item-thumb {
+       height: 110px;
+      }*/
+    }
+
+    &.map-container {
+      height: 200px;
+    }
+  }
+
+  .map-container {
+    &.feed-page, &.hot {
+      height: 200px;
+    }
+  }
+
+   .item-title {
+    //line-height: 1.1em;
+    a {
+      font-size: 1em;
+      //font-family: 'DroidSerifItalic', Georgia, serif;
+      
+      }
+    }
+}
+
+@media screen and (max-width: 864px) {
+
+  /*.item-thumb {
+    height: 90px;
+    //width: 80px;
+  }*/ 
+
+
+  .feed {
+    &.places, &.events{
+      .description {
+        display: none;
+      }
+    }
+  }
+
+}
+
+// Styles for regular and smaller tablets
+@media screen and (max-width: 800px){
+
+  /*.item-thumb {
+    height: 130px;
+    //width: 100px;
+  }*/
+
+  .logout, .bar {
+    display: none;
+  }
+
+  body {
+   background-image: none;
+  }
+
+  #site-content.single {
+    margin-top: 0;
+  }
+
+  #utility {
+    .row();
+    a {
+      color: @yellow;
+    }
+  }
+
+  #site-content {
+    .row();
+    padding: 0;
+    top: 7.5em;
+  }
+
+  .feed {
+    margin: 0 0;
+    clear: both;
+  }
+
+  .feed-header {
+    padding-top: 0.7em;
+    margin: 0;
+    .rounded(0);
+  }
+
+  #site-sidebar {
+    display: none;
+  }
+
+  #site-content {
+    //background: none;
+    .no-b-shadow;
+  }
+
+  #scene-nav {
+    top: 2em;
+    .main-menu {
+      .column(9);
+    }
+  }
+
+  #logo {
+    .column(3);
+    img {
+      height: 100%;
+    }
+  }
+
+  .item-details {
+    font-size: 0.9em;
+  }
+
+  #utility {
+    position: absolute;
+    bottom: 5.1em;
+    background: #444;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+    color: #fff;
+    #site-search {
+      .column_r(5);
+
+      input {
+        padding: 0.1em;
+        margin: 0;
+      }
+    }
+
+    #debug-user {
+      .column(7);
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .feed{
+    padding: 0.5em;
+  }
+
+  .item {
+    .row();
+    border: 1px @lgreen solid;
+    .b-shadow(0.1em, 0.1em, 0.1em, #444);
+    margin: 0.5em 0;
+    .gradient(#f9f9f9, #fff);
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  .section-title {
+    //background: #fff;
+    .rounded(0);
+  }
+
+  .feed-content {
+    padding: 0;
+  }
+
+}
+
+
+@media screen and (max-width: 700px) {
+  #logo img {
+    height: auto;
+  }
+
+  .item-thumb {
+    //height: 100px;
+    //width: 100px;
+  }
+}
+
+// Styles for higher res phones
+@media screen and (max-width: 600px) {
+
+  /*.item-thumb {
+    height: 100px;
+    //width: 100px;
+  }*/
+
+  .single-container {
+    padding: 0;
+    border: none;
+    background: url("/static/img/textures/white-tex.png");
+  }
+
+  .single-header {
+    padding: 1em 1em 0 1em;
+    border: none;
+  }
+
+  .single-title {
+    line-height: 1;
+    font-size: 1.3em;
+  }
+
+  .feed-header {
+    display: none;
+  }
+
+  #utility {
+    bottom: 4.1em;
+  }
+
+  .btn-primary {
+    padding: 0.3em;
+  }
+
+  .single-content {
+    .map-container {  
+      height: 100px;
+      .row();
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+  }
+
+  .single-content.places {
+    .row();
+  }
+
+  .main-menu { 
+    display: none; 
+  }
+
+  .related-section {
+    .row();
+    padding: 0.3em;
+    //background: none;
+    
+    .map-container {
+      margin: 1em 0;
+    }
+
+    .section-title {
+      display: none;
+    }
+
+    &#placeInfo {
+      padding: 0 1em 1em;
+      .item-details {
+        .row();
+
+        ul {
+          li {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .map-container {
+      height: 100px;
+    }
+  }
+
+  #scene-nav {
+    border: none;
+
+    #select-nav {
+      display: inline-block;
+      .column_r(6.5);
+      margin: 1.5em 1em 0;
+    }
+  }
+
+  .item-title {
+    //line-height: 1.2em;
+    a {
+      font-size: 1em;
+      //font-family: 'DroidSerifItalic', Georgia, serif;
+      
+      }
+    }
+
+  #logo {
+    padding-top: 0.7em;
+    .column_nm(5);
+    margin-left: 0.5em;
+
+    img {
+      width: auto;
+      height: 80%;
+    }
+  }
+
+  .filter {
+    display: none;
+  }
+
+  #site-content {
+    background: none;
+    top: 6.5em;
+    padding: 0;
+  } 
+
+  .map-container.hot {
+    height: 150px;
+    overflow: hidden;
+  }
+
+  #scene-nav {
+    height: 4.5em;
+  }
+}
+
+// Styles for phones
+@media only screen and (max-width: 480px) {
+
+  .single-title {
+    font-size: 1em;
+    text-shadow: none;
+  }
+
+  /*.item-thumb, .related-item-thumb {
+    height: 80px;
+  }*/
+
+  .item-details, .item-title {
+    font-size: 0.9em;
+  }
+
+
+}
+
+@media only screen and (max-width: 320px) {
+
+  .item-title {
+    //font-size: 0.9em;
+  }
+
+  /*.related-item-thumb, .item-thumb {
+    height: 60px;
+  }*/
+
+  /*.related-item-thumb {
+    .column(3.5);
+  }*/
+/*
+  .related-item-content {
+    .column(8.5);
+  }  */
+}
+
+

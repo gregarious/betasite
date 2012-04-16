@@ -1,0 +1,116 @@
+
+/* 11 FEED/ITEMS ---------- */
+
+.feed-header {
+  .row();
+  .clearfix;
+  border-bottom: 1px solid #999;
+  padding: 1% 2%;
+  position: relative;
+
+  input[type="text"] {
+    .column_r(3);
+  }
+}
+
+.feed-title {
+  float: left;
+}
+
+.feed {
+  clear: both;
+  margin: 2% 2% 0;
+}
+
+.item, .ui-menu-item {
+  .column(12);
+  list-style-type: none;
+  margin: 1%;
+  padding: 2% 1%;
+}
+
+.item-title {
+  margin: 0;
+
+  a {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 0 0 0.01em #fff;
+
+    &:hover {
+      //text-shadow: 0 0 0.02em #000;
+      color: #777 !important;
+    }
+
+    &:visited {
+      color: #333;
+    }
+  }
+}
+
+.item-actions {
+  position: absolute;
+  //display: none;
+  top: 0;
+  right: 0;
+  img {
+    cursor: pointer;
+  }
+}
+
+.item-thumb {
+  .column(3);
+  overflow: hidden;
+  padding: 0 1% 1%;
+  text-align: center;
+
+  .thumbnail {
+    border: 2px #fff solid;
+    display: block;
+    margin: 0 1%;
+    width: 100%;
+    height: auto;
+    min-height: 70px;
+    max-height: 130px;
+  }
+
+}
+
+.item-content {
+  .column_nm(9);
+  margin-right: 2%;
+  padding-left: 2%;
+  position: relative;
+}
+
+.item-details {
+  .row();
+  .clearfix;
+  font-size: 0.9em;
+}
+
+/* 11 TAGS ---------- */
+
+.tag-list {
+  .row();
+  .clearfix;
+  font-size: 0.8em;
+  margin: 1% 0 0;
+  
+    li {
+      color: #888;
+      float: left;
+      margin: 0.1em 0.4em;
+      padding: 0.1em 0.2em;
+      text-decoration: none;
+      .border-box;   
+
+      &:active {
+        .gradient(#999, #aaa);
+        position: relative;
+        top: 1px;
+        left: 1px;
+      }
+  }
+}

@@ -20,9 +20,6 @@ jQuery(document).ready( function($) {
 	// 	option.attr('selected', 'selected');
 	// }
 
-	// Hide the broadcast for 1 sec, then slide down - only on home page
-	//$('#site-sidebar').hide().delay(1000).slideDown(500);
-
 	// Hide/show single place sections
 	var pages = ['#placeInfo', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 	
@@ -36,10 +33,5 @@ jQuery(document).ready( function($) {
 	$('#scene-nav select').change(function(){
 		window.location = $(this).attr('value');
 	});
-
-	// Make feed items links to singles
-	// $('.item').click(function(){
-	// 	window.location=$(this).find('a').attr('href');
-	// });
 
 }); // document.ready

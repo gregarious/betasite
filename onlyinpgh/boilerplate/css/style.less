@@ -9,7 +9,7 @@ body {
               fixed 
               bottom right 
               no-repeat;
-  font-family: Helvetica, Arial, sans-serif;
+  .lucida();
   //font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
@@ -32,7 +32,8 @@ h3 {
 }
 
 h4 {
-  font-family: 'DroidSerifBoldItalic';
+  //font-family: 'DroidSerifBold';
+  font-weight: bold;
 }
 
 p {
@@ -129,9 +130,10 @@ a {
 }
 
 .feed-title, .single-title {
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
+  //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
-  text-shadow: 0 0 0.05em #999;
+  font-weight: bold;
+  text-shadow: 0.03em 0.03em 0.03em #999;
   margin: 0;
 }
 
@@ -155,8 +157,9 @@ a {
 
 .widget-title {
   margin: 0.5em 0;
-  font-family: 'DroidSerifItalic', 'Gerogia', serif;
+  //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   border-bottom: 1px solid #e1e1e1;
+  font-style: italic;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -295,7 +298,7 @@ button, input[type="submit"], .next, .back {
 .favbutton {
   display: block; 
   //padding: 0.5em;
-  height: 30px;
+  //height: 30px;
   font-size: 0.9em;
 
   .meta {
@@ -343,6 +346,9 @@ button, input[type="submit"], .next, .back {
 
 #logo {
   .column(2);
+  height: 100%;
+  max-width: 150px;
+  min-width: 100px;
   //height: 5em;
 }
 
@@ -361,7 +367,7 @@ button, input[type="submit"], .next, .back {
         border-radius: 0 0 0.5em 0.5em;
   
 
-  select {
+  #select-nav {
     display: none;
   }
 
@@ -382,6 +388,7 @@ button, input[type="submit"], .next, .back {
         margin-top: 1em;
         position: relative;
         .rounded(0.2em);
+        
         &.current-page {
           background-color: @lgreen;
         }
@@ -488,9 +495,6 @@ button, input[type="submit"], .next, .back {
 /* FEED ---------- */
 
 .feed-header {
-  //margin: 0 2%;
-  //background: #fff;
-  //.b-shadow(0, 0, 0.1em, #888);
   .row();
   .border-box();
   .clearfix();
@@ -562,8 +566,8 @@ button, input[type="submit"], .next, .back {
   
   a {
     text-shadow: 0 0 0.01em #999;
-    font-size: 1.2em;
-    font-weight: normal;
+    font-size: 1.1em;
+    //font-weight: bold;
     &:hover {
       color: @red;
     }
@@ -580,30 +584,28 @@ button, input[type="submit"], .next, .back {
   }
 }
 
-.item-thumb {
+.feed .item-thumb {
   .column(2.75);
   overflow: hidden;
   text-align: center;
-  
-  .thumbnail {
-    border: 2px #e1e1e1 solid;
-    height: 130px;
-    width: 130px;
-    display: block;
-  }
+  border: 1px solid #444;
 }
 
 .item-content {
   .column_nm(9.25);
-  margin-right: 2%;
-  padding-left: 2%;
+  margin-left: 2%;
   position: relative;
+  overflow: hidden;
 }
 
 .item-details {
   .row();
   .clearfix;
-  //font-size: 0.9em;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
 }
 
 /* 10 NAVIGATION ---------- */
@@ -655,6 +657,10 @@ button, input[type="submit"], .next, .back {
   .clearfix();
 }
 
+.single-thumb-container {
+  .column(3);
+}
+
 .single-content {
   .column(12);
   margin: 3% 0;
@@ -677,17 +683,14 @@ button, input[type="submit"], .next, .back {
   border-bottom: 1px #e1e1e1 solid;
   padding-bottom: 1.5em;
 
-  .item-thumb {
-    .column(3.5);
-  }
-
+/*
   .thumbnail {
     height: 170px;
     width: 170px;
-  }
+  }*/
 
   .item-content {
-    .column(8.5);
+    .column(9);
   }
 
   ul {
@@ -703,7 +706,7 @@ button, input[type="submit"], .next, .back {
   display: none;
   width: 88%;
   float: left;
-  .border-box;
+  .border-box();
   background: #f9f9f9;
   .rounded(0.5em);
   padding: 2% 4% 4%;
@@ -793,8 +796,11 @@ button, input[type="submit"], .next, .back {
 
   &.events, &.chatter {    
     float: right;
-    .thumbnail {
-      max-height: 70px; 
+  }
+
+  &.events {
+    .item-details {
+      font-size: 0.9em;
     }
   }
 
@@ -806,16 +812,6 @@ button, input[type="submit"], .next, .back {
   .item-title a {
     font-size: 1em;
   }
-
-  .item-content {
-    margin-right: 0;
-    padding-left: 1em;
-    
-    .item-details {
-      font-size: 0.9em;
-    }
-  }
-
 }
 
 /* Specials */
@@ -828,8 +824,6 @@ button, input[type="submit"], .next, .back {
 
   .item-thumb {
     border: none;
-    .no-b-shadow();
-    height: auto;
   }
 }
 
