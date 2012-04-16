@@ -106,7 +106,11 @@ $(function(){
 
         select: function(event, ui) {
             if(ui.item.value === '!newplace') {
-                window.location.href = "/manage/places/setup/new/";
+                // can't just use //, potentially an IE7 bug. Who knows.
+                var portString = window.location.port ? ':' + window.location.port : '';
+                var newURL = window.location.protocol + '//' + window.location.hostname + portString + "/manage/places/setup/new/";
+                //alert('redirecting to: ' + newURL );
+                window.location.href = newURL;
             }
             else {
                 on_ac_select(ui);   // function will show the confirmation dialog

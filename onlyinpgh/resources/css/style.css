@@ -762,6 +762,7 @@ input[type="submit"]:active,
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  behavior: url("/static//PIE.htc");
 }
 #scene-nav .main-menu li a.current-page {
   background-color: #8fd36f;
