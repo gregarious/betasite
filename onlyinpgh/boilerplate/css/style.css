@@ -354,7 +354,7 @@ a:visited {
 .single-title {
   color: #000;
   font-weight: bold;
-  text-shadow: 0.1em 0.1em 0.1em #999;
+  text-shadow: 0.05em 0.05em 0.05em #999;
   margin: 0;
 }
 .single-title {
@@ -1040,6 +1040,7 @@ input[type="submit"]:active,
   margin-right: 2%;
   padding-left: 2%;
   position: relative;
+  overflow: hidden;
 }
 .item-details {
   width: 100%;
@@ -1156,7 +1157,7 @@ input[type="submit"]:active,
 }
 .single-header .item-thumb {
   float: left;
-  width: 27.083333333333332%;
+  width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1164,7 +1165,7 @@ input[type="submit"]:active,
 }
 .single-header .item-content {
   float: left;
-  width: 68.75%;
+  width: 72.91666666666666%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1319,6 +1320,12 @@ input[type="submit"]:active,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  /*
+  .related-item-content {
+    margin-right: 0;
+    padding-left: 0.5em;
+  }*/
+
 }
 .hot .feed {
   margin-left: 0;
@@ -1345,13 +1352,6 @@ input[type="submit"]:active,
 }
 .hot .item-title a {
   font-size: 1em;
-}
-.hot .related-item-content {
-  margin-right: 0;
-  padding-left: 0.5em;
-}
-.hot .related-item-content .item-details {
-  font-size: 0.9em;
 }
 /* Specials */
 .specials .item-title {
@@ -1955,13 +1955,43 @@ a#siteNews {
     height: 4.5em;
   }
 }
-@media only screen and (max-width: 440px) {
-  .item-thumb {
+@media only screen and (max-width: 480px) {
+  .single-title {
+    font-size: 1em;
+    text-shadow: none;
+  }
+  .item-thumb,
+  .related-item-thumb {
     height: 80px;
   }
+  .feed.places .description,
+  .feed.events .description {
+    display: none;
+  }
+  .item-details,
+  .item-title {
+    font-size: 0.9em;
+  }
 }
-/* Styles for desktop and large screen ----------- */
-@media only screen and (min-width: 1280px) {
-  
+@media only screen and (max-width: 320px) {
+  .related-item-thumb,
+  .item-thumb {
+    height: 60px;
+  }
+  .related-item-thumb {
+    float: left;
+    width: 27.083333333333332%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .related-item-content {
+    float: left;
+    width: 68.75%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
-/*/mediaquery*/
