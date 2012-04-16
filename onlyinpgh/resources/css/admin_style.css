@@ -288,7 +288,7 @@ a#siteNews {
 /* Actions */
 /* ROOT --------- */
 body {
-  background: url("/static/img/textures/sky-head-tex.png");
+  background: url("/static/img/textures/sky-med-tex.png");
   *zoom: 1;
   font-weight: normal;
   height: 100%;
