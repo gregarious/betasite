@@ -492,15 +492,18 @@ p {
   background: none;
 }
 #site-footer {
-  margin: 1.5em;
   color: #777;
+  *zoom: 1;
+  width: 650px;
+  margin: 3em auto;
 }
-#site-footer a {
-  color: #2c525d;
-  font-weight: bold;
+#site-footer:before,
+#site-footer:after {
+  content: "";
+  display: table;
 }
-#site-footer a:hover {
-  color: #b83939;
+#site-footer:after {
+  clear: both;
 }
 /* FORMS & INPUTS --------------- */
 form {
@@ -1087,7 +1090,7 @@ input[type="checkbox"] {
   border: none;
 }
 /* HELP TEXT ---------- */
-#notifications {
+.notifications {
   border: 1px #ded57f solid;
   background: #FEFFC2;
   -webkit-border-radius: 0.5em;
@@ -1099,6 +1102,10 @@ input[type="checkbox"] {
   padding: 0.3em 0.9em;
   margin-bottom: 2em;
   text-align: center;
+}
+.notifications#user-notification {
+  background: #FACBCB;
+  border: 1px #b83939 solid;
 }
 .no-items {
   padding: 3em;

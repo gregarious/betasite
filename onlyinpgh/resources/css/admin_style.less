@@ -210,16 +210,10 @@ p {
 }
 
 #site-footer {
-	margin: 1.5em;
 	color: #777;
-	a {
-		color: @teal;
-		font-weight: bold;
-	
-		&:hover {
-			color: @red;
-		}
-	}
+	.clearfix;
+	width: 650px;
+	margin: 3em auto;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -643,13 +637,18 @@ input[type="checkbox"] {
 
 /* HELP TEXT ---------- */
 
-#notifications {
+.notifications {
 	border: 1px @yellow solid;
 	background: #FEFFC2;
 	.rounded(0.5em);
 	padding: 0.3em 0.9em;
 	margin-bottom: 2em;
 	text-align: center;
+
+	&#user-notification {
+		background: #FACBCB;
+		border: 1px @red solid;
+	}
 }
 
 .no-items {
