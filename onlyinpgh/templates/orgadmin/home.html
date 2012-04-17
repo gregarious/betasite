@@ -19,21 +19,21 @@
 	<ul>
 		<li>
 			<a href="{% url orgadmin-listplaces %}">
-				<img src="/static/img/home_place.png" alt="Store front" />
+				<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
 				<p>Locations</p>
 			</a>
 		</li>
 
 		<li>
 			<a href="{% url orgadmin-listspecials %}">
-				<img src="/static/img/home_special.png" alt="Special" />
+				<img src="{{STATIC_URL}}img/manage-special.png" alt="Special" />
 				<p>Specials</p>
 			</a>
 		</li>
 
 		<li>
 			<a href="{% url orgadmin-listevents %}">
-				<img src="/static/img/home_events.png" alt="Calendar"/>
+				<img src="{{STATIC_URL}}img/manage-events.png" alt="Calendar"/>
 				<p>Events</p>
 			</a>
 		</li>
