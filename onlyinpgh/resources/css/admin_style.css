@@ -268,22 +268,22 @@ a {
 
 }
 a#siteHot {
-  background: #ffffff url('/static/img/menu_icons/city.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/city.png') no-repeat center 9px;
 }
 a#sitePlaces {
-  background: #ffffff url('/static/img/menu_icons/store-front.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/store-front.png') no-repeat center 9px;
 }
 a#siteEvents {
-  background: #ffffff url('/static/img/menu_icons/calendar-alt.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/calendar-alt.png') no-repeat center 9px;
 }
 a#siteSpecials {
-  background: #ffffff url('/static/img/menu_icons/tag-special.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/tag-special.png') no-repeat center 9px;
 }
 a#siteChatter {
-  background: #ffffff url('/static/img/menu_icons/speech-bubble.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/speech-bubble.png') no-repeat center 9px;
 }
 a#siteNews {
-  background: #ffffff url('/static/img/menu_icons/newspaper.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
 /* ROOT --------- */
@@ -1490,4 +1490,15 @@ input[type="checkbox"] {
   background-image: linear-gradient(top, #2c525d, #24494e);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
+}
+/* IE CLASSES ---------- */
+.lt-ie8 .wrap.site {
+  min-height: 0;
+  height: auto;
+}
+.lt-ie8 #site-header {
+  position: relative;
+}
+.lt-ie8 #site-footer {
+  text-align: center;
 }
