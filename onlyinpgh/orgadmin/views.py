@@ -32,7 +32,7 @@ def render_admin_page(safe_content, context_instance=None):
     content = {
         'content': mark_safe(safe_content)
     }
-    return render_to_string('orgadmin/base.html',
+    return render_to_string('orgadmin/manage-base.html',
         content, context_instance=context_instance)
 
 
