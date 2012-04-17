@@ -1,9 +1,10 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
 from onlyinpgh.common.core.rendering import render_safe
-from onlyinpgh.common.views import page_response, render_main
+from onlyinpgh.common.views import page_response, render_main, render_page
+from onlyinpgh.common.contexts import PageContext
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.viewmodels import PlaceFeedItem, PlaceDetail, PlaceRelatedFeeds
@@ -75,12 +76,12 @@ def page_feed(request):
 
     items = [PlaceFeedItem(place, user=request.user) for place in page.object_list]
 
-    main = render_main(render_safe('places/main_feed.html',
+    page_context = PageContext(request, 'places', dict(
         items=items,
         prev_p=page.previous_page_number() if page.has_previous() else None,
         next_p=page.next_page_number() if page.has_next() else None))
 
-    return page_response(main, request)
+    return render_page('places/page_main_feed.html', page_context)
 
 
 def page_details(request, pid):

@@ -2,17 +2,16 @@
 Template to render items related to a place
 
 Context variables:
-    related_feeds:
-        events:
-            [EventFeedItem VMs]
-        specials:  
-            [SpecialFeedItem VMs]
-    place_detail: PlaceDetail VM
-    
-    (... more to come...)
+    C:
+        related_feeds:
+            events:
+                [EventFeedItem VMs]
+            specials:  
+                [SpecialFeedItem VMs]
+        place_detail: PlaceDetail VM
 {% endcomment %}
-{% load vmrender from commontags %}
 {% load external_url from commontags %}
+{% with related_feeds=C.related_feeds, place_detail=C.place_detail %}
 
 <nav class="related-nav">
     <ul>
@@ -107,3 +106,5 @@ Context variables:
         <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
     </aside>
 {% endif %}
+
+{% endwith %}

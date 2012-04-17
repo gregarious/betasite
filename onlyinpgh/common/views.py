@@ -28,6 +28,9 @@ def render_main(rendered_content):
     return render_safe('main.html', content=rendered_content)
 
 
+def render_page(template, page_context):
+    return render_to_response(template, {'C': page_context})
+
 def page_response(main_content, request=None, topbar_content=None,
                     scenenav_content=None, sidebar_content=None,
                     footer_content=None):

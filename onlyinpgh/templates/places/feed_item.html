@@ -4,16 +4,16 @@ Template to render a particular place as a feed item.
 Compatible ViewModels: places.viewmodels.PlaceFeedItem
 
 Context variables:
-	place:	subset of Place model (see PlaceFeedItem ViewModel)
+	C: PlaceFeedItem context
 {% endcomment %}
-
 {% load thumbnail %}
+{% with place=C.place %}
 
 <div class="item-thumb">
 	{% thumbnail place.image "130x130" crop="center" as im %}
-    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+    <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
 	{% empty %}
-	<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-event.png" />
     {% endthumbnail %}
 </div>
 
@@ -36,3 +36,5 @@ Context variables:
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
 </section>
+
+{% endwith %} {# end of place alias #}

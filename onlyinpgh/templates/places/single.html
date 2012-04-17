@@ -1,15 +1,14 @@
 {% comment %}
 Inner template that renders details about a single place.
 
-Corresponding ViewModel: places.viewmodels.PlaceDetail 
-
 Context variables:
-    place:      		Place object with extra fields (e.g. url, hours)
-    	-- Note that place.location will have an optional directions_link field
-    is_favorite:		boolean (optional)
-    featured_special: 	Offer object (optional)
+	C:
+	    place:      		Place object with extra fields (e.g. url, hours)
+	    	-- Note that place.location will have an optional directions_link field
+	    is_favorite:		boolean (optional)
 {% endcomment %}
 {% load thumbnail %}
+{% with place=C.place, is_favorite=C.is_favorite %}
 
 <div class="single-thumb-container">
 	<div class="item-thumb">
@@ -83,3 +82,4 @@ Context variables:
 		});
 	});
 </script>
+{% endwith %}
