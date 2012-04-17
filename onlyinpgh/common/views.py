@@ -66,7 +66,7 @@ def qr_redirect(request, key=None):
         key = request.GET.get('id')
 
     if key == 'oakland':
-        return redirect('oakland-tease')
+        return redirect('oakland-teaser')
     elif key == 'shirt':
         return redirect('mobile-about')
     elif key == 'card':
