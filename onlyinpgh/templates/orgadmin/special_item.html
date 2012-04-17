@@ -13,7 +13,7 @@ Context variables:
 		<p class="tip">Total sold: {{special.total_sold}}</p>
 	{% endcomment %}
 	<a href="{% url orgadmin-editspecial special.id %}" title="Edit Special">
-		<img class="thumbnail" src="/static/img/default-special.png" alt="Special" />
+		<img class="thumbnail" src="{{STATIC_URL}}img/default-special.png" alt="Special" />
 	</a>
 </div>
 
@@ -37,7 +37,7 @@ Context variables:
 </section>
 
 <div class="item-actions">
-	<a href="#" title="View listing (coming soon)"><img src="/static/img/browser.png" alt="view"/></a>
-	<a href="{% url orgadmin-editspecial special.id %}" title="Edit special"><img class="item-action" src="/static/img/pencil.png" alt="edit"/></a>
-	<a href="{% url orgadmin-delspecial special.id %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+	<a href="#" title="View listing (coming soon)"><img src="{{STATIC_URL}}img/icons/browser.png" alt="view"/></a>
+	<a href="{% url orgadmin-editspecial special.id %}" title="Edit special"><img class="item-action" src="{{STATIC_URL}}img/icons/pencil.png" alt="edit"/></a>
+	<a href="{% url orgadmin-delspecial special.id %}" class="delete-item" title="Delete special"><img class="item-action" src="/static/img/icons/icon_x.gif" alt="delete" /></a>
 </div>

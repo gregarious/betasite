@@ -29,22 +29,24 @@ layouts up to child templates.
 
     <!-- Stylesheets & Web Fonts -->
     {% block head-stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
     {% endblock %}
 
     <script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
+<body>
 {% endblock %}
 
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 {% block content %}{% endblock %}
 
-{% block footer %}
+{% block foot %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
 <script src="{{STATIC_URL}}js/plugins.js"></script>
 <script src="{{STATIC_URL}}js/script.js"></script>
 {% endblock %}
+
 </body>
 </html>

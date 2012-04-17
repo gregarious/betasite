@@ -22,11 +22,11 @@ Context variables:
 			<div class="fav-container">	
 				{% if is_attending %}
 					<a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
-						<!-- <img src="/static/img/calendar-alt-subtract.png" alt="Remove from Calendar"/> --><!-- <p class="meta">Remove from Calendar</p> -->Add to Calendar
+						<img src="{{STATIC_URL}}img/icons/calendar-alt-subtract.png" alt="Remove from Calendar"/><!-- <span class="meta">Remove from Calendar</span> -->
 					</a>
 				{% else %}
 					<a href="?action=fav" class="favbutton add" title="Add to Calendar">
-						<img src="/static/img/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
+						<img src="{{STATIC_URL}}img/icons/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
 					</a>
 				{% endif %}
 			</div> <!-- .fav-container -->

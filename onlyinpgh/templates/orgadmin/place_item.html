@@ -13,7 +13,7 @@ Context variables:
 		{% thumbnail place.image "130x130" crop="center" as im %}
 		<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{im.url}}" />
 		{% empty %}
-		<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="/static/img/default-place.png" />
+		<img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{STATIC_URL}}img/default-place.png" />
 		{% endthumbnail %}
 	</a>
 </div>
@@ -42,7 +42,7 @@ Context variables:
 </section>
 	
 <div class="item-actions">
-	<a href="#" title="View listing (coming soon)"><img src="/static/img/browser.png" alt="view"/></a>
-	<a href="{% url orgadmin-editplace place.id %}" title="Edit place"><img class="item-action" src="/static/img/pencil.png" alt="edit" /></a>
-	<a href="{% url orgadmin-delplace place.id %}" class="delete-item" title="Unclaim place"><img class="item-action" src="/static/img/icon_x.gif" alt="delete" /></a>
+	<a href="#" title="View listing (coming soon)"><img src="/static/img/icons/browser.png" alt="view"/></a>
+	<a href="{% url orgadmin-editplace place.id %}" title="Edit place"><img class="item-action" src="/static/img/icons/pencil.png" alt="edit" /></a>
+	<a href="{% url orgadmin-delplace place.id %}" class="delete-item" title="Unclaim place"><img class="item-action" src="/static/img/icons/icon_x.gif" alt="delete" /></a>
 </div>

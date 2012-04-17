@@ -239,7 +239,7 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
-  background: #e1e1e1 url("/static/img/Oakland_bkgd_630.png") fixed bottom right no-repeat;
+  background: #e1e1e1 url("/static/img/logos/oakland-bkgd-630.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 }
 /* TYPOGRAPHY -------- */
@@ -1511,22 +1511,22 @@ a {
 
 }
 a#siteHot {
-  background: #ffffff url('/static/img/menu_icons/city.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/city.png') no-repeat center 9px;
 }
 a#sitePlaces {
-  background: #ffffff url('/static/img/menu_icons/store-front.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/store-front.png') no-repeat center 9px;
 }
 a#siteEvents {
-  background: #ffffff url('/static/img/menu_icons/calendar-alt.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/calendar-alt.png') no-repeat center 9px;
 }
 a#siteSpecials {
-  background: #ffffff url('/static/img/menu_icons/tag-special.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/tag-special.png') no-repeat center 9px;
 }
 a#siteChatter {
-  background: #ffffff url('/static/img/menu_icons/speech-bubble.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/speech-bubble.png') no-repeat center 9px;
 }
 a#siteNews {
-  background: #ffffff url('/static/img/menu_icons/newspaper.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-menu/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
 /* MEDIA QUERIES --------- */
@@ -1539,7 +1539,7 @@ a#siteNews {
 /*******************************//*******************************/
 @media screen and (max-width: 1140px) {
   body {
-    background-image: url("/static/img/Oakland_bkgd_450.png");
+    background-image: url("/static/img/oakland-bkgd-450.png");
   }
   #scene-nav {
     -webkit-border-radius: 0;
