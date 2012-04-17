@@ -1,14 +1,11 @@
 {% comment %}
 Template to render a particular place as a feed item.
 
-Compatible ViewModels: places.viewmodels.PlaceFeedItem
-
-Context variables:
-	C: PlaceFeedItem context
+Compatible contexts: PlaceContext
 {% endcomment %}
 {% load thumbnail %}
-{% with place=C.place %}
 
+{% with place=C.place %}
 <div class="item-thumb">
 	{% thumbnail place.image "130x130" crop="center" as im %}
     <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />

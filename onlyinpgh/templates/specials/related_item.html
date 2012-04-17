@@ -1,13 +1,9 @@
 {% comment %}
-Template to render a particular Special as a related feed item in a single place page.
+Template to render a particular event as a related feed item on a single place page.
 
-Compatible ViewModel: specials.viewmodels.SpecialFeedItem
-
-Context variables:
-	special:	subset of Special model (see SpecialFeedItem ViewModel)
+Compatible contexts: SpecialContext
 {% endcomment %}
-
-
+{% with special=C.special %}
 <div class="item-thumb">
 	<div class="points">+{{special.points}}</div>
 	<button class="btn btn-primary">Grab It!</button>
@@ -25,3 +21,4 @@ Context variables:
 
 	</ul>
 </section>
+{% endwith %}

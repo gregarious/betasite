@@ -1,4 +1,6 @@
 from django.shortcuts import render_to_response, redirect
+from django.core.urlresolvers import reverse
+
 from onlyinpgh.common.core.rendering import render_safe
 from django.http import Http404
 
@@ -81,14 +83,12 @@ def qr_redirect(request, key=None):
 
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    # this is a temporary hack -- should be in hot module but causes circular dependancy
-    from onlyinpgh.hot.viewmodels import HotFeedCollection
-    hot_feeds = HotFeedCollection(request.user)
-    main_content = render_main(render_safe('hot.html', hot_feeds=hot_feeds))
-    return page_response(main_content, request)
+    return redirect(reverse('hot'))
+
 
 def example_chatter(request):
-    return page_response(render_main(render_safe('chatter_example.html')),request)
-def example_news(request):
-    return page_response(render_main(render_safe('news_example.html')),request)
+    raise NotImplementedError
 
+
+def example_news(request):
+    raise NotImplementedError

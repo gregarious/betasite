@@ -1,85 +1,37 @@
 {% comment %}
-Inner template that renders details about a single place.
+Inner template for a single place detail.
 
-Context variables:
-	C:
-	    place:      		Place object with extra fields (e.g. url, hours)
-	    	-- Note that place.location will have an optional directions_link field
-	    is_favorite:		boolean (optional)
+Compatible contexts: PlaceContext
 {% endcomment %}
 {% load thumbnail %}
-{% with place=C.place, is_favorite=C.is_favorite %}
 
-<div class="single-thumb-container">
-	<div class="item-thumb">
-		{% thumbnail place.image "130x130" crop="center" as im %}
-	    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
-		{% empty %}
-		<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
-	    {% endthumbnail %}
-	</div>
-	<div class="fav-container">
-		{% if is_favorite %}
-			<a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
-		{% else %}
-			<a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
-		{% endif %}
-	</div>
-</div>
+{% with place=C.place %}
+<header class="single-header">
+    <div class="single-thumb-container">
+        <div class="item-thumb">
+            {% thumbnail place.image "130x130" crop="center" as im %}
+            <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+            {% empty %}
+            <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+            {% endthumbnail %}
+        </div>
+        <div class="fav-container">
+            {% if C.is_favorite %}
+                <a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
+            {% else %}
+                <a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
+            {% endif %}
+        </div>
+    </div>
 
-<section class="item-content">
-	<h1 class="single-title">{{ place.name }}</h1>
-	<ul class="item-details">	
-		<li class="address">{{place.location.address}}</li>
-  	</ul>
+    <section class="item-content">
+        <h1 class="single-title">{{ place.name }}</h1>
+        <ul class="item-details">   
+            <li class="address">{{place.location.address}}</li>
+        </ul>
 
-	{% include "tags/tag_list.html" with tags=place.tags %}
+        {% include "tags/tag_list.html" with tags=place.tags %}
 
-</section>
-
-<script type="text/javascript">
-	require(['jquery','helpers/place_actions'],function($,place_actions) {
-		// handle the add/remove favorite button
-		$(".favbutton").click( function(event) {
-			var link = $(this);		// save the link element that fired the event
-			$('.favbutton').html('<p class="changing-fav-spinner">spinner</p>');
-			// depending on the button class, either attempt adding or 
-			// removing favorite state of place
-			var changingFavorite;
-			if (link.hasClass('add')) {
-				changingFavorite = place_actions.addFavorite({{place.id}});
-				changingFavorite.done( function(msg) {
-					link.removeClass('add')
-						.addClass('remove');
-				});
-			}
-			else if (link.hasClass('remove')) {
-				changingFavorite = place_actions.removeFavorite({{place.id}});
-				changingFavorite.done( function(msg) {
-					link.removeClass('remove')
-						.addClass('add');
-						// alert('Oops! ' + msg);	// TODO: do something better
-				});
-			}
-
-			// in case neither add/remove action was taken, skip the rest
-			// (would only happen if the DOM class is messed up)
-			if(changingFavorite) {
-				// TODO: add spinner
-				// fail/always actions are the same despite the promise type
-				changingFavorite.fail( function(msg) {
-					$('.item-thumb').append('<div id="favoriteError" class="error">Oops! ' + msg + '</div>'); // Will want to customize the 'not authenticated' msg to include link to login/signup
-
-					// Maybe this isn't needed - without, error duplicated everytime favorited 
-					$('#favoriteError').delay(2000).fadeOut(300);	// TODO: do something better
-				});
-				changingFavorite.always( function() {
-					$('.changing-fav-spinner').fadeOut(100);
-				});				
-			}
-
-			event.preventDefault();
-		});
-	});
-</script>
+    </section>
+</header>
 {% endwith %}

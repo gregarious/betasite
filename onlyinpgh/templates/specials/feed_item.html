@@ -1,13 +1,10 @@
 {% comment %}
-Template to render a particular Special as a feed item.
+Template to render a particular event as a feed item.
 
-Compatible ViewModel: specials.viewmodels.SpecialFeedItem
-
-Context variables:
-	special:	subset of Special model (see SpecialFeedItem ViewModel)
+Compatible contexts: SpecialContext
 {% endcomment %}
 
-
+{% with special=C.special %}
 <div class="item-thumb">
 	<div class="points">+{{special.points}}</div>
 	<button class="btn btn-primary">Grab It!</button>
@@ -27,4 +24,5 @@ Context variables:
 	
 	{% include "tags/tag_list.html" with tags=special.tags %}
 	
-</special-detailon>
+</special>
+{% endwith %}

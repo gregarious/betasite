@@ -5,7 +5,7 @@ Page-based template for the Places feed
 
 Context variables:
     C:  
-        [items]: List of PlaceFeedItem contexts
+        [items]: List of PlaceContext instances
         prev_p: page number of previous page (if available)
         next_p: page number of next page (if available)
 {% endcomment %}
@@ -35,5 +35,4 @@ Context variables:
     {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
     {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
-
 {% endblock %}

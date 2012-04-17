@@ -1,10 +1,13 @@
-from onlyinpgh.common.core.rendering import render_safe
-from onlyinpgh.common.views import render_main, page_response
+from onlyinpgh.common.views import render_page
+from onlyinpgh.common.contexts import PageContext
 
-from onlyinpgh.hot.viewmodels import HotFeedCollection
+from onlyinpgh.hot.contexts import HotFeedCollection
+
 
 ### URL-LINKED VIEWS ###
 def page_hot(request):
     hot_feeds = HotFeedCollection(request.user)
-    main_content = render_main(render_safe('hot.html', hot_feeds=hot_feeds))
-    return page_response(main_content, request)
+
+    page_context = PageContext(request, 'hot', dict(
+        hot_feeds=hot_feeds))
+    return render_page('page_hot.html', page_context)
