@@ -133,15 +133,6 @@ p {
 .wrap {
 	.row();
 	min-width: 720px;
-
-	&.site {
-		// HAck! Should be min-height: 100%;
-		// http://ryanfait.com/resources/footer-stick-to-bottom-of-page/
-		min-height: 75%;
-		height: auto !important;
-		height: 100%;
-		margin: 0 auto;
-	}
 }
 
 #site-header {
@@ -186,7 +177,7 @@ p {
 	background: url("@{static_url}img/textures/white-tex.png");
 	.border-box();
 	.clearfix();
-	margin: 120px auto 100px auto;
+	margin: 120px auto 1em auto;
 	width: 650px;	
 	.rounded(0.5em);
 	padding: 2em;
@@ -213,7 +204,7 @@ p {
 	color: #777;
 	.clearfix;
 	width: 650px;
-	margin: 3em auto;
+	margin: 0 auto 2em auto;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -638,12 +629,13 @@ input[type="checkbox"] {
 /* HELP TEXT ---------- */
 
 .notifications {
-	border: 1px @yellow solid;
+	/*border: 1px @yellow solid;*/
 	background: #FEFFC2;
 	.rounded(0.5em);
 	padding: 0.3em 0.9em;
 	margin-bottom: 2em;
 	text-align: center;
+	.b-shadow(0, 0, 0.1em, #888);
 
 	&#user-notification {
 		background: #FACBCB;
@@ -902,10 +894,6 @@ input[type="checkbox"] {
 /* SPLASH ------------- */
 
 #splash {
-	
-	&.wrap {
-	/*	max-width: 800px;*/
-	}
 
 	h2, h3 {
 		color: #333;
@@ -947,11 +935,7 @@ input[type="checkbox"] {
 /* IE CLASSES ---------- */
 
 .lt-ie8 {
-	.wrap.site {
-		min-height: 0;
-		height: auto;
-	}
-
+	
 	#site-header {
 		position: relative;
 	}
