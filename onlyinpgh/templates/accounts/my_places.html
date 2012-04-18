@@ -8,7 +8,7 @@ Context variables:
 {% endcomment %}
 
 {% block panel-content %}
-<h3 class="section-title">My Favorite Places</h3>
+<h3 class="section-title">Favorite Places</h3>
 <ul class="feed my-feed places">
     {% for item in C.items %}
         <li class="item">{% include "places/feed_item.html" with C=item %}</li>
