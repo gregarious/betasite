@@ -1,5 +1,4 @@
 from django.http import HttpResponseRedirect
-from django.template import RequestContext
 
 from django.core.urlresolvers import reverse
 
@@ -10,21 +9,22 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
 from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
-from onlyinpgh.common.views import page_response, render_main
+from onlyinpgh.common.views import render_page
+from onlyinpgh.common.contexts import PageContext
+
 import urlparse
 
-from onlyinpgh.accounts.viewmodels import PublicProfile
+from onlyinpgh.accounts.contexts import PublicProfile
 
 from onlyinpgh.places.models import Favorite
-from onlyinpgh.places.viewmodels import PlaceFeedItem
+from onlyinpgh.places.contexts import PlaceContext
 
 from onlyinpgh.events.models import Attendee
-from onlyinpgh.events.viewmodels import EventFeedItem
+from onlyinpgh.events.contexts import EventContext
 
 from onlyinpgh.specials.models import Coupon
-from onlyinpgh.specials.viewmodels import SpecialFeedItem
+from onlyinpgh.specials.contexts import SpecialContext
 
 
 @csrf_protect
@@ -59,13 +59,12 @@ def page_login(request, redirect_field_name='next'):
         form = AuthenticationForm(request)
     request.session.set_test_cookie()
 
-    # render login form with csrf protection
-    login_form = render_safe('registration/login.html',
-        form=form, form_action=reverse('login'),
-        next=redirect_to,
-        context_instance=RequestContext(request))
-    main_content = render_main(login_form)
-    return page_response(main_content, request)
+    context = PageContext(request, 'accounts', dict(
+            form=form,
+            form_action=reverse('login'),
+            next=redirect_to)
+        )
+    return render_page('registration/page_login.html', context)
 
 
 def page_signup(request):
@@ -102,55 +101,42 @@ def page_signup(request):
         profile_form = UserProfileForm(prefix='prof')
 
     request.session.set_test_cookie()
-    content = render_safe('registration/signup.html',
-        registration_form=reg_form,
-        profile_form=profile_form,
-        form_action=reverse('signup'),
-        context_instance=RequestContext(request))
-    return page_response(content, request)
 
-
-def render_account_panel(panel_content, wrap_main=True):
-    '''
-    Returns a rendered account panel, suitable for direct use in a
-    page_response call if wrap_main is True.
-    '''
-    panel = render_safe('accounts/account_panel.html', panel_content=panel_content)
-    return render_main(panel) if wrap_main else panel
+    context = PageContext(request, 'accounts', dict(
+            registration_form=reg_form,
+            profile_form=profile_form,
+            form_action=reverse('signup')),
+        )
+    return render_page('registration/page_signup.html', context)
 
 
 @login_required
 def page_profile(request):
-    profile = render_viewmodel(PublicProfile(request.user), 'accounts/public_profile.html')
-    main = render_account_panel(profile)
-    return page_response(main, request)
+    return render_page('accounts/public_profile.html',
+        PageContext(request, 'accounts', dict(
+            profile=PublicProfile(request.user)
+        )))
 
 
 @login_required
 def page_my_places(request):
     places = [fav.place for fav in Favorite.objects.filter(user=request.user, is_favorite=True)]
-    items = [PlaceFeedItem(place, user=request.user) for place in places]
-
-    main = render_account_panel(
-        render_safe('accounts/my_places.html', items=items))
-    return page_response(main, request)
+    items = [PlaceContext(place, user=request.user) for place in places]
+    return render_page('accounts/my_places.html',
+        PageContext(request, 'accounts', {'items': items}))
 
 
 @login_required
 def page_my_events(request):
     events = [att.event for att in Attendee.objects.filter(user=request.user, is_attending=True)]
-    items = [EventFeedItem(event, user=request.user) for event in events]
-
-    main = render_account_panel(
-        render_safe('accounts/my_events.html', items=items))
-    return page_response(main, request)
+    items = [EventContext(event, user=request.user) for event in events]
+    return render_page('accounts/my_events.html',
+        PageContext(request, 'accounts', {'items': items}))
 
 
 @login_required
 def page_my_specials(request):
     specials = [coupon.special for coupon in Coupon.objects.filter(user=request.user, was_used=False)]
-    items = [SpecialFeedItem(special, user=request.user) for special in specials]
-
-    main = render_account_panel(
-        render_safe('accounts/my_specials.html', items=items))
-    return page_response(main, request)
+    items = [SpecialContext(special, user=request.user) for special in specials]
+    return render_page('accounts/my_specials.html',
+        PageContext(request, 'accounts', {'items': items}))

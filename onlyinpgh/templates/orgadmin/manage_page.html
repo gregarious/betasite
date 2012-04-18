@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% comment %}
+Base template for business admin pages.
 
+Root context is an ManagePageContext object with the following variables:
+- main_context
+{% endcomment %}
 
 {% block head-title %}
 <title>
@@ -15,10 +20,6 @@ Scenable Business Account
 <link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
 <link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
 <link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
-
-{% comment %} TODO: REMOVE THIS!!!! {% endcomment %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 {% endblock %}
 
 {% block content %}
@@ -53,17 +54,24 @@ Scenable Business Account
 	</header>
 
 	<div id="site-content">
-	    {{content}}
+		{% with C=main_context %}
+	    {% block main-content %}{% endblock %}
+	    {% endwith %}
 	</div>
 
 	<footer id="site-footer">
-		<div class="notifications"><p>If you come across anything that isn't working or have comments or questions, please let us know at <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Business%20Admin">contact@scenable.com</a>. The Scenable Business Management Panel is currently in beta and we are working hard to track down and fix any problems. </p></div>
+		<div class="notifications" id="beta-notification"><p><strong>Something not working? Comments? Questions?</strong></p>
+		<p>Please let us know at <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Business%20Admin">contact@scenable.com</a>. The Scenable Business Management Panel is currently in beta and we need your help to track down any problems.</p></div>
 	</footer>
 </div> <!-- .wrap -->
 
 {% endblock %}
 
 {% block foot %}
+<!-- jQuery from CDN with fallback -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
 <!-- jQuery UI and Timepicker plugin-->
 <script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
 <script src="{{STATIC_URL}}js/libs/jquery-ui/jquery.ui.autocomplete.html.js"></script>
@@ -79,4 +87,8 @@ if(menu_item.attr('href') == loc) {
     menu_item.addClass('current-page');
 }
 </script>
+
+{% with C=main_context %}
+{% block additional-scripts %}{% endblock %}
+{% endwith %}
 {% endblock %}

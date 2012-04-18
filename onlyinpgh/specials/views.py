@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
-from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
-from onlyinpgh.common.views import page_response, render_main
+# from onlyinpgh.common.utils.jsontools import jsonp_response
+from onlyinpgh.common.views import render_page
+from onlyinpgh.common.contexts import PageContext
 
 from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
+from onlyinpgh.specials.contexts import SpecialContext
 
 
 def page_feed(request):
@@ -17,10 +18,24 @@ def page_feed(request):
     a feed.
     '''
     # get a list of rendered items
-    specials = Special.objects.all()[:10]
-    items = [SpecialFeedItem(special, user=request.user) for special in specials]
-    main = render_main(render_safe('specials/main_feed.html', items=items))
-    return page_response(main, request)
+    all_specials = Special.objects.all()
+    paginator = Paginator(all_specials, 10)
+    try:
+        page_num = int(request.GET.get('p', '1'))
+    except ValueError:
+        page_num = 1
+
+    try:
+        page = paginator.page(page_num)
+    except (EmptyPage, InvalidPage):
+        page = paginator.page(paginator.num_pages)
+
+    items = [SpecialContext(special, user=request.user) for special in page.object_list]
+    page_context = PageContext(request, 'specials', dict(
+        items=items,
+        prev_p=page.previous_page_number() if page.has_previous() else None,
+        next_p=page.next_page_number() if page.has_next() else None))
+    return render_page('specials/page_feed.html', page_context)
 
 
 def page_details(request, sid):
@@ -29,12 +44,10 @@ def page_details(request, sid):
     '''
     # build and render special detail viewmodel
     special = get_object_or_404(Special, id=sid)
-    details = SpecialDetail(special, user=request.user)
-    content = render_viewmodel(details,
-                template='specials/single.html',
-                class_label='special-single')
-    main = render_main(content)
-    return page_response(main, request)
+    details = SpecialContext(special, user=request.user)
+    page_context = PageContext(request, 'specials', {'special_context': details})
+
+    return render_page('specials/page_special.html', page_context)
 
 
 # @jsonp_response

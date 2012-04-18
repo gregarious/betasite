@@ -3,31 +3,32 @@
 {% comment %}
 Template for any Scenable webpage. 
 
-Context variables:
-    - topbar: rendered content in top_bar.html
-    - scenenav: rendered content in scene_nav.html
-    - main: rendered main page content
-    - sidebar: rendered content in sidebar.html
-    - footer: rendered content in footer.html
-
-Purposefully a simple extension of base.html. base.html should handle
-all the browser-based plumbing boilerplate in the header/footer, leaving 
-page.html to handle the basic skeleton for page content.
+Context is a PageContext variable, meaning the following root-level
+variables are available. All are Context variables set in the
+PageContext constructor.
+- header_context
+- main_context
+- sidebar_context
+- footer_context
 {% endcomment %}
 
 {% block content %}
 <div class="wrap">
     <nav id="scene-nav">
-        {{ scenenav }}
-        {{ topbar }}
+        {% include "scene_nav.html" with C=header_context %}
+        {% include "top_bar.html" with C=header_context %}
     </nav>
 </div>
 <div class="wrap">
-    {{ main }}
+    {% with C=main_context %}
+    <div id="site-content" role="main">
+    {% block main-content %}{% endblock %}
+    </div>        
+    {% endwith %}
     <aside id="site-sidebar" role="complementary">
-		{{ sidebar }}
+		{% include "sidebar_base.html" with C=sidebar_context %}
 	</aside>
 </div>
-<!-- <footer id="site-footer">{{ footer }}</footer> -->
 
+<!--{% include "footer.html" with C=footer_context %}-->
 {% endblock %}

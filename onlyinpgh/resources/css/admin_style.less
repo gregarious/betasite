@@ -5,7 +5,7 @@
 /* ROOT --------- */
 
 body {
-	background: url("@{static_url}img/textures/sky-med-tex.png");
+	background: @lblue url("@{static_url}img/textures/sky-med-tex.png");
 	.clearfix();
 	font-weight: normal;
 	height: 100%; 
@@ -137,7 +137,7 @@ p {
 
 #site-header {
 	width: 100%;
-	background: url("@{static_url}img/textures/sky-dark-tex.png");
+	background: @mblue url("@{static_url}img/textures/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	border-bottom: 1px solid #e1e1e1;
 	height: 85px;
@@ -174,7 +174,7 @@ p {
 
 #site-content {
 	.b-shadow(0, 0, 0.1em, #888);
-	background: url("@{static_url}img/textures/white-tex.png");
+	background: #fefefe url("@{static_url}img/textures/white-tex.png");
 	.border-box();
 	.clearfix();
 	margin: 120px auto 1em auto;
@@ -403,25 +403,25 @@ input[type="checkbox"] {
 
 	.clearfix();
 	.column(4);
-	margin: 0 1%;
+	padding-bottom: 1em;
+	text-align: center;
 
 	a {
-		font-size: 1.1em;
-		text-align: center;
-		padding: 3% 2%;
+		font-size: 1.1em;	
 	}
 
-		&:hover {
-			background: #e8e8e8;
-		}
-		
-		&:active {
-			background: #e1e1e1;
-		}
+	&:hover {
+		background: #e8e8e8;
+	}
+	
+	&:active {
+		background: #e1e1e1;
+	}
 
 	img {
 		display: block;
-		margin: 0.5em auto 1em auto ;
+		margin: 0 auto ;
+		padding: 1em;
 	}
 
 }
@@ -439,18 +439,23 @@ input[type="checkbox"] {
 	.clearfix();
 	border-bottom: 2px @dblue solid;
 	margin-top: 1.5em;
-	ul li {
 
-		float: left;
+	ul {
+		.clearfix();
+
+		li {
+			float: left;
+			padding-bottom: 0.4em;
 		
 		a {
 			background: @lblue;
+			.border-box();
 			padding: 0.5em;
 			margin: 0 0.45em;
 			.tabs(0.5em);
 			color: #fff;	
 			position: relative;
-			bottom: 0.45em;
+
 			&.current-page {
 				color: #fff;
 				.gradient(@mblue, @dblue);
@@ -471,7 +476,7 @@ input[type="checkbox"] {
 			}
 			
 		}	
-	}
+	}}
 }
 
 .prev-next {
@@ -580,15 +585,20 @@ input[type="checkbox"] {
   margin: 1% 0 0;
   
     li {
-    	a{
-    	cursor: text;
-    }
-      color: #888;
-      float: left;
-      margin: 0.1em 0.4em;
-      padding: 0.1em 0.2em;
-      text-decoration: none;
-      .border-box;   
+
+    	&:first-child {
+	      margin-left: 0;
+	    }
+	    
+		a {
+			cursor: text;
+		}
+      	color: #888;
+      	float: left;
+      	margin: 0.1em 0.4em;
+      	padding: 0.1em 0.2em;
+      	text-decoration: none;
+      	.border-box;   
   	}
 }
 
@@ -855,12 +865,12 @@ input[type="checkbox"] {
 }
 
 .ui-icon.ui-icon-closethick {
-	top: 0.8em;
-	right: 1em;
+	top: 1.5em;
+	right: 1.5em;
 	height: 1em;
 	width: 1em;
 	position: absolute;
-	background: url('@{static_url}img/cancel.png') center no-repeat;
+	background: url('@{static_url}img/icons/cancel.png') center no-repeat;
 	text-indent: -9999px;
 
 	&:hover {
@@ -934,6 +944,42 @@ input[type="checkbox"] {
 
 /* IE CLASSES ---------- */
 
+.lt-ie9{
+
+	#site-content, 
+/*	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea,*/
+	#page-nav ul li a,
+	
+	#beta-notification,
+	#confirm-box .item,
+	.ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
+	.ui-dialog/*, .ui-dialog input[type="text"] */
+	{
+		behavior: url("@{static_url}/PIE.htc");
+	}
+
+	#splash {
+		.next, .back {
+			behavior: url("@{static_url}/PIE.htc");		
+		}
+	}
+
+}
+
+/*.no-cssgradients {
+	#page-nav ul li a.current-page, #page-nav ul li a.current-page:hover,
+	.prev-next a:active  {
+		-pie-background: linear-gradient(#CCC, #EEE);
+		behavior: url("@{static_url}/PIE.htc");
+	}
+	
+	button, input[type="submit"], .next, .back {
+		&:hover {
+			.gradient-pie(#1B333A, #2C525D);
+		}
+	}
+}*/
+
 .lt-ie8 {
 	
 	#site-header {
@@ -943,4 +989,9 @@ input[type="checkbox"] {
 	#site-footer {
 		text-align: center;
 	}
+
+	#site-content {
+		top: 1em;
+	}
 }
+

@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
-from onlyinpgh.common.core.rendering import render_viewmodel, render_safe
-from onlyinpgh.common.views import page_response, render_main
+from onlyinpgh.common.views import render_page
+from onlyinpgh.common.contexts import PageContext
 
 from onlyinpgh.events.models import Event
-from onlyinpgh.events.viewmodels import EventFeedItem, EventDetail
+from onlyinpgh.events.contexts import EventContext
 
 
 def page_feed(request):
@@ -12,28 +13,42 @@ def page_feed(request):
     View function that handles a page load request for a feed of event
     items.
 
-    Returns page response with main content set to the feed.
+    Returns page response with main content set as:
+        items: list of EventContext items
+        prev_p: number of previous page events (if applicable)
+        next_p: number of next page of events (if applicable)
     '''
-    # get a list of rendered items
-    events = Event.objects.all()[:10]
-    items = [EventFeedItem(event, user=request.user) for event in events]
-    main = render_main(render_safe('events/main_feed.html', items=items))
-    return page_response(main, request)
+    all_events = Event.listed_objects.all()
+    paginator = Paginator(all_events, 10)
+    try:
+        page_num = int(request.GET.get('p', '1'))
+    except ValueError:
+        page_num = 1
+
+    try:
+        page = paginator.page(page_num)
+    except (EmptyPage, InvalidPage):
+        page = paginator.page(paginator.num_pages)
+
+    items = [EventContext(event, user=request.user) for event in page.object_list]
+    page_context = PageContext(request, 'events', dict(
+        items=items,
+        prev_p=page.previous_page_number() if page.has_previous() else None,
+        next_p=page.next_page_number() if page.has_next() else None))
+    return render_page('events/page_feed.html', page_context)
 
 
 def page_details(request, eid):
     '''
-    Returns page response with main content set to the details.
+    Returns page response with main content set as:
+        event (EventContext object)
     '''
-    # build and render event detail viewmodel
     event = get_object_or_404(Event, id=eid)
-    details = EventDetail(event, user=request.user)
-    content = render_viewmodel(details,
-                template='events/single.html',
-                class_label='event-single')
-    main = render_main(content)
-    return page_response(main, request)
+    details = EventContext(event, user=request.user)
 
+    page_context = PageContext(request, 'events', {'event_context': details})
+
+    return render_page('events/page_event.html', page_context)
 
 # from django.shortcuts import render_to_response
 # from django.template import Context, RequestContext

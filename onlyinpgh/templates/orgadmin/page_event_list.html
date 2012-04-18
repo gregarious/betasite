@@ -1,32 +1,32 @@
+{% extends "orgadmin/manage_page.html" %}
 {% comment %}
-Context variables:
-- items: EventFeedItem objects
+Context variables
+    C:
+        items: EventContext instances
 {% endcomment %}
-{% load vmrender from commontags %}
 
-{% include "orgadmin/page_nav.html" %}
+{% block main-content %}
+{% include "orgadmin/tab_nav.html" %}
 
 <a href="{% url orgadmin-addevent %}" title="Add event" class="add-item">+ Add new event</a>
 
-{% if items %}
-
+{% if C.items %}
 	<ul class="feed">
-		{% for item in items %}
+		{% for item in C.items %}
 			<li class="item">
-	    		{% vmrender item 'orgadmin/event_item.html' %}
+	    		{% include "orgadmin/event_item.html" with event=item.event %}
 	    	</li>
 	    {% endfor %}
     </ul>
-
 {% else %}
-
     <section class="no-items">
     	<img src="{{STATIC_URL}}img/manage-events.png" alt="Calendar" />
 		<p>We don't currently have any events on record for your location or organization. If we have your Facebook ID, any events you've posted will show up here in 24hrs. Otherwise, click <a href="{% url orgadmin-addevent %}" title="Add Event">here</a> to add one.</p>
     </section>
-
 {% endif %}
+{% endblock %}
 
+{% block additional-scripts %}
 <script type="text/javascript">
 $(function(){
     $('.delete-item').on('click', function(event) {
@@ -34,3 +34,4 @@ $(function(){
     });
 });
 </script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Places feed
+
+Context variables:
+    C:  
+        [items]: List of PlaceContext instances
+        prev_p: page number of previous page (if available)
+        next_p: page number of next page (if available)
+{% endcomment %}
+
+{% block main-content %}
+<header class="feed-header">
+    <h1 class="feed-title">Places</h1>
+    <form class="filter" >
+        <input type="search" placeholder="Filter Places" />
+        <input type="submit" value="Filter" />
+    </form>
+</header>
+
+<article class="feed-content">
+    <div class="map-container"></div>
+    {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
+    {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+
+    <ul class="feed places">
+    {% for item in C.items %}
+        <li class="item">
+        {% include "places/feed_item.html" with C=item %}
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
+    {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+</article> <!-- .feed-content -->
+{% endblock %}

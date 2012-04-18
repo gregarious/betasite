@@ -1,0 +1,7 @@
+{% extends "orgadmin/manage_page.html" %}
+
+{% block main-content %}
+<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
+<h2>Register for a Scenable Business Account...</h2>
+{% include "orgadmin/org_signup_form.html" with registration_form=C.registration_form org_form=C.org_form %}
+{% endblock %}

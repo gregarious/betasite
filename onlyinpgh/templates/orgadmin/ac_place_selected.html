@@ -1,20 +1,16 @@
 {% comment %}
 HTML to be shown in place of text box.
 
-Compatible VMs: PlaceFeedItem
-
 Template variables:
-    place:    subset of Place model (see PlaceFeedItem ViewModel)
+    place:    Place model instance
 {% endcomment %}
 {% load thumbnail %}
-
-<img class="spinner" src='/static/img/ajax-loader.gif' style="display:none" />
 
 <div class="ac-item-thumb">
     {% thumbnail place.image "50x50" crop="center" as im %}
     	<img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" width="{{im.width}}" height="{{im.height}}"/>
     {% empty %}
-    	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" width="50" height="50"/>
+    	<img class="thumbnail" alt="{{place.name}}" src="{{STATIC_URL}}img/default-place.png" width="50" height="50"/>
     {% endthumbnail %}
 </div>
 

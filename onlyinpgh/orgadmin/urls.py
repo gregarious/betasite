@@ -33,5 +33,5 @@ urlpatterns += patterns('onlyinpgh.orgadmin.ajax',
 
     url(r'^ajax/place_confirm/$', 'place_confirm_div'),
 
-    url(r'^ajax/newplace_submit/$', 'newplace_form_submission'),
+    url(r'^ajax/newplace_submit/$', 'newplace_form_submission', name='orgadmin-ajax-newplace'),
 )

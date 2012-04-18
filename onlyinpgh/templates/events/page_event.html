@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Places feed
+
+Context variables:
+    C:
+        event_context: EventContext instance
+{% endcomment %}
+
+{% block main-content %}
+<div class="single-container" id="event-single">
+	{% include "events/single.html" with C=C.event_context %}
+</div>
+{% endblock %}

@@ -1,20 +1,23 @@
+{% extends "page.html" %}
 {% comment %}
 Template that wraps around content for account-related pages, putting 
 an account management nav bar on top of the content.
 
-Context variables:
-    - panel_content
+Base template for other panel child templates
 {% endcomment %}
 
+{% block main-content %}
 <h2>My Scenable</h2>
 <nav id="profile-nav" class="related-nav">
     <ul>
-        <li><a href="{% url my-profile %}">Profile</a></li>
+        <li><a href="{% url my-profile %}" class="current-page">Profile</a></li>
         <li><a href="{% url my-places %}">Places</a></li>
         <li><a href="{% url my-events %}">Events</a></li>
         <li><a href="{% url my-specials %}">Specials</a></li>
+        <li><a href="#">Settings</a></li>
     </ul>
 </nav>
 <div class="related-section profile">
-    {{ panel_content }}
+    {% block panel-content %}{% endblock %}
 </div>
+{% endblock %}

@@ -1,15 +1,13 @@
 {% comment %}
 Template to render a particular event as a feed item.
 
-Compatible ViewModels: places.viewmodels.EventFeedItem
-
-Context variables:
-	event:	subset of Event model (see EventFeedItem ViewModel)
+Compatible contexts: EventContext
 
 TODO: only show month/day for events ending on a different day
 {% endcomment %}
 {% load thumbnail %}
 
+{% with event=C.event %}
 <div class="item-thumb">
     {% thumbnail event.image "130x130" crop="center" as im %}
     <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}"/>
@@ -34,3 +32,4 @@ TODO: only show month/day for events ending on a different day
 	{% include "tags/tag_list.html" with tags=event.tags %}
 	
 </section>
+{% endwith %}  {# end of event alias #}

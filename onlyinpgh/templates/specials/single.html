@@ -1,17 +1,14 @@
 {% comment %}
-Inner template that renders details about a single place.
+Inner template for a single special detail.
 
-Compatible ViewModel: places.viewmodels.PlaceDetail 
-
-Context variables:
-	special:	Special ViewModel
+Compatible contexts: SpecialContext
 
 TODO #1: If there is a limited number available, show how many are left (3/10 available).
 
 TODO #2: Only show expiration date if there is one.
 
 {% endcomment %}
-
+{% with special=C.special %}
 <div class="single-container" id="special-single">
 	<header class="single-header">
 
@@ -52,3 +49,4 @@ TODO #2: Only show expiration date if there is one.
 		<p class="description">{{special.description}}</p>
 	</div>
 </div>
+{% endwith %}

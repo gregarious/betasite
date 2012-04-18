@@ -16,12 +16,12 @@ if(typeof(Scenable) === 'undefined') {
 
 // Highlight the current menu item based on URL.
 // Alter this so it ignores id paths - i.e. Places is stil highlighted at /places/229
-loc = location.pathname;
-menu_item = $('.main-menu').find('a[href$="'+loc+'"]');
+// loc = location.pathname;
+// menu_item = $('.main-menu').find('a[href$="'+loc+'"]');
 
-if(menu_item.attr('href') == loc) {
-	menu_item.addClass('current-page');
-}
+// if(menu_item.attr('href') == loc) {
+// 	menu_item.addClass('current-page');
+// }
 
 // For mobile dropdown, select option with same value as URL
 // option = $('#scene-nav select').find('option[value$="'+window.location+'"]');
@@ -37,11 +37,13 @@ $.each(pages, function(i, id) {
 	$('a.'+id).click(function() {
 		$('.related-section').delay(200).hide();
 		$(id+'.related-section').fadeIn(200); // Will replace this with a .get();
+		$('.related-nav a').removeClass('current-page');
+		$(this).addClass('current-page');
 	});
 });
 
-$('#scene-nav select').change(function(){
-	window.location = $(this).attr('value');
-});
+// $('#scene-nav select').change(function(){
+// 	window.location = $(this).attr('value');
+// });
 
 }); // document.ready

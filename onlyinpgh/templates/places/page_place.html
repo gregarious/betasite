@@ -1,0 +1,71 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Places feed
+
+Context variables:
+    C:
+        place_context: PlaceContext instance
+        related_feeds: PlaceRelatedFeeds context instance
+        
+{% endcomment %}
+{% load thumbnail %}
+
+{% block main-content %}
+<div class="single-container" id="place-single">
+    {% include "places/single.html" with C=C.place_context %}
+	<article class="single-content">
+	    {% include "places/related.html" %}
+	</article>
+</div>
+{% endblock %}
+
+
+{% comment %}
+Saving old favoriting Javascript for future notice:
+<script type="text/javascript">
+    require(['jquery','helpers/place_actions'],function($,place_actions) {
+        // handle the add/remove favorite button
+        $(".favbutton").click( function(event) {
+            var link = $(this);     // save the link element that fired the event
+            $('.favbutton').html('<p class="changing-fav-spinner">spinner</p>');
+            // depending on the button class, either attempt adding or 
+            // removing favorite state of place
+            var changingFavorite;
+            if (link.hasClass('add')) {
+                changingFavorite = place_actions.addFavorite({{place.id}});
+                changingFavorite.done( function(msg) {
+                    link.removeClass('add')
+                        .addClass('remove');
+                });
+            }
+            else if (link.hasClass('remove')) {
+                changingFavorite = place_actions.removeFavorite({{place.id}});
+                changingFavorite.done( function(msg) {
+                    link.removeClass('remove')
+                        .addClass('add');
+                        // alert('Oops! ' + msg);   // TODO: do something better
+                });
+            }
+
+            // in case neither add/remove action was taken, skip the rest
+            // (would only happen if the DOM class is messed up)
+            if(changingFavorite) {
+                // TODO: add spinner
+                // fail/always actions are the same despite the promise type
+                changingFavorite.fail( function(msg) {
+                    $('.item-thumb').append('<div id="favoriteError" class="error">Oops! ' + msg + '</div>'); // Will want to customize the 'not authenticated' msg to include link to login/signup
+
+                    // Maybe this isn't needed - without, error duplicated everytime favorited 
+                    $('#favoriteError').delay(2000).fadeOut(300);   // TODO: do something better
+                });
+                changingFavorite.always( function() {
+                    $('.changing-fav-spinner').fadeOut(100);
+                });             
+            }
+
+            event.preventDefault();
+        });
+    });
+</script>
+{% endcomment %}
