@@ -288,7 +288,7 @@ a#siteNews {
 /* Actions */
 /* ROOT --------- */
 body {
-  background: url("/static/img/textures/sky-med-tex.png");
+  background: #a9c6e8 url("/static/img/textures/sky-med-tex.png");
   *zoom: 1;
   font-weight: normal;
   height: 100%;
@@ -408,7 +408,7 @@ p {
 }
 #site-header {
   width: 100%;
-  background: url("/static/img/textures/sky-dark-tex.png");
+  background: #70a3be url("/static/img/textures/sky-dark-tex.png");
   -webkit-box-shadow: 0.05em 0.05em 0.5em #000000;
   -moz-box-shadow: 0.05em 0.05em 0.5em #000000;
   box-shadow: 0.05em 0.05em 0.5em #000000;
@@ -789,7 +789,7 @@ input[type="checkbox"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0 1%;
+  padding-bottom: 1em;
 }
 #home-nav ul li:before,
 #home-nav ul li:after {
@@ -802,7 +802,6 @@ input[type="checkbox"] {
 #home-nav ul li a {
   font-size: 1.1em;
   text-align: center;
-  padding: 3% 2%;
 }
 #home-nav ul li:hover {
   background: #e8e8e8;
@@ -812,7 +811,8 @@ input[type="checkbox"] {
 }
 #home-nav ul li img {
   display: block;
-  margin: 0.5em auto 1em auto ;
+  margin: 0 auto ;
+  padding: 1em;
 }
 .link-block {
   color: #111 !important;
@@ -838,11 +838,26 @@ input[type="checkbox"] {
 #page-nav:after {
   clear: both;
 }
+#page-nav ul {
+  *zoom: 1;
+}
+#page-nav ul:before,
+#page-nav ul:after {
+  content: "";
+  display: table;
+}
+#page-nav ul:after {
+  clear: both;
+}
 #page-nav ul li {
   float: left;
+  padding-bottom: 0.4em;
 }
 #page-nav ul li a {
   background: #a9c6e8;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0.5em;
   margin: 0 0.45em;
   -webkit-border-radius: 0.5em 0.5em 0 0;
@@ -853,7 +868,6 @@ input[type="checkbox"] {
   background-clip: padding-box;
   color: #fff;
   position: relative;
-  bottom: 0.45em;
 }
 #page-nav ul li a.current-page {
   color: #fff;
@@ -1495,10 +1509,7 @@ input[type="checkbox"] {
 /* IE CLASSES ---------- */
 .no-borderradius #site-content,
 .no-borderradius #page-nav ul li a,
-.no-borderradius button,
-.no-borderradius input[type="submit"],
-.no-borderradius .next,
-.no-borderradius .back,
+.no-borderradius #beta-notification,
 .no-borderradius #confirm-box .item,
 .no-borderradius .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
 .no-borderradius .ui-dialog {

@@ -5,7 +5,7 @@
 /* ROOT --------- */
 
 body {
-	background: url("@{static_url}img/textures/sky-med-tex.png");
+	background: @lblue url("@{static_url}img/textures/sky-med-tex.png");
 	.clearfix();
 	font-weight: normal;
 	height: 100%; 
@@ -137,7 +137,7 @@ p {
 
 #site-header {
 	width: 100%;
-	background: url("@{static_url}img/textures/sky-dark-tex.png");
+	background: @mblue url("@{static_url}img/textures/sky-dark-tex.png");
 	.b-shadow(0.05em, 0.05em, 0.5em, #000);
 	border-bottom: 1px solid #e1e1e1;
 	height: 85px;
@@ -403,25 +403,25 @@ input[type="checkbox"] {
 
 	.clearfix();
 	.column(4);
-	margin: 0 1%;
-
+	padding-bottom: 1em;
+	
 	a {
 		font-size: 1.1em;
 		text-align: center;
-		padding: 3% 2%;
 	}
 
-		&:hover {
-			background: #e8e8e8;
-		}
-		
-		&:active {
-			background: #e1e1e1;
-		}
+	&:hover {
+		background: #e8e8e8;
+	}
+	
+	&:active {
+		background: #e1e1e1;
+	}
 
 	img {
 		display: block;
-		margin: 0.5em auto 1em auto ;
+		margin: 0 auto ;
+		padding: 1em;
 	}
 
 }
@@ -439,18 +439,23 @@ input[type="checkbox"] {
 	.clearfix();
 	border-bottom: 2px @dblue solid;
 	margin-top: 1.5em;
-	ul li {
 
-		float: left;
+	ul {
+		.clearfix();
+
+		li {
+			float: left;
+			padding-bottom: 0.4em;
 		
 		a {
 			background: @lblue;
+			.border-box();
 			padding: 0.5em;
 			margin: 0 0.45em;
 			.tabs(0.5em);
 			color: #fff;	
 			position: relative;
-			bottom: 0.45em;
+
 			&.current-page {
 				color: #fff;
 				.gradient(@mblue, @dblue);
@@ -471,7 +476,7 @@ input[type="checkbox"] {
 			}
 			
 		}	
-	}
+	}}
 }
 
 .prev-next {
@@ -939,8 +944,8 @@ input[type="checkbox"] {
 	#site-content, 
 /*	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea,*/
 	#page-nav ul li a,
-	button, input[type="submit"], .next, .back,
-	
+	/*button, input[type="submit"], .next, .back,*/
+	#beta-notification,
 	#confirm-box .item,
 	.ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
 	.ui-dialog/*, .ui-dialog input[type="text"] */
