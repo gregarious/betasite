@@ -8,16 +8,32 @@ Context variables:
 {% endcomment %}
 
 {% block panel-content %}
-<img src="{{ C.profile.avatar_url }}" />
-<h2>{{ C.profile.display_name }}</h2>
-<ul>
-    <li>{{ C.profile.username }}</li>
-    <li>{{ C.profile.points }}</li>
-    {% if C.profile.fb_id %}
-    <li><a href="http://www.facebook.com/{{ C.profile.fb_id }}">Facebook</a></li>
-    {% endif %}
-    {% if C.profile.twitter_username %}
-    <li><a href="http://twitter.com/{{ C.profile.twitter_username }}">Twitter</a></li>
-    {% endif %}
-</ul>
+
+{% load thumbnail %}
+<header class="single-header">
+    <div class="single-thumb-container">
+        {% thumbnail C.profile.avatar_url "130x130" crop="center" as im %}
+        <img class="thumbnail" alt="{{C.profile.display_name}}'s avatar" src="{{im.url}}" />
+        {% empty %}
+        <img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{STATIC_URL}}img/default-avatar.png" />
+        {% endthumbnail %}
+    </div>
+    <section class="item-content">
+        <h1 class="single-title">{{ C.profile.display_name }}</h1>
+        <ul class="item-details">
+            <li>{{ C.profile.username }}</li>
+            <li>{{ C.profile.points }}</li>
+            <li>{{ C.profile.neighborhood }}</li>
+        </ul>
+        <div class="social-container">
+            {% if C.profile.fb_id %}
+            <a href="http://www.facebook.com/{{ C.profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
+            {% endif %}
+            {% if C.profile.twitter_username %}
+            <a href="http://twitter.com/{{ C.profile.twitter_username }}"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            {% endif %}        
+        </div>
+    </section>
+</header>
+
 {% endblock %}
