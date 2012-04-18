@@ -1,17 +1,13 @@
-{% extends "accounts/page_account_panel.html" %}
 {% comment %}
-Template to render a list of events the user is attending.
+Inner template to render a list of events the user is attending.
 
 Context variables:
-    C:
-        [items]:  list of EventContext instances
+    [items]:  list of EventContext instances
 {% endcomment %}
 
-{% block panel-content %}
 <h3 class="section-title">My Events</h3>
 <ul class="feed my-feed events">
     {% for item in C.items %}
         <li class="item">{% include "events/feed_item.html" with C=item %}</li>
     {% endfor %}
 </ul>
-{% endblock %}

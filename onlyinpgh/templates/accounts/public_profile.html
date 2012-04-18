@@ -1,23 +1,19 @@
-{% extends "accounts/page_account_panel.html" %}
 {% comment %}
 Template for user's public profile.
 
 Context variables:
-    C:
-        profile: PublicProfile context
+    profile: PublicProfile context instance
 {% endcomment %}
 
-{% block panel-content %}
-<img src="{{ C.profile.avatar_url }}" />
-<h2>{{ C.profile.display_name }}</h2>
+<img src="{{ profile.avatar_url }}" />
+<h2>{{ profile.display_name }}</h2>
 <ul>
-    <li>{{ C.profile.username }}</li>
-    <li>{{ C.profile.points }}</li>
-    {% if C.profile.fb_id %}
-    <li><a href="http://www.facebook.com/{{ C.profile.fb_id }}">Facebook</a></li>
+    <li>{{ profile.username }}</li>
+    <li>{{ profile.points }}</li>
+    {% if profile.fb_id %}
+    <li><a href="http://www.facebook.com/{{ profile.fb_id }}">Facebook</a></li>
     {% endif %}
-    {% if C.profile.twitter_username %}
-    <li><a href="http://twitter.com/{{ C.profile.twitter_username }}">Twitter</a></li>
+    {% if profile.twitter_username %}
+    <li><a href="http://twitter.com/{{ profile.twitter_username }}">Twitter</a></li>
     {% endif %}
 </ul>
-{% endblock %}

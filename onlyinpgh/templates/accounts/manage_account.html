@@ -1,0 +1,20 @@
+{% comment %}
+Inner template for an account/profile management form.
+Context variables:
+    account_forms:
+        profile_form: form object
+        credentials_form: form object
+        activity_form: form object
+{% endcomment %}
+
+{% with form=account_forms.profile_form %}
+{{form.as_table}}
+{% endwith %}
+
+{% with form=account_forms.credentials_form %}
+{{form.as_table}}
+{% endwith %}
+
+{% with form=account_forms.activity_form %}
+{{form.as_table}}
+{% endwith %}

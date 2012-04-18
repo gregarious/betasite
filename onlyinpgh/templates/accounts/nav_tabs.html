@@ -1,0 +1,13 @@
+{% comment %}
+Inner template for nav panel
+
+Context variables:
+    current_panel: string
+{% endcomment %}
+
+<ul>
+    <li><a href="{% url my-profile %}" class="current-page">Profile</a></li>
+    <li><a href="{% url my-places %}">Places</a></li>
+    <li><a href="{% url my-events %}">Events</a></li>
+    <li><a href="{% url my-specials %}">Specials</a></li>
+</ul>
