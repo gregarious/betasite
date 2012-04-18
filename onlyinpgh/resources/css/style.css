@@ -239,7 +239,7 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
-  background: #e1e1e1 url("/static/img/logos/oakland-bkgd-630.png") fixed bottom right no-repeat;
+  background: #e1e1e1 url("/static/img/logos/oakland-bkgd-450.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 }
 /* TYPOGRAPHY -------- */
@@ -1539,7 +1539,7 @@ a#siteNews {
 /*******************************//*******************************/
 @media screen and (max-width: 1140px) {
   body {
-    background-image: url("/static/img/oakland-bkgd-450.png");
+    background-image: url("/static/img/logos/oakland-bkgd-325.png");
   }
   #scene-nav {
     -webkit-border-radius: 0;
@@ -1660,10 +1660,7 @@ a#siteNews {
   }
 }
 @media screen and (max-width: 864px) {
-  /*.item-thumb {
-      height: 90px;
-      //width: 80px;
-    }*/.feed.places .description,
+  .feed.places .description,
   .feed.events .description {
     display: none;
   }
@@ -1748,6 +1745,9 @@ a#siteNews {
   }
   .item-details {
     font-size: 0.9em;
+  }
+  .item-title {
+    font-size: 1.2em;
   }
   #utility {
     position: absolute;
@@ -1834,10 +1834,6 @@ a#siteNews {
   }
 }
 @media screen and (max-width: 600px) {
-  /*.item-thumb {
-      height: 100px;
-      //width: 100px;
-    }*/
   .single-container {
     padding: 0;
     border: none;
@@ -1923,7 +1919,7 @@ a#siteNews {
     box-sizing: border-box;
     margin: 1.5em 1em 0;
   }
-  .item-title a {
+  .item-title {
     font-size: 1em;
   }
   #logo {

@@ -174,7 +174,7 @@ p {
 
 #site-content {
 	.b-shadow(0, 0, 0.1em, #888);
-	background: url("@{static_url}img/textures/white-tex.png");
+	background: #fefefe url("@{static_url}img/textures/white-tex.png");
 	.border-box();
 	.clearfix();
 	margin: 120px auto 1em auto;
@@ -934,6 +934,36 @@ input[type="checkbox"] {
 
 /* IE CLASSES ---------- */
 
+.no-borderradius {
+
+	#site-content, 
+/*	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea,*/
+	#page-nav ul li a,
+	button, input[type="submit"], .next, .back,
+	
+	#confirm-box .item,
+	.ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
+	.ui-dialog/*, .ui-dialog input[type="text"] */
+	{
+		behavior: url("@{static_url}/PIE.htc");
+	}
+
+}
+
+/*.no-cssgradients {
+	#page-nav ul li a.current-page, #page-nav ul li a.current-page:hover,
+	.prev-next a:active  {
+		-pie-background: linear-gradient(#CCC, #EEE);
+		behavior: url("@{static_url}/PIE.htc");
+	}
+	
+	button, input[type="submit"], .next, .back {
+		&:hover {
+			.gradient-pie(#1B333A, #2C525D);
+		}
+	}
+}*/
+
 .lt-ie8 {
 	
 	#site-header {
@@ -944,3 +974,4 @@ input[type="checkbox"] {
 		text-align: center;
 	}
 }
+

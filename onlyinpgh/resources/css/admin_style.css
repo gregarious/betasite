@@ -451,7 +451,7 @@ p {
   -webkit-box-shadow: 0 0 0.1em #888888;
   -moz-box-shadow: 0 0 0.1em #888888;
   box-shadow: 0 0 0.1em #888888;
-  background: url("/static/img/textures/white-tex.png");
+  background: #fefefe url("/static/img/textures/white-tex.png");
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1493,6 +1493,30 @@ input[type="checkbox"] {
 
 }
 /* IE CLASSES ---------- */
+.no-borderradius #site-content,
+.no-borderradius #page-nav ul li a,
+.no-borderradius button,
+.no-borderradius input[type="submit"],
+.no-borderradius .next,
+.no-borderradius .back,
+.no-borderradius #confirm-box .item,
+.no-borderradius .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
+.no-borderradius .ui-dialog {
+  behavior: url("/static//PIE.htc");
+}
+/*.no-cssgradients {
+	#page-nav ul li a.current-page, #page-nav ul li a.current-page:hover,
+	.prev-next a:active  {
+		-pie-background: linear-gradient(#CCC, #EEE);
+		behavior: url("@{static_url}/PIE.htc");
+	}
+	
+	button, input[type="submit"], .next, .back {
+		&:hover {
+			.gradient-pie(#1B333A, #2C525D);
+		}
+	}
+}*/
 .lt-ie8 #site-header {
   position: relative;
 }
