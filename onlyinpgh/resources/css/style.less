@@ -352,6 +352,10 @@ button, input[type="submit"], .next, .back {
   //height: 5em;
 }
 
+#select-sect {
+  display: none;
+}
+
 #scene-nav {
   //background: #e1e1e1;
   //background: url("@{static_url}img_store/paper/sand.jpg");
@@ -365,11 +369,6 @@ button, input[type="submit"], .next, .back {
   -webkit-border-radius: 0 0 0.5em 0.5em; 
    -moz-border-radius: 0 0 0.5em 0.5em; 
         border-radius: 0 0 0.5em 0.5em;
-  
-
-  #select-nav {
-    display: none;
-  }
 
   .main-menu {
     .clearfix;
@@ -617,17 +616,17 @@ button, input[type="submit"], .next, .back {
   .border-box;
   
   li a {
+    background: #444;
+    color: #fff;
+    cursor: pointer;
     display: block;
     -webkit-border-radius: 0.5em 0 0 0.5em; 
      -moz-border-radius: 0.5em 0 0 0.5em; 
           border-radius: 0.5em 0 0 0.5em; 
 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-    background: #444;
-    color: #fff;
     margin: 0.3em 0;
     padding: 0.3em;
-    .border-box;
 
     &.current-page {
       background-color: @yellow
