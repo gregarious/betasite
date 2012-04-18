@@ -1,8 +1,13 @@
+{% extends "orgadmin/manage_page.html" %}
 {% comment %}
-    form: SimpleSpecialForm
-    tag_names: Temporary list of all tag names
+Context variables
+    C:
+        form: SimpleSpecialForm
+        tag_names: List of all tag names (temporary hack)
 {% endcomment %}
 
+{% block main-content %}
+{% with form=C.form %}
 <h2>Editing your special...</h2>
 
 <form method="post" action="">
@@ -98,45 +103,32 @@
         <input type="submit" class="next" value="Submit" />
         <a href="{% url orgadmin-listspecials %}" title="Cancel" class="back">Cancel</a>
     </nav>
-
-    {% comment %}
-    form fields:
-        title
-        description
-        points
-        place (select box)
-        dtexpires
-
-        (the rest of the fields are all optional: don't know if you want to just hide them or denote that they're optional. your choice)
-        
-        dtstart
-        total_available
-        total_sold
-        (no tags for now - waiting on django-autocomplete)
-    {% endcomment %}
-
 </form>
+{% endwith %} {# end form alias #}
+{% endblock %}
 
+{% block additional-scripts %}
 <script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/tags.js"></script>
 <script type="text/javascript">
 $(function(){
     $('.datepicker-start, .datepicker-end').datepicker();
 
     var tagNames = [
-        {% for name in tag_names %}
+        {% for name in C.tag_names %}
             "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
+    scenable.activateTagAC('#id_{{C.form.tags.name}}', tagNames);
     {# TODO: remove initial selected autocomplete hack #}
     {% if initial_selected %}
     scenable.onACSelect( {
         'item': {
             label: '',
-            value: '{{form.place.value}}',
+            value: '{{C.form.place.value}}',
             selectedDisplay: '{{initial_selected|escapejs}}'
         }
     });
     {% endif %}
 });
 </script>
+{% endblock %}

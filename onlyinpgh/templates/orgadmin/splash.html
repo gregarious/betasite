@@ -1,89 +1,32 @@
-<!doctype html>
+{% extends "base.html" %}
 
-<head>
-	<meta charset="utf-8">
-	<title>Scenable Business Account</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Are you a local business or organization in Oakland, Pittsburgh? Use Scenable to help you get the word out.">
+{% block head-stylesheets %}
+<!-- Stylesheets & Fonts -->
+<link rel="stylesheet" href="{{STATIC_URL}}css/admin_style.css?v=1">
+<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+{% endblock %}
 
-	<link rel="icon" type="image/png" href="/static/img/favicon.png">
-	
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="/static/css/jquery-ui-1.8.18.custom.css">
+{% block content %}
+<div class="wrap" id="splash">
+	<div id="site-content">
+		<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-700.png">
 
-	<link rel="stylesheet" href="/static/css/admin_style.css?v=1">
+		<hgroup class="welcome-text">
+			<h2>Are you a local business or organization in Oakland?</h2>
+			<h3> Sign up or login to start getting the word out on Scenable!</h3>
+		</hgroup>
 
-	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/ie7.css">
-	<![endif]-->
+		<nav class="prev-next" id="splash">
+			<a href="{% url orgadmin-signup %}" title="Sign Up" class="back">Sign Up</a>
+			<a href="{% url orgadmin-login %}" title="Login" class="next">Login</a>
+		</nav>
+	</div>
+</div> <!-- .wrap.site -->
+{% endblock %}
 
-	<!--  Fonts -->
-	<link rel="stylesheet" href="/static/css/fonts/Komika-Title-fontfacekit/stylesheet.css">
-	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
-
-	<!-- Start of StatCounter Code for Default Guide -->
-	<script type="text/javascript">
-	var sc_project=7834140; 
-	var sc_invisible=1; 
-	var sc_security="7cf3f04e"; 
-	</script>
-	<script type="text/javascript"
-	src="http://www.statcounter.com/counter/counter.js"></script>
-	<noscript><div class="statcounter"><a title="tumblr hit
-	counter" href="http://statcounter.com/tumblr/"
-	target="_blank"><img class="statcounter"
-	src="http://c.statcounter.com/7834140/0/7cf3f04e/1/"
-	alt="tumblr hit counter"></a></div></noscript>
-	<!-- End of StatCounter Code for Default Guide -->
-
-	<!-- More StatCounter Fun -->
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-30726003-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-	<!-- End More StatCounter Fun -->
-
-	<!-- Include jQuery with fallback to local copy -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.js"><\/script>')</script>
-	
-	<script src="/static/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
-
-</head>
-
-<body>
-	<div class="wrap" id="splash">
-
-		<div id="site-content">
-			<img id="header-logo" src="/static/img/logos/scenable-cloud-pgh-700.png">
-
-			<hgroup class="welcome-text">
-				<h2>Are you a local business or organization in Oakland?</h2>
-				<h3> Sign up or login to start getting the word out on Scenable!</h3>
-			</hgroup>
-
-			<nav class="prev-next" id="splash">
-				<a href="{% url orgadmin-signup %}" title="Sign Up" class="back">Sign Up</a>
-				<a href="{% url orgadmin-login %}" title="Login" class="next">Login</a>
-			</nav>
-
-		</div>
-
-	</div> <!-- .wrap.site -->
-
-	<footer id="site-footer">
-		<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C. Drop us a line at <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Business%20Admin">contact@scenable.com</a>.</p>
-	</footer>
-
-</body>
-</html>
+{% block foot %}
+<footer id="site-footer">
+	<p id="colophon"><a href="http://scenable.com/blog">Scenable</a> is brought to you by Onlyinpgh L.L.C. Drop us a line at <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Business%20Admin">contact@scenable.com</a>.</p>
+</footer>
+{% endblock %}

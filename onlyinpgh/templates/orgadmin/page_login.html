@@ -1,0 +1,8 @@
+{% extends "orgadmin/manage_page.html" %}
+
+{% block main-content %}
+<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
+
+<h2>Login to your Account...</h2>
+{% include "registration/login_form.html" with form=C.form form_action=C.form_action %}
+{% endblock %}

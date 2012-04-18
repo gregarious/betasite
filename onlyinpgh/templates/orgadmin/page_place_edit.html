@@ -1,5 +1,15 @@
+{% extends "orgadmin/manage_page.html" %}
+{% comment %}
+Context variables
+    C:
+        form: OrgAdminPlaceForm
+        tag_names: List of all tag names (temporary hack)
+{% endcomment %}
+
+{% block main-content %}
+{% with form=C.form %}
 <header class="form-header">
-    <!-- <img src="/static/img/home_place.png" alt="Storefront" /> -->
+    <!-- <img src="{{STATIC_URL}}img/home_place.png" alt="Storefront" /> -->
     <h2>Editing your location...</h2>
 </header>
 
@@ -257,7 +267,7 @@
             {% for err in form.fb_id.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}
-            <p class="tip social">Enter your Facebook ID. Not sure how to find it? Go to your Facebook page and copy and paste the number or username as seen <a href="/static/img/fb-id-instructions.png" title="Find your Facebook ID">here</a>.</p>
+            <p class="tip social">Enter your Facebook ID. Not sure how to find it? Go to your Facebook page and copy and paste the number or username as seen <a href="{{STATIC_URL}}img/fb-id-instructions.png" title="Find your Facebook ID">here</a>.</p>
         </div>
     </div>
 
@@ -298,7 +308,10 @@
         <a href="{% url orgadmin-listplaces %}" class="back" title="Cancel">Cancel</a>
     </nav>
 </form>
+{% endwith %} {# end form alias #}
+{% endblock %}
 
+{% block additional-scripts %}
 <script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/tags.js"></script>
 <script type="text/javascript">
 // Prerequesites: jQuery, jQuery UI autocomplete
@@ -311,20 +324,21 @@ $(function() {
     });
 
     var tagNames = [
-        {% for name in tag_names %}
+        {% for name in C.tag_names %}
             "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
+    scenable.activateTagAC('#id_{{C.form.tags.name}}', tagNames);
     {# TODO: remove initial selected autocomplete hack #}
     {% if initial_selected %}
     scenable.onACSelect( {
         'item': {
             label: '',
-            value: '{{form.place.value}}',
+            value: '{{C.form.place.value}}',
             selectedDisplay: '{{initial_selected|escapejs}}'
         }
     });
     {% endif %}
 });
 </script>
+{% endblock %}

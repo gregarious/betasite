@@ -1,15 +1,23 @@
-{% if notification_type in '123' %}
+{% extends "orgadmin/manage_page.html" %}
+{% comment %}
+Context variables (ManagePageContext)
+	C:
+		notification_type: number from 1-3
+{% endcomment %}
+
+{% block main-content %}
+{% if C.notification_type in '123' %}
 <div class="notifications" id="user-notification">
-{% if notification_type == '1' %}
+{% if C.notification_type == '1' %}
 <p>Welcome to the Scenable Business Management Panel!</p>
 <p>Get started by <a href="{% url orgadmin-claimplace %}">clicking here to claim your Oakland business location.</a></p>
 {% endif %}
 
-{% if notification_type == '2' %}
+{% if C.notification_type == '2' %}
 <p>Sorry, you can't complete this action without having any organizations associated with your account. If you are a business, please send a message to <a href="contact@scenable.com">contact@scenable.com</a> to alert us of this problem.</p>
 {% endif %}
 
-{% if notification_type == '3' %}
+{% if C.notification_type == '3' %}
 <p>Sorry, you can't create specials without managing a location. <a href="{% url orgadmin-claimplace %}">Click here to claim your location.</a></p>
 {% endif %}
 </div>
@@ -40,3 +48,4 @@
 
 	</ul>
 </nav>
+{% endblock %}
