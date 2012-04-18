@@ -22,7 +22,7 @@ Compatible contexts: EventContext
                 </a>
             {% else %}
                 <a href="?action=fav" class="favbutton add" title="Add to Calendar">
-                    <img src="{{STATIC_URL}}img/icons/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
+                    <img src="{{STATIC_URL}}img/icons/calendar-alt-add.png" alt="Add to Calendar"/><span class="meta">Add to Favorites</span>
                 </a>
             {% endif %}
         </div> <!-- .fav-container -->
@@ -34,16 +34,18 @@ Compatible contexts: EventContext
             <li class="datetime">March 30, 8pm - 11pm</li>
             {% if event.place %}
                 <li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
-                <li class="address">{{event.place.location.address}}</li>
+                <!-- <li class="address">{{event.place.location.address}}</li> -->
             {% else %}
                 <li>at {{event.place_primitive}}</li>
+            {% endif %}
+            {% if C.event.url %}
+                <li><a href="{{ C.event.url }}" target="blank">On the Web</a></li>
             {% endif %}
         </ul>
         
         {% include "tags/tag_list.html" with tags=event.tags %}
-
     </section> <!-- .item-content -->
-</header>
+</header> <!-- .single-header -->
 
 <div class="single-content">
     <div class="map-container">

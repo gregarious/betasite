@@ -285,6 +285,10 @@ button, input[type="submit"] {
   float: left;
 }
 
+.fav-container {
+  background: @lblue;
+}
+
 .favbutton {
   display: block; 
   //padding: 0.5em;
@@ -595,7 +599,7 @@ button, input[type="submit"] {
 }
 
 .social-container {
-  margin-left: 0.5em;
+  margin: 0.5em 0 0 0.5em;
 }
 
 /* 10 NAVIGATION ---------- */
@@ -736,11 +740,17 @@ button, input[type="submit"] {
   font-size: 0.8em;
   margin: 1% 0 0;
 
+
   li {
+
+    &:first-child {
+      margin-left: 0;
+    }
+
     color: #888;
     float: left;
     margin: 0.1em 0.4em;
-    padding: 0.1em 0.2em;
+    padding: 0.1em 0.3em;
     text-decoration: none;
     .border-box;   
 
@@ -749,8 +759,8 @@ button, input[type="submit"] {
     }
 
     &:hover {
-      .gradient(#aaa, #999);
-      .rounded(0.2em);  
+      .gradient(#aaa, #ccc);
+      .rounded(0.3em);  
 
       a {
         color: #fff;

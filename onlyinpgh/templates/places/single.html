@@ -22,16 +22,22 @@ Compatible contexts: PlaceContext
                 <a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
             {% endif %}
         </div>
-    </div>
+    </div> <!-- .item-thumb -->
 
     <section class="item-content">
         <h1 class="single-title">{{ place.name }}</h1>
         <ul class="item-details">   
             <li class="address">{{place.location.address}}</li>
         </ul>
-
         {% include "tags/tag_list.html" with tags=place.tags %}
-
-    </section>
+        <div class="social-container">
+            {% if C.place.fb_id %}
+            <a href="http://www.facebook.com/{{ C.place.fb_id }}" target="blank" title="Twitter"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
+            {% endif %}
+            {% if C.place.twitter_username %}
+            <a href="http://twitter.com/{{ C.place.twitter_username }}" target="blank" alt="Facebook"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            {% endif %}        
+        </div>
+    </section> <!-- .item-content -->
 </header>
 {% endwith %}

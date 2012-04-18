@@ -589,6 +589,9 @@ input[type="submit"]#redeem-button {
   color: #C34327;
   float: left;
 }
+.fav-container {
+  background: #a9c6e8;
+}
 .favbutton {
   display: block;
   font-size: 0.9em;
@@ -1009,7 +1012,7 @@ input[type="submit"]#redeem-button {
   height: auto;
 }
 .social-container {
-  margin-left: 0.5em;
+  margin: 0.5em 0 0 0.5em;
 }
 /* 10 NAVIGATION ---------- */
 .related-nav {
@@ -1199,38 +1202,41 @@ input[type="submit"]#redeem-button {
   color: #888;
   float: left;
   margin: 0.1em 0.4em;
-  padding: 0.1em 0.2em;
+  padding: 0.1em 0.3em;
   text-decoration: none;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.tag-list li:first-child {
+  margin-left: 0;
 }
 .tag-list li a {
   color: #888;
 }
 .tag-list li:hover {
   background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#999999));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#cccccc));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #aaaaaa, #999999);
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #cccccc);
   /* Chrome 10+, Saf5.1+, iOS 5+ */
 
-  background-image: -moz-linear-gradient(top, #aaaaaa, #999999);
+  background-image: -moz-linear-gradient(top, #aaaaaa, #cccccc);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #aaaaaa, #999999);
+  background-image: -ms-linear-gradient(top, #aaaaaa, #cccccc);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #aaaaaa, #999999);
+  background-image: -o-linear-gradient(top, #aaaaaa, #cccccc);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #aaaaaa, #999999);
+  background-image: linear-gradient(top, #aaaaaa, #cccccc);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;

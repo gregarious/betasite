@@ -404,10 +404,10 @@ input[type="checkbox"] {
 	.clearfix();
 	.column(4);
 	padding-bottom: 1em;
-	
+	text-align: center;
+
 	a {
-		font-size: 1.1em;
-		text-align: center;
+		font-size: 1.1em;	
 	}
 
 	&:hover {
@@ -585,15 +585,20 @@ input[type="checkbox"] {
   margin: 1% 0 0;
   
     li {
-    	a{
-    	cursor: text;
-    }
-      color: #888;
-      float: left;
-      margin: 0.1em 0.4em;
-      padding: 0.1em 0.2em;
-      text-decoration: none;
-      .border-box;   
+
+    	&:first-child {
+	      margin-left: 0;
+	    }
+	    
+		a {
+			cursor: text;
+		}
+      	color: #888;
+      	float: left;
+      	margin: 0.1em 0.4em;
+      	padding: 0.1em 0.2em;
+      	text-decoration: none;
+      	.border-box;   
   	}
 }
 
@@ -939,7 +944,7 @@ input[type="checkbox"] {
 
 /* IE CLASSES ---------- */
 
-.no-borderradius {
+.lt-ie9{
 
 	#site-content, 
 /*	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea,*/
@@ -983,6 +988,10 @@ input[type="checkbox"] {
 
 	#site-footer {
 		text-align: center;
+	}
+
+	#site-content {
+		top: 1em;
 	}
 }
 

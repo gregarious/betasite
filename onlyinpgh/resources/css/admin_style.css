@@ -790,6 +790,7 @@ input[type="checkbox"] {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding-bottom: 1em;
+  text-align: center;
 }
 #home-nav ul li:before,
 #home-nav ul li:after {
@@ -801,7 +802,6 @@ input[type="checkbox"] {
 }
 #home-nav ul li a {
   font-size: 1.1em;
-  text-align: center;
 }
 #home-nav ul li:hover {
   background: #e8e8e8;
@@ -1062,6 +1062,9 @@ input[type="checkbox"] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.tag-list li:first-child {
+  margin-left: 0;
 }
 .tag-list li a {
   cursor: text;
@@ -1507,16 +1510,16 @@ input[type="checkbox"] {
 
 }
 /* IE CLASSES ---------- */
-.no-borderradius #site-content,
-.no-borderradius #page-nav ul li a,
-.no-borderradius #beta-notification,
-.no-borderradius #confirm-box .item,
-.no-borderradius .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
-.no-borderradius .ui-dialog {
+.lt-ie9 #site-content,
+.lt-ie9 #page-nav ul li a,
+.lt-ie9 #beta-notification,
+.lt-ie9 #confirm-box .item,
+.lt-ie9 .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
+.lt-ie9 .ui-dialog {
   behavior: url("/static//PIE.htc");
 }
-.no-borderradius #splash .next,
-.no-borderradius #splash .back {
+.lt-ie9 #splash .next,
+.lt-ie9 #splash .back {
   behavior: url("/static//PIE.htc");
 }
 /*.no-cssgradients {
@@ -1537,4 +1540,7 @@ input[type="checkbox"] {
 }
 .lt-ie8 #site-footer {
   text-align: center;
+}
+.lt-ie8 #site-content {
+  top: 1em;
 }
