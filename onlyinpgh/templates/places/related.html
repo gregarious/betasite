@@ -69,20 +69,24 @@ Context variables:
 
 <section class="related-section" id="placeEvents">
     <h2 class="section-title">Events</h2>
+    <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
             {% include 'events/related_item.html' with C=item %}
         </li>
     {% endfor %}
+    </ul>
 </section>
 
 <section class="related-section specials" id="placeSpecials">
     <h2 class="section-title">Specials</h2>
+    <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
             {% include 'specials/related_item.html' with C=item %}
         </li>
     {% endfor %}
+    </ul>
 </section>
 
 <!--    <section class="single-section" id="{{place_section_id}}">

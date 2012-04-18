@@ -589,18 +589,34 @@ input[type="submit"]#redeem-button {
   color: #C34327;
   float: left;
 }
-.fav-container {
-  background: #a9c6e8;
-}
-.favbutton {
+.fav-container a {
   display: block;
-  font-size: 0.9em;
-  /*
-
-  img {
-    .column(3); 
-  }*/
-
+  color: #444;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  padding: 0;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  border-radius: 0.4em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  text-align: center;
+}
+.fav-container a:hover {
+  background: #e1e1e1;
+  border: 1px solid #999;
+}
+.fav-container .status {
+  font-size: 1.2em;
+}
+.fav-container .remove .status {
+  color: #444;
+}
+.fav-container .add .status {
+  color: #4b7699;
 }
 #sidebar-feedback .field-label {
   width: 100%;
@@ -948,6 +964,9 @@ input[type="submit"]#redeem-button {
 }
 .item:after {
   clear: both;
+}
+.item:last-child {
+  border-bottom: none;
 }
 .item a {
   color: #000;

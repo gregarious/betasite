@@ -17,9 +17,9 @@ Compatible contexts: PlaceContext
         </div>
         <div class="fav-container">
             {% if C.is_favorite %}
-                <a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><img src="/static/img_store/icons/black/heart-cancel.png"><span class="meta">Unfavorite</span></a>
+                <a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><span class="status">&#215;</span> Remove Favorite</a>
             {% else %}
-                <a href="?action=fav" class="favbutton add" title="Add Favorite">Add to Favorites</a>
+                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span> Add Favorite</a>
             {% endif %}
         </div>
     </div> <!-- .item-thumb -->
@@ -39,5 +39,5 @@ Compatible contexts: PlaceContext
             {% endif %}        
         </div>
     </section> <!-- .item-content -->
-</header>
+</header> <!-- .single-header -->
 {% endwith %}

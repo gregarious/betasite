@@ -286,22 +286,36 @@ button, input[type="submit"] {
 }
 
 .fav-container {
-  background: @lblue;
-}
 
-.favbutton {
-  display: block; 
-  //padding: 0.5em;
-  //height: 30px;
-  font-size: 0.9em;
 
-  .meta {
-    //font-size: 0.7em;
-  }/*
+  a {
+    display: block;
+    color: #444;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    padding: 0;
+    .rounded(0.4em);
+    text-align: center;
+  
+    &:hover {
+      background: #e1e1e1;
+      border: 1px solid #999;
+    }
+  }
 
-  img {
-    .column(3); 
-  }*/
+  .status {
+    font-size: 1.2em;
+  }
+
+  .remove .status {
+    color: #444;
+  }
+
+  .add .status {
+    color: @dblue;
+  }
 }
 
 #sidebar-feedback {
@@ -482,6 +496,7 @@ button, input[type="submit"] {
 
 /* FEED/ITEMS ---------- */
 
+
 .feed-header {
   .row();
   .border-box();
@@ -541,6 +556,10 @@ button, input[type="submit"] {
   border-bottom: 1px solid #e1e1e1;
   position: relative;
 
+  &:last-child {
+    border-bottom: none;
+  }
+  
   a {
     color: #000;
   }
