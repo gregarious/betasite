@@ -1396,12 +1396,12 @@ input[type="checkbox"] {
   border: none;
 }
 .ui-icon.ui-icon-closethick {
-  top: 0.8em;
-  right: 1em;
+  top: 1.5em;
+  right: 1.5em;
   height: 1em;
   width: 1em;
   position: absolute;
-  background: url('/static/img/cancel.png') center no-repeat;
+  background: url('/static/img/icons/cancel.png') center no-repeat;
   text-indent: -9999px;
 }
 .ui-icon.ui-icon-closethick:hover {
@@ -1513,6 +1513,10 @@ input[type="checkbox"] {
 .no-borderradius #confirm-box .item,
 .no-borderradius .ui-autocomplete.ui-menu.ui-widget.ui-widget-content,
 .no-borderradius .ui-dialog {
+  behavior: url("/static//PIE.htc");
+}
+.no-borderradius #splash .next,
+.no-borderradius #splash .back {
   behavior: url("/static//PIE.htc");
 }
 /*.no-cssgradients {
