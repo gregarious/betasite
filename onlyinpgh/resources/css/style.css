@@ -239,7 +239,7 @@ td {
 }
 /* 1 ROOT ---------- */
 body {
-  background: #e1e1e1 url("/static/img/logos/oakland-bkgd-630.png") fixed bottom right no-repeat;
+  background: #e1e1e1 url("/static/img/logos/oakland-bkgd-450.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
 }
 /* TYPOGRAPHY -------- */
@@ -690,6 +690,9 @@ input[type="submit"]:active,
   max-width: 150px;
   min-width: 100px;
 }
+#select-sect {
+  display: none;
+}
 #scene-nav {
   background: #444;
   background-color: #777777;
@@ -723,9 +726,6 @@ input[type="submit"]:active,
   -webkit-border-radius: 0 0 0.5em 0.5em;
   -moz-border-radius: 0 0 0.5em 0.5em;
   border-radius: 0 0 0.5em 0.5em;
-}
-#scene-nav #select-nav {
-  display: none;
 }
 #scene-nav .main-menu {
   *zoom: 1;
@@ -1069,6 +1069,9 @@ input[type="submit"]:active,
   box-sizing: border-box;
 }
 .related-nav li a {
+  background: #444;
+  color: #fff;
+  cursor: pointer;
   display: block;
   -webkit-border-radius: 0.5em 0 0 0.5em;
   -moz-border-radius: 0.5em 0 0 0.5em;
@@ -1076,13 +1079,8 @@ input[type="submit"]:active,
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: #444;
-  color: #fff;
   margin: 0.3em 0;
   padding: 0.3em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .related-nav li a.current-page {
   background-color: #ded57f;
@@ -1539,7 +1537,7 @@ a#siteNews {
 /*******************************//*******************************/
 @media screen and (max-width: 1140px) {
   body {
-    background-image: url("/static/img/oakland-bkgd-450.png");
+    background-image: url("/static/img/logos/oakland-bkgd-325.png");
   }
   #scene-nav {
     -webkit-border-radius: 0;
@@ -1551,17 +1549,9 @@ a#siteNews {
   }
 }
 @media screen and (max-width: 1082px) {
-  /*
-    .item-thumb {
-      height: 120px;
-      //width: 100px;
-    }*/
+  
 }
 @media screen and (max-width: 992px) {
-  /*.item-thumb {
-      height: 110px;
-      //width: 100px;
-    }*/
   #logo {
     padding-top: 1em;
   }
@@ -1643,10 +1633,6 @@ a#siteNews {
   .hot.events,
   .hot.chatter {
     float: right;
-    /*.item-thumb {
-         height: 110px;
-        }*/
-  
   }
   .hot.map-container {
     height: 200px;
@@ -1660,19 +1646,12 @@ a#siteNews {
   }
 }
 @media screen and (max-width: 864px) {
-  /*.item-thumb {
-      height: 90px;
-      //width: 80px;
-    }*/.feed.places .description,
+  .feed.places .description,
   .feed.events .description {
     display: none;
   }
 }
 @media screen and (max-width: 800px) {
-  /*.item-thumb {
-      height: 130px;
-      //width: 100px;
-    }*/
   .logout,
   .bar {
     display: none;
@@ -1748,6 +1727,9 @@ a#siteNews {
   }
   .item-details {
     font-size: 0.9em;
+  }
+  .item-title {
+    font-size: 1.2em;
   }
   #utility {
     position: absolute;
@@ -1834,10 +1816,6 @@ a#siteNews {
   }
 }
 @media screen and (max-width: 600px) {
-  /*.item-thumb {
-      height: 100px;
-      //width: 100px;
-    }*/
   .single-container {
     padding: 0;
     border: none;
@@ -1880,6 +1858,16 @@ a#siteNews {
   .main-menu {
     display: none;
   }
+  #select-sect {
+    display: inline-block;
+    float: right;
+    width: 52.083333333333336%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.5em 1em 0;
+  }
   .related-section {
     width: 100%;
     margin: 0;
@@ -1913,17 +1901,7 @@ a#siteNews {
   #scene-nav {
     border: none;
   }
-  #scene-nav #select-nav {
-    display: inline-block;
-    float: right;
-    width: 52.083333333333336%;
-    margin: 0 1.0416666666666665%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 1.5em 1em 0;
-  }
-  .item-title a {
+  .item-title {
     font-size: 1em;
   }
   #logo {
@@ -1960,9 +1938,6 @@ a#siteNews {
     font-size: 1em;
     text-shadow: none;
   }
-  /*.item-thumb, .related-item-thumb {
-      height: 80px;
-    }*/
   .item-details,
   .item-title {
     font-size: 0.9em;

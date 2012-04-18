@@ -10,7 +10,7 @@
 // Styles for desktop and larger
 @media screen and (max-width: 1140px) {
   body {
-    background-image: url("@{static_url}img/oakland-bkgd-450.png");
+    background-image: url("@{static_url}img/logos/oakland-bkgd-325.png");
   }
   #scene-nav {
     .rounded(0);
@@ -18,21 +18,11 @@
 }
 
 @media screen and (max-width: 1082px) {
-/*
-  .item-thumb {
-    height: 120px;
-    //width: 100px;
-  }*/
 
 }
 
 // Styles for smaller desktop/larger tablet
 @media screen and (max-width: 992px) {
-
-  /*.item-thumb {
-    height: 110px;
-    //width: 100px;
-  }*/
 
   #logo {
     padding-top: 1em;
@@ -83,9 +73,6 @@
 
     &.events, &.chatter {    
       float: right;
-      /*.item-thumb {
-       height: 110px;
-      }*/
     }
 
     &.map-container {
@@ -111,12 +98,6 @@
 
 @media screen and (max-width: 864px) {
 
-  /*.item-thumb {
-    height: 90px;
-    //width: 80px;
-  }*/ 
-
-
   .feed {
     &.places, &.events{
       .description {
@@ -129,11 +110,6 @@
 
 // Styles for regular and smaller tablets
 @media screen and (max-width: 800px){
-
-  /*.item-thumb {
-    height: 130px;
-    //width: 100px;
-  }*/
 
   .logout, .bar {
     display: none;
@@ -198,6 +174,10 @@
     font-size: 0.9em;
   }
 
+  .item-title {
+    font-size: 1.2em;
+  }
+
   #utility {
     position: absolute;
     bottom: 5.1em;
@@ -253,20 +233,10 @@
   #logo img {
     height: auto;
   }
-
-  .item-thumb {
-    //height: 100px;
-    //width: 100px;
-  }
 }
 
 // Styles for higher res phones
 @media screen and (max-width: 600px) {
-
-  /*.item-thumb {
-    height: 100px;
-    //width: 100px;
-  }*/
 
   .single-container {
     padding: 0;
@@ -313,6 +283,12 @@
     display: none; 
   }
 
+  #select-sect {
+    display: inline-block;
+    .column_r(6.5);
+    margin: 1.5em 1em 0;
+  }
+
   .related-section {
     .row();
     padding: 0.3em;
@@ -346,18 +322,13 @@
 
   #scene-nav {
     border: none;
-
-    #select-nav {
-      display: inline-block;
-      .column_r(6.5);
-      margin: 1.5em 1em 0;
-    }
   }
 
   .item-title {
     //line-height: 1.2em;
+    font-size: 1em;
     a {
-      font-size: 1em;
+      
       //font-family: 'DroidSerifItalic', Georgia, serif;
       
       }
@@ -401,10 +372,6 @@
     font-size: 1em;
     text-shadow: none;
   }
-
-  /*.item-thumb, .related-item-thumb {
-    height: 80px;
-  }*/
 
   .item-details, .item-title {
     font-size: 0.9em;

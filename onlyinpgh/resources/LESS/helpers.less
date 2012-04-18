@@ -132,6 +132,19 @@
              /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 }
 
+.gradient-pie(@first, @second) {
+   background-color: @first;
+   background-image: -webkit-gradient(linear, left top, left bottom, from(@first), to(@second)); /* Saf4+, Chrome */
+   background-image: -webkit-linear-gradient(top, @first, @second); /* Chrome 10+, Saf5.1+, iOS 5+ */
+   background-image:    -moz-linear-gradient(top, @first, @second); /* FF3.6 */
+   background-image:     -ms-linear-gradient(top, @first, @second); /* IE10 */
+   background-image:      -o-linear-gradient(top, @first, @second); /* Opera 11.10+ */
+   background-image:      linear-gradient(top, @first, @second);
+             /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */ 
+   -pie-background: linear-gradient(@first, @second); /*PIE*/
+    behavior: url("../PIE.htc");           
+}
+
 .b-shadow(@x, @y, @blur, @color) {
 	-webkit-box-shadow: @x @y @blur @color; 
 		-moz-box-shadow: @x @y @blur @color; 
