@@ -1,7 +1,7 @@
 '''Views for AJAX purposes'''
 from onlyinpgh.common.utils.jsontools import jsonp_response
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.viewmodels import PlaceFeedItem
+from onlyinpgh.places.contexts import PlaceContext
 from onlyinpgh.common.core.rendering import render_safe
 
 from django.shortcuts import get_object_or_404
@@ -98,7 +98,7 @@ def place_confirm_div(request):
     '''
     pid = request.GET.get('pid', '-1')   # will trigger 404 below
     place = get_object_or_404(Place, id=pid)
-    return HttpResponse(render_viewmodel(PlaceFeedItem(place),
+    return HttpResponse(render_viewmodel(PlaceContext(place),
         'orgadmin/ac_place_confirm.html'))
 
 

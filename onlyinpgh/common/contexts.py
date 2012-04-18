@@ -9,14 +9,20 @@ class PageContext(RequestContext):
         '''
         current_section: string among 'places', 'events', 'news', etc...
         '''
-        super(PageContext, self).__init__(request, **kwargs)
-        self['header_context'] = Context({
+        header_context = Context({
             'current_section': current_section,
             'search_form': None,
         })
-        self['sidebar_context'] = Context({})
-        self['main_context'] = Context(content_dict)
-        self['footer_context'] = Context({})
+        sidebar_context = Context({})
+        main_context = Context(content_dict)
+        footer_context = Context({})
+
+        super(PageContext, self).__init__(request, dict(
+            header_context=header_context,
+            sidebar_context=sidebar_context,
+            main_context=main_context,
+            footer_context=footer_context),
+        **kwargs)
 
 
 class ManagePageContext:

@@ -1,7 +1,7 @@
-from onlyinpgh.common.core.viewmodels import ViewModel
+from django.template import Context
 
 
-class PublicProfile(ViewModel):
+class PublicProfile(Context):
     '''
         profile
             id
@@ -12,26 +12,8 @@ class PublicProfile(ViewModel):
             fb_id (optional)
             twitter_username (optional)
     '''
-    def __init__(self, user):
-        self.profile = user.get_profile()
-
-    def to_data(self, *args, **kwargs):
-        '''
-        Returns the public members of the user profile. Note that
-        this means that fb/twitter ids will not be returned if
-        their respective public flags are set to False.
-        '''
-        data = super(PublicProfile, self).to_data(*args, **kwargs)
-        profile_data = data.get('profile')
-        keepers = set(('id', 'username', 'display_name', 'points', 'avatar_url'))
-        # also keep the fb/twitter ids if user wants them public
-        if profile_data.get('fb_id_public'):
-            keepers.add('fb_id')
-        if profile_data.get('twitter_username_public'):
-            keepers.add('twitter_username')
-
-        for k in profile_data.keys():
-            if k not in keepers:
-                profile_data.pop(k)
-
-        return data
+    def __init__(self, user, **kwargs):
+        profile = user.get_profile()
+        # unpack profile and fix the variables to the root of the PublicProfile context
+        vbls = dict([(k, v) for k, v in profile.__dict__.items() if not k.startswith('_')])
+        super(PublicProfile, self).__init__(vbls, **kwargs)

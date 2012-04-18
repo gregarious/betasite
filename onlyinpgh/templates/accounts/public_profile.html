@@ -1,21 +1,23 @@
+{% extends "accounts/page_account_panel.html" %}
 {% comment %}
 Template for user's public profile.
 
-Compatible with viewmodels: accounts.viewmodels.PublicProfile
-
-Context variables: 
-- profile (PublicProfile)
+Context variables:
+    C:
+        profile: PublicProfile context
 {% endcomment %}
 
-<img src="{{ profile.avatar_url }}" />
-<h2>{{ profile.display_name }}</h2>
+{% block panel-content %}
+<img src="{{ C.profile.avatar_url }}" />
+<h2>{{ C.profile.display_name }}</h2>
 <ul>
-    <li>{{ profile.username }}</li>
-    <li>{{ profile.points }}</li>
-    {% if profile.fb_id %}
-    <li><a href="http://www.facebook.com/{{ profile.fb_id }}">Facebook</a></li>
+    <li>{{ C.profile.username }}</li>
+    <li>{{ C.profile.points }}</li>
+    {% if C.profile.fb_id %}
+    <li><a href="http://www.facebook.com/{{ C.profile.fb_id }}">Facebook</a></li>
     {% endif %}
-    {% if profile.twitter_username %}
-    <li><a href="http://twitter.com/{{ profile.twitter_username }}">Twitter</a></li>
+    {% if C.profile.twitter_username %}
+    <li><a href="http://twitter.com/{{ C.profile.twitter_username }}">Twitter</a></li>
     {% endif %}
 </ul>
+{% endblock %}

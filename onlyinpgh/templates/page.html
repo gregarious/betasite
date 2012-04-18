@@ -3,29 +3,32 @@
 {% comment %}
 Template for any Scenable webpage. 
 
-Context variables:
-    C: A PageContext variable
-
-Contains 
+Context is a PageContext variable, meaning the following root-level
+variables are available. All are Context variables set in the
+PageContext constructor.
+- header_context
+- main_context
+- sidebar_context
+- footer_context
 {% endcomment %}
 
 {% block content %}
 <div class="wrap">
     <nav id="scene-nav">
-        {% include "scene_nav.html" with C=C.header_context %}
-        {% include "top_bar.html" with C=C.header_context %}
+        {% include "scene_nav.html" with C=header_context %}
+        {% include "top_bar.html" with C=header_context %}
     </nav>
 </div>
 <div class="wrap">
-    {% with C=C.main_context %}
+    {% with C=main_context %}
     <div id="site-content" role="main">
     {% block main-content %}{% endblock %}
     </div>        
     {% endwith %}
     <aside id="site-sidebar" role="complementary">
-		{% include "sidebar_base.html" with C=C.sidebar_context %}
+		{% include "sidebar_base.html" with C=sidebar_context %}
 	</aside>
 </div>
 
-<!--{% include "footer.html" with C=C.footer_context %}-->
+<!--{% include "footer.html" with C=footer_context %}-->
 {% endblock %}

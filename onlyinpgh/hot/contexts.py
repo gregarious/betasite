@@ -1,18 +1,18 @@
 from django.template import Context
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.viewmodels import PlaceFeedItem
+from onlyinpgh.places.contexts import PlaceContext
 from onlyinpgh.events.models import Event
-from onlyinpgh.events.viewmodels import EventFeedItem
+from onlyinpgh.events.contexts import EventContext
 from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.viewmodels import SpecialFeedItem
+from onlyinpgh.specials.contexts import SpecialContext
 
 
 class HotFeedCollection(Context):
     def __init__(self, user=None, **kwargs):
-        efeed = [EventFeedItem(e, user) for e in Event.listed_objects.all().order_by('?')[:3]]
-        pfeed = [PlaceFeedItem(p, user) for p in Place.listed_objects.all().order_by('?')[:3]]
-        sfeed = [SpecialFeedItem(s, user) for s in Special.objects.all().order_by('?')[:3]]
+        efeed = [EventContext(e, user) for e in Event.listed_objects.all().order_by('?')[:3]]
+        pfeed = [PlaceContext(p, user) for p in Place.listed_objects.all().order_by('?')[:3]]
+        sfeed = [SpecialContext(s, user) for s in Special.objects.all().order_by('?')[:3]]
         super(HotFeedCollection, self).__init__(dict(
                 events=efeed,
                 places=pfeed,

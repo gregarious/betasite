@@ -16,9 +16,9 @@ from onlyinpgh.accounts.forms import RegistrationForm
 from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgLoginForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
-from onlyinpgh.places.viewmodels import PlaceFeedItem
-from onlyinpgh.events.viewmodels import EventFeedItem
-from onlyinpgh.specials.viewmodels import SpecialFeedItem
+from onlyinpgh.places.contexts import PlaceContext
+from onlyinpgh.events.contexts import EventContext
+from onlyinpgh.specials.contexts import SpecialContext
 
 from onlyinpgh.common.core.rendering import render_safe
 
@@ -278,7 +278,7 @@ def page_list_places(request):
     org = request.session.get('current_org')
     places = org.establishments.all() if org else []
 
-    items = [PlaceFeedItem(place) for place in places]
+    items = [PlaceContext(place) for place in places]
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/place_list.html', {'items': items}, context_instance=context)
@@ -351,7 +351,7 @@ def page_list_events(request):
 
     events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
     events = set(events).union(Event.objects.filter(place__in=establishments))
-    items = [EventFeedItem(event) for event in events]
+    items = [EventContext(event) for event in events]
 
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/event_list.html', {'items': items},
@@ -406,7 +406,7 @@ def page_list_specials(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
-    items = [SpecialFeedItem(special) for special in specials]
+    items = [SpecialContext(special) for special in specials]
     context = RequestContext(request, {'current_org': org})
     content = render_to_string('orgadmin/special_list.html', {'items': items},
                                 context_instance=context)
