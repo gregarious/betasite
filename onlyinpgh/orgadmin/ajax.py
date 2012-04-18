@@ -1,15 +1,14 @@
 '''Views for AJAX purposes'''
 from onlyinpgh.common.utils.jsontools import jsonp_response
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.contexts import PlaceContext
 from onlyinpgh.common.core.rendering import render_safe
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
-from django.http import HttpResponseForbidden, HttpResponse
-from onlyinpgh.common.core.rendering import render_viewmodel
+from django.http import HttpResponseForbidden
 
 from django.views.decorators.csrf import csrf_protect
+from django.template import RequestContext
 
 from onlyinpgh.orgadmin.forms import SimplePlaceForm
 from onlyinpgh.common.utils import get_std_thumbnail
@@ -28,7 +27,7 @@ def authentication_required_403(view_func):
     return wrapper
 
 
-def _autocomplete_response(place_choices, term, limit=4):
+def _autocomplete_response(request, place_choices, term, limit=4):
     '''
     Return a Python dict with sorted autocomplete responses.
     '''
@@ -54,7 +53,7 @@ def _autocomplete_response(place_choices, term, limit=4):
              'name': p.name,
              'image_url': image_url,
              'address': p.location.address if p.location else '',
-             'selected': render_safe('orgadmin/ac_place_selected.html', place=p)
+             'selected': render_safe('orgadmin/ac_place_selected.html', place=p, context_instance=RequestContext(request))
         })
     return results
 
@@ -74,7 +73,7 @@ def place_claim_autocomplete(request):
     owned_pks = [o.pk for o in org.establishments.all()] if org else []
     places = Place.objects.exclude(pk__in=owned_pks).filter(name__icontains=term)
 
-    return _autocomplete_response(places, term, 4)
+    return _autocomplete_response(request, places, term, 4)
 
 
 @authentication_required_403
@@ -87,7 +86,7 @@ def place_autocomplete(request):
     if not term:
         return []
     places = Place.objects.filter(name__icontains=term)
-    return _autocomplete_response(places, term, 4)
+    return _autocomplete_response(request, places, term, 4)
 
 
 @authentication_required_403
@@ -98,8 +97,7 @@ def place_confirm_div(request):
     '''
     pid = request.GET.get('pid', '-1')   # will trigger 404 below
     place = get_object_or_404(Place, id=pid)
-    return HttpResponse(render_viewmodel(PlaceContext(place),
-        'orgadmin/ac_place_confirm.html'))
+    return render(request, 'orgadmin/ac_place_confirm.html', {'place': place})
 
 
 @authentication_required_403

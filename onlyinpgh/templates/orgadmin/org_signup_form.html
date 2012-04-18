@@ -1,7 +1,10 @@
-<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
+{% comment %}
+Inner template for org signup form.
 
-<h2>Register for a Scenable Business Account...</h2>
-
+Context variables:
+	registration_form: RegistrationForm (from accounts.forms)
+	org_form: SimpleOrgForm (from orgadmin.forms)
+{% endcomment %}
 <form action="{% url orgadmin-signup %}" method="POST" >
 	{% csrf_token %}
 	

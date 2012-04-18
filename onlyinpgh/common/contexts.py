@@ -8,6 +8,7 @@ class PageContext(RequestContext):
     def __init__(self, request, current_section, content_dict={}, **kwargs):
         '''
         current_section: string among 'places', 'events', 'news', etc...
+        content_dict: context variables for main_context
         '''
         header_context = Context({
             'current_section': current_section,
@@ -23,10 +24,3 @@ class PageContext(RequestContext):
             main_context=main_context,
             footer_context=footer_context),
         **kwargs)
-
-
-class ManagePageContext:
-    '''
-    Main context variable for every biz management page.
-    '''
-    pass

@@ -1,33 +1,32 @@
+{% extends "orgadmin/manage_page.html" %}
 {% comment %}
-Context variables:
-- items: PlaceFeedItem objects
+Context variables
+    C:
+        items: PlaceContext instances
 {% endcomment %}
-{% load vmrender from commontags %}
 
-{% include "orgadmin/page_nav.html" %}
+{% block main-content %}
+{% include "orgadmin/tab_nav.html" %}
 
 <a href="{% url orgadmin-claimplace %}" class="add-item" title="Add a Place">+ Add a location</a>
 
-{% if items %}
-
+{% if C.items %}
 	<ul class="feed">
-		{% for item in items %}
+		{% for item in C.items %}
 			<li class="item">
-	    		{% vmrender item 'orgadmin/place_item.html' %}
+	    		{% include "orgadmin/place_item.html" with place=item.place %}
 	    	</li>
 	    {% endfor %}
     </ul>
-
 {% else %}
-
     <section class="no-items">
-    	<img src="/static/img/manage-place.png" alt="Store front" />
+    	<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
     	<p>We don't have any locations for you yet. Scenable has an extensive record of most storefronts and buildings in Oakland. Click <a href="{% url orgadmin-claimplace %}">here</a> to claim your location or create a new one in case we missed anything.
     </section>
-
 {% endif %}
+{% endblock %}
 
-
+{% block additional-scripts %}
 <script type="text/javascript">
 $(function(){
     $('.delete-item').on('click', function(event) {
@@ -35,3 +34,4 @@ $(function(){
     });
 });
 </script>
+{% endblock %}
