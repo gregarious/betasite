@@ -2,27 +2,27 @@
 Template to render items related to a place
 
 Context variables:
-    related_feeds:
-        events:
-            [EventFeedItem VMs]
-        specials:  
-            [SpecialFeedItem VMs]
-    place_detail: PlaceDetail VM
-    
-    (... more to come...)
+    C:
+        place: PlaceContext instance
+        related_feeds:
+            events_feed:
+                [EventFeedItem VMs]
+            specials_feed:  
+                [SpecialFeedItem VMs]
+
 {% endcomment %}
-{% load vmrender from commontags %}
 {% load external_url from commontags %}
+{% with related_feeds=C.related_feeds place=C.place %}
 
 <nav class="related-nav">
     <ul>
         <li><a id="placeInfo" class="current-page">Info</a></li>
-        {% if not related_feeds.events %}
+        {% if not related_feeds.events_feed %}
             <li><a id="placeEvents" class="disabled">Events</a></li>
         {% else %}
             <li><a id="placeEvents">Events</a></li>
         {% endif %}
-        {% if not related_feeds.events %}
+        {% if not related_feeds.specials_feed %}
             <li><a id="placeSpecials" class="disabled">Specials</a></li>
         {% else %}
             <li><a id="placeSpecials">Specials</a></li>
@@ -39,48 +39,48 @@ Context variables:
     </div>
 
     <ul class="item-details">
-        {% if place_detail.place.hours %}
+        {% if place.hours %}
             {# This is ugly and unintuitive. But works for now. #}
-            {% for tuples in place_detail.place.hours_unpacked %}
+            {% for tuples in place.hours_unpacked %}
                 <li>{{tuples.0}}: {{tuples.1}}</li>
             {% endfor %}
         {% endif %}
 
-        {% if place_detail.place.parking %}
+        {% if place.parking %}
             {# This is ugly and unintuitive. But works for now. #}
-            {% for option in place_detail.place.parking_unpacked %}
+            {% for option in place.parking_unpacked %}
                 <li>Parking: {{option}}</li>
             {% endfor %}
         {% endif %}
 
-        {% if place_detail.place.phone %}
-            <li>Phone: {{ place_detail.place.phone }}</li>
+        {% if place.phone %}
+            <li>Phone: {{ place.phone }}</li>
         {% endif %}
 
-        {% if place_detail.place.url %}
-            <li><a href="{{ place_detail.place.url|external_url}}">See our full website</a></li>
+        {% if place.url %}
+            <li><a href="{{ place.url|external_url}}">See our full website</a></li>
         {% endif %}
 
     </ul>
 
-    <p class="description">{{place_detail.place.description|linebreaksbr}}</p>
+    <p class="description">{{place.description|linebreaksbr}}</p>
 
 </section>
 
 <section class="related-section" id="placeEvents">
     <h2 class="section-title">Events</h2>
-    {% for item in related_feeds.events %}
+    {% for item in related_feeds.events_feed %}
         <li class="item">
-            {% vmrender item 'events/related_item.html' %}
+            {% include 'events/related_item.html' with C=item %}
         </li>
     {% endfor %}
 </section>
 
 <section class="related-section specials" id="placeSpecials">
     <h2 class="section-title">Specials</h2>
-    {% for item in related_feeds.specials %}
+    {% for item in related_feeds.specials_feed %}
         <li class="item">
-            {% vmrender item 'specials/related_item.html' %}
+            {% include 'specials/related_item.html' with C=item %}
         </li>
     {% endfor %}
 </section>
@@ -107,3 +107,5 @@ Context variables:
         <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
     </aside>
 {% endif %}
+
+{% endwith %}

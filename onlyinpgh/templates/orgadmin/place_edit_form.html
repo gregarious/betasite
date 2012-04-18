@@ -75,7 +75,7 @@
             {% endif %}
         </div>
 
-        <div class="double hour-day-container" {%if form.hr_hours_2 or form.hr_days_2%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_2.value and not form.hr_days_2.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_2 }}
                 {% for err in form.hr_hours_2.errors %}
@@ -93,7 +93,7 @@
             {% endif %}
         </div>
 
-        <div class="double hour-day-container" {%if form.hr_hours_3 or form.hr_days_3%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_3.value and not form.hr_days_3.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_3 }}
                 {% for err in form.hr_hours_3.errors %}
@@ -112,7 +112,7 @@
         </div>
 
 
-        <div class="double hour-day-container" {%if form.hr_hours_4 or form.hr_days_4%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_4.value and not form.hr_days_4.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_4 }}
                 {% for err in form.hr_hours_4.errors %}
@@ -130,7 +130,7 @@
             {% endif %}
         </div>
 
-        <div class="double hour-day-container" {%if form.hr_hours_5 or form.hr_days_5%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_5.value and not form.hr_days_5.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_5 }}
                 {% for err in form.hr_hours_5.errors %}
@@ -149,7 +149,7 @@
         </div>
 
 
-        <div class="double hour-day-container" {%if form.hr_hours_6 or form.hr_days_6%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_6.value and not form.hr_days_6.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_6 }}
                 {% for err in form.hr_hours_6.errors %}
@@ -168,7 +168,7 @@
         </div>
 
 
-        <div class="double hour-day-container" {%if form.hr_hours_7 or form.hr_days_7%}style="display:none"{%endif%}>
+        <div class="double hour-day-container" {%if not form.hr_hours_7.value and not form.hr_days_7.value%}style="display:none"{%endif%}>
             <div class="field">
                 {{ form.hr_hours_7 }}
                 {% for err in form.hr_hours_7.errors %}

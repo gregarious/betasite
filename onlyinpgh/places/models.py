@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from onlyinpgh.common.utils import get_std_thumbnail
 
 import math
+import urllib
 
 
 class CloseLocationManager(models.Manager):
@@ -211,6 +212,20 @@ class Location(models.Model, ViewModel):
                                       math.cos(lng2 - lng1))
             except:     # kind of a cop-out, but this should actually mean 0 distance if inputs are sane
                 return 0
+
+    def directions_link(self):
+        daddr = ''
+        if self.address:
+            daddr = self.address
+            if self.postcode:
+                daddr += ', ' + self.postcode
+        elif self.is_geocoded:
+            daddr = '(%f,%f)' % (float(self.longitude), float(self.latutude))
+
+        if not daddr:
+            return None
+        else:
+            return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr': daddr})
 
 
 class ListedPlaceManager(models.Manager):

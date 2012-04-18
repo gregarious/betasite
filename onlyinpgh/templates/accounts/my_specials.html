@@ -1,15 +1,17 @@
+{% extends "accounts/page_account_panel.html" %}
 {% comment %}
-Template to render a collection of rendered feed items, along with
-a frame to be used as a container on the user profile page.
+Template to render a list of specials the user has not yet used
 
 Context variables:
-    [items]:  list of SpecialFeedItem VMs
+    C:
+        [items]:  list of SpecialContext instances
 {% endcomment %}
-{% load vmrender from commontags %}
 
+{% block panel-content %}
 <h3 class="section-title">My Unused Specials</h3>
 <ul class="feed my-feed specials">
-    {% for item in items %}
-        <li class="item">{% vmrender item "specials/feed_item.html" %}</li>
+    {% for item in C.items %}
+        <li class="item">{% include "specials/feed_item.html" with C=item %}</li>
     {% endfor %}
 </ul>
+{% endblock %}

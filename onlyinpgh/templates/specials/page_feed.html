@@ -1,0 +1,38 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Specials feed
+
+Context variables:
+    C:  
+        [items]: List of SpecialContext instances
+        prev_p: page number of previous page (if available)
+        next_p: page number of next page (if available)
+{% endcomment %}
+
+{% block main-content %}
+<header class="feed-header">
+	<h1 class="feed-title">Specials</h1>
+	<form class="filter">
+		<input type="search" placeholder="Filter Specials" />
+		<input type="submit" value="filter" />
+	</form>
+</header>
+
+<article class="feed-content">
+    <div class="map-container"></div>
+    {% if C.prev_p %}<a href="{% url specials-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
+    {% if C.next_p %}<a href="{% url specials-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+
+    <ul class="feed specials">
+    {% for item in C.items %}
+        <li class="item">
+        {% include "specials/feed_item.html" with C=item %}
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% if C.prev_p %}<a href="{% url specials-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
+    {% if C.next_p %}<a href="{% url specials-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+</article> <!-- .feed-content -->
+{% endblock %}
