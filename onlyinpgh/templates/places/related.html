@@ -18,12 +18,12 @@ Context variables:
     <ul>
         <li><a id="placeInfo" class="current-page">Info</a></li>
         {% if not related_feeds.events_feed %}
-            <li><a id="placeEvents">Events</a></li>
+            <li><a id="placeEvents" class="disabled">Events</a></li>
         {% else %}
             <li><a id="placeEvents">Events</a></li>
         {% endif %}
         {% if not related_feeds.specials_feed %}
-            <li><a id="placeSpecials">Specials</a></li>
+            <li><a id="placeSpecials" class="disabled">Specials</a></li>
         {% else %}
             <li><a id="placeSpecials">Specials</a></li>
         {% endif %}
@@ -32,7 +32,7 @@ Context variables:
 
 <section class="related-section" id="placeInfo">
 
-    <h2 class="section-title">Details</h2>
+    <h2 class="related-section-title">Details</h2>
 
     <div class="map-container">
         <!-- Background image stand in -->
@@ -68,21 +68,25 @@ Context variables:
 </section>
 
 <section class="related-section" id="placeEvents">
-    <h2 class="section-title">Events</h2>
+    <h2 class="related-section-title">Events</h2>
+    <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
             {% include 'events/related_item.html' with C=item %}
         </li>
     {% endfor %}
+    </ul>
 </section>
 
 <section class="related-section specials" id="placeSpecials">
-    <h2 class="section-title">Specials</h2>
+    <h2 class="related-section-title">Specials</h2>
+    <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
             {% include 'specials/related_item.html' with C=item %}
         </li>
     {% endfor %}
+    </ul>
 </section>
 
 <!--    <section class="single-section" id="{{place_section_id}}">
