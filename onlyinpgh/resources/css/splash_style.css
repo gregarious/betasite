@@ -239,7 +239,7 @@ td {
 }
 /* ROOT --------- */
 body {
-  background: #E1F3FA;
+  background: url("/static/img/textures/sky-light-tex.png");
   width: 100%;
   height: 100%;
   color: #222;
