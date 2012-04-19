@@ -4,17 +4,26 @@ Context variables:
     account_forms:
         profile_form: form object
         credentials_form: form object
-        activity_form: form object
+        preferences_form: form object
 {% endcomment %}
 
+<form method="post" action="">
+{% csrf_token %}
+
 {% with form=account_forms.profile_form %}
+<b>Form 1</b><br>
 {{form.as_table}}
 {% endwith %}
 
 {% with form=account_forms.credentials_form %}
+<b>Form 2</b><br>
 {{form.as_table}}
 {% endwith %}
 
-{% with form=account_forms.activity_form %}
+{% with form=account_forms.preferences_form %}
+<b>Form 3</b><br>
 {{form.as_table}}
 {% endwith %}
+
+<input type="submit">Submit</input>
+</form>

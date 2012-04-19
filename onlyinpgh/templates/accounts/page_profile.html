@@ -9,31 +9,26 @@ Context variables:
         account_forms:  collection of forms (available when current_panel is 'account')
         feed_items: collection of feed items (available when current_panel is a feed)
 {% endcomment %}
-Template that wraps around content for account-related pages, putting 
-an account management nav bar on top of the content.
-
-Base template for other panel child templates
-{% endcomment %}
 
 {% block main-content %}
 {% include "accounts/public_profile.html" with profile=C.profile %}
 <nav id="profile-nav" class="related-nav">
-    {% include "nav_tabs.html" with current_panel=C.current_panel %}
+    {% include "accounts/nav_tabs.html" with current_panel=C.current_panel %}
 </nav>
 <div class="related-section profile">
-    {% if current_panel == 'account' %}
+    {% if C.current_panel == 'account' %}
     {% include "accounts/manage_account.html" with account_forms=C.account_forms %}
     {% endif %}
     
-    {% if current_panel == 'places' %}
+    {% if C.current_panel == 'places' %}
     {% include "accounts/places.html" with items=C.feed_items %}
     {% endif %}
 
-    {% if current_panel == 'events' %}
+    {% if C.current_panel == 'events' %}
     {% include "accounts/events.html" with items=C.feed_items %}
     {% endif %}
 
-    {% if current_panel == 'specials' %}
+    {% if C.current_panel == 'specials' %}
     {% include "accounts/specials.html" with items=C.feed_items %}
     {% endif %}
 </div>

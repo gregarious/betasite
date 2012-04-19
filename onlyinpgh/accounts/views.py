@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm
+from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
 from onlyinpgh.common.views import render_page
 from onlyinpgh.common.contexts import PageContext
 
@@ -110,33 +110,55 @@ def page_signup(request):
     return render_page('registration/page_signup.html', context)
 
 
-@login_required
-def page_profile(request):
-    return render_page('accounts/public_profile.html',
-        PageContext(request, 'accounts', dict(
-            profile=PublicProfile(request.user)
-        )))
+def _render_profile_page(request, user, current_panel, variables):
+    variables.update({
+        'profile': user.get_profile(),
+        'current_panel': current_panel})
+    context = PageContext(request, 'accounts', variables)
+    return render_page('accounts/page_profile.html', context)
 
 
 @login_required
-def page_my_places(request):
-    places = [fav.place for fav in Favorite.objects.filter(user=request.user, is_favorite=True)]
+def page_manage_account(request):
+    '''
+    Main profile page view function, all panels are generated through here.
+    - user is the User whose profile is being generated
+    - current_panel is an enum string with on of the following values:
+        account, places, events, specials.
+    '''
+    # get user to manage, ensure logged in user has permissions
+    # create/process the 3 forms
+    user = request.user
+    forms = dict(
+        profile_form=UserProfileForm(),
+        credentials_form=CredentialsForm(),
+        preferences_form=ActivityPreferencesForm())
+    return _render_profile_page(request, user, 'account',
+        {'account_forms': forms})
+
+
+@login_required
+def page_user_favorites(request):
+    # TODO: allow non-self user queries
+    user = request.user
+    places = [fav.place for fav in Favorite.objects.filter(user=user, is_favorite=True)]
     items = [PlaceContext(place, user=request.user) for place in places]
-    return render_page('accounts/my_places.html',
-        PageContext(request, 'accounts', {'items': items}))
+    return _render_profile_page(request, user, 'places', {'items': items})
 
 
 @login_required
-def page_my_events(request):
-    events = [att.event for att in Attendee.objects.filter(user=request.user, is_attending=True)]
+def page_user_attendance(request):
+    # TODO: allow non-self user queries
+    user = request.user
+    events = [att.event for att in Attendee.objects.filter(user=user, is_attending=True)]
     items = [EventContext(event, user=request.user) for event in events]
-    return render_page('accounts/my_events.html',
-        PageContext(request, 'accounts', {'items': items}))
+    return _render_profile_page(request, user, 'events', {'items': items})
 
 
 @login_required
-def page_my_specials(request):
-    specials = [coupon.special for coupon in Coupon.objects.filter(user=request.user, was_used=False)]
+def page_user_coupons(request):
+    # TODO: allow non-self user queries
+    user = request.user
+    specials = [coupon.special for coupon in Coupon.objects.filter(user=user, was_used=False)]
     items = [SpecialContext(special, user=request.user) for special in specials]
-    return render_page('accounts/my_specials.html',
-        PageContext(request, 'accounts', {'items': items}))
+    return _render_profile_page(request, user, 'specials', {'items': items})
