@@ -42,8 +42,8 @@ $.each(pages, function(i, id) {
 	});
 });
 
-// $('#scene-nav select').change(function(){
-// 	window.location = $(this).attr('value');
-// });
+ $('#scene-nav select').change(function(){
+ 	window.location = $(this).attr('value');
+});
 
 }); // document.ready

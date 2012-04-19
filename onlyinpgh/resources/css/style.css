@@ -524,8 +524,9 @@ label {
   display: block;
   font-size: 0.8em;
   font-weight: bold;
-  line-height: 1.2em;
+  line-height: 1.1em;
   text-transform: uppercase;
+  padding-top: 0.1em;
 }
 .simple-form input[type="text"],
 .simple-form input[type="search"] {
@@ -599,7 +600,7 @@ label {
 /* Manage Account */
 #gender {
   float: left;
-  width: 35.41666666666667%;
+  width: 39.58333333333333%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -614,7 +615,7 @@ label {
 }
 #birth-year-label {
   float: left;
-  width: 22.916666666666664%;
+  width: 18.75%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1652,7 +1653,7 @@ a#siteNews {
 @media screen and (max-width: 1082px) {
   
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 992px) {
   #logo {
     padding-top: 1em;
   }
@@ -1725,6 +1726,9 @@ a#siteNews {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .detail-section-title {
+    display: none;
+  }
   .single-title {
     font-size: 1.5em;
   }
@@ -1746,6 +1750,9 @@ a#siteNews {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+  }
+  #gender {
+    margin-bottom: 1em;
   }
   .field-container {
     margin: 1em 0;
@@ -1835,7 +1842,7 @@ a#siteNews {
   }
   #scene-nav .main-menu {
     float: left;
-    width: 72.91666666666666%;
+    width: 64.58333333333334%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1866,7 +1873,7 @@ a#siteNews {
     border-bottom: 1px solid #888;
     color: #fff;
   }
-  #utility #site-search {
+  #utility .site-search-container {
     float: right;
     width: 39.58333333333333%;
     margin: 0 1.0416666666666665%;
@@ -1874,9 +1881,24 @@ a#siteNews {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  #utility #site-search input {
+  #utility .simple-form {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility .simple-form input[type="search"] {
     padding: 0.1em;
     margin: 0;
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility .simple-form input[type="submit"] {
+    display: none;
   }
   #utility #debug-user {
     float: left;
@@ -1988,12 +2010,12 @@ a#siteNews {
   #select-sect {
     display: inline-block;
     float: right;
-    width: 52.083333333333336%;
+    width: 39.58333333333333%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 1.5em 1em 0;
+    margin: 1.5em 0.5em 2em;
   }
   .detail-section {
     width: 100%;

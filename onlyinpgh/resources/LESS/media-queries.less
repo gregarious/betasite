@@ -68,6 +68,10 @@
     .row();
   }
 
+  .detail-section-title {
+    display: none;
+  }
+
   .single-title {
     font-size: 1.5em;
   }
@@ -80,6 +84,10 @@
 
   .field, #gender, #birth-year {
     .row();
+  }
+
+  #gender {
+    margin-bottom: 1em;
   }
 
   .field-container {
@@ -177,7 +185,7 @@
   #scene-nav {
     top: 2em;
     .main-menu {
-      .column(9);
+      .column(8);
     }
   }
 
@@ -203,12 +211,20 @@
     padding: 0.5em;
     border-bottom: 1px solid #888;
     color: #fff;
-    #site-search {
+    .site-search-container {
       .column_r(5);
+    }
+    .simple-form {
+      .row();
 
-      input {
+      input[type="search"] {
         padding: 0.1em;
         margin: 0;
+        .row();
+      }
+
+      input[type="submit"] {
+        display: none;
       }
     }
 
@@ -303,8 +319,8 @@
 
   #select-sect {
     display: inline-block;
-    .column_r(6.5);
-    margin: 1.5em 1em 0;
+    .column_r(5);
+    margin: 1.5em 0.5em 2em;
   }
 
   .detail-section {

@@ -74,7 +74,7 @@ a {
 p {
 	color: #222;
 	margin: 1em 0;
-	text-shadow: 0.04em 0.04em 0 #ffffff;
+	text-shadow: 0.01em 0.01em 0 #ffffff;
 }
 
 img {
@@ -199,6 +199,17 @@ button, input[type="submit"] {
 	max-width: 600px;
 	padding: 3%;
 	.clearfix();
+
+	&#desktop {
+		max-width: 1140px;
+		h1 {
+			font-size: 2em;
+		}
+
+		#site-header img {
+			max-width: 960px;
+		}
+	}
 }
 
 #site-header {
@@ -214,7 +225,9 @@ button, input[type="submit"] {
 }
 
 #oakland {
-	//padding-left: 3%;
+	padding-right: 3%;
+	.column(6);
+	border-right: 1px #fff solid;
 	.screenshot {
 		display: block;
 		margin: auto;
@@ -223,8 +236,8 @@ button, input[type="submit"] {
 }
 
 #company {
-	//border-left: 1px solid #fff;
-	padding-left: 3%;
+	.column(6);
+	padding-left: 1%;
 }
 
 .suggest-scene {
@@ -262,13 +275,16 @@ button, input[type="submit"] {
  	}
 
  	#oakland {
+ 		border-right: none;
  		border-bottom: 1px solid #fff;
  		padding-bottom: 5%;
+ 		.row();
  	}
 
  	#company {
- 		border: none;
+ 		
  		padding: 5% 0 0;
+ 		.row()
  	}
 
  	h1 {
