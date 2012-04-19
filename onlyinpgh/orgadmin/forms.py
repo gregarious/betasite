@@ -228,7 +228,7 @@ class OrgAdminPlaceForm(PlaceForm):
             place.save()    # save if new now so we can add m2m
 
         # handle tags manually
-        new_tags = set(self.cleaned_data['tags'])
+        new_tags = self.cleaned_data['tags']
         # save all the tags that aren't in the DB yet
         [t.save() for t in new_tags if t.id is None]
 
