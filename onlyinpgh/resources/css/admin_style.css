@@ -1346,7 +1346,7 @@ input[type="checkbox"] {
 .ui-dialog-titlebar-close:hover {
   border: none;
 }
-.ui-icon.ui-icon-closethick {
+.ui-icon-closethick {
   top: 1.5em;
   right: 1.5em;
   height: 1em;
@@ -1355,7 +1355,7 @@ input[type="checkbox"] {
   background: url('/static/img/icons/cancel.png') center no-repeat;
   text-indent: -9999px;
 }
-.ui-icon.ui-icon-closethick:hover {
+.ui-icon-closethick:hover {
   background-color: #a9c6e8;
 }
 .ui-dialog-buttonset button {

@@ -14,7 +14,7 @@ Context variables:
 {% load external_url from commontags %}
 {% with related_feeds=C.related_feeds place=C.place %}
 
-<nav class="related-nav">
+<nav class="detail-nav">
     <ul>
         <li><a id="placeInfo" class="current-page">Info</a></li>
         {% if not related_feeds.events_feed %}
@@ -30,9 +30,9 @@ Context variables:
     </ul>
 </nav>
 
-<section class="related-section" id="placeInfo">
+<section class="detail-section" id="placeInfo">
 
-    <h2 class="related-section-title">Details</h2>
+    <h2 class="detail-section-title">Details</h2>
 
     <div class="map-container">
         <!-- Background image stand in -->
@@ -67,23 +67,23 @@ Context variables:
 
 </section>
 
-<section class="related-section" id="placeEvents">
-    <h2 class="related-section-title">Events</h2>
+<section class="detail-section" id="placeEvents">
+    <h2 class="detail-section-title">Events</h2>
     <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
-            {% include 'events/related_item.html' with C=item %}
+            {% include 'events/short_feed_item.html' with C=item %}
         </li>
     {% endfor %}
     </ul>
 </section>
 
-<section class="related-section specials" id="placeSpecials">
-    <h2 class="related-section-title">Specials</h2>
+<section class="detail-section specials" id="placeSpecials">
+    <h2 class="detail-section-title">Specials</h2>
     <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
-            {% include 'specials/related_item.html' with C=item %}
+            {% include 'specials/short_feed_item.html' with C=item %}
         </li>
     {% endfor %}
     </ul>

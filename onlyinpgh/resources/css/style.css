@@ -361,7 +361,7 @@ a:visited {
   margin: 0 0 2%;
   padding: 0 0.3em 0.1em;
 }
-.related-section-title {
+.detail-section-title {
   border-bottom: 1px #999 solid;
   padding: 0 0 0.2em;
   margin: 0 0 1em;
@@ -1040,14 +1040,14 @@ input[type="submit"]#redeem-button {
   margin: 0.5em 0 0 0.5em;
 }
 /* 10 NAVIGATION ---------- */
-.related-nav {
+.detail-nav {
   width: 12%;
   float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.related-nav li a {
+.detail-nav li a {
   background: #444;
   color: #fff;
   cursor: pointer;
@@ -1061,7 +1061,7 @@ input[type="submit"]#redeem-button {
   margin: 0.3em 0;
   padding: 0.3em;
 }
-.related-nav li a.current-page {
+.detail-nav li a.current-page {
   background-color: #ded57f;
 }
 /*#date-nav-left, #date-nav-right {
@@ -1156,8 +1156,8 @@ input[type="submit"]#redeem-button {
 .single-header ul {
   padding-left: 0.5em;
 }
-/* RELATED --------- */
-.related-section {
+/* DETAILED SINGLE --------- */
+.detail-section {
   display: none;
   width: 88%;
   float: left;
@@ -1173,22 +1173,22 @@ input[type="submit"]#redeem-button {
   background-clip: padding-box;
   padding: 2% 4% 4%;
 }
-.related-section#placeInfo,
-.related-section.profile {
+.detail-section#placeInfo,
+.detail-section.profile {
   display: block;
 }
-.related-section .section-header {
+.detail-section .section-header {
   *zoom: 1;
 }
-.related-section .section-header:before,
-.related-section .section-header:after {
+.detail-section .section-header:before,
+.detail-section .section-header:after {
   content: "";
   display: table;
 }
-.related-section .section-header:after {
+.detail-section .section-header:after {
   clear: both;
 }
-.related-section#placeInfo .item-details {
+.detail-section#placeInfo .item-details {
   float: left;
   width: 47.91666666666667%;
   -moz-box-sizing: border-box;
@@ -1196,10 +1196,10 @@ input[type="submit"]#redeem-button {
   box-sizing: border-box;
   margin-bottom: 0.3em;
 }
-.related-section#placeInfo .item-details li {
+.detail-section#placeInfo .item-details li {
   margin-bottom: 0.5em;
 }
-.related-section .map-container {
+.detail-section .map-container {
   margin: 0 0 0 1em;
 }
 /* 11 TAGS ---------- */
@@ -1343,10 +1343,10 @@ input[type="submit"]#redeem-button {
   box-sizing: border-box;
 }
 /* Places */
-#place-single .single-header {
+.detailed-single .single-header {
   border: none;
 }
-#place-single .single-content {
+.detailed-single .single-content {
   margin-top: 0.5em;
   padding: 0;
 }
