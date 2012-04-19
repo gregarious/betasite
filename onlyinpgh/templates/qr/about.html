@@ -13,7 +13,7 @@ HTML5 Boilerplate before release.
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Scripts -->
-	<script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+	<script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{STATIC_URL}}css/splash_style.css?v=1">
@@ -25,13 +25,25 @@ HTML5 Boilerplate before release.
 <body>
 
 {% block content %}
-<div class="wrap" id="splash">
+<div class="wrap" id="desktop">
 
 	<header id="site-header">
 		<!-- <h1 id="site-title">scenable</h1> -->
-		<img src="/static/img/logos/scenable-cloud-pgh-1075.png" alt="Scenable" />	
+		<img id="sign-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-1075.png" alt="Scenable Logo" />		
 		<h1>an <span class="highlight">app</span> for local communities</h1>
 	</header>
+
+	<section id="oakland">
+		<h2 class="oakland-heading">Live, work or play in Oakland? <a href="http://onlyinpgh.com/beta">Request an invite</a> to the Oakland Scene!</h2>
+		<img class="screenshot" src="{{STATIC_URL}}img/logos/oakland-coming-soon-dark.png" alt="Oakland Scene logo" />
+		<div class="caption">
+			<p>Coming soon to iPhone and Android</p>
+			<div class="icon-container">
+				<img class="icon" src="{{STATIC_URL}}img/icons/android.png" alt="Android icon" />
+				<img class="icon" src="{{STATIC_URL}}img/icons/iphone.png" alt="iPhone icon" />	
+			</div>
+		</div>
+	</section>
 
 	<section id="company">
 
@@ -42,7 +54,7 @@ HTML5 Boilerplate before release.
 		<p class="about">The first Scenable community is Oakland, which is in private beta right now but will be public soon. What other Scenes do you want on Scenabe? Suggest a Scene below!</p>
 
 		<article class="suggest-scene">
-			<h2 class="section-title">Suggest a scene...</h2>
+		<!-- <h2 class="section-title">Suggest a scene...</h2>
 			<form>
 				
 				<div class="field-container">
@@ -73,25 +85,12 @@ HTML5 Boilerplate before release.
 				</div>
 
 			</form>
-
+ -->
 			<p>Do you or your organization represent a local Scene? Find out how Scenable can help turn your Scene into a <a href="http://scenable.com/blog/digital-placemaking-how-the-online-world-can-benefit-the-offline-world/">Digital Destination</a>.</p>
 
-			<p class="">Finally, be sure to keep up with our <a href="http://scenable.com/blog">Development Blog</a> for the latest and the greatest.</p>
+			<p class="keep-up">Learn more on our <a href="http://scenable.com/blog">Development Blog</a>.</p>
 		</article>
 
-	</section>
-
-	<section id="oakland">
-		<h2 class="oakland-heading">Live, work or play in Oakland? <a href="http://onlyinpgh.com/beta">Request an invite</a> to the Oakland Scene!</h2>
-		<img class="screenshot" src="{{STATIC_URL}}img/now-appshot.png" alt="Oakland site screenshot" />
-				<div class="caption">
-			<p>Coming soon to iPhone and Android</p>
-			<div class="icon-container">
-				<img class="icon" src="{{STATIC_URL}}img/icons/android.png" alt="Android icon" />
-				<img class="icon" src="{{STATIC_URL}}img/icons/iphone.png" alt="iPhone icon" />	
-			</div>
-		</div>
-		
 	</section>
 
 </div>
