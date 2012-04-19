@@ -7,23 +7,173 @@ Context variables:
         preferences_form: form object
 {% endcomment %}
 
+<h2>Account Settings</h2>
 <form method="post" action="">
 {% csrf_token %}
 
-{% with form=account_forms.profile_form %}
-<b>Form 1</b><br>
-{{form.as_table}}
-{% endwith %}
+<fielset>
+	<h3>Your info</h3>
+	{% with form=account_forms.profile_form %}
+	<div class="field-container">
+		<div class="field-label">
+			{{form.display_name.label_tag}}
+		</div>
+		<div class="field">
+			{{form.display_name}}
+		</div>
+	</div> <!-- display_name -->
 
-{% with form=account_forms.credentials_form %}
-<b>Form 2</b><br>
-{{form.as_table}}
-{% endwith %}
+	<div class="field-container">
+		<div class="field-label">
+			{{form.avatar_url.label_tag}}
+		</div>
+		<div class="field">
+			{{form.avatar_url}}
+		</div>
+	</div> <!-- avatar_url -->
 
-{% with form=account_forms.preferences_form %}
-<b>Form 3</b><br>
-{{form.as_table}}
-{% endwith %}
+	<div class="field-container">
+		<div class="field-label">
+			{{form.fb_id.label_tag}}
+		</div>
+		<div class="field">
+			{{form.fb_id}}
+		</div>
+	</div> <!-- fb_id -->
 
-<input type="submit">Submit</input>
+	<div class="field-container">
+		<div class="field-label">
+			{{form.fb_id_public.label_tag}}
+		</div>
+		<div class="field">
+			{{form.fb_id_public}}
+		</div>
+	</div> <!-- fb_id_public -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.twitter_username.label_tag}}
+		</div>
+		<div class="field">
+			{{form.twitter_username}}
+		</div>
+	</div> <!-- twitter_username -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.twitter_username_public.label_tag}}
+		</div>
+		<div class="field">
+			{{form.twitter_username_public}}
+		</div>
+	</div> <!-- twitter_username_public -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.gender.label_tag}}
+		</div>
+		<div class="field">
+			{{form.gender}}
+		</div>
+	</div> <!-- gender -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.birth_year.label_tag}}
+		</div>
+		<div class="field">
+			{{form.birth_year}}
+		</div>
+	</div> <!-- birth_year -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{form.neighborhood.label_tag}}
+		</div>
+		<div class="field">
+			{{form.neighborhood}}
+		</div>
+	</div> <!-- neighborhood -->
+
+	{% endwith %}
+</fielset>
+
+<fieldset>
+	<h3>Email and password</h3>
+	{% with form=account_forms.credentials_form %}
+	<div class="field-container">
+		<div class="field-label">
+			{{form.email.label_tag}}
+		</div>
+		<div class="field">
+			{{form.email}}
+		</div>
+	</div> <!-- email -->
+
+	<h4>Change your password</h4>
+	<div class="field-container">
+		<div class="field-label">
+			{{form.current_password.label_tag}}
+		</div>
+		<div class="field">
+			{{form.current_password}}
+		</div>
+	</div> <!-- current_password -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.new_password.label_tag}}
+		</div>
+		<div class="field">
+			{{form.new_password}}
+		</div>
+	</div> <!-- new_password -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{form.confirm_new_password.label_tag}}
+		</div>
+		<div class="field">
+			{{form.confirm_new_password}}
+		</div>
+	</div> <!-- confirm_new_password -->
+
+	{% endwith %}
+</fieldset>
+
+<fieldset>
+	<h3>Privacy</h3>
+	{% with form=account_forms.preferences_form %}
+	<div class="field-container">
+		<div class="field-label">
+			{{form.public_favorites.label_tag}}
+		</div>
+		<div class="field">
+			{{form.public_favorites}}
+		</div>
+	</div> <!-- public_favorites -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.public_attendance.label_tag}}
+		</div>
+		<div class="field">
+			{{form.public_attendance}}
+		</div>
+	</div> <!-- public_attendance -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{form.public_coupons.label_tag}}
+		</div>
+		<div class="field">
+			{{form.public_coupons}}
+		</div>
+	</div> <!-- public_coupons -->
+
+	{% endwith %}
+</fieldset>
+
+<input type="submit" value="Save Changes" class="right"/>
+
 </form>

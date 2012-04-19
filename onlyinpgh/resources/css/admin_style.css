@@ -645,9 +645,6 @@ input[type="checkbox"] {
   width: 90% !important;
   float: left;
 }
-#confirm-pass {
-  margin-top: 10px;
-}
 .tip,
 .error,
 .errorlist {
