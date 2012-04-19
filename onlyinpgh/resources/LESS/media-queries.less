@@ -37,19 +37,23 @@
 
   .detail-nav {
     .row();
-    border-bottom: 2px #888 solid;
     margin-top: 1em;
     ul {
       .clearfix();
        li a {
         .column(4);
         .tabs(0.5em);
-        //color: #000;
+        position: relative;
+        top: 1px;
         text-shadow: 0.05em 0.05em 0em #fff;
-        //background: @mgreen;
         text-align: center;
         font-weight: bold;
         float: left;
+
+        &.current-page {
+          border-bottom: none;
+          border-right: 1px #ccc solid;
+        }
       }
     }
 

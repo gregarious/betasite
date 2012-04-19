@@ -640,22 +640,21 @@ label {
   clear: both;
 }
 .social-input img {
-  margin-top: 0.5em;
-  float: right;
-  width: 6.25%;
+  float: left;
+  width: 8.75%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  max-width: 30px;
 }
 .social-input input {
   float: left;
-  width: 89.58333333333334%;
+  width: 87.08333333333333%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  float: left;
 }
 .tip,
 .error {
@@ -1157,7 +1156,7 @@ label {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   margin: 0.5em 0;
-  padding: 0.6em;
+  padding: 0.6em 0.6em 0.6em 0.4em;
 }
 .detail-nav ul li a.current-page {
   background-color: #f9f9f9;
@@ -1653,7 +1652,7 @@ a#siteNews {
 @media screen and (max-width: 1082px) {
   
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1080px) {
   #logo {
     padding-top: 1em;
   }
@@ -1674,7 +1673,6 @@ a#siteNews {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-bottom: 2px #888 solid;
     margin-top: 1em;
   }
   .detail-nav ul {
@@ -1701,10 +1699,16 @@ a#siteNews {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
+    position: relative;
+    top: 1px;
     text-shadow: 0.05em 0.05em 0em #fff;
     text-align: center;
     font-weight: bold;
     float: left;
+  }
+  .detail-nav ul li a.current-page {
+    border-bottom: none;
+    border-right: 1px #ccc solid;
   }
   .detail-nav#profile-nav ul li a {
     float: left;
