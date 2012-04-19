@@ -136,6 +136,12 @@ a {
   margin: 0;
 }
 
+.page-title {
+  border-bottom: 1px #ccc solid;
+  margin: 1em 0.5em 2em;
+  padding-bottom: 0.5em;
+}
+
 .single-title {
   font-size: 1.5em;
   //border-bottom: 1px #ccc solid;
@@ -244,7 +250,6 @@ button, input[type="submit"] {
   margin-top: 1em;
 }
 
-
 .field-container {
   .row();
   .clearfix();
@@ -263,18 +268,41 @@ button, input[type="submit"] {
   text-align: right;
 }
 
-.field, .double {
+.field {
   .column_r(9);
+
+  label {
+    float: right;
+  }
 }
 
-.double {
-  .field, .field-container {
-    width: 46.5%;
+/* Manage Account */
+
+#gender {
+  .column(4.5);
+  select {
+    .row();
+  }
+}
+
+#birth-year-label {
+  .column(3);
+}
+
+#birth-year {
+  .column(4.5);
+}
+
+.social-input {
+  .clearfix();
+  img {
+    margin-top: 0.5em;
+    .column_r(1);
+  }
+  input {
+    .column(11);
     float: left;
 
-    &.last {
-      float: right;
-    }
   }
 }
 
@@ -286,6 +314,20 @@ button, input[type="submit"] {
 
   &.desc {
     margin-top: 2%;
+  }
+
+  &.public {
+    margin-top: 0.3em;
+
+    label {
+      float: left;
+      margin-left: 0.5em;
+    }
+
+    input[type="checkbox"] {
+      float: left;
+      margin-top: 0.4em;
+    }
   }
 
   margin-left: 2%;
@@ -957,6 +999,7 @@ button, input[type="submit"] {
 .right {
   float: right;
 }
+
 /* FOOTER ---------- */
 
 #colophon {

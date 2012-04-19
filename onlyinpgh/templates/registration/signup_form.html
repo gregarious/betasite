@@ -2,7 +2,7 @@
     {% csrf_token %}
 	{% with form=registration_form %}
 
-	<div class="field-container last">
+	<div class="field-container">
 		<div class="field-label">
 			{{form.username.label_tag}}
 		</div>
@@ -12,7 +12,7 @@
 		</div>
 	</div> <!-- username -->
 
-	<div class="field-container">
+	<div class="field-container last">
 		<div class="field-label">
 			{{form.email.label_tag}}
 		</div>
@@ -30,7 +30,7 @@
 		</div>
 	</div> <!-- password1 -->
 
-	<div class="field-container last">
+	<div class="field-container">
 		<div class="field-label">
 			{{form.password2.label_tag}}
 		</div>

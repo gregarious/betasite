@@ -5,6 +5,8 @@ Context variables:
         profile_form: form object
         credentials_form: form object
         preferences_form: form object
+
+Note to Greg - I included a public option for neighborhood          
 {% endcomment %}
 
 <h2>Account Settings</h2>
@@ -25,6 +27,37 @@ Context variables:
 
 	<div class="field-container">
 		<div class="field-label">
+			{{form.gender.label_tag}}
+		</div>
+		<div class="field">
+			<div id="gender">
+				{{form.gender}}
+			</div> <!-- gender -->
+			<div id="birth-year-label">
+				{{form.birth_year.label_tag}}
+			</div>
+			<div id="birth-year">
+				{{form.birth_year}}
+			</div> <!-- birth_year -->
+		</div>
+	</div>  <!-- .double -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{form.neighborhood.label_tag}}
+		</div>
+		<div class="field">
+			{{form.neighborhood}}
+			<div class="tip public">
+				<!-- {{form.neighborhood_public}} -->
+				<input type="checkbox" checked="checked" />
+				<label name="form.neighborhood_public.html_name">Public</label>
+			</div> <!-- neoghborhood_public -->
+		</div>
+	</div> <!-- neighborhood -->
+
+	<div class="field-container">
+		<div class="field-label">
 			{{form.avatar_url.label_tag}}
 		</div>
 		<div class="field">
@@ -34,67 +67,36 @@ Context variables:
 
 	<div class="field-container">
 		<div class="field-label">
-			{{form.fb_id.label_tag}}
+			<label name="{{form.fb_id.html_name}}">Facebook ID</label>
 		</div>
 		<div class="field">
-			{{form.fb_id}}
+			<div class="social-input">
+	        	{{form.fb_id}}
+	            <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
+	        </div>
+
+			<div class="tip public">
+				{{form.fb_id_public}}
+				<label name="form.fbid_public.html_name">Public</label>
+			</div> <!-- fb_id_public -->
 		</div>
 	</div> <!-- fb_id -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.fb_id_public.label_tag}}
-		</div>
-		<div class="field">
-			{{form.fb_id_public}}
-		</div>
-	</div> <!-- fb_id_public -->
 
 	<div class="field-container">
 		<div class="field-label">
 			{{form.twitter_username.label_tag}}
 		</div>
 		<div class="field">
-			{{form.twitter_username}}
-		</div>
+			<div class="social-input">
+	        	{{form.twitter_username}}
+	            <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
+	        </div>
+			<div class="tip public">
+				{{form.twitter_username_public}}
+				<label name="form.twitter_username_public.html_name">Public</label>
+			</div> <!-- twitter_username_public -->
+		</div>	
 	</div> <!-- twitter_username -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.twitter_username_public.label_tag}}
-		</div>
-		<div class="field">
-			{{form.twitter_username_public}}
-		</div>
-	</div> <!-- twitter_username_public -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.gender.label_tag}}
-		</div>
-		<div class="field">
-			{{form.gender}}
-		</div>
-	</div> <!-- gender -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.birth_year.label_tag}}
-		</div>
-		<div class="field">
-			{{form.birth_year}}
-		</div>
-	</div> <!-- birth_year -->
-
-	<div class="field-container last">
-		<div class="field-label">
-			{{form.neighborhood.label_tag}}
-		</div>
-		<div class="field">
-			{{form.neighborhood}}
-		</div>
-	</div> <!-- neighborhood -->
-
 	{% endwith %}
 </fielset>
 

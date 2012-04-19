@@ -357,6 +357,11 @@ a:visited {
   font-weight: bold;
   margin: 0;
 }
+.page-title {
+  border-bottom: 1px #ccc solid;
+  margin: 1em 0.5em 2em;
+  padding-bottom: 0.5em;
+}
 .single-title {
   font-size: 1.5em;
   margin: 0 0 2%;
@@ -576,8 +581,7 @@ input[type="submit"]#redeem-button {
   box-sizing: border-box;
   text-align: right;
 }
-.field,
-.double {
+.field {
   float: right;
   width: 72.91666666666666%;
   margin: 0 1.0416666666666665%;
@@ -585,14 +589,69 @@ input[type="submit"]#redeem-button {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.double .field,
-.double .field-container {
-  width: 46.5%;
-  float: left;
-}
-.double .field.last,
-.double .field-container.last {
+.field label {
   float: right;
+}
+/* Manage Account */
+#gender {
+  float: left;
+  width: 35.41666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#gender select {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#birth-year-label {
+  float: left;
+  width: 22.916666666666664%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#birth-year {
+  float: left;
+  width: 35.41666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.social-input {
+  *zoom: 1;
+}
+.social-input:before,
+.social-input:after {
+  content: "";
+  display: table;
+}
+.social-input:after {
+  clear: both;
+}
+.social-input img {
+  margin-top: 0.5em;
+  float: right;
+  width: 6.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.social-input input {
+  float: left;
+  width: 89.58333333333334%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
 }
 .tip,
 .error {
@@ -605,6 +664,20 @@ input[type="submit"]#redeem-button {
 .tip.desc,
 .error.desc {
   margin-top: 2%;
+}
+.tip.public,
+.error.public {
+  margin-top: 0.3em;
+}
+.tip.public label,
+.error.public label {
+  float: left;
+  margin-left: 0.5em;
+}
+.tip.public input[type="checkbox"],
+.error.public input[type="checkbox"] {
+  float: left;
+  margin-top: 0.4em;
 }
 .error {
   color: #C34327;
