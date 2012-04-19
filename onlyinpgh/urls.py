@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', redirect_to, {'url': 'http://scenable.com/blog/'}),
+    (r'^$', redirect_to, {'url': 'http://scenable.com/about/'}),
 
     url(r'^prelaunch/$', 'onlyinpgh.common.views.page_home', name='home'),
     url(r'^prelaunch/login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
