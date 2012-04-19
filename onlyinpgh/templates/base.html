@@ -32,7 +32,8 @@ layouts up to child templates.
     <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
     {% endblock %}
 
-    <script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+    <!-- Using a semi-hacked together version of the Modernizr-Respond custom build from http://www.initializr.com/. Added a line I figured out was missing from the automated build of the file. Calling it "respond-1.1.1". -->
+    <script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
 </head>
 {% endblock %}
 
