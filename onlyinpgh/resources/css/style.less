@@ -115,13 +115,12 @@ a {
   }
 }
 
-.section-title {
+.hot-section-title {
   //border-bottom: 1px solid #999;
   color: #000;
   font-size: 1em;
   font-style: italic;
   font-weight: bold;
-  //background: fade(#fff, 40%);
   .gradient(#f1f1f1, #f9f9f9);
   margin: 0 0 1em;
   padding: 0.5em;
@@ -133,15 +132,21 @@ a {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   font-weight: bold;
-  text-shadow: 0.03em 0.03em 0.03em #999;
+  //text-shadow: 0.03em 0.03em 0.03em #999;
   margin: 0;
 }
 
 .single-title {
   font-size: 1.5em;
-  border-bottom: 1px #ccc solid;
+  //border-bottom: 1px #ccc solid;
   margin: 0 0 2%;
   padding: 0 0.3em 0.1em;
+}
+
+.detail-section-title {
+  border-bottom: 1px #999 solid;
+  padding: 0 0 0.2em;
+  margin: 0 0 1em;
 }
 
 .sidebar-title {
@@ -193,21 +198,50 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
   }
 }
 
-button, input[type="submit"], .next, .back {
-  border: 0.1em #e1e1e1 solid;
-  .gradient(#aaa, #e1e1e1);
-  .lucida();
-  border: 1px #999;
-  padding: 0.3em;
-  .rounded(0.3em);
-  text-decoration: none;
+button, input[type="submit"] {
+  border: none;
+  .b-shadow(0, 0, 0.05em, #999);
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  .gradient(@mgreen, @dgreen);
+  //margin-top: 0.5em;
+  padding: 0.6em 0.5em;
+  position: relative;
+  .rounded(0.5em);
+  text-shadow: 0 0 0.05em #000;
+
+  &:hover {
+    background: @dgreen;
+  }
 
   &:active {
-    position: relative;
-    .no-b-shadow;
+    background: @ddgreen;
     top: 1px;
     left: 1px;
+    .b-shadow(0, 0, 0, #fff);
   }
+
+  &#redeem-button {
+    .column(12);
+    font-size: 2em;
+    padding: 5%;
+  }
+
+}
+
+.simple-form {
+  input[type="text"], input[type="search"] {
+    .column(10);
+  }
+  input[type="submit"] {
+    .column(2);
+  }
+}
+
+.site-search-container {
+  .clearfix();
+  margin-top: 1em;
 }
 
 .field-container {
@@ -256,58 +290,40 @@ button, input[type="submit"], .next, .back {
   float: left;
 }
 
-.btn-primary {
-  border: none;
-  .b-shadow(0.02em, 0.02em, 0.02em, #999);
-  color: #fff;
-  font-size: 0.8em;
-  font-weight: bold;
-  .gradient(@mgreen, @dgreen);
-  margin-top: 0.5em;
-  padding: 0.5em;
-  position: relative;
-  .rounded(0.5em);
-  text-shadow: 0 0 0.05em #000;
+.fav-container {
 
-  &:hover {
-    background: @dgreen;
-  }
-
-  &:active {
-    background: @ddgreen;
-    top: 1px;
-    left: 1px;
-    .b-shadow(0, 0, 0, #fff);
-  }
-
-  &#redeemButton {
-    .gradient(#00B945, #238B49);
-    .column(12);
-    font-size: 2em;
-    padding: 5%;
-    .b-shadow(0.1em, 0.1em, 0.1em, #999);
+  a {
+    display: block;
+    color: #444;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    padding: 0;
+    .rounded(0.4em);
+    text-align: center;
+  
+    &:hover {
+      background: #e1e1e1;
+      border: 1px solid #999;
+    }
 
     &:active {
-        top: 1px;
-        left: 1px;
-       .b-shadow(0, 0, 0, #fff);
+      background: #eeeeee;
     }
   }
-}
 
-.favbutton {
-  display: block; 
-  //padding: 0.5em;
-  //height: 30px;
-  font-size: 0.9em;
+  .status {
+    font-size: 1.2em;
+  }
 
-  .meta {
-    //font-size: 0.7em;
-  }/*
+  .remove .status {
+    color: #444;
+  }
 
-  img {
-    .column(3); 
-  }*/
+  .add .status {
+    color: @dblue;
+  }
 }
 
 #sidebar-feedback {
@@ -349,7 +365,6 @@ button, input[type="submit"], .next, .back {
   height: 100%;
   max-width: 150px;
   min-width: 100px;
-  //height: 5em;
 }
 
 #select-sect {
@@ -357,8 +372,6 @@ button, input[type="submit"], .next, .back {
 }
 
 #scene-nav {
-  //background: #e1e1e1;
-  //background: url("@{static_url}img_store/paper/sand.jpg");
   background: #444;
   .gradient(#777, #444);
   .b-shadow(0.1em, 0.1em, 0.1em, #777); 
@@ -432,12 +445,6 @@ button, input[type="submit"], .next, .back {
       }
     }
   }
-
-  input {
-    .column_nm(12);
-    padding: 0.3em;
-    margin: 0.5em 0 0;
-  }
 }
 
 /* 4 CONTENT ---------- */
@@ -492,7 +499,8 @@ button, input[type="submit"], .next, .back {
   }
 }
 
-/* FEED ---------- */
+/* FEED/ITEMS ---------- */
+
 
 .feed-header {
   .row();
@@ -514,10 +522,12 @@ button, input[type="submit"], .next, .back {
   .filter {
     .column_r(4);
     margin-top: 0.5em;
+
     input[type="search"] {
       float: left;
       .column(8);
     }
+
     input[type="submit"] {
       .column_r(4)
     }
@@ -546,10 +556,14 @@ button, input[type="submit"], .next, .back {
   .clearfix();
   list-style-type: none;
   margin: 1% 0;
-  padding: 2% 1%;
+  padding: 2% 1% 3%;
   .border-box();
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #e1e1e1;
   position: relative;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   a {
     color: #000;
@@ -608,9 +622,13 @@ button, input[type="submit"], .next, .back {
   height: auto;
 }
 
+.social-container {
+  margin: 0.5em 0 0 0.5em;
+}
+
 /* 10 NAVIGATION ---------- */
 
-.related-nav {
+.detail-nav {
   width: 12%;
   float: left;
   .border-box;
@@ -659,6 +677,10 @@ button, input[type="submit"], .next, .back {
 
 .single-thumb-container {
   .column(3);
+
+  .thumbnail {
+    border: 1px solid #444;
+  }
 }
 
 .single-content {
@@ -698,11 +720,12 @@ button, input[type="submit"], .next, .back {
   }
 }
 
-/* RELATED --------- */
-// Related = single pages with relevant places/events/specials
-// i.e. places and profile
+/* DETAILED SINGLE --------- */
+// Detailed = single page with relevant 
+// places/events/specials paneled menu
+// Currently just single place and profile pages
 
-.related-section {
+.detail-section {
   display: none;
   width: 88%;
   float: left;
@@ -717,12 +740,6 @@ button, input[type="submit"], .next, .back {
 
   .section-header {
     .clearfix;
-  }
-
-  .section-title {
-    border-bottom: 1px #999 solid;
-    padding: 0 0 0.2em;
-    margin: 0 0 1em;
   }
 
   &#placeInfo .item-details {
@@ -746,11 +763,17 @@ button, input[type="submit"], .next, .back {
   font-size: 0.8em;
   margin: 1% 0 0;
 
+
   li {
+
+    &:first-child {
+      margin-left: 0;
+    }
+
     color: #888;
     float: left;
     margin: 0.1em 0.4em;
-    padding: 0.1em 0.2em;
+    padding: 0.1em 0.3em;
     text-decoration: none;
     .border-box;   
 
@@ -759,8 +782,8 @@ button, input[type="submit"], .next, .back {
     }
 
     &:hover {
-      .gradient(#aaa, #999);
-      .rounded(0.2em);  
+      .gradient(#aaa, #ccc);
+      .rounded(0.3em);  
 
       a {
         color: #fff;
@@ -835,7 +858,7 @@ button, input[type="submit"], .next, .back {
 
 /* Places */
 
-#place-single {
+.detailed-single {
   .single-header {
     border: none;
     //padding-bottom: 0;
@@ -853,13 +876,13 @@ button, input[type="submit"], .next, .back {
   input[type="text"] {
     .column(10);
   }
-  input[type="submit"] {
+  /*input[type="submit"] {
     .column(2);
     background: @mgreen;
     color: #fff;
     font-weight: bold;
     .b-shadow(0.1em, 0.1em, 0.3em, #000);
-  }
+  }*/
 }
 
 .chatter {

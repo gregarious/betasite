@@ -15,17 +15,13 @@ Compatible contexts: EventContext
             <img src="/static/img/default-event.png" class="thumbnail" alt="{{event.name}}" />
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
-        <div class="fav-container"> 
-            {% if C.is_attending %}
-                <a href="?action=unfav" class="favbutton remove" title="Remove from Calendar">
-                    <img src="{{STATIC_URL}}img/icons/calendar-alt-subtract.png" alt="Remove from Calendar"/><!-- <span class="meta">Remove from Calendar</span> -->
-                </a>
+        <div class="fav-container">
+            {% if C.is_favorite %}
+                <a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><span class="status">&#215;</span> Remove Favorite</a>
             {% else %}
-                <a href="?action=fav" class="favbutton add" title="Add to Calendar">
-                    <img src="{{STATIC_URL}}img/icons/calendar-alt-add.png" alt="Add to Calendar"/><!-- <span class="meta">Add to Calendar</span> -->
-                </a>
+                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span> Add Favorite</a>
             {% endif %}
-        </div> <!-- .fav-container -->
+        </div> 
     </div> <!-- .single-thumb-container -->
 
     <section class="item-content">
@@ -34,21 +30,23 @@ Compatible contexts: EventContext
             <li class="datetime">March 30, 8pm - 11pm</li>
             {% if event.place %}
                 <li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
-                <li class="address">{{event.place.location.address}}</li>
+                <!-- <li class="address">{{event.place.location.address}}</li> -->
             {% else %}
                 <li>at {{event.place_primitive}}</li>
+            {% endif %}
+            {% if C.event.url %}
+                <li><a href="{{ C.event.url }}" target="blank">On the Web</a></li>
             {% endif %}
         </ul>
         
         {% include "tags/tag_list.html" with tags=event.tags %}
-
     </section> <!-- .item-content -->
-</header>
+</header> <!-- .single-header -->
 
 <div class="single-content">
     <div class="map-container">
         <!-- Map background image is here for the time being -->
     </div>
     <p class="description">{{event.description|linebreaksbr}}</p>
-</div>
+</div> <!-- .single-content -->
 {% endwith %}

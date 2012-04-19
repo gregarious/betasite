@@ -120,6 +120,6 @@ def newplace_form_submission(request):
                     'id': place.id,
                     'name': place.name,
                     'address': place.location.address,
-                    'selected': render_safe('orgadmin/ac_place_selected.html', place=place)
+                    'selected': render_safe('orgadmin/ac_place_selected.html', place=place, context_instance=RequestContext(request))
                 }
     return False
