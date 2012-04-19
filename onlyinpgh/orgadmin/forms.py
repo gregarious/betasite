@@ -232,6 +232,8 @@ class OrgAdminPlaceForm(PlaceForm):
         # save all the tags that aren't in the DB yet
         [t.save() for t in new_tags if t.id is None]
 
+        # safe to make a set now, all Tags have a unique ID
+        new_tags = set(new_tags)
         # figure out which tags need to be added and removed
         existing_tags = set(place.tags.all())
         # remove all tags that didn't get submitted in the form
