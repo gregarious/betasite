@@ -158,7 +158,8 @@ class OrgAdminPlaceForm(PlaceForm):
         of Tag instances
         '''
         input_names = map(slugify, self.cleaned_data['tags'].split(','))
-        input_names = set(name[:50] for name in input_names if name != '')
+        # sanitize the input and remove quotations
+        input_names = set(name[:50].strip("'").strip('"') for name in input_names if name != '')
         tags = list(Tag.objects.filter(name__in=input_names))
         new_names = input_names.difference([tag.name for tag in tags])
         tags += [Tag(name=tag_name) for tag_name in new_names]
