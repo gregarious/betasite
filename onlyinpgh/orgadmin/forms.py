@@ -158,7 +158,8 @@ class OrgAdminPlaceForm(PlaceForm):
         of Tag instances
         '''
         input_names = map(slugify, self.cleaned_data['tags'].split(','))
-        input_names = set(name for name in input_names if name != '')
+        # sanitize the input and remove quotations
+        input_names = set(name[:50].strip("'").strip('"') for name in input_names if name != '')
         tags = list(Tag.objects.filter(name__in=input_names))
         new_names = input_names.difference([tag.name for tag in tags])
         tags += [Tag(name=tag_name) for tag_name in new_names]
@@ -227,10 +228,12 @@ class OrgAdminPlaceForm(PlaceForm):
             place.save()    # save if new now so we can add m2m
 
         # handle tags manually
-        new_tags = set(self.cleaned_data['tags'])
+        new_tags = self.cleaned_data['tags']
         # save all the tags that aren't in the DB yet
         [t.save() for t in new_tags if t.id is None]
 
+        # safe to make a set now, all Tags have a unique ID
+        new_tags = set(new_tags)
         # figure out which tags need to be added and removed
         existing_tags = set(place.tags.all())
         # remove all tags that didn't get submitted in the form
