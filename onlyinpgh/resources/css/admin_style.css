@@ -237,55 +237,6 @@ td {
   color: black;
   padding: 0.2em 0;
 }
-/* 	Stylesheet to define le icons 
-*/
-/* 	TODO: 
-		Sprite sheet
-		Background positioning will be added 
-*/
-/* To be made into sprite sheet */
-a {
-  /* Single place nav */
-
-  /*	&#placeAtAGlance {
-		.icon(photo-magnify);
-	}
-
-	&#placeEvents {
-		.icon(calendar-alt);
-	}
-
-	&#placeSpecials {
-		.icon(tag-special);
-	}
-*/
-
-  /* #scene-nav */
-
-  /*&#siteJobs {
-		.icon(suitcase);
-	}*/
-
-}
-a#siteHot {
-  background: #ffffff url('/static/img/main-menu/city.png') no-repeat center 9px;
-}
-a#sitePlaces {
-  background: #ffffff url('/static/img/main-menu/store-front.png') no-repeat center 9px;
-}
-a#siteEvents {
-  background: #ffffff url('/static/img/main-menu/calendar-alt.png') no-repeat center 9px;
-}
-a#siteSpecials {
-  background: #ffffff url('/static/img/main-menu/tag-special.png') no-repeat center 9px;
-}
-a#siteChatter {
-  background: #ffffff url('/static/img/main-menu/speech-bubble.png') no-repeat center 9px;
-}
-a#siteNews {
-  background: #ffffff url('/static/img/main-menu/newspaper.png') no-repeat center 9px;
-}
-/* Actions */
 /* ROOT --------- */
 body {
   background: #a9c6e8 url("/static/img/textures/sky-med-tex.png");
@@ -571,8 +522,7 @@ textarea:focus {
 }
 button,
 input[type="submit"],
-.next,
-.back {
+.prev-next a {
   border: none;
   background: #2c525d;
   color: #fff !important;
@@ -592,8 +542,7 @@ input[type="submit"],
 }
 button:hover,
 input[type="submit"]:hover,
-.next:hover,
-.back:hover {
+.prev-next a:hover {
   background-color: #1b333a;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1b333a), to(#2c525d));
   /* Saf4+, Chrome */
@@ -616,8 +565,7 @@ input[type="submit"]:hover,
 }
 button:active,
 input[type="submit"]:active,
-.next:active,
-.back:active {
+.prev-next a:active {
   position: relative;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
