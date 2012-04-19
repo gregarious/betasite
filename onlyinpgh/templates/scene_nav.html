@@ -63,9 +63,9 @@ Context variables:
 <select id="select-sect">
     <option value="{% url hot %}" {% if sect == 'hot'%}selected='selected'{% endif %}>Now</option>
     <option value="{% url places-feed %}" {% if sect == 'places'%}selected='selected'{% endif %}>Places</option>
-    <option value="{% url events-feed %} {% if sect == 'events'%}selected='selected'{% endif %}">Events</option>
+    <option value="{% url events-feed %}" {% if sect == 'events'%}selected='selected'{% endif %}>Events</option>
     <option value="{% url specials-feed %}" {% if sect == 'specials'%}selected='selected'{% endif %}>Specials</option>
-    <option value="chatter_example" {% if sect == 'chatter'%}selected='selected'{% endif %}>Chatter</option>
-    <option value="news_example" {% if sect == 'news'%}selected='selected'{% endif %}>News</option>
+    <option value="{% url example_chatter %}" {% if sect == 'chatter'%}selected='selected'{% endif %}>Chatter</option>
+    <option value="{% url example_news %}" {% if sect == 'news'%}selected='selected'{% endif %}>News</option>
 </select>
 {% endwith %} {# end of sect alias #}

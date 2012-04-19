@@ -32,8 +32,10 @@ layouts up to child templates.
     <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
     {% endblock %}
 
-    <!-- Using a semi-hacked together version of the Modernizr-Respond custom build from http://www.initializr.com/. Added a line I figured out was missing from the automated build of the file. Calling it "respond-1.1.1". -->
+    {% block head-scripts %}
+    <!-- Using a semi-hacked together version of the Modernizr-Respond custom build from http://www.initializr.com/. Added a line I figured out was missing from the automated build of the file. Calling it "respond-1.1.1". See https://github.com/verekia/initializr/issues/43 -->
     <script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
+    {% endblock %}
 </head>
 {% endblock %}
 
@@ -42,11 +44,15 @@ layouts up to child templates.
 {% block content %}{% endblock %}
 
 {% block foot %}
+    
+{% block foot-scripts %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
 <script src="{{STATIC_URL}}js/plugins.js"></script>
 <script src="{{STATIC_URL}}js/script.js"></script>
+{% endblock %}
+
 {% endblock %}
 
 </body>
