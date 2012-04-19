@@ -24,7 +24,7 @@ Context variables:
     </div>
 
     <section class="hot events">
-        <h3 class="section-title">Upcoming Events</h3>
+        <h3 class="hot-section-title">Upcoming Events</h3>
         <ul class="feed events">
         {% for item in hot_feeds.events|slice:"2" %}
             <li class="item">
@@ -37,7 +37,7 @@ Context variables:
 <div class="row-container">
 
     <section class="hot specials">
-        <h3 class="section-title">Top Specials</h3>
+        <h3 class="hot-section-title">Top Specials</h3>
         <ul class="feed specials">
         {% for item in hot_feeds.specials|slice:"3" %}
             <li class="item">
@@ -48,13 +48,13 @@ Context variables:
     </section>
 
     <section class="hot chatter">
-        <h3 class="section-title">Chatterbox</h3>
+        <h3 class="hot-section-title">Chatterbox</h3>
         {% include "chatter_example.html" %}
     </section>
 </div>
 <div class="row-container last">
     <section class="hot news">
-        <h3 class="section-title">News</h3>
+        <h3 class="hot-section-title">News</h3>
         {% include "news_example.html" %}
     </section>
 </div>

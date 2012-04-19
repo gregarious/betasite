@@ -115,13 +115,12 @@ a {
   }
 }
 
-.section-title {
+.hot-section-title {
   //border-bottom: 1px solid #999;
   color: #000;
   font-size: 1em;
   font-style: italic;
   font-weight: bold;
-  //background: fade(#fff, 40%);
   .gradient(#f1f1f1, #f9f9f9);
   margin: 0 0 1em;
   padding: 0.5em;
@@ -133,15 +132,21 @@ a {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
   font-weight: bold;
-  text-shadow: 0.03em 0.03em 0.03em #999;
+  //text-shadow: 0.03em 0.03em 0.03em #999;
   margin: 0;
 }
 
 .single-title {
   font-size: 1.5em;
-  border-bottom: 1px #ccc solid;
+  //border-bottom: 1px #ccc solid;
   margin: 0 0 2%;
   padding: 0 0.3em 0.1em;
+}
+
+.related-section-title {
+  border-bottom: 1px #999 solid;
+  padding: 0 0 0.2em;
+  margin: 0 0 1em;
 }
 
 .sidebar-title {
@@ -287,7 +292,6 @@ button, input[type="submit"] {
 
 .fav-container {
 
-
   a {
     display: block;
     color: #444;
@@ -302,6 +306,10 @@ button, input[type="submit"] {
     &:hover {
       background: #e1e1e1;
       border: 1px solid #999;
+    }
+
+    &:active {
+      background: #eeeeee;
     }
   }
 
@@ -357,7 +365,6 @@ button, input[type="submit"] {
   height: 100%;
   max-width: 150px;
   min-width: 100px;
-  //height: 5em;
 }
 
 #select-sect {
@@ -365,8 +372,6 @@ button, input[type="submit"] {
 }
 
 #scene-nav {
-  //background: #e1e1e1;
-  //background: url("@{static_url}img_store/paper/sand.jpg");
   background: #444;
   .gradient(#777, #444);
   .b-shadow(0.1em, 0.1em, 0.1em, #777); 
@@ -559,7 +564,7 @@ button, input[type="submit"] {
   &:last-child {
     border-bottom: none;
   }
-  
+
   a {
     color: #000;
   }
@@ -672,6 +677,10 @@ button, input[type="submit"] {
 
 .single-thumb-container {
   .column(3);
+
+  .thumbnail {
+    border: 1px solid #444;
+  }
 }
 
 .single-content {
@@ -730,12 +739,6 @@ button, input[type="submit"] {
 
   .section-header {
     .clearfix;
-  }
-
-  .section-title {
-    border-bottom: 1px #999 solid;
-    padding: 0 0 0.2em;
-    margin: 0 0 1em;
   }
 
   &#placeInfo .item-details {
