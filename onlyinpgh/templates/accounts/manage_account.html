@@ -9,7 +9,7 @@ Context variables:
 Note to Greg - I included a public option for neighborhood          
 {% endcomment %}
 
-<h2>Account Settings</h2>
+<h2 class="detail-section-title">Account Settings</h2>
 <form method="post" action="">
 {% csrf_token %}
 
@@ -33,7 +33,7 @@ Note to Greg - I included a public option for neighborhood
 			<div id="gender">
 				{{form.gender}}
 			</div> <!-- gender -->
-			<div id="birth-year-label">
+			<div id="birth-year-label" class="field-label">
 				{{form.birth_year.label_tag}}
 			</div>
 			<div id="birth-year">
@@ -101,6 +101,29 @@ Note to Greg - I included a public option for neighborhood
 </fielset>
 
 <fieldset>
+	<h3>Privacy</h3>
+	{% with form=account_forms.preferences_form %}
+	<div class="field-container">
+		<div class="third">
+			<label name="{{form.public_favorites.html_name}}">Favorited Places</label>
+			{{form.public_favorites}}
+		</div> <!-- public_favorites -->
+
+		<div class="third">
+			<label name="{{form.public_attendance.html_name}}">Events</label>
+			{{form.public_attendance}}
+		</div> <!-- public_attendance -->
+
+		<div class="third">
+			<label name="{{form.public_coupons.html_name}}">My Coupons</label>
+			{{form.public_coupons}}
+		</div> <!-- public_coupons -->
+	</div>
+	{% endwith %}
+</fieldset>
+
+
+<fieldset>
 	<h3>Email and password</h3>
 	{% with form=account_forms.credentials_form %}
 	<div class="field-container">
@@ -139,39 +162,6 @@ Note to Greg - I included a public option for neighborhood
 			{{form.confirm_new_password}}
 		</div>
 	</div> <!-- confirm_new_password -->
-
-	{% endwith %}
-</fieldset>
-
-<fieldset>
-	<h3>Privacy</h3>
-	{% with form=account_forms.preferences_form %}
-	<div class="field-container">
-		<div class="field-label">
-			{{form.public_favorites.label_tag}}
-		</div>
-		<div class="field">
-			{{form.public_favorites}}
-		</div>
-	</div> <!-- public_favorites -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.public_attendance.label_tag}}
-		</div>
-		<div class="field">
-			{{form.public_attendance}}
-		</div>
-	</div> <!-- public_attendance -->
-
-	<div class="field-container last">
-		<div class="field-label">
-			{{form.public_coupons.label_tag}}
-		</div>
-		<div class="field">
-			{{form.public_coupons}}
-		</div>
-	</div> <!-- public_coupons -->
 
 	{% endwith %}
 </fieldset>

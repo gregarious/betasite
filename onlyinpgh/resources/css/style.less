@@ -236,6 +236,14 @@ button, input[type="submit"] {
 
 }
 
+label {
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
 .simple-form {
   input[type="text"], input[type="search"] {
     .column(10);
@@ -270,10 +278,6 @@ button, input[type="submit"] {
 
 .field {
   .column_r(9);
-
-  label {
-    float: right;
-  }
 }
 
 /* Manage Account */
@@ -330,6 +334,13 @@ button, input[type="submit"] {
     }
   }
 
+  label {
+    font-size: 0.9em;
+    font-weight: normal;
+    line-height: 1.8em;
+    text-transform: none;
+  }
+
   margin-left: 2%;
 }
 
@@ -343,8 +354,8 @@ button, input[type="submit"] {
   a {
     display: block;
     color: #444;
-    background: #f9f9f9;
-    border: 1px solid #ccc;
+    //background: #f9f9f9;
+    //border: 1px solid #ccc;
     font-size: 0.8em;
     margin-top: 0.5em;
     padding: 0;
@@ -677,11 +688,11 @@ button, input[type="submit"] {
 /* 10 NAVIGATION ---------- */
 
 .detail-nav {
-  width: 12%;
   float: left;
-  .border-box;
-  
-  li a {
+  margin-top: 2.5em;
+  width: 12%;
+
+  ul li a {
     background: #444;
     color: #fff;
     cursor: pointer;
@@ -691,11 +702,27 @@ button, input[type="submit"] {
           border-radius: 0.5em 0 0 0.5em; 
 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-    margin: 0.3em 0;
-    padding: 0.3em;
+    margin: 0.5em 0;
+    padding: 0.6em;
 
     &.current-page {
-      background-color: @yellow
+      background-color: #f9f9f9;
+      color: #000;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-right: none;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+    }
+
+    &:hover {
+      background: @lgreen;
+    }
+
+    &:active {
+      background: @yellow;
     }
   }
 }
@@ -790,12 +817,13 @@ button, input[type="submit"] {
   display: none;
   width: 88%;
   float: left;
+  border: 1px solid #ccc;
   .border-box();
   background: #f9f9f9;
   .rounded(0.5em);
   padding: 2% 4% 4%;
 
-  &#placeInfo, &.profile {
+  &#placeDetail, &#profile {
     display: block;
   }
 
@@ -803,7 +831,7 @@ button, input[type="submit"] {
     .clearfix;
   }
 
-  /*&#placeInfo */.item-details {
+  &#placeDetail .item-details {
     .column_nm(6);
     margin-bottom: 0.3em;
     li {
@@ -998,6 +1026,10 @@ button, input[type="submit"] {
 
 .right {
   float: right;
+}
+
+.third {
+  .column(4);
 }
 
 /* FOOTER ---------- */

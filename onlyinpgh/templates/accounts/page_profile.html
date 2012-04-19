@@ -16,7 +16,7 @@ Context variables:
     <nav id="profile-nav" class="detail-nav">
         {% include "accounts/nav_tabs.html" with current_panel=C.current_panel %}
     </nav>
-    <section class="detail-section profile">
+    <section class="detail-section" id="profile">
         {% if C.current_panel == 'account' %}
         {% include "accounts/manage_account.html" with account_forms=C.account_forms %}
         {% endif %}

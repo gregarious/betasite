@@ -5,7 +5,7 @@ Context variables:
     [items]:  list of SpecialContext instances
 {% endcomment %}
 
-<h3 class="section-title">Available Specials</h3>
+<h2 class="detail-section-title">Available Specials</h2>
 <ul class="feed my-feed specials">
     {% for item in C.items %}
         <li class="item">{% include "specials/feed_item.html" with C=item %}</li>

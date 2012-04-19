@@ -31,7 +31,7 @@ if(typeof(Scenable) === 'undefined') {
 // }
 
 // Hide/show single place sections
-var pages = ['#placeInfo', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
+var pages = ['#placeDetail', '#placeEvents', '#placeSpecials'];
 
 $.each(pages, function(i, id) {
 	$('a.'+id).click(function() {

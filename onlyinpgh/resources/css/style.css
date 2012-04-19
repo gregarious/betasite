@@ -520,6 +520,13 @@ input[type="submit"]#redeem-button {
   font-size: 2em;
   padding: 5%;
 }
+label {
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
 .simple-form input[type="text"],
 .simple-form input[type="search"] {
   float: left;
@@ -588,9 +595,6 @@ input[type="submit"]#redeem-button {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-.field label {
-  float: right;
 }
 /* Manage Account */
 #gender {
@@ -679,6 +683,13 @@ input[type="submit"]#redeem-button {
   float: left;
   margin-top: 0.4em;
 }
+.tip label,
+.error label {
+  font-size: 0.9em;
+  font-weight: normal;
+  line-height: 1.8em;
+  text-transform: none;
+}
 .error {
   color: #C34327;
   float: left;
@@ -686,8 +697,6 @@ input[type="submit"]#redeem-button {
 .fav-container a {
   display: block;
   color: #444;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
   font-size: 0.8em;
   margin-top: 0.5em;
   padding: 0;
@@ -1132,13 +1141,11 @@ input[type="submit"]#redeem-button {
 }
 /* 10 NAVIGATION ---------- */
 .detail-nav {
-  width: 12%;
   float: left;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  margin-top: 2.5em;
+  width: 12%;
 }
-.detail-nav li a {
+.detail-nav ul li a {
   background: #444;
   color: #fff;
   cursor: pointer;
@@ -1149,11 +1156,24 @@ input[type="submit"]#redeem-button {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  margin: 0.3em 0;
-  padding: 0.3em;
+  margin: 0.5em 0;
+  padding: 0.6em;
 }
-.detail-nav li a.current-page {
-  background-color: #ded57f;
+.detail-nav ul li a.current-page {
+  background-color: #f9f9f9;
+  color: #000;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+.detail-nav ul li a.current-page:hover {
+  background-color: #f9f9f9;
+}
+.detail-nav ul li a:hover {
+  background: #8fd36f;
+}
+.detail-nav ul li a:active {
+  background: #ded57f;
 }
 /*#date-nav-left, #date-nav-right {
   background: url("../img_store/date-nav.png");
@@ -1259,6 +1279,7 @@ input[type="submit"]#redeem-button {
   display: none;
   width: 88%;
   float: left;
+  border: 1px solid #ccc;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1270,10 +1291,9 @@ input[type="submit"]#redeem-button {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: 2% 4% 4%;
-  /*&#placeInfo */
 }
-.detail-section#placeInfo,
-.detail-section.profile {
+.detail-section#placeDetail,
+.detail-section#profile {
   display: block;
 }
 .detail-section .section-header {
@@ -1287,7 +1307,7 @@ input[type="submit"]#redeem-button {
 .detail-section .section-header:after {
   clear: both;
 }
-.detail-section .item-details {
+.detail-section#placeDetail .item-details {
   float: left;
   width: 47.91666666666667%;
   -moz-box-sizing: border-box;
@@ -1295,7 +1315,7 @@ input[type="submit"]#redeem-button {
   box-sizing: border-box;
   margin-bottom: 0.3em;
 }
-.detail-section .item-details li {
+.detail-section#placeDetail .item-details li {
   margin-bottom: 0.5em;
 }
 .detail-section .map-container {
@@ -1532,6 +1552,14 @@ input[type="submit"]#redeem-button {
 .right {
   float: right;
 }
+.third {
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 /* FOOTER ---------- */
 #colophon {
   float: left;
@@ -1647,6 +1675,7 @@ a#siteNews {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-bottom: 2px #888 solid;
+    margin-top: 1em;
   }
   .detail-nav ul {
     *zoom: 1;
@@ -1672,9 +1701,7 @@ a#siteNews {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    color: #000;
     text-shadow: 0.05em 0.05em 0em #fff;
-    background: #6baa55;
     text-align: center;
     font-weight: bold;
     float: left;
@@ -1696,6 +1723,28 @@ a#siteNews {
   }
   .single-title {
     font-size: 1.5em;
+  }
+  .field-label,
+  #birth-year-label label {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 0.5em 0.5em;
+  }
+  .field,
+  #gender,
+  #birth-year {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .field-container {
+    margin: 1em 0;
   }
   .hot {
     width: 100%;
@@ -1956,17 +2005,17 @@ a#siteNews {
   .detail-section .section-title {
     display: none;
   }
-  .detail-section#placeInfo {
+  .detail-section#placeDetail {
     padding: 0 1em 1em;
   }
-  .detail-section#placeInfo .item-details {
+  .detail-section#placeDetail .item-details {
     width: 100%;
     margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .detail-section#placeInfo .item-details ul li {
+  .detail-section#placeDetail .item-details ul li {
     margin: 0;
   }
   .detail-section .map-container {

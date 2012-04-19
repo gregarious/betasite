@@ -5,7 +5,8 @@ Context variables:
     [items]:  list of EventContext instances
 {% endcomment %}
 
-<h3 class="section-title">My Events</h3>
+<h2 class="detail-section-title">My Events</h2>
+
 <ul class="feed my-feed events">
     {% for item in C.items %}
         <li class="item">{% include "events/feed_item.html" with C=item %}</li>

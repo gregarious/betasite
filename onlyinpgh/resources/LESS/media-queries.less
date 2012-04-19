@@ -38,19 +38,19 @@
   .detail-nav {
     .row();
     border-bottom: 2px #888 solid;
+    margin-top: 1em;
     ul {
       .clearfix();
        li a {
         .column(4);
         .tabs(0.5em);
-        color: #000;
+        //color: #000;
         text-shadow: 0.05em 0.05em 0em #fff;
-        background: @mgreen;
+        //background: @mgreen;
         text-align: center;
         font-weight: bold;
         float: left;
       }
-
     }
 
     &#profile-nav {
@@ -66,6 +66,20 @@
 
   .single-title {
     font-size: 1.5em;
+  }
+
+  .field-label, #birth-year-label label {
+    .row();
+    text-align: left;
+    margin: 0 0.5em 0.5em;
+  }
+
+  .field, #gender, #birth-year {
+    .row();
+  }
+
+  .field-container {
+    margin: 1em 0;
   }
 
   .hot {
@@ -302,7 +316,7 @@
       display: none;
     }
 
-    &#placeInfo {
+    &#placeDetail {
       padding: 0 1em 1em;
       .item-details {
         .row();
