@@ -76,6 +76,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
+# DJ1.4: setting now deprecated
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
@@ -161,7 +162,7 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-_timestamp = datetime.datetime.now().strftime('%Y.%m.%d.%H.%M.%S.%f')
+# _timestamp = datetime.datetime.now().strftime('%Y.%m.%d.%H.%M.%S.%f')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

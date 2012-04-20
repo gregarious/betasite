@@ -9,6 +9,7 @@ from onlyinpgh.outsourcing.places import resolve_location
 
 from dateutil import parser as dtparser
 from onlyinpgh.common.utils import imagefile_from_url
+# DJ1.4: use django's make_aware function
 from onlyinpgh.common.utils.time import localize
 
 from django.db import transaction

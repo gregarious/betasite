@@ -1,3 +1,4 @@
+# DJ1.4: delete file
 from pytz import timezone, utc
 from onlyinpgh.settings import TIME_ZONE
 

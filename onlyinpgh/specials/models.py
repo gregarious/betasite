@@ -67,5 +67,6 @@ class Coupon(models.Model):
         After using this function, Coupon should never be used again.
         '''
         self.was_used = True
+        # DJ1.4: use django's now()
         self.dtused = datetime.now()
         self.save()

@@ -36,6 +36,7 @@ def process_time(component, default_tz_str=None):
             # TODO: log unavailable timezone message
             return component.dt
         try:
+            # DJ1.4: change to make_aware function
             return localize(component.dt, tz_str)
         except pytz.exceptions.UnknownTimeZoneError:
             # TODO: log unknown timezone message

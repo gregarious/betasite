@@ -8,6 +8,7 @@ from onlyinpgh.places.models import Place, PlaceMeta
 from onlyinpgh.places.outsourcing import facebook
 from onlyinpgh.outsourcing.apitools.facebook import FacebookAPIError
 
+# DJ1.4: use django's now function here
 import datetime
 from django.db import transaction
 
