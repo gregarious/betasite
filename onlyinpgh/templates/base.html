@@ -29,7 +29,8 @@ layouts up to child templates.
 
     <!-- Stylesheets & Web Fonts -->
     {% block head-stylesheets %}
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?v=1">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
     {% endblock %}
 
     {% block head-scripts %}

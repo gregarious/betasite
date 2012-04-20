@@ -13,157 +13,162 @@ Note to Greg - I included a public option for neighborhood
 <form method="post" action="">
 {% csrf_token %}
 
-<fielset>
-	<h3>Your info</h3>
+<fieldset>
+	<legend>Your info</legend>
 	{% with form=account_forms.profile_form %}
-	<div class="field-container">
-		<div class="field-label">
-			{{form.display_name.label_tag}}
-		</div>
-		<div class="field">
-			{{form.display_name}}
-		</div>
-	</div> <!-- display_name -->
-
-	<div class="field-container">
-		<div class="field-label">
-			{{form.gender.label_tag}}
-		</div>
-		<div class="field">
-			<div id="gender">
-				{{form.gender}}
-			</div> <!-- gender -->
-			<div id="birth-year-label" class="field-label">
-				{{form.birth_year.label_tag}}
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.display_name.label_tag}}
 			</div>
-			<div id="birth-year">
-				{{form.birth_year}}
-			</div> <!-- birth_year -->
-		</div>
-	</div>  <!-- .double -->
+			<div class="field">
+				{{form.display_name}}
+			</div>
+		</li> <!-- display_name -->
 
-	<div class="field-container last">
-		<div class="field-label">
-			{{form.neighborhood.label_tag}}
-		</div>
-		<div class="field">
-			{{form.neighborhood}}
-			<div class="tip public">
-				<!-- {{form.neighborhood_public}} -->
-				<input type="checkbox" checked="checked" />
-				<label name="form.neighborhood_public.html_name">Public</label>
-			</div> <!-- neoghborhood_public -->
-		</div>
-	</div> <!-- neighborhood -->
+		<li class="field-container">
+			<div class="field-label">
+				{{form.gender.label_tag}}
+			</div>
+			<div class="field">
+				<div id="gender">
+					{{form.gender}}
+				</div> <!-- gender -->
+				<div id="birth-year-label" class="field-label">
+					{{form.birth_year.label_tag}}
+				</div>
+				<div id="birth-year">
+					{{form.birth_year}}
+				</div> <!-- birth_year -->
+			</div>
+		</li>  <!-- .double -->
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.avatar_url.label_tag}}
-		</div>
-		<div class="field">
-			{{form.avatar_url}}
-		</div>
-	</div> <!-- avatar_url -->
+		<li class="field-container last">
+			<div class="field-label">
+				{{form.neighborhood.label_tag}}
+			</div>
+			<div class="field">
+				{{form.neighborhood}}
+				<div class="tip public">
+					<!-- {{form.neighborhood_public}} -->
+					<input type="checkbox" checked="checked" />
+					<label name="form.neighborhood_public.html_name">Public</label>
+				</div> <!-- neoghborhood_public -->
+			</div>
+		</li> <!-- neighborhood -->
 
-	<div class="field-container">
-		<div class="field-label">
-			<label name="{{form.fb_id.html_name}}">Facebook ID</label>
-		</div>
-		<div class="field">
-			<div class="social-input">
-	        	{{form.fb_id}}
-	            <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
-	        </div>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.avatar_url.label_tag}}
+			</div>
+			<div class="field">
+				{{form.avatar_url}}
+			</div>
+		</li> <!-- avatar_url -->
 
-			<div class="tip public">
-				{{form.fb_id_public}}
-				<label name="form.fbid_public.html_name">Public</label>
-			</div> <!-- fb_id_public -->
-		</div>
-	</div> <!-- fb_id -->
+		<li class="field-container">
+			<div class="field-label">
+				<label name="{{form.fb_id.html_name}}">Facebook ID</label>
+			</div>
+			<div class="field">
+				<div class="social-input">
+		        	{{form.fb_id}}
+		            <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
+		        </div>
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.twitter_username.label_tag}}
-		</div>
-		<div class="field">
-			<div class="social-input">
-	        	{{form.twitter_username}}
-	            <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
-	        </div>
-			<div class="tip public">
-				{{form.twitter_username_public}}
-				<label name="form.twitter_username_public.html_name">Public</label>
-			</div> <!-- twitter_username_public -->
-		</div>	
-	</div> <!-- twitter_username -->
-	{% endwith %}
-</fielset>
+				<div class="tip public">
+					{{form.fb_id_public}}
+					<label name="form.fbid_public.html_name">Public</label>
+				</div> <!-- fb_id_public -->
+			</div>
+		</li> <!-- fb_id -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.twitter_username.label_tag}}
+			</div>
+			<div class="field">
+				<div class="social-input">
+		        	{{form.twitter_username}}
+		            <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
+		        </div>
+				<div class="tip public">
+					{{form.twitter_username_public}}
+					<label name="form.twitter_username_public.html_name">Public</label>
+				</div> <!-- twitter_username_public -->
+			</div>	
+		</li> <!-- twitter_username -->
+		{% endwith %}
+	</ul>
+</fieldset>
 
 <fieldset>
-	<h3>Privacy</h3>
-	{% with form=account_forms.preferences_form %}
-	<div class="field-container">
-		<div class="third">
-			<label name="{{form.public_favorites.html_name}}">Favorited Places</label>
-			{{form.public_favorites}}
-		</div> <!-- public_favorites -->
+	<legend>Privacy</legend>
+	<ul>
+		{% with form=account_forms.preferences_form %}
+		<li class="field-container">
+			<div class="third">
+				<label name="{{form.public_favorites.html_name}}">Favorited Places</label>
+				{{form.public_favorites}}
+			</div> <!-- public_favorites -->
 
-		<div class="third">
-			<label name="{{form.public_attendance.html_name}}">Events</label>
-			{{form.public_attendance}}
-		</div> <!-- public_attendance -->
+			<div class="third">
+				<label name="{{form.public_attendance.html_name}}">Events</label>
+				{{form.public_attendance}}
+			</div> <!-- public_attendance -->
 
-		<div class="third">
-			<label name="{{form.public_coupons.html_name}}">My Coupons</label>
-			{{form.public_coupons}}
-		</div> <!-- public_coupons -->
-	</div>
-	{% endwith %}
+			<div class="third">
+				<label name="{{form.public_coupons.html_name}}">My Coupons</label>
+				{{form.public_coupons}}
+			</div> <!-- public_coupons -->
+		</li>
+		{% endwith %}
+	</ul>
 </fieldset>
 
 
 <fieldset>
-	<h3>Email and password</h3>
-	{% with form=account_forms.credentials_form %}
-	<div class="field-container">
-		<div class="field-label">
-			{{form.email.label_tag}}
-		</div>
-		<div class="field">
-			{{form.email}}
-		</div>
-	</div> <!-- email -->
+	<legend>Email and password</legend>
+	<ul>
+		{% with form=account_forms.credentials_form %}
+		<li class="field-container">
+			<div class="field-label">
+				{{form.email.label_tag}}
+			</div>
+			<div class="field">
+				{{form.email}}
+			</div>
+		</li> <!-- email -->
 
-	<h4>Change your password</h4>
-	<div class="field-container">
-		<div class="field-label">
-			{{form.current_password.label_tag}}
-		</div>
-		<div class="field">
-			{{form.current_password}}
-		</div>
-	</div> <!-- current_password -->
+		<legend>Change your password</legend>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.current_password.label_tag}}
+			</div>
+			<div class="field">
+				{{form.current_password}}
+			</div>
+		</li> <!-- current_password -->
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.new_password.label_tag}}
-		</div>
-		<div class="field">
-			{{form.new_password}}
-		</div>
-	</div> <!-- new_password -->
+		<li class="field-container">
+			<div class="field-label">
+				{{form.new_password.label_tag}}
+			</div>
+			<div class="field">
+				{{form.new_password}}
+			</div>
+		</li> <!-- new_password -->
 
-	<div class="field-container last">
-		<div class="field-label">
-			{{form.confirm_new_password.label_tag}}
-		</div>
-		<div class="field">
-			{{form.confirm_new_password}}
-		</div>
-	</div> <!-- confirm_new_password -->
-
-	{% endwith %}
+		<li class="field-container last">
+			<div class="field-label">
+				{{form.confirm_new_password.label_tag}}
+			</div>
+			<div class="field">
+				{{form.confirm_new_password}}
+			</div>
+		</li> <!-- confirm_new_password -->
+		{% endwith %}
+	</ul>
 </fieldset>
 
 <input type="submit" value="Save Changes" class="right"/>

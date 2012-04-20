@@ -316,6 +316,9 @@ a:visited {
 #site-title a:visited {
   color: #fff;
 }
+#now {
+  font-style: italic;
+}
 .hot-section-title {
   color: #000;
   font-size: 1em;
@@ -418,7 +421,7 @@ a:visited {
   color: #AAAAAA;
 }
 form {
-  margin: 1em auto;
+  margin: 0 auto 1em;
   max-width: 600px;
   *zoom: 1;
 }
@@ -528,6 +531,28 @@ label {
   text-transform: uppercase;
   padding-top: 0.1em;
 }
+fieldset ul {
+  *zoom: 1;
+}
+fieldset ul:before,
+fieldset ul:after {
+  content: "";
+  display: table;
+}
+fieldset ul:after {
+  clear: both;
+}
+legend {
+  float: left;
+  width: 97.91666666666666%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0 0 1em;
+  padding: 0.5em;
+}
 .simple-form input[type="text"],
 .simple-form input[type="search"] {
   float: left;
@@ -546,16 +571,13 @@ label {
   box-sizing: border-box;
 }
 .site-search-container {
-  *zoom: 1;
+  float: left;
+  width: 97.91666666666666%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin-top: 1em;
-}
-.site-search-container:before,
-.site-search-container:after {
-  content: "";
-  display: table;
-}
-.site-search-container:after {
-  clear: both;
 }
 .field-container {
   width: 100%;
@@ -717,6 +739,7 @@ label {
 }
 .fav-container .status {
   font-size: 1.2em;
+  margin-right: 0.2em;
 }
 .fav-container .remove .status {
   color: #444;
@@ -1343,8 +1366,8 @@ label {
 .tag-list li {
   color: #888;
   float: left;
-  margin: 0.1em 0.4em;
-  padding: 0.1em 0.3em;
+  margin: 0.1em 0.2em;
+  padding: 0.1em 0.2em;
   text-decoration: none;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1357,25 +1380,7 @@ label {
   color: #888;
 }
 .tag-list li:hover {
-  background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaaaaa), to(#cccccc));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #aaaaaa, #cccccc);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-
-  background-image: -moz-linear-gradient(top, #aaaaaa, #cccccc);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #aaaaaa, #cccccc);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #aaaaaa, #cccccc);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #aaaaaa, #cccccc);
-  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
-
+  background: #bbb;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -1841,8 +1846,8 @@ a#siteNews {
     top: 2em;
   }
   #scene-nav .main-menu {
-    float: left;
-    width: 64.58333333333334%;
+    float: right;
+    width: 72.91666666666666%;
     margin: 0 1.0416666666666665%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1855,9 +1860,6 @@ a#siteNews {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  }
-  #logo img {
-    height: 100%;
   }
   .item-details {
     font-size: 0.9em;
@@ -1910,20 +1912,18 @@ a#siteNews {
     margin: 0;
     text-align: left;
   }
-  .feed {
-    padding: 0.5em;
-  }
   .item {
     width: 100%;
     margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px #8fd36f solid;
+    border: 4px #6baa55 solid;
+    border-bottom: 0;
     -webkit-box-shadow: 0.1em 0.1em 0.1em #444444;
     -moz-box-shadow: 0.1em 0.1em 0.1em #444444;
     box-shadow: 0.1em 0.1em 0.1em #444444;
-    margin: 0.5em 0;
+    margin: 0;
     background-color: #f9f9f9;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ffffff));
     /* Saf4+, Chrome */
@@ -1944,10 +1944,14 @@ a#siteNews {
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
   
   }
+  .item:last-child {
+    border-bottom: 4px #6baa55 solid;
+  }
   .item:hover {
     background: #fff;
   }
-  .section-title {
+  .hot-section-title {
+    margin: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -2091,7 +2095,12 @@ a#siteNews {
   .item-title {
     font-size: 0.9em;
   }
+  .feed-content .map-container {
+    height: 200px;
+  }
 }
 @media only screen and (max-width: 320px) {
-  
+  .feed-content .map-container {
+    height: 150px;
+  }
 }
