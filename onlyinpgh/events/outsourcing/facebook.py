@@ -9,8 +9,7 @@ from onlyinpgh.outsourcing.places import resolve_location
 
 from dateutil import parser as dtparser
 from onlyinpgh.common.utils import imagefile_from_url
-# DJ1.4: use django's make_aware function
-from onlyinpgh.common.utils.time import localize
+from django.utils.timezone import make_aware
 
 from django.db import transaction
 from django.db.models import Q
@@ -48,14 +47,14 @@ class FBEvent(object):
         if not dtstart_str:
             return None
         # currently assuming all datetimes are in Eastern (time is relative to event location in fb data)
-        return localize(dtparser.parse(dtstart_str), 'US/Eastern')
+        return make_aware(dtparser.parse(dtstart_str), 'US/Eastern')
 
     def get_dtend(self):
         dtend_str = self.data.get('end_time')
         if not dtend_str:
             return None
         # currently assuming all datetimes are in Eastern (time is relative to event location in fb data)
-        return localize(dtparser.parse(dtend_str), 'US/Eastern')
+        return make_aware(dtparser.parse(dtend_str), 'US/Eastern')
 
     def get_place(self, allow_import=True):
         '''

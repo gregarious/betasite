@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 
-from datetime import datetime
+from django.utils.timezone import now
 
 
 class Special(models.Model, ViewModel):
@@ -67,6 +67,5 @@ class Coupon(models.Model):
         After using this function, Coupon should never be used again.
         '''
         self.was_used = True
-        # DJ1.4: use django's now()
-        self.dtused = datetime.now()
+        self.dtused = now()
         self.save()

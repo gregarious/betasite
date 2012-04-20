@@ -8,8 +8,7 @@ from onlyinpgh.places.models import Place, PlaceMeta
 from onlyinpgh.places.outsourcing import facebook
 from onlyinpgh.outsourcing.apitools.facebook import FacebookAPIError
 
-# DJ1.4: use django's now function here
-import datetime
+from django.utils.timezone import now
 from django.db import transaction
 
 import logging
@@ -37,9 +36,9 @@ def commit_place(place, corporate=False):
             last_synced = PlaceMeta.objects.get(place=place, key='fb_last_synced')
         except PlaceMeta.DoesNotExist:
             PlaceMeta.objects.create(place=place, key='fb_last_synced',
-                                        value=datetime.datetime.now().isoformat())
+                                        value=now().isoformat())
         else:
-            last_synced.value = datetime.datetime.now().isoformat()
+            last_synced.value = now().isoformat()
             last_synced.save()
 
 

@@ -1,6 +1,6 @@
 from onlyinpgh.events.models import Event, Role, EventMeta, ICalendarFeed
 
-from onlyinpgh.common.utils.time import localize
+from django.utils.timezone import make_aware
 from django.db import transaction
 
 import icalendar
@@ -36,8 +36,7 @@ def process_time(component, default_tz_str=None):
             # TODO: log unavailable timezone message
             return component.dt
         try:
-            # DJ1.4: change to make_aware function
-            return localize(component.dt, tz_str)
+            return make_aware(component.dt, tz_str)
         except pytz.exceptions.UnknownTimeZoneError:
             # TODO: log unknown timezone message
             return component.dt
