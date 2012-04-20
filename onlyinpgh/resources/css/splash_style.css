@@ -264,12 +264,14 @@ h1 {
   margin: 0;
   padding-bottom: 0;
   text-align: center;
-  text-shadow: 0.05em 0.05em 0 #ffffff;
+  text-shadow: 0.05em 0.05em 0 #999;
 }
-h2 {
+h2,
+.keep-up {
   font-weight: normal;
+  font-size: 1.5em;
   margin-top: 0.4em;
-  text-shadow: 0.04em 0.04em 0 #ffffff;
+  text-shadow: 0.04em 0.04em 0 #999;
 }
 .oakland-heading {
   font-family: 'DroidSerifItalic', Georgia, serif;
@@ -280,7 +282,7 @@ h3 {
   font-style: italic;
   font-weight: normal;
   text-align: left;
-  text-shadow: 0.04em 0.04em 0 #ffffff;
+  text-shadow: 0.04em 0.04em 0 #999;
   font-family: 'DroidSerifBoldItalic', serif;
   font-style: normal;
 }
@@ -299,7 +301,7 @@ a:visited {
 p {
   color: #222;
   margin: 1em 0;
-  text-shadow: 0.04em 0.04em 0 #ffffff;
+  text-shadow: 0.01em 0.01em 0 #ffffff;
 }
 img {
   width: 100%;
@@ -477,6 +479,15 @@ input[type="submit"]:active {
 .wrap:after {
   clear: both;
 }
+.wrap#desktop {
+  max-width: 1140px;
+}
+.wrap#desktop h1 {
+  font-size: 2em;
+}
+.wrap#desktop #site-header img {
+  max-width: 960px;
+}
 #site-header {
   padding: 3% 0;
   margin-bottom: 2%;
@@ -487,12 +498,28 @@ input[type="submit"]:active {
   margin: auto;
   max-width: 500px;
 }
+#oakland {
+  padding-right: 3%;
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-right: 1px #fff solid;
+}
 #oakland .screenshot {
   display: block;
   margin: auto;
 }
 #company {
-  padding-left: 3%;
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 1%;
 }
 .suggest-scene {
   margin-top: 5%;
@@ -533,6 +560,10 @@ input[type="submit"]:active {
 .icon {
   float: right;
 }
+/*.keep-up {
+	padding: 1em;
+	background: #fff;
+}*/
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
@@ -547,12 +578,22 @@ input[type="submit"]:active {
     box-sizing: border-box;
   }
   #oakland {
+    border-right: none;
     border-bottom: 1px solid #fff;
     padding-bottom: 5%;
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
   #company {
-    border: none;
     padding: 5% 0 0;
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 520px) {
