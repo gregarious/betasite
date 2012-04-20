@@ -92,7 +92,7 @@ Context variables
         </div>
         <div class="field">
             {{ form.tags }}
-            <p class="tip">Add keywords or search terms like 'theater, culture, ballet'. Separate with commas.
+            <p class="tip">Add keywords or search terms like 'theater, culture, ballet'. <strong>Separate tags with commas.</strong> Use hyphens for a tag with multiple words (for example, 'happy-hour').</p>
             {% for err in form.tags.errors %}
                 <p class="tip error">{{ err }}</p><br />
             {% endfor %}

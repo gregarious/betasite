@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('onlyinpgh.accounts.views',
     url(r'^manage/$', 'page_manage_account', name='account-manage'),
