@@ -1,6 +1,0 @@
-Enable clickjacking protection with 'django.middleware.clickjacking.XFrameOptionsMiddleware', in MIDDLEWARE_CLASSES
-
-Do a batch replace on django.conf.urls to django.conf.urls
-
-Read https://docs.djangoproject.com/en/dev/topics/security/
-
