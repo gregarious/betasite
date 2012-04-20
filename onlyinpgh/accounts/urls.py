@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('onlyinpgh.accounts.views',
     url(r'^profile/$', 'page_profile', name='my-profile'),
