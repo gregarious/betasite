@@ -9,13 +9,17 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding unique constraint on 'Tag', fields ['name']
-        db.create_unique('tags_tag', ['name'])
+        # GDN: FOR non-mysql ONLY! See notes in 0001.
+        if db.backend_name != 'mysql':
+            db.create_unique('tags_tag', ['name'])
 
 
     def backwards(self, orm):
         
         # Removing unique constraint on 'Tag', fields ['name']
-        db.delete_unique('tags_tag', ['name'])
+        # GDN: FOR non-mysql ONLY! See notes in 0001.
+        if db.backend_name != 'mysql':
+            db.delete_unique('tags_tag', ['name'])
 
 
     models = {

@@ -26,7 +26,7 @@ PageContext constructor.
     </div>        
     {% endwith %}
     <aside id="site-sidebar" role="complementary">
-		{% include "sidebar_base.html" with C=sidebar_context %}
+        {% block sidebar %}{% endblock %}
 	</aside>
 </div>
 

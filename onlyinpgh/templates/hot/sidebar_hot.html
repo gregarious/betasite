@@ -1,0 +1,28 @@
+{% extends "sidebar_base.html" %}
+
+{% block sidebar_main %}
+<section class="widget">
+	<h3 class="widget-title">From Our Mission</h3>
+	<p>Pittsburgh is a word-of-mouth town, there's no denying it. By giving businesses and users a direct line of communication, the niches and nuances of Pittsburgh's communities become more available to everyone.</p>
+</section>
+{% endblock %}
+
+{% block sidebar_survey %}
+	<p>Would you like to publish your activity on Scenable to Facebook and Twitter?</p>
+	<div class="radio-container">
+		<input type="radio" /><label>Definitely!</label>
+	</div>
+	<div class="radio-container">
+		<input type="radio" /><label>No thanks</label>
+	</div>
+	<div class="radio-container">
+		<input type="radio" /><label>Don't care</label>
+	</div>
+{% endblock %}
+
+{% block sidebar_trivia %}
+	<p>Oakland is Pennsylvania's third largest 'downtown'? Only Center City Philidelphia and Downtown Pittsburgh can claim more economic and social activity than Oakland.</p>
+	
+	<img src="{{STATIC_URL}}img_store/Oakland/Oakland_Restaurants/IMG_1076.jpg" />
+	
+{% endblock %}
