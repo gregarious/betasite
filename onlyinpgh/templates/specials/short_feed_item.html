@@ -16,9 +16,8 @@ Compatible contexts: SpecialContext
 			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
 		{% endif %}
 		{% if special.description %}
-			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
+			<li class="description meta">{{ special.description|truncatewords:9|urlizetrunc:20 }}</li>
 		{% endif %}	
-
 	</ul>
 </section>
 {% endwith %}

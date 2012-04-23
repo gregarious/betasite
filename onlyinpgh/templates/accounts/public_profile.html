@@ -1,13 +1,9 @@
-{% extends "accounts/page_account_panel.html" %}
 {% comment %}
 Template for user's public profile.
 
 Context variables:
-    C:
-        profile: PublicProfile context
+    profile: PublicProfile context instance
 {% endcomment %}
-
-{% block panel-content %}
 
 {% load thumbnail %}
 <header class="single-header">
@@ -35,5 +31,3 @@ Context variables:
         </div>
     </section>
 </header>
-
-{% endblock %}
