@@ -3,6 +3,11 @@
 {% load compressed %}
 {% block head-stylesheets %}
 <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
+<style>
+    .focused {
+        background-color: #999;
+    }
+</style>
 {% endblock %}
 
 {% block head-scripts %}
@@ -13,9 +18,9 @@
 
 {% block content %}
 <div id='feed'>
-    <div>Number 1</div>
-    <div>Number 2</div>
-    <div>Number 3</div>
+    {% for place in places %}
+    <div>{{place.name}}</div>
+    {% endfor %}
 </div>
 <div id="map_canvas" style="width:100%; height:100%"></div>
 {% endblock %}
@@ -30,30 +35,15 @@
 <script src="{{STATIC_URL}}js/mapscript.js"></script>
 <script type="text/javascript">
 $(function(){
-    console.log('hi');
     var theMap = new window.Scenable.feed.Map(document.getElementById('map_canvas'), 40.44417, -79.94583);
-    theMap.addItem(40.44717, -79.94583, '/static/img/markers/place-marker.png','number 1');
-    theMap.addItem(40.44417, -79.94583, '/static/img/markers/place-marker.png','number 2');
-    theMap.addItem(40.44117, -79.94583, '/static/img/markers/place-marker.png','number 3');
+    _.each({{places_json|safe}}, function(place){
+        theMap.addItem(
+            place.location.latitude, 
+            place.location.longitude, 
+            '/static/img/markers/place-marker.png', 
+            window.TPL.placeItem(place));
+    });
     window.Scenable.feed.linkFeedToMap($('#feed').children(),theMap);
-    {% if places_json %}
-    // var allPlaceData = {{places_json|safe}};
-    // _.each(allPlaceData, function(data) {
-    //     window.Scenable.map.addPlace(theMap, data);
-    // });
-    {% endif %}
-
-    // $('#newplace').click(function(){
-    //     $.getJSON('/testbed/ajax/newplace', function(data) {
-    //         window.Scenable.map.addPlace(theMap, data);
-    //     });
-    // });
-
-    // $('#newevent').click(function(){
-    //     $.getJSON('/testbed/ajax/newevent', function(data) {
-    //         window.Scenable.map.addEvent(theMap, data);
-    //     });
-    // });
 });
 </script>
 {% endblock %}

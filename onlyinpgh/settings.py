@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'pipeline',
+    'tastypie',
     'django_extensions',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
