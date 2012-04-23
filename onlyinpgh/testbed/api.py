@@ -20,6 +20,16 @@ class LocationResource(ModelResource):
         excludes = ('id',)
 
 
+class PlaceFeedResource(ModelResource):
+    class Meta:
+        queryset = Place.objects.all()
+        allowed_methods = ['get']
+        fields = ('name', 'location', 'tags', 'image',)
+
+    location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
+    tags = fields.ManyToManyField(TagResource, 'tags', full=True)
+
+
 class PlaceResource(ModelResource):
     class Meta:
         queryset = Place.objects.all()
