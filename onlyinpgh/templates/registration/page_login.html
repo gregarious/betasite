@@ -4,3 +4,7 @@
 <h1 class="page-title">Login to your Account</h1>
 {% include "registration/login_form.html" with form=C.form form_action=C.form_action next=C.next %}
 {% endblock %}
+
+{% block sidebar %}
+{% include "registration/sidebar_login.html" %}
+{% endblock %}

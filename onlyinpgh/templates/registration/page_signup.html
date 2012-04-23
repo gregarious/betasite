@@ -4,3 +4,7 @@
 <h1 class="page-title">Sign up for a Scenable account</h1>
 {% include "registration/signup_form.html" with registration_form=C.registration_form profile_form=C.profile_form form_action=C.form_action  %}
 {% endblock %}
+
+{% block sidebar %}
+{% include "registration/sidebar_signup.html" %}
+{% endblock %}

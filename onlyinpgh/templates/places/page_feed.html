@@ -39,7 +39,10 @@ In footer:
     {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
     {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
+{% endblock %}
 
+{% block sidebar %}
+{% include "places/sidebar_place_feed.html" %}
 {% endblock %}
 
 {% block foot-inlines %}

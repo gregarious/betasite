@@ -42,10 +42,10 @@ p {
 }
 
 a {
-  color: @dblue;
+  color: @red;
 
   &:hover {
-    color: @lgreen;
+    color: @dgreen;
   }
 
   &:active {
@@ -138,7 +138,8 @@ a {
 
 .page-title {
   border-bottom: 1px #ccc solid;
-  margin-top: 1em 0.5em 2em;
+  font-size: 1.5em;
+  margin: 1em 0.5em 2em;
   padding-bottom: 0.5em;
 }
 
@@ -157,12 +158,13 @@ a {
 
 .sidebar-title {
   .blok();
+  .b-shadow(0.1em, 0.1em, 0.3em, #444);
   color: #fff;
   font-weight: normal;
   .gradient(@lgreen, @mgreen);
   padding: 0.6em 0.5em 0.5em 2.5em;
   position: relative;
-  right: 1.5em;
+  right: 1.7em;
   .rounded(0.2em);
   text-shadow: 0.05em 0.05em 0.1em #222;
   width: 96%;
@@ -226,7 +228,6 @@ button, input[type="submit"], .btn {
     background: @ddgreen;
     top: 1px;
     left: 1px;
-    .b-shadow(0, 0, 0, #fff);
   }
 
   &#redeem-button {
@@ -383,17 +384,17 @@ legend {
     //border: 1px solid #ccc;
     font-size: 0.8em;
     margin-top: 0.5em;
-    padding: 0;
+    padding: 0.1em;
     .rounded(0.4em);
     text-align: center;
   
     &:hover {
-      background: #e1e1e1;
-      border: 1px solid #999;
+      color: @mgreen;
+      //border: 1px solid #999;
     }
 
     &:active {
-      background: #eeeeee;
+      color: @teal;
     }
   }
 
@@ -468,7 +469,7 @@ legend {
 #scene-nav {
   background: #444;
   .gradient(#777, #444);
-  .b-shadow(0.1em, 0.1em, 0.1em, #777); 
+  .b-shadow(0em, 0.1em, 0.2em, #000);
   .fixed();
   height: 5.5em;
   max-width: 1140px;
@@ -497,7 +498,11 @@ legend {
         behavior: url("@{static_url}/PIE.htc");
         
         &.current-page {
-          background-color: @yellow;
+          background-color: @lgreen;
+
+          &:hover {
+            background-color: @lgreen;
+          }
         }
 
         .container {
@@ -515,7 +520,7 @@ legend {
         }
   
         &:active {
-          background-color: @lgreen;
+          background-color: @mgreen;
         }
       }
     }
@@ -570,6 +575,7 @@ legend {
   .rounded(0.5em);
   //background: fade(#fff, 90%);
   background: /*fade(#fff, 90%) */url("@{static_url}img/textures/white-trans.png");
+  .b-shadow(0.1em, 0.1em, 0.3em, #444);
   .column(4.5);
   position: absolute;
   top: 5em;
@@ -580,6 +586,12 @@ legend {
   img {
     width: 100%;
     height: auto;
+  }
+
+  #get-in-touch {
+    img {
+      width: auto;
+    }
   }
 }
 
@@ -947,12 +959,6 @@ legend {
     margin-right: 0;
   }
 
-  &.specials {
-    .item-thumb {
-      font-size: 0.8em;
-    }
-  }
-
   &.news {
     .row();
   }
@@ -1000,6 +1006,24 @@ legend {
   }
   font-size: 1.2em;
   //padding-bottom: 0.3em;
+}
+
+.feed.specials {
+   /* Need to consolidate this after we know the links for grabbit buttons */
+    .btn-primary {
+      padding: 0.1em;
+      //.rounded(0);
+      background: @yellow;
+
+      &:active {
+        top: 0;
+        left: 0;
+      }
+
+      img {
+        width:70%;
+      }
+    }
 }
 
 /*.specials {
@@ -1097,11 +1121,11 @@ legend {
   .rounded(5px);
 }
 
-.left {
+.left, .back {
   float: left;
 }
 
-.right {
+.right, .next {
   float: right;
 }
 
