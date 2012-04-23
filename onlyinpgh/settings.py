@@ -198,7 +198,6 @@ SERVER_EMAIL = settings_local.SERVER_EMAIL
 SEND_BROKEN_LINK_EMAILS = True
 
 # pipeline settings
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
-PIPELINE_TEMPLATE_NAMESPACE = 'window.TPL'
-PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor')
+from settings_pipeline import *
+# this is defined outside so we can use to_abspath
+PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor') 
