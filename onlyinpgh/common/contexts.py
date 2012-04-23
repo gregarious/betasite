@@ -5,7 +5,7 @@ class PageContext(RequestContext):
     '''
     Used for main context variable for every main site page.
     '''
-    def __init__(self, request, current_section, content_dict={}, **kwargs):
+    def __init__(self, request, current_section, content_dict={}, footer_dict={}, **kwargs):
         '''
         current_section: string among 'places', 'events', 'news', etc...
         content_dict: context variables for main_context
@@ -16,7 +16,8 @@ class PageContext(RequestContext):
         })
         sidebar_context = Context({})
         main_context = Context(content_dict)
-        footer_context = Context({})
+        footer_context = Context(footer_dict)
+        print footer_context
 
         super(PageContext, self).__init__(request, dict(
             header_context=header_context,

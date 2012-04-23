@@ -77,13 +77,15 @@ def page_feed(request):
         page = paginator.page(paginator.num_pages)
 
     items = [PlaceContext(place, user=request.user) for place in page.object_list]
-    items_json = serialize_resources(PlaceFeedResource(), page.object_list, request=request)
+    main = {'items': items,
+            'prev_p': page.previous_page_number() if page.has_previous() else None,
+            'next_p': page.next_page_number() if page.has_next() else None}
 
-    page_context = PageContext(request, 'places', dict(
-        items=items,
-        items_json=items_json,
-        prev_p=page.previous_page_number() if page.has_previous() else None,
-        next_p=page.next_page_number() if page.has_next() else None))
+    # pass in the items in json form to display on map
+    items_json = serialize_resources(PlaceFeedResource(), page.object_list, request=request)
+    foot = {'items_json': items_json}
+    page_context = PageContext(request, 'places',
+        content_dict=main, footer_dict=foot)
     return render_page('places/page_feed.html', page_context)
 
 

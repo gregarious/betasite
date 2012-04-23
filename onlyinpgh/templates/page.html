@@ -32,13 +32,16 @@ PageContext constructor.
 {% endblock %}
 
 {% block foot %}
+{% with C=footer_context %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 {% compressed_js 'all_libs' %}
+{% compressed_js 'templates' %}
+{# TODO: get pipeline to handle this when including a map script #}
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false"></script>
 {% compressed_js 'site_scripts' %}
 
 {# block for inline scripts: used for bootstraping models, simple-DOM related one-liners, etc. #}
-{% block foot-inlines %}
-{% endblock %}
-
+{% block foot-inlines %}{% endblock %}
+{% endwith %}
 {% endblock %}
