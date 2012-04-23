@@ -2,6 +2,8 @@ from django.shortcuts import render
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
+from onlyinpgh.common.utils.jsontools import json_response
+import json
 
 
 def home(request):
@@ -9,8 +11,47 @@ def home(request):
 
 
 def maps(request):
+    places = [{
+        'name': p.name,
+        'location': {
+            'address': p.location.address,
+            'latitude': float(p.location.latitude),
+            'longitude': float(p.location.longitude),
+        },
+    } for p in Place.listed_objects.order_by('?')[:10] if p.location and p.location.is_geocoded()]
+
     return render(request, 'testbed/maps.html', {
-        'places': [p for p in Place.listed_objects.order_by('?')[:10] if p.location and p.location.is_geocoded()],
-        'events': [e for e in Event.objects.order_by('?') if e.place and e.place.location and e.place.location.is_geocoded()],
-        'specials': [s for s in Special.objects.order_by('?') if s.place and s.place.location and s.place.location.is_geocoded()],
-        })
+        'places_json': None  # json.dumps(places)
+    })
+
+
+def pipe(request):
+    return render(request, 'testbed/pipe.html')
+
+
+@json_response
+def ajax_newplace(request):
+    p = Place.objects.exclude(location=None).order_by('?')[0]
+    return {
+        'name': p.name,
+        'location': {
+            'address': p.location.address,
+            'latitude': str(p.location.latitude),
+            'longitude': str(p.location.longitude)
+        },
+    }
+
+
+@json_response
+def ajax_newevent(request):
+    e = Event.objects.exclude(place=None).order_by('?')[0]
+    return {
+        'name': e.name,
+        'place': {
+            'location': {
+                'address': e.place.location.address,
+                'latitude': str(e.place.location.latitude),
+                'longitude': str(e.place.location.longitude)
+            } if e.place.location else {},
+        },
+    }

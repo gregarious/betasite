@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load compressed %}
 {% block head-stylesheets %}
 <link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
 {% endblock %}
@@ -8,112 +9,51 @@
 <script type="text/javascript"
   src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false">
 </script>
-<script type="text/javascript">
-
-function initialize() {
-    // default UI has street view, map type, and pan control enabled, disable these
-    var myOptions = {
-        center: new google.maps.LatLng(40.44417, -79.94583),
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        panControl: false,
-        mapTypeControl: false,
-        streetViewControl: false,
-        zoomControl: true,
-        zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.SMALL
-        }
-    };
-    
-    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-    {% for place in places %}
-    window.setTimeout(function(){
-        var lat = parseFloat('{{place.location.latitude}}'), lng = parseFloat('{{place.location.longitude}}');
-        if( isNaN(lat) || isNaN(lng) ) {
-            console.log('skipping place with no geocoding (pid={{place.id}})');
-        }
-        else {
-            console.log('adding marker for "{{place.name}}"');
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                icon: '{{STATIC_URL}}/img/markers/place-marker.png',
-                animation: google.maps.Animation.DROP,
-                map: map
-            });
-            var iw = new google.maps.InfoWindow({
-                content: '<strong>{{place.name|escapejs}}</strong><br><em>{{place.location.address}}</em><br>{% thumbnail place.image "50x50" crop="center" as im%}<img src={{im.url|escapejs}}>{%endthumbnail%}'
-            });
-            google.maps.event.addListener(marker, 'click', function(){
-                iw.open(map,marker);
-            });
-        }},
-        300+150*{{forloop.counter}});
-    {% endfor %}
-
-    {% for special in specials %}
-    window.setTimeout(function(){
-        var lat = parseFloat('{{special.place.location.latitude}}'), lng = parseFloat('{{special.place.location.longitude}}');
-        if( isNaN(lat) || isNaN(lng) ) {
-            console.log('skipping special with no geocoding (sid={{special.id}})');
-        }
-        else {
-            console.log('adding marker for "{{special.name}}"');
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                icon: '{{STATIC_URL}}/img/markers/special-marker.png',
-                animation: google.maps.Animation.DROP,
-                map: map,
-            });
-            var iw = new google.maps.InfoWindow({
-                content: '<strong>{{special.title|escapejs}}</strong><br><em>at {{special.place.name|escapejs}}</em>'
-            });
-            google.maps.event.addListener(marker, 'click', function(){
-                iw.open(map,marker);
-            });
-
-        }},
-        350+150*{{forloop.counter}});
-    {% endfor %}
-
-    {% for event in events %}
-    window.setTimeout(function(){
-        var lat = parseFloat('{{event.place.location.latitude}}'), lng = parseFloat('{{event.place.location.longitude}}');
-        if( isNaN(lat) || isNaN(lng) ) {
-            console.log('skipping event with no geocoding (eid={{event.id}})');
-        }
-        else {
-            console.log('adding marker for "{{event.name}}"');
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                icon: '{{STATIC_URL}}/img/markers/event-marker.png',
-                animation: google.maps.Animation.DROP,
-                map: map
-            });
-            var iw = new google.maps.InfoWindow({
-                content: '<strong>{{event.name|escapejs}}</strong><br><em>at {{event.place.name|escapejs}}</em><br>{% thumbnail event.image "100x100" crop="center" as im%}<img src={{im.url|escapejs}}>{%endthumbnail%}'
-            });
-            google.maps.event.addListener(marker, 'click', function(){
-                iw.open(map,marker);
-            });
-        }},
-        400+150*{{forloop.counter}});
-    {% endfor %}
-}
-</script>
 {% endblock %}
 
 {% block content %}
+<div id='feed'>
+    <div>Number 1</div>
+    <div>Number 2</div>
+    <div>Number 3</div>
+</div>
 <div id="map_canvas" style="width:100%; height:100%"></div>
 {% endblock %}
 
 {% block foot-libs %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
-
+ <!-- 
+<script type="text/javascript" src="{{STATIC_URL}}js/plugins.js"></script> -->
+{% compressed_js 'all_libs' %}
+{% compressed_js 'templates' %}
+<script src="{{STATIC_URL}}js/mapscript.js"></script>
 <script type="text/javascript">
 $(function(){
-    initialize();
-})
+    console.log('hi');
+    var theMap = new window.Scenable.feed.Map(document.getElementById('map_canvas'), 40.44417, -79.94583);
+    theMap.addItem(40.44717, -79.94583, '/static/img/markers/place-marker.png','number 1');
+    theMap.addItem(40.44417, -79.94583, '/static/img/markers/place-marker.png','number 2');
+    theMap.addItem(40.44117, -79.94583, '/static/img/markers/place-marker.png','number 3');
+    window.Scenable.feed.linkFeedToMap($('#feed').children(),theMap);
+    {% if places_json %}
+    // var allPlaceData = {{places_json|safe}};
+    // _.each(allPlaceData, function(data) {
+    //     window.Scenable.map.addPlace(theMap, data);
+    // });
+    {% endif %}
+
+    // $('#newplace').click(function(){
+    //     $.getJSON('/testbed/ajax/newplace', function(data) {
+    //         window.Scenable.map.addPlace(theMap, data);
+    //     });
+    // });
+
+    // $('#newevent').click(function(){
+    //     $.getJSON('/testbed/ajax/newevent', function(data) {
+    //         window.Scenable.map.addEvent(theMap, data);
+    //     });
+    // });
+});
 </script>
 {% endblock %}
