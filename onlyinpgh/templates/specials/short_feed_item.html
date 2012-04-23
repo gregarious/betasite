@@ -12,12 +12,11 @@ Compatible contexts: SpecialContext
 <section class="item-content">
 	<h4 class="item-title"><a href="{% url special-detail special.id %}">{{special.title|truncatewords:7}}</a></h4>
 	<ul class="item-details">
-		{% if special.dtexpires %}
-			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
-		{% endif %}
 		{% if special.description %}
-			<li class="description meta">{{ special.description|truncatewords:9|urlizetrunc:20 }}</li>
+			<li class="meta">at {{special.place.name}}</li>
 		{% endif %}	
 	</ul>
 </section>
 {% endwith %}
+
+{% include "tags/tag_list.html" with tags=special.tags %}

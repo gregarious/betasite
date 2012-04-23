@@ -24,3 +24,5 @@ A catch all text file for things that should be considered once there's an actua
 - Read through https://docs.djangoproject.com/en/1.4/topics/security/, especially the SSL/HTTPS section to get automatic https forwarding and secure cookies working. Also take a look at "Host headers and virtual hosting"
 
 - Use the new wsgi setting in settings.py to make the dev server also use the custom wsgi file
+
+- cacheing leads: Varnish (recommended from Tastypie)

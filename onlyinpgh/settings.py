@@ -120,6 +120,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'sorl.thumbnail',
+    'pipeline',
+    'tastypie',
     'django_extensions',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
@@ -195,3 +197,8 @@ EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
 SERVER_EMAIL = settings_local.SERVER_EMAIL
 SEND_BROKEN_LINK_EMAILS = True
+
+# pipeline settings
+from settings_pipeline import *
+# this is defined outside so we can use to_abspath
+PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor') 

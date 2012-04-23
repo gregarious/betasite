@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load compressed %}
+{% block head-stylesheets %}
+<link rel="stylesheet" type="text/css" href="/static/css/style.css?v=1">
+<style>
+    .focused {
+        background-color: #999;
+    }
+</style>
+{% endblock %}
+
+{% block head-scripts %}
+<script type="text/javascript"
+  src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false">
+</script>
+{% endblock %}
+
+{% block content %}
+<div id='feed'>
+    {% for place in places %}
+    <div>{{place.name}}</div>
+    {% endfor %}
+</div>
+<div id="map_canvas" style="width:100%; height:100%"></div>
+{% endblock %}
+
+{% block foot-libs %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+ <!-- 
+<script type="text/javascript" src="{{STATIC_URL}}js/plugins.js"></script> -->
+{% compressed_js 'all_libs' %}
+{% compressed_js 'templates' %}
+<script src="{{STATIC_URL}}js/mapscript.js"></script>
+<script type="text/javascript">
+$(function(){
+    var theMap = new window.Scenable.feed.Map(document.getElementById('map_canvas'), 40.44417, -79.94583);
+    _.each({{places_json|safe}}, function(place){
+        theMap.addItem(
+            place.location.latitude, 
+            place.location.longitude, 
+            '/static/img/markers/place-marker.png', 
+            window.TPL.placeItem(place));
+    });
+    window.Scenable.feed.linkFeedToMap($('#feed').children(),theMap);
+});
+</script>
+{% endblock %}

@@ -1,49 +1,98 @@
-$(function() {
-if(typeof(Scenable) === 'undefined') {
-	Scenable = {};
-	Scenable.userActions = {
-		favoritePlace: function() {
+/* Requires jQuery, Google Maps API, Underscore */
+$(function(){
+    window.Scenable = window.Scenable || {};
+    window.Scenable.feed = {
+        /* to be called after a map has been created with it's markers */
+        linkFeedToMap: function(domElements, map) {
+            _.each(_.zip(domElements,map.mapItems), function(pkg) {
+                var el = pkg[0], item = pkg[1];
+                $(el).data('mapItem', item)     // store it for the hell of it
+                     .click(function(event){
+                        /* on click, trigger the linked marker's click event and
+                           ensure only the clicked element has the focus class */
+                        google.maps.event.trigger(item.marker, 'click');
+                        _.each(domElements,function(el) {
+                            $(el).removeClass('focused');
+                        });
+                        $(el).addClass('focused');
+                     });
+            });
+        },
+        // constructor for a feed map
+        Map: function(domElement, lat, lng, zoom) {
+            var myOptions = {
+                center: new google.maps.LatLng(lat, lng),
+                zoom: zoom || 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                panControl: false,
+                mapTypeControl: false,
+                streetViewControl: false,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL
+                }
+            };
+            // "private" variables for the new object
+            var _map = new google.maps.Map(domElement, myOptions);
+            var _activeItem = null;
+            /* return a new feed map with marker setting capabilities */
+            return {
+                mapItems: [],
+                /* returns a marker+iw object */
+                addItem: function(lat, lng, icon, iwContent) {
+                    var mapItem = {
+                        marker: new google.maps.Marker({
+                            position: new google.maps.LatLng(lat, lng),
+                            icon: icon,
+                            map: _map
+                        }),
+                        infoWindow: new google.maps.InfoWindow({
+                          content: iwContent
+                        }),
+                        onFocus: function() {
+                            this.infoWindow.open(_map, this.marker);
+                            _activeItem = this;
+                        },
+                        onBlur: function() {
+                            this.infoWindow.close();
+                            _activeItem = null;
+                        }
+                    };
+                    // need to pass the full mapItem when a marker.click event is fired
+                    google.maps.event.addListener(mapItem.marker, 'click', function(){
+                        if(_activeItem) {
+                            if(_activeItem === mapItem) {
+                                return;
+                            }
+                            _activeItem.onBlur();
+                        }
+                        _activeItem = mapItem;
+                        _activeItem.onFocus();
+                    });
+                    this.mapItems.push(mapItem);
+                },
+                removeItem: function(idx) {
+                    var mapItem = this.mapItems.splice(idx,1)[0];
+                    mapItem.marker.setMap(null);
+                }
+            };
+        }
+    };
 
-			},
-		attendEvent: function() {
+	// Hide/show single place sections
+	var pages = ['#placeInfo', '#placeEvents', '#placeSpecials', '#placeMap', '#placeChatter', '#placeRelated'];
 
-			}
-	};
-}
-
-// this doesn't get each one, just first first
-/*$('.item').find('.tag-list ul li a').first().css('margin-left', '0');*/
-
-// Highlight the current menu item based on URL.
-// Alter this so it ignores id paths - i.e. Places is stil highlighted at /places/229
-// loc = location.pathname;
-// menu_item = $('.main-menu').find('a[href$="'+loc+'"]');
-
-// if(menu_item.attr('href') == loc) {
-// 	menu_item.addClass('current-page');
-// }
-
-// For mobile dropdown, select option with same value as URL
-// option = $('#scene-nav select').find('option[value$="'+window.location+'"]');
-	
-// if(option.attr('value') == window.location) {
-// 	option.attr('selected', 'selected');
-// }
-
-// Hide/show single place sections
-var pages = ['#placeDetail', '#placeEvents', '#placeSpecials'];
-
-$.each(pages, function(i, id) {
-	$('a.'+id).click(function() {
-		$('.detail-section').delay(200).hide();
-		$(id+'.detail-section').fadeIn(200); // Will replace this with a .get();
-		$('.detail-nav a').removeClass('current-page');
-		$(this).addClass('current-page');
+	$.each(pages, function(i, id) {
+		$('a.'+id).click(function() {
+			$('.related-section').delay(200).hide();
+			$(id+'.related-section').fadeIn(200); // Will replace this with a .get();
+			$('.related-nav a').removeClass('current-page');
+			$(this).addClass('current-page');
+		});
 	});
-});
 
-$('#select-sect').change(function(){
-	window.location = $(this).val();
-});
+	$('#select-sect').change(function(){
+		window.location = $(this).val();
+	});
 
 }); // document.ready

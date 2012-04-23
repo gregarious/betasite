@@ -5,6 +5,7 @@ This is the most basic template for a page. This should be
 kept rather simple, Leaving the internals of the pages and 
 layouts up to child templates.
 {% endcomment %}
+{% load compressed %}
 
 {% block head %}
 <!doctype html>
@@ -48,12 +49,15 @@ layouts up to child templates.
 
 {% block foot %}
 
-{% block foot-scripts %}
+{% block foot-libs %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+{% compressed_js 'all_libs' %}
+{% endblock %}
 
-<script src="{{STATIC_URL}}js/plugins.js"></script>
-<script src="{{STATIC_URL}}js/script.js"></script>
+{# block for inline scripts: used for bootstraping models, simple-DOM related one-liners, etc. #}
+{% block foot-inlines %}
+
 {% endblock %}
 
 {% endblock %}
