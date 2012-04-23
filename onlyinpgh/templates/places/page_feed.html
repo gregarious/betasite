@@ -36,3 +36,7 @@ Context variables:
     {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
 {% endblock %}
+
+{% block sidebar %}
+{% include "places/sidebar_place_feed.html" %}
+{% endblock %}

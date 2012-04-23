@@ -7,7 +7,7 @@ Compatible contexts: SpecialContext
 <div class="item-thumb">
 	<!-- <div class="points">+{{special.points}}</div> -->
 	<!-- Insert redemption link -->
-	<div class="btn btn-primary"><a href="#" title="See this special"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
+	<div class="btn btn-primary"><a href="{% url special-detail special.id %}" title="See this special"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
 </div>
 
 <section class="item-content">
