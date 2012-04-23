@@ -77,6 +77,17 @@ urlpatterns = patterns('',
     # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
 )
 
+# Tastypie API setup
+from tastypie.api import Api
+from onlyinpgh.places.api import PlaceFeedResource
+v1_api = Api(api_name='v1')
+v1_api.register(PlaceFeedResource())
+
+urlpatterns += patterns('',
+    url(r'^api/', include(v1_api.urls)),
+)
+
+
 from onlyinpgh import settings
 if settings.DEBUG:
     urlpatterns += patterns('',

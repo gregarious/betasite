@@ -1,4 +1,4 @@
-/* Requires jQuery, Google Maps API, Underscore */
+/* Requires jQuery, underscore, yepnope */
 $(function(){
     window.Scenable = window.Scenable || {};
     window.Scenable.feed = {
@@ -11,18 +11,19 @@ $(function(){
                         /* on click, trigger the linked marker's click event and
                            ensure only the clicked element has the focus class */
                         google.maps.event.trigger(item.marker, 'click');
-                        _.each(domElements,function(el) {
+                        _.each(domElements, function(el) {
                             $(el).removeClass('focused');
                         });
                         $(el).addClass('focused');
                      });
+
             });
         },
         // constructor for a feed map
         Map: function(domElement, lat, lng, zoom) {
             var myOptions = {
                 center: new google.maps.LatLng(lat, lng),
-                zoom: zoom || 15,
+                zoom: zoom || 14,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 panControl: false,
                 mapTypeControl: false,
@@ -34,15 +35,17 @@ $(function(){
             };
             // "private" variables for the new object
             var _map = new google.maps.Map(domElement, myOptions);
+            var _bounds = new google.maps.LatLngBounds();
             var _activeItem = null;
             /* return a new feed map with marker setting capabilities */
             return {
                 mapItems: [],
                 /* returns a marker+iw object */
                 addItem: function(lat, lng, icon, iwContent) {
+                    var pos = new google.maps.LatLng(lat, lng);
                     var mapItem = {
                         marker: new google.maps.Marker({
-                            position: new google.maps.LatLng(lat, lng),
+                            position: pos,
                             icon: icon,
                             map: _map
                         }),
@@ -70,6 +73,8 @@ $(function(){
                         _activeItem.onFocus();
                     });
                     this.mapItems.push(mapItem);
+                    _bounds.extend(pos);
+                    _map.fitBounds(_bounds);
                 },
                 removeItem: function(idx) {
                     var mapItem = this.mapItems.splice(idx,1)[0];
@@ -78,21 +83,4 @@ $(function(){
             };
         }
     };
-
-	// Hide/show single place sections
-	var pages = ['#placeDetail', '#placeEvents', '#placeSpecials'];
-
-	$.each(pages, function(i, id) {
-		$('a.'+id).click(function() {
-			$('.detail-section').delay(200).hide();
-			$(id+'.detail-section').fadeIn(200);
-			$('.detail-nav a').removeClass('current-page');
-			$(this).addClass('current-page');
-		});
-	});
-
-	$('#select-sect').change(function(){
-		window.location = $(this).val();
-	});
-
-}); // document.ready
+});

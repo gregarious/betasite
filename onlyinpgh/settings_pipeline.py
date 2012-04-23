@@ -16,6 +16,13 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/libs.js',
     },
+    'site_scripts': {
+        'source_filenames': (
+            'js/scripts/feed.js',
+            'js/scripts/misc.js',
+        ),
+        'output_filename': 'js/scenable.js'
+    },
     'templates': {
         'source_filenames': (
             'js/templates/*',
