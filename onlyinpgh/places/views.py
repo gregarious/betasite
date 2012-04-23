@@ -1,13 +1,13 @@
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
-from onlyinpgh.common.utils.jsontools import jsonp_response
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
 from onlyinpgh.common.views import render_page
 from onlyinpgh.common.contexts import PageContext
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.contexts import PlaceContext, PlaceRelatedFeeds
-
+from onlyinpgh.places.api import PlaceFeedResource
 # from datetime import datetime, timedelta
 
 
@@ -77,9 +77,11 @@ def page_feed(request):
         page = paginator.page(paginator.num_pages)
 
     items = [PlaceContext(place, user=request.user) for place in page.object_list]
+    items_json = serialize_resources(PlaceFeedResource(), page.object_list, request=request)
 
     page_context = PageContext(request, 'places', dict(
         items=items,
+        items_json=items_json,
         prev_p=page.previous_page_number() if page.has_previous() else None,
         next_p=page.next_page_number() if page.has_next() else None))
     return render_page('places/page_feed.html', page_context)

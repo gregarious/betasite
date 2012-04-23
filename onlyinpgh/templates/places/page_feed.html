@@ -6,6 +6,7 @@ Page-based template for the Places feed
 Context variables:
     C:  
         [items]: List of PlaceContext instances
+        items_json: JSON string of corresponding places
         prev_p: page number of previous page (if available)
         next_p: page number of next page (if available)
 {% endcomment %}
@@ -20,11 +21,11 @@ Context variables:
 </header>
 
 <article class="feed-content">
-    <div class="map-container"></div>
+    <div class="map-container" id="mainPlaceFeedMap"></div>
     {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
     {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
 
-    <ul class="feed places">
+    <ul class="feed places" id="mainPlaceFeed">
     {% for item in C.items %}
         <li class="item">
         {% include "places/feed_item.html" with C=item %}
@@ -35,4 +36,23 @@ Context variables:
     {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
     {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
+
+{% endblock %}
+
+{% block foot-inlines %}
+{% if C.items_json %}
+<script type="text/javascript">
+$(function(){
+    var theMap = new window.Scenable.feed.Map(document.getElementById('mainPlaceFeedMap'), 40.44417, -79.94583);
+    _.each({{C.items_json|safe}}, function(place){
+        theMap.addItem(
+            place.location.latitude, 
+            place.location.longitude, 
+            '/static/img/markers/place-marker.png', 
+            window.TPL.placeItem(place));
+    });
+    window.Scenable.feed.linkFeedToMap($('#mainPlaceFeed').children(),theMap);
+});
+</script>
+{% endif %}
 {% endblock %}
