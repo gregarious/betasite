@@ -256,9 +256,6 @@ h3 {
   font-weight: normal;
   margin: 0;
 }
-h4 {
-  font-weight: bold;
-}
 p {
   color: #222;
   margin: 0.1em 0;
@@ -354,7 +351,7 @@ a:visited {
 .feed-title,
 .single-title {
   color: #000;
-  font-weight: bold;
+  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
   margin: 0;
 }
 .single-title {
@@ -368,7 +365,9 @@ a:visited {
   margin: 0 0 1em;
 }
 .sidebar-title {
+  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
   color: #fff;
+  font-weight: normal;
   background-color: #8fd36f;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#8fd36f), to(#6baa55));
   /* Saf4+, Chrome */
@@ -457,11 +456,11 @@ textarea:focus {
 button,
 input[type="submit"] {
   border: none;
-  -webkit-box-shadow: 0 0 0.05em #999999;
-  -moz-box-shadow: 0 0 0.05em #999999;
-  box-shadow: 0 0 0.05em #999999;
+  -webkit-box-shadow: 0 0 0.05em #000000;
+  -moz-box-shadow: 0 0 0.05em #000000;
+  box-shadow: 0 0 0.05em #000000;
   color: #fff;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: bold;
   background-color: #6baa55;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#6baa55), to(#238b49));
@@ -482,7 +481,7 @@ input[type="submit"] {
   background-image: linear-gradient(top, #6baa55, #238b49);
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
-  padding: 0.6em 0.5em;
+  padding: 0.5em;
   position: relative;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -490,7 +489,7 @@ input[type="submit"] {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  text-shadow: 0 0 0.05em #000;
+  text-shadow: 0 0 0.03em #000;
 }
 button:hover,
 input[type="submit"]:hover {
@@ -516,7 +515,7 @@ input[type="submit"]#redeem-button {
   font-size: 2em;
   padding: 5%;
 }
-.radio-container {
+.choice-container {
   padding-left: 1em;
   width: 100%;
   margin: 0;
@@ -524,8 +523,18 @@ input[type="submit"]#redeem-button {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.radio-container label {
+.choice-container label {
   padding: 0 0 0.5em 0.5em;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+.choice-container.other {
+  margin-top: 0.5em;
+  padding-left: 0.5em;
+}
+.choice-container.other input[type="text"] {
+  display: block;
+  width: 70%;
 }
 .simple-form input[type="text"],
 .simple-form input[type="search"] {
@@ -644,7 +653,8 @@ input[type="submit"]#redeem-button {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: left;
-  margin: 1em 0 0.5em;
+  font-size: 0.9em;
+  margin: 1.5em 0 0.5em 0.1em;
 }
 #sidebar-feedback .field {
   width: 100%;
@@ -653,7 +663,6 @@ input[type="submit"]#redeem-button {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#sidebar-feedback input[type=text],
 #sidebar-feedback textarea {
   font-size: 0.9em;
   width: 100%;
@@ -757,7 +766,7 @@ input[type="submit"]#redeem-button {
   behavior: url("/static//PIE.htc");
 }
 #scene-nav .main-menu li a.current-page {
-  background-color: #8fd36f;
+  background-color: #ded57f;
 }
 #scene-nav .main-menu li a .container {
   position: absolute;
@@ -772,7 +781,7 @@ input[type="submit"]#redeem-button {
   background-color: #ccc;
 }
 #scene-nav .main-menu li a:active {
-  background-color: #ded57f;
+  background-color: #8fd36f;
 }
 #utility {
   float: right;
@@ -829,6 +838,9 @@ input[type="submit"]#redeem-button {
   position: relative;
   top: 5em;
   z-index: 1;
+}
+#site-footer {
+  margin: 8em 2em 1em;
 }
 /* SIDEBAR ---------- */
 #site-sidebar {
@@ -888,7 +900,7 @@ input[type="submit"]#redeem-button {
   box-sizing: border-box;
   *zoom: 1;
   border-bottom: 1px solid #e1e1e1;
-  margin-bottom: 1em;
+  margin: 1em 0;
   padding: 1% 2%;
 }
 .feed-header:before,
@@ -918,7 +930,6 @@ input[type="submit"]#redeem-button {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 0.5em;
 }
 .feed-header .filter input[type="search"] {
   float: left;

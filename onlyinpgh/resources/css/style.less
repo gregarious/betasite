@@ -32,7 +32,7 @@ h3 {
 
 h4 {
   //font-family: 'DroidSerifBold';
-  font-weight: bold;
+  //font-weight: bold;
 }
 
 p {
@@ -130,7 +130,8 @@ a {
 .feed-title, .single-title {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   color: #000;
-  font-weight: bold;
+  .blok();
+  //font-weight: bold;
   //text-shadow: 0.03em 0.03em 0.03em #999;
   margin: 0;
 }
@@ -149,7 +150,9 @@ a {
 }
 
 .sidebar-title {
+  .blok();
   color: #fff;
+  font-weight: normal;
   .gradient(@lgreen, @mgreen);
   padding: 0.5em 0.5em 0.5em 2.5em;
   position: relative;
@@ -199,16 +202,15 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 button, input[type="submit"] {
   border: none;
-  .b-shadow(0, 0, 0.05em, #999);
+  .b-shadow(0, 0, 0.05em, #000);
   color: #fff;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: bold;
   .gradient(@mgreen, @dgreen);
-  //margin-top: 0.5em;
-  padding: 0.6em 0.5em;
+  padding: 0.5em;
   position: relative;
   .rounded(0.5em);
-  text-shadow: 0 0 0.05em #000;
+  text-shadow: 0 0 0.03em #000;
 
   &:hover {
     background: @dgreen;
@@ -229,11 +231,22 @@ button, input[type="submit"] {
 
 }
 
-.radio-container {
+.choice-container {
   padding-left: 1em;
   .row();
   label {
     padding: 0 0 0.5em 0.5em;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+
+  &.other {
+    margin-top: 0.5em;
+    padding-left: 0.5em;
+    input[type="text"] {
+      display: block;
+      width: 70%;
+    }
   }
 }
 
@@ -338,18 +351,16 @@ button, input[type="submit"] {
   .field-label {
     .row();
     text-align: left;
-    //text-transform: uppercase;
-    //font-size: 0.8em;
+    font-size: 0.9em;
     //font-weight: bold;
-    //color: #444;
-    margin: 1em 0 0.5em;
+    margin: 1.5em 0 0.5em 0.1em;
   }
 
   .field {
     .row();
   }
 
-  input[type=text], textarea {
+  textarea {
     font-size: 0.9em;
     .row();
     background: #fff;
@@ -410,7 +421,7 @@ button, input[type="submit"] {
         behavior: url("@{static_url}/PIE.htc");
         
         &.current-page {
-          background-color: @lgreen;
+          background-color: @yellow;
         }
 
         .container {
@@ -428,7 +439,7 @@ button, input[type="submit"] {
         }
   
         &:active {
-          background-color: @yellow;
+          background-color: @lgreen;
         }
       }
     }
@@ -471,6 +482,10 @@ button, input[type="submit"] {
   position: relative;
   top: 5em;
   z-index: 1;
+}
+
+#site-footer {
+  margin: 8em 2em 1em;
 }
 
 /* SIDEBAR ---------- */
@@ -520,7 +535,7 @@ button, input[type="submit"] {
   .border-box();
   .clearfix();
   border-bottom: 1px solid #e1e1e1;
-  margin-bottom: 1em;
+  margin: 1em 0;
   padding: 1% 2%;
 
   input[type="text"] {
@@ -534,7 +549,7 @@ button, input[type="submit"] {
 
   .filter {
     .column_r(4);
-    margin-top: 0.5em;
+    //margin-top: 0.5em;
 
     input[type="search"] {
       float: left;
