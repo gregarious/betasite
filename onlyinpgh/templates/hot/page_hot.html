@@ -22,7 +22,6 @@ Context variables:
 <div class="row-container">
     <div class="hot map-container">
     </div>
-
     <section class="hot events">
         <h3 class="hot-section-title">Upcoming Events</h3>
         <ul class="feed events">
@@ -59,4 +58,8 @@ Context variables:
     </section>
 </div>
 {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+    {% include "hot/sidebar_hot.html" %}
 {% endblock %}

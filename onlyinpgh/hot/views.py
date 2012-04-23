@@ -10,4 +10,4 @@ def page_hot(request):
 
     page_context = PageContext(request, 'hot', dict(
         hot_feeds=hot_feeds))
-    return render_page('page_hot.html', page_context)
+    return render_page('hot/page_hot.html', page_context)
