@@ -6,14 +6,15 @@ Compatible contexts: SpecialContext
 {% with special=C.special %}
 <div class="item-thumb">
 	<!-- <div class="points">+{{special.points}}</div> -->
-	<div class="btn btn-primary"><img src="{{STATIC_URL}}img/icons/special-thumb.png" />Grab It!</div>
+	<!-- Insert redemption link -->
+	<div class="btn btn-primary"><a href="#" title="See this special"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
 </div>
 
 <section class="item-content">
-	<h4 class="item-title"><a href="{% url special-detail special.id %}">{{special.title|truncatewords:7}}</a></h4>
+	<h4 class="item-title"><a href="{% url special-detail special.id %}" title="See this special">{{special.title|truncatewords:7}}</a></h4>
 	<ul class="item-details">
 		{% if special.description %}
-			<li class="meta">at {{special.place.name}}</li>
+			<li>at {{special.place.name}}</li>
 		{% endif %}	
 	</ul>
 </section>
