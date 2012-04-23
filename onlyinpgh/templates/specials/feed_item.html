@@ -6,8 +6,8 @@ Compatible contexts: SpecialContext
 
 {% with special=C.special %}
 <div class="item-thumb">
-	<div class="points">+{{special.points}}</div>
-	<button class="btn btn-primary">Grab It!</button>
+	<!-- <div class="points">+{{special.points}}</div> -->
+	<div class="btn btn-primary"><img src="{{STATIC_URL}}img/icons/special-thumb.png" />Grab It!</div>
 </div>
 
 <section class="item-content">
