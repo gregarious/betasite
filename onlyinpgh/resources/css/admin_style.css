@@ -637,16 +637,32 @@ input[type="checkbox"] {
 .double .field.last {
   float: right;
 }
+.social-input {
+  *zoom: 1;
+}
+.social-input:before,
+.social-input:after {
+  content: "";
+  display: table;
+}
+.social-input:after {
+  clear: both;
+}
 .social-input img {
-  margin-top: 0.5em;
   float: right;
+  width: 8.75%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .social-input input {
-  width: 90% !important;
   float: left;
-}
-#confirm-pass {
-  margin-top: 10px;
+  width: 87.08333333333333%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .tip,
 .error,
@@ -1346,7 +1362,7 @@ input[type="checkbox"] {
 .ui-dialog-titlebar-close:hover {
   border: none;
 }
-.ui-icon.ui-icon-closethick {
+.ui-icon-closethick {
   top: 1.5em;
   right: 1.5em;
   height: 1em;
@@ -1355,7 +1371,7 @@ input[type="checkbox"] {
   background: url('/static/img/icons/cancel.png') center no-repeat;
   text-indent: -9999px;
 }
-.ui-icon.ui-icon-closethick:hover {
+.ui-icon-closethick:hover {
   background-color: #a9c6e8;
 }
 .ui-dialog-buttonset button {

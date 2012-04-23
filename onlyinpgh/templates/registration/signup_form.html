@@ -1,6 +1,44 @@
 <form action="{{ form_action }}" method="POST">
     {% csrf_token %}
-    {{ registration_form.as_ul }}
-    {{ profile_form.as_ul }}
-    <button type="submit">Submit</button>
+	{% with form=registration_form %}
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.username.label_tag}}
+		</div>
+		<div class="field">
+			{{form.username}}
+			<p class="tip">Once you're signed up, you can create a display name that will be visible to other users.</p>
+		</div>
+	</div> <!-- username -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{form.email.label_tag}}
+		</div>
+		<div class="field">
+			{{form.email}}
+		</div>
+	</div> <!-- email -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.password1.label_tag}}
+		</div>
+		<div class="field">
+			{{form.password1}}
+		</div>
+	</div> <!-- password1 -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{form.password2.label_tag}}
+		</div>
+		<div class="field">
+			{{form.password2}}
+		</div>
+	</div> <!-- password2 -->
+
+	{% endwith %}
+    <input type="submit" value="Sign Up" class="right" />
 </form>

@@ -34,6 +34,22 @@ class UserProfileForm(forms.ModelForm):
         exclude = ('user', 'points')
         widgets = {'birth_year': forms.TextInput(attrs={'maxlength': '4'})}
 
+
+# TODO: hook this up to user preferences
+class ActivityPreferencesForm(forms.Form):
+    public_favorites = forms.BooleanField(label=u'Favorites public?')
+    public_attendance = forms.BooleanField(label=u'Event attendance public?')
+    public_coupons = forms.BooleanField(label=u'Specials public?')
+
+
+# TODO: hook this up to User model
+class CredentialsForm(forms.Form):
+    email = forms.EmailField(label=u'Email address')
+
+    current_password = forms.CharField(label=u'Current password')
+    new_password = forms.CharField(label=u'New password')
+    confirm_new_password = forms.CharField(label=u'Confirm new password')
+
 # BROKEN: PROBABLY NEVER FIX
 # class EmailOnlyRegistrationForm(UserCreationForm):
 #     """

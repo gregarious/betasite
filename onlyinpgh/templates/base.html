@@ -33,6 +33,7 @@ layouts up to child templates.
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?v=1">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Droid-Serif-fontfacekit/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
     {% endblock %}
 
     {% block head-scripts %}
@@ -43,9 +44,8 @@ layouts up to child templates.
 {% endblock %}
 
 <body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a differen t browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 {% block content %}{% endblock %}
-
 {% block foot %}{% endblock %}
 
 </body>

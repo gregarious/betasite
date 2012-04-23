@@ -19,8 +19,6 @@ PageContext constructor.
         {% include "scene_nav.html" with C=header_context %}
         {% include "top_bar.html" with C=header_context %}
     </nav>
-</div>
-<div class="wrap">
     {% with C=main_context %}
     <div id="site-content" role="main">
     {% block main-content %}{% endblock %}
@@ -30,8 +28,7 @@ PageContext constructor.
         {% block sidebar %}{% endblock %}
 	</aside>
 </div>
-
-<!--{% include "footer.html" with C=footer_context %}-->
+{% include "footer.html" with C=footer_context %}
 {% endblock %}
 
 {% block foot %}

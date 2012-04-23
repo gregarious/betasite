@@ -1,3 +1,6 @@
+{% extends "sidebar_base.html" %}
+
+{% block sidebar_main %}
 <section class="widget">
 
     <h3 class="widget-title">About Single Events</h3>
@@ -19,28 +22,26 @@
 	<h3 class="widget-title">Don't Forget...</h3>
 	<p>Want to search the entire Oakland Scene for something? Use the search box in the top right corner of the page.</p>
 </section>
-<section class="widget">
-	<h3 class="widget-title">Feedback plz!</h3>
-	<p>What do you think? We want to hear your feedback on this page and on the site in general!</p>
-	<form id="sidebar-feedback">
-		<div class="field-label">
-			<label>What do you like about this page?</label>
-		</div>
-		<div class="field">
-			<textarea placeholder="Morgan Freeman"></textarea>
-		</div>
-		<div class="field-label">
-			<label>What don't you like?</label>
-		</div>
-		<div class="field">
-			<textarea placeholder="The Oakland Scene is the coolest thing I've ever seen in my entire life."></textarea>
-		</div>
-		<div class="field-label">
-			<label>Other thoughts?</label>
-		</div>
-		<div class="field">
-			<textarea placeholder="The Oakland Scene is the coolest thing I've ever seen in my entire life."></textarea>
-		</div>
-		<input type="submit" value="Send it!" />
-	</form>
-</section>
+{% endblock %}
+
+{% block sidebar_survey %}
+<p>If you are 21+, what kind of beer do you like?</p>
+<div class="choice-container">
+	<input type="radio" /><label>Miller Lite or equivalent</label>
+</div>
+<div class="choice-container">
+	<input type="radio" /><label>Wheat beers like Magic Hat No.9</label>
+</div>
+<div class="choice-container">
+	<input type="radio" /><label>IPA</label>
+</div>
+<div class="choice-container">
+	<input type="radio" /><label>Lager</label>
+</div>
+<div class="choice-container">
+	<input type="radio" /><label>The hoppiest I can find.</label>
+</div>
+<div class="choice-container">
+	<input type="radio" /><label>None, beer is gross.</label>
+</div>
+{% endblock %}
