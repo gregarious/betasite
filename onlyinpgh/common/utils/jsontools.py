@@ -53,7 +53,7 @@ def sanitize_json(json_string):
     '''
     Removes any occurances of </ from a string and marks it as safe.
     '''
-    return mark_safe(json_string.replace('</', ''))
+    return mark_safe(json_string.replace('</', '\<\/'))
 
 
 def serialize_resource(resource, obj=None, data=None, request=None, sanitize=True):
