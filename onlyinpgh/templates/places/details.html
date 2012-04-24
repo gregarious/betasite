@@ -69,7 +69,7 @@ Context variables:
     <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
-            {% include 'events/short_feed_item.html' with C=item %}
+            {% include 'events/short_feed_item.html' with event=item %}
         </li>
     {% endfor %}
     </ul>
@@ -80,7 +80,7 @@ Context variables:
     <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
-            {% include 'specials/short_feed_item.html' with C=item %}
+            {% include 'specials/short_feed_item.html' with special=item %}
         </li>
     {% endfor %}
     </ul>

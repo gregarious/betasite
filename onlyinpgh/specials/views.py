@@ -20,14 +20,15 @@ def page_feed(request):
     # get a list of rendered items
     all_specials = Special.objects.all()
     paginator = Paginator(all_specials, 10)
-    page = request.GET.get('p')
+    p = request.GET.get('p')
     try:
-        specials = paginator.page(page)
+        page = paginator.page(p)
     except PageNotAnInteger:
-        specials = paginator.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        specials = paginator.page(paginator.num_pages)
+        page = paginator.page(paginator.num_pages)
 
+    specials = page.object_list
     items = [SpecialData(special, user=request.user) for special in specials]
     # need the items in json form for bootstrapping to BB models
     items_json = serialize_resources(SpecialFeedResource(), specials, request=request)
@@ -57,7 +58,7 @@ def page_details(request, sid):
         page_title='Scenable | %s' % special.title,
         content_dict=content)
 
-    return render_to_response('specials/page_event.html', page_context)
+    return render_to_response('specials/page_special.html', page_context)
 
 
 

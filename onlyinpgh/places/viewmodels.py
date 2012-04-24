@@ -8,15 +8,17 @@ from onlyinpgh.specials.viewmodels import SpecialData
 
 class PlaceData(object):
     def __init__(self, place, user=None):
+        fields = ('id', 'name', 'location', 'description', 'tags', 'image',
+                  'hours', 'parking', 'url', 'fb_id', 'twitter_username',
+                  'listed')
         if isinstance(user, User):
             self.is_favorite = place.favorite_set\
                                     .filter(user=user, is_favorite=True)\
                                     .count() > 0
         else:
             self.is_favorite = False
-        field_attrs = [attr for attr in place.__dict__ if not attr.startswith('_')]
-        for attr in field_attrs:
-            setattr(self, attr, place.__dict__[attr])
+        for attr in fields:
+            setattr(self, attr, getattr(place, attr))
 
 
 class PlaceRelatedFeeds(object):

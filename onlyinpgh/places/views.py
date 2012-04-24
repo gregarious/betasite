@@ -6,7 +6,7 @@ from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.resources import PlaceFeedResource
-from onlyinpgh.places.viewmodels import PlaceData
+from onlyinpgh.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
 
 def page_feed(request):
@@ -21,14 +21,15 @@ def page_feed(request):
     '''
     all_places = Place.listed_objects.all()
     paginator = Paginator(all_places, 10)
-    page = request.GET.get('p')
+    p = request.GET.get('p')
     try:
-        places = paginator.page(page)
+        page = paginator.page(p)
     except PageNotAnInteger:
-        places = paginator.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        places = paginator.page(paginator.num_pages)
+        page = paginator.page(paginator.num_pages)
 
+    places = page.object_list
     items = [PlaceData(place, user=request.user) for place in places]
     # need the items in json form for bootstrapping to BB models
     items_json = serialize_resources(PlaceFeedResource(), places, request=request)

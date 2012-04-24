@@ -11,8 +11,8 @@ def page_hot(request):
     content = {'hot_feeds': hot_feeds}
 
     page_context = PageContext(request,
-        current_section='places',
+        current_section='hot',
         page_title='Scenable | Oakland Places',
         content_dict=content)
 
-    return render_to_response('places/page_feed.html', page_context)
+    return render_to_response('hot/page_hot.html', page_context)

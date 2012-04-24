@@ -2,13 +2,13 @@
 Inner template to render a list of places the user has favorited
 
 Context variables:
-    [items]:  list of PlaceContext instances
+    [items]:  list of PlaceData instances
 {% endcomment %}
 
 <h2 class="detail-section-title">Favorite Places</h2>
 
 <ul class="feed my-feed places">
-    {% for item in C.items %}
-        <li class="item">{% include "places/feed_item.html" with C=item %}</li>
+    {% for item in items %}
+        <li class="item">{% include "places/feed_item.html" with place=item %}</li>
     {% endfor %}
 </ul>

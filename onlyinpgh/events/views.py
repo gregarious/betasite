@@ -21,14 +21,15 @@ def page_feed(request):
     '''
     all_events = Event.listed_objects.all()
     paginator = Paginator(all_events, 10)
-    page = request.GET.get('p')
+    p = request.GET.get('p')
     try:
-        events = paginator.page(page)
+        page = paginator.page(p)
     except PageNotAnInteger:
-        events = paginator.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        events = paginator.page(paginator.num_pages)
+        page = paginator.page(paginator.num_pages)
 
+    events = page.object_list
     items = [EventData(event, user=request.user) for event in events]
     # need the items in json form for bootstrapping to BB models
     items_json = serialize_resources(EventFeedResource(), events, request=request)

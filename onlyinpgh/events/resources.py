@@ -15,7 +15,7 @@ class EventFeedResource(Resource):
     image = fields.FileField('image')
     description = fields.CharField('description')
     tags = fields.ManyToManyField(TagResource, 'tags', full=True)
-    place = fields.ForeignKey(PlaceFeedResource, 'location', full=True, null=True)
+    place = fields.ForeignKey(PlaceFeedResource, 'place', full=True, null=True)
     is_attending = fields.BooleanField('is_attending', null=True, default=False)
 
     class Meta:

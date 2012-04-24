@@ -5,7 +5,7 @@ Page-based template for the Places feed
 
 Context variables:
     [items]: List of PlaceContext instances
-    items_json: JSON string of corresponding places
+    items_json: JSON string of PlaceFeedResources corresponding to [items]
     prev_p: page number of previous page (if available)
     next_p: page number of next page (if available)        
 {% endcomment %}
@@ -13,7 +13,7 @@ Context variables:
 {% block main-content %}
 <header class="feed-header">
     <h1 class="feed-title">Places</h1>
-    <form class="filter" >
+    <form class="filter">
         <input type="search" placeholder="Filter Places" />
         <input type="submit" value="Filter" />
     </form>
@@ -27,7 +27,7 @@ Context variables:
     <ul class="feed places" id="mainPlaceFeed">
     {% for item in items %}
         <li class="item {%if item.place.location.is_geocoded%}hasMarker{%endif%}">
-        {% include "places/feed_item.html" with C=item %}
+        {% include "places/feed_item.html" with place=item %}
         </li>
     {% endfor %}
     </ul>

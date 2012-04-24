@@ -13,7 +13,7 @@ class SpecialFeedResource(Resource):
     id = fields.IntegerField('id')
     title = fields.CharField('title')
     tags = fields.ManyToManyField(TagResource, 'tags', full=True)
-    place = fields.ForeignKey(PlaceFeedResource, 'location', full=True, null=True)
+    place = fields.ForeignKey(PlaceFeedResource, 'place', full=True, null=True)
     has_coupon = fields.BooleanField('has_coupon', null=True, default=False)
 
     class Meta:

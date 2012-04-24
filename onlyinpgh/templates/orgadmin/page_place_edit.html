@@ -1,13 +1,11 @@
 {% extends "orgadmin/manage_page.html" %}
 {% comment %}
 Context variables
-    C:
-        form: OrgAdminPlaceForm
-        tag_names: List of all tag names (temporary hack)
+    form: OrgAdminPlaceForm
+    tag_names: List of all tag names (temporary hack)
 {% endcomment %}
 
 {% block main-content %}
-{% with form=C.form %}
 <header class="form-header">
     <!-- <img src="{{STATIC_URL}}img/home_place.png" alt="Storefront" /> -->
     <h2>Editing your location...</h2>
@@ -308,7 +306,6 @@ Context variables
         <a href="{% url orgadmin-listplaces %}" class="back" title="Cancel">Cancel</a>
     </nav>
 </form>
-{% endwith %} {# end form alias #}
 {% endblock %}
 
 {% block additional-scripts %}
@@ -324,17 +321,17 @@ $(function() {
     });
 
     var tagNames = [
-        {% for name in C.tag_names %}
+        {% for name in tag_names %}
             "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    scenable.activateTagAC('#id_{{C.form.tags.name}}', tagNames);
+    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
     {# TODO: remove initial selected autocomplete hack #}
     {% if initial_selected %}
     scenable.onACSelect( {
         'item': {
             label: '',
-            value: '{{C.form.place.value}}',
+            value: '{{form.place.value}}',
             selectedDisplay: '{{initial_selected|escapejs}}'
         }
     });

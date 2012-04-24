@@ -1,9 +1,9 @@
 {% comment %}
-Template to render a particular event as a related feed item on a single place page.
+Template to render a particular event as a related feed item on a single special page.
 
-Compatible contexts: SpecialContext
+Context variables:
+    special: SpecialData instance
 {% endcomment %}
-{% with special=C.special %}
 <div class="item-thumb">
 	<!-- <div class="points">+{{special.points}}</div> -->
 	<!-- Insert redemption link -->
@@ -18,6 +18,5 @@ Compatible contexts: SpecialContext
 		{% endif %}	
 	</ul>
 </section>
-{% endwith %}
 
 {% include "tags/tag_list.html" with tags=special.tags %}

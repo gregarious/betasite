@@ -15,13 +15,13 @@ from onlyinpgh.common.views import PageContext
 import urlparse
 
 from onlyinpgh.places.models import Favorite
-from onlyinpgh.places.contexts import PlaceContext
+from onlyinpgh.places.viewmodels import PlaceData
 
 from onlyinpgh.events.models import Attendee
-from onlyinpgh.events.contexts import EventContext
+from onlyinpgh.events.viewmodels import EventData
 
 from onlyinpgh.specials.models import Coupon
-from onlyinpgh.specials.contexts import SpecialContext
+from onlyinpgh.specials.viewmodels import SpecialData
 
 
 @csrf_protect
@@ -145,7 +145,7 @@ def page_user_favorites(request):
     # TODO: allow non-self user queries
     user = request.user
     places = [fav.place for fav in Favorite.objects.filter(user=user, is_favorite=True)]
-    items = [PlaceContext(place, user=request.user) for place in places]
+    items = [PlaceData(place, user=request.user) for place in places]
     return _render_profile_page(request, user, {'items': items})
 
 
@@ -154,7 +154,7 @@ def page_user_attendance(request):
     # TODO: allow non-self user queries
     user = request.user
     events = [att.event for att in Attendee.objects.filter(user=user, is_attending=True)]
-    items = [EventContext(event, user=request.user) for event in events]
+    items = [EventData(event, user=request.user) for event in events]
     return _render_profile_page(request, user, {'items': items})
 
 
@@ -163,5 +163,5 @@ def page_user_coupons(request):
     # TODO: allow non-self user queries
     user = request.user
     specials = [coupon.special for coupon in Coupon.objects.filter(user=user, was_used=False)]
-    items = [SpecialContext(special, user=request.user) for special in specials]
+    items = [SpecialData(special, user=request.user) for special in specials]
     return _render_profile_page(request, user, {'items': items})

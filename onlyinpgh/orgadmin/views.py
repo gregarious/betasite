@@ -8,11 +8,11 @@ from onlyinpgh.common.core.rendering import render_safe
 from onlyinpgh.organizations.models import Organization
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.contexts import PlaceContext
+from onlyinpgh.places.viewmodels import PlaceData
 from onlyinpgh.events.models import Event, Role
-from onlyinpgh.events.contexts import EventContext
+from onlyinpgh.events.viewmodels import EventData
 from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.contexts import SpecialContext
+from onlyinpgh.specials.viewmodels import SpecialData
 
 from onlyinpgh.tags.models import Tag
 
@@ -20,16 +20,31 @@ from onlyinpgh.accounts.forms import RegistrationForm
 from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgLoginForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
 
-from onlyinpgh.orgadmin.contexts import ManagePageContext
-
 import re
 
 
-def render_admin_page(template, page_context):
+class ManagePageContext(RequestContext):
     '''
-    Renders a page in the admin interface.
+    Used for main context variable for every main site page.
     '''
-    return render_to_response(template, context_instance=page_context)
+    def __init__(self, request, current_org=None, page_title=None, content_dict={}, **kwargs):
+        '''
+        content_dict: context variables for main_context
+        '''
+        if page_title is None:
+            page_title = "Scenable Business Account"
+            if current_org:
+                page_title += " | %s" % current_org.name
+
+        variables = dict(
+            page_title=page_title,
+            current_org=current_org,
+        )
+        if not current_org:
+            current_org = request.session.get('current_org')
+        variables['current_org'] = current_org
+        variables.update(content_dict)
+        super(ManagePageContext, self).__init__(request, variables, **kwargs)
 
 
 def _redirect_home(request, notification_type=None):
@@ -112,11 +127,11 @@ def page_signup(request):
 
     request.session.set_test_cookie()
 
-    context = ManagePageContext(request, None, dict(
-            registration_form=reg_form,
-            org_form=org_form
-        ))
-    return render_admin_page('orgadmin/page_signup.html', context)
+    context = ManagePageContext(request, content_dict=dict(
+        registration_form=reg_form,
+        org_form=org_form
+    ))
+    return render_to_response('orgadmin/page_signup.html', context)
 
 
 def page_login(request):
@@ -148,11 +163,11 @@ def page_login(request):
 
     request.session.set_test_cookie()
 
-    context = ManagePageContext(request, None, dict(
-            form=form,
-            form_action=reverse('orgadmin-login')
-        ))
-    return render_admin_page('orgadmin/page_login.html', context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        form_action=reverse('orgadmin-login')
+    ))
+    return render_to_response('orgadmin/page_login.html', context)
 
 
 def page_logout(request):
@@ -174,9 +189,9 @@ def page_home(request):
         notification_type = str(request.session.pop('home-notification'))
     except KeyError:
         notification_type = None
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'notification_type': notification_type})
-    return render_admin_page('orgadmin/page_home.html', context)
+    content = {'notification_type': notification_type}
+    context = ManagePageContext(request, content_dict=content)
+    return render_to_response('orgadmin/page_home.html', context)
 
 
 @authentication_required
@@ -205,9 +220,8 @@ def page_claim_place(request):
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'form': form})
-    return render_admin_page('orgadmin/page_place_claim.html', context)
+    context = ManagePageContext(request, content_dict={'form': form})
+    return render_to_response('orgadmin/page_place_claim.html', context)
 
 
 @authentication_required
@@ -245,9 +259,11 @@ def page_edit_place(request, id=None):
     else:
         form = OrgAdminPlaceForm(instance=instance)
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]})
-    return render_admin_page('orgadmin/page_place_edit.html', context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()]
+    ))
+    return render_to_response('orgadmin/page_place_edit.html', context)
 
 
 @authentication_required
@@ -264,11 +280,10 @@ def page_remove_place(request, id):
 def page_list_places(request):
     org = request.session.get('current_org')
     places = org.establishments.all() if org else []
-    items = [PlaceContext(place) for place in places]
+    items = [PlaceData(place) for place in places]
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'items': items})
-    return render_admin_page('orgadmin/page_place_list.html', context)
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_place_list.html', context)
 
 
 @authentication_required
@@ -319,13 +334,13 @@ def page_edit_event(request, id=None):
     else:
         initial_selected = None
 
-    context = ManagePageContext(request, request.session.get('current_org'), dict(
-            form=form,
-            tag_names=[t.name for t in Tag.objects.all()],
-            newplace_form=SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
-            initial_selected=initial_selected
-        ))
-    return render_admin_page('orgadmin/page_event_edit.html', context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()],
+        newplace_form=SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
+        initial_selected=initial_selected
+    ))
+    return render_to_response('orgadmin/page_event_edit.html', context)
 
 
 @authentication_required
@@ -335,11 +350,10 @@ def page_list_events(request):
 
     events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
     events = set(events).union(Event.objects.filter(place__in=establishments))
-    items = [EventContext(event) for event in events]
+    items = [EventData(event) for event in events]
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'items': items})
-    return render_admin_page('orgadmin/page_event_list.html', context)
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_event_list.html', context)
 
 
 @authentication_required
@@ -377,9 +391,11 @@ def page_edit_special(request, id=None):
     else:
         form = SimpleSpecialForm(organization=org, instance=instance)
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'form': form, 'tag_names': [t.name for t in Tag.objects.all()]})
-    return render_admin_page('orgadmin/page_special_edit.html', context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()]
+    ))
+    return render_to_response('orgadmin/page_special_edit.html', context)
 
 
 @authentication_required
@@ -387,8 +403,7 @@ def page_list_specials(request):
     org = request.session.get('current_org')
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
-    items = [SpecialContext(special) for special in specials]
+    items = [SpecialData(special) for special in specials]
 
-    context = ManagePageContext(request, request.session.get('current_org'),
-        {'items': items})
-    return render_admin_page('orgadmin/page_special_list.html', context)
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_special_list.html', context)
