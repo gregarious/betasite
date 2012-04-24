@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from onlyinpgh.specials.models import Coupon
 
 
 class SpecialData(object):
@@ -8,12 +7,10 @@ class SpecialData(object):
                   'dexpires', 'dstart', 'total_available', 'total_sold',
                   'tags')
         if isinstance(user, User):
-            try:
-                special.coupon_set.get(user=user, was_used=False)
-            except Coupon.DoesNotExist:
-                self.has_coupon = False
-            else:
+            if len(special.coupon_set.filter(user=user, was_used=False)) > 0:
                 self.has_coupon = True
+            else:
+                self.has_coupon = False
         else:
             self.has_coupon = False
 
