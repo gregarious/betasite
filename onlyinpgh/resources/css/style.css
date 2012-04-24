@@ -278,7 +278,6 @@ a:visited {
 }
 .description {
   margin-top: 0.3em;
-  font-color: #888;
   font-style: italic;
   font-size: 0.9em;
 }
@@ -436,6 +435,12 @@ form:after {
 form:after {
   clear: both;
 }
+label {
+  font-size: 0.9em;
+  display: block;
+  line-height: 1.2em;
+  text-align: right;
+}
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -548,15 +553,15 @@ input[type="submit"]#redeem-button,
   display: block;
   width: 70%;
 }
-fieldset ul {
+fieldset > ul {
   *zoom: 1;
 }
-fieldset ul:before,
-fieldset ul:after {
+fieldset > ul:before,
+fieldset > ul:after {
   content: "";
   display: table;
 }
-fieldset ul:after {
+fieldset > ul:after {
   clear: both;
 }
 legend {
@@ -637,30 +642,26 @@ legend {
   box-sizing: border-box;
 }
 /* Manage Account */
-#gender {
+.grouped-field-row {
+  padding-right: 2%;
+}
+.grouped-field-row > div {
   float: left;
-  width: 39.58333333333333%;
+  width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#gender select {
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#birth-year-label {
+.grouped-field-row > div:first-child {
   float: left;
-  width: 18.75%;
+  width: 35.41666666666667%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#birth-year {
+.grouped-field-row > div:last-child {
   float: left;
   width: 35.41666666666667%;
   margin: 0 1.0416666666666665%;
@@ -697,53 +698,54 @@ legend {
   box-sizing: border-box;
 }
 .tip,
-.error {
+.errorlist {
   color: #555;
   font-size: 0.8em;
-  font-style: italic;
   display: block;
   margin-left: 2%;
 }
 .tip.desc,
-.error.desc {
+.errorlist.desc {
   margin-top: 2%;
 }
 .tip.public,
-.error.public {
+.errorlist.public {
   margin-top: 0.3em;
   *zoom: 1;
 }
 .tip.public:before,
-.error.public:before,
+.errorlist.public:before,
 .tip.public:after,
-.error.public:after {
+.errorlist.public:after {
   content: "";
   display: table;
 }
 .tip.public:after,
-.error.public:after {
+.errorlist.public:after {
   clear: both;
 }
 .tip.public label,
-.error.public label {
+.errorlist.public label {
   float: left;
   margin-left: 0.5em;
   text-transform: none;
 }
 .tip.public input[type="checkbox"],
-.error.public input[type="checkbox"] {
+.errorlist.public input[type="checkbox"] {
   float: left;
 }
 .tip label,
-.error label {
+.errorlist label {
   font-size: 0.9em;
   font-weight: normal;
   line-height: 1.8em;
   text-transform: none;
 }
-.error {
+.errorlist {
   color: #C34327;
+  font-style: italic;
   float: left;
+  margin-top: 0.5em;
 }
 .fav-container a {
   display: block;
@@ -776,13 +778,12 @@ legend {
   color: #4b7699;
 }
 #sidebar-feedback .field-label {
+  text-align: left;
   width: 100%;
   margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  text-align: left;
-  font-size: 0.9em;
   margin: 1.5em 0 0.5em 0.1em;
 }
 #sidebar-feedback .field {
@@ -807,14 +808,6 @@ legend {
 #sidebar-feedback input[type="submit"] {
   float: right;
   margin-top: 0.5em;
-}
-.account-edit label {
-  display: block;
-  font-size: 0.8em;
-  font-weight: bold;
-  line-height: 1.1em;
-  text-transform: uppercase;
-  padding-top: 0.1em;
 }
 /* HEADER ------------- */
 #logo {
@@ -976,6 +969,12 @@ legend {
   box-sizing: border-box;
   padding: 1em 1.5em;
   position: relative;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
   top: 5.5em;
   z-index: 1;
 }
@@ -990,7 +989,7 @@ legend {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: /*fade(#fff, 90%) */ url("/static/img/textures/white-trans.png");
+  background: url("/static/img/textures/white-trans.png");
   -webkit-box-shadow: 0.1em 0.1em 0.3em #444444;
   -moz-box-shadow: 0.1em 0.1em 0.3em #444444;
   box-shadow: 0.1em 0.1em 0.3em #444444;
@@ -1097,6 +1096,14 @@ legend {
 .feed-content {
   padding: 0 1em 1em;
 }
+.feed-content .item {
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .feed-content .map-container {
   width: 100%;
   margin: 0;
@@ -1131,7 +1138,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-bottom: 1px solid #e1e1e1;
+  background: #f9f9f9;
   position: relative;
 }
 .item:before,
@@ -1153,7 +1160,7 @@ legend {
 }
 .item-title a {
   text-shadow: 0 0 0.01em #999;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .item-title a:hover {
   color: #b83939;

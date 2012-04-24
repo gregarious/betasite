@@ -7,7 +7,7 @@ Compatible contexts: PlaceContext
 
 {% with place=C.place %}
 <div class="item-thumb">
-	{% thumbnail place.image "130x130" crop="center" as im %}
+	{% thumbnail place.image "50x50" crop="center" as im %}
     <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
 	{% empty %}
 	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" />
@@ -24,10 +24,10 @@ Compatible contexts: PlaceContext
 		{% endif %}
 	</div>
 	<ul class="item-details">	
-		<li class="address">{{place.location.address}}</li>
-		{% if place.description %}
+		<li class="address meta">{{place.location.address}}</li>
+		<!-- {% if place.description %}
 			<li class="description meta">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
-		{% endif %}	
+		{% endif %}	 -->
   	</ul>
 
 	{% include "tags/tag_list.html" with tags=place.tags %}

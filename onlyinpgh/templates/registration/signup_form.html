@@ -1,44 +1,84 @@
-<form action="{{ form_action }}" method="POST">
-    {% csrf_token %}
-	{% with form=registration_form %}
+{% csrf_token %}
+{% with form=registration_form pform=profile_form %}
+<fieldset>
+	<!-- <legend>Your Account</legend> -->
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.email.label_tag}}
+			</div>
+			<div class="field">
+				{{form.email}}
+				<p class="tip">Enter the email you used to sign up to be a beta tester.</p>  
+				{{form.email.errors}}
+			</div>
+		</li> <!-- email -->
+		
+		<li class="field-container">
+			<div class="field-label">
+				{{form.username.label_tag}}
+			</div>
+			<div class="field">
+				{{form.username}}
+				<p class="tip">Just for login purposes. Once you're signed in, you can create a display name that will be visible to other users.</p>  
+				{{form.username.errors}}
+			</div>
+		</li> <!-- username -->
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.username.label_tag}}
-		</div>
-		<div class="field">
-			{{form.username}}
-			<p class="tip">Once you're signed up, you can create a display name that will be visible to other users.</p>
-		</div>
-	</div> <!-- username -->
+		<li class="field-container last">
+			<div class="field-label">
+				{{form.password1.label_tag}}
+			</div>
+			<div class="field grouped-field-row">
+				<div>
+					{{form.password1}}
+				</div>
+				<div>
+					<label name="{{form.password2.html_name}}">Confirm Password</label>	
+				</div>
+				<div>
+					{{form.password2}}
+				</div>
+				{{form.password1.errors}}
+				{{form.password2.errors}}
+			</div>
+		</li> <!-- password1 -->
+	</ul>
+</fieldset>
 
-	<div class="field-container last">
-		<div class="field-label">
-			{{form.email.label_tag}}
-		</div>
-		<div class="field">
-			{{form.email}}
-		</div>
-	</div> <!-- email -->
+<fieldset>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{pform.neighborhood.label_tag}}
+			</div>
+			<div class="field">
+				{{pform.neighborhood}}
+				{{pform.neighborhood.errors}}
+			</div>
+		</li> <!-- neighborhood -->
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.password1.label_tag}}
-		</div>
-		<div class="field">
-			{{form.password1}}
-		</div>
-	</div> <!-- password1 -->
+		<li class="field-container">
+			<div class="field-label">
+				{{pform.gender.label_tag}}
+			</div>
+			<div class="field grouped-field-row">
+				<div>
+					{{pform.gender}}
+				</div> <!-- gender -->
+				<div>
+					{{pform.birth_year.label_tag}}
+					{{pform.gender.errors}}
+				</div>
+				<div>
+					{{pform.birth_year}}
+					{{pform.birth_year.errors}}
+				</div> <!-- birth_year -->
+			</div>
+		</li>  <!-- gender & birth_year -->
+	</ul>
+</fieldset>
 
-	<div class="field-container">
-		<div class="field-label">
-			{{form.password2.label_tag}}
-		</div>
-		<div class="field">
-			{{form.password2}}
-		</div>
-	</div> <!-- password2 -->
+{% endwith %}
 
-	{% endwith %}
-    <input type="submit" value="Sign Up" class="right" />
-</form>
+<input type="submit" value="Sign Up" class="right" />
