@@ -669,6 +669,10 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.grouped-field-row > div select {
+  width: 94%;
+  margin-left: 6%;
+}
 .social-input {
   *zoom: 1;
 }
@@ -776,6 +780,10 @@ legend {
 }
 .fav-container .add .status {
   color: #4b7699;
+}
+#sidebar-feedback label {
+  float: right;
+  text-align: left;
 }
 #sidebar-feedback .field-label {
   text-align: left;
