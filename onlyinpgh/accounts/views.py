@@ -137,7 +137,7 @@ def page_manage_account(request):
         profile_form=UserProfileForm(),
         credentials_form=CredentialsForm(),
         preferences_form=ActivityPreferencesForm())
-    return _render_profile_page(request, user, {'account_forms': forms})
+    return _render_profile_page(request, user, 'accounts', {'account_forms': forms})
 
 
 @login_required
@@ -146,7 +146,7 @@ def page_user_favorites(request):
     user = request.user
     places = [fav.place for fav in Favorite.objects.filter(user=user, is_favorite=True)]
     items = [PlaceData(place, user=request.user) for place in places]
-    return _render_profile_page(request, user, {'items': items})
+    return _render_profile_page(request, user, 'places', {'items': items})
 
 
 @login_required
@@ -155,7 +155,7 @@ def page_user_attendance(request):
     user = request.user
     events = [att.event for att in Attendee.objects.filter(user=user, is_attending=True)]
     items = [EventData(event, user=request.user) for event in events]
-    return _render_profile_page(request, user, {'items': items})
+    return _render_profile_page(request, user, 'events', {'items': items})
 
 
 @login_required
@@ -164,4 +164,4 @@ def page_user_coupons(request):
     user = request.user
     specials = [coupon.special for coupon in Coupon.objects.filter(user=user, was_used=False)]
     items = [SpecialData(special, user=request.user) for special in specials]
-    return _render_profile_page(request, user, {'items': items})
+    return _render_profile_page(request, user, 'specials', {'items': items})
