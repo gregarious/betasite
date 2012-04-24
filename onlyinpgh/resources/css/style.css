@@ -539,11 +539,25 @@ input[type="submit"]#redeem-button,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  *zoom: 1;
+}
+.choice-container:before,
+.choice-container:after {
+  content: "";
+  display: table;
+}
+.choice-container:after {
+  clear: both;
+}
+.choice-container input {
+  float: left;
+  margin-top: 0.1em;
 }
 .choice-container label {
   padding: 0 0 0.5em 0.5em;
   font-weight: bold;
   font-size: 0.8em;
+  float: left;
 }
 .choice-container.other {
   margin-top: 0.5em;
@@ -782,7 +796,6 @@ legend {
   color: #4b7699;
 }
 #sidebar-feedback label {
-  float: right;
   text-align: left;
 }
 #sidebar-feedback .field-label {

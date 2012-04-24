@@ -243,10 +243,18 @@ button, input[type="submit"], .btn {
 .choice-container {
   padding-left: 1em;
   .row();
+  .clearfix;
+
+  input {
+    float: left;
+    margin-top: 0.1em;
+  }
+
   label {
     padding: 0 0 0.5em 0.5em;
     font-weight: bold;
     font-size: 0.8em;
+    float: left;
   }
 
   &.other {
@@ -421,7 +429,7 @@ legend {
 #sidebar-feedback {
 
   label {
-    float: right;
+    //float: right;
     text-align: left;
   }
 
