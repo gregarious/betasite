@@ -1,11 +1,11 @@
 {% comment %}
 Inner template for a single event detail.
 
-Compatible contexts: EventContext
+Context variables:
+    event: EventData instance
 {% endcomment %}
 {% load thumbnail %}
 
-{% with event=C.event %}
 <header class="single-header">
     <div class="single-thumb-container">
         <div class="item-thumb">
@@ -16,7 +16,7 @@ Compatible contexts: EventContext
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
         <div class="fav-container">
-            {% if C.is_favorite %}
+            {% if is_favorite %}
                 <a href="?action=unfav" class="favbutton remove" title="Unfavorite"><span class="status">&#215;</span> Remove Favorite</a>
             {% else %}
                 <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
@@ -34,8 +34,8 @@ Compatible contexts: EventContext
             {% else %}
                 <li>at {{event.place_primitive}}</li>
             {% endif %}
-            {% if C.event.url %}
-                <li><a href="{{ C.event.url }}" target="blank">On the Web</a></li>
+            {% if event.url %}
+                <li><a href="{{ event.url }}" target="blank">On the Web</a></li>
             {% endif %}
         </ul>
         
@@ -49,4 +49,3 @@ Compatible contexts: EventContext
     </div>
     <p class="description">{{event.description|linebreaksbr}}</p>
 </div> <!-- .single-content -->
-{% endwith %}

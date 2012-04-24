@@ -1,12 +1,12 @@
-from django.shortcuts import get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from django.shortcuts import get_object_or_404, render_to_response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# from onlyinpgh.common.utils.jsontools import jsonp_response
-from onlyinpgh.common.views import render_page
-from onlyinpgh.common.contexts import PageContext
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
+from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.contexts import SpecialContext
+from onlyinpgh.specials.viewmodels import SpecialData
+from onlyinpgh.specials.resources import SpecialFeedResource
 
 
 def page_feed(request):
@@ -20,22 +20,29 @@ def page_feed(request):
     # get a list of rendered items
     all_specials = Special.objects.all()
     paginator = Paginator(all_specials, 10)
+    p = request.GET.get('p')
     try:
-        page_num = int(request.GET.get('p', '1'))
-    except ValueError:
-        page_num = 1
-
-    try:
-        page = paginator.page(page_num)
-    except (EmptyPage, InvalidPage):
+        page = paginator.page(p)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
         page = paginator.page(paginator.num_pages)
 
-    items = [SpecialContext(special, user=request.user) for special in page.object_list]
-    page_context = PageContext(request, 'specials', dict(
-        items=items,
-        prev_p=page.previous_page_number() if page.has_previous() else None,
-        next_p=page.next_page_number() if page.has_next() else None))
-    return render_page('specials/page_feed.html', page_context)
+    specials = page.object_list
+    items = [SpecialData(special, user=request.user) for special in specials]
+    # need the items in json form for bootstrapping to BB models
+    items_json = serialize_resources(SpecialFeedResource(), specials, request=request)
+
+    content = {'items': items,
+               'items_json': items_json,
+               'prev_p': page.previous_page_number() if page.has_previous() else None,
+               'next_p': page.next_page_number() if page.has_next() else None}
+
+    page_context = PageContext(request,
+        current_section='specials',
+        page_title='Scenable | Oakland Specials',
+        content_dict=content)
+    return render_to_response('specials/page_feed.html', page_context)
 
 
 def page_details(request, sid):
@@ -44,10 +51,15 @@ def page_details(request, sid):
     '''
     # build and render special detail viewmodel
     special = get_object_or_404(Special, id=sid)
-    details = SpecialContext(special, user=request.user)
-    page_context = PageContext(request, 'specials', {'special_context': details})
+    details = SpecialData(special, user=request.user)
+    content = {'special': details}
+    page_context = PageContext(request,
+        current_section='specials',
+        page_title='Scenable | %s' % special.title,
+        content_dict=content)
 
-    return render_page('specials/page_special.html', page_context)
+    return render_to_response('specials/page_special.html', page_context)
+
 
 
 # @jsonp_response

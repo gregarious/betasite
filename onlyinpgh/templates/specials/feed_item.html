@@ -1,10 +1,10 @@
 {% comment %}
-Template to render a particular event as a feed item.
+Template to render a particular special as a feed item.
 
-Compatible contexts: SpecialContext
+Context variables:
+	special: SpecialData instance
 {% endcomment %}
 
-{% with special=C.special %}
 <div class="item-thumb">
 	<!-- <div class="points">+{{special.points}}</div> -->
 	<div class="btn btn-primary"><a href="{% url special-detail special.id %}" title="See Special"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
@@ -25,4 +25,3 @@ Compatible contexts: SpecialContext
 	{% include "tags/tag_list.html" with tags=special.tags %}
 	
 </special>
-{% endwith %}

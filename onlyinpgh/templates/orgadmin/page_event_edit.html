@@ -3,20 +3,18 @@
 Org admin place editing form.
 
 Context variables:
-    C:
-        form: SimpleEventForm object
-        newplace_form: SimplePlaceForm object
-            name
-            address
-            postcode
-            town
-            state
-        initial_selected: string for initial place text value if one exists (this is a temporary hack)
-        tag_names: another hack for the Tags autocomplete
+    form: SimpleEventForm object
+    newplace_form: SimplePlaceForm object
+        name
+        address
+        postcode
+        town
+        state
+    initial_selected: string for initial place text value if one exists (this is a temporary hack)
+    tag_names: another hack for the Tags autocomplete
 {% endcomment %}
 
 {% block main-content %}
-{% with form=C.form %}
 <h2>Editing your event...</h2>
 
 <form enctype="multipart/form-data" method="post" action="">
@@ -43,7 +41,7 @@ Context variables:
             <input id="id_place-text">
             <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
             <a id="place-clear" href="#" style="display:none"><img src="{{STATIC_URL}}img/icons/icon_x.gif"></a>
-            <div id="id_place-display" style="display:none">{{C.initial_selected}}</div>
+            <div id="id_place-display" style="display:none">{{initial_selected}}</div>
             {{form.place}}
             <div class='submit-error'></div>
 		</div>
@@ -146,7 +144,6 @@ Context variables:
     </nav>
 </form>
 
-{% with newplace_form=C.newplace_form %}
 <div id="newplace-dialog-form" style="display:none">
     <p class="tip">Please enter details for the place at which your event will occur.</p>
     <p class="tip">If all of these fields don't apply, that's fine! Just enter as much information as you've got.</p>
@@ -196,8 +193,6 @@ Context variables:
     <img class='spinner' src='{{STATIC_URL}}img/ajax-loader.gif' style="display:none">
     <div class='submit-error'></div>
 </div>
-{% endwith %} {# end newplace_form alias #}
-{% endwith %} {# end form alias #}
 {% endblock %}
 
 {% block additional-scripts %}
@@ -206,18 +201,18 @@ Context variables:
 <script type="text/javascript">
 $(function(){
     var tagNames = [
-        {% for name in C.tag_names %}
+        {% for name in tag_names %}
             "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    scenable.activateTagAC('#id_{{C.form.tags.name}}', tagNames);
+    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
     {# TODO: remove initial selected autocomplete hack #}
-    {% if C.initial_selected %}
+    {% if initial_selected %}
     scenable.onACSelect( {
         'item': {
             label: '',
-            value: '{{C.form.place.value}}',
-            selectedDisplay: '{{C.initial_selected|escapejs}}'
+            value: '{{form.place.value}}',
+            selectedDisplay: '{{initial_selected|escapejs}}'
         }
     });
     {% endif %}

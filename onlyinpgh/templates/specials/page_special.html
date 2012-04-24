@@ -4,13 +4,12 @@
 Page-based template for the Specials feed
 
 Context variables:
-    C:
-        special_context: SpecialContext instance
+    special: SpecialData instance
 {% endcomment %}
 
 {% block main-content %}
 <div class="single-container" id="special-single">
-    {% include "specials/single.html" with C=C.special_context %}
+    {% include "specials/single.html" %}
 </div>
 {% endblock %}
 

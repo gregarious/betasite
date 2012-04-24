@@ -8,25 +8,25 @@ Context variables:
 {% load thumbnail %}
 <header class="single-header">
     <div class="single-thumb-container">
-        {% thumbnail C.profile.avatar_url "130x130" crop="center" as im %}
-        <img class="thumbnail" alt="{{C.profile.display_name}}'s avatar" src="{{im.url}}" />
+        {% thumbnail profile.avatar_url "130x130" crop="center" as im %}
+        <img class="thumbnail" alt="{{profile.display_name}}'s avatar" src="{{im.url}}" />
         {% empty %}
         <img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{STATIC_URL}}img/default-avatar.png" />
         {% endthumbnail %}
     </div>
     <section class="item-content">
-        <h1 class="single-title">{{ C.profile.display_name }}</h1>
+        <h1 class="single-title">{{ profile.display_name }}</h1>
         <ul class="item-details">
-            <li>{{ C.profile.username }}</li>
-            <li>{{ C.profile.points }}</li>
-            <li>{{ C.profile.neighborhood }}</li>
+            <li>{{ profile.username }}</li>
+            <li>{{ profile.points }}</li>
+            <li>{{ profile.neighborhood }}</li>
         </ul>
         <div class="social-container">
-            {% if C.profile.fb_id %}
-            <a href="http://www.facebook.com/{{ C.profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
+            {% if profile.fb_id %}
+            <a href="http://www.facebook.com/{{ profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
             {% endif %}
-            {% if C.profile.twitter_username %}
-            <a href="http://twitter.com/{{ C.profile.twitter_username }}"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            {% if profile.twitter_username %}
+            <a href="http://twitter.com/{{ profile.twitter_username }}"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
             {% endif %}        
         </div>
     </section>

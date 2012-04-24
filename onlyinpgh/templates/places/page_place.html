@@ -4,16 +4,15 @@
 Page-based template for the Places feed
 
 Context variables:
-    C:
-        place_context: PlaceContext instance
-        related_feeds: PlaceRelatedFeeds context instance
+    place: PlaceData instance
+    related_feeds: PlaceRelatedFeeds instance
         
 {% endcomment %}
 {% load thumbnail %}
 
 {% block main-content %}
 <div class="single-container detailed-single" id="place-single">
-    {% include "places/header.html" with C=C.place_context %}
+    {% include "places/header.html" %}
 	<article class="single-content">
 	    {% include "places/details.html" %}
 	</article>
@@ -26,7 +25,7 @@ Context variables:
 
 
 {% comment %}
-Saving old favoriting Javascript for future notice:
+Saving old favoriting Javascript for future use:
 <script type="text/javascript">
     require(['jquery','helpers/place_actions'],function($,place_actions) {
         // handle the add/remove favorite button

@@ -1,12 +1,11 @@
 {% extends "orgadmin/manage_page.html" %}
 {% comment %}
 Context variables (ManagePageContext)
-    C:
-        form: PlaceClaimForm (from orgadmin.forms)
+    form: PlaceClaimForm (from orgadmin.forms)
 {% endcomment %}
 
 {% block main-content %}
-{% with form=C.form %}
+
 <h2>Add a location...</h2>
 <form method="POST" action="{% url orgadmin-claimplace %}">
     {% csrf_token %}
@@ -41,7 +40,6 @@ Context variables (ManagePageContext)
         </nav>
     </div>
 </form>
-{% endwith %} {# end form alias #}
 {% endblock %}
 
 {% block additional-scripts %}

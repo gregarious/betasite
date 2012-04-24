@@ -1,11 +1,11 @@
 {% comment %}
 Template to render a particular place as a feed item.
 
-Compatible contexts: PlaceContext
+Context variables:
+	place: PlaceData instance
 {% endcomment %}
 {% load thumbnail %}
 
-{% with place=C.place %}
 <div class="item-thumb">
 	{% thumbnail place.image "50x50" crop="center" as im %}
     <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
@@ -33,5 +33,3 @@ Compatible contexts: PlaceContext
 	{% include "tags/tag_list.html" with tags=place.tags %}
 
 </section>
-
-{% endwith %} {# end of place alias #}
