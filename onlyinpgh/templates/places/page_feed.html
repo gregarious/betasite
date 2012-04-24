@@ -54,8 +54,10 @@ $(function(){
             theMap.addItem(
                 place.location.latitude, 
                 place.location.longitude, 
+                window.TPL.placeItem(place),
                 '/static/img/markers/place-marker.png', 
-                window.TPL.placeInfoWindow(place));
+                '/static/img/markers/marker-shadow.png'
+                );
         }
     });
     window.Scenable.feed.linkFeedToMap($('#mainPlaceFeed').children('.hasMarker'),theMap);

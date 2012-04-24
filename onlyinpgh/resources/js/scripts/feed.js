@@ -41,12 +41,13 @@ $(function(){
             return {
                 mapItems: [],
                 /* returns a marker+iw object */
-                addItem: function(lat, lng, icon, iwContent) {
+                addItem: function(lat, lng, iwContent, icon, shadowIcon) {
                     var pos = new google.maps.LatLng(lat, lng);
                     var mapItem = {
                         marker: new google.maps.Marker({
                             position: pos,
                             icon: icon,
+                            shadow: _.isUndefined(shadowIcon) ? null : shadowIcon,
                             map: _map
                         }),
                         infoWindow: new google.maps.InfoWindow({

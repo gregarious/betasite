@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.utils.safestring import mark_safe
 import json
 
 
@@ -48,21 +49,38 @@ class jsonp_response(object):
         return package_json_response(data, request)
 
 
-def serialize_resource(resource, obj=None, data=None, request=None):
+def sanitize_json(json_string):
+    '''
+    Escapes any occurances of </ from a string and marks it as safe. Note
+    that this does not imply the content of any string within the JSON is
+    safe for HTML display.
+    '''
+    return mark_safe(json_string.replace('</', '\<\/'))
+
+
+def serialize_resource(resource, obj=None, data=None, request=None, sanitize=True):
     '''
     Use the given Tastypie Resource instance to pack up the object/data
     into a JSON-serialized resource.
     '''
     bundle = resource.build_bundle(request=request, obj=obj, data=data)
     dehydrated = resource.full_dehydrate(bundle)
-    return resource.serialize(None, dehydrated, 'application/json')
+    json = resource.serialize(None, dehydrated, 'application/json')
+    if sanitize:
+        return sanitize_json(json)
+    else:
+        return json
 
 
-def serialize_resources(resource, objs, request=None):
+def serialize_resources(resource, objs, request=None, sanitize=True):
     '''
     Use the given Tastypie Resource instance to pack up the objects
     into a JSON-serialized array of resources.
     '''
     bundles = (resource.build_bundle(request=request, obj=obj) for obj in objs)
     dehydrated = [resource.full_dehydrate(bundle) for bundle in bundles]
-    return resource.serialize(None, dehydrated, 'application/json')
+    json = resource.serialize(None, dehydrated, 'application/json')
+    if sanitize:
+        return sanitize_json(json)
+    else:
+        return json
