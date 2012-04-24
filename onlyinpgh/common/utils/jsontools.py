@@ -51,7 +51,9 @@ class jsonp_response(object):
 
 def sanitize_json(json_string):
     '''
-    Removes any occurances of </ from a string and marks it as safe.
+    Escapes any occurances of </ from a string and marks it as safe. Note
+    that this does not imply the content of any string within the JSON is
+    safe for HTML display.
     '''
     return mark_safe(json_string.replace('</', '\<\/'))
 
