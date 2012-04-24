@@ -37,7 +37,7 @@
 <script type="text/javascript">
 $(function(){
     var theMap = new window.Scenable.feed.Map(document.getElementById('map_canvas'), 40.44417, -79.94583);
-    _.each({{places_json|safe}}, function(place){
+    _.each({{places_json}}, function(place){
         theMap.addItem(
             place.location.latitude, 
             place.location.longitude, 

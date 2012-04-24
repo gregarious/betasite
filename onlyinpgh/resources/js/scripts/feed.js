@@ -47,7 +47,6 @@ $(function(){
                         marker: new google.maps.Marker({
                             position: pos,
                             icon: icon,
-                            animation: google.maps.Animation.BOUNCE,
                             shadow: _.isUndefined(shadowIcon) ? null : shadowIcon,
                             map: _map
                         }),
