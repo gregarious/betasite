@@ -4,13 +4,11 @@
 Template for hot section
 
 Context variables:
-    C:
-        hot_feeds: HotFeedCollection context instance
+    hot_feeds: HotFeedCollection context instance
     (... more to come ...)
 {% endcomment %}
 
 {% block main-content %}
-{% with hot_feeds=C.hot_feeds %}
 <header class="feed-header">
     <h1 class="feed-title">NOW in Oakland</h1>
     <form class="filter">
@@ -57,7 +55,6 @@ Context variables:
         {% include "news_example.html" %}
     </section>
 </div>
-{% endwith %}
 {% endblock %}
 
 {% block sidebar %}

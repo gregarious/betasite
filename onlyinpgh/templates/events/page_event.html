@@ -4,13 +4,12 @@
 Page-based template for the Places feed
 
 Context variables:
-    C:
-        event_context: EventContext instance
+    event: EventData instance
 {% endcomment %}
 
 {% block main-content %}
 <div class="single-container" id="event-single">
-	{% include "events/single.html" with C=C.event_context %}
+	{% include "events/single.html" %}
 </div>
 {% endblock %}
 

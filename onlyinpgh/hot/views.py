@@ -1,13 +1,18 @@
-from onlyinpgh.common.views import render_page
-from onlyinpgh.common.contexts import PageContext
+from django.shortcuts import render_to_response
+from onlyinpgh.common.views import PageContext
 
-from onlyinpgh.hot.contexts import HotFeedCollection
+from onlyinpgh.hot.viewmodels import HotFeedCollection
 
 
 ### URL-LINKED VIEWS ###
 def page_hot(request):
     hot_feeds = HotFeedCollection(request.user)
 
-    page_context = PageContext(request, 'hot', dict(
-        hot_feeds=hot_feeds))
-    return render_page('hot/page_hot.html', page_context)
+    content = {'hot_feeds': hot_feeds}
+
+    page_context = PageContext(request,
+        current_section='places',
+        page_title='Scenable | Oakland Places',
+        content_dict=content)
+
+    return render_to_response('places/page_feed.html', page_context)

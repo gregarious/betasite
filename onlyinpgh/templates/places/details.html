@@ -2,18 +2,15 @@
 Template to render items related to a place
 
 Context variables:
-    C:
-        place: PlaceContext instance
-        related_feeds:
-            events_feed:
-                [EventFeedItem VMs]
-            specials_feed:  
-                [SpecialFeedItem VMs]
+    place: PlaceData instance
+    related_feeds:
+        events_feed:
+            [EventFeedItem VMs]
+        specials_feed:  
+            [SpecialFeedItem VMs]
 
 {% endcomment %}
 {% load external_url from commontags %}
-{% with related_feeds=C.related_feeds place=C.place %}
-
 <nav class="detail-nav">
     <ul>
         <li><a id="placeDetail" class="current-page">Info</a></li>
@@ -111,5 +108,3 @@ Context variables:
         <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
     </aside>
 {% endif %}
-
-{% endwith %}

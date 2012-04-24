@@ -79,7 +79,7 @@ urlpatterns = patterns('',
 
 # Tastypie API setup
 from tastypie.api import Api
-from onlyinpgh.places.api import PlaceFeedResource
+from onlyinpgh.places.resources import PlaceFeedResource
 v1_api = Api(api_name='v1')
 v1_api.register(PlaceFeedResource())
 

@@ -3,36 +3,31 @@
 {% comment %}
 Template for any Scenable webpage. 
 
-Context is a PageContext variable, meaning the following root-level
-variables are available. All are Context variables set in the
-PageContext constructor.
-- header_context
-- main_context
-- sidebar_context
-- footer_context
+Context is a PageContext variable, meaning the context variables
+are always available (in addition to normal RequestContext vbls):
+
+    page_title: string
+    current_section: string
 {% endcomment %}
 {% load compressed %}
 
 {% block content %}
 <div class="wrap">
     <nav id="scene-nav">
-        {% include "scene_nav.html" with C=header_context %}
-        {% include "top_bar.html" with C=header_context %}
+        {% include "scene_nav.html" %}
+        {% include "top_bar.html" %}
     </nav>
-    {% with C=main_context %}
     <div id="site-content" role="main">
     {% block main-content %}{% endblock %}
     </div>        
-    {% endwith %}
     <aside id="site-sidebar" role="complementary">
         {% block sidebar %}{% endblock %}
 	</aside>
 </div>
-{% include "footer.html" with C=footer_context %}
+{% include "footer.html" %}
 {% endblock %}
 
 {% block foot %}
-{% with C=footer_context %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 {% compressed_js 'all_libs' %}
@@ -43,5 +38,4 @@ PageContext constructor.
 
 {# block for inline scripts: used for bootstraping models, simple-DOM related one-liners, etc. #}
 {% block foot-inlines %}{% endblock %}
-{% endwith %}
 {% endblock %}
