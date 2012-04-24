@@ -19,6 +19,7 @@ class PlaceData(object):
             self.is_favorite = False
         for attr in fields:
             setattr(self, attr, getattr(place, attr))
+        self.pk = self.id
 
 
 class PlaceRelatedFeeds(object):

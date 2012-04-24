@@ -19,3 +19,4 @@ class SpecialData(object):
 
         for attr in fields:
             setattr(self, attr, getattr(special, attr))
+        self.pk = self.id

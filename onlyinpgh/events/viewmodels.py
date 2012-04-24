@@ -13,3 +13,4 @@ class EventData(object):
             self.is_attending = False
         for attr in fields:
             setattr(self, attr, getattr(event, attr))
+        self.pk = self.id
