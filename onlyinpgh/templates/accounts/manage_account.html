@@ -10,7 +10,6 @@ Context variables:
 <h2 class="detail-section-title">Account Settings</h2>
 <form method="post" action="">
 {% csrf_token %}
-
 <fieldset>
 	<legend>Your info</legend>
 	{% with form=account_forms.profile_form %}
