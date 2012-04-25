@@ -26,9 +26,11 @@ Context variables:
 
     <ul class="feed events">
     {% for item in items %}
-        <li class="item">
-        {% include "events/feed_item.html" with event=item %}
-        </li>
+        
+            <li class="item">
+            {% include "events/feed_item.html" with event=item %}
+            </li>
+        
     {% endfor %}
     </ul>
 

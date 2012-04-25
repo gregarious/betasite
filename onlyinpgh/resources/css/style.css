@@ -265,13 +265,13 @@ a {
   color: #b83939;
 }
 a:hover {
-  color: #238b49;
+  color: #999;
 }
 a:active {
   color: #2c525d;
 }
 a:visited {
-  color: #4b7699;
+  color: #b83939;
 }
 .meta {
   font-size: 0.9em;
@@ -282,8 +282,10 @@ a:visited {
   font-size: 0.9em;
 }
 .host {
-  color: #b83939 !important;
+  /*  color: @red !important;
   font-weight: bold;
+*/
+
 }
 .host:hover {
   color: #238b49 !important;
@@ -1159,7 +1161,6 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #f9f9f9;
   position: relative;
 }
 .item:before,
@@ -1173,15 +1174,14 @@ legend {
 .item:last-child {
   border-bottom: none;
 }
-.item a {
-  color: #000;
-}
 .item-title {
   margin: 0;
+  font-size: 0.9em;
+  line-height: 1.2em;
 }
 .item-title a {
   text-shadow: 0 0 0.01em #999;
-  font-size: 1em;
+  color: #000;
 }
 .item-title a:hover {
   color: #b83939;
@@ -1216,6 +1216,7 @@ legend {
   overflow: hidden;
 }
 .item-details {
+  font-size: 0.8em;
   width: 100%;
   margin: 0;
   -moz-box-sizing: border-box;
@@ -1257,6 +1258,7 @@ legend {
   background-clip: padding-box;
   margin: 0.5em 0;
   padding: 0.6em 0.6em 0.6em 0.4em;
+  text-shadow: 0 0 0.01em #f9f9f9;
 }
 .detail-nav ul li a.current-page {
   background-color: #f9f9f9;
@@ -1268,11 +1270,20 @@ legend {
 .detail-nav ul li a.current-page:hover {
   background-color: #f9f9f9;
 }
+.detail-nav ul li a.disabled {
+  background: #e8e8e8;
+  color: #bbb;
+  cursor: text;
+  text-shadow: 0 0 0.01em #f9f9f9;
+}
+.detail-nav ul li a.disabled:hover {
+  background: #e8e8e8;
+}
 .detail-nav ul li a:hover {
-  background: #8fd36f;
+  background: #238b49;
 }
 .detail-nav ul li a:active {
-  background: #ded57f;
+  background: #6baa55;
 }
 /*#date-nav-left, #date-nav-right {
   background: url("../img_store/date-nav.png");
@@ -1305,6 +1316,9 @@ legend {
 }
 .single-container:after {
   clear: both;
+}
+.single-container .item-details {
+  font-size: 0.9em;
 }
 .single-thumb-container {
   float: left;
@@ -1348,12 +1362,6 @@ legend {
   box-sizing: border-box;
   border-bottom: 1px #e1e1e1 solid;
   padding-bottom: 1.5em;
-  /*
-  .thumbnail {
-    height: 170px;
-    width: 170px;
-  }*/
-
 }
 .single-header .item-content {
   float: left;
@@ -1428,7 +1436,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  font-size: 0.8em;
+  font-size: 0.75em;
   margin: 1% 0 0;
 }
 .tag-list:before,
@@ -1501,6 +1509,12 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.hot .item {
+  border-bottom: 1px solid #e1e1e1;
+}
+.hot .item:last-child {
+  border: none;
+}
 .hot .feed {
   margin-left: 0;
   margin-right: 0;
@@ -1515,9 +1529,6 @@ legend {
 .hot.events,
 .hot.chatter {
   float: right;
-}
-.hot.events .item-details {
-  font-size: 0.9em;
 }
 .hot.map-container {
   float: left;
@@ -1759,13 +1770,9 @@ a#siteNews {
 }
 /* Actions */
 /* MEDIA QUERIES --------- */
-/*******************************//*******************************/
-/*******************************//*******************************/
-/*******************************//*******************************/
-/* 18 MEDIA QUERIES ---------- *//*******************************/
-/*******************************//*******************************/
-/*******************************//*******************************/
-/*******************************//*******************************/
+/*******************************/
+/* 18 MEDIA QUERIES ---------- */
+/*******************************/
 @media screen and (max-width: 1140px) {
   body {
     background-image: url("/static/img/logos/oakland-bkgd-325.png");
@@ -1777,6 +1784,17 @@ a#siteNews {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
+  }
+  .feed-content .item {
+    width: 100%;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .feed-content .item:last-child {
+    border: none;
   }
 }
 @media screen and (max-width: 1082px) {
