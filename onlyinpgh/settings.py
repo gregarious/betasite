@@ -201,4 +201,5 @@ SEND_BROKEN_LINK_EMAILS = True
 # pipeline settings
 from settings_pipeline import *
 # this is defined outside so we can use to_abspath
-PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor') 
+PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
