@@ -38,14 +38,15 @@ Context variables:
     <ul class="item-details">
         {% if place.hours %}
             {# This is ugly and unintuitive. But works for now. #}
-            {% for tuples in place.hours_unpacked %}
+            {% for tuples in place.hours %}
                 <li>{{tuples.0}}: {{tuples.1}}</li>
             {% endfor %}
         {% endif %}
 
+        {# parking is disabled temporarily #}
         {% if place.parking %}
             {# This is ugly and unintuitive. But works for now. #}
-            {% for option in place.parking_unpacked %}
+            {% for option in place.parking %}
                 <li>Parking: {{option}}</li>
             {% endfor %}
         {% endif %}
