@@ -29,8 +29,23 @@
 
 <script type="text/javascript">
 var bootstrap = {{places_json}};
+
+// model extensions not strictly necessary: defaults will do for Places
+var PlaceItem = MapFeedItem.extend();
+var PlaceItems = MapFeedItems.extend({model:PlaceItem});
+
+var PlaceView = MapFeedItemView.extend({
+    template: window.TPL.placeInfoWindow,
+    iwTemplate: window.TPL.placeInfoWindow,
+    markerOptions: {
+        icon: '/static/img/markers/place-marker.png',
+        shadow: '/static/img/markers/marker-shadow.png'
+    }
+});
+var PlaceFeed = MapFeedView.extend({SubViewClass:PlaceView});
+
 var Items = new MapFeedItems;
-var Feed = new MapFeedView({
+var Feed = new PlaceFeed({
     model: Items,
     el: document.getElementById('feed'),
     mapDOMElement: document.getElementById('map_canvas'),
@@ -45,11 +60,9 @@ var Feed = new MapFeedView({
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.SMALL
         }
-    },
-    itemTemplate: window.TPL.placeInfoWindow,
-    iwTemplate: window.TPL.placeInfoWindow,
-    delayMapRender: true
+    }
 });
+
 Items.reset(bootstrap);
 </script>
 {% endblock %}

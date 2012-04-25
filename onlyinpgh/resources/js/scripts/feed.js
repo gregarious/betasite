@@ -14,42 +14,63 @@ var MapFeedItems = Backbone.Collection.extend({
     model: MapFeedItem
 });
 
-// Constructor should provide the following properties:
-// - model: MapFeedItem object
-// - clickCallback: a callback to pass a click event to (used to get event up to parent view)
-// - template: template to render a model as a list item
 var MapFeedItemView = Backbone.View.extend({
     tagName: 'li',
 
-    markFocus: function(event) {
+    // the following should be set via extension
+    template: null,
+    iwTemplate: null,
+    markerOptions: {},      // position will always be overwritten
+    infoWindowOptions: {},  // content will always be overwritten
+
+    marker: null,
+    infoWindow: null,
+
+    initialize: function(options) {
+        console.log(this.model);
+        this.marker = new google.maps.Marker(
+            _.extend(_.clone(this.markerOptions), {
+                position: this.model.getLatLng()
+            })
+        );
+        this.infoWindow = new google.maps.InfoWindow(
+            _.extend(_.clone(this.infoWindowOptions), {
+                content: this.iwTemplate(this.model.toJSON())
+            })
+        );
+    },
+
+    markFocus: function(map) {
         this.$el.addClass('focused');
+        this.infoWindow.open(map, this.marker);
     },
 
-    unmarkFocus: function(event) {
+    unmarkFocus: function() {
         this.$el.removeClass('focused');
+        this.infoWindow.close();
     },
 
-    // renders the feed item with the template provided in the constructor
-    render: function() {
+    render: function(map) {
         console.log('rendering model ' + this.model.cid);
-        this.$el.html(this.options.template(this.model.toJSON()));
+        this.$el.html(this.template(this.model.toJSON()));
+        if(map) {
+            this.marker.setMap(map);
+        }
         return this;
+    },
+
+    close: function() {
+        this.infoWindow.close();
+        this.marker.setMap(null);
+        this.remove();
     }
 });
 
-// MapFeedView: Manages both the feed list and the map
-// Constructor should provide the following:
-// - model: MapFeedItems collection object
-// - mapDOMElement: DOM element that a map should be attached to
-// - mapOptions: a google.maps.MapOptions object (if center or zoom are left out
-//               these components will be determined on first map draw by the
-//               contents of the feed
-// - itemTemplate: a template for rendering individual feed items
-// - iwTemplate: an optional template for rendering an infoWindow
 var MapFeedView = Backbone.View.extend({
     tagName: 'ul',
     map: null,
-    subViews: {},   // map of feed item cids to {'marker': Marker, 'itemView': FeedItemView, 'infoWindow': InfoWindow} objects
+    SubViewClass: MapFeedItemView, // should be overridden to something concrete
+    subViews: {},   // map of feed item cids to MapFeedItemViews
 
     initialize: function(options) {
         this.model.bind('reset', this.onReset, this);
@@ -63,92 +84,62 @@ var MapFeedView = Backbone.View.extend({
         this.map = new google.maps.Map(domElement, opts);
     },
 
-    createSubView: function(model, itemTemplate, iwTemplate) {
-        var itemView = new MapFeedItemView({
-            model: model,
-            template: itemTemplate
+    createSubView: function(model) {
+        var sv = new this.SubViewClass({
+            model: model
         });
-        var marker = new google.maps.Marker({
-            position: model.getLatLng(),
-            icon: '/static/img/markers/place-marker.png'
-        });
-        var subView = {
-            itemView: itemView,
-            marker: marker,
-            infoWindow: new google.maps.InfoWindow({
-                content: iwTemplate(model.toJSON())
-            })
-        };
-
         var that = this;
-        itemView.$el.click(function(event) {
-            that.onItemFocus(subView);
+        sv.$el.click(function(event) {
+            that.onItemFocus(sv);
         });
-        google.maps.event.addListener(marker, 'click', function(event) {
-            that.onItemFocus(subView);
+        google.maps.event.addListener(sv.marker, 'click', function(event) {
+            that.onItemFocus(sv);
         });
-        return subView;
+        return sv;
     },
 
     // callbacks for model/collection events
     onAdd: function(model, collection) {
         // create a FeedItemView and Marker bundle
-        var subView = this.createSubView(model,
-            this.options.itemTemplate,
-            this.options.iwTemplate);
+        var subView = this.createSubView(model);
         this.subViews[model.cid] = subView;
         // render item view and append to own element
-        this.$el.append(subView.itemView.render().el);
-        // show the marker on the map
-        subView.marker.setMap(this.map);
+        this.$el.append(subView.render(this.map).el);
     },
 
     onReset: function(collection) {
         // remove all stored views
-        for(var cid in this.subViews) {
-            this.onRemove(this.subViews[cid].itemView.model);
-        }
+        _.each(this.subViews, function(sv) {
+            sv.close();
+        });
         this.subViews = {};
 
         // add new set of views
-        for (var i = 0; i < collection.length; i++) {
-            this.onAdd(collection.models[i], collection);
-        }
-        // don't need render: onAdd does it all
-        // this.render();
+        _.each(collection.models, function(model) {
+            this.subViews[model.cid] = this.createSubView(model);
+        }, this);
+        this.render();
     },
 
     onRemove: function(model, collection) {
-        // all these deletes are necessary to remove the circular dependencies
-        // between the subView and it's components' event callbacks
-        var subView = this.subViews[model.cid];
-        subView.infoWindow.close();
-        delete subView.infoWindow;
-        subView.itemView.remove();
-        delete subView.itemView;
-        subView.marker.setMap(null);
-        delete subView.marker;
+        this.subViews[model.cid].close();
         delete this.subViews[model.cid];
     },
 
-    onItemFocus: (function() {  // done as a closure to hide internal active iw state
+    onItemFocus: (function() {  // done as a closure to hide internal focused state
         var focusedSubView = null;
         return function(subView) {
-            if(focusedSubView && focusedSubView.infoWindow) {
-                focusedSubView.infoWindow.close();
+            if(focusedSubView) {
+                focusedSubView.unmarkFocus();
             }
-            if(focusedSubView && focusedSubView.itemView) {
-                focusedSubView.itemView.unmarkFocus();
-            }
-            subView.infoWindow.open(this.map, subView.marker);
-            subView.itemView.markFocus();
+            subView.markFocus(this.map);
             focusedSubView = subView;
         };
     }).call(this),
 
     render: function() {
         _.each(this.subViews, function(subView){
-            this.$el.append(subView.itemView.render().el);
+            this.$el.append(subView.render(this.map).el);
         }, this);
         return this;
     }
