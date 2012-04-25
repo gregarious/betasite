@@ -1,57 +1,12 @@
-from django.shortcuts import get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from django.shortcuts import get_object_or_404, render_to_response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from onlyinpgh.common.utils.jsontools import jsonp_response
-from onlyinpgh.common.views import render_page
-from onlyinpgh.common.contexts import PageContext
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
+from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.places.models import Place
-from onlyinpgh.places.contexts import PlaceContext, PlaceRelatedFeeds
-
-# from datetime import datetime, timedelta
-
-
-# def _get_checkin_cutoff():
-#     return datetime.utcnow() - timedelta(hours=3)
-
-
-# def _handle_place_action(request, pid, action):
-#     '''
-#     Returns a status dict that resulted from the action.
-#     '''
-#     failure = lambda msg: {'status': 'error', 'msg': msg}
-#     success = lambda msg: {'status': 'success', 'msg': msg}
-#     if not request.user.is_authenticated():
-#         return failure('user not authenticated')
-#     elif not request.user.is_authenticated():
-#         return failure('user account inactive')
-#     else:
-#         try:
-#             place = Place.objects.get(id=pid)
-#         except Place.DoesNotExist:
-#             return failure('invalid place id')
-
-#         if action == 'addfav' or action == 'removefav':
-#             existing = FavoriteItem.objects.filter_by_type(model_type=Place,
-#                             model_instance=place,
-#                             user=request.user)
-#             if action == 'addfav':
-#                 if len(existing) > 0:
-#                     # despite non-action, we count this as a success
-#                     return success('item already in favorites')
-#                 else:
-#                     FavoriteItem.objects.create(user=request.user,
-#                                                 content_object=place)
-#                     return success('added')
-#             elif action == 'removefav':
-#                 if len(existing) > 0:
-#                     existing.delete()
-#                     return success('removed')
-#                 else:
-#                     # despite non-action, we count this as a success
-#                     return success('item not in favorites')
-#         else:
-#             return failure('invalid action')
+from onlyinpgh.places.resources import PlaceFeedResource
+from onlyinpgh.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
 
 def page_feed(request):
@@ -66,23 +21,29 @@ def page_feed(request):
     '''
     all_places = Place.listed_objects.all()
     paginator = Paginator(all_places, 10)
+    p = request.GET.get('p')
     try:
-        page_num = int(request.GET.get('p', '1'))
-    except ValueError:
-        page_num = 1
-
-    try:
-        page = paginator.page(page_num)
-    except (EmptyPage, InvalidPage):
+        page = paginator.page(p)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
         page = paginator.page(paginator.num_pages)
 
-    items = [PlaceContext(place, user=request.user) for place in page.object_list]
+    places = page.object_list
+    items = [PlaceData(place, user=request.user) for place in places]
+    # need the items in json form for bootstrapping to BB models
+    items_json = serialize_resources(PlaceFeedResource(), places, request=request)
 
-    page_context = PageContext(request, 'places', dict(
-        items=items,
-        prev_p=page.previous_page_number() if page.has_previous() else None,
-        next_p=page.next_page_number() if page.has_next() else None))
-    return render_page('places/page_feed.html', page_context)
+    content = {'items': items,
+               'items_json': items_json,
+               'prev_p': page.previous_page_number() if page.has_previous() else None,
+               'next_p': page.next_page_number() if page.has_next() else None}
+
+    page_context = PageContext(request,
+        current_section='places',
+        page_title='Scenable | Oakland Places',
+        content_dict=content)
+    return render_to_response('places/page_feed.html', page_context)
 
 
 def page_details(request, pid):
@@ -103,17 +64,20 @@ def page_details(request, pid):
 
     # build and render place detail viewmodel
     place = get_object_or_404(Place, id=pid)
-    details = PlaceContext(place, user=request.user)
+    details = PlaceData(place, user=request.user)
 
     # build related feeds viewmodel
     related_feeds = PlaceRelatedFeeds(place, user=request.user)
 
-    # as long as there was no AJAX-requested action, we will return a fully rendered new page
-    page_context = PageContext(request, 'places', dict(
-                            place_context=details,
-                            related_feeds=related_feeds))
+    content = dict(
+        place=details,
+        related_feeds=related_feeds)
+    page_context = PageContext(request,
+        current_section='places',
+        page_title='Scenable | %s' % place.name,
+        content_dict=content)
 
-    return render_page('places/page_place.html', page_context)
+    return render_to_response('places/page_place.html', page_context)
 
 
 @jsonp_response

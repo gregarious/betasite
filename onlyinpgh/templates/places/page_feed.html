@@ -4,35 +4,59 @@
 Page-based template for the Places feed
 
 Context variables:
-    C:  
-        [items]: List of PlaceContext instances
-        prev_p: page number of previous page (if available)
-        next_p: page number of next page (if available)
+    [items]: List of PlaceContext instances
+    items_json: JSON string of PlaceFeedResources corresponding to [items]
+    prev_p: page number of previous page (if available)
+    next_p: page number of next page (if available)        
 {% endcomment %}
 
 {% block main-content %}
 <header class="feed-header">
     <h1 class="feed-title">Places</h1>
-    <form class="filter" >
+    <form class="filter">
         <input type="search" placeholder="Filter Places" />
         <input type="submit" value="Filter" />
     </form>
 </header>
 
 <article class="feed-content">
-    <div class="map-container"></div>
-    {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
-    {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+    <div class="map-container" id="mainPlaceFeedMap"></div>
+    {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+    {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
 
-    <ul class="feed places">
-    {% for item in C.items %}
-        <li class="item">
-        {% include "places/feed_item.html" with C=item %}
+    <ul class="feed places" id="mainPlaceFeed">
+    {% for item in items %}
+        <li class="item {%if item.place.location.is_geocoded%}hasMarker{%endif%}">
+        {% include "places/feed_item.html" with place=item %}
         </li>
     {% endfor %}
     </ul>
 
-    {% if C.prev_p %}<a href="{% url places-feed %}?p={{C.prev_p}}">Previous</a> | {% endif %}
-    {% if C.next_p %}<a href="{% url places-feed %}?p={{C.next_p}}">Next</a>{% endif %}
+    {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
+    {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
+{% endblock %}
+
+{% block sidebar %}
+{% include "places/sidebar_place_feed.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    var theMap = new window.Scenable.feed.Map(document.getElementById('mainPlaceFeedMap'), 40.44417, -79.94583);
+    _.each({{items_json|default:"[]"}}, function(place){
+        if( place.location && place.location.latitude && place.location.longitude) {
+            theMap.addItem(
+                place.location.latitude, 
+                place.location.longitude, 
+                window.TPL.placeInfoWindow(place),
+                '/static/img/markers/place-marker.png', 
+                '/static/img/markers/marker-shadow.png'
+                );
+        }
+    });
+    window.Scenable.feed.linkFeedToMap($('#mainPlaceFeed').children('.hasMarker'),theMap);
+});
+</script>
 {% endblock %}

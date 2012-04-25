@@ -20,3 +20,9 @@ A catch all text file for things that should be considered once there's an actua
 - Take a big look at events/outsourcing/facebook code. missing a lot of error checking i fear
 
 - Field-specific sync Meta for Facebook/iCal events. Doing this right will mean really making the link between Facebook/iCal and Scenable easy for two way communication.
+
+- Read through https://docs.djangoproject.com/en/1.4/topics/security/, especially the SSL/HTTPS section to get automatic https forwarding and secure cookies working. Also take a look at "Host headers and virtual hosting"
+
+- Use the new wsgi setting in settings.py to make the dev server also use the custom wsgi file
+
+- cacheing leads: Varnish (recommended from Tastypie)

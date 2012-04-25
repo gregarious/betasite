@@ -1,0 +1,13 @@
+{% comment %}
+Inner template to render a list of specials the user has not yet used
+
+Context variables:
+    [items]:  list of SpecialData instances
+{% endcomment %}
+
+<h2 class="detail-section-title">Available Specials</h2>
+<ul class="feed my-feed specials">
+    {% for item in items %}
+        <li class="item">{% include "specials/feed_item.html" with special=item %}</li>
+    {% endfor %}
+</ul>

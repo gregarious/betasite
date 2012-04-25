@@ -1,0 +1,42 @@
+{% comment %}
+Inner template for a single place detail.
+
+Context variables:
+    place: PlaceData instance
+{% endcomment %}
+{% load thumbnail %}
+
+<header class="single-header">
+    <div class="single-thumb-container">
+        <div class="item-thumb">
+            {% thumbnail place.image "130x130" crop="center" as im %}
+            <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+            {% empty %}
+            <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+            {% endthumbnail %}
+        </div>
+        <div class="fav-container">
+            {% if is_favorite %}
+                <a href="?action=unfav" class="favbutton remove" title="Remove Favorite"><span class="status">&#215;</span>Remove Favorite</a>
+            {% else %}
+                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
+            {% endif %}
+        </div>
+    </div> <!-- .item-thumb -->
+
+    <section class="item-content">
+        <h1 class="single-title">{{ place.name }}</h1>
+        <ul class="item-details">   
+            <li class="address">{{place.location.address}}</li>
+        </ul>
+        {% include "tags/tag_list.html" with tags=place.tags %}
+        <div class="social-container">
+            {% if place.fb_id %}
+            <a href="http://www.facebook.com/{{ place.fb_id }}" target="blank" title="Twitter"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
+            {% endif %}
+            {% if place.twitter_username %}
+            <a href="http://twitter.com/{{ place.twitter_username }}" target="blank" alt="Facebook"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            {% endif %}        
+        </div>
+    </section> <!-- .item-content -->
+</header> <!-- .single-header -->

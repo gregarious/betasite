@@ -1,7 +1,7 @@
 # Django settings for onlyinpgh project.
-
 import os
 import datetime
+
 # import settings that differ based on deployment
 import settings_local
 
@@ -22,14 +22,6 @@ DATABASES = {
     'default': settings_local.DB_DEFAULT
 }
 DATABASES['default']['TEST_CHARSET'] = 'utf8'
-
-EMAIL_HOST = settings_local.EMAIL_HOST
-EMAIL_HOST_USER = settings_local.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
-DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
-SERVER_EMAIL = settings_local.SERVER_EMAIL
-
-SEND_BROKEN_LINK_EMAILS = True
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -73,11 +65,6 @@ STATIC_ROOT = settings_local.STATIC_ROOT
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
-# URL prefix for admin static files -- CSS, JavaScript and images.
-# Make sure to use a trailing slash.
-# Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-
 # Additional locations of static files
 STATICFILES_DIRS = (
     to_abspath('resources'),
@@ -93,7 +80,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'bqv*s&^)0l8*xe(i2u!oyr9s&5y^k-$o^8x9zo69b3%-sixer)'
+SECRET_KEY = '!)6pq@7zn=+*tf(&amp;gngk*b)^*8r)b44yg3!10)3$^p9r%&amp;ppme'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -102,32 +89,19 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
-# first 6 are copied from default, last one is necessary to support the self_render template tag
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.request",
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'onlyinpgh.urls'
 
-LOGIN_URL = '/login/'
-LOGOUT_URL = '/logout/'
-LOGIN_REDIRECT_URL = '/'
-
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'onlyinpgh.wsgi.application'
 
 TEMPLATE_DIRS = (
     to_abspath('templates'),
@@ -146,6 +120,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'sorl.thumbnail',
+    'pipeline',
+    'tastypie',
     'django_extensions',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
@@ -161,7 +137,7 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-_timestamp = datetime.datetime.now().strftime('%Y.%m.%d.%H.%M.%S.%f')
+# (see master:687f9565 for old logging examples)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -181,28 +157,6 @@ LOGGING = {
             'formatter': 'verbose',
             'filename': to_abspath('logs/debug.log')
         },
-        # 'outsourcing_file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'formatter': 'verbose',
-        #     'filename': to_abspath('logs/outsourcing.log')
-        # },
-        # 'fb_import_file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'formatter': 'simple_timestamped',
-        #     'filename': to_abspath('logs/imports/facebook_%s.log' % _timestamp),
-        #     'delay': True,      # only open if message is emitted
-        #     'mode': 'w'
-        # },
-        # 'ical_import_file': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.FileHandler',
-        #     'formatter': 'simple_timestamped',
-        #     'filename': to_abspath('logs/imports/ical_%s.log' % _timestamp),
-        #     'delay': True,      # only open if message is emitted
-        #     'mode': 'w'
-        # }
     },
     'loggers': {
         'django.request': {
@@ -215,21 +169,6 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False
         },
-        # 'onlyinpgh.outsourcing': {
-        #     'handlers': ['console'],
-        #     'level': 'DEBUG',
-        #     'propagate': False
-        # },
-        # 'onlyinpgh.fb_import': {
-        #     'handlers': ['console'],
-        #     'level': 'DEBUG',
-        #     'propagrate': False
-        # },
-        # 'onlyinpgh.ical_import': {
-        #     'handlers': ['console'],
-        #     'level': 'DEBUG',
-        #     'propagrate': False
-        # },
     },
     'formatters': {
         'verbose': {
@@ -238,11 +177,28 @@ LOGGING = {
         'simple': {
             'format': '%(levelname)s %(message)s'
         },
-        'simple_timestamped': {
-            'format': '%(levelname)s %(asctime)s %(message)s'
-        },
     }
 }
 
-FIXTURE_DIRS = ( to_abspath('fixtures'),
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
+FIXTURE_DIRS = (
+    to_abspath('fixtures'),
 )
+
+# email settings for production errors
+EMAIL_HOST = settings_local.EMAIL_HOST
+EMAIL_HOST_USER = settings_local.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
+SERVER_EMAIL = settings_local.SERVER_EMAIL
+SEND_BROKEN_LINK_EMAILS = True
+
+# pipeline settings
+from settings_pipeline import *
+# this is defined outside so we can use to_abspath
+PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor') 

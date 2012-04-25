@@ -1,11 +1,12 @@
-from django.shortcuts import get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from django.shortcuts import get_object_or_404, render_to_response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from onlyinpgh.common.views import render_page
-from onlyinpgh.common.contexts import PageContext
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
+from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.events.models import Event
-from onlyinpgh.events.contexts import EventContext
+from onlyinpgh.events.viewmodels import EventData
+from onlyinpgh.events.resources import EventFeedResource
 
 
 def page_feed(request):
@@ -20,22 +21,29 @@ def page_feed(request):
     '''
     all_events = Event.listed_objects.all()
     paginator = Paginator(all_events, 10)
+    p = request.GET.get('p')
     try:
-        page_num = int(request.GET.get('p', '1'))
-    except ValueError:
-        page_num = 1
-
-    try:
-        page = paginator.page(page_num)
-    except (EmptyPage, InvalidPage):
+        page = paginator.page(p)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
         page = paginator.page(paginator.num_pages)
 
-    items = [EventContext(event, user=request.user) for event in page.object_list]
-    page_context = PageContext(request, 'events', dict(
-        items=items,
-        prev_p=page.previous_page_number() if page.has_previous() else None,
-        next_p=page.next_page_number() if page.has_next() else None))
-    return render_page('events/page_feed.html', page_context)
+    events = page.object_list
+    items = [EventData(event, user=request.user) for event in events]
+    # need the items in json form for bootstrapping to BB models
+    items_json = serialize_resources(EventFeedResource(), events, request=request)
+
+    content = {'items': items,
+               'items_json': items_json,
+               'prev_p': page.previous_page_number() if page.has_previous() else None,
+               'next_p': page.next_page_number() if page.has_next() else None}
+
+    page_context = PageContext(request,
+        current_section='events',
+        page_title='Scenable | Oakland Events',
+        content_dict=content)
+    return render_to_response('events/page_feed.html', page_context)
 
 
 def page_details(request, eid):
@@ -44,11 +52,15 @@ def page_details(request, eid):
         event (EventContext object)
     '''
     event = get_object_or_404(Event, id=eid)
-    details = EventContext(event, user=request.user)
+    details = EventData(event, user=request.user)
 
-    page_context = PageContext(request, 'events', {'event_context': details})
+    content = {'event': details}
+    page_context = PageContext(request,
+        current_section='events',
+        page_title='Scenable | %s' % event.name,
+        content_dict=content)
 
-    return render_page('events/page_event.html', page_context)
+    return render_to_response('events/page_event.html', page_context)
 
 # from django.shortcuts import render_to_response
 # from django.template import Context, RequestContext

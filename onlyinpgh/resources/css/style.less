@@ -4,13 +4,12 @@
 /* 1 ROOT ---------- */
 
 body {
-  //background: url("@{static_url}img_store/Oakland/background_pics/jpegs/DSC_1391.jpg") center fixed no-repeat;
   background: #e1e1e1 url("@{static_url}img/logos/oakland-bkgd-450.png")
               fixed 
               bottom right 
               no-repeat;
   .lucida();
-  //font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  overflow-x: hidden;
 }
 
 /* TYPOGRAPHY -------- */
@@ -33,7 +32,7 @@ h3 {
 
 h4 {
   //font-family: 'DroidSerifBold';
-  font-weight: bold;
+  //font-weight: bold;
 }
 
 p {
@@ -43,10 +42,10 @@ p {
 }
 
 a {
-  color: @dblue;
+  color: @red;
 
   &:hover {
-    color: @lgreen;
+    color: @dgreen;
   }
 
   &:active {
@@ -62,13 +61,8 @@ a {
   font-size: 0.9em;
 }
 
-.address {
-
-}
-
 .description {
   margin-top: 0.3em;
-  font-color: #888;
   font-style: italic;
   font-size: 0.9em;
 }
@@ -84,7 +78,7 @@ a {
 }
 
 .points {
-  font-family: 'KomikaTitleRegular', Gill Sans, sans-serif;
+  font-family: 'KomikaTitleRegular', Impact, sans-serif;
   font-size: 3em;
   margin-top: -0.05em;
   text-shadow: 0.05em 0.05em 0 @yellow;
@@ -128,43 +122,54 @@ a {
   text-shadow: 0.1em 0.1em 0.04em #fff;
 }
 
-.feed-title, .single-title {
+.feed-title, .single-title, .page-title {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
-  color: #000;
-  font-weight: bold;
-  //text-shadow: 0.03em 0.03em 0.03em #999;
+  color: #333;
+  .blok();
+  //font-weight: bold;
+  text-shadow: 0.03em 0.03em 0.03em #e1e1e1;
   margin: 0;
+}
+
+.page-title {
+  border-bottom: 1px #ccc solid;
+  font-size: 1.5em;
+  margin: 1em 0.5em 2em;
+  padding-bottom: 0.5em;
 }
 
 .single-title {
   font-size: 1.5em;
   //border-bottom: 1px #ccc solid;
-  margin: 0 0 2%;
-  padding: 0 0.3em 0.1em;
+  margin-top: 0.3em;
+  padding-left:0.3em;
 }
 
-.related-section-title {
+.detail-section-title {
   border-bottom: 1px #999 solid;
   padding: 0 0 0.2em;
   margin: 0 0 1em;
 }
 
 .sidebar-title {
-  .gradient(@lgreen, @mgreen);
+  .blok();
+  .b-shadow(0.05em, 0.05em, 0.1em, #444);
   color: #fff;
-  text-shadow: 0.1em 0.1em 0.1em #444;
-  width: 96%;
-  padding: 0.5em 1.5em;
+  font-weight: normal;
+  .gradient(@lgreen, @mgreen);
+  padding: 0.6em 0.5em 0.5em 2.5em;
   position: relative;
+  right: 1.7em;
   .rounded(0.2em);
-  right: 1em;
+  text-shadow: 0.05em 0.05em 0.1em #222;
+  width: 96%;
 }
 
 .widget-title {
-  margin: 0.5em 0;
-  //font-family: 'DroidSerifItalic', 'Gerogia', serif;
   border-bottom: 1px solid #e1e1e1;
-  font-style: italic;
+  font-family: 'DroidSerifItalic', 'Gerogia', serif;
+  margin: 0.5em 0;
+  text-shadow: 0.01em 0.01em 0.03em #999;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -178,9 +183,16 @@ a {
 }
 
 form {
-  margin: 1em auto;
+  margin: 0 auto 1em;
   max-width: 600px;
   .clearfix;
+}
+
+label {
+  font-size: 0.9em;
+  display: block;
+  line-height: 1.2em;
+  text-align: right;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
@@ -198,18 +210,17 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
   }
 }
 
-button, input[type="submit"] {
+button, input[type="submit"], .btn {
   border: none;
-  .b-shadow(0, 0, 0.05em, #999);
+  .b-shadow(0, 0, 0.05em, #000);
   color: #fff;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: bold;
   .gradient(@mgreen, @dgreen);
-  //margin-top: 0.5em;
-  padding: 0.6em 0.5em;
+  padding: 0.5em;
   position: relative;
   .rounded(0.5em);
-  text-shadow: 0 0 0.05em #000;
+  text-shadow: 0 0 0.03em #000;
 
   &:hover {
     background: @dgreen;
@@ -219,7 +230,6 @@ button, input[type="submit"] {
     background: @ddgreen;
     top: 1px;
     left: 1px;
-    .b-shadow(0, 0, 0, #fff);
   }
 
   &#redeem-button {
@@ -228,6 +238,48 @@ button, input[type="submit"] {
     padding: 5%;
   }
 
+}
+
+.choice-container {
+  padding-left: 1em;
+  .row();
+  .clearfix;
+
+  input {
+    float: left;
+    margin-top: 0.1em;
+  }
+
+  label {
+    padding: 0 0 0.5em 0.5em;
+    font-weight: bold;
+    font-size: 0.8em;
+    float: left;
+  }
+
+  &.other {
+    margin-top: 0.5em;
+    padding-left: 0.5em;
+    input[type="text"] {
+      display: block;
+      width: 70%;
+    }
+  }
+}
+
+fieldset {
+  &>ul {
+    .clearfix();
+  }
+}
+
+legend {
+  .column_nm(12);
+  font-weight: bold;
+  //.gradient(@lblue, #f9f9f9);
+  font-size: 1.2em;
+  margin: 0 0 1em;
+  padding: 0.5em;
 }
 
 .simple-form {
@@ -240,31 +292,25 @@ button, input[type="submit"] {
 }
 
 .site-search-container {
-  .clearfix();
+  .column(12);
   margin-top: 1em;
 }
 
 .field-container {
-  padding: 2em 0;
-  border-bottom: 1px solid #ccc;
+  .row();
+  .clearfix();
+  padding-right: 2em;
   margin-bottom: 2em;
-
-  &.last, &.inner {
-    border: none;
-  }
-
-  &.first {
-    padding-top: 0 !important;
-  }
-
-  &.inner {
-    padding: 0;
+  position: relative;
+  
+  &.last {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2em;
   }
 }
 
 .field-label {
   .column(3);
-  margin-top: 0.1em;
   text-align: right;
 }
 
@@ -272,22 +318,75 @@ button, input[type="submit"] {
   .column_r(9);
 }
 
-.tip, .error {
+/* Manage Account */
+.grouped-field-row {
+  padding-right: 2%;
+  &>div {  
+    .column(3); 
+    &:first-child {
+      .column(4.5);   
+    }
+    &:last-child {
+      .column(4.5);
+    }
+    select {
+      width: 94%;
+      margin-left: 6%;
+
+    }
+  }
+}
+
+.social-input {
+  .clearfix();
+  img {
+    .column(1.3);
+    max-width: 30px;
+  }
+  input {
+    .column(10.7);
+  }
+}
+
+.tip, .errorlist {
   color: #555;
   font-size: 0.8em;
-  font-style: italic;
   display: block;
 
   &.desc {
     margin-top: 2%;
   }
 
+  &.public {
+    margin-top: 0.3em;
+    .clearfix;
+
+    label {
+      float: left;
+      margin-left: 0.5em;
+      text-transform: none;
+    }
+
+    input[type="checkbox"] {
+      float: left;
+    }
+  }
+
+  label {
+    font-size: 0.9em;
+    font-weight: normal;
+    line-height: 1.8em;
+    text-transform: none;
+  }
+
   margin-left: 2%;
 }
 
-.error {
+.errorlist {
   color: #C34327;
+  font-style: italic;
   float: left;
+  margin-top: 0.5em;
 }
 
 .fav-container {
@@ -295,26 +394,27 @@ button, input[type="submit"] {
   a {
     display: block;
     color: #444;
-    background: #f9f9f9;
-    border: 1px solid #ccc;
+    //background: #f9f9f9;
+    //border: 1px solid #ccc;
     font-size: 0.8em;
     margin-top: 0.5em;
-    padding: 0;
+    padding: 0.1em;
     .rounded(0.4em);
     text-align: center;
   
     &:hover {
-      background: #e1e1e1;
-      border: 1px solid #999;
+      color: @mgreen;
+      //border: 1px solid #999;
     }
 
     &:active {
-      background: #eeeeee;
+      color: @teal;
     }
   }
 
   .status {
     font-size: 1.2em;
+    margin-right: 0.2em;
   }
 
   .remove .status {
@@ -328,21 +428,22 @@ button, input[type="submit"] {
 
 #sidebar-feedback {
 
-  .field-label {
-    .row();
+  label {
+    //float: right;
     text-align: left;
-    //text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: bold;
-    color: #444;
-     margin: 1em 0.5em 0;
+  }
+
+  .field-label {
+    text-align: left;
+    .row();
+    margin: 1.5em 0 0.5em 0.1em;
   }
 
   .field {
     .row();
   }
 
-  input[type=text], textarea {
+  textarea {
     font-size: 0.9em;
     .row();
     background: #fff;
@@ -374,7 +475,7 @@ button, input[type="submit"] {
 #scene-nav {
   background: #444;
   .gradient(#777, #444);
-  .b-shadow(0.1em, 0.1em, 0.1em, #777); 
+  .b-shadow(0em, 0.1em, 0.2em, #000);
   .fixed();
   height: 5.5em;
   max-width: 1140px;
@@ -404,6 +505,10 @@ button, input[type="submit"] {
         
         &.current-page {
           background-color: @lgreen;
+
+          &:hover {
+            background-color: @lgreen;
+          }
         }
 
         .container {
@@ -421,7 +526,7 @@ button, input[type="submit"] {
         }
   
         &:active {
-          background-color: @yellow;
+          background-color: @mgreen;
         }
       }
     }
@@ -460,23 +565,40 @@ button, input[type="submit"] {
   background: fade(#fff, 100%);
   .b-shadow(0.1em, 0.1em, 0.3em, #444);
   .column(8);
-  padding: 1em;
+  padding: 1em 1.5em;
   position: relative;
-  top: 5em;
+  .rounded(0.5em);
+  top: 5.5em;
   z-index: 1;
+}
+
+#site-footer {
+  margin: 8em 2em 1em;
 }
 
 /* SIDEBAR ---------- */
 
 #site-sidebar {
   .rounded(0.5em);
-  background: fade(#fff, 90%);
+  background: url("@{static_url}img/textures/white-trans.png");
+  .b-shadow(0.1em, 0.1em, 0.3em, #444);
   .column(4.5);
   position: absolute;
-  top: 7em;
+  top: 5em;
   right: 0;
   z-index: 0;
-  padding: 1em 1em 1em 2em;
+  padding: 1em 0 1em 1.5em;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  #get-in-touch {
+    img {
+      width: auto;
+    }
+  }
 }
 
 .widget {
@@ -507,7 +629,7 @@ button, input[type="submit"] {
   .border-box();
   .clearfix();
   border-bottom: 1px solid #e1e1e1;
-  margin-bottom: 1em;
+  margin: 1em 0;
   padding: 1% 2%;
 
   input[type="text"] {
@@ -521,7 +643,7 @@ button, input[type="submit"] {
 
   .filter {
     .column_r(4);
-    margin-top: 0.5em;
+    //margin-top: 0.5em;
 
     input[type="search"] {
       float: left;
@@ -537,6 +659,10 @@ button, input[type="submit"] {
 .feed-content {
   //margin: 0 0.5em;
   padding: 0 1em 1em;
+
+  .item {
+    .column(6);
+  }
 
   .map-container {
     .row();
@@ -558,7 +684,8 @@ button, input[type="submit"] {
   margin: 1% 0;
   padding: 2% 1% 3%;
   .border-box();
-  border-bottom: 1px solid #e1e1e1;
+  background: #f9f9f9;
+  //border-bottom: 1px solid #e1e1e1;
   position: relative;
 
   &:last-child {
@@ -580,7 +707,7 @@ button, input[type="submit"] {
   
   a {
     text-shadow: 0 0 0.01em #999;
-    font-size: 1.1em;
+    font-size: 1em;
     //font-weight: bold;
     &:hover {
       color: @red;
@@ -628,12 +755,12 @@ button, input[type="submit"] {
 
 /* 10 NAVIGATION ---------- */
 
-.related-nav {
-  width: 12%;
+.detail-nav {
   float: left;
-  .border-box;
-  
-  li a {
+  margin-top: 2.5em;
+  width: 12%;
+
+  ul li a {
     background: #444;
     color: #fff;
     cursor: pointer;
@@ -643,11 +770,27 @@ button, input[type="submit"] {
           border-radius: 0.5em 0 0 0.5em; 
 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-    margin: 0.3em 0;
-    padding: 0.3em;
+    margin: 0.5em 0;
+    padding: 0.6em 0.6em 0.6em 0.4em;
 
     &.current-page {
-      background-color: @yellow
+      background-color: #f9f9f9;
+      color: #000;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-right: none;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+    }
+
+    &:hover {
+      background: @lgreen;
+    }
+
+    &:active {
+      background: @yellow;
     }
   }
 }
@@ -720,20 +863,35 @@ button, input[type="submit"] {
   }
 }
 
-/* RELATED --------- */
-// Related = single pages with relevant places/events/specials
-// i.e. places and profile
+/* DETAILED SINGLE --------- */
+// Detailed = single page with relevant 
+// places/events/specials paneled menu
+// Currently just single place and profile pages
 
-.related-section {
+
+.detailed-single {
+  .single-header {
+    border: none;
+    //padding-bottom: 0;
+
+  }
+  .single-content {
+    margin-top: 0.5em;
+    padding: 0;
+  }
+}
+
+.detail-section {
   display: none;
   width: 88%;
   float: left;
+  border: 1px solid #ccc;
   .border-box();
   background: #f9f9f9;
   .rounded(0.5em);
   padding: 2% 4% 4%;
 
-  &#placeInfo, &.profile {
+  &#placeDetail, &#profile {
     display: block;
   }
 
@@ -741,7 +899,7 @@ button, input[type="submit"] {
     .clearfix;
   }
 
-  &#placeInfo .item-details {
+  &#placeDetail .item-details {
     .column_nm(6);
     margin-bottom: 0.3em;
     li {
@@ -771,8 +929,8 @@ button, input[type="submit"] {
 
     color: #888;
     float: left;
-    margin: 0.1em 0.4em;
-    padding: 0.1em 0.3em;
+    margin: 0.1em 0.2em;
+    padding: 0.1em 0.2em;
     text-decoration: none;
     .border-box;   
 
@@ -781,7 +939,7 @@ button, input[type="submit"] {
     }
 
     &:hover {
-      .gradient(#aaa, #ccc);
+      background: #bbb;
       .rounded(0.3em);  
 
       a {
@@ -800,7 +958,6 @@ button, input[type="submit"] {
 
 
 /* TEMPLATE SPECIFICS --------- */
-
 
 /* Hot */
 
@@ -838,36 +995,74 @@ button, input[type="submit"] {
 
 /* Specials */
 
-.specials {
-
-  .item-title {
-    margin-top: 0.4em;
-  }
+.specials, #special-single {
 
   .item-thumb {
     border: none;
   }
 }
 
+.btn-primary {
+  cursor: pointer;
+  text-align: center;
+  img {
+    display: block;
+    margin: 0.5em auto;
+    width: 90%;
+  }
+  font-size: 1.2em;
+  //padding-bottom: 0.3em;
+}
+
+#special-single .btn-primary {
+  .b-shadow(1px, 1px, 2px, #111);
+
+  &:active {
+    .no-b-shadow();
+  }
+}
+
+.feed.specials {
+   /* Need to consolidate this after we know the links for grabbit buttons */
+    .btn-primary {
+      padding: 0.1em;
+      //.rounded(0);
+      background: @yellow;
+
+      &:active {
+        top: 0;
+        left: 0;
+      }
+
+      img {
+        width:70%;
+      }
+    }
+}
+
+/*.specials {
+
+  .btn-primary {
+    .gradient(#999, #777);
+    &:hover {
+      .gradient(#888, #666);
+    }
+
+    &:active {
+      background: #555;
+    }
+  }
+}
+*/
 /* News */
 
 .feed.news .item-content {
   .column(12);
 }
 
+
 /* Places */
 
-#place-single {
-  .single-header {
-    border: none;
-    //padding-bottom: 0;
-
-  }
-  .single-content {
-    margin-top: 0.5em;
-    padding: 0;
-  }
-}
 
 /* Chatter */
 
@@ -918,7 +1113,7 @@ button, input[type="submit"] {
 /* UTILITY ---------- */
 
 .map-container {
-  background: url("http://www.scottadito.com/images/googleMap.jpg");
+  //background: url("http://www.scottadito.com/images/googleMap.jpg");
   height: 200px;
   border: 1px solid #888;
 }
@@ -938,6 +1133,18 @@ button, input[type="submit"] {
   color: red;
   font-style: italic;
   .rounded(5px);
+}
+
+.left, .back {
+  float: left;
+}
+
+.right, .next {
+  float: right;
+}
+
+.third {
+  .column(4);
 }
 
 /* FOOTER ---------- */
