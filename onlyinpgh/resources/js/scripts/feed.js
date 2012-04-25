@@ -1,87 +1,155 @@
-/* Requires jQuery, underscore, yepnope */
-$(function(){
-    window.Scenable = window.Scenable || {};
-    window.Scenable.feed = {
-        /* to be called after a map has been created with it's markers */
-        linkFeedToMap: function(domElements, map) {
-            _.each(_.zip(domElements,map.mapItems), function(pkg) {
-                var el = pkg[0], item = pkg[1];
-                $(el).data('mapItem', item)     // store it for the hell of it
-                     .click(function(event){
-                        /* on click, trigger the linked marker's click event and
-                           ensure only the clicked element has the focus class */
-                        google.maps.event.trigger(item.marker, 'click');
-                        _.each(domElements, function(el) {
-                            $(el).removeClass('focused');
-                        });
-                        $(el).addClass('focused');
-                     });
+/* Requires jQuery, underscore, Backbone, google maps api */
+var MapFeedItem = Backbone.Model.extend({
+    // Returns a google.maps.LatLng object with this item's coordinates.
+    // Default behavior is to get this from this object's latitude/longitude
+    // properties, but this should be overwritten if necessary
+    getLatLng: function() {
+        return new google.maps.LatLng(
+            this.attributes.location.latitude,
+            this.attributes.location.longitude);
+    }
+});
 
-            });
-        },
-        // constructor for a feed map
-        Map: function(domElement, lat, lng, zoom) {
-            var myOptions = {
-                center: new google.maps.LatLng(lat, lng),
-                zoom: zoom || 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                panControl: false,
-                mapTypeControl: false,
-                streetViewControl: false,
-                zoomControl: true,
-                zoomControlOptions: {
-                    style: google.maps.ZoomControlStyle.SMALL
-                }
-            };
-            // "private" variables for the new object
-            var _map = new google.maps.Map(domElement, myOptions);
-            var _bounds = new google.maps.LatLngBounds();
-            var _activeItem = null;
-            /* return a new feed map with marker setting capabilities */
-            return {
-                mapItems: [],
-                /* returns a marker+iw object */
-                addItem: function(lat, lng, iwContent, icon, shadowIcon) {
-                    var pos = new google.maps.LatLng(lat, lng);
-                    var mapItem = {
-                        marker: new google.maps.Marker({
-                            position: pos,
-                            icon: icon,
-                            shadow: _.isUndefined(shadowIcon) ? null : shadowIcon,
-                            map: _map
-                        }),
-                        infoWindow: new google.maps.InfoWindow({
-                          content: iwContent
-                        }),
-                        onFocus: function() {
-                            this.infoWindow.open(_map, this.marker);
-                            _activeItem = this;
-                        },
-                        onBlur: function() {
-                            this.infoWindow.close();
-                            _activeItem = null;
-                        }
-                    };
-                    // need to pass the full mapItem when a marker.click event is fired
-                    google.maps.event.addListener(mapItem.marker, 'click', function(){
-                        if(_activeItem) {
-                            if(_activeItem === mapItem) {
-                                return;
-                            }
-                            _activeItem.onBlur();
-                        }
-                        _activeItem = mapItem;
-                        _activeItem.onFocus();
-                    });
-                    this.mapItems.push(mapItem);
-                    _bounds.extend(pos);
-                    _map.fitBounds(_bounds);
-                },
-                removeItem: function(idx) {
-                    var mapItem = this.mapItems.splice(idx,1)[0];
-                    mapItem.marker.setMap(null);
-                }
-            };
+var MapFeedItems = Backbone.Collection.extend({
+    model: MapFeedItem
+});
+
+// Constructor should provide the following properties:
+// - model: MapFeedItem object
+// - clickCallback: a callback to pass a click event to (used to get event up to parent view)
+// - template: template to render a model as a list item
+var MapFeedItemView = Backbone.View.extend({
+    tagName: 'li',
+
+    markFocus: function(event) {
+        this.$el.addClass('focused');
+    },
+
+    unmarkFocus: function(event) {
+        this.$el.removeClass('focused');
+    },
+
+    // renders the feed item with the template provided in the constructor
+    render: function() {
+        console.log('rendering model ' + this.model.cid);
+        this.$el.html(this.options.template(this.model.toJSON()));
+        return this;
+    }
+});
+
+// MapFeedView: Manages both the feed list and the map
+// Constructor should provide the following:
+// - model: MapFeedItems collection object
+// - mapDOMElement: DOM element that a map should be attached to
+// - mapOptions: a google.maps.MapOptions object (if center or zoom are left out
+//               these components will be determined on first map draw by the
+//               contents of the feed
+// - itemTemplate: a template for rendering individual feed items
+// - iwTemplate: an optional template for rendering an infoWindow
+var MapFeedView = Backbone.View.extend({
+    tagName: 'ul',
+    map: null,
+    subViews: {},   // map of feed item cids to {'marker': Marker, 'itemView': FeedItemView, 'infoWindow': InfoWindow} objects
+
+    initialize: function(options) {
+        this.model.bind('reset', this.onReset, this);
+        this.model.bind('add', this.onAdd, this);
+        this.model.bind('remove', this.onRemove, this);
+        this.initMap(options.mapDOMElement, options.mapOptions);
+    },
+
+    initMap: function(domElement, opts) {
+        console.log('map init');
+        this.map = new google.maps.Map(domElement, opts);
+    },
+
+    createSubView: function(model, itemTemplate, iwTemplate) {
+        var itemView = new MapFeedItemView({
+            model: model,
+            template: itemTemplate
+        });
+        var marker = new google.maps.Marker({
+            position: model.getLatLng(),
+            icon: '/static/img/markers/place-marker.png'
+        });
+        var subView = {
+            itemView: itemView,
+            marker: marker,
+            infoWindow: new google.maps.InfoWindow({
+                content: iwTemplate(model.toJSON())
+            })
+        };
+
+        var that = this;
+        itemView.$el.click(function(event) {
+            that.onItemFocus(subView);
+        });
+        google.maps.event.addListener(marker, 'click', function(event) {
+            that.onItemFocus(subView);
+        });
+        return subView;
+    },
+
+    // callbacks for model/collection events
+    onAdd: function(model, collection) {
+        // create a FeedItemView and Marker bundle
+        var subView = this.createSubView(model,
+            this.options.itemTemplate,
+            this.options.iwTemplate);
+        this.subViews[model.cid] = subView;
+        // render item view and append to own element
+        this.$el.append(subView.itemView.render().el);
+        // show the marker on the map
+        subView.marker.setMap(this.map);
+    },
+
+    onReset: function(collection) {
+        // remove all stored views
+        for(var cid in this.subViews) {
+            this.onRemove(this.subViews[cid].itemView.model);
         }
-    };
+        this.subViews = {};
+
+        // add new set of views
+        for (var i = 0; i < collection.length; i++) {
+            this.onAdd(collection.models[i], collection);
+        }
+        // don't need render: onAdd does it all
+        // this.render();
+    },
+
+    onRemove: function(model, collection) {
+        // all these deletes are necessary to remove the circular dependencies
+        // between the subView and it's components' event callbacks
+        var subView = this.subViews[model.cid];
+        subView.infoWindow.close();
+        delete subView.infoWindow;
+        subView.itemView.remove();
+        delete subView.itemView;
+        subView.marker.setMap(null);
+        delete subView.marker;
+        delete this.subViews[model.cid];
+    },
+
+    onItemFocus: (function() {  // done as a closure to hide internal active iw state
+        var focusedSubView = null;
+        return function(subView) {
+            if(focusedSubView && focusedSubView.infoWindow) {
+                focusedSubView.infoWindow.close();
+            }
+            if(focusedSubView && focusedSubView.itemView) {
+                focusedSubView.itemView.unmarkFocus();
+            }
+            subView.infoWindow.open(this.map, subView.marker);
+            subView.itemView.markFocus();
+            focusedSubView = subView;
+        };
+    }).call(this),
+
+    render: function() {
+        _.each(this.subViews, function(subView){
+            this.$el.append(subView.itemView.render().el);
+        }, this);
+        return this;
+    }
 });
