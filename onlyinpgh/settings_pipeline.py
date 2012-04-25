@@ -3,7 +3,7 @@ PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
 PIPELINE_TEMPLATE_NAMESPACE = 'window.TPL'
 PIPELINE_TEMPLATE_FUNC = 'Mustache.compile'
 PIPELINE_TEMPLATE_EXT = '.mustache'
-
+PIPELINE_DISABLE_WRAPPER = True
 # TODO: add CSS handling
 # PIPELINE_CSS = {    
 # }
