@@ -31,10 +31,10 @@
 var bootstrap = {{places_json}};
 
 // model extensions not strictly necessary: defaults will do for Places
-var PlaceItem = MapFeedItem.extend();
-var PlaceItems = MapFeedItems.extend({model:PlaceItem});
+var PlaceItem = scenable.mapFeed.Item.extend();
+var PlaceItems = scenable.mapFeed.ItemFeed.extend({model:PlaceItem});
 
-var PlaceView = MapFeedItemView.extend({
+var PlaceView = scenable.mapFeed.ItemView.extend({
     template: window.TPL.placeInfoWindow,
     iwTemplate: window.TPL.placeInfoWindow,
     markerOptions: {
@@ -42,9 +42,9 @@ var PlaceView = MapFeedItemView.extend({
         shadow: '/static/img/markers/marker-shadow.png'
     }
 });
-var PlaceFeed = MapFeedView.extend({SubViewClass:PlaceView});
+var PlaceFeed = scenable.mapFeed.FeedView.extend({SubViewClass:PlaceView});
 
-var Items = new MapFeedItems;
+var Items = new PlaceItems;
 var Feed = new PlaceFeed({
     model: Items,
     el: document.getElementById('feed'),
