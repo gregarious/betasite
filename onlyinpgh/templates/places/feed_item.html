@@ -22,7 +22,8 @@ Context variables:
 		{% endif %}
 	</div>
 	<ul class="item-details">
-		<li class="address meta">{{place.location.address}}</li>
+		<li>{{place.location.address}}</li>
+		<li class="description">{{place.description|truncatewords:"10"}}
   	</ul>
 	{% include "tags/tag_list.html" with tags=place.tags %}
 </section>

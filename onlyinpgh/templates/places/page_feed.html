@@ -31,7 +31,7 @@ Context variables:
         </li>
     {% endfor %}
     </ul>
-
+    
     {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->

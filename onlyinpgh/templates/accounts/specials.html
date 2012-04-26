@@ -6,8 +6,16 @@ Context variables:
 {% endcomment %}
 
 <h2 class="detail-section-title">Available Specials</h2>
-<ul class="feed my-feed specials">
-    {% for item in items %}
-        <li class="item">{% include "specials/feed_item.html" with special=item %}</li>
-    {% endfor %}
-</ul>
+
+{% if item %}
+	<ul class="feed my-feed specials">
+	    {% for item in items %}
+	        <li class="item">{% include "specials/feed_item.html" with special=item %}</li>
+	    {% endfor %}
+	</ul>
+{% else %}
+	<section class="no-items">
+    	<img src="{{STATIC_URL}}img/manage-special.png" alt="Special" />
+    	<p>We don't have any specials on record for you. Browse the Specials Page or look for a Specials tab on a place's page. Then get to the Special's page and grab it!</p> 
+    </section>
+{% endif %}

@@ -9,8 +9,7 @@ from onlyinpgh.specials.viewmodels import SpecialData
 class PlaceData(object):
     def __init__(self, place, user=None):
         fields = ('id', 'name', 'location', 'description', 'tags', 'image',
-                  'hours', 'parking', 'url', 'fb_id', 'twitter_username',
-                  'listed')
+                  'url', 'fb_id', 'twitter_username', 'listed')
         if isinstance(user, User):
             self.is_favorite = place.favorite_set\
                                     .filter(user=user, is_favorite=True)\
@@ -19,6 +18,9 @@ class PlaceData(object):
             self.is_favorite = False
         for attr in fields:
             setattr(self, attr, getattr(place, attr))
+        # do hours and parking separately
+        self.hours = place.hours_unpacked()
+        #self.parking = place.parking_unpacked()
         self.pk = self.id
 
 

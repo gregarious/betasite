@@ -14,8 +14,22 @@
     .item {
       .row();
       border-bottom: 1px solid #e1e1e1;
+
       &:last-child {
         border: none;
+      }
+
+      .description, .host {
+        display: block;
+      }
+
+      .item-title {
+        font-size: 1.1em;
+        line-height: 1.3em;
+      }
+
+      .item-details {
+        font-size: 1em;
       }
     }
   }
@@ -80,7 +94,7 @@
     font-size: 1.5em;
   }
 
-  .field-label, #birth-year-label label {
+  .field-label, label {
     .row();
     text-align: left;
     margin: 0 0.5em 0.5em;

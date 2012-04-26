@@ -68,13 +68,11 @@ a {
 }
 
 .host {
-/*  color: @red !important;
-  font-weight: bold;
-*/
-  &:hover {
-    color: @dgreen !important;
-  }
+    display: none;
 
+    a {
+      font-weight: bold;
+    }
 }
 
 .points {
@@ -124,25 +122,23 @@ a {
 
 .feed-title, .single-title, .page-title {
   //font-family: 'DroidSerifItalic', 'Gerogia', serif;
-  color: #333;
   .blok();
-  //font-weight: bold;
+  color: #333;
+  font-size: 1.2em;
   text-shadow: 0.03em 0.03em 0.03em #e1e1e1;
   margin: 0;
 }
 
 .page-title {
   border-bottom: 1px #ccc solid;
-  font-size: 1.5em;
   margin: 1em 0.5em 2em;
   padding-bottom: 0.5em;
 }
 
 .single-title {
-  font-size: 1.5em;
-  //border-bottom: 1px #ccc solid;
-  margin-top: 0.3em;
-  padding-left:0.3em;
+  border-bottom: 1px #ccc solid;
+  margin: 0.3em 0;
+  padding: 0 0 0.3em 0.3em;
 }
 
 .detail-section-title {
@@ -271,6 +267,10 @@ fieldset {
   &>ul {
     .clearfix();
   }
+
+  &>.tip {
+    margin-bottom: 2em;
+  }
 }
 
 legend {
@@ -278,7 +278,7 @@ legend {
   font-weight: bold;
   //.gradient(@lblue, #f9f9f9);
   font-size: 1.2em;
-  margin: 0 0 1em;
+  margin: 0;
   padding: 0.5em;
 }
 
@@ -675,6 +675,10 @@ legend {
     .clearfix();
   }
 
+  .description {
+    display: none;
+  }
+
 }
 
 .item {
@@ -735,7 +739,7 @@ legend {
 }
 
 .item-details {
-  font-size: 0.8em;
+  font-size: 0.9em;
   .row();
   .clearfix;
 }
@@ -761,6 +765,7 @@ legend {
     color: #fff;
     cursor: pointer;
     display: block;
+    font-size: 0.9em;
     -webkit-border-radius: 0.5em 0 0 0.5em; 
      -moz-border-radius: 0.5em 0 0 0.5em; 
           border-radius: 0.5em 0 0 0.5em; 
@@ -784,7 +789,7 @@ legend {
 
     &.disabled {
       background: #e8e8e8;
-      color: #bbb;
+      color: #ccc;
       cursor: text;
       text-shadow: 0 0 0.01em #f9f9f9;
       &:hover {
@@ -823,7 +828,6 @@ legend {
   .row();
   padding: 3%;
   .clearfix();
-
   .item-details {
     font-size: 0.9em;
   }
@@ -906,14 +910,23 @@ legend {
 
   &#placeDetail .item-details {
     .column_nm(6);
-    margin-bottom: 0.3em;
-    li {
+    margin-bottom: 1em;
+    &>li {
       margin-bottom: 0.5em;
+      ul {
+        margin-left: 1.5em;
+        list-style-type: circle;
+      }
+    }
+    .detail-title {
+      margin-bottom: 0.2em;
+      font-weight: bold;
+      display: block;
     }
   }
 
   .map-container {
-    margin: 0 0 0 1em;
+    margin: 0 0 1em 1em;
   }
 }
 
@@ -990,12 +1003,6 @@ legend {
     float: right;
   }
 
-  &.events {
-    .item-details {
-      //font-size: 0.9em;
-    }
-  }
-
   &.map-container {
     float: left;
     height: 300px;
@@ -1005,6 +1012,18 @@ legend {
     font-size: 1em;
   }
 }
+
+/* Events */
+
+/*.events {
+  .item-title {
+    font-size: 0.9em;
+  }
+  .item-details {
+    font-size: 0.8em;
+  }  
+}*/
+
 
 /* Specials */
 
@@ -1120,6 +1139,22 @@ legend {
         font-size: 0.8em;
         padding-top: 0.3em;
       }
+  }
+}
+
+/* Profile */
+
+.no-items {
+  padding: 1em;
+  font-size: 0.9em;
+
+  img {
+    float: left;
+    margin-right: 2em;
+  }
+
+  h3 {
+    margin: 0;
   }
 }
 
