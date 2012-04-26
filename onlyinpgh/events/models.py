@@ -6,7 +6,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.organizations.models import Organization
-from onlyinpgh.common.utils import get_std_thumbnail
+from onlyinpgh.common.utils import precache_thumbnails
 
 class ListedEventManager(models.Manager):
     def get_query_set(self):
@@ -52,8 +52,7 @@ class Event(models.Model, ViewModel):
         if self.image:
             # pre-cache common sized thumbnails
             try:
-                get_std_thumbnail(self.image, 'small')
-                get_std_thumbnail(self.image, 'standard')
+                precache_thumbnails(self.image)
             # never let these lines interrupt anything
             except Exception as e:
                 print 'error caching thumbnails', e
