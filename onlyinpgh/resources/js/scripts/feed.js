@@ -64,7 +64,6 @@ scenable.mapFeed = (function(){
         },
 
         render: function(map) {
-            console.log('rendering model ' + this.model.cid);
             this.$el.html(this.template(this.model.toJSON()));
             if(map && this.marker) {
                 this.marker.setMap(map);
@@ -98,7 +97,6 @@ scenable.mapFeed = (function(){
         },
 
         initMap: function(domElement, opts) {
-            console.log('map init');
             this.map = new google.maps.Map(domElement, opts);
         },
 
