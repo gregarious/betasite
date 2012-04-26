@@ -1,7 +1,11 @@
 {% extends "sidebar_base.html" %}
 
 {% block sidebar_main %}
-<section class="widget">
-	<p>Would you like to publish your activity on Scenable to Facebook and Twitter?Would you like to publish your activity on Scenable to Facebook and Twitter?Would you like to publish your activity on Scenable to Facebook and Twitter?Would you like to publish your activity on Scenable to Facebook and Twitter?</p>
-	</section>
+<p>You can change profile information, review your privacy settings, and see your favorited events, places, and specials.</p>
 {% endblock %}
+
+{% block sidebar_survey %}
+
+{% include "sidebar_gen_questions.html" %}
+{% endblock %}
+

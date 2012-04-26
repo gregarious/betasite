@@ -1,2 +1,25 @@
-<b>{{ name }}</b><br/>
-<i>{{ place.location.address }}</i>
+<div class="item-thumb">
+	{{#if image}}
+    	<img class="thumbnail" alt="Thumbnail" src="{{image}}" />
+	{{else}}
+		<img class="thumbnail" alt="Thumbnail" src="/static/img/default-place.png" />
+	{{/if}}
+</div>
+
+<section class="item-content">
+	<h4 class="item-title"><a href="#">{{name}}</a></h4>
+	<ul class="item-details">
+		<li class="datetime">{{dtstart}} - {{dtend}}</li>
+		{{#if place}}
+ 			<li class="host">at <a href="">{{name}}</a></li>	
+		{{else}}
+			<li class="host">at {{place_primitive}}</li>
+		{{/if}}
+		<li class="description">{{description}}
+	</ul>
+	<ul class="tag-list">
+  		{{#each tags}}
+  			<li>{{this.name}}</li>
+  		{{/each}}
+  	</ul>
+</section>

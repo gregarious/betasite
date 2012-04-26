@@ -30,10 +30,18 @@ scenable.mapFeed = (function(){
         template: null,
         iwTemplate: null,
         markerOptions: {},      // position will always be overwritten
-        infoWindowOptions: {},  // content will always be overwritten
+        InfoBoxOptions: {       // content will always be overwritten
+            closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+            infoBoxClearance: new google.maps.Size(1, 100),
+            isHidden: false,
+            pane: "floatPane",
+            enableEventPropagation: false,
+            alignBottom: true,
+            pixelOffset: new google.maps.Size(0, -40)
+        },
 
         marker: null,
-        infoWindow: null,
+        InfoBox: null,
 
         initialize: function(options) {
             var position = this.model.getLatLng();
@@ -42,8 +50,8 @@ scenable.mapFeed = (function(){
                     _.extend(_.clone(this.markerOptions), {position: position})
                 );
             }
-            this.infoWindow = new google.maps.InfoWindow(
-                _.extend(_.clone(this.infoWindowOptions), {
+            this.InfoBox = new InfoBox(
+                _.extend(_.clone(this.InfoBoxOptions), {
                     content: this.iwTemplate(this.model.toJSON())
                 })
             );
@@ -51,15 +59,15 @@ scenable.mapFeed = (function(){
 
         markFocus: function(map) {
             this.$el.addClass('focused');
-            if(this.infoWindow && this.marker) {
-                this.infoWindow.open(map, this.marker);
+            if(this.InfoBox && this.marker) {
+                this.InfoBox.open(map, this.marker);
             }
         },
 
         unmarkFocus: function() {
             this.$el.removeClass('focused');
-            if(this.infoWindow) {
-                this.infoWindow.close();
+            if(this.InfoBox) {
+                this.InfoBox.close();
             }
         },
 
@@ -72,8 +80,8 @@ scenable.mapFeed = (function(){
         },
 
         close: function() {
-            if(this.infoWindow) {
-                this.infoWindow.close();
+            if(this.InfoBox) {
+                this.InfoBox.close();
             }
             if(this.marker) {
                 this.marker.setMap(null);
