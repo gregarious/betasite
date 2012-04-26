@@ -39,7 +39,7 @@ class EventData(object):
         # if ends on sasme day, or on next day but on or before 2 am, don't use the day part of dtend
         if self.dtstart.day == self.dtend.day:
             use_endday = False
-        elif (self.dtend - self.dtstart).days < 1 and self.dtend.time <= datetime.time(2, 0):
+        elif (self.dtend - self.dtstart).days < 1 and self.dtend.time() <= datetime.time(2, 0):
             use_endday = False
         else:
             use_endday = True
