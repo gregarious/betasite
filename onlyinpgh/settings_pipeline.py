@@ -20,6 +20,7 @@ PIPELINE_JS = {
     'site_scripts': {
         'source_filenames': (
             'js/scripts/feed.js',
+            'js/scripts/map.js',
             'js/scripts/misc.js',
         ),
         'output_filename': 'js/scenable.js'
