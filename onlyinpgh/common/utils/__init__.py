@@ -83,12 +83,12 @@ def get_std_thumbnail(image, type):
     '''
     Returns a sorl ImageFile for a preset thumbnail type
     types:
-        - 'autocomplete' (50x50, center crop)
+        - 'small' (50x50, center crop)
         - 'standard' (130x130, center crop)
 
     Will throw IOError if image file doesn't exist.
     '''
-    if type.lower() == 'autocomplete':
+    if type.lower() == 'small':
         return get_thumbnail(image, '50x50', crop='center')
     elif type.lower() == 'standard':
         return get_thumbnail(image, '130x130', crop='center')

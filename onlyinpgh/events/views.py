@@ -32,7 +32,7 @@ def page_feed(request):
     events = page.object_list
     items = [EventData(event, user=request.user) for event in events]
     # need the items in json form for bootstrapping to BB models
-    items_json = serialize_resources(EventFeedResource(), events, request=request)
+    items_json = serialize_resources(EventFeedResource(), items)
 
     content = {'items': items,
                'items_json': items_json,

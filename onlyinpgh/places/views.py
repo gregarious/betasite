@@ -32,7 +32,7 @@ def page_feed(request):
     places = page.object_list
     items = [PlaceData(place, user=request.user) for place in places]
     # need the items in json form for bootstrapping to BB models
-    items_json = serialize_resources(PlaceFeedResource(), places, request=request)
+    items_json = serialize_resources(PlaceFeedResource(), items)
 
     content = {'items': items,
                'items_json': items_json,

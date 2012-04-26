@@ -1,26 +1,23 @@
 from django.shortcuts import render
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
-from onlyinpgh.common.utils.jsontools import json_response
+from onlyinpgh.common.utils.jsontools import json_response, serialize_resources
 import json
 
 
-from onlyinpgh.testbed.api import PlaceFeedResource
+from onlyinpgh.places.resources import PlaceFeedResource
+from onlyinpgh.places.viewmodels import PlaceData
+
 
 def home(request):
     return render(request, 'testbed/home.html')
 
 
 def maps(request):
-    places = [p for p in Place.listed_objects.order_by('?') if p.location and p.location.is_geocoded()][:5]
-#    places[0].name = '</script>alert()'
-    rsrc = PlaceFeedResource()
-    bundles = (rsrc.build_bundle(request=request, obj=obj) for obj in places)
-    dehydrated = [rsrc.full_dehydrate(bundle) for bundle in bundles]
-
+    places = [PlaceData(p) for p in Place.listed_objects.order_by('?') if p.location and p.location.is_geocoded()][:5]
     return render(request, 'testbed/maps.html', {
         'places': places,
-        'places_json': rsrc.serialize(None, dehydrated, 'application/json'),
+        'places_json': serialize_resources(PlaceFeedResource(), places, request)
     })
 
 
