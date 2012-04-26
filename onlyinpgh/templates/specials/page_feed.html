@@ -66,6 +66,7 @@ $(function(){
     var SpecialItems = scenable.mapFeed.ItemFeed.extend({model:SpecialItem});
 
     var SpecialView = scenable.mapFeed.ItemView.extend({
+        className: 'item',
         template: window.TPL.specialItem,
         iwTemplate: window.TPL.specialInfoWindow,
         markerOptions: {

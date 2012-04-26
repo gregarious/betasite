@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block sidebar_survey %}
+<form>
 	<p>Would you like to publish your activity on Scenable to Facebook and Twitter?</p>
 	<div class="choice-container">
 		<input type="radio" /><label>Definitely!</label>
@@ -25,4 +26,9 @@
 	<div class="choice-container">
 		<input type="radio" /><label>Don't care</label>
 	</div>
+	{% include "sidebar_gen_questions.html" %}
+
+</form>
 {% endblock %}
+
+

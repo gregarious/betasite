@@ -14,22 +14,16 @@ Context variables:
     {% endthumbnail %}
 </div>
 
-<section class="item-content">
-		
+<section class="item-content">		
 	<h4 class="item-title"><a href="{% url place-detail pid=place.id %}">{{ place.name|truncatewords:7 }}</a></h4>
 	<div class="item-actions">
-		 <!-- Once things have specials, switch else content -->
 		{% if featured_special %}
 			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
 		{% endif %}
 	</div>
-	<ul class="item-details">	
-		<li class="address meta">{{place.location.address}}</li>
-		<!-- {% if place.description %}
-			<li class="description meta">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
-		{% endif %}	 -->
+	<ul class="item-details">
+		<li>{{place.location.address}}</li>
+		<li class="description">{{place.description|truncatewords:"10"}}
   	</ul>
-
 	{% include "tags/tag_list.html" with tags=place.tags %}
-
 </section>

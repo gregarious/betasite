@@ -5,10 +5,18 @@ Context variables:
     [items]:  list of PlaceData instances
 {% endcomment %}
 
-<h2 class="detail-section-title">Favorite Places</h2>
 
-<ul class="feed my-feed places">
-    {% for item in items %}
-        <li class="item">{% include "places/feed_item.html" with place=item %}</li>
-    {% endfor %}
-</ul>
+
+<h2 class="detail-section-title">Favorite Places</h2>
+{% if item %}
+	<ul class="feed my-feed places">
+    	{% for item in items %}
+        	<li class="item">{% include "places/feed_item.html" with place=item %}</li>
+    	{% endfor %}
+	</ul>
+{% else %}
+	<section class="no-items">
+    	<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
+    	<p>Looks like you haven't favorited any places yet. Take a look through the Places page, click one you like and choose 'Favorite' under the places thumbnail picture. As Scenable develops, Scene cred will be awareded based on your activity at your favorited places.</p> 
+    </section>
+{% endif %}
