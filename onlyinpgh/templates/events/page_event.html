@@ -16,3 +16,21 @@ Context variables:
 {% block sidebar %}
 {% include "events/sidebar_events_single.html" %}
 {% endblock %}
+
+{% block foot-inlines %}
+{% if event.place.location.latitude and event.place.location.longitude %}
+<script type="text/javascript">
+$(function(){
+    var pos = new google.maps.LatLng({{event.place.location.latitude|default:"NaN"}},{{event.place.location.longitude|default:"NaN"}});
+    // id comes from an element drawn in places/details.html
+    var map = scenable.map.mapFactory('single',
+            document.getElementById('mainEventMap'),
+            {center: pos});
+    new google.maps.Marker({
+        position: pos,
+        map: map
+    });
+});
+</script>
+{% endif %}
+{% endblock %}

@@ -93,7 +93,8 @@ scenable.mapFeed = (function(){
             this.model.bind('reset', this.onReset, this);
             this.model.bind('add', this.onAdd, this);
             this.model.bind('remove', this.onRemove, this);
-            this.initMap(options.mapDOMElement, options.mapOptions);
+            this.map = scenable.map.mapFactory('feed',
+                options.mapDOMElement, options.mapOptions);
         },
 
         initMap: function(domElement, opts) {

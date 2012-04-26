@@ -68,17 +68,9 @@ $(function(){
         model: Items,
         el: document.getElementById('mainPlaceFeed'),
         mapDOMElement: document.getElementById('mainPlaceFeedMap'),
-        mapOptions: {
+        // scenable.map.mapFactory handles most defaults
+        mapOptions: {   
             center: new google.maps.LatLng(40.44417, -79.94583),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            panControl: false,
-            mapTypeControl: false,
-            streetViewControl: false,
-            zoomControl: true,
-            zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.SMALL
-            }
         }
     });
 
