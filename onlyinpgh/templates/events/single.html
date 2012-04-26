@@ -27,7 +27,7 @@ Context variables:
     <section class="item-content">
         <h1 class="single-title">{{event.name}}</h1>
         <ul class="item-details">
-            <li class="datetime">March 30, 8pm - 11pm</li>
+            <li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
             {% if event.place %}
                 <li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
                 <!-- <li class="address">{{event.place.location.address}}</li> -->
@@ -44,6 +44,8 @@ Context variables:
 </header> <!-- .single-header -->
 
 <div class="single-content">
+    {% if location.is_geocoded %}
     <div class="map-container" id="mainEventMap"></div>
+    {% endif %}
     <p class="description">{{event.description|linebreaksbr}}</p>
 </div> <!-- .single-content -->

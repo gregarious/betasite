@@ -18,8 +18,8 @@ Context variables:
         <h1 class="single-title">{{ profile.display_name }}</h1>
         <ul class="item-details">
             <li>{{ profile.username }}</li>
-            <li>{{ profile.points }}</li>
-            <li>{{ profile.neighborhood }}</li>
+            <li>{#{{ profile.points }}#}Scene Cred - <em>Coming soon!</em></li>
+            {#<li>{{ profile.neighborhood }}</li>#}
         </ul>
         <div class="social-container">
             {% if profile.fb_id %}
