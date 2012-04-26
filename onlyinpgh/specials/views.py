@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
 from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.specials.models import Special
 from onlyinpgh.specials.viewmodels import SpecialData
 from onlyinpgh.specials.resources import SpecialFeedResource
+
+import json
 
 
 def page_feed(request):
@@ -31,7 +33,9 @@ def page_feed(request):
     specials = page.object_list
     items = [SpecialData(special, user=request.user) for special in specials]
     # need the items in json form for bootstrapping to BB models
-    items_json = serialize_resources(SpecialFeedResource(), items)
+    # # temp disabled
+    # items_json = serialize_resources(SpecialFeedResource(), items)
+    items_json = sanitize_json(json.dumps([item.serialize() for item in items]))
 
     content = {'items': items,
                'items_json': items_json,

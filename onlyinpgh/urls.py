@@ -42,7 +42,7 @@ urlpatterns = patterns('',
     url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
     url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
 
-    #url(r'^tags/',include('onlyinpgh.tags.urls')),
+    url(r'^tags/', include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),
@@ -78,14 +78,15 @@ urlpatterns = patterns('',
 )
 
 # Tastypie API setup
-from tastypie.api import Api
-from onlyinpgh.places.resources import PlaceFeedResource
-v1_api = Api(api_name='v1')
-v1_api.register(PlaceFeedResource())
+# # disabled for the time being
+# from tastypie.api import Api
+# from onlyinpgh.places.resources import PlaceFeedResource
+# v1_api = Api(api_name='v1')
+# v1_api.register(PlaceFeedResource())
 
-urlpatterns += patterns('',
-    url(r'^api/', include(v1_api.urls)),
-)
+# urlpatterns += patterns('',
+#     url(r'^api/', include(v1_api.urls)),
+# )
 
 
 from onlyinpgh import settings
@@ -95,5 +96,3 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
     )
-    urlpatterns += patterns('',
-        url(r'^testbed/', include('onlyinpgh.testbed.urls')))

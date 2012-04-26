@@ -13,9 +13,12 @@ class EventFeedResource(Resource):
     id = fields.IntegerField('id')
     name = fields.CharField('name')
     image = fields.FileField('image')
+    dtstart = fields.DateTimeField('dtstart')
+    dtend = fields.DateTimeField('dtend')
     description = fields.CharField('description')
     tags = fields.ManyToManyField(TagResource, 'tags', full=True)
     place = fields.ForeignKey(PlaceFeedResource, 'place', full=True, null=True)
+    place_primitive = fields.CharField('place_primitive')
     is_attending = fields.BooleanField('is_attending', null=True, default=False)
 
     class Meta:
