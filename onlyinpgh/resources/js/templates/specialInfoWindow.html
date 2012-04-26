@@ -1,6 +1,22 @@
-<b>{{ title }}</b><br/>
-{{#place}}
-    <i>{{ name }}</i><br/>
-    <i>{{ location.address }}</i>
-{{/place}}
-<br>
+<div class="item-thumb">
+	<div class="btn btn-primary"><a href="{{permalink}}" title="See Special"><img src="/static/img/icons/special-thumb.png" /></a></div>
+</div>
+
+<section class="item-content">
+	<h4 class="item-title"><a href="#">{{title}}</a></h4>
+	<ul class="item-details">
+		<li>at <a class="host" href="#">{{place.name}}</a></li>
+		{{#if dtexpires}}
+			<li><time class="datetime meta">Expires {{dtexpires}}</time></li>
+		{{/if}}
+		{{#if description}}
+			<li class="description meta">{{description}}</li>
+		{{/if}}	
+	</ul>
+	
+	<ul class="tag-list">
+  		{{#each tags}}
+  			<li>{{this.name}}</li>
+  		{{/each}}
+  	</ul>
+</section>

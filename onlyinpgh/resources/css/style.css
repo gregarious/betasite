@@ -1202,7 +1202,8 @@ legend {
 .item-actions img {
   cursor: pointer;
 }
-.feed .item-thumb {
+.feed .item-thumb,
+.infoBox .item-thumb {
   float: left;
   width: 20.833333333333336%;
   margin: 0 1.0416666666666665%;
@@ -1757,6 +1758,22 @@ legend {
 }
 #colophon a:hover {
   color: #b83939;
+}
+/* MAP --------- */
+.infoBox {
+  background: #ffffff /*url('@{static_url}/img/manage-place.png')*/;
+  -webkit-box-shadow: 0.5em 0.5em 1em #444444;
+  -moz-box-shadow: 0.5em 0.5em 1em #444444;
+  box-shadow: 0.5em 0.5em 1em #444444;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0.5em;
+  border: 3px #999 solid;
+  width: 250px;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 

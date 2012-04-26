@@ -725,7 +725,7 @@ legend {
   }
 }
 
-.feed .item-thumb {
+.feed .item-thumb, .infoBox .item-thumb {
   .column(2.75);
   overflow: hidden;
   text-align: center;
@@ -1212,6 +1212,17 @@ legend {
       color: @red;
     }
   }
+}
+
+/* MAP --------- */
+
+.infoBox {
+  background: #fff /*url('@{static_url}/img/manage-place.png')*/;
+  .b-shadow(0.5em, 0.5em, 1em, #444);
+  .rounded(0.5em);
+  padding: 0.5em;
+  border: 3px #999 solid;
+  width: 250px;
 }
 
 /* ICONS ----------- */
