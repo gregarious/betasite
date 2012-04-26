@@ -12,6 +12,7 @@ PIPELINE_JS = {
     'all_libs': {   # all non-base libraries
         'source_filenames': (
             'js/libs/underscore.js',
+            'js/libs/backbone.js',
             'js/libs/mustache.js',
         ),
         'output_filename': 'js/libs.js',

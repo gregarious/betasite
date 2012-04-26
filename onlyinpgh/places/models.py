@@ -273,7 +273,7 @@ class Place(models.Model, ViewModel):
         if self.image:
             # pre-cache common sized thumbnails
             try:
-                get_std_thumbnail(self.image, 'autocomplete')
+                get_std_thumbnail(self.image, 'small')
                 get_std_thumbnail(self.image, 'standard')
             # never let these lines interrupt anything
             except Exception as e:

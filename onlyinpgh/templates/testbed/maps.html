@@ -10,41 +10,59 @@
 </style>
 {% endblock %}
 
-{% block head-scripts %}
-<script type="text/javascript"
-  src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false">
-</script>
-{% endblock %}
-
 {% block content %}
-<div id='feed'>
-    {% for place in places %}
-    <div>{{place.name}}</div>
-    {% endfor %}
+<div style="display: inline">
+    <div id='feed'></div>
+    <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
-<div id="map_canvas" style="width:100%; height:100%"></div>
 {% endblock %}
 
-{% block foot-libs %}
+{% block foot %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
- <!-- 
-<script type="text/javascript" src="{{STATIC_URL}}js/plugins.js"></script> -->
+
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false"></script>
+
 {% compressed_js 'all_libs' %}
 {% compressed_js 'templates' %}
+{% compressed_js 'site_scripts' %}
 
-<script src="{{STATIC_URL}}js/mapscript.js"></script>
 <script type="text/javascript">
-$(function(){
-    var theMap = new window.Scenable.feed.Map(document.getElementById('map_canvas'), 40.44417, -79.94583);
-    _.each({{places_json}}, function(place){
-        theMap.addItem(
-            place.location.latitude, 
-            place.location.longitude, 
-            '/static/img/markers/place-marker.png', 
-            window.TPL.placeItem(place));
-    });
-    window.Scenable.feed.linkFeedToMap($('#feed').children(),theMap);
+var bootstrap = {{places_json}};
+
+// model extensions not strictly necessary: defaults will do for Places
+var PlaceItem = scenable.mapFeed.Item.extend();
+var PlaceItems = scenable.mapFeed.ItemFeed.extend({model:PlaceItem});
+
+var PlaceView = scenable.mapFeed.ItemView.extend({
+    template: window.TPL.placeInfoWindow,
+    iwTemplate: window.TPL.placeInfoWindow,
+    markerOptions: {
+        icon: '/static/img/markers/place-marker.png',
+        shadow: '/static/img/markers/marker-shadow.png'
+    }
 });
+var PlaceFeed = scenable.mapFeed.FeedView.extend({SubViewClass:PlaceView});
+
+var Items = new PlaceItems;
+var Feed = new PlaceFeed({
+    model: Items,
+    el: document.getElementById('feed'),
+    mapDOMElement: document.getElementById('map_canvas'),
+    mapOptions: {
+        center: new google.maps.LatLng(40.44417, -79.94583),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        panControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        }
+    }
+});
+
+Items.reset(bootstrap);
 </script>
 {% endblock %}

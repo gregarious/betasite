@@ -20,16 +20,20 @@ Context variables:
 </header>
 
 <article class="feed-content">
-    <div class="map-container"></div>
+    <div class="map-container" id="mainSpecialFeedMap"></div>
     {% if prev_p %}<a href="{% url specials-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url specials-feed %}?p={{next_p}}">Next</a>{% endif %}
 
-    <ul class="feed specials">
-    {% for item in items %}
-        <li class="item">
-        {% include "specials/feed_item.html" with special=item %}
-        </li>
-    {% endfor %}
+    <ul class="feed specials" id="mainSpecialFeed">
+        {# will be inserted via Backbone bootstrapping below #}
+        {% comment %}
+        Old code where server writes feed. Being replaced with bootstrapped-Backbone below
+        #{% for item in items %}
+        #    <li class="item">
+        #    {% include "specials/feed_item.html" with special=item %}
+        #    </li>
+        # {% endfor %}
+        {% endcomment %}
     </ul>
 
     {% if prev_p %}<a href="{% url specials-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
@@ -39,4 +43,59 @@ Context variables:
 
 {% block sidebar %}
 {% include "specials/sidebar_specials_feed.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    // need to overwrite default geolocation accessor
+    var SpecialItem = scenable.mapFeed.Item.extend({
+        getLatLng: function() {
+            var loc = this.attributes.place.location;
+            if(loc &&
+               loc.latitude !== null && !_.isUndefined(loc.latitude) &&
+               loc.longitude !== null && !_.isUndefined(loc.longitude)) {
+                return new google.maps.LatLng(loc.latitude, loc.longitude);
+            }
+            else {
+                return null;
+            }
+        }
+    });
+
+    var SpecialItems = scenable.mapFeed.ItemFeed.extend({model:SpecialItem});
+
+    var SpecialView = scenable.mapFeed.ItemView.extend({
+        template: window.TPL.specialItem,
+        iwTemplate: window.TPL.specialInfoWindow,
+        markerOptions: {
+            icon: '/static/img/markers/special-marker.png',
+            shadow: '/static/img/markers/marker-shadow.png'
+        }
+    });
+    var SpecialFeed = scenable.mapFeed.FeedView.extend({SubViewClass:SpecialView});
+
+    var Items = new SpecialItems;
+    var Feed = new SpecialFeed({
+        model: Items,
+        el: document.getElementById('mainSpecialFeed'),
+        mapDOMElement: document.getElementById('mainSpecialFeedMap'),
+        mapOptions: {
+            center: new google.maps.LatLng(40.44417, -79.94583),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            panControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
+            }
+        }
+    });
+
+    var bootstrapData = {{items_json|default:"[]"}};
+    Items.reset(bootstrapData);
+});
+</script>
 {% endblock %}
