@@ -1002,7 +1002,12 @@ legend {
   z-index: 1;
 }
 #site-footer {
-  margin: 8em 2em 1em;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 8em 1em 1em;
 }
 /* SIDEBAR ---------- */
 #site-sidebar {
