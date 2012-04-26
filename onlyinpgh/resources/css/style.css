@@ -1202,7 +1202,8 @@ legend {
 .item-actions img {
   cursor: pointer;
 }
-.feed .item-thumb {
+.feed .item-thumb,
+.infoBox .item-thumb {
   float: left;
   width: 20.833333333333336%;
   margin: 0 1.0416666666666665%;
@@ -1760,7 +1761,7 @@ legend {
 }
 /* MAP --------- */
 .infoBox {
-  background: #fff;
+  background: #ffffff /*url('@{static_url}/img/manage-place.png')*/;
   -webkit-box-shadow: 0.5em 0.5em 1em #444444;
   -moz-box-shadow: 0.5em 0.5em 1em #444444;
   box-shadow: 0.5em 0.5em 1em #444444;
