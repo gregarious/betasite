@@ -41,7 +41,7 @@ class PlaceData(object):
                 'address': self.location.address,
                 'latitude': float(self.location.latitude) if self.location.latitude is not None else None,
                 'longitude': float(self.location.longitude) if self.location.longitude is not None else None,
-                'is_gecoded': self.place.location.latitude is not None and self.place.location.longitude is not None,
+                'is_gecoded': self.location.latitude is not None and self.location.longitude is not None,
             } if self.location else None,
             'tags': [{
                 'name': tag.name,
