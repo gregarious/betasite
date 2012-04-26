@@ -8,7 +8,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.common.utils import CSVPickler
 
 from django.contrib.auth.models import User
-from onlyinpgh.common.utils import get_std_thumbnail
+from onlyinpgh.common.utils import precache_thumbnails
 
 import math
 import urllib
@@ -273,8 +273,7 @@ class Place(models.Model, ViewModel):
         if self.image:
             # pre-cache common sized thumbnails
             try:
-                get_std_thumbnail(self.image, 'small')
-                get_std_thumbnail(self.image, 'standard')
+                precache_thumbnails(self.image)
             # never let these lines interrupt anything
             except Exception as e:
                 print 'error caching thumbnails', e

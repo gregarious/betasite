@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 
 from onlyinpgh.orgadmin.forms import SimplePlaceForm
-from onlyinpgh.common.utils import get_std_thumbnail
+from onlyinpgh.common.utils import get_cached_thumbnail
 
 
 ### Shotcuts for authentication ###
@@ -44,7 +44,7 @@ def _autocomplete_response(request, place_choices, term, limit=4):
     results = []
     for _, p in sorted(zip(match_status, place_choices))[:limit]:
         try:
-            thumb = get_std_thumbnail(p.image, 'small') if p.image else None
+            thumb = get_cached_thumbnail(p.image, 'small') if p.image else None
         except IOError:
             thumb = None
         image_url = thumb.url if thumb else '/static/img/default-place.png'

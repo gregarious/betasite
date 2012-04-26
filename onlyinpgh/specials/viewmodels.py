@@ -1,8 +1,6 @@
 from django.contrib.auth.models import User
 
 from django.core.urlresolvers import reverse
-from django.utils.timezone import now
-from onlyinpgh.common.utils import get_std_thumbnail
 
 
 class SpecialData(object):
@@ -57,7 +55,6 @@ class SpecialData(object):
             } for tag in self.tags.all()],
             # special fields only for JSON output
             'permalink': reverse('special-detail', kwargs={'sid': self.id}),
-            #'thumb': get_std_thumbnail(self.image, 'standard'),
         }
         self._add_dates(data)
         return data

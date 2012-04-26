@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 
 from django.core.urlresolvers import reverse
 from django.utils.timezone import now
-from onlyinpgh.common.utils import get_std_thumbnail
+from onlyinpgh.common.utils import get_cached_thumbnail
 
 import datetime
 
@@ -80,7 +80,8 @@ class EventData(object):
             } for tag in self.tags.all()],
             # special fields only for JSON output
             'permalink': reverse('event-detail', kwargs={'eid': self.id}),
-            #'thumb': get_std_thumbnail(self.image, 'standard'),
+            'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
+            'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
         }
         self._add_dates(data)
         return data
