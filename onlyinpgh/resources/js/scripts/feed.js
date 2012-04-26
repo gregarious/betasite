@@ -7,7 +7,7 @@ scenable.mapFeed = (function(){
         // Default behavior is to get this from this object's latitude/longitude
         // properties, but this should be overwritten if necessary
         getLatLng: function() {
-            loc = this.attributes.location;
+            var loc = this.attributes.location;
             if(loc &&
                loc.latitude !== null && !_.isUndefined(loc.latitude) &&
                loc.longitude !== null && !_.isUndefined(loc.longitude)) {

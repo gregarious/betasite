@@ -20,16 +20,19 @@ Context variables:
 </header>
 
 <article class="feed-content">
-    <div class="map-container"></div>
+    <div class="map-container" id="mainEventFeedMap"></div>
     {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
 
-    <ul class="feed events">
-    {% for item in items %}
-        <li class="item">
-        {% include "events/feed_item.html" with event=item %}
-        </li>
-    {% endfor %}
+    <ul class="feed events" id="mainEventFeed">
+    {% comment %}
+    Old code where server writes feed. Being replaced with bootstrapped-Backbone below
+    # {% for item in items %}
+    #    <li class="item">
+    #    {% include "events/feed_item.html" with event=item %}
+    #    </li>
+    #{% endfor %}
+    {% endcomment %}
     </ul>
 
     {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
@@ -39,4 +42,59 @@ Context variables:
 
 {% block sidebar %}
 {% include "events/sidebar_events_feed.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    // need to overwrite default geolocation accessor
+    var EventItem = scenable.mapFeed.Item.extend({
+        getLatLng: function() {
+            var loc = this.attributes.place.location;
+            if(loc &&
+               loc.latitude !== null && !_.isUndefined(loc.latitude) &&
+               loc.longitude !== null && !_.isUndefined(loc.longitude)) {
+                return new google.maps.LatLng(loc.latitude, loc.longitude);
+            }
+            else {
+                return null;
+            }
+        }
+    });
+
+    var EventItems = scenable.mapFeed.ItemFeed.extend({model:EventItem});
+
+    var EventView = scenable.mapFeed.ItemView.extend({
+        template: window.TPL.eventItem,
+        iwTemplate: window.TPL.eventInfoWindow,
+        markerOptions: {
+            icon: '/static/img/markers/event-marker.png',
+            shadow: '/static/img/markers/marker-shadow.png'
+        }
+    });
+    var EventFeed = scenable.mapFeed.FeedView.extend({SubViewClass:EventView});
+
+    var Items = new EventItems;
+    var Feed = new EventFeed({
+        model: Items,
+        el: document.getElementById('mainEventFeed'),
+        mapDOMElement: document.getElementById('mainEventFeedMap'),
+        mapOptions: {
+            center: new google.maps.LatLng(40.44417, -79.94583),
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            panControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
+            }
+        }
+    });
+
+    var bootstrapData = {{items_json|default:"[]"}};
+    Items.reset(bootstrapData);
+});
+</script>
 {% endblock %}

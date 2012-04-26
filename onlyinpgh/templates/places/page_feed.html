@@ -26,15 +26,14 @@ Context variables:
 
     <ul class="feed places" id="mainPlaceFeed">
         {# will be inserted via Backbone bootstrapping below #}
-    </ul>
-    {% comment %}
-    Old code where server writes feed. Being replaced with bootstrapped-Backbone below
-    {% for item in items %}
-        <li class="item {%if item.place.location.is_geocoded%}hasMarker{%endif%}">
-        {% include "places/feed_item.html" with place=item %}
-        </li>
-    {% endfor %}
-    {% endcomment %}
+        {% comment %}
+        Old code where server writes feed. Being replaced with bootstrapped-Backbone below
+        # {% for item in items %}
+        #    <li class="item {%if item.place.location.is_geocoded%}hasMarker{%endif%}">
+        #    {% include "places/feed_item.html" with place=item %}
+        #    </li>
+        # {% endfor %}
+        {% endcomment %}
     </ul>
 
     {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}

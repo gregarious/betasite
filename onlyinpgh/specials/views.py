@@ -31,7 +31,7 @@ def page_feed(request):
     specials = page.object_list
     items = [SpecialData(special, user=request.user) for special in specials]
     # need the items in json form for bootstrapping to BB models
-    items_json = serialize_resources(SpecialFeedResource(), specials, request=request)
+    items_json = serialize_resources(SpecialFeedResource(), items)
 
     content = {'items': items,
                'items_json': items_json,
