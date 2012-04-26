@@ -70,6 +70,7 @@ class EventData(object):
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,
                     'longitude': float(self.place.location.longitude) if self.place.location.longitude is not None else None,
+                    'is_gecoded': self.place.location.latitude is not None and self.place.location.longitude is not None,
                 } if self.place.location else None,
             } if self.place else None,
             'place_primitive': self.place_primitive,
