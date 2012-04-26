@@ -75,6 +75,8 @@ class EventData(object):
             'id': self.id,
             'name': self.name,
             'description': self.description,
+            'dtstart': str(self.dtstart),
+            'dtend': str(self.dtend),
             'dtstart_str': self.dtstart_str,
             'dtend_str': self.dtend_str,
             'place': {

@@ -39,6 +39,8 @@ class SpecialData(object):
         return {
             'title': self.title,
             'description': self.description,
+            'dstart': str(self.dstart),
+            'dexpires': str(self.dexpires),
             'dstart_str': self.dstart_str,
             'dexpires_str': self.dexpires_str,
             'points': self.points,
