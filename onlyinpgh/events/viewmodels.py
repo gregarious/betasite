@@ -20,37 +20,49 @@ class EventData(object):
         for attr in fields:
             setattr(self, attr, getattr(event, attr))
         self.pk = self.id
+        self._add_dates()
 
-    def _add_dates(self, data):
+    def _add_dates(self):
         # TODO: really should test some of this logic
         # if it's happening in the same year as now, or within the next 45 days, use the start year
         if self.dtstart.year == now().year:
-            use_startyear = False
+            use_year = False
         elif (self.dtstart - now()).days < 45:
-            use_startyear = False
+            use_year = False
         else:
-            use_startyear = True
+            use_year = True
 
-        data['dtstart'] = self.dtstart.strftime('%b ') + \
+        self.dtstart_str = self.dtstart.strftime('%b ') + \
                           self.dtstart.strftime('%d').lstrip('0') + \
-                          (self.dtstart.strftime(' %Y') if use_startyear else '') + \
-                          ', ' + self.dtstart.strftime('%I:%M%p').lstrip('0').lower()
+                          (self.dtstart.strftime(' %Y') if use_year else '') + \
+                          ', ' + self.dtstart.strftime('%I').lstrip('0') + \
+                          (self.dtstart.strftime(':%M') if self.dtstart.minute != 0 else '') + \
+                          self.dtstart.strftime('%p').lower()
 
         # if ends on sasme day, or on next day but on or before 2 am, don't use the day part of dtend
         if self.dtstart.day == self.dtend.day:
+            if self.id == 13:
+                print 'trigger 1'
             use_endday = False
         elif (self.dtend - self.dtstart).days < 1 and self.dtend.time() <= datetime.time(2, 0):
+            if self.id == 13:
+                print 'trigger 2'
             use_endday = False
         else:
+            if self.id == 13:
+                print 'trigger 3'
             use_endday = True
 
         if use_endday:
-            data['dtend'] = self.dtend.strftime('%b ') + \
-                            self.dtend.strftime('%d ').lstrip('0') + \
-                            self.dtend.strftime('%Y, ')
+            self.dtend_str = self.dtend.strftime('%b ') + \
+                            self.dtend.strftime('%d').lstrip('0') + \
+                            (self.dtend.strftime(', %Y') if use_year else '') + ', '
         else:
-            data['dtend'] = ''
-        data['dtend'] += self.dtend.strftime('%I:%M%p').lstrip('0').lower()
+            self.dtend_str = ''
+
+        self.dtend_str += self.dtend.strftime('%I').lstrip('0') + \
+                          (self.dtend.strftime(':%M') if self.dtend.minute != 0 else '') + \
+                          self.dtend.strftime('%p').lower()
 
     def serialize(self):
         '''
@@ -59,11 +71,12 @@ class EventData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
-        data = {
+        return {
+            'id': self.id,
             'name': self.name,
             'description': self.description,
-            'dtstart': str(self.dtstart),
-            'dtend': str(self.dtend),
+            'dtstart_str': self.dtstart_str,
+            'dtend_str': self.dtend_str,
             'place': {
                 'name': self.place.name,
                 'location': {
@@ -84,5 +97,3 @@ class EventData(object):
             'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
             'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
         }
-        self._add_dates(data)
-        return data

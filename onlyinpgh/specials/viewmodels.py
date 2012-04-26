@@ -19,14 +19,15 @@ class SpecialData(object):
         for attr in fields:
             setattr(self, attr, getattr(special, attr))
         self.pk = self.id
+        self._add_dates()
 
-    def _add_dates(self, data):
-        data['dstart'] = self.dstart.strftime('%b ') + \
-                         self.dstart.strftime('%d').lstrip('0') + \
-                         self.dstart.strftime(', %Y')
-        data['dexpires'] = self.dexpires.strftime('%b ') + \
-                           self.dexpires.strftime('%d').lstrip('0') + \
-                           self.dexpires.strftime(', %Y')
+    def _add_dates(self):
+        self.dstart_str = self.dstart.strftime('%b ') + \
+                          self.dstart.strftime('%d').lstrip('0') + \
+                          self.dstart.strftime(', %Y')
+        self.dexpires_str = self.dexpires.strftime('%b ') + \
+                            self.dexpires.strftime('%d').lstrip('0') + \
+                            self.dexpires.strftime(', %Y')
 
     def serialize(self):
         '''
@@ -35,9 +36,11 @@ class SpecialData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
-        data = {
+        return {
             'title': self.title,
             'description': self.description,
+            'dstart_str': self.dstart_str,
+            'dexpires_str': self.dexpires_str,
             'points': self.points,
             'place': {
                 'name': self.place.name,
@@ -57,5 +60,3 @@ class SpecialData(object):
             # special fields only for JSON output
             'permalink': reverse('special-detail', kwargs={'sid': self.id}),
         }
-        self._add_dates(data)
-        return data
