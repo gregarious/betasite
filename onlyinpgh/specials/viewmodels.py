@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 
 from django.core.urlresolvers import reverse
+from django.utils.timezone import now
 from onlyinpgh.common.utils import get_std_thumbnail
 
 
@@ -21,6 +22,14 @@ class SpecialData(object):
             setattr(self, attr, getattr(special, attr))
         self.pk = self.id
 
+    def _add_dates(self, data):
+        data['dstart'] = self.dstart.strftime('%b ') + \
+                         self.dstart.strftime('%d').lstrip('0') + \
+                         self.dstart.strftime(', %Y')
+        data['dexpires'] = self.dexpires.strftime('%b ') + \
+                           self.dexpires.strftime('%d').lstrip('0') + \
+                           self.dexpires.strftime(', %Y')
+
     def serialize(self):
         '''
         Temporary method to take the place of TastyPie serialization
@@ -28,11 +37,9 @@ class SpecialData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
-        return {
+        data = {
             'title': self.title,
             'description': self.description,
-            'dstart': str(self.dstart),
-            'dexpires': str(self.dexpires),
             'points': self.points,
             'place': {
                 'name': self.place.name,
@@ -52,3 +59,5 @@ class SpecialData(object):
             'permalink': reverse('special-detail', kwargs={'sid': self.id}),
             #'thumb': get_std_thumbnail(self.image, 'standard'),
         }
+        self._add_dates(data)
+        return data

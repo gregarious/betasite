@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
 
 from django.core.urlresolvers import reverse
+from django.utils.timezone import now
 from onlyinpgh.common.utils import get_std_thumbnail
+
+import datetime
 
 
 class EventData(object):
@@ -18,6 +21,37 @@ class EventData(object):
             setattr(self, attr, getattr(event, attr))
         self.pk = self.id
 
+    def _add_dates(self, data):
+        # TODO: really should test some of this logic
+        # if it's happening in the same year as now, or within the next 45 days, use the start year
+        if self.dtstart.year == now().year:
+            use_startyear = False
+        elif (self.dtstart - now()).days < 45:
+            use_startyear = False
+        else:
+            use_startyear = True
+
+        data['dtstart'] = self.dtstart.strftime('%b ') + \
+                          self.dtstart.strftime('%d').lstrip('0') + \
+                          (self.dtstart.strftime(' %Y') if use_startyear else '') + \
+                          ', ' + self.dtstart.strftime('%I:%M%p').lstrip('0').lower()
+
+        # if ends on sasme day, or on next day but on or before 2 am, don't use the day part of dtend
+        if self.dtstart.day == self.dtend.day:
+            use_endday = False
+        elif (self.dtend - self.dtstart).days < 1 and self.dtend.time <= datetime.time(2, 0):
+            use_endday = False
+        else:
+            use_endday = True
+
+        if use_endday:
+            data['dtend'] = self.dtend.strftime('%b ') + \
+                            self.dtend.strftime('%d ').lstrip('0') + \
+                            self.dtend.strftime('%Y, ')
+        else:
+            data['dtend'] = ''
+        data['dtend'] += self.dtend.strftime('%I:%M%p').lstrip('0').lower()
+
     def serialize(self):
         '''
         Temporary method to take the place of TastyPie serialization
@@ -25,7 +59,7 @@ class EventData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
-        return {
+        data = {
             'name': self.name,
             'description': self.description,
             'dtstart': str(self.dtstart),
@@ -48,3 +82,5 @@ class EventData(object):
             'permalink': reverse('event-detail', kwargs={'eid': self.id}),
             #'thumb': get_std_thumbnail(self.image, 'standard'),
         }
+        self._add_dates(data)
+        return data
