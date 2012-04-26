@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response
+from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
 from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.places.models import Place
 from onlyinpgh.places.resources import PlaceFeedResource
 from onlyinpgh.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
+import json
 
 def page_feed(request):
     '''
@@ -32,7 +33,9 @@ def page_feed(request):
     places = page.object_list
     items = [PlaceData(place, user=request.user) for place in places]
     # need the items in json form for bootstrapping to BB models
-    items_json = serialize_resources(PlaceFeedResource(), items)
+    # # temp dissabled
+    # items_json = serialize_resources(PlaceFeedResource(), items)
+    items_json = sanitize_json(json.dumps([item.serialize() for item in items]))
 
     content = {'items': items,
                'items_json': items_json,
