@@ -35,7 +35,7 @@ Context variables:
         # {% endfor %}
         {% endcomment %}
     </ul>
-
+    
     {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .feed-content -->
@@ -53,7 +53,8 @@ $(function(){
     var PlaceItems = scenable.mapFeed.ItemFeed.extend({model:PlaceItem});
 
     var PlaceView = scenable.mapFeed.ItemView.extend({
-        template: window.TPL.placeInfoWindow,
+        className: 'item',
+        template: window.TPL.placeItem,
         iwTemplate: window.TPL.placeInfoWindow,
         markerOptions: {
             icon: '/static/img/markers/place-marker.png',
@@ -67,22 +68,15 @@ $(function(){
         model: Items,
         el: document.getElementById('mainPlaceFeed'),
         mapDOMElement: document.getElementById('mainPlaceFeedMap'),
-        mapOptions: {
+        // scenable.map.mapFactory handles most defaults
+        mapOptions: {   
             center: new google.maps.LatLng(40.44417, -79.94583),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            panControl: false,
-            mapTypeControl: false,
-            streetViewControl: false,
-            zoomControl: true,
-            zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.SMALL
-            }
         }
     });
 
     var bootstrapData = {{items_json|default:"[]"}};
     Items.reset(bootstrapData);
+    window._Items = Items;
 });
 </script>
 {% endblock %}

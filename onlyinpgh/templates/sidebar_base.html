@@ -1,28 +1,20 @@
 <h2 class="sidebar-title">Oakland Scenecast</h2>
 
-{% block sidebar_main %}
-{% endblock %}
-
 <section class="widget">
+	<h3 class="widget-title">On this page...</h3>
+	{% block sidebar_main %}
+	{% endblock %}
+</section>
+
+<section class="widget" id="sidebar-feedback">
 	<h3 class="widget-title">Feedback plz!</h3>
-	<form id="sidebar-feedback">
-		{% block sidebar_survey %}
-		{% endblock %}
-		<div class="field-label">
-			<label>Other thoughts?</label>
-		</div>
-		<div class="field">
-			<textarea></textarea>
-		</div>
-		<input type="submit" value="Submit" />
-	</form>
+	{% block sidebar_survey %}
+	{% endblock %}
 </section>
 
 <section class="widget" id="get-in-touch">
-	<!-- Maybe replace this with like and follow options -->
 	<h3 class="widget-title">Contact Scenable</h3>
 	<p>Interested in starting a Scene for your community? Get in touch and we'd love to discuss: <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Oakland%20Scene">contact@scenable.com</a>.</p>
 	<a href="https://www.facebook.com/Scenable" title="Scenable on Facebook" target="blank"><img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon"/></a>
 	<a href="http://twitter.com/ScenableApp" title="Scenable on Twitter" target="blank"><img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" /></a>
-
 </section>

@@ -44,7 +44,7 @@ urlpatterns = patterns('',
     url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
     url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
 
-    #url(r'^tags/',include('onlyinpgh.tags.urls')),
+    url(r'^tags/', include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),

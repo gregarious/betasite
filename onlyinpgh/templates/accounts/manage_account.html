@@ -7,11 +7,12 @@ Context variables:
         preferences_form: form object    
 {% endcomment %}
 
-<h2 class="detail-section-title">Account Settings</h2>
+<h2 class="detail-section-title">{{user.username}}'s Account</h2>
 <form method="post" action="">
 {% csrf_token %}
 <fieldset>
-	<legend>Your info</legend>
+	<legend>Profile</legend>
+	<p class="tip">This information will appear publicly on your profile.</p>
 	{% with form=account_forms.profile_form %}
 	<ul>
 		<li class="field-container">
@@ -20,6 +21,8 @@ Context variables:
 			</div>
 			<div class="field">
 				{{form.display_name}}
+				<p class="tip">Leave blank to use your username.</p>
+				{{form.display_name.errors}}
 			</div>
 		</li> <!-- display_name -->
 
@@ -27,58 +30,39 @@ Context variables:
 			<div class="field-label">
 				{{form.gender.label_tag}}
 			</div>
-			<div class="field">
-				<div id="gender">
+			<div class="field grouped-field-row">
+				<div>
 					{{form.gender}}
 				</div> <!-- gender -->
-				<div id="birth-year-label" class="field-label">
+				<div>
 					{{form.birth_year.label_tag}}
 				</div>
-				<div id="birth-year">
+				<div>
 					{{form.birth_year}}
 				</div> <!-- birth_year -->
+				{{form.birth_year.errors}}
 			</div>
-		</li>  <!-- .double -->
-
-		<li class="field-container last">
+		</li>  <!-- gender & birth_year -->
+		
+		<li class="field-container">
 			<div class="field-label">
 				{{form.neighborhood.label_tag}}
 			</div>
 			<div class="field">
 				{{form.neighborhood}}
-				<div class="tip public">
-					<!-- {{form.neighborhood_public}} -->
-					<input type="checkbox" checked="checked" />
-					<label name="form.neighborhood_public.html_name">Public</label>
-				</div> <!-- neoghborhood_public -->
+				{{forn.neighborhood.errors}}
 			</div>
 		</li> <!-- neighborhood -->
-
+		
 		<li class="field-container">
 			<div class="field-label">
 				{{form.avatar_url.label_tag}}
 			</div>
 			<div class="field">
 				{{form.avatar_url}}
+				{{form.avatar_url.errors}}
 			</div>
 		</li> <!-- avatar_url -->
-
-		<li class="field-container">
-			<div class="field-label">
-				<label name="{{form.fb_id.html_name}}">Facebook ID</label>
-			</div>
-			<div class="field">
-				<div class="social-input">
-		        	{{form.fb_id}}
-		            <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
-		        </div>
-
-				<div class="tip public">
-					{{form.fb_id_public}}
-					<label name="form.fbid_public.html_name">Public</label>
-				</div> <!-- fb_id_public -->
-			</div>
-		</li> <!-- fb_id -->
 
 		<li class="field-container">
 			<div class="field-label">
@@ -87,20 +71,19 @@ Context variables:
 			<div class="field">
 				<div class="social-input">
 		        	{{form.twitter_username}}
+		        	{{form.twitter_username.errors}}
 		            <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
 		        </div>
-				<div class="tip public">
-					{{form.twitter_username_public}}
-					<label name="form.twitter_username_public.html_name">Public</label>
-				</div> <!-- twitter_username_public -->
 			</div>	
 		</li> <!-- twitter_username -->
 		{% endwith %}
+
 	</ul>
 </fieldset>
 
-<fieldset>
+<fieldset id="account-privacy">
 	<legend>Privacy</legend>
+	<p class="tip">By default, your public profile page will show the places you favorite and the coupons you have purchased. You can opt in to make your events public.</p>
 	<ul>
 		{% with form=account_forms.preferences_form %}
 		<li class="field-container">
@@ -123,9 +106,9 @@ Context variables:
 	</ul>
 </fieldset>
 
-
 <fieldset>
 	<legend>Email and password</legend>
+	<p class="tip">Change your email and password here.</p>
 	<ul>
 		{% with form=account_forms.credentials_form %}
 		<li class="field-container">
@@ -136,8 +119,6 @@ Context variables:
 				{{form.email}}
 			</div>
 		</li> <!-- email -->
-
-		<legend>Change your password</legend>
 		<li class="field-container">
 			<div class="field-label">
 				{{form.current_password.label_tag}}
@@ -156,7 +137,7 @@ Context variables:
 			</div>
 		</li> <!-- new_password -->
 
-		<li class="field-container last">
+		<li class="field-container">
 			<div class="field-label">
 				{{form.confirm_new_password.label_tag}}
 			</div>

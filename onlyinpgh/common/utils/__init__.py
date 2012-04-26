@@ -78,8 +78,10 @@ def imagefile_from_url(url):
     im.save(tmp)
     return File(tmp)
 
+THUMB_TYPES = ('small', 'standard', )
 
-def get_std_thumbnail(image, type):
+
+def get_cached_thumbnail(image, type):
     '''
     Returns a sorl ImageFile for a preset thumbnail type
     types:
@@ -94,3 +96,12 @@ def get_std_thumbnail(image, type):
         return get_thumbnail(image, '130x130', crop='center')
     else:
         return None
+
+
+def precache_thumbnails(image):
+    '''
+    Pre-caches thumbnail versions of the given ImageFile, one thumbnail
+    per values in THUMB_TYPES.
+    '''
+    for type in THUMB_TYPES:
+        get_cached_thumbnail(image, type)
