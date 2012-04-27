@@ -1043,13 +1043,6 @@ legend {
 
 /* Specials */
 
-.specials {
-
-  .item-thumb {
-    border: none;
-  }
-}
-
 .btn-primary {
   cursor: pointer;
   text-align: center;
@@ -1070,22 +1063,25 @@ legend {
   }
 }
 
-.feed.specials {
-   /* Need to consolidate this after we know the links for grabbit buttons */
-    .btn-primary {
-      padding: 0.1em;
-      //.rounded(0);
-      background: @yellow;
+#specials-page {
+  .btn-primary {
+    padding: 0.1em;
+    .no-b-shadow();
+    background: @mblue;
 
-      &:active {
-        top: 0;
-        left: 0;
-      }
-
-      img {
-        width:70%;
-      }
+    &:active {
+      top: 0;
+      left: 0;
     }
+
+    img {
+      width:70%;
+    }
+  }
+
+  .item-thumb {
+    border: none;
+  }
 }
 
 /*.specials {
@@ -1180,6 +1176,10 @@ legend {
   //background: url("http://www.scottadito.com/images/googleMap.jpg");
   height: 200px;
   border: 1px solid #888;
+}
+
+#map-unavailable {
+  background: #e1e1e1 url('@{static_url}img/default-place.png') no-repeat center;
 }
 
 .row-container {

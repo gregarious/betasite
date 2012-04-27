@@ -6,7 +6,7 @@ Context variables:
 {% endcomment %}
 
 <ul class="tag-list">
-{% for tag in tags.all|slice:"4" %}
+{% for tag in tags.all %}
     <li><a href="">{{tag.name}}</a></li>
 {% endfor %}
 </ul>

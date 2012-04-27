@@ -21,7 +21,7 @@ def page_feed(request):
         next_p: number of next page of places (if applicable)
     '''
     all_places = Place.listed_objects.all()
-    paginator = Paginator(all_places, 10)
+    paginator = Paginator(all_places, 6)
     p = request.GET.get('p')
     try:
         page = paginator.page(p)

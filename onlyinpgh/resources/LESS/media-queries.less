@@ -10,26 +10,29 @@
   #scene-nav {
     .rounded(0);
   }
-  .feed-content {
-    .item {
-      .row();
-      border-bottom: 1px solid #e1e1e1;
 
-      &:last-child {
-        border: none;
-      }
+  .page-content {
+    .feed {
+      .item {
+        .row();
+        border-bottom: 1px solid #e1e1e1;
 
-      .description, .host {
-        display: block;
-      }
+        &:last-child {
+          border: none;
+        }
 
-      .item-title {
-        font-size: 1.1em;
-        line-height: 1.3em;
-      }
+        .description, .host {
+          display: block;
+        }
 
-      .item-details {
-        font-size: 1em;
+        .item-title {
+          font-size: 1.1em;
+          line-height: 1.3em;
+        }
+  
+        .item-details {
+          font-size: 1em;
+        }
       }
     }
   }
@@ -56,6 +59,7 @@
   .detail-nav {
     .row();
     margin-top: 1em;
+
     ul {
       .clearfix();
        li a {
@@ -92,24 +96,6 @@
 
   .single-title {
     font-size: 1.5em;
-  }
-
-  .field-label, label {
-    .row();
-    text-align: left;
-    margin: 0 0.5em 0.5em;
-  }
-
-  .field, #gender, #birth-year {
-    .row();
-  }
-
-  #gender {
-    margin-bottom: 1em;
-  }
-
-  .field-container {
-    margin: 1em 0;
   }
 
   .hot {
@@ -185,7 +171,7 @@
     clear: both;
   }
 
-  .feed-header {
+  .page-header {
     padding-top: 0.7em;
     margin: 0;
     .rounded(0);
@@ -214,12 +200,28 @@
     }
   }
 
-  .item-details {
-    font-size: 0.9em;
+  .feed {
+    .item-details {
+      font-size: 0.9em;
+    }
+
+    .item-title {
+      font-size: 1.2em;
+    }
+  }
+  
+  .field-label, label {
+    .row();
+    text-align: left;
+    margin: 0 0.5em 0.5em;
   }
 
-  .item-title {
-    font-size: 1.2em;
+  .field {
+    .row();
+  }
+
+  .field-container {
+    margin: 1em 0;
   }
 
   #utility {
@@ -255,12 +257,12 @@
 
   .item {
     .row();
-    border: 4px @mgreen solid;
+    /*border: 4px @mgreen solid;
     border-bottom: 0;
     .b-shadow(0.1em, 0.1em, 0.1em, #444);
     margin: 0;
     .gradient(#f9f9f9, #fff);
-
+*/
     &:last-child {
       border-bottom: 4px @mgreen solid;
     }
@@ -275,7 +277,7 @@
     .rounded(0);
   }
 
-  .feed-content {
+  .page-content {
     padding: 0;
   }
 
@@ -307,7 +309,7 @@
     font-size: 1.3em;
   }
 
-  .feed-header {
+  .page-header {
     display: none;
   }
 
@@ -430,7 +432,7 @@
     font-size: 0.9em;
   }
 
-  .feed-content .map-container {
+  .page-content .map-container {
     height: 200px;
   }
 
@@ -438,7 +440,7 @@
 
 @media only screen and (max-width: 320px) {
 
-    .feed-content .map-container {
+    .page-content .map-container {
       height: 150px;
     }
 

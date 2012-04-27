@@ -27,10 +27,11 @@ Context variables:
 
     <h2 class="detail-section-title">About - <em>{{place.name}}</em></h2>
 
-    {% if location.is_geocoded %}
+    {% if place.location.is_geocoded %}
     <div class="map-container" id="mainPlaceMap"></div>
+    {% else %}
+    <div class="map-container" id="map-unavailable"></div>
     {% endif %}
-
     <ul class="item-details">
         {% if place.hours %}
             <li><p class="detail-title">Hours:</p>
@@ -90,22 +91,6 @@ Context variables:
     {% endfor %}
     </ul>
 </section>
-
-<!--    <section class="single-section" id="{{place_section_id}}">
-
-    <h1 class="title">{{place_section_title}}</h1>
-    
-    {% if place.description %}  
-        <p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>     
-    {% endif %}
--->
-        <!-- <div class="single-featured-special">
-            The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
-            <a class="grabbit">Grabbit!</a>
-        </div> -->
-    
-
-<!--    </section> -->
 
 {% if featured_special %}
     <aside class="single-featured-special">

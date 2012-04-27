@@ -44,7 +44,9 @@ TODO #2: Only show expiration date if there is one.
 	</header>
 
 	<div class="single-content">
+		{% if special.place.location.is_geocoded %}
 		<div class="map-container" id="mainSpecialMap"></div>
+		{% endif %}
 		<p class="description">{{special.description}}</p>
 	</div>
 </div>

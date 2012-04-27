@@ -26,11 +26,11 @@ Context variables:
 
     <ul class="feed" id="mainEventFeed">
 
-    </ul>
+    </ul> <!-- .feed#mainEventFeed -->
 
     {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
-</article> <!-- .feed-content -->
+</article> <!-- .page-content -->
 {% endblock %}
 
 {% block sidebar %}
