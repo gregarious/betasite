@@ -30,18 +30,19 @@ scenable.mapFeed = (function(){
         template: null,
         iwTemplate: null,
         markerOptions: {},      // position will always be overwritten
-        InfoBoxOptions: {       // content will always be overwritten
-            closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
-            infoBoxClearance: new google.maps.Size(1, 100),
-            isHidden: false,
-            pane: "floatPane",
-            enableEventPropagation: false,
-            alignBottom: true,
-            pixelOffset: new google.maps.Size(0, -40)
+        InfoWindowOptions: {       // content will always be overwritten
+            maxWidth: 300
+            // closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+            // InfoWindowClearance: new google.maps.Size(1, 100),
+            // isHidden: false,
+            // pane: "floatPane",
+            // enableEventPropagation: false,
+            // alignBottom: true,
+            // pixelOffset: new google.maps.Size(0, -40)
         },
 
         marker: null,
-        InfoBox: null,
+        InfoWindow: null,
 
         initialize: function(options) {
             var position = this.model.getLatLng();
@@ -50,8 +51,8 @@ scenable.mapFeed = (function(){
                     _.extend(_.clone(this.markerOptions), {position: position})
                 );
             }
-            this.InfoBox = new InfoBox(
-                _.extend(_.clone(this.InfoBoxOptions), {
+            this.InfoWindow = new google.maps.InfoWindow(
+                _.extend(_.clone(this.InfoWindowOptions), {
                     content: this.iwTemplate(this.model.toJSON())
                 })
             );
@@ -59,15 +60,15 @@ scenable.mapFeed = (function(){
 
         markFocus: function(map) {
             this.$el.addClass('focused');
-            if(this.InfoBox && this.marker) {
-                this.InfoBox.open(map, this.marker);
+            if(this.InfoWindow && this.marker) {
+                this.InfoWindow.open(map, this.marker);
             }
         },
 
         unmarkFocus: function() {
             this.$el.removeClass('focused');
-            if(this.InfoBox) {
-                this.InfoBox.close();
+            if(this.InfoWindow) {
+                this.InfoWindow.close();
             }
         },
 
@@ -80,8 +81,8 @@ scenable.mapFeed = (function(){
         },
 
         close: function() {
-            if(this.InfoBox) {
-                this.InfoBox.close();
+            if(this.InfoWindow) {
+                this.InfoWindow.close();
             }
             if(this.marker) {
                 this.marker.setMap(null);
