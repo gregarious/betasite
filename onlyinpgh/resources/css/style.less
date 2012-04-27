@@ -9,7 +9,6 @@ body {
               bottom right 
               no-repeat;
   .lucida();
-  overflow-x: hidden;
 }
 
 /* TYPOGRAPHY -------- */
@@ -31,8 +30,7 @@ h3 {
 }
 
 h4 {
-  //font-family: 'DroidSerifBold';
-  //font-weight: bold;
+
 }
 
 p {
@@ -209,7 +207,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 button, input[type="submit"], .btn {
   border: none;
   .b-shadow(0, 0, 0.05em, #000);
-  color: #fff;
+  color: #fff !important;
   font-size: 0.9em;
   font-weight: bold;
   .gradient(@mgreen, @dgreen);
@@ -680,8 +678,9 @@ legend {
 
   .item {
     .column(6);
-    /*height: 90px;
-    overflow: hidden;*/
+    display: inline;
+    height: 90px;
+    overflow: hidden;
     &:hover {
       background: #e9e9e9;
       cursor: pointer;
@@ -1231,13 +1230,9 @@ legend {
 
 /* MAP --------- */
 
-.infoBox {
-  background: #fff /*url('@{static_url}/img/manage-place.png')*/;
-  .b-shadow(0.5em, 0.5em, 1em, #444);
-  .rounded(0.5em);
-  padding: 0.5em;
-  border: 3px #999 solid;
-  width: 250px;
+.directions-btn-container {
+  .row();
+  margin-top: 1em;
 }
 
 /* ICONS ----------- */

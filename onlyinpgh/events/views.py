@@ -22,7 +22,7 @@ def page_feed(request):
         next_p: number of next page of events (if applicable)
     '''
     all_events = Event.listed_objects.all()
-    paginator = Paginator(all_events, 10)
+    paginator = Paginator(all_events, 6)
     p = request.GET.get('p')
     try:
         page = paginator.page(p)

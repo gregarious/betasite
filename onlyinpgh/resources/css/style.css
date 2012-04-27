@@ -241,7 +241,6 @@ td {
 body {
   background: #e1e1e1 url("/static/img/logos/oakland-bkgd-450.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
-  overflow-x: hidden;
 }
 /* TYPOGRAPHY -------- */
 h1 {
@@ -475,7 +474,7 @@ input[type="submit"],
   -webkit-box-shadow: 0 0 0.05em #000000;
   -moz-box-shadow: 0 0 0.05em #000000;
   box-shadow: 0 0 0.05em #000000;
-  color: #fff;
+  color: #fff !important;
   font-size: 0.9em;
   font-weight: bold;
   background-color: #6baa55;
@@ -1140,9 +1139,9 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  /*height: 90px;
-    overflow: hidden;*/
-
+  display: inline;
+  height: 90px;
+  overflow: hidden;
 }
 .page-content .item:hover {
   background: #e9e9e9;
@@ -1765,20 +1764,13 @@ legend {
   color: #b83939;
 }
 /* MAP --------- */
-.infoBox {
-  background: #ffffff /*url('@{static_url}/img/manage-place.png')*/;
-  -webkit-box-shadow: 0.5em 0.5em 1em #444444;
-  -moz-box-shadow: 0.5em 0.5em 1em #444444;
-  box-shadow: 0.5em 0.5em 1em #444444;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  padding: 0.5em;
-  border: 3px #999 solid;
-  width: 250px;
+.directions-btn-container {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 1em;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 

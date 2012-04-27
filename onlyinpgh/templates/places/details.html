@@ -66,7 +66,17 @@ Context variables:
 
     </ul>
 
+    {% if place.description %}
     <p class="description">{{place.description|linebreaksbr}}</p>
+    {% else %}
+    <p class="description">We don't have much information on this place.</p>
+    <p class="description"><strong>Coming soon - </strong> would you like to add some?</p>
+    {% endif %}
+    {% if place.location %}
+    <div class="directions-btn-container">
+        <a href="#" class="btn">Get Directions</a>
+    </div>
+    {% endif %}
 
 </section>
 
