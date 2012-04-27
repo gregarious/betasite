@@ -11,15 +11,15 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<header class="feed-header">
-    <h1 class="feed-title">Places</h1>
+<header class="page-header">
+    <h1 class="page-title">Places</h1>
     <form class="filter">
         <input type="search" placeholder="Filter Places" />
         <input type="submit" value="Filter" />
     </form>
 </header>
 
-<article class="feed-content">
+<article class="page-content" id="places-page">
     <div class="map-container" id="mainPlaceFeedMap"></div>
     {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
@@ -34,11 +34,11 @@ Context variables:
         #    </li>
         # {% endfor %}
         {% endcomment %}
-    </ul>
+    </ul> <!-- .feed#mainPlaceFeed -->
     
     {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
-</article> <!-- .feed-content -->
+</article> <!-- .page-content -->
 {% endblock %}
 
 {% block sidebar %}

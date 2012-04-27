@@ -46,7 +46,7 @@ class PlaceData(object):
             'tags': [{
                 'name': tag.name,
                 'permalink': reverse('tags-item-detail', kwargs={'tid': tag.id})
-            } for tag in self.tags.all()],
+            } for tag in self.tags.all()[:4]],
             'hours': self.hours,
             'image': self.image.url if self.image else '',
             # special fields only for JSON output

@@ -44,7 +44,7 @@ Context variables:
 </header> <!-- .single-header -->
 
 <div class="single-content">
-    {% if location.is_geocoded %}
+    {% if event.place.location.is_geocoded %}
     <div class="map-container" id="mainEventMap"></div>
     {% endif %}
     <p class="description">{{event.description|linebreaksbr}}</p>

@@ -11,26 +11,26 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<header class="feed-header">
-	<h1 class="feed-title">Events</h1>
+<header class="page-header">
+	<h1 class="page-title">Events</h1>
 	<form class="filter">
 		<input type="search" placeholder="Filter Events" />
 		<input type="submit" value="Filter" />
 	</form>
 </header>
 
-<article class="feed-content">
+<article class="page-content" id="events-page">
     <div class="map-container" id="mainEventFeedMap"></div>
     {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
 
-    <ul class="feed events" id="mainEventFeed">
+    <ul class="feed" id="mainEventFeed">
 
-    </ul>
+    </ul> <!-- .feed#mainEventFeed -->
 
     {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
     {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
-</article> <!-- .feed-content -->
+</article> <!-- .page-content -->
 {% endblock %}
 
 {% block sidebar %}
