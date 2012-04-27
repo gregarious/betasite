@@ -9,52 +9,56 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<header class="feed-header">
-    <h1 class="feed-title">NOW in Oakland</h1>
+<header class="page-header">
+    <h1 class="page-title">NOW in Oakland</h1>
     <form class="filter">
         <input type="search" placeholder="Filter Hot" />
         <input type="submit" value="Filter" />
     </form>
 </header>
 
-<div class="row-container">
-    <div class="hot map-container">
+<article class="page-content" id="hot-page">
+    <div class="row-container">
+        <div class="map-container">
+        </div>
+        <section class="events">
+            <h3 class="hot-section-title">Upcoming Events</h3>
+            <ul class="feed events">
+            {% for item in hot_feeds.events|slice:"2" %}
+                <li class="item">
+                {% include "events/short_feed_item.html" with event=item %}
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
     </div>
-    <section class="hot events">
-        <h3 class="hot-section-title">Upcoming Events</h3>
-        <ul class="feed events">
-        {% for item in hot_feeds.events|slice:"2" %}
-            <li class="item">
-            {% include "events/short_feed_item.html" with event=item %}
-            </li>
-        {% endfor %}
-        </ul>
-    </section>
-</div>
-<div class="row-container">
 
-    <section class="hot specials">
-        <h3 class="hot-section-title">Top Specials</h3>
-        <ul class="feed specials">
-        {% for item in hot_feeds.specials|slice:"3" %}
-            <li class="item">
-            {% include "specials/short_feed_item.html" with special=item %}
-            </li>
-        {% endfor %}
-        </ul>
-    </section>
+    <div class="row-container">
+        <section class="specials">
+            <h3 class="hot-section-title">Top Specials</h3>
+            <ul class="feed specials">
+            {% for item in hot_feeds.specials|slice:"3" %}
+                <li class="item">
+                {% include "specials/short_feed_item.html" with special=item %}
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
 
-    <section class="hot chatter">
-        <h3 class="hot-section-title">Chatterbox</h3>
-        {% include "chatter_example.html" %}
-    </section>
-</div>
-<div class="row-container last">
-    <section class="hot news">
-        <h3 class="hot-section-title">News</h3>
-        {% include "news_example.html" %}
-    </section>
-</div>
+        <section class="chatter">
+            <h3 class="hot-section-title">Chatterbox</h3>
+            {% include "chatter_example.html" %}
+        </section>
+    </div>
+
+    <div class="row-container last">
+        <section class="news">
+            <h3 class="hot-section-title">News</h3>
+            {% include "news_example.html" %}
+        </section>
+    </div>
+
+</article>
 {% endblock %}
 
 {% block sidebar %}

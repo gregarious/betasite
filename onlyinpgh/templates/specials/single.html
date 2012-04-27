@@ -22,23 +22,18 @@ TODO #2: Only show expiration date if there is one.
 			</div> -->
 		</div> <!-- .single-thumb-container -->
 
-			<section class="item-content">
-				<h1 class="single-title">{{special.title}}</h1>
-
-				<ul class="item-details">
-					<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
-					{% if special.dtexpires %}
-						<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
-					{% endif %}
-					{% if special.total_available %}
-						<li>{{special.total_available}} Available</li>
-					{% endif %}
-
-				</ul>
-
-				{% include "tags/tag_list.html" with tags=special.tags %}
-
-			
+		<section class="item-content">
+			<h1 class="single-title">{{special.title}}</h1>
+			<ul class="item-details">
+				<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
+				{% if special.dtexpires %}
+					<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
+				{% endif %}
+				{% if special.total_available %}
+					<li>{{special.total_available}} Available</li>
+				{% endif %}
+			</ul>
+			{% include "tags/tag_list.html" with tags=special.tags %}
 		</section>
 
 	</header>
@@ -47,6 +42,15 @@ TODO #2: Only show expiration date if there is one.
 		{% if special.place.location.is_geocoded %}
 		<div class="map-container" id="mainSpecialMap"></div>
 		{% endif %}
+		{% if special.description %}
 		<p class="description">{{special.description}}</p>
+		{% else %}
+		<p class="description">We don't have a description for this special.</p>
+		{% endif %}
+		{% if special.place.location.directions_link %}
+	    <div class="directions-btn-container">
+	        <a href="{{place.location.directions_link}}" target="blank" class="btn" title="Directions to {{place.name}}">Get Directions</a>
+	    </div>
+	    {% endif %}
 	</div>
 </div>

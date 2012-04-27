@@ -8,6 +8,7 @@ from onlyinpgh.specials.viewmodels import SpecialData
 from django.core.urlresolvers import reverse
 from onlyinpgh.common.utils import get_cached_thumbnail
 
+from django.template.defaultfilters import truncatewords
 
 class PlaceData(object):
     def __init__(self, place, user=None):
@@ -33,10 +34,9 @@ class PlaceData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
-        print self.id
         return {
             'name': self.name,
-            'description': self.description,
+            'description': truncatewords(self.description, 15),
             'location': {
                 'address': self.location.address,
                 'latitude': float(self.location.latitude) if self.location.latitude is not None else None,
