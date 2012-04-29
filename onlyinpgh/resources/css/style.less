@@ -579,15 +579,6 @@ legend {
   font-size: 0.9em;
   .clearfix();
   text-align: center;
-/*
-  nav, div {
-    .column(6);  
-  }
-*/
-  /*nav {
-    text-align: right;
-  }*/
-
 }
 
 /* SIDEBAR ---------- */
@@ -752,18 +743,21 @@ legend {
   }
 
   .map-title-container {
+    //background: url("@{static_url}img/textures/white-trans.png");
     background: #fff;
-    .b-shadow(0.1em, 0.1em, 0.1em, #999);
-    -webkit-border-radius: 0 0 0.5em 0.5em; 
+    .b-shadow(0.1em, -0.1em, 0.1em, #999);
+    /*-webkit-border-radius: 0 0 0.5em 0.5em; 
      -moz-border-radius: 0 0 0.5em 0.5em; 
           border-radius: 0 0 0.5em 0.5em; 
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
+    .tabs(0.3em);
     border: 1px solid #444;
-    border-top: 0;
+    border-bottom: 0;
+    //border-left: 0;
     position: absolute;
-    top: -1px;
+    bottom: -1px;
     left: 20px;
-    padding: 1em 1.3em;
+    padding: 1em 1.3em 0.5em;
     z-index: 200;
   }
 
