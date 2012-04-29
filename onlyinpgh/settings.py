@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'pipeline',
     'tastypie',
+    'haystack',
     'django_extensions',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
@@ -203,3 +204,11 @@ from settings_pipeline import *
 # this is defined outside so we can use to_abspath
 PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+# initial Haystack setup for Whoosh
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': to_abspath('../var/whoosh_index'),
+    },
+}
