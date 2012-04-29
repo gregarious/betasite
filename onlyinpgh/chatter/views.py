@@ -9,4 +9,4 @@ def page_feed(request):
         current_section='chatter',
         page_title='Scenable | Chatter Feed',
         content_dict={'items': items})
-    return render_to_response('chatter/page_feed.html', context)
+    return render_to_response('chatter/page_feed.html', context_instance=context)

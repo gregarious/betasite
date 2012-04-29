@@ -47,7 +47,7 @@ def page_feed(request):
         current_section='events',
         page_title='Scenable | Oakland Events',
         content_dict=content)
-    return render_to_response('events/page_feed.html', page_context)
+    return render_to_response('events/page_feed.html', context_instance=page_context)
 
 
 def page_details(request, eid):
@@ -64,7 +64,7 @@ def page_details(request, eid):
         page_title='Scenable | %s' % event.name,
         content_dict=content)
 
-    return render_to_response('events/page_event.html', page_context)
+    return render_to_response('events/page_event.html', context_instance=page_context)
 
 # from django.shortcuts import render_to_response
 # from django.template import Context, RequestContext

@@ -15,4 +15,4 @@ def page_hot(request):
         page_title='Scenable | Oakland Places',
         content_dict=content)
 
-    return render_to_response('hot/page_hot.html', page_context)
+    return render_to_response('hot/page_hot.html', context_instance=page_context)

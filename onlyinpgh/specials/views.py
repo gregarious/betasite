@@ -46,7 +46,7 @@ def page_feed(request):
         current_section='specials',
         page_title='Scenable | Oakland Specials',
         content_dict=content)
-    return render_to_response('specials/page_feed.html', page_context)
+    return render_to_response('specials/page_feed.html', context_instance=page_context)
 
 
 def page_details(request, sid):
@@ -62,7 +62,7 @@ def page_details(request, sid):
         page_title='Scenable | %s' % special.title,
         content_dict=content)
 
-    return render_to_response('specials/page_special.html', page_context)
+    return render_to_response('specials/page_special.html', context_instance=page_context)
 
 
 

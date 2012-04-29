@@ -10,6 +10,7 @@ from onlyinpgh.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
 import json
 
+
 def page_feed(request):
     '''
     View function that handles a page load request for a feed of place
@@ -46,7 +47,7 @@ def page_feed(request):
         current_section='places',
         page_title='Scenable | Oakland Places',
         content_dict=content)
-    return render_to_response('places/page_feed.html', page_context)
+    return render_to_response('places/page_feed.html', context_instance=page_context)
 
 
 def page_details(request, pid):
@@ -80,7 +81,7 @@ def page_details(request, pid):
         page_title='Scenable | %s' % place.name,
         content_dict=content)
 
-    return render_to_response('places/page_place.html', page_context)
+    return render_to_response('places/page_place.html', context_instance=page_context)
 
 
 @jsonp_response

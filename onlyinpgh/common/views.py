@@ -47,5 +47,5 @@ def page_home(request):
 
 ### STATIC PAGES ###
 def page_static_about_oakland(request):
-     context = PageContext(request, page_title="About Oakland")
-     return render_to_response('static_pages/about_oakland.html')
+    context = PageContext(request, page_title="About Oakland")
+    return render_to_response('static_pages/about_oakland.html', context_instance=context)

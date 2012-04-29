@@ -9,4 +9,4 @@ def page_feed(request):
         current_section='news',
         page_title='Scenable | News Feed',
         content_dict={'items': items})
-    return render_to_response('news/page_feed.html', context)
+    return render_to_response('news/page_feed.html', context_instance=context)
