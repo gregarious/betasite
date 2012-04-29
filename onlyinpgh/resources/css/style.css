@@ -1168,37 +1168,12 @@ legend {
   height: auto;
 }
 /* PAGE --------- */
-/*.page-header {
-  .row();
-  .border-box();
-  .clearfix();
+.page-title {
+  font-size: 1.2;
   border-bottom: 1px solid #e1e1e1;
   margin: 1em 0;
-  padding: 1% 2%;
-
-  input[type="text"] {
-    .column_r(3);
-  }
-
-  .page-title {
-    float: left;
-    font-size: 1.8em;
-  }
-
-  .filter {
-    .column_r(4);
-    //margin-top: 0.5em;
-
-    input[type="search"] {
-      float: left;
-      .column(8);
-    }
-
-    input[type="submit"] {
-      .column_r(4)
-    }
-  }
-}*/
+  padding-bottom: 0.5em;
+}
 .page-content {
   padding: 0 1em 1em;
 }

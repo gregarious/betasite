@@ -36,12 +36,15 @@ urlpatterns = patterns('',
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'chatter_example.html'}, name='oakland-teaser'),
 
-    # Static about page for the scenable.com - not in use
+    # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
+    # Static, example news and chatter
     url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
     url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
 
+    # Static Scene pages
+    url(r'^about-oakland/$', direct_to_template, {'template': 'static_pages/about_oakland.html'}, name='about_oakland'),
     url(r'^tags/', include('onlyinpgh.tags.urls')),
 
     # url(r'^$', home_views.hot_page),

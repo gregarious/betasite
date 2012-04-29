@@ -25,9 +25,11 @@ Context variables:
             <input type="search" placeholder="Filter Events" />
             <input type="submit" value="Filter" />
         </form>
-        <nav class="prev-next">
-            {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}" class="back"><img src="{{STATIC_URL}}img/icons/arrow-left.png" alt="Previous" /></a>{% endif %}
-            {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}" class="next"><img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="next" /></a>{% endif %}
+        <nav class="prev-next" id="places-feed-nav">
+            {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}" class="prev"><!-- <img src="{{STATIC_URL}}img/icons/arrow-left.png"alt="Previous" /> --></a>{% endif %}
+            <div class="page-num">3</div>
+            <!-- Insert current page here (i.e. 2/10) -->
+            {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}" class="next"><!-- <img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="Next" /> --></a>{% endif %}
         </nav>
     </div>
 
@@ -35,8 +37,6 @@ Context variables:
 
     </ul> <!-- .feed#mainEventFeed -->
 
-    {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .page-content -->
 {% endblock %}
 
