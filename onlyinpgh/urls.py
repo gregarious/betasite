@@ -44,16 +44,8 @@ urlpatterns = patterns('',
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
-    # Static, example news and chatter
-    url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
-    url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
-
-    # Static Scene pages
-    url(r'^about-oakland/$', direct_to_template, {'template': 'static_pages/about_oakland.html'}, name='about_oakland'),
-    url(r'^tags/', include('onlyinpgh.tags.urls')),
-
     # Staic pages
-    # url(r^xxxxxx/$', 'onlyinpgh.common.views.page_static_xxxxxx', name='static-xxxxx'),
+    url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about_oakland'),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),

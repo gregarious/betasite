@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 from django.core.urlresolvers import reverse
 
 from django.http import Http404
@@ -46,6 +46,6 @@ def page_home(request):
 
 
 ### STATIC PAGES ###
-# def page_static_xxxx(self):
-#     context = PageContext(request, page_title="xxxxx")
-#     return render_to_response('xxxxx')
+def page_static_about_oakland(request):
+     context = PageContext(request, page_title="About Oakland")
+     return render_to_response('static_pages/about_oakland.html')
