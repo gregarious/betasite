@@ -26,8 +26,8 @@ Context variables:
             <input type="submit" value="Filter" />
         </form>
         <nav class="prev-next">
-            {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}" class="back">&larr; Previous</a>{% endif %}
-            {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}" class="next">Next &rarr;</a>{% endif %}
+            {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}" class="back"><img src="{{STATIC_URL}}img/icons/arrow-left.png" alt="Previous" /></a>{% endif %}
+            {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}" class="next"><img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="next" /></a>{% endif %}
         </nav>
     </div>
 
