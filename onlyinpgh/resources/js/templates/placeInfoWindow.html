@@ -17,10 +17,12 @@
 			{{/if}}
 			
 		</ul>
+		{{#if tags}}
 		<ul class="tag-list">
 	  		{{#each tags}}
 	  			<li>{{this.name}}</li>
 	  		{{/each}}
 	  	</ul>
+	  	{{/if}}
 	</section>
 </div>
