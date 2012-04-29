@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'pipeline',
     'tastypie',
     'django_extensions',
+    'onlyinpgh.common',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
     'onlyinpgh.places',
@@ -130,7 +131,7 @@ INSTALLED_APPS = (
     'onlyinpgh.events',
     'onlyinpgh.specials',
     'onlyinpgh.news',
-    'onlyinpgh.common',
+    'onlyinpgh.chatter',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -39,10 +39,8 @@ urlpatterns = patterns('',
     # Static about page for the scenable.com - not in use
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
-    url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
-    url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
-
     url(r'^news/', include('onlyinpgh.news.urls')),
+    url(r'^chatter/', include('onlyinpgh.chatter.urls')),
 
     url(r'^tags/', include('onlyinpgh.tags.urls')),
 
