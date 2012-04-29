@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'onlyinpgh.organizations',
     'onlyinpgh.events',
     'onlyinpgh.specials',
+    'onlyinpgh.news',
     'onlyinpgh.common',
 )
 
