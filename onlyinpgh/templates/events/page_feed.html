@@ -11,18 +11,25 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<header class="page-header">
-	<h1 class="page-title">Events</h1>
-	<form class="filter">
-		<input type="search" placeholder="Filter Events" />
-		<input type="submit" value="Filter" />
-	</form>
-</header>
 
 <article class="page-content" id="events-page">
-    <div class="map-container" id="mainEventFeedMap"></div>
-    {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
+    <div class="map-container">
+        <div class="map-title-container">
+            <h1>Events</h1>
+        </div>
+        <div class="map" id="mainEventFeedMap"></div>
+    </div>
+
+    <div class="page-nav-container">
+        <form class="simple-form">
+            <input type="search" placeholder="Filter Events" />
+            <input type="submit" value="Filter" />
+        </form>
+        <nav class="prev-next">
+            {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}" class="back">&larr; Previous</a>{% endif %}
+            {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}" class="next">Next &rarr;</a>{% endif %}
+        </nav>
+    </div>
 
     <ul class="feed" id="mainEventFeed">
 
@@ -34,7 +41,7 @@ Context variables:
 {% endblock %}
 
 {% block sidebar %}
-{% include "events/sidebar_events_feed.html" %}
+{% include "sidebar/sidebar_events_feed.html" %}
 {% endblock %}
 
 {% block foot-inlines %}

@@ -1,0 +1,20 @@
+{% extends "sidebar_base.html" %}
+
+{% block sidebar-main %}
+<p>You're looking at an event. Are you a local business or organization with events in Oakland? Sign up for a <a href="http://scenable.com/manage">Scenable Business account</a> and add them to our system.</p>  
+{% endblock %}
+
+
+{% block sidebar-survey %}
+
+<p class="question">Are we missing events happening in Oakland? If you could add them to Scenable yourself, would you?</p>
+
+{% comment %}
+Radio: 
+	Yes
+	No
+{% endcomment %}
+
+{% include "sidebar/sidebar_modal.html" %}
+
+{% endblock %}

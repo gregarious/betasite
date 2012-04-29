@@ -1,10 +1,10 @@
 {% extends "sidebar_base.html" %}
 
-{% block sidebar_main %}
+{% block sidebar-main %}
 <p>You can change profile information, review your privacy settings, and see your favorited events, places, and specials.</p>
 {% endblock %}
 
-{% block sidebar_survey %}
+{% block sidebar-survey %}
 <p>Would you like to publish your activity on Scenable to Facebook and Twitter?</p>
 <div class="choice-container">
 	<input type="radio" /><label>Definitely!</label>
@@ -16,5 +16,5 @@
 	<input type="radio" /><label>Don't care</label>
 </div>
 
-{% include "survey_questions.html" %}
+{% include "sidebar/sidebar_modal.html" %}
 {% endblock %}

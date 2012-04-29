@@ -1,6 +1,6 @@
 {% extends "sidebar_base.html" %}
 
-{% block sidebar_main %}
+{% block sidebar-main %}
 <section class="widget">
 	<h3 class="widget-title">From Our Mission</h3>
 	<p>Pittsburgh is a word-of-mouth town, there's no denying it. By giving businesses and users a direct line of communication, the niches and nuances of Pittsburgh's communities become more available to everyone.</p>
@@ -15,11 +15,12 @@
 {% endblock %}
 
 {% block sidebar_survey %}
-<form>
-	
-	{% include "survey_questions.html" %}
 
-</form>
+{% comment %}
+
+{% endcomment %}
+
+{% include "sidebar/sidebar_modal.html" %}
 {% endblock %}
 
 

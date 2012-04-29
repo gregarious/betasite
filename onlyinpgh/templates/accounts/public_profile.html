@@ -22,11 +22,13 @@ Context variables:
             {#<li>{{ profile.neighborhood }}</li>#}
         </ul>
         <div class="social-container">
+            {% comment %}
             {% if profile.fb_id %}
             <a href="http://www.facebook.com/{{ profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
             {% endif %}
+            {% endcomment %}
             {% if profile.twitter_username %}
-            <a href="http://twitter.com/{{ profile.twitter_username }}"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            <a href="http://twitter.com/{{ profile.twitter_username }}" title="{{profile.display_name}}'s Twitter Account" target="blank"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
             {% endif %}        
         </div>
     </section>
