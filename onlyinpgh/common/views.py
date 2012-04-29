@@ -51,3 +51,9 @@ def example_chatter(request):
 
 def example_news(request):
     raise NotImplementedError
+
+
+### STATIC PAGES ###
+# def page_static_xxxx(self):
+#     context = PageContext(request, page_title="xxxxx")
+#     return render_to_response('xxxxx')
