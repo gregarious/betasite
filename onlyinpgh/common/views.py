@@ -45,14 +45,6 @@ def page_home(request):
     return redirect(reverse('hot'))
 
 
-def example_chatter(request):
-    raise NotImplementedError
-
-
-def example_news(request):
-    raise NotImplementedError
-
-
 ### STATIC PAGES ###
 # def page_static_xxxx(self):
 #     context = PageContext(request, page_title="xxxxx")
