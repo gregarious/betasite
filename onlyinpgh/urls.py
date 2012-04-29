@@ -21,10 +21,15 @@ urlpatterns = patterns('',
 
     url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
 
+    url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
+
     url(r'^places/', include('onlyinpgh.places.urls')),
     url(r'^events/', include('onlyinpgh.events.urls')),
     url(r'^specials/', include('onlyinpgh.specials.urls')),
-    url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
+    url(r'^news/', include('onlyinpgh.news.urls')),
+    url(r'^chatter/', include('onlyinpgh.chatter.urls')),
+
+    url(r'^tags/', include('onlyinpgh.tags.urls')),
 
     # QR-code redirect handling
     url(r'^qr/$', 'onlyinpgh.common.views.qr_redirect'),
@@ -34,7 +39,7 @@ urlpatterns = patterns('',
 
     # Scenable and Oakland shirt QRs
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
-    url(r'^oakland-teaser/$', direct_to_template, {'template': 'chatter_example.html'}, name='oakland-teaser'),
+    url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
 
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
@@ -46,6 +51,9 @@ urlpatterns = patterns('',
     # Static Scene pages
     url(r'^about-oakland/$', direct_to_template, {'template': 'static_pages/about_oakland.html'}, name='about_oakland'),
     url(r'^tags/', include('onlyinpgh.tags.urls')),
+
+    # Staic pages
+    # url(r^xxxxxx/$', 'onlyinpgh.common.views.page_static_xxxxxx', name='static-xxxxx'),
 
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),

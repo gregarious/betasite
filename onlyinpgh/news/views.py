@@ -1,11 +1,12 @@
 from django.shortcuts import render_to_response
+from onlyinpgh.common.views import PageContext
 from onlyinpgh.news.models import Article
 
-def news_page(request):
-    variables = { 'articles': Article.objects.all() }
-    return render_to_response('news/news_page.html',variables)
 
-def single_article_page(request, id):
-    variables = { 'a' : Article.objects.get(id=id) }
-    return render_to_response('news/news_single.html', variables)
-    
+def page_feed(request):
+    items = Article.objects.all()
+    context = PageContext(request,
+        current_section='news',
+        page_title='Scenable | News Feed',
+        content_dict={'items': items})
+    return render_to_response('news/page_feed.html', context)

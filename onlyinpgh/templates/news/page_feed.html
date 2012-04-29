@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+{% comment %}
+- items: list of news Article model instances
+{% endcomment %}
+
+{% block main-content %}
+<ul>
+{% for item in items %}
+    <li>{{item.title}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

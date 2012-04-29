@@ -1,0 +1,14 @@
+{% extends "page.html" %}
+
+{% extends "page.html" %}
+{% comment %}
+- items: list of chatter Post model instances
+{% endcomment %}
+
+{% block main-content %}
+<ul>
+{% for item in items %}
+    <li>{{item.content}} - <a href="#">{{item.author.username}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
