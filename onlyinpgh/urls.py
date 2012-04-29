@@ -45,8 +45,9 @@ urlpatterns = patterns('',
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
     # Staic pages
-    url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about_oakland'),
-
+    url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about-oakland'),
+    url(r'^team/$', 'onlyinpgh.common.views.page_static_team', name='team'),
+    url(r'^mission/$', 'onlyinpgh.common.views.page_static_mission', name='mission'),
     # url(r'^$', home_views.hot_page),
     # url(r'^map$', home_views.map_page),
     # url(r'^grabbit$', home_views.checkin_page),

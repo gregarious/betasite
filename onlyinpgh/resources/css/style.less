@@ -38,8 +38,13 @@ h4 {
 
 p {
   color: #222;
+  font-size: 0.9em;
   margin: 0.1em 0;
   text-shadow: 0.05em 0.05em 0.05em #fff;
+}
+
+ul li {
+  font-size: 0.9em;
 }
 
 a {
@@ -51,10 +56,6 @@ a {
 
   &:active {
     color: @teal;
-  }
-
-  &:visited {
-    color: @red;
   }
 }
 
@@ -495,7 +496,7 @@ legend {
         .column(2);
         color: #000;
         .ease-out(background-color);
-        font-size: 0.75em;
+        font-size: 0.85em;
         height: 5em;
         margin-top: 1em;
         position: relative;
@@ -613,7 +614,7 @@ legend {
   margin: 0;
 
   p, ul li {
-    font-size: 0.9em;
+    
     margin-bottom: 1em;
   }
 
@@ -644,7 +645,6 @@ legend {
 
 .item-title {
   margin: 0;
-  font-size: 0.9em;
   line-height: 1.2em;
   a {
     text-shadow: 0 0 0.01em #999;
@@ -680,7 +680,6 @@ legend {
 }
 
 .item-details {
-  font-size: 0.8em;
   .row();
   .clearfix;
 }
@@ -705,7 +704,6 @@ legend {
 
   .item {
     .column(6);
-    display: inline;
     .ease-out(background-color);
     height: 90px;
     margin-bottom: 0.5em;
@@ -715,38 +713,6 @@ legend {
       background: #e9e9e9;
       cursor: pointer;
     }
-  }
-
-  .map-title-container {
-    background: url("@{static_url}img/textures/white-trans.png");
-    //.gradient(#e9e9e9, #fff);
-    .b-shadow(0.1em, 0.1em, 0.1em, #999);
-    /*-webkit-border-radius: 0 0 0.5em 0.5em; 
-     -moz-border-radius: 0 0 0.5em 0.5em; 
-          border-radius: 0 0 0.5em 0.5em; 
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
-    .rounded(0.3em);
-    border: 1px solid #444;
-    //border-bottom: 0;
-    //border-left: 0;
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    padding: 1em 1.3em 0.5em;
-    z-index: 200;
-  }
-
-  .map-container {
-    position: relative;
-    .row();
-    margin: 2em 0 0;
-    height: 300px;
-    overflow: visible;
-  }
-
-  .map {
-    width: 100%;
-    height: 100%;
   }
 
   .feed {
@@ -901,7 +867,7 @@ legend {
   padding: 3%;
   .clearfix();
   .item-details {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 }
 
@@ -1008,7 +974,7 @@ legend {
 .tag-list {
   .row();
   .clearfix;
-  font-size: 0.75em;
+  font-size: 0.85em;
   margin: 1% 0 0;
 
   li {
@@ -1179,7 +1145,6 @@ legend {
       border: 1px @lgreen solid;
       padding: 0.7em;
       margin-top: 0.5em;
-      font-size: 0.9em;  
       .b-shadow(0.1em, 0.1em, 0.1em, #000);
 
       img {
@@ -1217,16 +1182,132 @@ legend {
   }
 }
 
-/* UTILITY ---------- */
+/* FOOTER ---------- */
+
+#colophon {
+  .row();
+
+  a {
+    color: @teal;
+    font-weight: bold;
+  
+    &:hover {
+      color: @red;
+    }
+  }
+}
+
+#about-nav {
+  .row();
+  ul {
+    .clearfix();
+     li {
+      display: inline;
+       .sep {
+        color: #999;
+        margin: 0 0.5em;
+       }
+    }
+  }
+}
+
+/* MAP --------- */
 
 .map-container {
   height: 200px;
   border: 1px solid #888;
 }
 
+.page-content {
+
+  .map-title-container {
+    background: url("@{static_url}img/textures/white-trans.png");
+    //.gradient(#e9e9e9, #fff);
+    .b-shadow(0.1em, 0.1em, 0.1em, #999);
+    /*-webkit-border-radius: 0 0 0.5em 0.5em; 
+     -moz-border-radius: 0 0 0.5em 0.5em; 
+          border-radius: 0 0 0.5em 0.5em; 
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
+    .rounded(0.3em);
+    border: 1px solid #444;
+    //border-bottom: 0;
+    //border-left: 0;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    padding: 1em 1.3em 0.5em;
+    z-index: 200;
+  }
+
+  .map-container {
+    position: relative;
+    .row();
+    margin: 2em 0 0;
+    height: 300px;
+    overflow: visible;
+  }
+
+  .map {
+    width: 100%;
+    height: 100%;
+  }
+}
+.directions-btn-container {
+  .row();
+  margin-top: 1em;
+}
+
+.infowindow {
+    font-size: 0.8em;
+}
+
 #map-unavailable {
   background: #e1e1e1 url('@{static_url}img/default-place.png') no-repeat center;
 }
+
+/* STATIC PAGES ------------ */
+.team-member {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #e1e1e1;
+  .row();
+  margin: 2em 0;
+  .clearfix();
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  h3, h4 {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    font-family: 'DroidSerifRegular';
+  }
+
+  .job-title {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+
+  hgroup {
+    margin-bottom: 1em;
+  }
+
+  &>div {
+    .column(8);
+    font-size: 0.9em;
+  }
+
+  img {
+    .column_r(4);
+  }
+}
+
+/* UTILITY ---------- */
 
 .row-container {
   .row();
@@ -1255,31 +1336,6 @@ legend {
 
 .third {
   .column(4);
-}
-
-/* FOOTER ---------- */
-
-#colophon {
-  .column(11.8);
-  font-size: 0.9em;
-  padding: 1%;
-  text-align: right;
-
-  a {
-    color: @teal;
-    font-weight: bold;
-  
-    &:hover {
-      color: @red;
-    }
-  }
-}
-
-/* MAP --------- */
-
-.directions-btn-container {
-  .row();
-  margin-top: 1em;
 }
 
 /* ICONS ----------- */

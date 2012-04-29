@@ -1,1 +1,50 @@
 {% extends "page.html" %}
+
+{% block main-content %}
+
+<h1 class="page-title">The Scenable Team</h1>
+
+<section class="team-member">
+	<div class="member-description">
+		<hgroup>
+			<h3>Brett Weiwiora</h3>
+			<h4 class="job-title">CEO</h4>
+		</hgroup>
+		<p>Brett Wiewiora is the founder of OnlyinPgh, Scenable’s parent company, and completed his Masters of Public Policy and Management at Carnegie Mellon’s Heinz College. A Pittsburgh native, Brett is an unabashed rust belt booster and a firm believer in the power of small, motivated groups of people to change the world.</p>
+
+		<p>Aside from bootstrapping startups, Brett’s interests include biking, gardening, history, community development, local economic policy and hugging trees. Feel free to contact Brett anytime by emailing brett@scenable.com.
+		</p>
+	</div>
+	<img src="{{STATIC_URL}}img/team/brett.jpg" alt="Brett Wierwiora" />
+</section>
+
+<section class="team-member">
+	<div class="member-description">
+		<hgroup>
+			<h3>Greg Nicholas</h3>
+			<h4 class="job-title">Lead Platform Architect</h4>
+		</hgroup>
+		<p>Greg Nicholas is a software developer born and raised in Pittsburgh. He graduated with a B.S. in Computer Science, Mathematics, and Psychology from the University of Pittsburgh in 2007 and earned his M.S. in Computer Science at Brown University in 2009. Greg’s interests include music, film, cooking, and running, and he’s happy to be working on Scenable to help connect the local communities he is a part of. He is a lumberjack and he’s okay, he sleeps all night and he works all day. Feel free to contact Greg anytime by emailing greg@scenable.com.</p>
+	</div>
+	<img src="{{STATIC_URL}}img/team/greg.jpg" alt="Greg Nicholas"  class="left"/>
+</section>
+
+<section class="team-member">
+	<div class="member-description">
+		<hgroup>
+			<h3>Lara Schenck</h3>
+			<h4 class="job-title">Lead UI/UX Designer and Developer</h4>
+		</hgroup>
+		<p>Lara is a recent graduate of the School of the Museum of Fine Arts Boston where she studied Digital Art. She grew up on a llama farm Southeast of Pittsburgh in a lovely small town called Scottdale. She is also a skier, coffee enthusiast, and creator of WPFolio Two, the WordPress theme for visual artists.</p>
+
+		<p>After Scenable is wildly successful, Lara’s future plans include attending CMU’s graduate program at the Entertainment Technology Center and starting a business designing games for college curricula (lectures and textbooks aren’t cutting it). Feel free to get in touch with Lara anytime by emailing lara@scenable.com.</p>
+	</div>
+	<img src="{{STATIC_URL}}img/team/lara.jpg" alt="Lara Schenck" />
+</section>
+
+
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_static_pages.html" %}
+{% endblock %}

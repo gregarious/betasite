@@ -260,8 +260,12 @@ h3 {
 }
 p {
   color: #222;
+  font-size: 0.9em;
   margin: 0.1em 0;
   text-shadow: 0.05em 0.05em 0.05em #fff;
+}
+ul li {
+  font-size: 0.9em;
 }
 a {
   color: #b83939;
@@ -271,9 +275,6 @@ a:hover {
 }
 a:active {
   color: #2c525d;
-}
-a:visited {
-  color: #b83939;
 }
 .meta {
   font-size: 0.9em;
@@ -914,7 +915,7 @@ legend {
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-in;
-  font-size: 0.75em;
+  font-size: 0.85em;
   height: 5em;
   margin-top: 1em;
   position: relative;
@@ -1072,7 +1073,6 @@ legend {
 }
 .widget p,
 .widget ul li {
-  font-size: 0.9em;
   margin-bottom: 1em;
 }
 .widget ul {
@@ -1106,7 +1106,6 @@ legend {
 }
 .item-title {
   margin: 0;
-  font-size: 0.9em;
   line-height: 1.2em;
 }
 .item-title a {
@@ -1147,7 +1146,6 @@ legend {
   overflow: hidden;
 }
 .item-details {
-  font-size: 0.8em;
   width: 100%;
   margin: 0;
   -moz-box-sizing: border-box;
@@ -1184,7 +1182,6 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  display: inline;
   -webkit-transition: background-color 0.2s ease-out;
   -moz-transition: background-color 0.2s ease-out;
   -o-transition: background-color 0.2s ease-out;
@@ -1202,44 +1199,6 @@ legend {
 .page-content .item:hover {
   background: #e9e9e9;
   cursor: pointer;
-}
-.page-content .map-title-container {
-  background: url("/static/img/textures/white-trans.png");
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #999999;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #999999;
-  box-shadow: 0.1em 0.1em 0.1em #999999;
-  /*-webkit-border-radius: 0 0 0.5em 0.5em; 
-     -moz-border-radius: 0 0 0.5em 0.5em; 
-          border-radius: 0 0 0.5em 0.5em; 
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
-
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  border: 1px solid #444;
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  padding: 1em 1.3em 0.5em;
-  z-index: 200;
-}
-.page-content .map-container {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 2em 0 0;
-  height: 300px;
-  overflow: visible;
-}
-.page-content .map {
-  width: 100%;
-  height: 100%;
 }
 .page-content .feed {
   *zoom: 1;
@@ -1418,7 +1377,7 @@ legend {
   clear: both;
 }
 .single-container .item-details {
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .single-thumb-container {
   float: left;
@@ -1546,7 +1505,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
-  font-size: 0.75em;
+  font-size: 0.85em;
   margin: 1% 0 0;
 }
 .tag-list:before,
@@ -1748,7 +1707,6 @@ legend {
   border: 1px #8fd36f solid;
   padding: 0.7em;
   margin-top: 0.5em;
-  font-size: 0.9em;
   -webkit-box-shadow: 0.1em 0.1em 0.1em #000000;
   -moz-box-shadow: 0.1em 0.1em 0.1em #000000;
   box-shadow: 0.1em 0.1em 0.1em #000000;
@@ -1774,14 +1732,161 @@ legend {
 .no-items h3 {
   margin: 0;
 }
-/* UTILITY ---------- */
+/* FOOTER ---------- */
+#colophon {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#colophon a {
+  color: #2c525d;
+  font-weight: bold;
+}
+#colophon a:hover {
+  color: #b83939;
+}
+#about-nav {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#about-nav ul {
+  *zoom: 1;
+}
+#about-nav ul:before,
+#about-nav ul:after {
+  content: "";
+  display: table;
+}
+#about-nav ul:after {
+  clear: both;
+}
+#about-nav ul li {
+  display: inline;
+}
+#about-nav ul li .sep {
+  color: #999;
+  margin: 0 0.5em;
+}
+/* MAP --------- */
 .map-container {
   height: 200px;
   border: 1px solid #888;
 }
+.page-content .map-title-container {
+  background: url("/static/img/textures/white-trans.png");
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #999999;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #999999;
+  box-shadow: 0.1em 0.1em 0.1em #999999;
+  /*-webkit-border-radius: 0 0 0.5em 0.5em; 
+     -moz-border-radius: 0 0 0.5em 0.5em; 
+          border-radius: 0 0 0.5em 0.5em; 
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
+
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  padding: 1em 1.3em 0.5em;
+  z-index: 200;
+}
+.page-content .map-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2em 0 0;
+  height: 300px;
+  overflow: visible;
+}
+.page-content .map {
+  width: 100%;
+  height: 100%;
+}
+.directions-btn-container {
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 1em;
+}
+.infowindow {
+  font-size: 0.8em;
+}
 #map-unavailable {
   background: #e1e1e1 url('/static/img/default-place.png') no-repeat center;
 }
+/* STATIC PAGES ------------ */
+.team-member {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #e1e1e1;
+  width: 100%;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2em 0;
+  *zoom: 1;
+}
+.team-member:before,
+.team-member:after {
+  content: "";
+  display: table;
+}
+.team-member:after {
+  clear: both;
+}
+.team-member p {
+  margin-bottom: 1em;
+}
+.team-member h3,
+.team-member h4 {
+  margin: 0;
+}
+.team-member h3 {
+  font-size: 1.3em;
+  font-family: 'DroidSerifRegular';
+}
+.team-member .job-title {
+  color: #999;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.9em;
+}
+.team-member hgroup {
+  margin-bottom: 1em;
+}
+.team-member > div {
+  float: left;
+  width: 64.58333333333334%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+.team-member img {
+  float: right;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* UTILITY ---------- */
 .row-container {
   width: 100%;
   margin: 0;
@@ -1828,34 +1933,6 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-/* FOOTER ---------- */
-#colophon {
-  float: left;
-  width: 96.25%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 0.9em;
-  padding: 1%;
-  text-align: right;
-}
-#colophon a {
-  color: #2c525d;
-  font-weight: bold;
-}
-#colophon a:hover {
-  color: #b83939;
-}
-/* MAP --------- */
-.directions-btn-container {
-  width: 100%;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-top: 1em;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 

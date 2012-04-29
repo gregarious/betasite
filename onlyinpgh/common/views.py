@@ -47,5 +47,13 @@ def page_home(request):
 
 ### STATIC PAGES ###
 def page_static_about_oakland(request):
-    context = PageContext(request, page_title="About Oakland")
+    context = PageContext(request, page_title="Scenable | About Oakland")
     return render_to_response('static_pages/about_oakland.html', context_instance=context)
+
+def page_static_team(request):
+    context = PageContext(request, page_title="Scenable | The Team")
+    return render_to_response('static_pages/team.html', context_instance=context)
+
+def page_static_mission(request):
+    context = PageContext(request, page_title="Scenable | Our Mission")
+    return render_to_response('static_pages/mission.html', context_instance=context)
