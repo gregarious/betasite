@@ -1229,25 +1229,24 @@ legend {
   cursor: pointer;
 }
 .page-content .map-title-container {
-  background: #fff;
-  -webkit-box-shadow: 0.1em -0.1em 0.1em #999999;
-  -moz-box-shadow: 0.1em -0.1em 0.1em #999999;
-  box-shadow: 0.1em -0.1em 0.1em #999999;
+  background: #f9f9f9;
+  -webkit-box-shadow: 0.1em 0.1em 0.1em #999999;
+  -moz-box-shadow: 0.1em 0.1em 0.1em #999999;
+  box-shadow: 0.1em 0.1em 0.1em #999999;
   /*-webkit-border-radius: 0 0 0.5em 0.5em; 
      -moz-border-radius: 0 0 0.5em 0.5em; 
           border-radius: 0 0 0.5em 0.5em; 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
 
-  -webkit-border-radius: 0.3em 0.3em 0 0;
-  -moz-border-radius: 0.3em 0.3em 0 0;
-  border-radius: 0.3em 0.3em 0 0;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: 1px solid #444;
-  border-bottom: 0;
   position: absolute;
-  bottom: -1px;
+  top: -10px;
   left: 20px;
   padding: 1em 1.3em 0.5em;
   z-index: 200;
