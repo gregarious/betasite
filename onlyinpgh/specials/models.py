@@ -7,6 +7,7 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 
 from django.utils.timezone import now
+from uuid import uuid4
 
 
 class Special(models.Model, ViewModel):
@@ -53,19 +54,36 @@ class SpecialMeta(models.Model):
         return u'%s: %s' % (self.key, val)
 
 
+class CouponUsedError(Exception):
+    pass
+
+
 class Coupon(models.Model):
     '''Coupon is a user-owned Special'''
     special = models.ForeignKey(Special)
     user = models.ForeignKey(User)
-    dtcreated = models.DateTimeField('Time user bought special', auto_now_add=True)
+    dtcreated = models.DateTimeField(help_text='Time user bought special', auto_now_add=True)
 
-    dtused = models.DateTimeField('Time user used special', default=None, null=True, blank=True)
-    was_used = models.BooleanField('Has coupon been used?"', default=False)
+    dtused = models.DateTimeField(help_text='Time user used special', default=None, null=True, blank=True)
+    was_used = models.BooleanField(help_text='Has coupon been used?"', default=False)
+    uuid = models.CharField(max_length=36, unique=True, editable=False, blank=True)
+
+    def save(self, *args, **kwargs):
+        print 'overridden Coupon save called'
+        if self.uuid == '':
+            self.uuid = uuid4()
+        super(Coupon, self).save(*args, **kwargs)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('specials-coupon', (), {'uuid': self.uuid})
 
     def mark_used(self):
         '''
         After using this function, Coupon should never be used again.
         '''
+        if self.was_used:
+            raise CouponUsedError()
         self.was_used = True
         self.dtused = now()
         self.save()

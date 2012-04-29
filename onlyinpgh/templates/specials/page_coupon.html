@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% comment %}
+Template for simple coupon being used for makeshift special redemption.
+
+This page is meant for printing/phone display, so it doesn't inherit anything
+from page.html.
+
+Template variables:
+    - coupon: Coupon model instance (has special, user sub objects see specials/models.py)
+{% endcomment %}
+
+{% block content %}
+<h3>{{coupon.special.title}}</h3>
+purchased {{coupon.dtcreated}}
+<h5>ID: {{coupon.uuid}}</h5>
+
+{# insert "back to scenable" link? "mark as used" button? #}
+{% endblock %}
