@@ -48,6 +48,9 @@ class UserProfile(models.Model, ViewModel):
             data[k] = getattr(self.user, k)
         return data
 
+    def display_or_username(self):
+        return self.display_name if self.display_name else self.user.username
+
 
 # signal handler to automatically create a new UserProfile
 def create_user_profile(sender, instance, created, **kwargs):
