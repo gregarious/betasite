@@ -18,7 +18,7 @@
             <h3>Results</h3>
             <ul class="feed">
             {% for result in page.object_list %}
-                <li class="item">{{ result.content_type }} | {{ result.object.name }}{{ result.object.title }}{{result.object.content}} </li>
+                <li class="item">{{ result.content_type }} | <a href="{{result.object.get_absolute_url}}">{{ result.object.name }}{{ result.object.title }}{{result.object.content}}</a> </li>
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}

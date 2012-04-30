@@ -101,10 +101,3 @@ Context variables:
     {% endfor %}
     </ul>
 </section>
-
-{% if featured_special %}
-    <aside class="single-featured-special">
-        {{featured_special.description}}
-        <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-    </aside>
-{% endif %}
