@@ -1,0 +1,77 @@
+@import '../LESS/normalize.less';
+@import '../LESS/helpers.less';
+
+body {
+	.lucida();
+}
+
+h1 {
+	.blok();
+	margin: 0.2em 0;
+	font-size: 1.7em;
+}
+
+h2 {
+	font-size: 1em;
+	margin: 0;
+}
+
+h3 {
+	margin: 0;
+	font-size: 0.9em;
+}
+
+hgroup {
+	.column(9);
+	padding-left: 1.5em;
+
+	p {
+		font-style: italic;
+	}
+}
+
+p {
+	font-size: 0.9em;
+	margin: 0.3em 0;
+}
+
+img {
+	.column(3);
+}
+
+.wrap {
+	margin: 3em 1em;
+	width: 100%;
+	max-width: 500px;
+}
+
+.page-header {
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	.clearfix();
+}
+
+.page-content {
+	p:last-child {
+		margin: 1em 0;
+	}
+}
+
+.page-footer {
+	border-top: 1px solid #e1e1e1;
+	margin: 1em 0;
+	.coupon-id {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+
+	p {
+		margin-top: 2em;
+	}
+}
+
+.tip {
+	color: #888;
+	font-style: italic;
+}

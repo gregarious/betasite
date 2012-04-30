@@ -17,9 +17,9 @@ $(function(){
 	});
 
 	$('.item.short').hover(function(){
-		$(this).find('.item-content').fadeIn(400);
+		$(this).find('.item-content').fadeIn(200);
 	}, function() {
-		$(this).find('.item-content').fadeOut(400);
+		$(this).find('.item-content').fadeOut(270);
 	});
 
 }); // document.ready

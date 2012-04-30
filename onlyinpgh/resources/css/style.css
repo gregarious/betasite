@@ -349,20 +349,15 @@ a:active {
   background-clip: padding-box;
   text-shadow: 0.1em 0.1em 0.04em #fff;
 }
-.page-title,
-.single-title {
-  font-size: 1.2em;
+.page-title {
+  font-size: 1.5em;
   margin: 0;
+  padding-left: 0.5em;
 }
-/*.page-title {
-  border-bottom: 1px #ccc solid;
-  margin: 1em 0.5em 2em;
-  padding-bottom: 0.5em;
-}
-*/
 .single-title {
   border-bottom: 1px #ccc solid;
   color: #333;
+  font-size: 1.2em;
   margin: 0.3em 0;
   padding: 0 0 0.3em 0.3em;
   text-shadow: 0.03em 0.03em 0.03em #e1e1e1;
@@ -428,7 +423,6 @@ a:active {
 }
 form {
   margin: 0 auto 1em;
-  max-width: 600px;
   *zoom: 1;
 }
 form:before,
@@ -1117,7 +1111,7 @@ legend {
   cursor: pointer;
 }
 .feed .item .item-thumb,
-.infowindow .item .item-thumb {
+.infowindow .item-thumb {
   float: left;
   width: 20.833333333333336%;
   margin: 0 1.0416666666666665%;
@@ -1666,11 +1660,15 @@ legend {
   box-sizing: border-box;
   height: auto;
   cursor: default;
-  border-bottom: ;
+  border-bottom: 1px solid #e1e1e1;
 }
 #news-page .item:hover,
 #now-page .news .item:hover {
   background: none;
+}
+#news-page .item:last-child,
+#now-page .news .item:last-child {
+  border: none;
 }
 #news-page .item-details,
 #now-page .news .item-details {
@@ -1680,19 +1678,25 @@ legend {
 #now-page .news .item-details a {
   font-weight: bold;
 }
+#news-page .source,
+#now-page .news .source {
+  color: #000;
+}
+#news-page .source:hover,
+#now-page .news .source:hover {
+  color: #b83939;
+}
 #news-page .blurb,
 #now-page .news .blurb {
   font-style: italic;
   margin-top: 0.5em;
 }
+#news-page .blurb > a,
+#now-page .news .blurb > a {
+  font-style: normal;
+}
 /* Places */
 /* Chatter */
-.post-form {
-  /*input[type="text"] {
-    .column(10);
-  }*/
-
-}
 .chatter {
   padding: 0 0.5em;
 }
@@ -1731,16 +1735,24 @@ legend {
   margin-bottom: 0.5em;
   padding-bottom: 0.5em;
 }
+.chatter li .avatar-container {
+  float: left;
+  width: 6.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .chatter li img {
   float: left;
   margin-right: 0.5em;
   height: 25px;
   width: 25px;
 }
-.chatter li .meta {
-  color: #999;
-  padding-top: 0.3em;
-  float: left;
+.chatter li p {
+  color: #666;
+  font-size: 0.8em;
+  display: inline;
 }
 /* Profile */
 .no-items {

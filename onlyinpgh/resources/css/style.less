@@ -117,20 +117,16 @@ a {
   text-shadow: 0.1em 0.1em 0.04em #fff;
 }
 
-.page-title, .single-title {
-  font-size: 1.2em;
+.page-title {
+  font-size: 1.5em;
   margin: 0;
+  padding-left: 0.5em;
 }
 
-/*.page-title {
-  border-bottom: 1px #ccc solid;
-  margin: 1em 0.5em 2em;
-  padding-bottom: 0.5em;
-}
-*/
 .single-title {
   border-bottom: 1px #ccc solid;
   color: #333;
+  font-size: 1.2em;
   margin: 0.3em 0;
   padding: 0 0 0.3em 0.3em;
   text-shadow: 0.03em 0.03em 0.03em #e1e1e1;
@@ -178,7 +174,6 @@ a {
 
 form {
   margin: 0 auto 1em;
-  max-width: 600px;
   .clearfix;
 }
 
@@ -660,14 +655,14 @@ legend {
   }
 }
 
-.feed, .infowindow {
-  .item {
+.feed .item, .infowindow {
+  
     .item-thumb {
       .column(2.75);
       overflow: hidden;
       text-align: center;
       border: 1px solid #444;
-    }
+    
   }
 }
 
@@ -1122,9 +1117,13 @@ legend {
     .row();
     height: auto;
     cursor: default;
-    border-bottom: ;
+    border-bottom: 1px solid #e1e1e1;
     &:hover {
       background: none;
+    }
+
+    &:last-child {
+      border: none;
     }
   }
 
@@ -1136,9 +1135,20 @@ legend {
     }
   }
 
+  .source {
+    color: #000;
+
+    &:hover {
+      color: @red;
+    }
+  }
+
   .blurb {
     font-style: italic;
     margin-top: 0.5em;
+    &>a {
+      font-style: normal;
+    }
   }
 
 }
@@ -1149,44 +1159,46 @@ legend {
 /* Chatter */
 
 .post-form {
-  /*input[type="text"] {
-    .column(10);
-  }*/
+
 }
 
 .chatter {
-    padding: 0 0.5em;
+  padding: 0 0.5em;
 
-    li {
-      .column(6);
-      background: #fff;
-      border: 1px @lgreen solid;
-      padding: 0.7em;
-      margin-top: 0.5em;
-      .b-shadow(0.1em, 0.1em, 0.1em, #000);
+  li {
+    .column(6);
+    background: #fff;
+    border: 1px @lgreen solid;
+    padding: 0.7em;
+    margin-top: 0.5em;
+    .b-shadow(0.1em, 0.1em, 0.1em, #000);
 
-      &>div {
-        .row();
-        .clearfix();
-        &.post-content {
-          border-bottom: 1px solid #e1e1e1;
-          margin-bottom: 0.5em;
-          padding-bottom: 0.5em;
-        }
+    &>div {
+      .row();
+      .clearfix();
+      &.post-content {
+        border-bottom: 1px solid #e1e1e1;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.5em;
       }
+    }
 
-      img {
-        float: left;
-        margin-right: 0.5em;
-        height: 25px;
-        width: 25px;
-      }
+    .avatar-container {
+      .column(1);
+    }
 
-      .meta {
-        color: #999;
-        padding-top: 0.3em;
-        float: left;
-      }
+    img {
+      float: left;
+      margin-right: 0.5em;
+      height: 25px;
+      width: 25px;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.8em;
+      display: inline;
+    }
   }
 }
 

@@ -9,10 +9,29 @@ Template variables:
     - coupon: Coupon model instance (has special, user sub objects see specials/models.py)
 {% endcomment %}
 
-{% block content %}
-<h3>{{coupon.special.title}}</h3>
-purchased {{coupon.dtcreated}}
-<h5>ID: {{coupon.uuid}}</h5>
+{% block head-stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/coupon.css?v=1">
+{% endblock %}
 
+{% block content %}
+<div class="wrap">
+	<header class="page-header">
+		<img src="{{STATIC_URL}}img/manage-special.png">
+		<hgroup>
+			<span class="tip">Scenable Coupon for:</span>
+			<h1>{{coupon.special.title}}</h1>
+			<p>Purchased {{coupon.dtcreated}}</p>
+		</hgroup>
+	</header>
+	<article class="page-content">
+		<h2>at {{coupon.special.place.name}}</h2>
+		<p>{{coupon.special.place.location.address}}</p>
+		<p>{{coupon.special.description}}</p>
+	</article>
+	<footer class="page-footer">
+		<p class="coupon-id">ID: {{coupon.uuid}}</p>
+		<p><a href="{% url now %}" title="Back to the Oakland Scene">&larr; Back to the Oakland Scene</a></p>
+	</footer>
+</div>
 {# insert "back to scenable" link? "mark as used" button? #}
 {% endblock %}
