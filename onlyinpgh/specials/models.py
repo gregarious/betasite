@@ -87,3 +87,6 @@ class Coupon(models.Model):
         self.was_used = True
         self.dtused = now()
         self.save()
+
+    def __unicode__(self):
+        return u'%s (owner: %s)' % (unicode(self.special), unicode(self.user.username))
