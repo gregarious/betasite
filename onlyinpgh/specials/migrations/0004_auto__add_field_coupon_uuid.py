@@ -16,8 +16,7 @@ class Migration(SchemaMigration):
             coupon.uuid = uuid4()
             coupon.save()
             uuids_created = True
-            print coupon.uuid
-        if uuids_created > 0:
+        if uuids_created:
             print 'WARNING! New UUIDs were created for each Coupon instance. These have '\
                   'no relationship to any standard UUIDs for the objects, and thus this '\
                   'migration should only be done to installation-specific test data.'
