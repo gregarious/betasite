@@ -5,9 +5,23 @@
 {% endcomment %}
 
 {% block main-content %}
-<ul>
+<h1 class="page-title">Chatter</h1>
+<form class="post-form simple-form">
+    <input type="text" />
+    <input type="submit" value="Post" />
+</form>
+<ul class="feed chatter">
 {% for item in items %}
-    <li>{{item.content}} - <a href="#">{{item.author.username}}</a></li>
+    <li>
+    	{% if item.author.avatar_url %}
+    	<img src="{{item.author.avatar_url}}" alt="{{item.author.display_name}}'s avatar">
+    	{% else %}
+    	<img src="{{STATIC_URL}}img/default-place.png" alt="{{item.author.display_name}}'s avatar">
+    	{% endif %}
+    	<div class="post">
+    		{{item.content}}
+    		<p class="meta">on {{item.dtcreated}} by <a href="#">{{item.author.get_profile.display_name}}</a></p>
+    	</div>
 {% endfor %}
 </ul>
 {% endblock %}
