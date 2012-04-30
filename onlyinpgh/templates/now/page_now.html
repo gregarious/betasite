@@ -9,61 +9,58 @@ Context variables:
         instance: a PlaceData, EventData, or SpecialData instance
     [news_articles]: list of Article instances
     [chatter_posts]: list of Post instances
+{% endfor %}
+
 {% endcomment %}
+
 
 {% block main-content %}
 <header class="page-header">
-    <h1 class="page-title">NOW in Oakland</h1>
+    <h1 class="page-title">Oakland Scenecast</h1>
     <form class="filter">
         <input type="search" placeholder="Filter Hot" />
         <input type="submit" value="Filter" />
     </form>
 </header>
 
-<article class="page-content" id="hot-page">
+<article class="page-content" id="now-page">
+    
     <div class="row-container">
-        <div class="map-container">
-        </div>
-        <section class="events">
-            <h3 class="hot-section-title">Upcoming Events</h3>
-            <ul class="feed events">
-            {% for item in hot_feeds.events|slice:"2" %}
-                <li class="item">
-                {% include "events/short_feed_item.html" with event=item %}
-                </li>
-            {% endfor %}
-            </ul>
-        </section>
-    </div>
+        <div class="map-container"></div>
+        <ul class="feed random">
+        {% for i in items %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container -->
 
     <div class="row-container">
-        <section class="specials">
-            <h3 class="hot-section-title">Top Specials</h3>
-            <ul class="feed specials">
-            {% for item in hot_feeds.specials|slice:"3" %}
-                <li class="item">
-                {% include "specials/short_feed_item.html" with special=item %}
-                </li>
-            {% endfor %}
-            </ul>
-        </section>
-
-        <section class="chatter">
-            <h3 class="hot-section-title">Chatterbox</h3>
-            {% include "chatter_example.html" %}
-        </section>
-    </div>
-
-    <div class="row-container last">
-        <section class="news">
-            <h3 class="hot-section-title">News</h3>
-            {% include "news_example.html" %}
-        </section>
-    </div>
+        <ul class="feed news">
+        {% for item in news_articles|slice:"1" %}
+            <li class="item">
+                {% include "news/feed_item.html" with article=i.instance %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container -->
 
 </article>
 {% endblock %}
 
 {% block sidebar %}
-{% include "sidebar/sidebar_hot.html" %}
+{% include "sidebar/sidebar_now.html" %}
 {% endblock %}

@@ -4,19 +4,7 @@ Template to render a particular event as a related feed item on a single special
 Context variables:
     special: SpecialData instance
 {% endcomment %}
-<div class="item-thumb">
-	<!-- <div class="points">+{{special.points}}</div> -->
-	<!-- Insert redemption link -->
-	<div class="btn btn-primary"><a href="{% url special-detail special.id %}" title="See this special"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
-</div>
-
-<section class="item-content">
-	<h4 class="item-title"><a href="{% url special-detail special.id %}" title="See this special">{{special.title|truncatewords:7}}</a></h4>
-	<ul class="item-details">
-		{% if special.description %}
-			<li>at {{special.place.name}}</li>
-		{% endif %}	
-	</ul>
-</section>
-
-{% include "tags/tag_list.html" with tags=special.tags %}
+<a href="{% url special-detail special.id %}" title="See this special">
+<div class="btn btn-primary"><img src="{{STATIC_URL}}img/icons/special-thumb.png" /></a></div>
+<h4 class="item-title"><a href="{% url special-detail special.id %}" title="See this special">{{special.title|truncatewords:7}}</h4>
+</a>
