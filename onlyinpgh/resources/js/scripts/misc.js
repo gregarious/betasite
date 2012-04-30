@@ -16,4 +16,10 @@ $(function(){
 		window.location = $(this).val();
 	});
 
+	$('.item.short').hover(function(){
+		$(this).find('.item-content').fadeIn(200);
+	}, function() {
+		$(this).find('.item-content').fadeOut(270);
+	});
+
 }); // document.ready

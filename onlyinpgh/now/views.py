@@ -22,7 +22,7 @@ def page_now(request):
     random.shuffle(objects)
 
     items = [NowFeedItem(obj) for obj in objects]
-    articles = Article.objects.order_by('-dtpublished')
+    articles = Article.objects.order_by('-publication_date')
     posts = Post.objects.order_by('-dtcreated')
 
     content = dict(

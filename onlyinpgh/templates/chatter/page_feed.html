@@ -9,6 +9,7 @@
 <form class="post-form simple-form">
     <input type="text" />
     <input type="submit" value="Post" />
+    <p class="tip">Say something about Oakland. 140 characters max.</p>
 </form>
 <ul class="feed chatter">
 {% for item in items %}
@@ -17,14 +18,13 @@
     		{{item.content}}
     	</div>
     	<div class="post-meta">
-    		
+
 	    		{% if item.author.get_profile.avatar_url %}
 		    	<img src="{{item.author.get_profile.avatar_url}}" alt="{{item.author.get_profile.display_or_username}}'s avatar">
 		    	{% else %}
 		    	<img src="{{STATIC_URL}}img/default-place.png" alt="{{item.author.get_profile.display_or_username}}'s avatar">
 		    	{% endif %}
-	    	
-    		<p class="meta">posted {{item.dtcreated|timesince}} ago by <a href="#">{{item.author.get_profile.display_or_username}}</a>
+    			<p class="meta">posted {{item.dtcreated|timesince}} ago by <a href="#">{{item.author.get_profile.display_or_username}}</a></p>
     	</div>
     </li>
 {% endfor %}

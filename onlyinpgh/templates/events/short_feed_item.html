@@ -9,17 +9,18 @@ TODO: only show month/day for events ending on a different day
 {% load thumbnail %}
 
 <div class="item-thumb">
-    {% thumbnail event.image "130x130" crop="center" as im %}
-    <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
-    {% empty %}
-    <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
-    {% endthumbnail %}
+    <a href="{{event.get_absolute_url}}">
+        {% thumbnail event.image "130x130" crop="center" as im %}
+        <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
+        {% empty %}
+        <img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+        {% endthumbnail %}
+        <section class="item-content">
+            <h4 class="item-title">{{ event.name|truncatewords:7 }}</h4>
+            <ul class="item-details">   
+                <li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
+            </ul>
+            {% include "tags/tag_list.html" with tags=event.tags %}
+        </section>
+    </a>
 </div>
-
-<section class="item-content">
-    <h4 class="item-title"><a href="{{event.get_absolute_url}}">{{ event.name|truncatewords:7 }}</a></h4>
-    <ul class="item-details">   
-        <li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"N j, f a"}}</li>
-        </ul>
-        {% include "tags/tag_list.html" with tags=event.tags %}
-</section>
