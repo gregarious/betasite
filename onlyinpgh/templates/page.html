@@ -12,7 +12,14 @@ are always available (in addition to normal RequestContext vbls):
 {% load compressed %}
 
 {% block head-title %}
-<title>{{page_title}}</title>
+    <title>{{page_title}}</title>
+{% endblock %}
+
+{% block head-stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Droid-Serif-fontfacekit/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
 {% endblock %}
 
 {% block content %}

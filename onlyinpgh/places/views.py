@@ -79,6 +79,7 @@ def page_details(request, pid):
     page_context = PageContext(request,
         current_section='places',
         page_title='Scenable | %s' % place.name,
+        #meta_content=place.description
         content_dict=content)
 
     return render_to_response('places/page_place.html', context_instance=page_context)
