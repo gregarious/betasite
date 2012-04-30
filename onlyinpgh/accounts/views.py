@@ -64,7 +64,7 @@ def page_login(request, redirect_field_name='next'):
     context = PageContext(request,
         page_title='Scenable | Login',
         content_dict=content)
-    return render_to_response('registration/page_login.html', context)
+    return render_to_response('registration/page_login.html', context_instance=context)
 
 
 def page_signup(request):
@@ -110,7 +110,7 @@ def page_signup(request):
     context = PageContext(request,
         page_title='Scenable | Sign Up',
         content_dict=content)
-    return render_to_response('registration/page_signup.html', context)
+    return render_to_response('registration/page_signup.html', context_instance=context)
 
 
 def _render_profile_page(request, user, current_panel, variables):
@@ -121,7 +121,7 @@ def _render_profile_page(request, user, current_panel, variables):
         page_title='Scenable | %s\'s Profile' % user.username,
         content_dict=variables)
     print context
-    return render_to_response('accounts/page_profile.html', context)
+    return render_to_response('accounts/page_profile.html', context_instance=context)
 
 
 @login_required

@@ -10,7 +10,8 @@ scenable.map = {
             streetViewControl: false,
             zoomControl: true,
             zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.SMALL
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.TOP_RIGHT
             }
         };
         if(mapType === 'single') {

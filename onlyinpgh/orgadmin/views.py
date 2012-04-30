@@ -131,7 +131,7 @@ def page_signup(request):
         registration_form=reg_form,
         org_form=org_form
     ))
-    return render_to_response('orgadmin/page_signup.html', context)
+    return render_to_response('orgadmin/page_signup.html', context_instance=context)
 
 
 def page_login(request):
@@ -167,7 +167,7 @@ def page_login(request):
         form=form,
         form_action=reverse('orgadmin-login')
     ))
-    return render_to_response('orgadmin/page_login.html', context)
+    return render_to_response('orgadmin/page_login.html', context_instance=context)
 
 
 def page_logout(request):
@@ -191,7 +191,7 @@ def page_home(request):
         notification_type = None
     content = {'notification_type': notification_type}
     context = ManagePageContext(request, content_dict=content)
-    return render_to_response('orgadmin/page_home.html', context)
+    return render_to_response('orgadmin/page_home.html', context_instance=context)
 
 
 @authentication_required
@@ -221,7 +221,7 @@ def page_claim_place(request):
         form = PlaceClaimForm(place_choices=unowned_places)
 
     context = ManagePageContext(request, content_dict={'form': form})
-    return render_to_response('orgadmin/page_place_claim.html', context)
+    return render_to_response('orgadmin/page_place_claim.html', context_instance=context)
 
 
 @authentication_required
@@ -263,7 +263,7 @@ def page_edit_place(request, id=None):
         form=form,
         tag_names=[t.name for t in Tag.objects.all()]
     ))
-    return render_to_response('orgadmin/page_place_edit.html', context)
+    return render_to_response('orgadmin/page_place_edit.html', context_instance=context)
 
 
 @authentication_required
@@ -283,7 +283,7 @@ def page_list_places(request):
     items = [PlaceData(place) for place in places]
 
     context = ManagePageContext(request, content_dict={'items': items})
-    return render_to_response('orgadmin/page_place_list.html', context)
+    return render_to_response('orgadmin/page_place_list.html', context_instance=context)
 
 
 @authentication_required
@@ -340,7 +340,7 @@ def page_edit_event(request, id=None):
         newplace_form=SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
         initial_selected=initial_selected
     ))
-    return render_to_response('orgadmin/page_event_edit.html', context)
+    return render_to_response('orgadmin/page_event_edit.html', context_instance=context)
 
 
 @authentication_required
@@ -353,7 +353,7 @@ def page_list_events(request):
     items = [EventData(event) for event in events]
 
     context = ManagePageContext(request, content_dict={'items': items})
-    return render_to_response('orgadmin/page_event_list.html', context)
+    return render_to_response('orgadmin/page_event_list.html', context_instance=context)
 
 
 @authentication_required
@@ -395,7 +395,7 @@ def page_edit_special(request, id=None):
         form=form,
         tag_names=[t.name for t in Tag.objects.all()]
     ))
-    return render_to_response('orgadmin/page_special_edit.html', context)
+    return render_to_response('orgadmin/page_special_edit.html', context_instance=context)
 
 
 @authentication_required
@@ -406,4 +406,4 @@ def page_list_specials(request):
     items = [SpecialData(special) for special in specials]
 
     context = ManagePageContext(request, content_dict={'items': items})
-    return render_to_response('orgadmin/page_special_list.html', context)
+    return render_to_response('orgadmin/page_special_list.html', context_instance=context)

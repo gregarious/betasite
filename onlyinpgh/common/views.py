@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 from django.core.urlresolvers import reverse
 
 from django.http import Http404
@@ -42,12 +42,18 @@ def qr_redirect(request, key=None):
 
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    return redirect(reverse('hot'))
+    return redirect(reverse('now'))
 
 
-def example_chatter(request):
-    raise NotImplementedError
+### STATIC PAGES ###
+def page_static_about_oakland(request):
+    context = PageContext(request, page_title="Scenable | About Oakland")
+    return render_to_response('static_pages/about_oakland.html', context_instance=context)
 
+def page_static_team(request):
+    context = PageContext(request, page_title="Scenable | The Team")
+    return render_to_response('static_pages/team.html', context_instance=context)
 
-def example_news(request):
-    raise NotImplementedError
+def page_static_mission(request):
+    context = PageContext(request, page_title="Scenable | Our Mission")
+    return render_to_response('static_pages/mission.html', context_instance=context)

@@ -1,0 +1,69 @@
+{% extends "page.html" %}
+
+{% comment %}
+Template for main now section
+
+Context variables:
+    [items]: list of NowFeedItem instances
+        model: string representing model type for this item (e.g. 'Place')
+        instance: a PlaceData, EventData, or SpecialData instance
+    [news_articles]: list of Article instances
+    [chatter_posts]: list of Post instances
+{% endcomment %}
+
+{% block main-content %}
+<header class="page-header">
+    <h1 class="page-title">NOW in Oakland</h1>
+    <form class="filter">
+        <input type="search" placeholder="Filter Hot" />
+        <input type="submit" value="Filter" />
+    </form>
+</header>
+
+<article class="page-content" id="hot-page">
+    <div class="row-container">
+        <div class="map-container">
+        </div>
+        <section class="events">
+            <h3 class="hot-section-title">Upcoming Events</h3>
+            <ul class="feed events">
+            {% for item in hot_feeds.events|slice:"2" %}
+                <li class="item">
+                {% include "events/short_feed_item.html" with event=item %}
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    <div class="row-container">
+        <section class="specials">
+            <h3 class="hot-section-title">Top Specials</h3>
+            <ul class="feed specials">
+            {% for item in hot_feeds.specials|slice:"3" %}
+                <li class="item">
+                {% include "specials/short_feed_item.html" with special=item %}
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+
+        <section class="chatter">
+            <h3 class="hot-section-title">Chatterbox</h3>
+            {% include "chatter_example.html" %}
+        </section>
+    </div>
+
+    <div class="row-container last">
+        <section class="news">
+            <h3 class="hot-section-title">News</h3>
+            {% include "news_example.html" %}
+        </section>
+    </div>
+
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_hot.html" %}
+{% endblock %}

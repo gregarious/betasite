@@ -10,7 +10,7 @@ Context variables:
 
 <ul class="main-menu">
     <li>
-        <a href="{% url hot %}" id="siteHot" {% if s == 'hot'%}class="current-page"{% endif %}>
+        <a href="{% url now %}" id="siteHot" {% if s == 'now'%}class="current-page"{% endif %}>
             <div class="container">
                 <div class="menu-item">Now</div>
             </div>
@@ -42,7 +42,7 @@ Context variables:
     </li>
 
     <li>
-        <a href="chatter_example" id="siteChatter" {% if s == 'chatter'%}class="current-page"{% endif %}>
+        <a href="{% url chatter-feed %}" id="siteChatter" {% if s == 'chatter'%}class="current-page"{% endif %}>
             <div class="container">
                 <div class="menu-item">Chatter</div>
             </div>    
@@ -50,7 +50,7 @@ Context variables:
     </li>
 
     <li>
-        <a href="news_example" id="siteNews" {% if s == 'news'%}class="current-page"{% endif %}>
+        <a href="{% url news-feed %}" id="siteNews" {% if s == 'news'%}class="current-page"{% endif %}>
             <div class="container">
                 <div class="menu-item">News</div>
             </div>    
@@ -60,11 +60,11 @@ Context variables:
 </ul>
 
 <select id="select-sect">
-    <option value="{% url hot %}" {% if s == 'hot'%}selected='selected'{% endif %}>Now</option>
+    <option value="{% url now %}" {% if s == 'now'%}selected='selected'{% endif %}>Now</option>
     <option value="{% url places-feed %}" {% if s == 'places'%}selected='selected'{% endif %}>Places</option>
     <option value="{% url events-feed %}" {% if s == 'events'%}selected='selected'{% endif %}>Events</option>
     <option value="{% url specials-feed %}" {% if s == 'specials'%}selected='selected'{% endif %}>Specials</option>
-    <option value="{% url example_chatter %}" {% if s == 'chatter'%}selected='selected'{% endif %}>Chatter</option>
-    <option value="{% url example_news %}" {% if s == 'news'%}selected='selected'{% endif %}>News</option>
+    <option value="{% url chatter-feed %}" {% if s == 'chatter'%}selected='selected'{% endif %}>Chatter</option>
+    <option value="{% url news-feed %}" {% if s == 'news'%}selected='selected'{% endif %}>News</option>
 </select>
 {% endwith %} {# end of s alias #}
