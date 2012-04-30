@@ -1,10 +1,12 @@
+from django.http import HttpResponseForbidden
+from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
 from onlyinpgh.common.views import PageContext
 
-from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.models import Special, Coupon
 from onlyinpgh.specials.viewmodels import SpecialData
 from onlyinpgh.specials.resources import SpecialFeedResource
 
@@ -65,6 +67,14 @@ def page_details(request, sid):
     return render_to_response('specials/page_special.html', context_instance=page_context)
 
 
+def page_coupon(request, uuid):
+    coupon = get_object_or_404(Coupon, uuid=uuid)
+    context = RequestContext(request)
+    if coupon.was_used:
+        # TODO: redirect to some error page?
+        return HttpResponseForbidden()
+    else:
+        return render_to_response('specials/page_coupon.html', {'coupon': coupon}, context_instance=context)
 
 # @jsonp_response
 # def feed_app(request):

@@ -105,3 +105,7 @@ def precache_thumbnails(image):
     '''
     for type in THUMB_TYPES:
         get_cached_thumbnail(image, type)
+
+
+def make_uuid():
+    return str(uuid.uuid4())

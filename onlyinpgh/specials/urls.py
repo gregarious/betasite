@@ -5,6 +5,7 @@ urlpatterns = patterns('onlyinpgh.specials.views',
     url(r'^feed/$', 'page_feed'),
     url(r'^(?P<sid>\d+)/$', 'page_details', name='special-detail'),
 
+    url(r'^redeem/(?P<uuid>[\dA-Fa-f-]+)/$', 'page_coupon', name='specials-coupon'),
     # url(r'^app/feed/$', 'feed_app'),
     # url(r'^app/(?P<pid>\d+)/$', 'detail_app'),
 )
