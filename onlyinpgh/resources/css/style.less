@@ -110,7 +110,6 @@ a {
 }
 
 .hot-section-title {
-  //border-bottom: 1px solid #999;
   color: #000;
   font-size: 1em;
   font-style: italic;
@@ -687,6 +686,7 @@ legend {
 .thumbnail {
   width: 100%;
   height: auto;
+  //min-height: 130px;
 }
 
 /* PAGE --------- */
@@ -706,7 +706,7 @@ legend {
     .column(6);
     .ease-out(background-color);
     height: 90px;
-    margin-bottom: 0.5em;
+    //margin-bottom: 0.5em;
     overflow: hidden;
     .rounded(0.3em);
     &:hover {
@@ -743,6 +743,32 @@ legend {
   .focused {
     background: fade(@yellow, 50%);
   }
+}
+
+#news-page {
+  .item {
+    .row();
+    height: auto;
+    cursor: default;
+    border-bottom: ;
+    &:hover {
+      background: none;
+    }
+  }
+
+  .item-details {
+    font-size: 1em;
+
+    a {
+      font-weight: bold;
+    }
+  }
+
+  .blurb {
+    font-style: italic;
+    margin-top: 0.5em;
+  }
+
 }
 
 .social-container {
@@ -1097,26 +1123,6 @@ legend {
   }
 }
 
-/*.specials {
-
-  .btn-primary {
-    .gradient(#999, #777);
-    &:hover {
-      .gradient(#888, #666);
-    }
-
-    &:active {
-      background: #555;
-    }
-  }
-}
-*/
-/* News */
-
-.feed.news .item-content {
-  .column(12);
-}
-
 
 /* Places */
 
@@ -1186,15 +1192,6 @@ legend {
 
 #colophon {
   .row();
-
-  a {
-    color: @teal;
-    font-weight: bold;
-  
-    &:hover {
-      color: @red;
-    }
-  }
 }
 
 #about-nav {
@@ -1221,8 +1218,8 @@ legend {
 .page-content {
 
   .map-title-container {
-    background: url("@{static_url}img/textures/white-trans.png");
-    //.gradient(#e9e9e9, #fff);
+    //background: url("@{static_url}img/textures/white-trans.png");
+    background: #fff;
     .b-shadow(0.1em, 0.1em, 0.1em, #999);
     /*-webkit-border-radius: 0 0 0.5em 0.5em; 
      -moz-border-radius: 0 0 0.5em 0.5em; 
@@ -1230,8 +1227,6 @@ legend {
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
     .rounded(0.3em);
     border: 1px solid #444;
-    //border-bottom: 0;
-    //border-left: 0;
     position: absolute;
     top: -20px;
     left: 20px;
@@ -1266,12 +1261,13 @@ legend {
 }
 
 /* STATIC PAGES ------------ */
-.team-member {
-  padding-bottom: 2em;
+.static-section {
   border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 2em;
   .row();
   margin: 2em 0;
   .clearfix();
+   font-size: 0.9em;
 
   p {
     margin-bottom: 1em;
@@ -1290,7 +1286,6 @@ legend {
     color: #999;
     font-weight: normal;
     font-style: italic;
-    font-size: 0.9em;
   }
 
   hgroup {
@@ -1299,7 +1294,7 @@ legend {
 
   &>div {
     .column(8);
-    font-size: 0.9em;
+
   }
 
   img {

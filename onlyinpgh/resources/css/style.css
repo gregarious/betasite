@@ -539,7 +539,6 @@ input[type="submit"]#redeem-button,
 .choice-container {
   padding-left: 1em;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -624,7 +623,6 @@ legend {
 }
 .field-container {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -808,7 +806,6 @@ legend {
 #sidebar-feedback .field-label {
   text-align: left;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -816,7 +813,6 @@ legend {
 }
 #sidebar-feedback .field {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -824,7 +820,6 @@ legend {
 #sidebar-feedback textarea {
   font-size: 0.9em;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1013,7 +1008,6 @@ legend {
 #site-footer {
   background: url("/static/img/textures/white-trans.png");
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1064,7 +1058,6 @@ legend {
 }
 .widget {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1147,7 +1140,6 @@ legend {
 }
 .item-details {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1187,7 +1179,6 @@ legend {
   -o-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-in;
   height: 90px;
-  margin-bottom: 0.5em;
   overflow: hidden;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -1223,6 +1214,28 @@ legend {
 }
 #places-page .focused {
   background: rgba(222, 213, 127, 0.5);
+}
+#news-page .item {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
+  cursor: default;
+  border-bottom: ;
+}
+#news-page .item:hover {
+  background: none;
+}
+#news-page .item-details {
+  font-size: 1em;
+}
+#news-page .item-details a {
+  font-weight: bold;
+}
+#news-page .blurb {
+  font-style: italic;
+  margin-top: 0.5em;
 }
 .social-container {
   margin: 0.5em 0 0 0.5em;
@@ -1297,7 +1310,6 @@ legend {
   *zoom: 1;
   border-bottom: 1px #e8e8e8 solid;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1361,7 +1373,6 @@ legend {
 /* SINGLE ---------- */
 .single-container {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1500,7 +1511,6 @@ legend {
 /* 11 TAGS ---------- */
 .tag-list {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1581,7 +1591,6 @@ legend {
 #hot-page .item {
   border-bottom: 1px solid #e1e1e1;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1595,7 +1604,6 @@ legend {
 }
 #hot-page .news {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1649,29 +1657,6 @@ legend {
 }
 #specials-page .item-thumb {
   border: none;
-}
-/*.specials {
-
-  .btn-primary {
-    .gradient(#999, #777);
-    &:hover {
-      .gradient(#888, #666);
-    }
-
-    &:active {
-      background: #555;
-    }
-  }
-}
-*/
-/* News */
-.feed.news .item-content {
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 /* Places */
 /* Chatter */
@@ -1735,21 +1720,12 @@ legend {
 /* FOOTER ---------- */
 #colophon {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#colophon a {
-  color: #2c525d;
-  font-weight: bold;
-}
-#colophon a:hover {
-  color: #b83939;
-}
 #about-nav {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1778,7 +1754,7 @@ legend {
   border: 1px solid #888;
 }
 .page-content .map-title-container {
-  background: url("/static/img/textures/white-trans.png");
+  background: #fff;
   -webkit-box-shadow: 0.1em 0.1em 0.1em #999999;
   -moz-box-shadow: 0.1em 0.1em 0.1em #999999;
   box-shadow: 0.1em 0.1em 0.1em #999999;
@@ -1803,7 +1779,6 @@ legend {
 .page-content .map-container {
   position: relative;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1817,7 +1792,6 @@ legend {
 }
 .directions-btn-container {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1830,55 +1804,53 @@ legend {
   background: #e1e1e1 url('/static/img/default-place.png') no-repeat center;
 }
 /* STATIC PAGES ------------ */
-.team-member {
-  padding-bottom: 2em;
+.static-section {
   border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 2em;
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 2em 0;
   *zoom: 1;
+  font-size: 0.9em;
 }
-.team-member:before,
-.team-member:after {
+.static-section:before,
+.static-section:after {
   content: "";
   display: table;
 }
-.team-member:after {
+.static-section:after {
   clear: both;
 }
-.team-member p {
+.static-section p {
   margin-bottom: 1em;
 }
-.team-member h3,
-.team-member h4 {
+.static-section h3,
+.static-section h4 {
   margin: 0;
 }
-.team-member h3 {
+.static-section h3 {
   font-size: 1.3em;
   font-family: 'DroidSerifRegular';
 }
-.team-member .job-title {
+.static-section .job-title {
   color: #999;
   font-weight: normal;
   font-style: italic;
-  font-size: 0.9em;
 }
-.team-member hgroup {
+.static-section hgroup {
   margin-bottom: 1em;
 }
-.team-member > div {
+.static-section > div {
   float: left;
   width: 64.58333333333334%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 0.9em;
 }
-.team-member img {
+.static-section img {
   float: right;
   width: 31.25%;
   margin: 0 1.0416666666666665%;
@@ -1889,7 +1861,6 @@ legend {
 /* UTILITY ---------- */
 .row-container {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -2021,7 +1992,6 @@ a#siteNews {
   }
   .detail-nav {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2072,7 +2042,6 @@ a#siteNews {
   }
   .detail-section {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2085,7 +2054,6 @@ a#siteNews {
   }
   .hot {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2100,9 +2068,6 @@ a#siteNews {
   .map-container.feed-page,
   .map-container.hot {
     height: 200px;
-  }
-  .item-title a {
-    font-size: 1em;
   }
 }
 @media screen and (max-width: 864px) {
@@ -2121,7 +2086,6 @@ a#siteNews {
   }
   #utility {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2131,7 +2095,6 @@ a#siteNews {
   }
   #site-content {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2182,13 +2145,9 @@ a#siteNews {
   .feed .item-details {
     font-size: 0.9em;
   }
-  .feed .item-title {
-    font-size: 1.2em;
-  }
   .field-label,
   label {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2197,7 +2156,6 @@ a#siteNews {
   }
   .field {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2223,7 +2181,6 @@ a#siteNews {
   }
   #utility .simple-form {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2232,7 +2189,6 @@ a#siteNews {
     padding: 0.1em;
     margin: 0;
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2252,17 +2208,9 @@ a#siteNews {
   }
   .item {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    /*border: 4px @mgreen solid;
-      border-bottom: 0;
-      .b-shadow(0.1em, 0.1em, 0.1em, #444);
-      margin: 0;
-      .gradient(#f9f9f9, #fff);
-  */
-  
   }
   .item:hover {
     background: #fff;
@@ -2287,10 +2235,8 @@ a#siteNews {
 }
 @media screen and (max-width: 600px) {
   .page-content .feed .item {
-    border-bottom: 1px solid #e1e1e1;
     height: auto;
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2301,11 +2247,6 @@ a#siteNews {
   .page-content .feed .item .description,
   .page-content .feed .item .host {
     display: block;
-  }
-  .page-content .feed .item .item-title {
-    /*font-size: 1.1em;
-            line-height: 1.3em;*/
-  
   }
   .single-container {
     padding: 0;
@@ -2332,7 +2273,6 @@ a#siteNews {
   .single-content .map-container {
     height: 100px;
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2341,7 +2281,6 @@ a#siteNews {
   }
   .single-content.places {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2361,7 +2300,6 @@ a#siteNews {
   }
   .detail-section {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -2378,7 +2316,6 @@ a#siteNews {
   }
   .detail-section#placeDetail .item-details {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
