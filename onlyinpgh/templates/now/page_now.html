@@ -1,11 +1,12 @@
 {% extends "page.html" %}
 
 {% comment %}
-Template for hot section
+Template for main now section
 
 Context variables:
-    hot_feeds: HotFeedCollection context instance
-    (... more to come ...)
+    [items]: list of NowFeedItem instances
+        model: string representing model type for this item (e.g. 'Place')
+        instance: a PlaceData, EventData, or SpecialData instance
 {% endcomment %}
 
 {% block main-content %}

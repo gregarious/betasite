@@ -42,7 +42,7 @@ def qr_redirect(request, key=None):
 
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    return redirect(reverse('hot'))
+    return redirect(reverse('now'))
 
 
 ### STATIC PAGES ###
