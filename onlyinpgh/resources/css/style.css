@@ -1682,9 +1682,7 @@ legend {
   padding: 0 0.5em;
 }
 .chatter li {
-  float: left;
-  width: 97.91666666666666%;
-  margin: 0 1.0416666666666665%;
+  width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1696,14 +1694,37 @@ legend {
   -moz-box-shadow: 0.1em 0.1em 0.1em #000000;
   box-shadow: 0.1em 0.1em 0.1em #000000;
 }
+.chatter li > div {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  *zoom: 1;
+}
+.chatter li > div:before,
+.chatter li > div:after {
+  content: "";
+  display: table;
+}
+.chatter li > div:after {
+  clear: both;
+}
+.chatter li > div.post-content {
+  margin-bottom: 0.5em;
+}
+.chatter li .avatar-container {
+  overflow: hidden;
+}
 .chatter li img {
   float: left;
-  margin-right: 1em;
+  margin-right: 0.5em;
+  height: 25px;
+  width: 25px;
 }
 .chatter li .meta {
   color: #999;
-  font-size: 0.8em;
   padding-top: 0.3em;
+  float: left;
 }
 /* Profile */
 .no-items {
