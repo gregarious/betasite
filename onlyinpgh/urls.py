@@ -21,7 +21,7 @@ urlpatterns = patterns('',
 
     url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
 
-    url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
+    url(r'^now/$', 'onlyinpgh.now.views.page_now', name='now'),
 
     url(r'^places/', include('onlyinpgh.places.urls')),
     url(r'^events/', include('onlyinpgh.events.urls')),
