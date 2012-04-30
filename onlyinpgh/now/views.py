@@ -6,6 +6,9 @@ from onlyinpgh.now.viewmodels import NowFeedItem
 from onlyinpgh.places.models import Place
 from onlyinpgh.events.models import Event
 from onlyinpgh.specials.models import Special
+from onlyinpgh.chatter.models import Post
+from onlyinpgh.news.models import Article
+
 import random
 
 
@@ -19,8 +22,13 @@ def page_now(request):
     random.shuffle(objects)
 
     items = [NowFeedItem(obj) for obj in objects]
+    articles = Article.objects.order_by('-dtpublished')
+    posts = Post.objects.order_by('-dtcreated')
 
-    content = {'items': items}
+    content = dict(
+        items=items,
+        news_articles=articles,
+        chatter_posts=posts)
 
     page_context = PageContext(request,
         current_section='now',

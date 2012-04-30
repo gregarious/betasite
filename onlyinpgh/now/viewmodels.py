@@ -10,13 +10,13 @@ class NowFeedItem(object):
     def __init__(self, instance):
         if isinstance(instance, Place):
             self.model = 'Place'
-            self.item = PlaceData(instance)
+            self.instance = PlaceData(instance)
         elif isinstance(instance, Event):
             self.model = 'Event'
-            self.item = EventData(instance)
+            self.instance = EventData(instance)
         elif isinstance(instance, Special):
             self.model = 'Special'
-            self.item = SpecialData(instance)
+            self.instance = SpecialData(instance)
         else:
             self.model = ''
-            self.item = instance
+            self.instance = instance
