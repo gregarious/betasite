@@ -11,15 +11,16 @@ class Migration(SchemaMigration):
         
         # Adding field 'Coupon.uuid'
         db.add_column('specials_coupon', 'uuid', self.gf('django.db.models.fields.CharField')(default='', max_length=36, blank=True), keep_default=False)
-        uuids_created = False
-        for coupon in orm.Coupon.objects.all():
-            coupon.uuid = uuid4()
-            coupon.save()
-            uuids_created = True
-        if uuids_created:
-            print 'WARNING! New UUIDs were created for each Coupon instance. These have '\
-                  'no relationship to any standard UUIDs for the objects, and thus this '\
-                  'migration should only be done to installation-specific test data.'
+        if not db.dry_run:
+            uuids_created = False
+            for coupon in orm.Coupon.objects.all():
+                coupon.uuid = uuid4()
+                coupon.save()
+                uuids_created = True
+            if uuids_created:
+                print 'WARNING! New UUIDs were created for each Coupon instance. These have '\
+                      'no relationship to any standard UUIDs for the objects, and thus this '\
+                      'migration should only be done to installation-specific test data.'
 
     def backwards(self, orm):
         
