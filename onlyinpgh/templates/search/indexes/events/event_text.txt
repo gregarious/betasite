@@ -3,4 +3,5 @@
 {{ tag.name }}
 {% endfor %}
 {{ object.description }}
-{{ object.location.address }}
+{{ object.place.name }}
+{{ object.place.location.address }}
