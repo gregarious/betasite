@@ -154,9 +154,24 @@ blockquote {
   text-shadow: 0.05em 0.05em 0.1em #222;
 }
 
+
+.page-title-container {
+  color: #fff;    
+  .rounded(0.3em);
+  background: @mgreen;
+  .b-shadow(0.1em, 0.1em, 0.2em, #444);
+  position: absolute;
+  //.column(3.7);
+  top: -20px;
+  left: -15px;
+  padding: 0 1em 0 0.5em;
+  z-index: 200;
+}
+
+
 #sidebar-title {
-  .b-shadow(0.05em, 0.05em, 0.1em, #444);
-  .gradient(#ccc, #aaa);
+  .b-shadow(0.1em, 0.1em, 0.2em, #444);
+  background: @mgreen;
   padding-left: 2.5em;
   position: relative;
   right: 1.7em;
@@ -562,7 +577,7 @@ legend {
   .b-shadow(0.1em, 0.1em, 0.3em, #444);
   .column(8);
   margin-bottom: 3em;
-  padding: 1em 1.5em;
+  padding: 0.7em 1.5em 1em;
   position: relative;
   -webkit-border-radius: 0 0 0.5em 0.5em; 
    -moz-border-radius: 0 0 0.5em 0.5em; 
@@ -1007,31 +1022,39 @@ legend {
 
 /* Now */
 
-#now-page {
-  .random {
-    //.column(6);
-  }
+#now-page, #chatter-page {
 
-/*  .map-container {
-    float: left;
-    height: 300px;
-  }
-*/
   .short {
     .column(4);
     height: auto;
 
     .item-type {
-      width: 100%;
-      display: none;
+      //width: 40px;
+      .clearfix();
+      padding: 0.5em;
+      .rounded(0.3em);
+      .b-shadow(0.2em, 0.2em, 0.2em, #333);
       position: absolute;
-      top: 0;
-      left: 0;
+      top: -4px;
+      right: -4px;
       z-index: 999;
+
+      &.type-place {
+        background: @yellow;
+      }
+
+      &.type-event {        
+        background: @lgreen;
+      } 
+
+      &.type-special {
+        background: @lblue;
+      }
     }
 
     .item-thumb {
       .column(12);
+      overflow: visible;
       position: relative;
     }
 
@@ -1040,11 +1063,9 @@ legend {
       height: 100%;
       margin: 0;
       padding: 0.5em;
-      //position: absolute;
       background: url("@{static_url}img/textures/white-trans.png");
       color: #000 !important;
       text-align: left;
-      //display: none;
     }
 
   }
@@ -1133,7 +1154,7 @@ legend {
   }
 }
 
-#news-page, #now-page .news {
+.news {
   .item {
     .row();
     height: auto;
@@ -1275,25 +1296,16 @@ legend {
 
 .page-content {
 
-  .page-title-container {
-    color: #fff;    
-    .rounded(0.3em);
-    .gradient(@lgreen, @mgreen);
-    .b-shadow(0.1em, 0.1em, 0.3em, #111);
-    position: absolute;
-    .column(3.7);
-    top: -20px;
-    left: -55px;
-    padding: 0 0 0 0.5em;
-    z-index: 200;
-  }
-
   .map-container {
     position: relative;
     .row();
     margin: 2em 0 0;
     height: 300px;
     overflow: visible;
+
+    .page-title-container {
+      //left: -55px;
+    }
   }
 
 }
@@ -1306,11 +1318,23 @@ legend {
     font-size: 0.8em;
 }
 
+.no-map {
+  margin-top: 6em;
+
+  .page-title-container {
+    margin-top: 2.7em;
+    width: auto;
+    //left: -20px;
+  }
+
+}
+
 #map-unavailable {
   background: #e1e1e1 url('@{static_url}img/default-place.png') no-repeat center;
 }
 
 /* STATIC PAGES ------------ */
+
 .static-section {
   border-bottom: 1px solid #e1e1e1;
   padding-bottom: 2em;
@@ -1354,7 +1378,7 @@ legend {
   }
 }
 
-#about-oakland {
+#about-oakland, #scenable-mission {
   img {
     .column_r(6);
     margin: 1em 1em 1em 1em;

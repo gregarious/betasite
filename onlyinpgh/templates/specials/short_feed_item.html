@@ -7,9 +7,11 @@ Context variables:
 {% load thumbnail %}
 <div class="item-thumb">
     <a href="{% url special-detail special.id %}">
-        {% thumbnail special.place.image "130x130" crop="center" as im %}
+        {% thumbnail special.place.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{special.place.name}}" src="{{im.url}}" />
-        <img class="item-type" src="{{STATIC_URL}}img/default-special-trans.png" alt="" />
+        <div class="item-type type-special">
+            <img src="{{STATIC_URL}}img/main-menu/tag-special.png" alt="Special icon" />
+        </div>
         {% empty %}
         <img class="thumbnail" alt="{{special.place.name}}" src="{{STATIC_URL}}img/default-special.png" />
         {% endthumbnail %}

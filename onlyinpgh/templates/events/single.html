@@ -52,7 +52,14 @@ Context variables:
         <div class="map" id="mainEventMap"></div>
     </div>
     {% endif %}
+    
+    {% if event.description %}
     <p class="description">{{event.description|linebreaksbr}}</p>
+    {% else %}
+    <p class="description">We don't have any description for this event.</p>
+    <p class="description"><strong>Coming soon - </strong> would you like to add some?</p>
+    {% endif %}
+
     {% if event.place.location.directions_link %}
     <div class="directions-btn-container">
         <a href="{{event.place.location.directions_link}}" target="blank" class="btn" title="Directions to {{event.place.name}}">Get Directions</a>

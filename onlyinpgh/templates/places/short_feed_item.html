@@ -2,9 +2,11 @@
 
 <div class="item-thumb">
     <a href="{% url place-detail place.id %}">
-        {% thumbnail place.image "130x130" crop="center" as im %}
+        {% thumbnail place.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
-        <img class="item-type" src="{{STATIC_URL}}img/default-place-trans.png" alt="" />
+        <div class="item-type type-place">
+            <img src="{{STATIC_URL}}img/main-menu/store-front.png" alt="Store front" />
+        </div>
         {% empty %}
         <img class="thumbnail" alt="{{place.name}}" src="{{STATIC_URL}}img/default-place.png" />
         {% endthumbnail %}

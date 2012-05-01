@@ -10,8 +10,7 @@
 	<h3 class="widget-title">Feedback plz!</h3>
 	{% block sidebar-survey %}
 	{% endblock %}
-	<p>Something not working? Comments, suggestions, general musings?</p>
-	<button id="openFeedbackModal">Let us know!</button>
+	{% include "sidebar/sidebar_modal.html" %}
 </section>
 
 <section class="widget" id="get-in-touch">
@@ -20,15 +19,3 @@
 	<a href="https://www.facebook.com/Scenable" title="Scenable on Facebook" target="blank"><img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon"/></a>
 	<a href="http://twitter.com/ScenableApp" title="Scenable on Twitter" target="blank"><img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" /></a>
 </section>
-
-<!-- General feedback modal -->
-<div class="feedback-modal" title="Feedback">
-	<p>Scenable is in it's infancy. We take any feedback to heart and will do our best to keep you beta testers happy :).
-
-	<!-- Form elements -->
-	<textarea></textarea>
-	<div class="row-container">
-		<input type="submit" class="right" value="Submit" />
-	</div>
-
-</div>
