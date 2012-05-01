@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.accounts.forms import RegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
+from onlyinpgh.accounts.forms import BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
 from onlyinpgh.common.views import PageContext
 
 import urlparse
@@ -70,7 +70,7 @@ def page_login(request, redirect_field_name='next'):
 def page_signup(request):
     # if POST request, handle the form submission
     if request.POST:
-        reg_form = RegistrationForm(request.POST, prefix='reg')
+        reg_form = BetaRegistrationForm(request.POST, prefix='reg')
         profile_form = UserProfileForm(request.POST, prefix='prof')
 
         if reg_form.is_valid() and profile_form.is_valid():
@@ -97,7 +97,7 @@ def page_signup(request):
 
             return HttpResponseRedirect(redirect_to)
     else:
-        reg_form = RegistrationForm(prefix='reg')
+        reg_form = BetaRegistrationForm(prefix='reg')
         profile_form = UserProfileForm(prefix='prof')
 
     request.session.set_test_cookie()

@@ -4,6 +4,10 @@ from django.db.models.signals import post_save
 from onlyinpgh.common.core.viewmodels import ViewModel
 
 
+class BetaMember(models.Model):
+    email = models.EmailField()
+
+
 class UserProfile(models.Model, ViewModel):
     '''
     Extended information for any user of the site.
