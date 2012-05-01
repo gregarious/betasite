@@ -18,11 +18,11 @@ $(function(){
 	});
 
 	//Show/hide .item-content when hovering over now thumbnail items
-	$('.item.short').hover(function(){
-		$(this).find('.item-type').fadeIn(200);
-	}, function() {
-		$(this).find('.item-type').fadeOut(270);
-	});
+	// $('.item.short').hover(function(){
+	// 	$(this).find('.item-type').fadeIn(200);
+	// }, function() {
+	// 	$(this).find('.item-type').fadeOut(270);
+	// });
 
 	// Grabbit modal
     $('.grabbit-modal').dialog({

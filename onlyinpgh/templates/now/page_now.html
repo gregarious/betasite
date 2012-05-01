@@ -16,7 +16,9 @@ Context variables:
 
 {% block main-content %}
 <header class="page-header">
-    <h1 class="page-title">Oakland Scenecast</h1>
+    <div class="page-title-container">
+        <h1 class="ribbon-title">Oakland Scenecast</h1>
+    </div>
     <form class="filter">
         <input type="search" placeholder="Filter Hot" />
         <input type="submit" value="Filter" />
@@ -53,6 +55,11 @@ Context variables:
         {% for item in news_articles|slice:"1" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
+            </li>
+        {% endfor %}
+        {% for item in chatter_posts|slice:"2" %}
+            <li class="post">
+                {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
         {% endfor %}
         </ul>
