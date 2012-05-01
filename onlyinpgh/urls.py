@@ -3,6 +3,10 @@ from django.views.generic.simple import direct_to_template
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from haystack.forms import SearchForm
+from haystack.views import search_view_factory
+from onlyinpgh.common.views import PageSiteSearch
+
 
 admin.autodiscover()
 
@@ -44,7 +48,11 @@ urlpatterns = patterns('',
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
-    url(r'^search/', include('haystack.urls')),
+    url(r'^search/', search_view_factory(
+        view_class=PageSiteSearch,
+        template='search/page_site_search.html',
+        form_class=SearchForm
+    ), name='site-search'),
 
     # Staic pages
     url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about-oakland'),

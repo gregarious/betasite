@@ -7,8 +7,8 @@
 	    {% endif %}
 	</div>
 	<div class="site-search-container">
-		 <form class="simple-form">
-			<input type="search" placeholder="Search Oakland"/>
+	 	<form method="get" action="{% url site-search %}" class="simple-form">
+			<input type="search" placeholder="Search Oakland" name="{{site_search_form.q.html_name}}"/>
 			<input type="submit" value="Go" />
 		</form>
 	</div>

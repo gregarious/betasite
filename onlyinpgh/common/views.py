@@ -4,6 +4,9 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.template import RequestContext
 
+from haystack.views import SearchView
+from haystack.forms import SearchForm
+
 
 class PageContext(RequestContext):
     '''
@@ -20,6 +23,7 @@ class PageContext(RequestContext):
         variables = dict(
             page_title=page_title,
             current_section=current_section,
+            site_search_form=SearchForm(),
         )
         variables.update(content_dict)
         super(PageContext, self).__init__(request, variables, **kwargs)
@@ -38,6 +42,46 @@ def qr_redirect(request, key=None):
     else:
         print 'not found', key
         raise Http404
+
+
+class PageSiteSearch(SearchView):
+    '''
+    Class-based view inheriting from Haystack's basic SearchView. Note that
+    if this class is used with the search_view_factory, the site.
+    '''
+    def create_response(self):
+        '''
+        Custom overwritten method to return a response with search results
+        organized by type.
+        '''
+        content = {
+            'query': self.query,
+            'form': self.form,
+            'suggestion': None,
+        }
+        if self.results and hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
+            content['suggestion'] = self.form.get_suggestion()
+        elif self.results:
+            result_by_type = {}
+            for r in self.results:
+                print r, r.model_name
+                thistype = result_by_type.setdefault(r.content_type(), [])
+                thistype.append(r)
+            content['results'] = dict(
+                places=result_by_type.get('places.place', []),
+                events=result_by_type.get('events.event', []),
+                specials=result_by_type.get('specials.special', []),
+                news_articles=result_by_type.get('news.article', []),
+                chatter_posts=result_by_type.get('chatter.post', []),
+            )
+
+        # doesn't do anything, but will remind me in case this inherits from something else
+        content.update(self.extra_context())
+
+        context = PageContext(self.request,
+            page_title="Scenable | Oakland Search",
+            content_dict=content)
+        return render_to_response(self.template, context_instance=context)
 
 
 ### URL-LINKED VIEWS ###
