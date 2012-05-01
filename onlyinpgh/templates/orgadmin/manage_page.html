@@ -69,9 +69,7 @@ Root context is an ManagePageContext object with the following variables:
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
 <!-- jQuery UI and Timepicker plugin-->
-<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-1.8.18.custom.min.js"></script>
-<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery.ui.autocomplete.html.js"></script>
-<script src="{{STATIC_URL}}js/libs/jquery-ui/jquery-ui-timepicker-addon.js"></script>
+{% compressed_js 'jquery_ui' %}
 
 <!-- Scenable Scripts: inline for now -->
 <script type="text/javascript">

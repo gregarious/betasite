@@ -5,8 +5,7 @@ PIPELINE_TEMPLATE_FUNC = 'Handlebars.compile'
 PIPELINE_TEMPLATE_EXT = '.html'
 PIPELINE_DISABLE_WRAPPER = True
 # TODO: add CSS handling
-# PIPELINE_CSS = {    
-# 
+# PIPELINE_CSS = {}
 
 PIPELINE_JS = {
     'all_libs': {   # all non-base libraries
@@ -16,6 +15,14 @@ PIPELINE_JS = {
             'js/libs/handlebars-1.0.0.beta.6.js',
         ),
         'output_filename': 'js/libs.js',
+    },
+    'jquery_ui': {
+        'source_filenames': (
+            # soon will build custom jquery ui packages here, but need to look how  this will effect css
+            'js/libs/jquery-ui/ui/jquery-ui-1.8.18.custom.min.js',
+            'js/libs/jquery-ui/plugins/*',
+        ),
+        'output_filename': 'js/jquery-ui-custom.js',
     },
     'site_scripts': {
         'source_filenames': (
