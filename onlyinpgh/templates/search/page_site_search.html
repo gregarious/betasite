@@ -1,6 +1,7 @@
 {% extends 'page.html' %}
 
 {% block main-content %}
+<article class="page-content" id="search-results-page">
     <h2>Search</h2>
 
     <form method="get" action="{% url site-search %}">
@@ -17,33 +18,45 @@
 
         {% if query %}
             {% if results %}
+            <section class="results-type">
                 <h3>Places</h3>
                 <ul class="feed">
                 {% for result in results.places %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></li>
+                    <li class="result">
+                        <a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a>
+                    </li>
                 {% empty %}
                 <p>None found.</p>
                 {% endfor %}
                 </ul>
-
+            </section>
+            <section class="results-type">
                 <h3>Events</h3>
                 <ul class="feed">
                 {% for result in results.events %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></li>
+                    <li class="result">
+                        <h4><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></h4>
+                        <p>{{result.object.dtstart}} - {{result.object.dtend}}</p>
+                        <p>{{result.object.place.location.address}}</p>
+                    </li>
                 {% empty %}
                 <p>None found.</p>
                 {% endfor %}
                 </ul>
-
+            </section>
+            <section class="results-type">
                 <h3>Specials</h3>
                 <ul class="feed">
                 {% for result in results.specials %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a></li>
+                    <li class="results">
+                        <a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a>
+                    </li>
                 {% empty %}
                 <p>None found.</p>
                 {% endfor %}
                 </ul>
-
+            </section>
+            <section class="results-type">
                 <h3>News</h3>
                 <ul class="feed">
                 {% for result in results.news_articles %}
@@ -52,7 +65,8 @@
                 <p>None found.</p>
                 {% endfor %}
                 </ul>
-
+            </section>
+            <section class="results-type">
                 <h3>Chatter</h3>
                 <ul class="feed">
                 {% for result in results.chatter_posts %}
@@ -61,12 +75,14 @@
                 <p>None found.</p>
                 {% endfor %}
                 </ul>
+            </section>
             {% else %}  {# no results #}
-                <p>No results.</p>
+                <p>Nothin!</p>
             {% endif %}
 
         {% else %}
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
     </form>
+</article>
 {% endblock %}
