@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
+from onlyinpgh.events.views import PageEventsFeed
+
+from haystack.views import search_view_factory
 
 urlpatterns = patterns('onlyinpgh.events.views',
-    url(r'^$', 'page_feed', name='events-feed'),
-    url(r'^feed/$', 'page_feed'),
+    url(r'^$', search_view_factory(view_class=PageEventsFeed), name='events-feed'),
     url(r'^(?P<eid>\d+)/$', 'page_details', name='event-detail'),
 
     # url(r'^app/feed/$', 'feed_app'),

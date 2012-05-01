@@ -5,15 +5,15 @@ from django.contrib.auth.models import User
 from onlyinpgh.events.viewmodels import EventData
 from onlyinpgh.specials.viewmodels import SpecialData
 
-from django.core.urlresolvers import reverse
 from onlyinpgh.common.utils import get_cached_thumbnail
 
 from django.template.defaultfilters import truncatewords
 
+
 class PlaceData(object):
     def __init__(self, place, user=None):
         fields = ('id', 'name', 'location', 'description', 'tags', 'image',
-                  'url', 'fb_id', 'twitter_username', 'listed')
+                  'url', 'fb_id', 'twitter_username', 'listed', 'get_absolute_url')
         if isinstance(user, User):
             self.is_favorite = place.favorite_set\
                                     .filter(user=user, is_favorite=True)\
@@ -45,12 +45,12 @@ class PlaceData(object):
             } if self.location else None,
             'tags': [{
                 'name': tag.name,
-                'permalink': reverse('tags-item-detail', kwargs={'tid': tag.id})
+                'permalink': tag.get_absolute_url(),
             } for tag in self.tags.all()[:4]],
             'hours': self.hours,
             'image': self.image.url if self.image else '',
             # special fields only for JSON output
-            'permalink': reverse('place-detail', kwargs={'pid': self.id}),
+            'permalink': self.get_absolute_url(),
             'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
             'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
         }

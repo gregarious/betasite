@@ -9,7 +9,7 @@ TODO: only show month/day for events ending on a different day
 {% load thumbnail %}
 
 <div class="item-thumb">
-    <a href="{% url event-detail event.id %}">
+    <a href="{{event.get_absolute_url}}">
         {% thumbnail event.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}" />
         <div class="item-type type-event">

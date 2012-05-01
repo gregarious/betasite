@@ -290,6 +290,10 @@ class Place(models.Model, ViewModel):
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('place-detail', (), {'pid': self.id})
+
     # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
     def hours_unpacked(self):
         return self.hours_as_obj().to_data()

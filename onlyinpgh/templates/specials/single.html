@@ -21,7 +21,7 @@ TODO #2: Only show expiration date if there is one.
 		<section class="item-content">
 			<h1 class="single-title">{{special.title}}</h1>
 			<ul class="item-details">
-				<li>at <a class="host" href="{% url place-detail pid=special.place.id %}">{{special.place.name}}</a></li>
+				<li>at <a class="host" href="{{special.place.get_absolute_url}}">{{special.place.name}}</a></li>
 				{% if special.dtexpires %}
 					<li><time class="datetime meta">Good thru {{special.dtexpires}}</time></li>
 				{% endif %}

@@ -1,0 +1,10 @@
+{{ object.title }}
+{{ object.blurb }}
+{{ object.source_name }}
+{% for place in object.related_places.all %}
+    {{ object.name }}
+{% endfor %}
+{% for event in object.related_events.all %}
+    {{ object.name }
+    {{ object.place.name }
+{% endfor %}

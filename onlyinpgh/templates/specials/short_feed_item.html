@@ -4,9 +4,10 @@ Template to render a particular event as a related feed item on a single special
 Context variables:
     special: SpecialData instance
 {% endcomment %}
+
 {% load thumbnail %}
 <div class="item-thumb">
-    <a href="{% url special-detail special.id %}">
+    <a href="{{special.get_absolute_url}}">
         {% thumbnail special.place.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{special.place.name}}" src="{{im.url}}" />
         <div class="item-type type-special">
@@ -18,5 +19,5 @@ Context variables:
     </a>
 </div>
 <section class="item-content">
-	<h4 class="item-title"><a href="{% url special-detail special.id %}" title="See this special">{{special.title|truncatewords:7}}</a></h4>
+	<h4 class="item-title"><a href="{{special.get_absolute_url}}" title="See this special">{{special.title|truncatewords:7}}</a></h4>
 </section>

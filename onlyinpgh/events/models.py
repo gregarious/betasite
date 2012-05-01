@@ -68,6 +68,10 @@ class Event(models.Model, ViewModel):
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('event-detail', (), {'eid': self.id})
+
 
 class EventMeta(models.Model):
     event = models.ForeignKey(Event)

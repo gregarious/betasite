@@ -29,7 +29,7 @@ Context variables:
         <ul class="item-details">
             <li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
             {% if event.place %}
-                <li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+                <li>at <a class="host" href="{{event.place.get_absolute_url}}">{{event.place.name}}</a></li>
                 <!-- <li class="address">{{event.place.location.address}}</li> -->
             {% else %}
                 <li>at {{event.place_primitive}}</li>

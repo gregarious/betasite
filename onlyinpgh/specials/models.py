@@ -39,6 +39,10 @@ class Special(models.Model, ViewModel):
         data['tags'] = [t.to_data() for t in self.tags.all()]
         return data
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('special-detail', (), {'sid': self.id})
+
     def __unicode__(self):
         return self.title
 
