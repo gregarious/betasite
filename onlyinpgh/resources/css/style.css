@@ -280,7 +280,7 @@ blockquote {
   padding-left: 2.5em;
   font-family: 'DroidSerifItalic', Gerogia;
   font-size: 1.3em;
-  margin: 2em 1em;
+  margin: 2em 0;
 }
 .meta {
   font-size: 0.9em;
@@ -1549,27 +1549,30 @@ legend {
 }
 /* TEMPLATE SPECIFICS --------- */
 /* Now */
-#now-page .random,
-#now-page .map-container {
-  float: left;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#now-page .map-container {
-  float: left;
-  height: 300px;
+#now-page {
+  /*  .map-container {
+    float: left;
+    height: 300px;
+  }
+*/
+
 }
 #now-page .short {
   float: left;
-  width: 47.91666666666667%;
+  width: 31.25%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: auto;
+}
+#now-page .short .item-type {
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 #now-page .short .item-thumb {
   float: left;
@@ -1585,13 +1588,9 @@ legend {
   height: 100%;
   margin: 0;
   padding: 0.5em;
-  position: absolute;
   background: url("/static/img/textures/white-trans.png");
-  top: 0;
-  left: 0;
   color: #000 !important;
   text-align: left;
-  display: none;
 }
 #now-page .feed {
   margin-left: 0;
@@ -1932,7 +1931,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 1em 0 1em 1em;
+  margin: 1em 1em 1em 1em;
 }
 #about-oakland .tip {
   font-style: italic;

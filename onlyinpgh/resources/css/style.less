@@ -59,7 +59,7 @@ blockquote {
   padding-left: 2.5em;
   font-family: 'DroidSerifItalic', Gerogia;
   font-size: 1.3em;
-  margin: 2em 1em;
+  margin: 2em 0;
 }
 
 .meta {
@@ -1001,18 +1001,27 @@ legend {
 /* Now */
 
 #now-page {
-  .random, .map-container {
-    .column(6);
+  .random {
+    //.column(6);
   }
 
-  .map-container {
+/*  .map-container {
     float: left;
     height: 300px;
   }
-
+*/
   .short {
-    .column(6);
+    .column(4);
     height: auto;
+
+    .item-type {
+      width: 100%;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
 
     .item-thumb {
       .column(12);
@@ -1024,13 +1033,11 @@ legend {
       height: 100%;
       margin: 0;
       padding: 0.5em;
-      position: absolute;
+      //position: absolute;
       background: url("@{static_url}img/textures/white-trans.png");
-      top: 0;
-      left: 0;
       color: #000 !important;
       text-align: left;
-      display: none;
+      //display: none;
     }
 
   }
@@ -1345,7 +1352,7 @@ legend {
 #about-oakland {
   img {
     .column_r(6);
-    margin: 1em 0 1em 1em;
+    margin: 1em 1em 1em 1em;
   }
 
   .tip {

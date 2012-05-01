@@ -220,7 +220,7 @@ class Location(models.Model, ViewModel):
             if self.postcode:
                 daddr += ', ' + self.postcode
         elif self.is_geocoded:
-            daddr = '(%f,%f)' % (float(self.longitude), float(self.latutude))
+            daddr = '(%f,%f)' % (float(self.longitude), float(self.latitude))
 
         if not daddr:
             return None

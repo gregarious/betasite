@@ -17,11 +17,11 @@ $(function(){
 		window.location = $(this).val();
 	});
 
-	// Show/hide .item-content when hovering over now thumbnail items
+	//Show/hide .item-content when hovering over now thumbnail items
 	$('.item.short').hover(function(){
-		$(this).find('.item-content').fadeIn(200);
+		$(this).find('.item-type').fadeIn(200);
 	}, function() {
-		$(this).find('.item-content').fadeOut(270);
+		$(this).find('.item-type').fadeOut(270);
 	});
 
 	// Grabbit modal
