@@ -406,7 +406,7 @@ legend {
   }
 
   .status {
-    font-size: 1.2em;
+    font-size: 1.9em;
     margin-right: 0.2em;
   }
 
@@ -422,7 +422,6 @@ legend {
 #sidebar-feedback {
 
   label {
-    //float: right;
     text-align: left;
   }
 
@@ -1052,23 +1051,23 @@ legend {
 
 /* Specials */
 
-.btn-primary {
-  cursor: pointer;
-  text-align: center;
-  img {
-    display: block;
-    margin: 0.5em auto;
-    width: 90%;
+
+#special-single {
+  .item-thumb {
+    .border-box();
+    .rounded(0.5em);
+    padding : 0.7em;
+    background: @lblue;
   }
-  font-size: 1.2em;
-  //padding-bottom: 0.3em;
-}
 
-#special-single .btn-primary {
-  .b-shadow(1px, 1px, 2px, #111);
-
-  &:active {
-    .no-b-shadow();
+  button {
+    .b-shadow(1px, 1px, 2px, #111);
+    margin-top: 1em;
+    text-align: center;
+    .row();
+    &:active {
+      .no-b-shadow();
+    }
   }
 }
 
@@ -1091,13 +1090,14 @@ legend {
   .item-thumb {
     border: none;
   }
-}
 
-
-#specials-page {
   .focused {
     background: fade(@lblue, 50%);
   }
+}
+
+.specials .thumbnail {
+  border: none;
 }
 
 #events-page {
@@ -1242,6 +1242,11 @@ legend {
 
 .map-container {
   height: 200px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
   border: 1px solid #888;
 }
 
@@ -1272,10 +1277,6 @@ legend {
     overflow: visible;
   }
 
-  .map {
-    width: 100%;
-    height: 100%;
-  }
 }
 .directions-btn-container {
   .row();
@@ -1329,6 +1330,102 @@ legend {
 
   img {
     .column_r(4);
+  }
+}
+
+/* jQuery UI --------- */
+
+.grabbit-modal, .feedback-modal {
+  display: none;
+  button {
+    .column(6);
+    margin-top: 1em;
+  }
+}
+
+.ui-dialog {
+  background: #fff;
+  border: 5px @yellow solid;
+  .rounded(0.6em);
+  padding: 2%;
+
+  form {
+    margin-top: 0.3em;
+  }
+
+  label {
+    font-size: 0.8em;
+    text-transform: none;
+  }
+
+  input[type="text"] {
+    margin-top: 0.3em;
+    padding: 0.2em;
+    font-size: 0.9em;
+    .rounded(0.3em);
+  }
+
+  .field-container {
+    padding-right: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .ui-widget-header {
+    background: none;
+    border: none;
+  }
+
+  .ui-widget-content {
+    border: none;
+    background: none;
+  }
+
+  .ui-dialog-buttonset {
+    .clearfix();
+  }
+
+  .tip {
+    margin: 0.5em 0;
+  }
+}
+
+.ui-widget-overlay { 
+  background: #aaaaaa url('@{static_url}img/textures/white-trans.png'); 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: .30;
+  filter:Alpha(Opacity=30); 
+}
+
+.ui-dialog-title {
+  border-bottom: 1px @mgreen solid;
+  margin-right: 1em;
+  font-weight: normal;
+  font-size: 1em;
+  .blok();
+  display: block;
+  color: #444;
+}
+
+.ui-dialog-titlebar-close:hover {
+  border: none;
+}
+
+.ui-icon-closethick {
+  top: 1.5em;
+  right: 1.5em;
+  height: 1em;
+  width: 1em;
+  position: absolute;
+  text-indent: -9999px;
+
+  &:hover {
+    background-color: @lblue;
+  }
+}
+
+.ui-dialog-buttonset {
+  button {
+    margin: 0 3%;
   }
 }
 

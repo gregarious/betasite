@@ -17,9 +17,9 @@ Context variables:
         </div> <!-- .item-thumb -->
         <div class="fav-container">
             {% if is_favorite %}
-                <a href="?action=unfav" class="favbutton remove" title="Unfavorite"><span class="status">&#215;</span> Remove Favorite</a>
+                <a href="?action=unfav" class="favbutton remove" title="Unfavorite"><span class="status">&#215;</span> Remove from Calendar</a>
             {% else %}
-                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
+                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add to Calendar</a>
             {% endif %}
         </div> 
     </div> <!-- .single-thumb-container -->
@@ -34,6 +34,9 @@ Context variables:
             {% else %}
                 <li>at {{event.place_primitive}}</li>
             {% endif %}
+            {% if event.place.location.address %}
+                <li>{{event.place.location.address}}</li>
+            {% endif %}
             {% if event.url %}
                 <li><a href="{{ event.url }}" target="blank">On the Web</a></li>
             {% endif %}
@@ -45,7 +48,14 @@ Context variables:
 
 <div class="single-content">
     {% if event.place.location.is_geocoded %}
-    <div class="map-container" id="mainEventMap"></div>
+    <div class="map-container">
+        <div class="map" id="mainEventMap"></div>
+    </div>
     {% endif %}
     <p class="description">{{event.description|linebreaksbr}}</p>
+    {% if event.place.location.directions_link %}
+    <div class="directions-btn-container">
+        <a href="{{event.place.location.directions_link}}" target="blank" class="btn" title="Directions to {{event.place.name}}">Get Directions</a>
+    </div>
+    {% endif %}
 </div> <!-- .single-content -->

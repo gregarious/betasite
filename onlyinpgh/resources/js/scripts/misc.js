@@ -1,8 +1,8 @@
 /* Requires jQuery */
 $(function(){
+	
 	// Hide/show single place sections
 	var pages = ['#placeDetail', '#placeEvents', '#placeSpecials'];
-
 	$.each(pages, function(i, id) {
 		$('a.'+id).click(function() {
 			$('.detail-section').delay(200).hide();
@@ -12,14 +12,40 @@ $(function(){
 		});
 	});
 
+	// Make mobile select box menu links
 	$('#select-sect').change(function(){
 		window.location = $(this).val();
 	});
 
+	// Show/hide .item-content when hovering over now thumbnail items
 	$('.item.short').hover(function(){
 		$(this).find('.item-content').fadeIn(200);
 	}, function() {
 		$(this).find('.item-content').fadeOut(270);
 	});
+
+	// Grabbit modal
+    $('.grabbit-modal').dialog({
+        maxHeight: 500,
+        modal: true,
+        autoOpen: false,
+        // show: 'slide',
+        // hide: 'slide'
+    });
+
+    $('#openGrabbitModal').click(function(){
+        $('.grabbit-modal').dialog("open");
+    });
+
+    // Sidebar feedback modal
+	$('.feedback-modal').dialog({
+        height: 140,
+        modal: true,
+        autoOpen: false
+    });
+
+    $('#openFeedbackModal').click(function(){
+        $('.feedback-modal').dialog("open");
+    });    
 
 }); // document.ready

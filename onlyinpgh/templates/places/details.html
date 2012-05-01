@@ -28,9 +28,13 @@ Context variables:
     <h2 class="detail-section-title">About - <em>{{place.name}}</em></h2>
 
     {% if place.location.is_geocoded %}
-    <div class="map-container" id="mainPlaceMap"></div>
+    <div class="map-container">
+        <div class="map" id="mainPlaceMap"></div>
+    </div>
     {% else %}
-    <div class="map-container" id="map-unavailable"></div>
+    <div class="map-container">
+        <div class="map" id="map-unavailable"></div>
+    </div>
     {% endif %}
     <ul class="item-details">
         {% if place.hours %}

@@ -785,7 +785,7 @@ legend {
   color: #2c525d;
 }
 .fav-container .status {
-  font-size: 1.2em;
+  font-size: 1.9em;
   margin-right: 0.2em;
 }
 .fav-container .remove .status {
@@ -1606,22 +1606,31 @@ legend {
 }
 /* Events */
 /* Specials */
-.btn-primary {
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.2em;
+#special-single .item-thumb {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0.7em;
+  background: #a9c6e8;
 }
-.btn-primary img {
-  display: block;
-  margin: 0.5em auto;
-  width: 90%;
-}
-#special-single .btn-primary {
+#special-single button {
   -webkit-box-shadow: 1px 1px 2px #111111;
   -moz-box-shadow: 1px 1px 2px #111111;
   box-shadow: 1px 1px 2px #111111;
+  margin-top: 1em;
+  text-align: center;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-#special-single .btn-primary:active {
+#special-single button:active {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -1645,6 +1654,9 @@ legend {
 }
 #specials-page .focused {
   background: rgba(169, 198, 232, 0.5);
+}
+.specials .thumbnail {
+  border: none;
 }
 #events-page .focused {
   background: rgba(143, 211, 111, 0.5);
@@ -1800,6 +1812,10 @@ legend {
 /* MAP --------- */
 .map-container {
   height: 200px;
+}
+.map {
+  width: 100%;
+  height: 100%;
   border: 1px solid #888;
 }
 .page-content .map-title-container {
@@ -1834,10 +1850,6 @@ legend {
   margin: 2em 0 0;
   height: 300px;
   overflow: visible;
-}
-.page-content .map {
-  width: 100%;
-  height: 100%;
 }
 .directions-btn-container {
   width: 100%;
@@ -1906,6 +1918,112 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+/* jQuery UI --------- */
+.grabbit-modal,
+.feedback-modal {
+  display: none;
+}
+.grabbit-modal button,
+.feedback-modal button {
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 1em;
+}
+.ui-dialog {
+  background: #fff;
+  border: 5px #ded57f solid;
+  -webkit-border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  border-radius: 0.6em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 2%;
+}
+.ui-dialog form {
+  margin-top: 0.3em;
+}
+.ui-dialog label {
+  font-size: 0.8em;
+  text-transform: none;
+}
+.ui-dialog input[type="text"] {
+  margin-top: 0.3em;
+  padding: 0.2em;
+  font-size: 0.9em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.ui-dialog .field-container {
+  padding-right: 0;
+  margin-bottom: 0.5em;
+}
+.ui-dialog .ui-widget-header {
+  background: none;
+  border: none;
+}
+.ui-dialog .ui-widget-content {
+  border: none;
+  background: none;
+}
+.ui-dialog .ui-dialog-buttonset {
+  *zoom: 1;
+}
+.ui-dialog .ui-dialog-buttonset:before,
+.ui-dialog .ui-dialog-buttonset:after {
+  content: "";
+  display: table;
+}
+.ui-dialog .ui-dialog-buttonset:after {
+  clear: both;
+}
+.ui-dialog .tip {
+  margin: 0.5em 0;
+}
+.ui-widget-overlay {
+  background: #aaaaaa url('/static/img/textures/white-trans.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .30;
+  filter: alpha(opacity=30);
+}
+.ui-dialog-title {
+  border-bottom: 1px #6baa55 solid;
+  margin-right: 1em;
+  font-weight: normal;
+  font-size: 1em;
+  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
+  display: block;
+  color: #444;
+}
+.ui-dialog-titlebar-close:hover {
+  border: none;
+}
+.ui-icon-closethick {
+  top: 1.5em;
+  right: 1.5em;
+  height: 1em;
+  width: 1em;
+  position: absolute;
+  text-indent: -9999px;
+}
+.ui-icon-closethick:hover {
+  background-color: #a9c6e8;
+}
+.ui-dialog-buttonset button {
+  margin: 0 3%;
 }
 /* UTILITY ---------- */
 .row-container {

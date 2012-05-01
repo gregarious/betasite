@@ -7,19 +7,15 @@ Context variables:
 TODO #1: If there is a limited number available, show how many are left (3/10 available).
 
 TODO #2: Only show expiration date if there is one.
-
 {% endcomment %}
-<div class="single-container" id="special-single">
+
+<div class="single-container specials" id="special-single">
 	<header class="single-header">
 
 		<div class="single-thumb-container">
 			<div class="item-thumb">
-				<!-- <div class="points">+{{special.points}}</div> -->
-				<div class="btn btn-primary"><img src="{{STATIC_URL}}img/icons/special-thumb-single.png" />Grab It!</div>
+				<img class="thumbnail" src="{{STATIC_URL}}img/icons/special-thumb-single.png" />
 			</div>
-			<!-- <div class="fav-container">
-				<button class="btn btn-primary">Grab It!</button>
-			</div> -->
 		</div> <!-- .single-thumb-container -->
 
 		<section class="item-content">
@@ -40,7 +36,10 @@ TODO #2: Only show expiration date if there is one.
 
 	<div class="single-content">
 		{% if special.place.location.is_geocoded %}
-		<div class="map-container" id="mainSpecialMap"></div>
+		<div class="map-container">
+			<div class="map" id="mainSpecialMap"></div>
+			<button id="openGrabbitModal">Grab It!</button>
+		</div>
 		{% endif %}
 		{% if special.description %}
 		<p class="description">{{special.description}}</p>

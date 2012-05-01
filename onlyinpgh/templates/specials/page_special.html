@@ -10,6 +10,14 @@ Context variables:
 {% block main-content %}
 <div class="single-container" id="special-single">
     {% include "specials/single.html" %}
+    <!-- Coupon redemption modale -->
+    <div class="grabbit-modal" title="{{special.title}}">
+        <h5>Thanks!</h5>
+        <p>Show your coupon at {{special.place.name}} to redeem the offer. Bring a printed copy or show it on your phone.</p>
+        <div class="row-container">
+            <button>Email it</button><button>Print it</button>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -18,6 +26,7 @@ Context variables:
 {% endblock %}
 
 {% block foot-inlines %}
+
 {% if special.place.location.latitude and special.place.location.longitude %}
 <script type="text/javascript">
 $(function(){
@@ -30,6 +39,7 @@ $(function(){
         position: pos,
         map: map
     });
+
 });
 </script>
 {% endif %}
