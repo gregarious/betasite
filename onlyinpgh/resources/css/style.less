@@ -1112,8 +1112,8 @@ legend {
 }
 
 #specials-page {
-  .btn-primary {
-    padding: 0.1em;
+  .item-thumb div {
+    padding: 0.7em 0.5em;
     .no-b-shadow();
     background: @mblue;
 
@@ -1312,16 +1312,17 @@ legend {
   margin-top: 1em;
 
   a {
-    background: url("@{static_url}img/main-menu/store-front.png") no-repeat bottom left;
+    background: url("@{static_url}img/icons/map-marker-small.png") no-repeat top left;
     color: #444;
     //border: 1px #999 solid;
     font-size: 0.8em;
     .rounded(0.3em);
-    padding: 0.5em 0.5em 0.5em 2.5em;
+    padding: 0 0.5em 0.5em 1.4em;
 
-    &:after {
-      content: "";
+    &:hover {
+      color: @red;
     }
+
   }
 }
 

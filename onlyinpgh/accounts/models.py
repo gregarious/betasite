@@ -16,7 +16,7 @@ class UserProfile(models.Model, ViewModel):
     user = models.OneToOneField(User)
     display_name = models.CharField(max_length=30, blank=True)
 
-    avatar_url = models.URLField(max_length=400, blank=True)
+    avatar = models.ImageField(upload_to='img/a', null=True, blank=True)
     points = models.IntegerField(default=0)
 
     # all of the following should be optional on a registration form
@@ -27,7 +27,7 @@ class UserProfile(models.Model, ViewModel):
     twitter_username_public = models.BooleanField(default=True)
 
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
-    birth_year = models.IntegerField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
 
     neighborhood = models.CharField(max_length=50, blank=True)
 

@@ -1674,18 +1674,18 @@ legend {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#specials-page .btn-primary {
-  padding: 0.1em;
+#specials-page .item-thumb div {
+  padding: 0.7em 0.5em;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   background: #70a3be;
 }
-#specials-page .btn-primary:active {
+#specials-page .item-thumb div:active {
   top: 0;
   left: 0;
 }
-#specials-page .btn-primary img {
+#specials-page .item-thumb div img {
   width: 70%;
 }
 #specials-page .item-thumb {
@@ -1866,7 +1866,7 @@ legend {
   margin-top: 1em;
 }
 .directions-btn-container a {
-  background: url("/static/img/main-menu/store-front.png") no-repeat bottom left;
+  background: url("/static/img/icons/map-marker-small.png") no-repeat top left;
   color: #444;
   font-size: 0.8em;
   -webkit-border-radius: 0.3em;
@@ -1875,10 +1875,10 @@ legend {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 0.5em 0.5em 0.5em 2.5em;
+  padding: 0 0.5em 0.5em 1.4em;
 }
-.directions-btn-container a:after {
-  content: "";
+.directions-btn-container a:hover {
+  color: #b83939;
 }
 .infowindow {
   font-size: 0.8em;
