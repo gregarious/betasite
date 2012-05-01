@@ -35,14 +35,14 @@ Context variables:
 					{{form.gender}}
 				</div> <!-- gender -->
 				<div>
-					{{form.birth_year.label_tag}}
+					{{form.birth_date.label_tag}}
 				</div>
 				<div>
-					{{form.birth_year}}
-				</div> <!-- birth_year -->
-				{{form.birth_year.errors}}
+					{{form.birth_date}}
+					{{form.birth_date.errors}}
+				</div> <!-- birth_date -->
 			</div>
-		</li>  <!-- gender & birth_year -->
+		</li>  <!-- gender & birth_date -->
 		
 		<li class="field-container">
 			<div class="field-label">
@@ -56,13 +56,13 @@ Context variables:
 		
 		<li class="field-container">
 			<div class="field-label">
-				{{form.avatar_url.label_tag}}
+				{{form.avatar.label_tag}}
 			</div>
 			<div class="field">
-				{{form.avatar_url}}
-				{{form.avatar_url.errors}}
+				{{form.avatar}}
+				{{form.avatar.errors}}
 			</div>
-		</li> <!-- avatar_url -->
+		</li> <!-- avatar -->
 
 		<li class="field-container">
 			<div class="field-label">

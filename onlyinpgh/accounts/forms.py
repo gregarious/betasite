@@ -32,7 +32,10 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user', 'points')
-        widgets = {'birth_year': forms.TextInput(attrs={'maxlength': '4'})}
+
+    birth_date = forms.DateField(label=u'Birth date',
+        widget=forms.DateInput(format='%d/%m/%Y'),
+        input_formats=('%m/%d/%Y', '%m/%d/%y',))
 
 
 # TODO: hook this up to user preferences
