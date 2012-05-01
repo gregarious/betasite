@@ -4,10 +4,10 @@
 Page-based template for the Specials feed
 
 Context variables:
-    [items]: List of SpecialContext instances
-    items_json: JSON string of SpecialFeedResources corresponding to [items]
-    prev_p: page number of previous page (if available)
-    next_p: page number of next page (if available)
+    page: a Django Paginator Page with SpecialData instances as objects
+    items_json: JSON string of serialized SpecialData instances corresponding to the items in page.object_list
+    query: filter query text
+    form: filter form
 {% endcomment %}
 
 {% block main-content %}
@@ -21,15 +21,15 @@ Context variables:
     </div>
 
     <div class="page-nav-container">
-        <form class="simple-form">
-            <input type="search" placeholder="Filter Events" />
+        <form class="simple-form" method="get" action="{% url specials-feed %}">
+            <input type="search" placeholder="Filter Specials" name="{{form.q.html_name}}" value="{{query}}"/>
             <input type="submit" value="Filter" />
         </form>
-        <nav class="prev-next" id="places-feed-nav">
-            {% if prev_p %}<a href="{% url specials-feed %}?p={{prev_p}}" class="prev"><!-- <img src="{{STATIC_URL}}img/icons/arrow-left.png"alt="Previous" /> --></a>{% endif %}
-            <div class="page-num">3</div>
+        <nav class="prev-next" id="specials-feed-nav">
+            {% if page.has_previous %}<a href="{% url places-feed %}?page={{page.previous_page_number}}" class="prev"><!-- <img src="{{STATIC_URL}}img/icons/arrow-left.png"alt="Previous" /> --></a>{% endif %}
+            <div class="page-num">{{page.number}}</div>
             <!-- Insert current page here (i.e. 2/10) -->
-            {% if next_p %}<a href="{% url specials-feed %}?p={{next_p}}" class="next"><!-- <img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="Next" /> --></a>{% endif %}
+            {% if page.has_next %}<a href="{% url places-feed %}?page={{page.next_page_number}}" class="next"><!-- <img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="Next" /> --></a>{% endif %}
         </nav>
     </div>
 
