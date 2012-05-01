@@ -29,8 +29,6 @@ $(function(){
         maxHeight: 500,
         modal: true,
         autoOpen: false,
-        // show: 'slide',
-        // hide: 'slide'
     });
 
     $('#openGrabbitModal').click(function(){
@@ -39,7 +37,7 @@ $(function(){
 
     // Sidebar feedback modal
 	$('.feedback-modal').dialog({
-        height: 140,
+        maxHeight: 700,
         modal: true,
         autoOpen: false
     });

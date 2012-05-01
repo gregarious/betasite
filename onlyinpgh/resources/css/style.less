@@ -36,7 +36,6 @@ p {
   color: #222;
   font-size: 0.9em;
   margin: 0.1em 0;
-  text-shadow: 0.05em 0.05em 0.05em #fff;
 }
 
 ul li {
@@ -53,6 +52,14 @@ a {
   &:active {
     color: @teal;
   }
+}
+
+blockquote {
+  background: url('@{static_url}img/icons/quote.png') no-repeat top left;
+  padding-left: 2.5em;
+  font-family: 'DroidSerifItalic', Gerogia;
+  font-size: 1.3em;
+  margin: 2em 1em;
 }
 
 .meta {
@@ -1327,9 +1334,24 @@ legend {
     .column(8);
 
   }
+}
 
+#team {
   img {
-    .column_r(4);
+    .column(4);
+  }
+}
+
+#about-oakland {
+  img {
+    .column_r(6);
+    margin: 1em 0 1em 1em;
+  }
+
+  .tip {
+    font-style: italic;
+    color: #999;
+    margin-left: 0;
   }
 }
 
@@ -1337,9 +1359,30 @@ legend {
 
 .grabbit-modal, .feedback-modal {
   display: none;
+
+  .row-container {
+    margin: 1.5em 0;
+  }
+
   button {
-    .column(6);
-    margin-top: 1em;
+    width: 45%;
+    &:first-child {
+      margin-right: 5%;
+    }
+    &:last-child {
+      margin-left: 5%;
+    }  
+  }
+
+  h5 {
+    color: #444;
+    font-size: 1em;
+    font-style: italic;
+    margin: 0 0 1em 0;
+  }
+
+  textarea {
+    margin: 1em 0;
   }
 }
 
@@ -1398,12 +1441,12 @@ legend {
 
 .ui-dialog-title {
   border-bottom: 1px @mgreen solid;
-  margin-right: 1em;
+  .blok();
+  color: #444;
   font-weight: normal;
   font-size: 1em;
-  .blok();
   display: block;
-  color: #444;
+  margin: 0 1em 1em 0;
 }
 
 .ui-dialog-titlebar-close:hover {

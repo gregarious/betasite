@@ -262,7 +262,6 @@ p {
   color: #222;
   font-size: 0.9em;
   margin: 0.1em 0;
-  text-shadow: 0.05em 0.05em 0.05em #fff;
 }
 ul li {
   font-size: 0.9em;
@@ -275,6 +274,13 @@ a:hover {
 }
 a:active {
   color: #2c525d;
+}
+blockquote {
+  background: url('/static/img/icons/quote.png') no-repeat top left;
+  padding-left: 2.5em;
+  font-family: 'DroidSerifItalic', Gerogia;
+  font-size: 1.3em;
+  margin: 2em 1em;
 }
 .meta {
   font-size: 0.9em;
@@ -1911,28 +1917,59 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.static-section img {
-  float: right;
+#team img {
+  float: left;
   width: 31.25%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* jQuery UI --------- */
-.grabbit-modal,
-.feedback-modal {
-  display: none;
-}
-.grabbit-modal button,
-.feedback-modal button {
-  float: left;
+#about-oakland img {
+  float: right;
   width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 1em;
+  margin: 1em 0 1em 1em;
+}
+#about-oakland .tip {
+  font-style: italic;
+  color: #999;
+  margin-left: 0;
+}
+/* jQuery UI --------- */
+.grabbit-modal,
+.feedback-modal {
+  display: none;
+}
+.grabbit-modal .row-container,
+.feedback-modal .row-container {
+  margin: 1.5em 0;
+}
+.grabbit-modal button,
+.feedback-modal button {
+  width: 45%;
+}
+.grabbit-modal button:first-child,
+.feedback-modal button:first-child {
+  margin-right: 5%;
+}
+.grabbit-modal button:last-child,
+.feedback-modal button:last-child {
+  margin-left: 5%;
+}
+.grabbit-modal h5,
+.feedback-modal h5 {
+  color: #444;
+  font-size: 1em;
+  font-style: italic;
+  margin: 0 0 1em 0;
+}
+.grabbit-modal textarea,
+.feedback-modal textarea {
+  margin: 1em 0;
 }
 .ui-dialog {
   background: #fff;
@@ -2001,12 +2038,12 @@ legend {
 }
 .ui-dialog-title {
   border-bottom: 1px #6baa55 solid;
-  margin-right: 1em;
+  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
+  color: #444;
   font-weight: normal;
   font-size: 1em;
-  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
   display: block;
-  color: #444;
+  margin: 0 1em 1em 0;
 }
 .ui-dialog-titlebar-close:hover {
   border: none;
