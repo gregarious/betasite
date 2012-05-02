@@ -1812,18 +1812,13 @@ legend {
   margin-bottom: 1em;
 }
 .results-type h3 {
-  border-bottom: 1px solid #e1e1e1;
-}
-.results-type li:hover {
-  background: #e1e1e1;
+  margin-top: 1em;
+  font-size: 1.3em;
+  font-style: italic;
+  font-weight: bold;
 }
 .results-type li a {
   color: #000;
-}
-.results-type img {
-  width: 50px;
-  float: left;
-  margin: 0 1em;
 }
 .result {
   float: left;
@@ -1836,29 +1831,52 @@ legend {
   padding: 0.5em;
 }
 .see-more-thumbs {
+  margin: 1em 0;
+  padding: 0.5em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: background 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out;
+  -o-transition: background 0.2s ease-out;
+  transition: background 0.2s ease-in;
+  *zoom: 1;
+}
+.see-more-thumbs:before,
+.see-more-thumbs:after {
+  content: "";
+  display: table;
+}
+.see-more-thumbs:after {
+  clear: both;
+}
+.see-more-thumbs:hover {
+  background: #e1e1e1;
+}
+.see-more-thumbs:hover a {
+  color: #333;
+}
+.see-more-thumbs > div {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .see-more-thumbs img {
+  float: left;
   width: 50px;
-  float: right;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 1.5em 0.5em 0.5em;
 }
-.see-more-thumbs img:first-child {
-  margin-left: 0;
-}
-.see-more-thumbs img:hover {
-  border: 1px solid #444;
-}
-.see-more-thumbs div {
-  text-align: right;
-  font-size: 1em;
-  float: right;
+.see-more-thumbs .see-more {
+  font-size: 1.2em;
+  float: left;
+  width: auto;
+  padding: 20px 0 0 0.5em;
 }
 .none-found {
   margin: 1em 0;

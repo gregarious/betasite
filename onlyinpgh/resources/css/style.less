@@ -750,11 +750,11 @@ legend {
 .page-content {
   padding: 0 1em 1em;
   .clearfix();
+
   .item {
     .column(6);
     .ease-out(background-color);
     height: 90px;
-    //margin-bottom: 0.5em;
     overflow: hidden;
     .rounded(0.3em);
     &:hover {
@@ -1269,13 +1269,13 @@ legend {
 .results-type {
   
   h3 {
-    border-bottom: 1px solid #e1e1e1;
+    margin-top: 1em;
+    font-size: 1.3em;
+    font-style: italic;
+    font-weight: bold;
   }
 
   li{
-    &:hover {
-      background: #e1e1e1;
-    }
 
     a {
       color: #000;
@@ -1283,40 +1283,44 @@ legend {
   }
 
   margin-bottom: 1em;
-
-  img {
-    width: 50px;
-    float: left;
-    margin: 0 1em;
-  }
 }
 
 .result {
   .column(6);
   margin: 1em 0;
   padding: 0.5em;
-  
 }
 
 .see-more-thumbs {
-  .row();
-  img {
-    &:first-child {
-      margin-left: 0;
+  margin: 1em 0;
+  padding: 0.5em;
+  .rounded(0.3em);
+  .ease-out(background);
+  .clearfix();
+
+  &:hover {
+    background: #e1e1e1;
+    a {
+      color: #333;
     }
-    &:hover {
-      border: 1px solid #444;
-    }
-    width: 50px;
-    float: right;
-    .border-box();
-    margin: 1.5em 0.5em 0.5em;
   }
 
-  div {
-    text-align: right;
-    font-size: 1em;
-    float: right;
+  &>div {
+    .row();
+  }
+
+  img {
+    float: left;
+    //.column_nm(1.2);
+    width: 50px;
+    .border-box();
+  }
+
+  .see-more {
+    font-size: 1.2em;
+    float: left;
+    width: auto;
+    padding: 20px 0 0 0.5em;
   }
 }
 
@@ -1401,7 +1405,6 @@ legend {
   .page-title-container {
     margin-top: 2.7em;
     width: auto;
-    //left: -20px;
   }
 
 }
