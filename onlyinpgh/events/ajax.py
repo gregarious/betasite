@@ -24,7 +24,7 @@ def event_attend(request):
     try:
         event = Event.objects.get(id=eid)
     except Event.DoesNotExist:
-        return _make_error('invalid pid', '1')
+        return _make_error('invalid eid', '1')
 
     if action.lower() == 'attend':
         is_action_consistent = event.add_attendee(request.user)

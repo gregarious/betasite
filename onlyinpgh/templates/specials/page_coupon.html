@@ -35,3 +35,11 @@ Template variables:
 </div>
 {# insert "back to scenable" link? "mark as used" button? #}
 {% endblock %}
+
+{% block foot %}
+{% if print == 'yes' %}
+<script type="text/javascript">
+window.print();
+</script>
+{% endif %}
+{% endblock %}

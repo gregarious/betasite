@@ -11,3 +11,7 @@ urlpatterns = patterns('onlyinpgh.specials.views',
     # url(r'^app/feed/$', 'feed_app'),
     # url(r'^app/(?P<pid>\d+)/$', 'detail_app'),
 )
+
+urlpatterns += patterns('onlyinpgh.specials.ajax',
+    url(r'^ajax/buy/$', 'coupon_buy'),
+)

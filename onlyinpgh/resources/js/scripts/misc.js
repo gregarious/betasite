@@ -24,17 +24,6 @@ $(function(){
 	// 	$(this).find('.item-type').fadeOut(270);
 	// });
 
-	// Grabbit modal
-    $('.grabbit-modal').dialog({
-        maxHeight: 500,
-        modal: true,
-        autoOpen: false,
-    });
-
-    $('#openGrabbitModal').click(function(){
-        $('.grabbit-modal').dialog("open");
-    });
-
     // Sidebar feedback modal
 	$('.feedback-modal').dialog({
         maxHeight: 700,
