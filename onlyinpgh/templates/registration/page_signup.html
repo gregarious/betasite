@@ -1,10 +1,15 @@
 {% extends "page.html" %}
 
 {% block main-content %}
-<h1 class="page-title">Sign up for a Scenable account</h1>
-<form action="{{ form_action }}" method="POST">
-{% include "registration/signup_form.html" %}
-</form>
+<article class="page-content" id="signup-page">
+	<h1 class="page-title">Sign up for a Scenable account</h1>
+	<section class="notification">
+		
+	</section>
+	<form action="{{ form_action }}" method="POST">
+	{% include "registration/signup_form.html" %}
+	</form>
+</article>
 {% endblock %}
 
 {% block sidebar %}
