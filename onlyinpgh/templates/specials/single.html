@@ -39,6 +39,7 @@ TODO #2: Only show expiration date if there is one.
 		<div class="map-container">
 			{% if special.place.location.is_geocoded %}
 			<div class="map" id="mainSpecialMap"></div>
+			{% endif %}
 			<button class="btn-primary" id="grabbitButton">
 			{% if not special.coupon %}
 				Grab It!
