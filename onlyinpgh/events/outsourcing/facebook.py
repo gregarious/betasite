@@ -309,7 +309,7 @@ def add_fbevent(fb_event, place_candidate=None):
     return event
 
 
-def add_place_events(place, owner=None, on_failure=None):
+def add_place_events(place, owners=[], on_failure=None):
     '''
     Function to add all events connected to a place.
     '''
@@ -337,5 +337,5 @@ def add_place_events(place, owner=None, on_failure=None):
             else:
                 print '  place: %s (primitive) %s' % (event.place_primitive, unverfied)
 
-        if owner is not None:
+        for owner in owners:
             Role.objects.get_or_create(event=event, role_type='owner', organization=owner)

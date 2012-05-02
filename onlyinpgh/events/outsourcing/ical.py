@@ -1,6 +1,6 @@
 from onlyinpgh.events.models import Event, Role, EventMeta, ICalendarFeed
 
-from django.utils.timezone import make_aware
+from django.utils import timezone
 from django.db import transaction
 
 import icalendar
@@ -11,42 +11,42 @@ import re
 
 
 def process_time(component, default_tz_str=None):
-        '''
-        Attempts to return a timezone-aware version of the component's
-        datetime, trying in this order:
-        - If time string ends in Z, it's UTC
-        - If TZID is specified in the component
-        - If a default_tz_str is specified
+    '''
+    Attempts to return a timezone-aware version of the component's
+    datetime, trying in this order:
+    - If time string ends in Z, it's UTC
+    - If TZID is specified in the component
+    - If a default_tz_str is specified
 
-        If these steps fail, a naive datetime will be returned.
-        '''
-        dt = component.dt
-        try:
-            # if its UTC, we'll already have an aware timezone
-            if dt.tzinfo:
-                return dt
-        except AttributeError:
-            # TODO: once allday is supported, use it
-            # if no timezone attribute, it must be a regular date object. give it a time of midnight
-            return datetime.datetime.combine(dt, datetime.time())
+    If these steps fail, a the defawult timeone in the settings will
+    be used.
+    '''
+    dt = component.dt
+    try:
+        # if its UTC, we'll already have an aware timezone
+        if dt.tzinfo:
+            return dt
+    except AttributeError:
+        # TODO: once allday is supported, use it
+        # if no timezone attribute, it must be a regular date object. give it a time of midnight
+        dt = datetime.datetime.combine(dt, datetime.time())
 
-        # otherwise, we need to find a timezone and localize to it
-        tz_str = component.params.get('TZID', default_tz_str)
-        if tz_str is None:
-            # TODO: log unavailable timezone message
-            return component.dt
-        try:
-            return make_aware(component.dt, tz_str)
-        except pytz.exceptions.UnknownTimeZoneError:
-            # TODO: log unknown timezone message
-            return component.dt
+    # otherwise, we need to find a timezone and localize to it
+    tz_str = component.params.get('TZID', default_tz_str)
+    if tz_str is None:
+        # TODO: log unavailable timezone message
+        return timezone.make_aware(dt, timezone.get_current_timezone())
+    try:
+        return timezone.make_aware(dt, pytz.timezone(tz_str))
+    except pytz.exceptions.UnknownTimeZoneError:
+        # TODO: log unknown timezone message
+        return timezone.make_aware(dt, timezone.get_current_timezone())
 
 
 class FeedImporter(object):
-    def __init__(self, feed_inst, feed_owner=None):
+    def __init__(self, feed_inst):
         '''initialize from an ICalendarFeed instance'''
         self.feed_instance = feed_inst
-        self.feed_owner = feed_owner
 
     @classmethod
     @transaction.commit_on_success
@@ -96,14 +96,12 @@ class FeedImporter(object):
         default_tz_str = ical.get('X-WR-TIMEZONE')
 
         for entry in ical.walk('vevent'):
-            dtstart = process_time(entry['dtstart'], default_tz_str)
-            if start_filter is not None and dtstart < start_filter:
-                continue
-            event = self.process_entry(entry, default_tz_str)
-            print event.id, event
+            event = self.process_entry(entry, default_tz_str, start_filter)
+            if event:
+                print event.id, event
 
     @transaction.commit_on_success
-    def process_entry(self, entry, default_tz_str=None):
+    def process_entry(self, entry, default_tz_str=None, start_filter=None):
         '''
         Process a single iCal entry, adding a new event or updating a current
         one if it is synced to this entry.
@@ -164,11 +162,15 @@ class FeedImporter(object):
             event.dtend = process_time(entry['dtend'], default_tz_str)
             event.description = entry.get('description', '').strip()
 
+            # fitler out evnets before the start filter
+            if start_filter is not None and event.dtstart < start_filter:
+                    return None
+
             event.save()
 
-            if self.feed_owner:
+            if self.feed_instance.owner:
                 Role.objects.get_or_create(role_type='owner',
-                                            organization=self.feed_owner,
+                                            organization=self.feed_instance.owner,
                                             event=event)
 
             if new_tracker:

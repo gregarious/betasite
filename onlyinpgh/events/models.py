@@ -123,11 +123,14 @@ class Attendee(models.Model):
 
 
 class ICalendarFeed(models.Model):
+    class Meta:
+        verbose_name = 'iCalendar Feed'
     url = models.URLField(max_length=300)
     owner = models.ForeignKey(Organization, null=True, blank=True)
     name = models.CharField(max_length=100, blank=True)
     candidate_places = models.ManyToManyField(Place,
-        verbose_name=u'A collection of Places that are likely venues for events in this feed')
+        verbose_name=u'A collection of Places that are likely venues for events in this feed',
+        null=True, blank=True)
 
     def __unicode__(self):
         return self.name
