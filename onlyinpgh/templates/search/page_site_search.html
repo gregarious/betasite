@@ -4,85 +4,117 @@
 <article class="page-content" id="search-results-page">
     <h2>Search</h2>
 
-    <form method="get" action="{% url site-search %}">
-        <table>
-            {# form has one field: a text field called "q" #}
-            {{ form.as_table }}
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Search">
-                </td>
-            </tr>
-        </table>
-
+    <form method="get" action="{% url site-search %}" class="simple-form">
+        
+            {{ form.q }}
+        
+            <input type="submit" value="Search">
+        </form>
         {% if query %}
             {% if results %}
             <section class="results-type">
                 <h3>Places</h3>
+                {% if results.places %}
                 <ul class="feed">
-                {% for result in results.places %}
+                {% for result in results.places|slice:"0:5" %}
                     <li class="result">
-                        <a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a>
+                        <h4 class="item-title"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></h4>
+                        <p>{{result.object.location.address}}</p>
+                        {% include "tags/tag_list.html" with tags=result.object.tags %}
                     </li>
-                {% empty %}
-                <p>None found.</p>
                 {% endfor %}
                 </ul>
+                <ul class="thumb-feed">
+                {% load thumbnail %}
+                {% for result in results.places|slice:"7" %}
+                    {% thumbnail results.object.image "50x50" crop="center" as im %}
+                    <li><img src="{{im.url}}" alt="{{result.object.name}}" /></li>
+                    {% endthumbnail %}
+                {% endfor %}
+                </ul>
+                <a class="right" href="{% url places-feed %}?q={{query}}" title="See more places...">See all...</a>
+                {% else %}
+                <p class="none-found">None found.</p>
+                {% endif %}
+                </ul>
+                {% if results.places %}
+                
+                {% endif %}
             </section>
             <section class="results-type">
                 <h3>Events</h3>
+                {% if results.events %}
                 <ul class="feed">
                 {% for result in results.events %}
                     <li class="result">
-                        <h4><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></h4>
-                        <p>{{result.object.dtstart}} - {{result.object.dtend}}</p>
-                        <p>{{result.object.place.location.address}}</p>
+                        <h4 class="item-title"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></h4>
+                        <p>{{result.object.dtstart|date:"N j, f a"}} - {{result.object.dtend|date:"f a"}}</p>
+                        <p>at {{result.object.place.name}}</p>
                     </li>
-                {% empty %}
-                <p>None found.</p>
                 {% endfor %}
                 </ul>
+                <a class="right" href="{% url events-feed %}?q={{query}}" title="See more events...">See all...</a>
+                {% else %}
+                <p class="none-found">None found.</p>
+                {% endif %}
+
             </section>
             <section class="results-type">
                 <h3>Specials</h3>
+                {% if results.specials %}
                 <ul class="feed">
                 {% for result in results.specials %}
                     <li class="results">
-                        <a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a>
+                        <h4 class="item-title"><a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a></h4>
+                        <p>at {{result.object.place.name}}</p>
                     </li>
-                {% empty %}
-                <p>None found.</p>
                 {% endfor %}
                 </ul>
+                <a class="right" href="{% url specials-feed %}?q={{query}}" title="See more specials...">See all...</a>
+                {% else %}
+                <p class="none-found">None found.</p>
+                {% endif %}
             </section>
             <section class="results-type">
                 <h3>News</h3>
-                <ul class="feed">
+                {% if results.news_articles %}
+                <ul class="feed news">
                 {% for result in results.news_articles %}
-                    <li class="item">{{result.object.title}}</li>
-                {% empty %}
-                <p>None found.</p>
+                    <li class="result">
+                        <h4 class="item-title"><a href="{{result.object.fulltext_url}}">{{result.object.title}}</a></h4>
+                        <ul class="item-details">
+                            <li>Source: <a href="{{result.object.source_site}}">{{result.object.source_name}}</a></li>
+                            <li>{{result.object.publication_date}}</li>
+                            <li class="blurb">{{result.object.blurb|truncatewords:20}} <a href="{{result.object.fulltext_url}}">See full article</a></li>
+                        </ul>
+                    </li>
                 {% endfor %}
                 </ul>
+                <a href="{% url news-feed %}?q={{query}}" class="right" title="See more news...">See all...</a>
+                {% else %}
+                <p class="none-found">None found.</p>
+                {% endif %}
             </section>
             <section class="results-type">
                 <h3>Chatter</h3>
+                {% if results.chatter_posts %}
                 <ul class="feed">
                 {% for result in results.chatter_posts %}
                     <li class="item">{{result.object.content}}</li>
-                {% empty %}
-                <p>None found.</p>
                 {% endfor %}
                 </ul>
+                <a class="right" href="{%url chatter-feed%}?q={{query}}" title="See more posts...">
+                {% else %}
+                <p>None found.</p>
+                {% endif %}
             </section>
+
             {% else %}  {# no results #}
-                <p>Nothin!</p>
+            <p class="none-found">Couldn't find anything.</p>
             {% endif %}
 
         {% else %}
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
-    </form>
 </article>
 {% endblock %}
