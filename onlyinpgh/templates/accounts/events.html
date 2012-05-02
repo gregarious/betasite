@@ -2,13 +2,13 @@
 Inner template to render a list of events the user is attending.
 
 Context variables:
-    [items]:  list of EventData instances
+    [feed_items]:  list of EventData instances
 {% endcomment %}
 
 <h2 class="detail-section-title">My Events</h2>
-{% if item %}
+{% if feed_items %}
 	<ul class="feed my-feed events">
-	    {% for item in items %}
+	    {% for item in feed_items %}
 	        <li class="item">{% include "events/feed_item.html" with event=item %}</li>
 	    {% endfor %}
 	</ul>
