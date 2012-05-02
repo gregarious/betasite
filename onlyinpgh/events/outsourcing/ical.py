@@ -54,7 +54,7 @@ class FeedImporter(object):
         '''initialize from a url and Organization instance'''
 
         f = urllib.urlopen(url)
-        ical = icalendar.Calendar.from_string(f.read())
+        ical = icalendar.Calendar.from_ical(f.read())
         f.close()
         cal_name = ical.get('X-WR-CALNAME', url)
 
@@ -90,7 +90,7 @@ class FeedImporter(object):
         db.
         '''
         f = urllib.urlopen(self.feed_instance.url)
-        ical = icalendar.Calendar.from_string(f.read())
+        ical = icalendar.Calendar.from_ical(f.read())
         f.close()
 
         default_tz_str = ical.get('X-WR-TIMEZONE')
