@@ -1563,6 +1563,10 @@ legend {
 }
 /* TEMPLATE SPECIFICS --------- */
 /* Chatter */
+#chatter-page .page-header,
+#news-page .page-header {
+  margin-top: 2em;
+}
 #chatter-page .page-title-container,
 #news-page .page-title-container {
   float: left;
@@ -1574,8 +1578,9 @@ legend {
 }
 #chatter-page .page-title,
 #news-page .page-title {
-  margin: 0;
+  margin: 0.3em 0 0;
   font-size: 2em;
+  padding-bottom: 0;
 }
 #chatter-page .page-header-content,
 #news-page .page-header-content {
@@ -1585,6 +1590,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  margin-top: 0.5em;
 }
 #chatter-page .page-header-content .tip,
 #news-page .page-header-content .tip {
