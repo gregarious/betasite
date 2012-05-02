@@ -242,6 +242,7 @@ body {
   background: #e1e1e1 url("/static/img/logos/oakland-bkgd-450.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   overflow-x: hidden;
+  height: 100%;
 }
 /* TYPOGRAPHY -------- */
 h1 {
@@ -955,6 +956,7 @@ legend {
   margin: 0 auto;
   width: 1140px;
   position: relative;
+  height: 100%;
 }
 .wrap:before,
 .wrap:after {
@@ -975,12 +977,13 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-bottom: 3em;
+  min-height: 100%;
   padding: 0.7em 1.5em 0.5em;
   position: relative;
-  -webkit-border-radius: 0 0 0.5em 0.5em;
-  -moz-border-radius: 0 0 0.5em 0.5em;
-  border-radius: 0 0 0.5em 0.5em;
+  /*-webkit-border-radius: 0 0 0.5em 0.5em; 
+   -moz-border-radius: 0 0 0.5em 0.5em; 
+        border-radius: 0 0 0.5em 0.5em;*/
+
   top: 5.5em;
   z-index: 1;
 }
@@ -989,20 +992,13 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 2em;
+  position: absolute;
   font-size: 0.9em;
-  *zoom: 1;
+  bottom: 10px;
+  left: 0;
   padding: 0.5em 0;
   text-align: center;
   border-top: 1px #e1e1e1 solid;
-}
-#site-footer:before,
-#site-footer:after {
-  content: "";
-  display: table;
-}
-#site-footer:after {
-  clear: both;
 }
 /* SIDEBAR ---------- */
 #site-sidebar {
@@ -1174,7 +1170,7 @@ legend {
   padding-bottom: 0.5em;
 }
 .page-content {
-  padding: 0 1em 1em;
+  padding: 0 1em 6em;
   *zoom: 1;
 }
 .page-content:before,
@@ -1742,7 +1738,6 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: #fff;
-  border: 2px #e1e1e1 solid;
   padding: 0.7em;
   background-color: #f9f9f9;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e9e9e9));
@@ -1787,8 +1782,8 @@ legend {
 .post img {
   float: left;
   margin-right: 0.5em;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
 }
 .post.post-meta p {
   color: #666;
@@ -1966,13 +1961,11 @@ legend {
 }
 /* STATIC PAGES ------------ */
 .static-section {
-  border-bottom: 1px solid #e1e1e1;
-  padding-bottom: 2em;
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 2em 0;
+  margin: 2em 0 0;
   *zoom: 1;
   font-size: 0.9em;
 }
@@ -2007,6 +2000,14 @@ legend {
   float: right;
   width: 40%;
   margin: 0 0 1em 1em;
+}
+#team .static-section {
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #e1e1e1;
+}
+#team .static-section:last-child {
+  border: none;
 }
 #about-oakland img,
 #scenable-mission img {
