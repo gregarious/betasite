@@ -56,7 +56,7 @@ scenable.useractions = {
 
             $el.children('.state-off').hide();
             $el.children('.state-on').hide();
-            $el.children('.state-pending').text('processing...').show();
+            $el.children('.state-pending').show();
 
             return false;
         });
