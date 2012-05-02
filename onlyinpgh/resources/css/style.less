@@ -485,6 +485,12 @@ legend {
   }
 }
 
+#login-page, #signup-page {
+  form {
+    padding: 0 6%;
+  }
+}
+
 /* HEADER ------------- */
 
 #logo {
@@ -884,7 +890,7 @@ legend {
 
 .single-container {
   .row();
-  padding: 3%;
+  padding: 3% 3% 6em;
   .clearfix();
   .item-details {
     font-size: 1em;
@@ -1386,7 +1392,7 @@ legend {
 
 .directions {
   margin: 0.5em 0;
-  text-align: center;
+  //text-align: center;
 
   a {
     background: url("@{static_url}img/icons/map-marker-small.png") no-repeat top left;
@@ -1416,7 +1422,7 @@ legend {
 }
 
 #map-unavailable {
-  background: #e1e1e1 url('@{static_url}img/map-unavailable.png') no-repeat center;
+  background: #ccc url('@{static_url}img/map-unavailable.png') no-repeat center;
 }
 
 /* STATIC PAGES ------------ */
@@ -1636,7 +1642,7 @@ legend {
 
 .third {
   .column(4);
-}
+}f
 
 .half {
   .column(6);
@@ -1651,8 +1657,30 @@ legend {
   margin: 0.5em auto 0;
 }
 
-.ajax-action-container {
-  height: 1.5em;
+.notification {
+  width: 88%;
+  
+  float: left;
+  .border-box();
+  .rounded(0.5em);
+  border: 1px @yellow solid;
+  margin: 0 6% 2em;
+  padding: 3%;
+  background: fade(@yellow, 30%);  
+
+  h3 {
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+
+  img {
+    float: left;
+    margin-right: 1em;
+  }
+
+  p {
+    display: inline;
+  }
 }
 
 /* ICONS ----------- */
