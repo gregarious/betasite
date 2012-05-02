@@ -2,19 +2,23 @@
 Inner template to render a list of events the user is attending.
 
 Context variables:
-    [items]:  list of EventData instances
+    [feed_items]:  list of EventData instances
 {% endcomment %}
 
 <h2 class="detail-section-title">My Events</h2>
-{% if item %}
+{% if feed_items %}
 	<ul class="feed my-feed events">
-	    {% for item in items %}
+	    {% for item in feed_items %}
 	        <li class="item">{% include "events/feed_item.html" with event=item %}</li>
 	    {% endfor %}
 	</ul>
 {% else %}
 	<section class="no-items">
     	<img src="{{STATIC_URL}}img/manage-events.png" alt="Calendar" />
+    	{% if user == public_user %}
     	<p>You currently don't have any favorited events. Browse the Events Page or look for an Events tab on a place's page. Then go to the Event's page and choose Favorite under the thumbnail.</p> 
+    	{% else %}
+    	<p>No favorited events here!</p>
+    	{% endif %}
     </section>
 {% endif %}

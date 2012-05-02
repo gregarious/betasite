@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.now.viewmodels import NowFeedItem
@@ -13,11 +14,12 @@ import random
 
 
 ### URL-LINKED VIEWS ###
+@login_required
 def page_now(request):
     # TODO: logic to pick relevant items
     objects = []
-    objects += random.sample(Place.objects.all(), min(4, Place.objects.count()))
-    objects += random.sample(Event.objects.all(), min(4, Event.objects.count()))
+    objects += random.sample(Place.listed_objects.all(), min(4, Place.objects.count()))
+    objects += random.sample(Event.listed_objects.all(), min(4, Event.objects.count()))
     objects += random.sample(Special.objects.all(), min(4, Special.objects.count()))
     random.shuffle(objects)
 

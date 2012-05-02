@@ -15,9 +15,7 @@ class PlaceData(object):
         fields = ('id', 'name', 'location', 'description', 'tags', 'image',
                   'url', 'fb_id', 'twitter_username', 'listed', 'get_absolute_url')
         if isinstance(user, User):
-            self.is_favorite = place.favorite_set\
-                                    .filter(user=user, is_favorite=True)\
-                                    .count() > 0
+            self.is_favorite = place.favorite_set.filter(user=user).count() > 0
         else:
             self.is_favorite = False
         for attr in fields:

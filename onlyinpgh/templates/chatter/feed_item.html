@@ -1,11 +1,11 @@
 <div class="post-content">
-	{{item.content}}
+	<p>{{item.content}}</p>
 </div>
 <div class="post-meta">
 	{% if item.author.get_profile.avatar_url %}
-	<img src="{{item.author.get_profile.avatar_url}}" alt="{{item.author.get_profile.display_or_username}}'s avatar">
+	<img src="{{item.author.get_profile.avatar_url}}" alt="{{item.author.get_profile.display_or_username}}'s avatar" />
 	{% else %}
-	<img src="{{STATIC_URL}}img/default-place.png" alt="{{item.author.get_profile.display_or_username}}'s avatar">
+	<img src="{{STATIC_URL}}img/default-avatar.png" alt="{{item.author.get_profile.display_or_username}}'s avatar" />
 	{% endif %}
-	<p class="meta">posted {{item.dtcreated|timesince}} ago by <a href="#">{{item.author.get_profile.display_or_username}}</a></p>
+	<p class="tip">posted {{item.dtcreated|timesince}} ago by <a href="{% url account-public uname=item.author.username %}">{{item.author.get_profile.display_or_username}}</a></p>
 </div>

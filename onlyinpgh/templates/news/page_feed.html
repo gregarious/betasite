@@ -5,9 +5,14 @@
 
 {% block main-content %}
 <article class="page-content no-map" id="news-page">
-	<div class="page-title-container">
-		<h1 class="ribbon-title">News</h1>
-	</div>
+	<header class="page-header">
+		<div class="page-title-container">
+			<h1 class="page-title">News</h1>
+		</div>
+		<!-- <div class="page-header-content">
+			<p>Oakland news.</p>
+		</div> -->
+	</header>
 	<ul class="feed news">
 	{% for item in items %}
 	    <li class="item">
@@ -16,4 +21,8 @@
 	{% endfor %}
 	</ul>
 </article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_news.html" %}
 {% endblock %}

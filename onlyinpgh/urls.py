@@ -15,9 +15,9 @@ urlpatterns = patterns('',
 
     url(r'^login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/login/'}),
 
-    url(r'^account/', include('onlyinpgh.accounts.urls')),
+    url(r'^accounts/', include('onlyinpgh.accounts.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -44,6 +44,11 @@ urlpatterns = patterns('',
     # Scenable and Oakland shirt QRs
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
+
+    # Error pages
+    url(r'^500/$', direct_to_template, {'template': '500.html'}, name='500'),
+    url(r'^404/$', direct_to_template, {'template': '404.html'}, name='404'),
+    url(r'^403/$', direct_to_template, {'template': '403.html'}, name='403'),
 
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),

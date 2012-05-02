@@ -2,18 +2,27 @@
 
 {% comment %}
 - items: list of chatter Post model instances
+- form : PostForm object (from chatter.forms)
 {% endcomment %}
 
 {% block main-content %}
 <article class="page-content no-map" id="chatter-page">
-    <div class="page-title-container">
-        <h1 class="ribbon-title">Chatter</h1>
-    </div>
-    <form class="post-form simple-form">
-        <input type="text" />
-        <input type="submit" value="Post" />
-        <p class="tip">Say something about Oakland. 140 characters max.</p>
-    </form>
+    <header class="page-header">
+        <div class="page-title-container">
+            <h1 class="page-title">Chatter</h1>
+        </div>
+        <div class="page-header-content">
+            <form class="post-form simple-form" method="POST" action="{% url chatter-feed %}">
+                {% csrf_token %}
+                {{ form.content }}
+                <input type="submit" value="Post" />
+                <p class="tip">Say something about Oakland. 140 characters max.</p>
+                {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+            </form>
+        </div>
+    </header>
     <ul class="feed chatter">
     {% for item in items %}
         <li class="post">
@@ -22,4 +31,8 @@
     {% endfor %}
     </ul>
 </article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_chatter.html" %}
 {% endblock %}

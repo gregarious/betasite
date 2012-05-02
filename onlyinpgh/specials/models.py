@@ -43,6 +43,14 @@ class Special(models.Model, ViewModel):
     def get_absolute_url(self):
         return ('special-detail', (), {'sid': self.id})
 
+    def assign_coupon(self, user):
+        '''
+        Returns a new coupon for the given user. Won't create duplicate
+        coupons.
+        '''
+        coupon, created = self.coupon_set.get_or_create(user=user)
+        return coupon
+
     def __unicode__(self):
         return self.title
 
@@ -73,9 +81,8 @@ class Coupon(models.Model):
     uuid = models.CharField(max_length=36, unique=True, editable=False, blank=True)
 
     def save(self, *args, **kwargs):
-        print 'overridden Coupon save called'
         if self.uuid == '':
-            self.uuid = uuid4()
+            self.uuid = str(uuid4())
         super(Coupon, self).save(*args, **kwargs)
 
     @models.permalink

@@ -1,72 +1,146 @@
 {% extends 'page.html' %}
 
 {% block main-content %}
-    <h2>Search</h2>
+{% load thumbnail %}
+<article class="page-content" id="search-results-page">
 
-    <form method="get" action="{% url site-search %}">
-        <table>
-            {# form has one field: a text field called "q" #}
-            {{ form.as_table }}
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Search">
-                </td>
-            </tr>
-        </table>
-
-        {% if query %}
-            {% if results %}
-                <h3>Places</h3>
+    <header class="page-header">
+        <h1 class="page-title">Search</h1>
+        <form method="get" action="{% url site-search %}" class="simple-form">
+        {{ form.q }}
+        <input type="submit" value="Search">
+        </form>
+    </header>
+    
+    {% if query %}
+        {% if results %}
+        <section class="results-type row-container">
+            <h3>Places</h3>
+            {% if results.places %}
                 <ul class="feed">
-                {% for result in results.places %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></li>
-                {% empty %}
-                <p>None found.</p>
-                {% endfor %}
+                    {% for result in results.places|slice:"0:6" %}
+                    <li class="item">
+                    <a href="{{result.object.get_absolute_url}}">
+                        {% include "places/feed_item.html" with place=result.object %}
+                    {% comment %}
+                        {% thumbnail result.object.image "50x50" crop="center" as im %}
+                        <img class="thumbnail" alt="{{result.object.name}}" src="{{im.url}}" />
+                        {% empty %}
+                        <img class="thumbnail" alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        {% endthumbnail %}
+                        <h4 class="item-title">{{result.object.name}}</h4>
+                        <p>{{result.object.location.address}}</p>
+                        {% include "tags/tag_list.html" with tags=result.object.tags %}{% endcomment %}
+                        </a>
+                    </li>
+                    {% endfor %}
                 </ul>
+                <div class="see-more-thumbs">
+                    <a href="{% url places-feed %}?q={{query}}" title="See more places...">
+                    {% for result in results.places|slice:"6:27" %}
+                        {% thumbnail result.object.image "50x50" crop="center" as im %}
+                        <img alt="{{result.object.name}}" src="{{im.url}}" />
+                        {% empty %}
+                        <img alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        {% endthumbnail %}
+                    {% endfor %}
+                    <div class="see-more">See all place results...</div>
+                    </a>
+                </div>
+            {% else %}
+            <p>None found.</p>
+            {% endif %}
+        </section>
 
-                <h3>Events</h3>
-                <ul class="feed">
-                {% for result in results.events %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></li>
-                {% empty %}
-                <p>None found.</p>
+        <section class="results-type">
+            <h3>Events</h3>
+            {% if results.events %}
+            <ul class="feed events">
+            {% for result in results.events|slice:"4" %}
+                <li class="item">
+                    {% include "events/feed_item.html" with event=result.object %}
+                </li>
+            {% endfor %}
+            </ul>
+             <div class="see-more-thumbs">
+                <div>
+                {% for result in results.events|slice:"5:" %}
+                    <a href="{{result.object.get_absolute_url}}">
+                        {% thumbnail result.object.image "50x50" crop="center" as im %}
+                        <img alt="{{result.object.name}}" src="{{im.url}}" />
+                        {% empty %}
+                        <img alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        {% endthumbnail %}
+                    </a>
                 {% endfor %}
-                </ul>
-
-                <h3>Specials</h3>
-                <ul class="feed">
-                {% for result in results.specials %}
-                    <li class="item"><a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a></li>
-                {% empty %}
-                <p>None found.</p>
-                {% endfor %}
-                </ul>
-
-                <h3>News</h3>
-                <ul class="feed">
-                {% for result in results.news_articles %}
-                    <li class="item">{{result.object.title}}</li>
-                {% empty %}
-                <p>None found.</p>
-                {% endfor %}
-                </ul>
-
-                <h3>Chatter</h3>
-                <ul class="feed">
-                {% for result in results.chatter_posts %}
-                    <li class="item">{{result.object.content}}</li>
-                {% empty %}
-                <p>None found.</p>
-                {% endfor %}
-                </ul>
-            {% else %}  {# no results #}
-                <p>No results.</p>
+                </div>
+                <div class="see-more"><a href="{% url events-feed %}?q={{query}}" title="See more events...">See all event results...</a></div>
+            </div>
+            {% else %}
+            <p>None found.</p>
             {% endif %}
 
-        {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
+        </section>
+        <section class="results-type">
+            <h3>Specials</h3>
+            {% if results.specials %}
+            <ul class="feed">
+            {% for result in results.specials %}
+                <li class="results">
+                    <h4 class="item-title"><a href="{{result.object.get_absolute_url}}">{{result.object.title}}</a></h4>
+                    <p>at {{result.object.place.name}}</p>
+                </li>
+            {% endfor %}
+            </ul>
+            <a class="right" href="{% url specials-feed %}?q={{query}}" title="See more specials...">See all special results...</a>
+            {% else %}
+            <p>None found.</p>
+            {% endif %}
+        </section>
+        <section class="results-type">
+            <h3>News</h3>
+            {% if results.news_articles %}
+            <ul class="feed news">
+            {% for result in results.news_articles %}
+                <li class="result">
+                    <h4 class="item-title"><a href="{{result.object.fulltext_url}}">{{result.object.title}}</a></h4>
+                    <ul class="item-details">
+                        <li>Source: <a href="{{result.object.source_site}}">{{result.object.source_name}}</a></li>
+                        <li>{{result.object.publication_date}}</li>
+                        <li class="blurb">{{result.object.blurb|truncatewords:20}} <a href="{{result.object.fulltext_url}}">See full article</a></li>
+                    </ul>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="{% url news-feed %}?q={{query}}" class="right" title="See more news...">See all...</a>
+            {% else %}
+            <p>None found.</p>
+            {% endif %}
+        </section>
+        <section class="results-type">
+            <h3>Chatter</h3>
+            {% if results.chatter_posts %}
+            <ul class="feed">
+            {% for result in results.chatter_posts %}
+                <li class="item">{{result.object.content}}</li>
+            {% endfor %}
+            </ul>
+            <a class="right" href="{%url chatter-feed%}?q={{query}}" title="See more posts...">
+            {% else %}
+            <p>None found.</p>
+            {% endif %}
+        </section>
+
+        {% else %}  {# no results #}
+        <p class="none-found">No results!</p>
         {% endif %}
-    </form>
+
+    {% else %}
+        {# Show some example queries to run, maybe query syntax, something else? #}
+    {% endif %}
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_search.html" %}
 {% endblock %}

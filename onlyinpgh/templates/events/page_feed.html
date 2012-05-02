@@ -15,7 +15,7 @@ Context variables:
 <article class="page-content" id="events-page">
     
     <div class="map-container">
-        <div class="page-title-container">
+        <div class="map-title-container">
             <h1 class="ribbon-title">Events</h1>
         </div>
         <div class="map" id="mainEventFeedMap"></div>
@@ -27,17 +27,23 @@ Context variables:
             <input type="submit" value="Filter" />
         </form>
         <nav class="prev-next" id="events-feed-nav">
-            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}" class="prev"><!-- <img src="{{STATIC_URL}}img/icons/arrow-left.png"alt="Previous" /> --></a>{% endif %}
-            <div class="page-num">{{page.number}}</div>
-            <!-- Insert current page here (i.e. 2/10) -->
-            {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}" class="next"><!-- <img src="{{STATIC_URL}}img/icons/arrow-right.png" alt="Next" /> --></a>{% endif %}
+            <div class="previous">
+            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            <div class="page-num">
+                <p>Page</p>
+                {{page.number}} / {{page.paginator.num_pages}}</div>
+            <div class="next">
+                {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}">&rarr;</a>{% else %}&nbsp;{% endif %}
+            </div>
         </nav>
     </div>
-
-    <ul class="feed" id="mainEventFeed">
+    {% if not page.object_list %}
+        <div class="none-found">No results found.</div>
+    {% else %}
+    <ul class="feed events" id="mainEventFeed">
 
     </ul> <!-- .feed#mainEventFeed -->
-
+    {% endif %}
 </article> <!-- .page-content -->
 {% endblock %}
 
@@ -51,7 +57,7 @@ $(function(){
     // need to overwrite default geolocation accessor
     var EventItem = scenable.mapFeed.Item.extend({
         getLatLng: function() {
-            var loc = this.attributes.place.location;
+            var loc = this.attributes.place && this.attributes.place.location;
             if(loc &&
                loc.latitude !== null && !_.isUndefined(loc.latitude) &&
                loc.longitude !== null && !_.isUndefined(loc.longitude)) {

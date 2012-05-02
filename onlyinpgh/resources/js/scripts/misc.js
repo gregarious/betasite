@@ -24,17 +24,6 @@ $(function(){
 	// 	$(this).find('.item-type').fadeOut(270);
 	// });
 
-	// Grabbit modal
-    $('.grabbit-modal').dialog({
-        maxHeight: 500,
-        modal: true,
-        autoOpen: false,
-    });
-
-    $('#openGrabbitModal').click(function(){
-        $('.grabbit-modal').dialog("open");
-    });
-
     // Sidebar feedback modal
 	$('.feedback-modal').dialog({
         maxHeight: 700,
@@ -45,5 +34,23 @@ $(function(){
     $('#openFeedbackModal').click(function(){
         $('.feedback-modal').dialog("open");
     });    
+
+    // Show 'private' or 'public' next to checkbox in manage account panel
+    // For later. 
+    // if ($('#account-privacy input[type="checkbox"]').is(':checked')) {
+    //     $('.check-value').html('Public');
+    //     $(this).change(function() {
+    //     	$('.check-value').html('Private');
+    //     });
+
+    //     console.log('check!');
+    // } else {
+    // 	$('.check-value').html('Private');
+    // 	$(this).change(function() {
+    //     	$('.check-value').html('Public');
+    //     });
+    // }
+    
+
 
 }); // document.ready

@@ -68,6 +68,26 @@ class Event(models.Model, ViewModel):
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
+    def add_attendee(self, user):
+        '''
+        Adds Attendee object to this Event's attendee_set.
+
+        Returns True if new Attendee created, False if already existed
+        '''
+        _, created = self.attendee_set.get_or_create(user=user)
+        return created
+
+    def remove_attendee(self, user):
+        '''
+        Deletes Attendee object from this Event's attendee_set.
+
+        Returns True if Attendee existed, False if it already didn't.
+        '''
+        attendees = self.attendee_set.filter(user=user)
+        attendee_exists = attendees.count() != 0
+        attendees.delete()
+        return attendee_exists
+
     @models.permalink
     def get_absolute_url(self):
         return ('event-detail', (), {'eid': self.id})
@@ -98,29 +118,19 @@ class Attendee(models.Model):
     event = models.ForeignKey(Event)
     dtcreated = models.DateTimeField('Time user added event', auto_now_add=True)
 
-    dtmodified = models.DateTimeField('Time user changed attendance status', auto_now=True)
-    # This flag must be True to consider user as attending
-    # defaults to True, but can be False is user revokes attendance
-    is_attending = models.BooleanField('Is user attending?"', default=True)
-
-    def revoke_attendance(self):
-        '''
-        After using this function, Attendee should never be used again:
-        create new one if user wants to re-attend.
-        '''
-        self.is_attending = False
-        self.save()
-
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.event)
 
 
 class ICalendarFeed(models.Model):
+    class Meta:
+        verbose_name = 'iCalendar Feed'
     url = models.URLField(max_length=300)
     owner = models.ForeignKey(Organization, null=True, blank=True)
     name = models.CharField(max_length=100, blank=True)
     candidate_places = models.ManyToManyField(Place,
-        verbose_name=u'A collection of Places that are likely venues for events in this feed')
+        verbose_name=u'A collection of Places that are likely venues for events in this feed',
+        null=True, blank=True)
 
     def __unicode__(self):
         return self.name

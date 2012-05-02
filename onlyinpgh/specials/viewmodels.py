@@ -7,12 +7,13 @@ class SpecialData(object):
                   'dexpires', 'dstart', 'total_available', 'total_sold',
                   'tags', 'get_absolute_url')
         if isinstance(user, User):
-            if len(special.coupon_set.filter(user=user, was_used=False)) > 0:
-                self.has_coupon = True
+            coupons = special.coupon_set.filter(user=user)
+            if coupons.count() == 0:
+                self.coupon = None
             else:
-                self.has_coupon = False
+                self.coupon = coupons[0]
         else:
-            self.has_coupon = False
+            self.coupon = None
 
         for attr in fields:
             setattr(self, attr, getattr(special, attr))
@@ -20,12 +21,19 @@ class SpecialData(object):
         self._add_dates()
 
     def _add_dates(self):
-        self.dstart_str = self.dstart.strftime('%b ') + \
-                          self.dstart.strftime('%d').lstrip('0') + \
-                          self.dstart.strftime(', %Y')
-        self.dexpires_str = self.dexpires.strftime('%b ') + \
-                            self.dexpires.strftime('%d').lstrip('0') + \
-                            self.dexpires.strftime(', %Y')
+        if self.dstart:
+            self.dstart_str = self.dstart.strftime('%b ') + \
+                              self.dstart.strftime('%d').lstrip('0') + \
+                              self.dstart.strftime(', %Y')
+        else:
+            self.dstart_str = ''
+
+        if self.dexpires:
+            self.dexpires_str = self.dexpires.strftime('%b ') + \
+                                self.dexpires.strftime('%d').lstrip('0') + \
+                                self.dexpires.strftime(', %Y')
+        else:
+            self.dexpires_str = ''
 
     def serialize(self):
         '''

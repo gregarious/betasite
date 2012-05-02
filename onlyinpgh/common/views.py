@@ -3,6 +3,9 @@ from django.core.urlresolvers import reverse
 
 from django.http import Http404
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import redirect_to_login
+from django.contrib.auth import REDIRECT_FIELD_NAME
 
 from haystack.views import SearchView
 from haystack.forms import SearchForm
@@ -10,6 +13,23 @@ from haystack.query import SearchQuerySet
 
 from onlyinpgh.common.utils.jsontools import sanitize_json
 import json
+import urlparse
+
+
+def to_login(request):
+    '''
+    Temporary measure to emulate how the login_required decorator redirects
+    an unauthenticated user (needed for clas-based search views)
+    '''
+    path = request.build_absolute_uri()
+    # If the login url is the same scheme and net location then just
+    # use the path as the "next" url.
+    login_scheme, login_netloc = urlparse.urlparse(reverse('login'))[:2]
+    current_scheme, current_netloc = urlparse.urlparse(path)[:2]
+    if ((not login_scheme or login_scheme == current_scheme) and
+        (not login_netloc or login_netloc == current_netloc)):
+        path = request.get_full_path()
+    return redirect_to_login(path, reverse('login'), REDIRECT_FIELD_NAME)
 
 
 class PageContext(RequestContext):
@@ -86,6 +106,12 @@ class PageSiteSearch(SearchView):
             content_dict=content)
         return render_to_response(self.template, context_instance=context)
 
+    def __call__(self, request, *args, **kwargs):
+        # lock non beta testers out
+        if not request.user or not request.user.is_authenticated():
+            return to_login(request)
+        return super(PageSiteSearch, self).__call__(request, *args, **kwargs)
+
 
 class PageFilteredFeed(SearchView):
     '''
@@ -102,6 +128,12 @@ class PageFilteredFeed(SearchView):
         kwargs['searchqueryset'] = sqs.models(model_class)
         super(PageFilteredFeed, self).__init__(*args, **kwargs)
 
+    def __call__(self, request, *args, **kwargs):
+        # lock non beta testers out
+        if not request.user or not request.user.is_authenticated():
+            return to_login(request)
+        return super(PageFilteredFeed, self).__call__(request, *args, **kwargs)
+
     def get_results(self):
         '''
         Ensures all results are returned if there is no query.
@@ -111,7 +143,7 @@ class PageFilteredFeed(SearchView):
         if not self.query:
             instances = self.hacked_unfiltered()
         else:
-            instances = [result.object for result in self.form.search()]
+            instances = self.hacked_filtered()
         return [self.viewmodel_class(instance, user=self.request.user) for instance in instances]
 
     def create_response(self):
@@ -132,6 +164,9 @@ class PageFilteredFeed(SearchView):
         content.update(self.extra_context())
         return render_to_response(self.template, context_instance=self.get_page_context(content))
 
+    def hacked_filtered(self):
+        return [result.object for result in self.form.search()]
+
     def hacked_unfiltered(self):
         '''
         Temporary hack to get a list of unfiltered results. Will either be
@@ -150,6 +185,7 @@ class PageFilteredFeed(SearchView):
 
 
 ### URL-LINKED VIEWS ###
+@login_required
 def page_home(request):
     return redirect(reverse('now'))
 
