@@ -40,6 +40,7 @@ Context variables:
 				<div>
 					{{form.birth_date}}
 					{{form.birth_date.errors}}
+					<p class="tip">MM/DD/YYYY</p>
 				</div> <!-- birth_date -->
 			</div>
 		</li>  <!-- gender & birth_date -->
@@ -88,18 +89,33 @@ Context variables:
 		{% with form=account_forms.preferences_form %}
 		<li class="field-container">
 			<div class="third">
-				<label name="{{form.public_favorites.html_name}}">Favorited Places</label>
+				<label name="{{form.public_favorites.html_name}}" for="id_public_favorites">
+					<img src="{{STATIC_URL}}img/manage-place.png" />
+					<!-- <p>Favorite Places</p> -->
+					<span class="check-value">Public</span>
+				</label>
 				{{form.public_favorites}}
+				
 			</div> <!-- public_favorites -->
 
 			<div class="third">
-				<label name="{{form.public_attendance.html_name}}">Events</label>
+				<label name="{{form.public_attendance.html_name}}" for="id_public_attendance">
+					<img src="{{STATIC_URL}}img/manage-events.png" />
+					<!-- <p>Events</p> -->
+					<span class="check-value">Public</span>
+				</label>
 				{{form.public_attendance}}
+				
 			</div> <!-- public_attendance -->
 
 			<div class="third">
-				<label name="{{form.public_coupons.html_name}}">My Coupons</label>
+				<label name="{{form.public_coupons.html_name}}" for="id_public_coupons">
+					<img src="{{STATIC_URL}}img/manage-special.png" />
+				<!-- 	<p>My Coupons</p> -->
+				<span class="check-value">Public</span>
+				</label>
 				{{form.public_coupons}}
+				
 			</div> <!-- public_coupons -->
 		</li>
 		{% endwith %}
@@ -117,6 +133,7 @@ Context variables:
 			</div>
 			<div class="field">
 				{{form.email}}
+				{{form.email.errors}}
 			</div>
 		</li> <!-- email -->
 		<li class="field-container">
@@ -125,6 +142,7 @@ Context variables:
 			</div>
 			<div class="field">
 				{{form.current_password}}
+				{{form.current_password.errors}}
 			</div>
 		</li> <!-- current_password -->
 
@@ -134,6 +152,7 @@ Context variables:
 			</div>
 			<div class="field">
 				{{form.new_password}}
+				{{form.new_password.errors}}
 			</div>
 		</li> <!-- new_password -->
 
@@ -143,6 +162,7 @@ Context variables:
 			</div>
 			<div class="field">
 				{{form.confirm_new_password}}
+				{{form.confirm_new_password.errors}}
 			</div>
 		</li> <!-- confirm_new_password -->
 		{% endwith %}

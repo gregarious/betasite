@@ -46,4 +46,22 @@ $(function(){
         $('.feedback-modal').dialog("open");
     });    
 
+    // Show 'private' or 'public' next to checkbox in manage account panel
+    // For later. 
+    // if ($('#account-privacy input[type="checkbox"]').is(':checked')) {
+    //     $('.check-value').html('Public');
+    //     $(this).change(function() {
+    //     	$('.check-value').html('Private');
+    //     });
+
+    //     console.log('check!');
+    // } else {
+    // 	$('.check-value').html('Private');
+    // 	$(this).change(function() {
+    //     	$('.check-value').html('Public');
+    //     });
+    // }
+    
+
+
 }); // document.ready

@@ -72,13 +72,6 @@ blockquote {
   font-size: 0.9em;
 }
 
-.host {
-
-    a {
-      font-weight: bold;
-    }
-}
-
 .points {
   font-family: 'KomikaTitleRegular', Impact, sans-serif;
   font-size: 3em;
@@ -89,7 +82,6 @@ blockquote {
 #openGrabbitModal {
   padding: 0.5em;
   font-size: 1.2em;
-  letter-spacing: 1px;
 }
 
 /* HEADINGS --------- */
@@ -229,11 +221,12 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 button, input[type="submit"], .btn {
   border: none;
-  .b-shadow(0, 0, 0.05em, #000);
+  .b-shadow(0, 0, 0.05em, @lgreen);
   color: #fff !important;
   font-size: 0.9em;
-  font-weight: bold;
+  //font-weight: bold;
   .gradient(@mgreen, @dgreen);
+  letter-spacing: 0.05em;
   padding: 0.5em;
   position: relative;
   .rounded(0.5em);
@@ -478,6 +471,32 @@ legend {
   }
 }
 
+#account-privacy {
+   
+  input[type="checkbox"] {
+    float: right;
+    margin-right: 0.5em;    
+  }
+
+
+  label {
+    text-align: center;
+    display: inline;
+
+    span {
+      font-size: 0.9em;
+      float: right;
+      margin-right: 30%;
+    }
+
+    img {
+      display: block;
+      margin: auto auto 1em;
+      width: 60px;
+    }
+  }
+}
+
 /* HEADER ------------- */
 
 #logo {
@@ -712,6 +731,26 @@ legend {
   //min-height: 130px;
 }
 
+.item-type {
+  .clearfix();
+  padding: 0.5em;
+  .rounded(0.3em);
+  .b-shadow(0.2em, 0.2em, 0.2em, #333);
+
+  &.type-place {
+    background: @yellow;
+  }
+
+  &.type-event {        
+    background: @lgreen;
+  } 
+
+  &.type-special {
+    background: @lblue;
+  }
+}
+
+
 /* PAGE --------- */
 
 .page-title {
@@ -741,6 +780,12 @@ legend {
   .feed {
     .clearfix();
     margin-top: 1em;
+
+    &.events {
+      .item {
+        height: 110px;
+      }
+    }
 
   }
 
@@ -1030,30 +1075,14 @@ legend {
 
   .short {
     .column(4);
-    //height: auto;
-    height: 320px;
+    .clearfix();
+    height: auto;
+    .border-box();
 
-    .item-type {
-      //width: 40px;
-      .clearfix();
-      padding: 0.5em;
-      .rounded(0.3em);
-      .b-shadow(0.2em, 0.2em, 0.2em, #333);
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      z-index: 999;
+    &:hover {
 
-      &.type-place {
-        background: @yellow;
-      }
-
-      &.type-event {        
-        background: @lgreen;
-      } 
-
-      &.type-special {
-        background: @lblue;
+      .item-content {
+        background: #f9f9f9;
       }
     }
 
@@ -1067,21 +1096,26 @@ legend {
       width: 100%;
       margin: 0;
       padding: 0.5em;
-      background: #f9f9f9;
       color: #000 !important;
       text-align: left;
       .rounded(0.3em);
     }
 
-  }
+    .item-type {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      z-index: 999;
+    }
 
-  .feed {
-    margin-left: 0;
-    margin-right: 0;
   }
 
   .news {
     .row();
+
+    .item {
+      cursor: text;
+    }
   }
 
   .events, .chatter {    
@@ -1090,6 +1124,10 @@ legend {
 
   .item-title a {
     font-size: 1em;
+  }
+
+  .feed {
+    margin: 0;
   }
 }
 
