@@ -13,6 +13,7 @@ scenable.useractions = {
         }
     },
 
+    // TODO: this setup is a bit too rushed for my tastes. begging for a Backbone impl with a good api.
     _attachAtomicHandler: function(ajaxActionElement, ajaxData, url, actions, isOn) {
         var $el = $(ajaxActionElement);
         isOn = _.isUndefined(isOn) ? $el.children('.state-on').is(":visible") : isOn;
@@ -58,12 +59,12 @@ scenable.useractions = {
             $el.children('.state-pending').text('processing...').show();
 
             return false;
-        });        
+        });
     },
 
     attachFavoriteHandler: function(ajaxActionElement, placeId, isOn) {
         scenable.useractions._attachAtomicHandler(
-            ajaxActionElement, 
+            ajaxActionElement,
             {'pid': placeId},
             '/places/ajax/favorite/',
             ['unfavorite', 'favorite'],
@@ -73,12 +74,12 @@ scenable.useractions = {
 
     attachAttendanceHandler: function(ajaxActionElement, eventId, isOn) {
       scenable.useractions._attachAtomicHandler(
-            ajaxActionElement, 
+            ajaxActionElement,
             {'eid': eventId},
             '/events/ajax/attend/',
             ['unattend', 'attend'],
             isOn
-        );  
+        );
     },
 
     buyCoupon: function(specialId) {
