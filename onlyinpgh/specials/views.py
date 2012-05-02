@@ -31,7 +31,10 @@ class PageSpecialsFeed(PageFilteredFeed):
             content_dict=content)
 
     def hacked_unfiltered(self):
-        return Special.objects.all()
+        return Special.objects.order_by('dexpires')
+
+    def hacked_filtered(self):
+        return sorted([result.object for result in self.form.search()], key=lambda s: s.dexpires)
 
 
 @login_required
