@@ -2,10 +2,10 @@
 Template for user's public profile.
 
 Context variables:
-    profile: PublicProfile context instance
+    public_user: User instance in question
 {% endcomment %}
-
 {% load thumbnail %}
+{% with profile=public_user.get_profile %}
 <header class="single-header">
     <div class="single-thumb-container">
         {% thumbnail profile.avatar_url "130x130" crop="center" as im %}
@@ -33,3 +33,4 @@ Context variables:
         </div>
     </section>
 </header>
+{% endwith %}

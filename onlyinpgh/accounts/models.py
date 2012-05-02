@@ -35,6 +35,11 @@ class UserProfile(models.Model, ViewModel):
 
     neighborhood = models.CharField(max_length=50, blank=True)
 
+    # temporary location for these settings. when they're more complcated, they'll have their own model setup
+    public_favorites = models.BooleanField(default=True)
+    public_attendance = models.BooleanField(default=False)
+    public_coupons = models.BooleanField(default=True)
+
     def __unicode__(self):
         return unicode(self.user)
 

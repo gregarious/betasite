@@ -2,16 +2,17 @@
 Inner template for nav panel
 
 Context variables:
+    public_user: User object
     current_panel: string
 {% endcomment %}
 
 {% with p=current_panel %}
 
 <ul>
-    <li><a href="{% url account-manage %}" {% if p == 'account' %}class="current-page"{% endif %}>Account</a></li>
-    <li><a href="{% url account-places %}" {% if p == 'places' %}class="current-page"{% endif %}>Places</a></li>
-    <li><a href="{% url account-events %}" {% if p == 'events' %}class="current-page"{% endif %}>Events</a></li>
-    <li><a href="{% url account-specials %}" {% if p == 'specials' %}class="current-page"{% endif %}>Specials</a></li>
+    <li><a href="{% url account-manage uname=public_user.username %}" {% if p == 'account' %}class="current-page"{% endif %}>Account</a></li>
+    <li><a href="{% url account-places uname=public_user.username%}" {% if p == 'places' %}class="current-page"{% endif %}>Places</a></li>
+    <li><a href="{% url account-events uname=public_user.username%}" {% if p == 'events' %}class="current-page"{% endif %}>Events</a></li>
+    <li><a href="{% url account-specials uname=public_user.username%}" {% if p == 'specials' %}class="current-page"{% endif %}>Specials</a></li>
 </ul>
 
 {% endwith %}
