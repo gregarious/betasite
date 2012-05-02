@@ -152,14 +152,16 @@ def page_manage_account(request, uname):
         return HttpResponseForbidden()
     if request.POST:
         # TODO: process credentials form
-        profile_form = UserProfileForm(user.get_profile(), data=request.POST, files=request.FILES)
-        preferences_form = ActivityPreferencesForm(user.get_profile(), data=request.POST)
+        profile_form = UserProfileForm(data=request.POST, files=request.FILES,
+            instance=user.get_profile())
+        preferences_form = ActivityPreferencesForm(data=request.POST,
+            instance=user.get_profile())
         if profile_form.is_valid() and preferences_form.is_valid():
             profile_form.save()
             preferences_form.save()
     else:
-        profile_form = UserProfileForm(user.get_profile())
-        preferences_form = ActivityPreferencesForm(user.get_profile)
+        profile_form = UserProfileForm(instance=user.get_profile())
+        preferences_form = ActivityPreferencesForm(instance=user.get_profile())
 
     forms = dict(
         profile_form=profile_form,
