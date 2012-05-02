@@ -50,7 +50,7 @@ $(function(){
     // need to overwrite default geolocation accessor
     var EventItem = scenable.mapFeed.Item.extend({
         getLatLng: function() {
-            var loc = this.attributes.place.location;
+            var loc = this.attributes.place && this.attributes.place.location;
             if(loc &&
                loc.latitude !== null && !_.isUndefined(loc.latitude) &&
                loc.longitude !== null && !_.isUndefined(loc.longitude)) {

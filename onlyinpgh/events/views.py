@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render_to_response
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 # from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
 from onlyinpgh.common.views import PageContext, PageFilteredFeed
@@ -29,7 +30,11 @@ class PageEventsFeed(PageFilteredFeed):
             content_dict=content)
 
     def hacked_unfiltered(self):
-        return Event.listed_objects.all()
+        return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtstart')
+
+    def hacked_filtered(self):
+        now = timezone.now()
+        return sorted([result.object for result in self.form.search() if result.object.dtend > now], key=lambda e: e.dtstart)
 
 
 @login_required

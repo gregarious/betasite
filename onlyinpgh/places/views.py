@@ -36,7 +36,10 @@ class PagePlacesFeed(PageFilteredFeed):
 
         Necessary because self.searchqueryset.all() seems to be buggy.
         '''
-        return Place.listed_objects.all()
+        return sorted([p for p in Place.listed_objects.all()], key=lambda p: -p.favorite_set.count())
+
+    def hacked_filtered(self):
+        return sorted([result.object for result in self.form.search()], key=lambda p: -p.favorite_set.count())
 
 
 @login_required

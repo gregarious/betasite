@@ -143,7 +143,7 @@ class PageFilteredFeed(SearchView):
         if not self.query:
             instances = self.hacked_unfiltered()
         else:
-            instances = [result.object for result in self.form.search()]
+            instances = self.hacked_filtered()
         return [self.viewmodel_class(instance, user=self.request.user) for instance in instances]
 
     def create_response(self):
@@ -163,6 +163,9 @@ class PageFilteredFeed(SearchView):
 
         content.update(self.extra_context())
         return render_to_response(self.template, context_instance=self.get_page_context(content))
+
+    def hacked_filtered(self):
+        return [result.object for result in self.form.search()]
 
     def hacked_unfiltered(self):
         '''
