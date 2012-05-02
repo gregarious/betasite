@@ -7,9 +7,14 @@
 
 {% block main-content %}
 <article class="page-content no-map" id="chatter-page">
-    <div class="page-title-container">
-        <h1 class="ribbon-title">Chatter</h1>
-    </div>
+    <header class="page-header">
+        <div class="page-title-container">
+            <h1 class="ribbon-title">Chatter</h1>
+        </div>
+        <div class="page-header-content">
+            <p>What do you have to say about Oakland? Find an interesting link? See something crazy on the street?</p>
+        </div>
+    </header>
     <form class="post-form simple-form" method="POST" action="{% url chatter-feed %}">
         {% csrf_token %}
         {{ form.content }}

@@ -1168,7 +1168,7 @@ legend {
 }
 /* PAGE --------- */
 .page-title {
-  font-size: 1.2;
+  font-size: 1.3em;
   border-bottom: 1px solid #e1e1e1;
   margin: 1em 0;
   padding-bottom: 0.5em;
@@ -1736,7 +1736,8 @@ legend {
 }
 /* Places */
 /* Chatter */
-#chatter-page {
+#chatter-page .feed,
+#chatter-page form {
   padding: 0 10%;
 }
 .post {
@@ -1959,12 +1960,40 @@ legend {
 .infowindow {
   font-size: 0.8em;
 }
-.no-map {
-  margin-top: 6em;
+.no-map .page-header {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0;
+  *zoom: 1;
+}
+.no-map .page-header:before,
+.no-map .page-header:after {
+  content: "";
+  display: table;
+}
+.no-map .page-header:after {
+  clear: both;
 }
 .no-map .page-title-container {
-  margin-top: 2.7em;
-  width: auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+  width: 39.58333333333333%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.no-map .page-header-content {
+  float: left;
+  width: 56.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #map-unavailable {
   background: #cccccc url('/static/img/map-unavailable.png') no-repeat center;
@@ -2535,7 +2564,8 @@ a#siteNews {
     background-clip: padding-box;
   }
   .page-content {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media screen and (max-width: 720px) {
