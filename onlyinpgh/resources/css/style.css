@@ -290,9 +290,6 @@ blockquote {
   font-style: italic;
   font-size: 0.9em;
 }
-.host {
-  display: none;
-}
 .host a {
   font-weight: bold;
 }
@@ -301,6 +298,11 @@ blockquote {
   font-size: 3em;
   margin-top: -0.05em;
   text-shadow: 0.05em 0.05em 0 #ded57f;
+}
+#openGrabbitModal {
+  padding: 0.5em;
+  font-size: 1.2em;
+  letter-spacing: 1px;
 }
 /* HEADINGS --------- */
 #site-title {
@@ -792,6 +794,7 @@ legend {
 }
 .fav-container .status {
   font-size: 1.9em;
+  line-height: 0.2em;
   margin-right: 0.2em;
 }
 .fav-container .remove .status {
@@ -1557,7 +1560,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: auto;
+  height: 320px;
 }
 #now-page .short .item-type,
 #chatter-page .short .item-type {
@@ -1614,12 +1617,17 @@ legend {
 #now-page .short .item-content,
 #chatter-page .short .item-content {
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0.5em;
-  background: url("/static/img/textures/white-trans.png");
+  background: #f9f9f9;
   color: #000 !important;
   text-align: left;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 #now-page .feed,
 #chatter-page .feed {
@@ -1674,18 +1682,18 @@ legend {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#specials-page .btn-primary {
-  padding: 0.1em;
+#specials-page .item-thumb div {
+  padding: 0.7em 0.5em;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   background: #70a3be;
 }
-#specials-page .btn-primary:active {
+#specials-page .item-thumb div:active {
   top: 0;
   left: 0;
 }
-#specials-page .btn-primary img {
+#specials-page .item-thumb div img {
   width: 70%;
 }
 #specials-page .item-thumb {
@@ -1866,7 +1874,7 @@ legend {
   margin-top: 1em;
 }
 .directions-btn-container a {
-  background: url("/static/img/main-menu/store-front.png") no-repeat bottom left;
+  background: url("/static/img/icons/map-marker-small.png") no-repeat top left;
   color: #444;
   font-size: 0.8em;
   -webkit-border-radius: 0.3em;
@@ -1875,10 +1883,10 @@ legend {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 0.5em 0.5em 0.5em 2.5em;
+  padding: 0 0.5em 0.5em 1.4em;
 }
-.directions-btn-container a:after {
-  content: "";
+.directions-btn-container a:hover {
+  color: #b83939;
 }
 .infowindow {
   font-size: 0.8em;
