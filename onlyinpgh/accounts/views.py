@@ -117,7 +117,6 @@ def page_signup(request):
 def _render_profile_page(request, public_user, current_panel=None, variables={}):
     variables['public_user'] = public_user
     variables['current_panel'] = current_panel
-    print variables['feed_items']
     context = PageContext(request,
         current_section='accounts',
         page_title='Scenable | %s\'s Profile' % public_user.username,
