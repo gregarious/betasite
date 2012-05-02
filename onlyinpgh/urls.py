@@ -27,6 +27,8 @@ urlpatterns = patterns('',
     url(r'^prelaunch/places/', include('onlyinpgh.places.urls')),
     url(r'^prelaunch/events/', include('onlyinpgh.events.urls')),
     url(r'^prelaunch/specials/', include('onlyinpgh.specials.urls')),
+    url(r'^prelaunch/news/', include('onlyinpgh.news.urls')),
+    url(r'^prelaunch/chatter/', include('onlyinpgh.chatter.urls')),
     url(r'^prelaunch/now/$', 'onlyinpgh.now.views.page_now', name='now'),
 
     url(r'^prelaunch/tags/', include('onlyinpgh.tags.urls')),
