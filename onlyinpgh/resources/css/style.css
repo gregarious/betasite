@@ -1011,7 +1011,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: 3em;
-  padding: 0.7em 1.5em 1em;
+  padding: 0.7em 1.5em 0.5em;
   position: relative;
   -webkit-border-radius: 0 0 0.5em 0.5em;
   -moz-border-radius: 0 0 0.5em 0.5em;
@@ -1020,16 +1020,16 @@ legend {
   z-index: 1;
 }
 #site-footer {
-  background: url("/static/img/textures/white-trans.png");
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 11.5em;
-  padding: 0.5em;
+  margin-top: 7em;
   font-size: 0.9em;
   *zoom: 1;
+  padding: 0.5em 0;
   text-align: center;
+  border-top: 1px #e1e1e1 solid;
 }
 #site-footer:before,
 #site-footer:after {
@@ -1210,6 +1210,15 @@ legend {
 }
 .page-content {
   padding: 0 1em 1em;
+  *zoom: 1;
+}
+.page-content:before,
+.page-content:after {
+  content: "";
+  display: table;
+}
+.page-content:after {
+  clear: both;
 }
 .page-content .item {
   float: left;
@@ -1628,6 +1637,10 @@ legend {
 #chatter-page .short:hover .item-content {
   background: #f9f9f9;
 }
+#now-page .short:active,
+#chatter-page .short:active {
+  background: #ccc;
+}
 #now-page .short .item-thumb,
 #chatter-page .short .item-thumb {
   float: left;
@@ -1636,7 +1649,6 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  overflow: visible;
   position: relative;
 }
 #now-page .short .item-content,
@@ -1659,17 +1671,6 @@ legend {
   top: -4px;
   right: -4px;
   z-index: 999;
-}
-#now-page .news,
-#chatter-page .news {
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-#now-page .news .item,
-#chatter-page .news .item {
-  cursor: text;
 }
 #now-page .events,
 #chatter-page .events,
@@ -1776,28 +1777,50 @@ legend {
   font-style: italic;
   margin-top: 0.5em;
 }
-.news .blurb > a {
-  font-style: normal;
+/* News */
+.news .item {
+  cursor: text;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.news .item-thumb {
+  max-height: 130px;
 }
 /* Places */
 /* Chatter */
-.chatter {
-  padding: 0 0.5em;
+#chatter-page {
+  padding: 0 10%;
 }
 .post {
-  float: left;
-  width: 47.91666666666667%;
-  margin: 0 1.0416666666666665%;
+  width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: #fff;
-  border: 1px #8fd36f solid;
+  border: 2px #e1e1e1 solid;
   padding: 0.7em;
+  background-color: #f9f9f9;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e9e9e9));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #e9e9e9);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #f9f9f9, #e9e9e9);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #f9f9f9, #e9e9e9);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #f9f9f9, #e9e9e9);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #f9f9f9, #e9e9e9);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
+
   margin-top: 0.5em;
-  -webkit-box-shadow: 0.1em 0.1em 0.1em #000000;
-  -moz-box-shadow: 0.1em 0.1em 0.1em #000000;
-  box-shadow: 0.1em 0.1em 0.1em #000000;
 }
 .post > div {
   width: 100%;
@@ -1833,7 +1856,7 @@ legend {
   height: 25px;
   width: 25px;
 }
-.post p {
+.post.post-meta p {
   color: #666;
   font-size: 0.8em;
   display: inline;
@@ -1849,6 +1872,26 @@ legend {
 }
 .no-items h3 {
   margin: 0;
+}
+/* Search */
+.results-type {
+  margin-bottom: 1em;
+}
+.results-type h3 {
+  border-bottom: 1px solid #e1e1e1;
+}
+.result {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0;
+}
+.result:first-child {
+  margin-top: 0;
+}
+.none-found {
+  margin: 1em 0;
 }
 /* FOOTER ---------- */
 #colophon {
@@ -2036,6 +2079,7 @@ legend {
 }
 .grabbit-modal textarea,
 .feedback-modal textarea {
+  height: 150px;
   margin: 1em 0;
 }
 .ui-dialog {
@@ -2175,6 +2219,21 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.half {
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.half .item {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 
