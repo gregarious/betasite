@@ -51,11 +51,10 @@ class UserProfileForm(forms.ModelForm):
         required=False)
 
 
-# TODO: hook this up to user preferences
-class ActivityPreferencesForm(forms.Form):
-    public_favorites = forms.BooleanField(label=u'Favorites public?')
-    public_attendance = forms.BooleanField(label=u'Event attendance public?')
-    public_coupons = forms.BooleanField(label=u'Specials public?')
+class ActivityPreferencesForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('public_favorites', 'public_attendance', 'public_coupons')
 
 
 # TODO: hook this up to User model
