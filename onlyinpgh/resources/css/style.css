@@ -2210,6 +2210,13 @@ legend {
   box-sizing: border-box;
   height: auto;
 }
+.loader {
+  display: block;
+  margin: 0.5em auto 0;
+}
+.ajax-action-container {
+  height: 1.5em;
+}
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 
 */

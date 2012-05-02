@@ -22,7 +22,9 @@ Context variables:
             <div class="state-off" {% if place.is_favorite %}style="display:none"{% endif %}>
                 <a href="#" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
             </div>
-            <div class="state-pending" style:"display:none"></div>
+            <div class="state-pending" style="display:none">
+                <img src="{{STATIC_URL}}img/ajax-loader.gif" class="loader" />
+            </div>
         </div>
     </div> <!-- .item-thumb -->
 
