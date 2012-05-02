@@ -1,20 +1,19 @@
 from django.contrib.auth.models import User
 
-from django.core.urlresolvers import reverse
-
 
 class SpecialData(object):
     def __init__(self, special, user=None):
         fields = ('id', 'title', 'description', 'points', 'place',
                   'dexpires', 'dstart', 'total_available', 'total_sold',
-                  'tags')
+                  'tags', 'get_absolute_url')
         if isinstance(user, User):
-            if len(special.coupon_set.filter(user=user, was_used=False)) > 0:
-                self.has_coupon = True
+            coupons = special.coupon_set.filter(user=user)
+            if coupons.count() == 0:
+                self.coupon = None
             else:
-                self.has_coupon = False
+                self.coupon = coupons[0]
         else:
-            self.has_coupon = False
+            self.coupon = None
 
         for attr in fields:
             setattr(self, attr, getattr(special, attr))
@@ -57,8 +56,8 @@ class SpecialData(object):
             'total_sold': self.total_sold,
             'tags': [{
                 'name': tag.name,
-                'permalink': reverse('tags-item-detail', kwargs={'tid': tag.id})
+                'permalink': tag.get_absolute_url()
             } for tag in self.tags.all()],
             # special fields only for JSON output
-            'permalink': reverse('special-detail', kwargs={'sid': self.id}),
+            'permalink': self.get_absolute_url(),
         }

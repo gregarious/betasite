@@ -10,32 +10,6 @@
   #scene-nav {
     .rounded(0);
   }
-
-  .page-content {
-    .feed {
-      .item {
-        .row();
-        border-bottom: 1px solid #e1e1e1;
-
-        &:last-child {
-          border: none;
-        }
-
-        .description, .host {
-          display: block;
-        }
-
-        .item-title {
-          font-size: 1.1em;
-          line-height: 1.3em;
-        }
-  
-        .item-details {
-          font-size: 1em;
-        }
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 1082px) {
@@ -119,7 +93,7 @@
    .item-title {
     //line-height: 1.1em;
     a {
-      font-size: 1em;
+      //font-size: 1em;
       //font-family: 'DroidSerifItalic', Georgia, serif;
       
       }
@@ -127,14 +101,6 @@
 }
 
 @media screen and (max-width: 864px) {
-
-  .feed {
-    &.places, &.events{
-      .description {
-        display: none;
-      }
-    }
-  }
 
 }
 
@@ -206,7 +172,7 @@
     }
 
     .item-title {
-      font-size: 1.2em;
+      //font-size: 1.2em;
     }
   }
   
@@ -257,15 +223,6 @@
 
   .item {
     .row();
-    /*border: 4px @mgreen solid;
-    border-bottom: 0;
-    .b-shadow(0.1em, 0.1em, 0.1em, #444);
-    margin: 0;
-    .gradient(#f9f9f9, #fff);
-*/
-    &:last-child {
-      border-bottom: 4px @mgreen solid;
-    }
 
     &:hover {
       background: #fff;
@@ -284,14 +241,34 @@
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {
   #logo img {
     height: auto;
   }
+
 }
 
 // Styles for higher res phones
 @media screen and (max-width: 600px) {
+
+
+  .page-content {
+    .feed {
+      .item {
+        //border-bottom: 1px solid #e1e1e1;
+        height: auto;
+        .row();
+        
+        &:last-child {
+          border: none;
+        }
+
+        .description, .host {
+          display: block;
+        }
+      }
+    }
+  }
 
   .single-container {
     padding: 0;
@@ -405,7 +382,7 @@
   }
 
   #site-content {
-    background: none;
+    //background: none;
     top: 6.5em;
     padding: 0;
   } 

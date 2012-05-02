@@ -1,0 +1,23 @@
+{% extends "page.html" %}
+{% comment %}
+- items: list of news Article model instances
+{% endcomment %}
+
+{% block main-content %}
+<article class="page-content no-map" id="news-page">
+	<div class="page-title-container">
+		<h1 class="ribbon-title">News</h1>
+	</div>
+	<ul class="feed news">
+	{% for item in items %}
+	    <li class="item">
+	    {% include "news/feed_item.html" %}
+	    </li>
+	{% endfor %}
+	</ul>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_news.html" %}
+{% endblock %}

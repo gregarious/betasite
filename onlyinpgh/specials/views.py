@@ -1,52 +1,74 @@
+from django.http import HttpResponseForbidden
+from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
-from onlyinpgh.common.views import PageContext
+# from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
+from onlyinpgh.common.views import PageContext, PageFilteredFeed
 
-from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.models import Special, Coupon
 from onlyinpgh.specials.viewmodels import SpecialData
-from onlyinpgh.specials.resources import SpecialFeedResource
+# from onlyinpgh.specials.resources import SpecialFeedResource
 
-import json
+from haystack.forms import SearchForm
 
 
-def page_feed(request):
-    '''
-    View function that handles a page load request for a feed of place
-    items.
+class PageSpecialsFeed(PageFilteredFeed):
+    def __init__(self, *args, **kwargs):
+        super(PageSpecialsFeed, self).__init__(
+            model_class=Special,
+            viewmodel_class=SpecialData,
+            template='specials/page_feed.html',
+            form_class=SearchForm,
+            results_per_page=6,
+        )
 
-    Renders page.html with main_content set to the rendered HTML of
-    a feed.
-    '''
-    # get a list of rendered items
-    all_specials = Special.objects.all()
-    paginator = Paginator(all_specials, 10)
-    p = request.GET.get('p')
-    try:
-        page = paginator.page(p)
-    except PageNotAnInteger:
-        page = paginator.page(1)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
+    def get_page_context(self, content):
+        return PageContext(self.request,
+            current_section='specials',
+            page_title='Scenable | Oakland Specials',
+            content_dict=content)
 
-    specials = page.object_list
-    items = [SpecialData(special, user=request.user) for special in specials]
-    # need the items in json form for bootstrapping to BB models
-    # # temp disabled
-    # items_json = serialize_resources(SpecialFeedResource(), items)
-    items_json = sanitize_json(json.dumps([item.serialize() for item in items]))
+    def hacked_unfiltered(self):
+        return Special.objects.all()
 
-    content = {'items': items,
-               'items_json': items_json,
-               'prev_p': page.previous_page_number() if page.has_previous() else None,
-               'next_p': page.next_page_number() if page.has_next() else None}
 
-    page_context = PageContext(request,
-        current_section='specials',
-        page_title='Scenable | Oakland Specials',
-        content_dict=content)
-    return render_to_response('specials/page_feed.html', page_context)
+# def page_feed(request):
+#     '''
+#     View function that handles a page load request for a feed of place
+#     items.
+
+#     Renders page.html with main_content set to the rendered HTML of
+#     a feed.
+#     '''
+#     # get a list of rendered items
+#     all_specials = Special.objects.all()
+#     paginator = Paginator(all_specials, 10)
+#     p = request.GET.get('p')
+#     try:
+#         page = paginator.page(p)
+#     except PageNotAnInteger:
+#         page = paginator.page(1)
+#     except EmptyPage:
+#         page = paginator.page(paginator.num_pages)
+
+#     specials = page.object_list
+#     items = [SpecialData(special, user=request.user) for special in specials]
+#     # need the items in json form for bootstrapping to BB models
+#     # # temp disabled
+#     # items_json = serialize_resources(SpecialFeedResource(), items)
+#     items_json = sanitize_json(json.dumps([item.serialize() for item in items]))
+
+#     content = {'items': items,
+#                'items_json': items_json,
+#                'prev_p': page.previous_page_number() if page.has_previous() else None,
+#                'next_p': page.next_page_number() if page.has_next() else None}
+
+#     page_context = PageContext(request,
+#         current_section='specials',
+#         page_title='Scenable | Oakland Specials',
+#         content_dict=content)
+#     return render_to_response('specials/page_feed.html', context_instance=page_context)
 
 
 def page_details(request, sid):
@@ -62,9 +84,21 @@ def page_details(request, sid):
         page_title='Scenable | %s' % special.title,
         content_dict=content)
 
-    return render_to_response('specials/page_special.html', page_context)
+    return render_to_response('specials/page_special.html', context_instance=page_context)
 
 
+def page_coupon(request, uuid):
+    coupon = get_object_or_404(Coupon, uuid=uuid)
+    content = {
+        'coupon': coupon,
+        'print': request.GET.get('print')
+    }
+    context = RequestContext(request)
+    if coupon.was_used:
+        # TODO: redirect to some error page?
+        return HttpResponseForbidden()
+    else:
+        return render_to_response('specials/page_coupon.html', content, context_instance=context)
 
 # @jsonp_response
 # def feed_app(request):

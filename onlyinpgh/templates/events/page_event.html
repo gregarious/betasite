@@ -14,13 +14,16 @@ Context variables:
 {% endblock %}
 
 {% block sidebar %}
-{% include "events/sidebar_events_single.html" %}
+{% include "sidebar/sidebar_events_single.html" %}
 {% endblock %}
 
 {% block foot-inlines %}
 {% if event.place.location.latitude and event.place.location.longitude %}
 <script type="text/javascript">
 $(function(){
+    {# attendButton element should be inside places/header.html #}
+    scenable.useractions.attachAttendanceHandler(
+        document.getElementById('attendingButton'), {{ event.id }});
     var pos = new google.maps.LatLng({{event.place.location.latitude|default:"NaN"}},{{event.place.location.longitude|default:"NaN"}});
     // id comes from an element drawn in places/details.html
     var map = scenable.map.mapFactory('single',

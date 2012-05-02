@@ -2,10 +2,10 @@
 Template for user's public profile.
 
 Context variables:
-    profile: PublicProfile context instance
+    public_user: User instance in question
 {% endcomment %}
-
 {% load thumbnail %}
+{% with profile=public_user.get_profile %}
 <header class="single-header">
     <div class="single-thumb-container">
         {% thumbnail profile.avatar_url "130x130" crop="center" as im %}
@@ -15,19 +15,22 @@ Context variables:
         {% endthumbnail %}
     </div>
     <section class="item-content">
-        <h1 class="single-title">{{ profile.display_name }}</h1>
+        <h1 class="single-title">{{ profile.display_or_username }}</h1>
         <ul class="item-details">
             <li>{{ profile.username }}</li>
             <li>{#{{ profile.points }}#}Scene Cred - <em>Coming soon!</em></li>
             {#<li>{{ profile.neighborhood }}</li>#}
         </ul>
         <div class="social-container">
+            {% comment %}
             {% if profile.fb_id %}
             <a href="http://www.facebook.com/{{ profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
             {% endif %}
+            {% endcomment %}
             {% if profile.twitter_username %}
-            <a href="http://twitter.com/{{ profile.twitter_username }}"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            <a href="http://twitter.com/{{ profile.twitter_username }}" title="{{profile.display_name}}'s Twitter Account" target="blank"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
             {% endif %}        
         </div>
     </section>
 </header>
+{% endwith %}

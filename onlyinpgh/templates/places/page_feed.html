@@ -4,45 +4,52 @@
 Page-based template for the Places feed
 
 Context variables:
-    [items]: List of PlaceContext instances
-    items_json: JSON string of PlaceFeedResources corresponding to [items]
-    prev_p: page number of previous page (if available)
-    next_p: page number of next page (if available)        
+    page: a Django Paginator Page with PlaceData instances as objects
+    items_json: JSON string of serialized PlaceData instances corresponding to the items in page.object_list
+    query: filter query text
+    form: filter form
 {% endcomment %}
 
 {% block main-content %}
-<header class="page-header">
-    <h1 class="page-title">Places</h1>
-    <form class="filter">
-        <input type="search" placeholder="Filter Places" />
-        <input type="submit" value="Filter" />
-    </form>
-</header>
 
 <article class="page-content" id="places-page">
-    <div class="map-container" id="mainPlaceFeedMap"></div>
-    {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
-
+    
+    <div class="map-container">
+        <div class="page-title-container">
+            <h1 class="ribbon-title">Places</h1>
+        </div>
+        <div class="map" id="mainPlaceFeedMap"></div>
+    </div>
+    
+    <div class="page-nav-container">
+        <form class="simple-form" method="get" action="{% url places-feed %}">
+            <input type="search" placeholder="Filter Places" name="{{form.q.html_name}}" value="{{query}}"/>
+            <input type="submit" value="Filter" />
+        </form>
+        <nav class="prev-next" id="places-feed-nav">
+            {% if page.has_previous %}<a href="{% url places-feed %}?page={{page.previous_page_number}}" class="prev">&larr;</a>{% endif %}
+            <div class="page-num">{{page.number}}</div>
+            {% if page.has_next %}<a href="{% url places-feed %}?page={{page.next_page_number}}" class="next">&rarr;</a>{% endif %}
+        </nav>
+    </div>
+    
     <ul class="feed places" id="mainPlaceFeed">
         {# will be inserted via Backbone bootstrapping below #}
         {% comment %}
         Old code where server writes feed. Being replaced with bootstrapped-Backbone below
-        # {% for item in items %}
+        # {% for place in page.object_list %}
         #    <li class="item {%if item.place.location.is_geocoded%}hasMarker{%endif%}">
-        #    {% include "places/feed_item.html" with place=item %}
+        #    {% include "places/feed_item.html" %}
         #    </li>
         # {% endfor %}
         {% endcomment %}
     </ul> <!-- .feed#mainPlaceFeed -->
     
-    {% if prev_p %}<a href="{% url places-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url places-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .page-content -->
 {% endblock %}
 
 {% block sidebar %}
-{% include "places/sidebar_place_feed.html" %}
+{% include "sidebar/sidebar_place_feed.html" %}
 {% endblock %}
 
 {% block foot-inlines %}

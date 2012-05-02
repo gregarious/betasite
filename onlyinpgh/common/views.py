@@ -1,8 +1,15 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 from django.core.urlresolvers import reverse
 
 from django.http import Http404
 from django.template import RequestContext
+
+from haystack.views import SearchView
+from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
+
+from onlyinpgh.common.utils.jsontools import sanitize_json
+import json
 
 
 class PageContext(RequestContext):
@@ -20,6 +27,7 @@ class PageContext(RequestContext):
         variables = dict(
             page_title=page_title,
             current_section=current_section,
+            site_search_form=SearchForm(),
         )
         variables.update(content_dict)
         super(PageContext, self).__init__(request, variables, **kwargs)
@@ -40,14 +48,123 @@ def qr_redirect(request, key=None):
         raise Http404
 
 
+class PageSiteSearch(SearchView):
+    '''
+    Class-based view inheriting from Haystack's basic SearchView. Note that
+    if this class is used with the search_view_factory, the site.
+    '''
+    def create_response(self):
+        '''
+        Custom overwritten method to return a response with search results
+        organized by type.
+        '''
+        content = {
+            'query': self.query,
+            'form': self.form,
+            'suggestion': None,
+        }
+        if self.results and hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
+            content['suggestion'] = self.form.get_suggestion()
+        elif self.results:
+            result_by_type = {}
+            for r in self.results:
+                thistype = result_by_type.setdefault(r.content_type(), [])
+                thistype.append(r)
+            content['results'] = dict(
+                places=result_by_type.get('places.place', []),
+                events=result_by_type.get('events.event', []),
+                specials=result_by_type.get('specials.special', []),
+                news_articles=result_by_type.get('news.article', []),
+                chatter_posts=result_by_type.get('chatter.post', []),
+            )
+
+        # doesn't do anything, but will remind me in case this inherits from something else
+        content.update(self.extra_context())
+
+        context = PageContext(self.request,
+            page_title="Scenable | Oakland Search",
+            content_dict=content)
+        return render_to_response(self.template, context_instance=context)
+
+
+class PageFilteredFeed(SearchView):
+    '''
+    Base view class for filtered feeds. Only works with ViewModels right now.
+    Will need to change once VM mess is gotten rid of.
+    '''
+    def __init__(self, model_class, viewmodel_class, *args, **kwargs):
+        '''
+        Fixes the SearchQuerySet to only search over a particular model.
+        '''
+        self.model_class = model_class
+        self.viewmodel_class = viewmodel_class
+        sqs = kwargs.get('searchqueryset', SearchQuerySet())
+        kwargs['searchqueryset'] = sqs.models(model_class)
+        super(PageFilteredFeed, self).__init__(*args, **kwargs)
+
+    def get_results(self):
+        '''
+        Ensures all results are returned if there is no query.
+
+        Returns a list of the actual objects searched for, not SearchResult objects.
+        '''
+        if not self.query:
+            instances = self.hacked_unfiltered()
+        else:
+            instances = [result.object for result in self.form.search()]
+        return [self.viewmodel_class(instance, user=self.request.user) for instance in instances]
+
+    def create_response(self):
+        """
+        Generates the actual HttpResponse to send back to the user.
+        """
+        (paginator, page) = self.build_page()
+        items_json = sanitize_json(json.dumps([item.serialize() for item in page.object_list]))
+
+        content = {
+            'query': self.query,
+            'form': self.form,
+            'page': page,
+            'suggestion': None,
+            'items_json': items_json
+        }
+
+        content.update(self.extra_context())
+        return render_to_response(self.template, context_instance=self.get_page_context(content))
+
+    def hacked_unfiltered(self):
+        '''
+        Temporary hack to get a list of unfiltered results. Will either be
+        self.model_class.objects.all() or
+        self.model_class.listed_objects.all().
+
+        Necessary because self.searchqueryset.all() seems to be buggy.
+        '''
+        raise NotImplementedError('calling an abstract base class')
+
+    def get_page_context(self, content):
+        '''
+        Override per feed page.
+        '''
+        return PageContext(self.request, content_dict=content)
+
+
 ### URL-LINKED VIEWS ###
 def page_home(request):
-    return redirect(reverse('hot'))
+    return redirect(reverse('now'))
 
 
-def example_chatter(request):
-    raise NotImplementedError
+### STATIC PAGES ###
+def page_static_about_oakland(request):
+    context = PageContext(request, page_title="Scenable | About Oakland")
+    return render_to_response('static_pages/about_oakland.html', context_instance=context)
 
 
-def example_news(request):
-    raise NotImplementedError
+def page_static_team(request):
+    context = PageContext(request, page_title="Scenable | The Team")
+    return render_to_response('static_pages/team.html', context_instance=context)
+
+
+def page_static_mission(request):
+    context = PageContext(request, page_title="Scenable | Our Mission")
+    return render_to_response('static_pages/mission.html', context_instance=context)

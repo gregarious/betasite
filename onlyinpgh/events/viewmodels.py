@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 
-from django.core.urlresolvers import reverse
 from django.utils.timezone import now
 from onlyinpgh.common.utils import get_cached_thumbnail
 
@@ -10,11 +9,10 @@ import datetime
 class EventData(object):
     def __init__(self, event, user=None):
         fields = ('id', 'name', 'description', 'dtstart', 'dtend', 'image',
-                  'url', 'place', 'place_primitive', 'tags', 'listed')
+                  'url', 'place', 'place_primitive', 'tags', 'listed',
+                  'get_absolute_url')
         if isinstance(user, User):
-            self.is_attending = event.attendee_set\
-                                .filter(user=user, is_attending=True)\
-                                .count() > 0
+            self.is_attending = event.attendee_set.filter(user=user).count() > 0
         else:
             self.is_attending = False
         for attr in fields:
@@ -92,10 +90,10 @@ class EventData(object):
             'image': self.image.url if self.image else '',
             'tags': [{
                 'name': tag.name,
-                'permalink': reverse('tags-item-detail', kwargs={'tid': tag.id})
+                'permalink': tag.get_absolute_url(),
             } for tag in self.tags.all()],
             # special fields only for JSON output
-            'permalink': reverse('event-detail', kwargs={'eid': self.id}),
+            'permalink': self.get_absolute_url(),
             'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
             'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
         }

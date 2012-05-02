@@ -15,15 +15,11 @@ Context variables:
 </div>
 
 <section class="item-content">		
-	<h4 class="item-title"><a href="{% url place-detail pid=place.id %}">{{ place.name|truncatewords:7 }}</a></h4>
-	<div class="item-actions">
-		{% if featured_special %}
-			<img class="has-special" src="/static/img/icons/black/apple.png" alt="Special!" />
-		{% endif %}
-	</div>
+	<h4 class="item-title"><a href="{{place.get_absolute_url}}">{{ place.name|truncatewords:7 }}</a></h4>
 	<ul class="item-details">
-		<li>{{place.location.address}}</li>
-		<li class="description">{{place.description|truncatewords:"10"}}
-  	</ul>
+		{% if place.location.address %}
+			<li>{{place.location.address}}</li>
+		{% endif %}
+	</ul>
 	{% include "tags/tag_list.html" with tags=place.tags %}
 </section>

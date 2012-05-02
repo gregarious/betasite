@@ -9,3 +9,7 @@ class Tag(models.Model, ViewModel):
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('tag-detail', (), {'tid': self.id})

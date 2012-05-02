@@ -27,11 +27,20 @@ Context variables:
 
     <h2 class="detail-section-title">About - <em>{{place.name}}</em></h2>
 
+    <div class="map-container">
     {% if place.location.is_geocoded %}
-    <div class="map-container" id="mainPlaceMap"></div>
+        <div class="map" id="mainPlaceMap"></div>
+        
+        {% if place.location.directions_link %}
+        <div class="directions">
+            <a href="{{place.location.directions_link}}" target="blank" title="Directions to {{place.name}}">Get Directions</a>
+        </div>
+        {% endif %}
     {% else %}
-    <div class="map-container" id="map-unavailable"></div>
-    {% endif %}
+        <div class="map" id="map-unavailable"></div>
+    {% endif %}    
+    </div>
+    
     <ul class="item-details">
         {% if place.hours %}
             <li><p class="detail-title">Hours:</p>
@@ -61,21 +70,13 @@ Context variables:
         {% endif %}
 
         {% if place.url %}
-            <li><a href="{{ place.url|external_url}}" class="detail-title" title="{{place.name}}'s Website" target="blank">Full website</a></li>
+            <li><a href="{{ place.url|external_url}}" class="detail-title" title="{{place.name}}'s Website" target="blank">Website</a></li>
         {% endif %}
 
     </ul>
 
     {% if place.description %}
     <p class="description">{{place.description|linebreaksbr}}</p>
-    {% else %}
-    <p class="description">We don't have much information on this place.</p>
-    <p class="description"><strong>Coming soon - </strong> would you like to add some?</p>
-    {% endif %}
-    {% if place.location %}
-    <div class="directions-btn-container">
-        <a href="#" class="btn">Get Directions</a>
-    </div>
     {% endif %}
 
 </section>
@@ -85,7 +86,7 @@ Context variables:
     <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
-            {% include 'events/short_feed_item.html' with event=item %}
+            {% include 'events/feed_item.html' with event=item %}
         </li>
     {% endfor %}
     </ul>
@@ -96,15 +97,8 @@ Context variables:
     <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
-            {% include 'specials/short_feed_item.html' with special=item %}
+            {% include 'specials/feed_item.html' with special=item %}
         </li>
     {% endfor %}
     </ul>
 </section>
-
-{% if featured_special %}
-    <aside class="single-featured-special">
-        {{featured_special.description}}
-        <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-    </aside>
-{% endif %}

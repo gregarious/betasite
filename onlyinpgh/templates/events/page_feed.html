@@ -4,37 +4,44 @@
 Page-based template for the Events feed
 
 Context variables:
-    [items]: List of EventData instances
-    items_json: JSON string of EventFeedResources corresponding to [items]
-    prev_p: page number of previous page (if available)
-    next_p: page number of next page (if available)
+    page: a Django Paginator Page with EventData instances as objects
+    items_json: JSON string of serialized EventData instances corresponding to the items in page.object_list
+    query: filter query text
+    form: filter form
 {% endcomment %}
 
 {% block main-content %}
-<header class="page-header">
-	<h1 class="page-title">Events</h1>
-	<form class="filter">
-		<input type="search" placeholder="Filter Events" />
-		<input type="submit" value="Filter" />
-	</form>
-</header>
 
 <article class="page-content" id="events-page">
-    <div class="map-container" id="mainEventFeedMap"></div>
-    {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
+    
+    <div class="map-container">
+        <div class="page-title-container">
+            <h1 class="ribbon-title">Events</h1>
+        </div>
+        <div class="map" id="mainEventFeedMap"></div>
+    </div>
 
-    <ul class="feed" id="mainEventFeed">
+    <div class="page-nav-container">
+        <form class="simple-form" method="get" action="{% url events-feed %}">
+            <input type="search" placeholder="Filter Events" name="{{form.q.html_name}}" value="{{query}}"/>
+            <input type="submit" value="Filter" />
+        </form>
+        <nav class="prev-next" id="events-feed-nav">
+            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}" class="prev">&larr;</a>{% endif %}
+            <div class="page-num">{{page.number}}</div>
+            {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}" class="next">&rarr;</a>{% endif %}
+        </nav>
+    </div>
+
+    <ul class="feed events" id="mainEventFeed">
 
     </ul> <!-- .feed#mainEventFeed -->
 
-    {% if prev_p %}<a href="{% url events-feed %}?p={{prev_p}}">Previous</a> | {% endif %}
-    {% if next_p %}<a href="{% url events-feed %}?p={{next_p}}">Next</a>{% endif %}
 </article> <!-- .page-content -->
 {% endblock %}
 
 {% block sidebar %}
-{% include "events/sidebar_events_feed.html" %}
+{% include "sidebar/sidebar_events_feed.html" %}
 {% endblock %}
 
 {% block foot-inlines %}

@@ -220,7 +220,7 @@ class Location(models.Model, ViewModel):
             if self.postcode:
                 daddr += ', ' + self.postcode
         elif self.is_geocoded:
-            daddr = '(%f,%f)' % (float(self.longitude), float(self.latutude))
+            daddr = '(%f,%f)' % (float(self.longitude), float(self.latitude))
 
         if not daddr:
             return None
@@ -290,6 +290,30 @@ class Place(models.Model, ViewModel):
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('place-detail', (), {'pid': self.id})
+
+    def mark_favorite(self, user):
+        '''
+        Adds Favorite object to this Place's favorite_set.
+
+        Returns True if new favorite created, False if already existed
+        '''
+        _, created = self.favorite_set.get_or_create(user=user)
+        return created
+
+    def unmark_favorite(self, user):
+        '''
+        Deletes Favorite object from this Place's favorite_set.
+
+        Returns True if favorite existed, False if it already didn't.
+        '''
+        favs = self.favorite_set.filter(user=user)
+        fav_exists = favs.count() != 0
+        favs.delete()
+        return fav_exists
+
     # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
     def hours_unpacked(self):
         return self.hours_as_obj().to_data()
@@ -333,18 +357,6 @@ class Favorite(models.Model):
     user = models.ForeignKey(User)
     place = models.ForeignKey(Place)
     dtcreated = models.DateTimeField('Time user first added as favorite', auto_now_add=True)
-    dtmodified = models.DateTimeField('Time user changed favorite status', auto_now=True)
-
-    # This flag must be True to consider user as attending
-    # defaults to True, but can be False is user revokes attendance
-    is_favorite = models.BooleanField('Is user attending?"', default=True)
-
-    def remove_favorite(self):
-        '''
-        After using this function, Coupon should never be used again.
-        '''
-        self.is_favorite = False
-        self.save()
 
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.place)

@@ -28,3 +28,5 @@ A catch all text file for things that should be considered once there's an actua
 - cacheing leads: Varnish (recommended from Tastypie)
 
 - write custom django pipeline class that gzips scripts? does this really not exist?
+
+- LOTS more haystack reading. not doing anything intersting yet.

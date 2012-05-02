@@ -15,13 +15,15 @@ Context variables:
             <img src="/static/img/default-event.png" class="thumbnail" alt="{{event.name}}" />
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
-        <div class="fav-container">
-            {% if is_favorite %}
-                <a href="?action=unfav" class="favbutton remove" title="Unfavorite"><span class="status">&#215;</span> Remove Favorite</a>
-            {% else %}
-                <a href="?action=fav" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
-            {% endif %}
-        </div> 
+        <div class="ajax-action-container" id="attendingButton">
+            <div class="state-on" {% if not event.is_attending %}style="display:none"{% endif %}>
+                <a href="#" class="favbutton remove" title="Remove from Calendar"><span class="status">&#215;</span>Remove from Calendar</a>
+            </div>
+            <div class="state-off" {% if event.is_attending %}style="display:none"{% endif %}>
+                <a href="#" class="favbutton add" title="Add to Calendar"><span class="status">&#9733;</span>Add to Calendar</a>
+            </div>
+            <div class="state-pending" style:"display:none"></div>
+        </div>
     </div> <!-- .single-thumb-container -->
 
     <section class="item-content">
@@ -29,10 +31,13 @@ Context variables:
         <ul class="item-details">
             <li class="datetime">{{event.dtstart}} - {{event.dtend}}</li>
             {% if event.place %}
-                <li>at <a class="host" href="{% url place-detail pid=event.place.id %}">{{event.place.name}}</a></li>
+                <li>at <a class="host" href="{{event.place.get_absolute_url}}">{{event.place.name}}</a></li>
                 <!-- <li class="address">{{event.place.location.address}}</li> -->
             {% else %}
                 <li>at {{event.place_primitive}}</li>
+            {% endif %}
+            {% if event.place.location.address %}
+                <li>{{event.place.location.address}}</li>
             {% endif %}
             {% if event.url %}
                 <li><a href="{{ event.url }}" target="blank">On the Web</a></li>
@@ -45,7 +50,21 @@ Context variables:
 
 <div class="single-content">
     {% if event.place.location.is_geocoded %}
-    <div class="map-container" id="mainEventMap"></div>
+    <div class="map-container">
+        <div class="map" id="mainEventMap"></div>
+    </div>
     {% endif %}
+    
+    {% if event.description %}
     <p class="description">{{event.description|linebreaksbr}}</p>
+    {% else %}
+    <p class="description">We don't have any description for this event.</p>
+    <p class="description"><strong>Coming soon - </strong> would you like to add some?</p>
+    {% endif %}
+
+    {% if event.place.location.directions_link %}
+    <div class="directions">
+        <a href="{{event.place.location.directions_link}}" target="blank" title="Directions to {{event.place.name}}">Get Directions</a>
+    </div>
+    {% endif %}
 </div> <!-- .single-content -->
