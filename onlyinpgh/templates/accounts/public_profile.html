@@ -19,7 +19,9 @@ Context variables:
         <ul class="item-details">
             <li>{{ profile.username }}</li>
             <li>{#{{ profile.points }}#}Scene Cred - <em>Coming soon!</em></li>
-            {#<li>{{ profile.neighborhood }}</li>#}
+            {% if profile.neighborhood %}
+            <li>{{ profile.neighborhood }}</li>
+            {% endif %}
         </ul>
         <div class="social-container">
             {% comment %}

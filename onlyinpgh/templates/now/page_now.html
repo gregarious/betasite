@@ -82,7 +82,7 @@ Context variables:
     <hr />
     <div class="row-container">
         <ul class="feed news">
-        {% for item in news_articles|slice:"0:1" %}
+        {% for item in news_articles|slice:"0:3" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
@@ -96,14 +96,14 @@ Context variables:
         {% endfor %}
         </ul>
         <ul class="feed news">
-        {% for item in news_articles|slice:"2:3" %}
+        {% for item in news_articles|slice:"4:5" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
         </ul>
         <ul>
-        {% for item in chatter_posts|slice:"3:7" %}
+        {% for item in chatter_posts|slice:"4:7" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
