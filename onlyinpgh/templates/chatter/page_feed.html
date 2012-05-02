@@ -15,6 +15,9 @@
         {{ form.content }}
         <input type="submit" value="Post" />
         <p class="tip">Say something about Oakland. 140 characters max.</p>
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
     </form>
     <ul class="feed chatter">
     {% for item in items %}

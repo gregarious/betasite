@@ -5,7 +5,7 @@ from onlyinpgh.chatter.forms import PostForm
 
 
 def page_feed(request):
-    if request.POST and request.user:
+    if request.POST:
         submit_form = PostForm(author=request.user, data=request.POST)
         if submit_form.is_valid():
             if submit_form.cleaned_data['content'].strip() != '':
