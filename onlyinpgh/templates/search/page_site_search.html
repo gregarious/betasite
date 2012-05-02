@@ -74,7 +74,7 @@
                     </a>
                 {% endfor %}
                 </div>
-                <div class="see-more"><a href="{% url events-feed %}?q={{query}}" title="See more events...">See all...</a></div>
+                <div class="see-more"><a href="{% url events-feed %}?q={{query}}" title="See more events...">See all event results...</a></div>
             </div>
             {% else %}
             <p>None found.</p>
@@ -92,7 +92,7 @@
                 </li>
             {% endfor %}
             </ul>
-            <a class="right" href="{% url specials-feed %}?q={{query}}" title="See more specials...">See all...</a>
+            <a class="right" href="{% url specials-feed %}?q={{query}}" title="See more specials...">See all special results...</a>
             {% else %}
             <p>None found.</p>
             {% endif %}

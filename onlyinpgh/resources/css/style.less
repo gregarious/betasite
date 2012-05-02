@@ -140,7 +140,6 @@ blockquote {
   text-shadow: 0.05em 0.05em 0.1em #222;
 }
 
-
 .page-title-container {
   color: #fff;    
   .rounded(0.3em);
@@ -352,7 +351,7 @@ legend {
 
 .tip, .errorlist {
   color: #555;
-  font-size: 0.8em;
+  font-size: 0.9em;
   display: block;
 
   &.desc {
@@ -494,9 +493,9 @@ legend {
 /* HEADER ------------- */
 
 #logo {
-  .column(2.6);
-  height: 100%;
-  width: auto;
+  .column(2.2);
+  height: auto;
+  padding: 0.3em;
 }
 
 #select-sect {
@@ -509,7 +508,7 @@ legend {
   .b-shadow(0em, 0.1em, 0.2em, #000);
   .fixed();
   height: 5.5em;
-  width: 1140px;
+  max-width: 1140px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em; 
    -moz-border-radius: 0 0 0.5em 0.5em; 
@@ -517,7 +516,7 @@ legend {
 
   .main-menu {
     .clearfix;
-    .column(5.4);
+    .column(5.8);
     
     li { 
       a {
@@ -584,7 +583,7 @@ legend {
 .wrap {
   .clearfix;
   margin: 0 auto;
-  width: 1140px;
+  max-width: 1140px;
   position: relative;
   height: 100%;
 }
@@ -752,7 +751,7 @@ legend {
 /* PAGE --------- */
 
 .page-title {
-  font-size: 1.2;
+  font-size: 1.3em;
   border-bottom: 1px solid #e1e1e1;
   margin: 1em 0;
   padding-bottom: 0.5em;
@@ -760,7 +759,7 @@ legend {
 }
 
 .page-content {
-  padding: 0 1em 6em;
+  padding: 0 0.5em 6em;
   .clearfix();
 
   .item {
@@ -893,6 +892,9 @@ legend {
   padding: 3% 3% 6em;
   .clearfix();
   .item-details {
+    .map {
+      height: 80%;
+    }
     font-size: 1em;
   }
 }
@@ -1216,14 +1218,11 @@ legend {
 
 /* Chatter */
 
-.post-form {
-
-}
-
 #chatter-page {
-  padding: 0 10%;
+  .feed, form {
+    padding: 0 10%;
+  }
 }
-
 .post {
     .row();
     background: #fff;
@@ -1239,6 +1238,7 @@ legend {
         border-bottom: 1px solid #e1e1e1;
         margin-bottom: 0.5em;
         padding-bottom: 0.5em;
+        font-size: 1.1em;
       }
     }
 
@@ -1253,10 +1253,8 @@ legend {
       width: 20px;
     }
 
-    &.post-meta p {
-      color: #666;
+    .tip {
       font-size: 0.8em;
-      display: inline;
     }
   }
 
@@ -1277,6 +1275,12 @@ legend {
 }
 
 /* Search */
+
+#search-results-page {
+  .item {
+    cursor: default;
+  }
+}
 
 .results-type {
   
@@ -1304,6 +1308,7 @@ legend {
 }
 
 .see-more-thumbs {
+  display: block;
   margin: 1em 0;
   padding: 0.5em;
   .rounded(0.3em);
@@ -1328,9 +1333,10 @@ legend {
     .border-box();
   }
 
-  .see-more {
+  .see-more a {
+    display: block;
     font-size: 1.2em;
-    float: left;
+    float: right;
     width: auto;
     padding: 20px 0 0 0.5em;
   }
@@ -1365,12 +1371,12 @@ legend {
 /* MAP --------- */
 
 .map-container {
-  height: 200px;
+  height: 240px;
 }
 
 .map {
   width: 100%;
-  height: 90%;
+  height: 100%;
   border: 1px solid #888;
 }
 
@@ -1383,9 +1389,6 @@ legend {
     height: 300px;
     overflow: visible;
 
-    .page-title-container {
-      //left: -55px;
-    }
   }
 
 }
@@ -1412,11 +1415,23 @@ legend {
 }
 
 .no-map {
-  margin-top: 6em;
+  
+
+  .page-header {
+    .row();
+    margin: 1em 0;
+    .clearfix();
+  }
 
   .page-title-container {
-    margin-top: 2.7em;
-    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    .column(5);
+  }
+
+  .page-header-content {
+    .column(7);
   }
 
 }
@@ -1689,4 +1704,4 @@ legend {
 
 // MEDIA QUERIES --------- */
 
-//@import "../LESS/media-queries";
+@import "../LESS/media-queries";

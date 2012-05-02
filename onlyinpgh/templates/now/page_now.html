@@ -16,9 +16,14 @@ Context variables:
 
 {% block main-content %}
 <article class="page-content no-map" id="now-page">
-    <div class="page-title-container">
-        <h1 class="ribbon-title">NOW in Oakland</h1>
-    </div>
+    <header class="page-header">
+        <div class="page-title-container">
+            <h1 class="page-title">NOW in Oakland</h1>
+        </div>
+        <div class="page-header-content">
+            <p>What's going on in Oakland? See this list of the top places, events, specials, news and chatter from the Oakland Scene.</p>
+        </div>
+    </header>
 
     <div class="row-container">
         <ul class="feed random">
@@ -82,7 +87,7 @@ Context variables:
     <hr />
     <div class="row-container">
         <ul class="feed news">
-        {% for item in news_articles|slice:"0:1" %}
+        {% for item in news_articles|slice:"0:3" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
@@ -96,14 +101,14 @@ Context variables:
         {% endfor %}
         </ul>
         <ul class="feed news">
-        {% for item in news_articles|slice:"2:3" %}
+        {% for item in news_articles|slice:"4:5" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
         </ul>
         <ul>
-        {% for item in chatter_posts|slice:"3:7" %}
+        {% for item in chatter_posts|slice:"4:7" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
