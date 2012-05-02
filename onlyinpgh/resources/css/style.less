@@ -1074,10 +1074,10 @@ legend {
 #now-page, #chatter-page {
 
   .short {
-    width: 100%;
+    .column(4);
     .clearfix();
     height: auto;
-    //height: 320px;
+    .border-box();
 
     &:hover {
 
@@ -1112,6 +1112,10 @@ legend {
 
   .news {
     .row();
+
+    .item {
+      cursor: text;
+    }
   }
 
   .events, .chatter {    
@@ -1120,6 +1124,10 @@ legend {
 
   .item-title a {
     font-size: 1em;
+  }
+
+  .feed {
+    margin: 0;
   }
 }
 

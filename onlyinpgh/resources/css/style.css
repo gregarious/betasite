@@ -1601,9 +1601,17 @@ legend {
 /* Now */
 #now-page .short,
 #chatter-page .short {
-  width: 100%;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   *zoom: 1;
   height: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #now-page .short:before,
 #chatter-page .short:before,
@@ -1659,6 +1667,10 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+#now-page .news .item,
+#chatter-page .news .item {
+  cursor: text;
+}
 #now-page .events,
 #chatter-page .events,
 #now-page .chatter,
@@ -1668,6 +1680,10 @@ legend {
 #now-page .item-title a,
 #chatter-page .item-title a {
   font-size: 1em;
+}
+#now-page .feed,
+#chatter-page .feed {
+  margin: 0;
 }
 /* Events */
 /* Specials */
