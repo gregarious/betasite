@@ -19,7 +19,7 @@ class PagePlacesFeed(PageFilteredFeed):
             viewmodel_class=PlaceData,
             template='places/page_feed.html',
             form_class=SearchForm,
-            results_per_page=6,
+            results_per_page=8,
         )
 
     def get_page_context(self, content):

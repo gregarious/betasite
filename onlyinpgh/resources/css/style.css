@@ -246,8 +246,8 @@ body {
 }
 /* TYPOGRAPHY -------- */
 h1 {
-  font-weight: normal;
   font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
+  font-weight: normal;
   margin: 0;
 }
 h2 {
@@ -321,9 +321,10 @@ blockquote {
   color: #fff;
 }
 .page-title {
+  border-bottom: 1px solid #e1e1e1;
+  margin: 1em 0 0.5em 0;
+  padding: 0 0 0.5em 0.5em;
   font-size: 1.5em;
-  margin: 0;
-  padding-left: 0.5em;
 }
 .single-title {
   border-bottom: 1px #ccc solid;
@@ -340,8 +341,8 @@ blockquote {
 }
 .ribbon-title {
   font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
-  color: #fff;
   font-weight: normal;
+  color: #fff;
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   border-radius: 0.2em;
@@ -351,7 +352,7 @@ blockquote {
   padding: 0.6em 0.5em 0.5em;
   text-shadow: 0.05em 0.05em 0.1em #222;
 }
-.page-title-container {
+.map-title-container {
   color: #fff;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -863,6 +864,7 @@ legend {
   z-index: 999;
   height: 5.5em;
   max-width: 1140px;
+  min-width: 810px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em;
   -moz-border-radius: 0 0 0.5em 0.5em;
@@ -959,6 +961,7 @@ legend {
   *zoom: 1;
   margin: 0 auto;
   max-width: 1140px;
+  min-width: 810px;
   position: relative;
   height: 100%;
 }
@@ -1167,12 +1170,6 @@ legend {
   background: #a9c6e8;
 }
 /* PAGE --------- */
-.page-title {
-  font-size: 1.3em;
-  border-bottom: 1px solid #e1e1e1;
-  margin: 1em 0;
-  padding-bottom: 0.5em;
-}
 .page-content {
   padding: 0 0.5em 6em;
   *zoom: 1;
@@ -1270,13 +1267,6 @@ legend {
 .detail-nav ul li a:active {
   background: #666;
 }
-/* Prev next arrow styles, no layout */
-.prev-next {
-  font-size: 1.5em;
-}
-.prev-next a {
-  line-height: 1.6em;
-}
 .page-nav-container {
   *zoom: 1;
   border-bottom: 1px #e8e8e8 solid;
@@ -1297,12 +1287,11 @@ legend {
 }
 .page-nav-container .simple-form {
   float: left;
-  width: 72.91666666666666%;
+  width: 56.25%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding-right: 5em;
   margin-left: 0;
 }
 .page-nav-container .simple-form input[type="submit"] {
@@ -1328,20 +1317,38 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  text-align: center;
 }
-.page-nav-container .prev-next > div,
-.page-nav-container .prev-next > a {
+.page-nav-container .prev-next .previous,
+.page-nav-container .prev-next .next {
+  font-size: 2em;
+  line-height: 1.5em;
   float: left;
-  width: 31.25%;
+  width: 18.75%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.page-nav-container .prev-next .page-num {
-  font-size: 1em;
-  line-height: 1.7em;
+.page-nav-container .prev-next .previous {
+  text-align: right;
+}
+.page-nav-container .prev-next .next {
+  text-align: left;
+}
+.page-nav-container .page-num {
+  float: left;
+  width: 56.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+}
+.page-nav-container .page-num span {
+  font-size: 1.1em;
+}
+.page-nav-container .page-num p {
+  font-size: 0.8em;
 }
 /* SINGLE ---------- */
 .single-container {
@@ -1556,6 +1563,15 @@ legend {
 }
 /* TEMPLATE SPECIFICS --------- */
 /* Now */
+#now-page .page-title,
+#chatter-page .page-title {
+  font-size: 1.1em;
+}
+#now-page .page-title #now,
+#chatter-page .page-title #now {
+  font-size: 2em;
+  text-shadow: 0.05em 0.05em 0.03em #999;
+}
 #now-page .short,
 #chatter-page .short {
   float: left;
@@ -1621,11 +1637,14 @@ legend {
   right: -4px;
   z-index: 999;
 }
-#now-page .events,
-#chatter-page .events,
-#now-page .chatter,
-#chatter-page .chatter {
-  float: right;
+#now-page .chatter .feed,
+#chatter-page .chatter .feed {
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #now-page .item-title a,
 #chatter-page .item-title a {
@@ -1967,6 +1986,7 @@ legend {
   box-sizing: border-box;
   margin: 1em 0;
   *zoom: 1;
+  border-bottom: 1px solid #e1e1e1;
 }
 .no-map .page-header:before,
 .no-map .page-header:after {
@@ -1977,15 +1997,15 @@ legend {
   clear: both;
 }
 .no-map .page-title-container {
-  position: relative;
-  top: 0;
-  left: 0;
   float: left;
   width: 39.58333333333333%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+.no-map .page-title {
+  border: none;
 }
 .no-map .page-header-content {
   float: left;
@@ -2165,6 +2185,7 @@ legend {
 .ui-dialog-title {
   border-bottom: 1px #6baa55 solid;
   font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
+  font-weight: normal;
   color: #444;
   font-weight: normal;
   font-size: 1em;

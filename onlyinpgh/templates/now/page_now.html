@@ -18,10 +18,10 @@ Context variables:
 <article class="page-content no-map" id="now-page">
     <header class="page-header">
         <div class="page-title-container">
-            <h1 class="page-title">NOW in Oakland</h1>
+            <h1 class="page-title"><span id="now">NOW</span> in Oakland</h1>
         </div>
         <div class="page-header-content">
-            <p>What's going on in Oakland? See this list of the top places, events, specials, news and chatter from the Oakland Scene.</p>
+            <p>Where are the places to be in Oakland? Browse this list of top places, events, specials, news and chatter from around the Oakland Scene.</p>
         </div>
     </header>
 
@@ -86,29 +86,26 @@ Context variables:
     </div> <!-- .row-container -->
     <hr />
     <div class="row-container">
+        <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
         <ul class="feed news">
-        {% for item in news_articles|slice:"0:3" %}
+        {% for item in news_articles|slice:"3" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
         </ul>
+    </div>
+    <div class="row-container chatter">       
+        <h2><a href="{% url chatter-feed %}" title="Oakland Chatter">Chatter</a></h2>
         <ul class="feed">
-        {% for item in chatter_posts|slice:"1:3" %}
+        {% for item in chatter_posts|slice:"0:3" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
         {% endfor %}
         </ul>
-        <ul class="feed news">
-        {% for item in news_articles|slice:"4:5" %}
-            <li class="item">
-                {% include "news/feed_item.html" with article=i.instance %}
-            </li>
-        {% endfor %}
-        </ul>
-        <ul>
-        {% for item in chatter_posts|slice:"4:7" %}
+        <ul class="feed">
+        {% for item in chatter_posts|slice:"4:6" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>

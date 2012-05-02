@@ -16,14 +16,12 @@ body {
 /* TYPOGRAPHY -------- */
 
 h1 {
-  font-weight: normal;
   .blok();
   margin: 0;
 }
 
 h2 {
   font-size: 1.2em;
-  //font-weight: normal;
   padding-bottom: 0.1em;  
 }
 
@@ -111,9 +109,10 @@ blockquote {
 }
 
 .page-title {
+  border-bottom: 1px solid #e1e1e1;
+  margin: 1em 0 0.5em 0;
+  padding: 0 0 0.5em 0.5em;
   font-size: 1.5em;
-  margin: 0;
-  padding-left: 0.5em;
 }
 
 .single-title {
@@ -134,13 +133,12 @@ blockquote {
 .ribbon-title {
   .blok();
   color: #fff;
-  font-weight: normal;
   .rounded(0.2em);
   padding: 0.6em 0.5em 0.5em;
   text-shadow: 0.05em 0.05em 0.1em #222;
 }
 
-.page-title-container {
+.map-title-container {
   color: #fff;    
   .rounded(0.3em);
   background: @mgreen;
@@ -509,6 +507,7 @@ legend {
   .fixed();
   height: 5.5em;
   max-width: 1140px;
+  min-width: 810px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em; 
    -moz-border-radius: 0 0 0.5em 0.5em; 
@@ -584,6 +583,7 @@ legend {
   .clearfix;
   margin: 0 auto;
   max-width: 1140px;
+  min-width: 810px;
   position: relative;
   height: 100%;
 }
@@ -750,14 +750,6 @@ legend {
 
 /* PAGE --------- */
 
-.page-title {
-  font-size: 1.3em;
-  border-bottom: 1px solid #e1e1e1;
-  margin: 1em 0;
-  padding-bottom: 0.5em;
-  
-}
-
 .page-content {
   padding: 0 0.5em 6em;
   .clearfix();
@@ -842,14 +834,6 @@ legend {
   }
 }
 
-/* Prev next arrow styles, no layout */
-.prev-next {
-  font-size: 1.5em;
-  a {
-    line-height: 1.6em;
-  }
-}
-
 .page-nav-container {
   .clearfix();
   border-bottom: 1px #e8e8e8 solid;
@@ -858,8 +842,8 @@ legend {
   padding-bottom: 1em;
 
   .simple-form {
-    .column(9);
-    padding-right: 5em;
+    .column(7);
+    //padding-right: 5em;
     margin-left: 0;
     input[type="submit"] {
       .column(3);   
@@ -871,18 +855,33 @@ legend {
 
   .prev-next {
     .column_r(3);
-    text-align: center;
-    &>div, &>a {
-      .column(4)
+    
+    .previous, .next {
+      font-size: 2em;
+
+      line-height: 1.5em;
+      .column(2.5);
     }
 
-    .page-num {
-      font-size: 1em;
-      line-height: 1.7em;
+    .previous {
+      text-align: right;
     }
 
+    .next {
+      text-align: left;
+    }
   }
 
+  .page-num {
+    .column(7);
+    text-align: center;
+    span {
+      font-size: 1.1em;
+    }
+    p {
+      font-size: 0.8em;
+    }
+  }
 }
 
 /* SINGLE ---------- */
@@ -1047,6 +1046,14 @@ legend {
 
 #now-page, #chatter-page {
 
+  .page-title {
+    font-size: 1.1em;
+    #now {
+      font-size: 2em;
+      text-shadow: 0.05em 0.05em 0.03em #999;
+    }
+  }
+
   .short {
     .column(4);
     .clearfix();
@@ -1087,8 +1094,10 @@ legend {
 
   }
 
-  .events, .chatter {    
-    float: right;
+  .chatter {
+    .feed {
+      .column(6);
+    }
   }
 
   .item-title a {
@@ -1416,18 +1425,19 @@ legend {
 
 .no-map {
   
-
   .page-header {
     .row();
     margin: 1em 0;
     .clearfix();
+    border-bottom: 1px solid #e1e1e1;
   }
 
   .page-title-container {
-    position: relative;
-    top: 0;
-    left: 0;
     .column(5);
+  }
+
+  .page-title {
+    border: none;
   }
 
   .page-header-content {
