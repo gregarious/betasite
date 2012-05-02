@@ -109,18 +109,6 @@ blockquote {
   }
 }
 
-.now-section-title {
-  color: #000;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-  .gradient(#f1f1f1, #f9f9f9);
-  margin: 0 0 1em;
-  padding: 0.5em;
-  .rounded(0.3em);
-  text-shadow: 0.1em 0.1em 0.04em #fff;
-}
-
 .page-title {
   font-size: 1.5em;
   margin: 0;
@@ -224,7 +212,6 @@ button, input[type="submit"], .btn {
   .b-shadow(0, 0, 0.05em, @lgreen);
   color: #fff !important;
   font-size: 0.9em;
-  //font-weight: bold;
   .gradient(@mgreen, @dgreen);
   letter-spacing: 0.05em;
   padding: 0.5em;
@@ -425,7 +412,7 @@ legend {
   }
 
   .status {
-    font-size: 1.9em;
+    font-size: 1.3em;
     line-height: 0.2em;
     margin-right: 0.2em;
   }
@@ -611,7 +598,7 @@ legend {
 
 #site-footer {
   .row();
-  margin-top: 7em;
+  margin-top: 2em;
   font-size: 0.9em;
   .clearfix();
   padding: 0.5em 0;
@@ -735,7 +722,7 @@ legend {
   .clearfix();
   padding: 0.5em;
   .rounded(0.3em);
-  .b-shadow(0.2em, 0.2em, 0.2em, #333);
+  .b-shadow(0.1em, 0.1em, 0.1em, #333);
 
   &.type-place {
     background: @yellow;
@@ -807,10 +794,12 @@ legend {
   width: 12%;
 
   ul li a {
-    background: #444;
-    color: #fff;
+    background-color: #f9f9f9;
+    color: #000;
     cursor: pointer;
     display: block;
+    border: 1px solid #ccc;
+    border-right: none;
     font-size: 0.9em;
     -webkit-border-radius: 0.5em 0 0 0.5em; 
      -moz-border-radius: 0.5em 0 0 0.5em; 
@@ -819,61 +808,32 @@ legend {
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
     margin: 0.5em 0;
     padding: 0.6em 0.6em 0.6em 0.4em;
-    text-shadow: 0 0 0.01em #f9f9f9;
 
     &.current-page {
-      background-color: #f9f9f9;
-      color: #000;
-      font-weight: bold;
-      border: 1px solid #ccc;
-      border-right: none;
+      background: #444;
+      color: #fff;
+      border: none;
 
       &:hover {
-        background-color: #f9f9f9;
-      }
-    }
-
-    &.disabled {
-      background: #e8e8e8;
-      color: #ccc;
-      cursor: text;
-      text-shadow: 0 0 0.01em #f9f9f9;
-      &:hover {
-        background: #e8e8e8;
+        background-color: #444;
       }
     }
 
     &:hover {
-      background: @dgreen;
+      background: #999;
     }
 
     &:active {
-      background: @mgreen;
+      background: #666;
     }
   }
 }
 
 /* Prev next arrow styles, no layout */
 .prev-next {
-  .blok();
+  font-size: 1.5em;
   a {
-    height: 20px;
-  }
-
-  .next {
-    .icon('arrow-right');
-
-    &:hover {
-      .icon('arrow-right-over');
-    }
-  }
-
-  .prev {
-    .icon('arrow-left');
-
-    &:hover {
-      .icon('arrow-left-over');
-    }
+    line-height: 1.6em;
   }
 }
 
@@ -898,15 +858,13 @@ legend {
 
   .prev-next {
     .column_r(3);
-    margin-top: 0.3em;
-
+    text-align: center;
     &>div, &>a {
       .column(4)
     }
 
     .page-num {
       font-size: 1em;
-      text-align: center;
       line-height: 1.7em;
     }
 
@@ -1091,6 +1049,7 @@ legend {
 
     .item-thumb {
       .column(12);
+      overflow: visible;
       position: relative;
     }
 
@@ -1207,10 +1166,6 @@ legend {
 
   .item-details {
     font-size: 1em;
-
-    a {
-      font-weight: bold;
-    }
   }
 
   .source {
@@ -1378,15 +1333,14 @@ legend {
   }
 
 }
-.directions-btn-container {
-  .row();
-  margin-top: 1em;
+
+.directions {
+  margin: 0.5em 0;
 
   a {
     background: url("@{static_url}img/icons/map-marker-small.png") no-repeat top left;
     color: #444;
-    //border: 1px #999 solid;
-    font-size: 0.8em;
+    font-size: 0.9em;
     .rounded(0.3em);
     padding: 0 0.5em 0.5em 1.4em;
 
@@ -1398,7 +1352,7 @@ legend {
 }
 
 .infowindow {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 .no-map {
@@ -1413,7 +1367,7 @@ legend {
 }
 
 #map-unavailable {
-  background: #e1e1e1 url('@{static_url}img/default-place.png') no-repeat center;
+  background: #e1e1e1 url('@{static_url}img/map-unavailable.png') no-repeat center;
 }
 
 /* STATIC PAGES ------------ */
