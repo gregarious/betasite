@@ -16,7 +16,7 @@ Context variables:
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
         <div class="ajax-action-container" id="attendingButton">
-            <div class="state-on" {% if not event.isAttending %}style="display:none"{% endif %}>
+            <div class="state-on" {% if not event.is_attending %}style="display:none"{% endif %}>
                 <a href="#" class="favbutton remove" title="Remove from Calendar"><span class="status">&#215;</span>Remove from Calendar</a>
             </div>
             <div class="state-off" {% if event.is_attending %}style="display:none"{% endif %}>

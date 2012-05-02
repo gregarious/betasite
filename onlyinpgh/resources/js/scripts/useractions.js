@@ -32,7 +32,8 @@ scenable.useractions = {
             processingAction = $.ajax({
                 url: url,
                 data: data,
-                type: 'GET'
+                type: 'GET',
+                timeout: 4000
             });
 
             processingAction.done(function(data){
@@ -43,7 +44,7 @@ scenable.useractions = {
                     currentAction = isOn ? actions[0] : actions[1];
                 }
                 else {
-                    $el.children('.state-process').text('error');
+                    $el.children('.state-pending').text('error');
                     locked = true;
                 }
             });
