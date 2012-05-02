@@ -45,6 +45,9 @@ urlpatterns = patterns('',
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
 
+    # Error pages
+    url(r'^500/$', direct_to_template, {'template': '500.html'}, name='500'),
+
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
