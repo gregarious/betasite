@@ -89,12 +89,16 @@ def page_details(request, sid):
 
 def page_coupon(request, uuid):
     coupon = get_object_or_404(Coupon, uuid=uuid)
+    content = {
+        'coupon': coupon,
+        'print': request.GET.get('print')
+    }
     context = RequestContext(request)
     if coupon.was_used:
         # TODO: redirect to some error page?
         return HttpResponseForbidden()
     else:
-        return render_to_response('specials/page_coupon.html', {'coupon': coupon}, context_instance=context)
+        return render_to_response('specials/page_coupon.html', content, context_instance=context)
 
 # @jsonp_response
 # def feed_app(request):

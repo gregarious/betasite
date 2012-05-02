@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from onlyinpgh.places.models import Place
 
 from onlyinpgh.common.utils.jsontools import jsonp_response
@@ -39,9 +38,3 @@ def place_favorite(request):
         return {'success': True}
     else:
         return _make_error('inconsistent server state', '3')
-
-
-@authentication_required_403
-def test(request):
-    print request.user
-    return HttpResponse('')

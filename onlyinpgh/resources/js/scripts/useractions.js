@@ -82,13 +82,70 @@ scenable.useractions = {
         );
     },
 
-    buyCoupon: function(specialId) {
+    attachCouponBuyHandler: function(grabElement, specialId, modalPopupElement) {
+        var $el = $(grabElement);
+        $el.one('click', function(){
+            var processingAction = $.ajax({
+                url: '/specials/ajax/buy/',
+                data: {
+                    sid: specialId
+                },
+                type: 'GET',
+                timeout: 4000
+            });
 
+            $el.text('Processing...');
+            processingAction.done(function(data){
+                // ignore errors that say the coupon has already been bought
+                if(data.success && data.success.uuid) {
+                    $el.text('Got It!');
+                    var openPopup = function() {
+                        scenable.useractions.openCouponPopup(modalPopupElement, data.success.uuid);
+                    };
+                    $el.on('click', openPopup);
+                    openPopup();
+                }
+                else {
+                    $el.text('error');
+                }
+            });
+            processingAction.fail(function(jqXHR, textStatus){
+                $el.text(textStatus);
+            });
+        });
     },
-    viewCoupon: function(couponId) {
 
-    },
-    markCouponUsed: function(couponId) {
+    openCouponPopup: function(modalPopupElement, couponUUID) {
+        var $el = $(modalPopupElement);
+        $el.find('#emailCoupon')
+            .off('click')
+            .on('click', function(){
+                console.log('emailing'+couponUUID);
+            });
 
+        $el.find('#printCoupon')
+            .off('click')
+            .on('click', function(){
+                scenable.useractions.printCoupon(couponUUID);
+            });
+            
+        $el.dialog({
+            maxHeight: 500,
+            modal: true,
+            autoOpen: false
+        });
+       $el.dialog('open');
     },
+
+    emailCoupon: function(couponUUID) {
+        console.print('emailing '+couponUUID);
+    },
+
+    printCoupon: function(couponUUID) {
+        window.location.href = '/specials/redeem/' + couponUUID + '/?print=yes';
+    },
+
+    markCouponUsed: function(couponUUID) {
+        console.print('marking as used '+couponUUID);
+    }
 };

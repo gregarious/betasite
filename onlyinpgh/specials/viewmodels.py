@@ -7,12 +7,13 @@ class SpecialData(object):
                   'dexpires', 'dstart', 'total_available', 'total_sold',
                   'tags', 'get_absolute_url')
         if isinstance(user, User):
-            if len(special.coupon_set.filter(user=user, was_used=False)) > 0:
-                self.has_coupon = True
+            coupons = special.coupon_set.filter(user=user)
+            if coupons.count() == 0:
+                self.coupon = None
             else:
-                self.has_coupon = False
+                self.coupon = coupons[0]
         else:
-            self.has_coupon = False
+            self.coupon = None
 
         for attr in fields:
             setattr(self, attr, getattr(special, attr))
