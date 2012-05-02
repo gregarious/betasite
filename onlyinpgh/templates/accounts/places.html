@@ -15,6 +15,10 @@ Context variables:
 {% else %}
 	<section class="no-items">
     	<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
+        {% if public_user == user %}
     	<p>Looks like you haven't favorited any places yet. Take a look through the Places page, click one you like and choose 'Favorite' under the places thumbnail picture. As Scenable develops, Scene cred will be awareded based on your activity at your favorited places.</p> 
+        {% else %}
+        <p>U silly!</p>
+        {% endif %}
     </section>
 {% endif %}

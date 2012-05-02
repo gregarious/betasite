@@ -26,13 +26,12 @@ are always available (in addition to normal RequestContext vbls):
         {% include "scene_nav.html" %}
         {% include "top_bar.html" %}
     </nav>
+
     <div id="site-content" role="main">
     {% block main-content %}{% endblock %}
-    
-<footer id="site-footer">
-    {% include "footer.html" %}
-</footer> <!-- #footer -->
-    
+        <footer id="site-footer">
+            {% include "footer.html" %}
+        </footer> <!-- #footer -->        
     </div> <!-- #site-content -->
     
     <aside id="site-sidebar" role="complementary">
