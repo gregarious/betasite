@@ -10,5 +10,4 @@ urlpatterns = patterns('onlyinpgh.places.views',
 
 urlpatterns += patterns('onlyinpgh.places.ajax',
     url(r'^ajax/favorite/$', 'place_favorite'),
-    url(r'^ajax/test/$', 'test'),
 )
