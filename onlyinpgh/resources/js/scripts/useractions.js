@@ -120,13 +120,14 @@ scenable.useractions = {
         $el.find('#emailCoupon')
             .off('click')
             .on('click', function(){
-                console.log('emailing'+couponUUID);
+                scenable.useractions.emailCoupon(couponUUID, $el);
             });
 
         $el.find('#printCoupon')
             .off('click')
             .on('click', function(){
                 scenable.useractions.printCoupon(couponUUID);
+                $el.dialog('close');
             });
             
         $el.dialog({
@@ -137,12 +138,35 @@ scenable.useractions = {
        $el.dialog('open');
     },
 
-    emailCoupon: function(couponUUID) {
-        console.print('emailing '+couponUUID);
+    emailCoupon: function(couponUUID, popupEl) {
+        var sending = $.ajax({
+            url: scenable.constants.SITE_URL + 'specials/ajax/email/',
+            data: {
+                uuid: couponUUID
+            },
+            type: 'GET',
+            timeout: 8000
+        });
+
+        if(popupEl) {
+            var $el = $(popupEl).find('#emailStatus');
+            $el.text('Sending...');
+            sending.done(function(data){
+                if(data.success) {
+                    $el.text('Sent!');
+                }
+                else {
+                    $el.text('error');
+                }
+            });
+            sending.error(function(){
+                $el.text('error');
+            });
+        }
     },
 
     printCoupon: function(couponUUID) {
-        window.location.href = scenable.constants.SITE_URL + 'specials/redeem/' + couponUUID + '/?print=yes';
+        window.open(scenable.constants.SITE_URL + 'specials/redeem/' + couponUUID + '/?print=yes');
     },
 
     markCouponUsed: function(couponUUID) {
