@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from onlyinpgh.accounts.models import UserProfile
+from onlyinpgh.accounts.models import UserProfile, BetaMember
 
 
 class RegistrationForm(UserCreationForm):
@@ -28,6 +28,18 @@ class RegistrationForm(UserCreationForm):
         return user
 
 
+class BetaRegistrationForm(RegistrationForm):
+    '''
+    Special registration form for the private beta. Only allows users with
+    email addresses in a BetaMember object to register.
+    '''
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip()
+        if BetaMember.objects.filter(email=email).count() < 1:
+            raise forms.ValidationError('This email address is not registered for entry into the Scenable private beta launch. '\
+                                  'Are you sure you used the email address we have on record?')
+
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -35,7 +47,8 @@ class UserProfileForm(forms.ModelForm):
 
     birth_date = forms.DateField(label=u'Birth date',
         widget=forms.DateInput(format='%d/%m/%Y'),
-        input_formats=('%m/%d/%Y', '%m/%d/%y',))
+        input_formats=('%m/%d/%Y', '%m/%d/%y',),
+        required=False)
 
 
 # TODO: hook this up to user preferences

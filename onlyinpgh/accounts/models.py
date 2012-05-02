@@ -4,6 +4,10 @@ from django.db.models.signals import post_save
 from onlyinpgh.common.core.viewmodels import ViewModel
 
 
+class BetaMember(models.Model):
+    email = models.EmailField()
+
+
 class UserProfile(models.Model, ViewModel):
     '''
     Extended information for any user of the site.
@@ -30,6 +34,11 @@ class UserProfile(models.Model, ViewModel):
     birth_date = models.DateField(null=True, blank=True)
 
     neighborhood = models.CharField(max_length=50, blank=True)
+
+    # temporary location for these settings. when they're more complcated, they'll have their own model setup
+    public_favorites = models.BooleanField(default=True)
+    public_attendance = models.BooleanField(default=False)
+    public_coupons = models.BooleanField(default=True)
 
     def __unicode__(self):
         return unicode(self.user)
