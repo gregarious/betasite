@@ -23,7 +23,8 @@ TODO: only show month/day for events ending on a different day
 		<li class="datetime">{{event.dtstart|date:"N j, f a"}} - {{event.dtend|date:"f a"}}</li>
 		{% if event.place %}
  			<li class="host">at <a href="{{event.place.get_absolute_url}}">{{event.place.name}}</a></li>
-		{% else %}
+		{% endif %}
+		{% if event.place_primitive %}
 			<li class="host">at {{event.place_primitive}}</li>
 		{% endif %}
 		<li class="description">{{event.description|truncatewords:"15"}}

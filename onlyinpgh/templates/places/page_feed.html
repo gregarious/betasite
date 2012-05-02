@@ -15,7 +15,7 @@ Context variables:
 <article class="page-content" id="places-page">
     
     <div class="map-container">
-        <div class="page-title-container">
+        <div class="map-title-container">
             <h1 class="ribbon-title">Places</h1>
         </div>
         <div class="map" id="mainPlaceFeedMap"></div>
@@ -27,12 +27,20 @@ Context variables:
             <input type="submit" value="Filter" />
         </form>
         <nav class="prev-next" id="places-feed-nav">
-            {% if page.has_previous %}<a href="{% url places-feed %}?page={{page.previous_page_number}}" class="prev">&larr;</a>{% endif %}
-            <div class="page-num">{{page.number}}</div>
-            {% if page.has_next %}<a href="{% url places-feed %}?page={{page.next_page_number}}" class="next">&rarr;</a>{% endif %}
+            <div class="previous">
+            {% if page.has_previous %}<a href="{% url places-feed %}?page={{page.previous_page_number}}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            <div class="page-num">
+                <p>Page</p>
+                {{page.number}} / {{page.paginator.num_pages}}</div>
+            <div class="next">
+                {% if page.has_next %}<a href="{% url places-feed %}?page={{page.next_page_number}}">&rarr;</a>{% else %}&nbsp;{% endif %}
+            </div>
         </nav>
     </div>
-    
+
+    {% if not page.object_list %}
+        <div class="none-found">No results found.</div>
+    {% else %}
     <ul class="feed places" id="mainPlaceFeed">
         {# will be inserted via Backbone bootstrapping below #}
         {% comment %}
@@ -44,7 +52,7 @@ Context variables:
         # {% endfor %}
         {% endcomment %}
     </ul> <!-- .feed#mainPlaceFeed -->
-    
+    {% endif %}
 </article> <!-- .page-content -->
 {% endblock %}
 
