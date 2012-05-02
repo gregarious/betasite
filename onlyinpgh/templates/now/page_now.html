@@ -88,38 +88,32 @@ Context variables:
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
-        </ul>
-
-        <ul class="feed half">
-        {% for item in chatter_posts|slice:"5" %}
+        
+        {% for item in chatter_posts|slice:"0:1" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
         {% endfor %}
-        </ul>
-
-        <ul class="feed half">
+        
         {% for item in news_articles|slice:"1:2" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
-        </ul>
-
-        <ul class="feed news">
-        {% for item in chatter_posts|slice:"2:4" %}
+        
+        {% for item in chatter_posts|slice:"1:2" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
         {% endfor %}
-        </ul>
-        <ul class="feed news">
+        
         {% for item in news_articles|slice:"2:3" %}
             <li class="item">
                 {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
-        {% for item in chatter_posts|slice:"4:6" %}
+        
+        {% for item in chatter_posts|slice:"3:4" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
             </li>
