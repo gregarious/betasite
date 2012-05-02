@@ -1,6 +1,7 @@
 {% extends 'page.html' %}
 
 {% block main-content %}
+{% load thumbnail %}
 <article class="page-content" id="search-results-page">
     <h2>Search</h2>
 
@@ -12,35 +13,42 @@
         </form>
         {% if query %}
             {% if results %}
-            <section class="results-type">
+            <section class="results-type row-container">
                 <h3>Places</h3>
                 {% if results.places %}
-                <ul class="feed">
-                {% for result in results.places|slice:"0:5" %}
-                    <li class="result">
-                        <h4 class="item-title"><a href="{{result.object.get_absolute_url}}">{{result.object.name}}</a></h4>
-                        <p>{{result.object.location.address}}</p>
-                        {% include "tags/tag_list.html" with tags=result.object.tags %}
-                    </li>
-                {% endfor %}
-                </ul>
-                <ul class="thumb-feed">
-                {% load thumbnail %}
-                {% for result in results.places|slice:"7" %}
-                    {% thumbnail results.object.image "50x50" crop="center" as im %}
-                    <li><img src="{{im.url}}" alt="{{result.object.name}}" /></li>
-                    {% endthumbnail %}
-                {% endfor %}
-                </ul>
-                <a class="right" href="{% url places-feed %}?q={{query}}" title="See more places...">See all...</a>
+                    <ul class="feed">
+                        {% for result in results.places|slice:"0:6" %}
+                        <li class="item">
+                            <a href="{{result.object.get_absolute_url}}">
+                            {% thumbnail result.object.image "50x50" crop="center" as im %}
+                            <img class="thumbnail" alt="{{result.object.name}}" src="{{im.url}}" />
+                            {% empty %}
+                            <img class="thumbnail" alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                            {% endthumbnail %}
+                            <h4 class="item-title">{{result.object.name}}</h4>
+                            <p>{{result.object.location.address}}</p>
+                            {% include "tags/tag_list.html" with tags=result.object.tags %}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="see-more-thumbs">
+                        {% for result in results.places|slice:"5:16" %}
+                            <a href="{{result.object.get_absolute_url}}">
+                                {% thumbnail result.object.image "50x50" crop="center" as im %}
+                                <img alt="{{result.object.name}}" src="{{im.url}}" />
+                                {% empty %}
+                                <img alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                                {% endthumbnail %}
+                            </a>
+                        {% endfor %}
+                        <div><a href="{% url places-feed %}?q={{query}}" title="See more places...">See all...</a></div>
+                    </div>
                 {% else %}
                 <p class="none-found">None found.</p>
                 {% endif %}
-                </ul>
-                {% if results.places %}
-                
-                {% endif %}
             </section>
+
             <section class="results-type">
                 <h3>Events</h3>
                 {% if results.events %}
@@ -117,4 +125,8 @@
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
 </article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_search.html" %}
 {% endblock %}
