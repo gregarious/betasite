@@ -22,8 +22,46 @@ Context variables:
 
     <div class="row-container">
         <!-- <div class="map-container"></div> -->
-        <ul class="feed random">
-        {% for i in items %}
+        <ul class="feed random third">
+        {% for i in items|slice:"0:3" %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <ul class="feed random third">
+        {% for i in items|slice:"3:6" %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <ul class="feed random third">
+        {% for i in items|slice:"6:9" %}
             {% if i.model == 'Special' %}
             <li class="item short">
                 {% include "specials/short_feed_item.html" with special=i.instance %}
