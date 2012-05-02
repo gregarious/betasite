@@ -133,7 +133,7 @@ def page_public_account(request, uname):
     user = get_object_or_404(User, username=uname)
     # if the profile requested is the current user's, redirect to manage
     if user == request.user:
-        return HttpResponseRedirect(reverse('account-manage', {'uname': uname}))
+        return HttpResponseRedirect(reverse('account-manage', kwargs={'uname': uname}))
     else:
         return _render_profile_page(request, user, None)
 
