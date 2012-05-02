@@ -5,26 +5,13 @@ from onlyinpgh.common.core.rendering import render_safe
 
 from django.shortcuts import get_object_or_404, render
 
-from django.http import HttpResponseForbidden
-
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 
 from onlyinpgh.orgadmin.forms import SimplePlaceForm
 from onlyinpgh.common.utils import get_cached_thumbnail
 
-
-### Shotcuts for authentication ###
-def authentication_required_403(view_func):
-    '''
-    If user not authenticated a 403 will be returned.
-    '''
-    def wrapper(request, *args, **kwargs):
-        if request.user.is_authenticated():
-            return view_func(request, *args, **kwargs)
-        else:
-            return HttpResponseForbidden()
-    return wrapper
+from onlyinpgh.common.decorators import authentication_required_403
 
 
 def _autocomplete_response(request, place_choices, term, limit=4):

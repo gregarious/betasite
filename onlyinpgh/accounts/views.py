@@ -164,7 +164,7 @@ def page_user_favorites(request, uname):
     if user != request.user and not user.get_profile().public_favorites:
         items = []
     else:
-        places = [fav.place for fav in Favorite.objects.filter(user=user, is_favorite=True)]
+        places = [fav.place for fav in Favorite.objects.filter(user=user)]
         items = [PlaceData(place, user=request.user) for place in places]
     return _render_profile_page(request, user, 'places', {'feed_items': items})
 
@@ -176,7 +176,7 @@ def page_user_attendance(request, uname):
     if user != request.user and not user.get_profile().public_attendance:
         items = []
     else:
-        events = [att.event for att in Attendee.objects.filter(user=user, is_attending=True)]
+        events = [att.event for att in Attendee.objects.filter(user=user)]
         items = [EventData(event, user=request.user) for event in events]
     return _render_profile_page(request, user, 'events', {'feed_items': items})
 
