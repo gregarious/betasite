@@ -1,4 +1,4 @@
-/* Requires jQuery, underscore, Backbone, google maps api */
+/* Requires underscore, google maps api */
 scenable = window.scenable = window.scenable || {};
 
 scenable.map = {

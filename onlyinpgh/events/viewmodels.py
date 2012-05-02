@@ -12,9 +12,7 @@ class EventData(object):
                   'url', 'place', 'place_primitive', 'tags', 'listed',
                   'get_absolute_url')
         if isinstance(user, User):
-            self.is_attending = event.attendee_set\
-                                .filter(user=user, is_attending=True)\
-                                .count() > 0
+            self.is_attending = event.attendee_set.filter(user=user).count() > 0
         else:
             self.is_attending = False
         for attr in fields:

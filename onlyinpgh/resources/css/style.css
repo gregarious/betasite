@@ -772,7 +772,7 @@ legend {
   float: left;
   margin-top: 0.5em;
 }
-.fav-container a {
+.ajax-action-container a {
   display: block;
   color: #444;
   font-size: 0.8em;
@@ -786,21 +786,21 @@ legend {
   background-clip: padding-box;
   text-align: center;
 }
-.fav-container a:hover {
+.ajax-action-container a:hover {
   color: #b83939;
 }
-.fav-container a:active {
+.ajax-action-container a:active {
   color: #2c525d;
 }
-.fav-container .status {
+.ajax-action-container .status {
   font-size: 1.9em;
   line-height: 0.2em;
   margin-right: 0.2em;
 }
-.fav-container .remove .status {
+.ajax-action-container .remove .status {
   color: #444;
 }
-.fav-container .add .status {
+.ajax-action-container .add .status {
   color: #4b7699;
 }
 #sidebar-feedback label {
