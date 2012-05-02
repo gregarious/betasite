@@ -242,6 +242,7 @@ body {
   background: #e1e1e1 url("/static/img/logos/oakland-bkgd-450.png") fixed bottom right no-repeat;
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   overflow-x: hidden;
+  height: 100%;
 }
 /* TYPOGRAPHY -------- */
 h1 {
@@ -687,7 +688,7 @@ legend {
 .tip,
 .errorlist {
   color: #555;
-  font-size: 0.8em;
+  font-size: 0.9em;
   display: block;
   margin-left: 2%;
 }
@@ -815,16 +816,20 @@ legend {
   margin: auto auto 1em;
   width: 60px;
 }
+#login-page form,
+#signup-page form {
+  padding: 0 6%;
+}
 /* HEADER ------------- */
 #logo {
   float: left;
-  width: 19.583333333333332%;
+  width: 16.25%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 100%;
-  width: auto;
+  height: auto;
+  padding: 0.3em;
 }
 #select-sect {
   display: none;
@@ -857,7 +862,7 @@ legend {
   position: fixed;
   z-index: 999;
   height: 5.5em;
-  width: 1140px;
+  max-width: 1140px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em;
   -moz-border-radius: 0 0 0.5em 0.5em;
@@ -866,7 +871,7 @@ legend {
 #scene-nav .main-menu {
   *zoom: 1;
   float: left;
-  width: 42.916666666666664%;
+  width: 46.25%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -953,8 +958,9 @@ legend {
 .wrap {
   *zoom: 1;
   margin: 0 auto;
-  width: 1140px;
+  max-width: 1140px;
   position: relative;
+  height: 100%;
 }
 .wrap:before,
 .wrap:after {
@@ -975,12 +981,13 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-bottom: 3em;
+  min-height: 100%;
   padding: 0.7em 1.5em 0.5em;
   position: relative;
-  -webkit-border-radius: 0 0 0.5em 0.5em;
-  -moz-border-radius: 0 0 0.5em 0.5em;
-  border-radius: 0 0 0.5em 0.5em;
+  /*-webkit-border-radius: 0 0 0.5em 0.5em; 
+   -moz-border-radius: 0 0 0.5em 0.5em; 
+        border-radius: 0 0 0.5em 0.5em;*/
+
   top: 5.5em;
   z-index: 1;
 }
@@ -989,20 +996,13 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 2em;
+  position: absolute;
   font-size: 0.9em;
-  *zoom: 1;
+  bottom: 10px;
+  left: 0;
   padding: 0.5em 0;
   text-align: center;
   border-top: 1px #e1e1e1 solid;
-}
-#site-footer:before,
-#site-footer:after {
-  content: "";
-  display: table;
-}
-#site-footer:after {
-  clear: both;
 }
 /* SIDEBAR ---------- */
 #site-sidebar {
@@ -1168,13 +1168,13 @@ legend {
 }
 /* PAGE --------- */
 .page-title {
-  font-size: 1.2;
+  font-size: 1.3em;
   border-bottom: 1px solid #e1e1e1;
   margin: 1em 0;
   padding-bottom: 0.5em;
 }
 .page-content {
-  padding: 0 1em 1em;
+  padding: 0 0.5em 6em;
   *zoom: 1;
 }
 .page-content:before,
@@ -1349,7 +1349,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 3%;
+  padding: 3% 3% 6em;
   *zoom: 1;
 }
 .single-container:before,
@@ -1362,6 +1362,9 @@ legend {
 }
 .single-container .item-details {
   font-size: 1em;
+}
+.single-container .item-details .map {
+  height: 80%;
 }
 .single-thumb-container {
   float: left;
@@ -1733,7 +1736,8 @@ legend {
 }
 /* Places */
 /* Chatter */
-#chatter-page {
+#chatter-page .feed,
+#chatter-page form {
   padding: 0 10%;
 }
 .post {
@@ -1742,7 +1746,6 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: #fff;
-  border: 2px #e1e1e1 solid;
   padding: 0.7em;
   background-color: #f9f9f9;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e9e9e9));
@@ -1775,6 +1778,7 @@ legend {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 0.5em;
   padding-bottom: 0.5em;
+  font-size: 1.1em;
 }
 .post .avatar-container {
   float: left;
@@ -1787,13 +1791,11 @@ legend {
 .post img {
   float: left;
   margin-right: 0.5em;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
 }
-.post.post-meta p {
-  color: #666;
+.post .tip {
   font-size: 0.8em;
-  display: inline;
 }
 /* Profile */
 .no-items {
@@ -1808,6 +1810,9 @@ legend {
   margin: 0;
 }
 /* Search */
+#search-results-page .item {
+  cursor: default;
+}
 .results-type {
   margin-bottom: 1em;
 }
@@ -1831,6 +1836,7 @@ legend {
   padding: 0.5em;
 }
 .see-more-thumbs {
+  display: block;
   margin: 1em 0;
   padding: 0.5em;
   -webkit-border-radius: 0.3em;
@@ -1872,9 +1878,10 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.see-more-thumbs .see-more {
+.see-more-thumbs .see-more a {
+  display: block;
   font-size: 1.2em;
-  float: left;
+  float: right;
   width: auto;
   padding: 20px 0 0 0.5em;
 }
@@ -1916,11 +1923,11 @@ legend {
 }
 /* MAP --------- */
 .map-container {
-  height: 200px;
+  height: 240px;
 }
 .map {
   width: 100%;
-  height: 90%;
+  height: 100%;
   border: 1px solid #888;
 }
 .page-content .map-container {
@@ -1935,7 +1942,6 @@ legend {
 }
 .directions {
   margin: 0.5em 0;
-  text-align: center;
 }
 .directions a {
   background: url("/static/img/icons/map-marker-small.png") no-repeat top left;
@@ -1954,25 +1960,51 @@ legend {
 .infowindow {
   font-size: 0.8em;
 }
-.no-map {
-  margin-top: 6em;
-}
-.no-map .page-title-container {
-  margin-top: 2.7em;
-  width: auto;
-}
-#map-unavailable {
-  background: #e1e1e1 url('/static/img/map-unavailable.png') no-repeat center;
-}
-/* STATIC PAGES ------------ */
-.static-section {
-  border-bottom: 1px solid #e1e1e1;
-  padding-bottom: 2em;
+.no-map .page-header {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 2em 0;
+  margin: 1em 0;
+  *zoom: 1;
+}
+.no-map .page-header:before,
+.no-map .page-header:after {
+  content: "";
+  display: table;
+}
+.no-map .page-header:after {
+  clear: both;
+}
+.no-map .page-title-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+  width: 39.58333333333333%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.no-map .page-header-content {
+  float: left;
+  width: 56.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#map-unavailable {
+  background: #cccccc url('/static/img/map-unavailable.png') no-repeat center;
+}
+/* STATIC PAGES ------------ */
+.static-section {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2em 0 0;
   *zoom: 1;
   font-size: 0.9em;
 }
@@ -2007,6 +2039,14 @@ legend {
   float: right;
   width: 40%;
   margin: 0 0 1em 1em;
+}
+#team .static-section {
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #e1e1e1;
+}
+#team .static-section:last-child {
+  border: none;
 }
 #about-oakland img,
 #scenable-mission img {
@@ -2195,7 +2235,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.half {
+f.half {
   float: left;
   width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
@@ -2203,7 +2243,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.half .item {
+f.half .item {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2214,8 +2254,33 @@ legend {
   display: block;
   margin: 0.5em auto 0;
 }
-.ajax-action-container {
-  height: 1.5em;
+.notification {
+  width: 88%;
+  float: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px #ded57f solid;
+  margin: 0 6% 2em;
+  padding: 3%;
+  background: rgba(222, 213, 127, 0.3);
+}
+.notification h3 {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+.notification img {
+  float: left;
+  margin-right: 1em;
+}
+.notification p {
+  display: inline;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 
@@ -2267,3 +2332,389 @@ a#siteNews {
   background: #ffffff url('/static/img/main-menu/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
+/*******************************/
+/* 18 MEDIA QUERIES ---------- */
+/*******************************/
+@media screen and (max-width: 1140px) {
+  body {
+    background-image: url("/static/img/logos/oakland-bkgd-325.png");
+  }
+  #scene-nav {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+}
+@media screen and (max-width: 1082px) {
+  
+}
+@media screen and (max-width: 992px) {
+  #logo {
+    padding-top: 1em;
+  }
+  .detail-nav {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 1em;
+  }
+  .detail-nav ul {
+    *zoom: 1;
+  }
+  .detail-nav ul:before,
+  .detail-nav ul:after {
+    content: "";
+    display: table;
+  }
+  .detail-nav ul:after {
+    clear: both;
+  }
+  .detail-nav ul li a {
+    float: left;
+    width: 31.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 0.5em 0.5em 0 0;
+    -moz-border-radius: 0.5em 0.5em 0 0;
+    border-radius: 0.5em 0.5em 0 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    position: relative;
+    top: 1px;
+    text-shadow: 0.05em 0.05em 0em #fff;
+    text-align: center;
+    font-weight: bold;
+    float: left;
+  }
+  .detail-nav ul li a.current-page {
+    border-bottom: none;
+    border-right: 1px #ccc solid;
+  }
+  .detail-nav#profile-nav ul li a {
+    float: left;
+    width: 22.916666666666664%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .detail-section {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .detail-section-title {
+    display: none;
+  }
+  .single-title {
+    font-size: 1.5em;
+  }
+  .single-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .logout,
+  .bar {
+    display: none;
+  }
+  body {
+    background-image: none;
+  }
+  #site-content.single {
+    margin-top: 0;
+  }
+  #utility {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility a {
+    color: #ded57f;
+  }
+  #site-content {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    top: 7.5em;
+  }
+  .feed {
+    margin: 0;
+    clear: both;
+  }
+  #site-sidebar {
+    display: none;
+  }
+  #site-content {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  #scene-nav {
+    top: 2em;
+  }
+  #scene-nav .main-menu {
+    float: right;
+    width: 72.91666666666666%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #logo {
+    float: left;
+    width: 22.916666666666664%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .feed .item-details {
+    font-size: 0.9em;
+  }
+  .field-label,
+  label {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 0.5em 0.5em;
+  }
+  .field {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .field-container {
+    margin: 1em 0;
+  }
+  #utility {
+    position: absolute;
+    bottom: 5.1em;
+    background: #444;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+    color: #fff;
+  }
+  #utility .site-search-container {
+    float: right;
+    width: 39.58333333333333%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility .simple-form {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility .simple-form input[type="search"] {
+    padding: 0.1em;
+    margin: 0;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #utility .simple-form input[type="submit"] {
+    display: none;
+  }
+  #utility #debug-user {
+    float: left;
+    width: 56.25%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: left;
+  }
+  .item {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .item:hover {
+    background: #fff;
+  }
+  .hot-section-title {
+    margin: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+  }
+  .page-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 720px) {
+  #logo img {
+    height: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .page-content .feed .item {
+    height: auto;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .page-content .feed .item:last-child {
+    border: none;
+  }
+  .page-content .feed .item .description,
+  .page-content .feed .item .host {
+    display: block;
+  }
+  .single-container {
+    padding: 0;
+    border: none;
+    background: url("/static/img/textures/white-tex.png");
+  }
+  .single-header {
+    padding: 1em 1em 0 1em;
+    border: none;
+  }
+  .single-title {
+    line-height: 1;
+    font-size: 1.3em;
+  }
+  .page-header {
+    display: none;
+  }
+  #utility {
+    bottom: 4.1em;
+  }
+  .btn-primary {
+    padding: 0.3em;
+  }
+  .single-content .map-container {
+    height: 100px;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 1em;
+  }
+  .single-content.places {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .main-menu {
+    display: none;
+  }
+  #select-sect {
+    display: inline-block;
+    float: right;
+    width: 39.58333333333333%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.5em 0.5em 2em;
+  }
+  .detail-section {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.3em;
+  }
+  .detail-section .map-container {
+    margin: 1em 0;
+  }
+  .detail-section .section-title {
+    display: none;
+  }
+  .detail-section#placeDetail {
+    padding: 0 1em 1em;
+  }
+  .detail-section#placeDetail .item-details {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .detail-section#placeDetail .item-details ul li {
+    margin: 0;
+  }
+  .detail-section .map-container {
+    height: 100px;
+  }
+  #scene-nav {
+    border: none;
+  }
+  .item-title {
+    font-size: 1em;
+  }
+  #logo {
+    padding-top: 0.7em;
+    float: left;
+    width: 39.58333333333333%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0.5em;
+  }
+  #logo img {
+    width: auto;
+    height: 80%;
+  }
+  .filter {
+    display: none;
+  }
+  #site-content {
+    top: 6.5em;
+    padding: 0;
+  }
+  .map-container.hot {
+    height: 150px;
+    overflow: hidden;
+  }
+  #scene-nav {
+    height: 4.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .single-title {
+    font-size: 1em;
+    text-shadow: none;
+  }
+  .item-details,
+  .item-title {
+    font-size: 0.9em;
+  }
+  .page-content .map-container {
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .page-content .map-container {
+    height: 150px;
+  }
+}

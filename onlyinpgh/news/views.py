@@ -1,8 +1,10 @@
 from django.shortcuts import render_to_response
 from onlyinpgh.common.views import PageContext
 from onlyinpgh.news.models import Article
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def page_feed(request):
     items = Article.objects.all()
     context = PageContext(request,
