@@ -15,6 +15,7 @@ class UserProfile(models.Model, ViewModel):
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
+        ('O', 'Other'),
     )
 
     user = models.OneToOneField(User)
