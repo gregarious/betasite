@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
 
-    url(r'^account/', include('onlyinpgh.accounts.urls')),
+    url(r'^accounts/', include('onlyinpgh.accounts.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
