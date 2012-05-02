@@ -21,12 +21,19 @@ class SpecialData(object):
         self._add_dates()
 
     def _add_dates(self):
-        self.dstart_str = self.dstart.strftime('%b ') + \
-                          self.dstart.strftime('%d').lstrip('0') + \
-                          self.dstart.strftime(', %Y')
-        self.dexpires_str = self.dexpires.strftime('%b ') + \
-                            self.dexpires.strftime('%d').lstrip('0') + \
-                            self.dexpires.strftime(', %Y')
+        if self.dstart:
+            self.dstart_str = self.dstart.strftime('%b ') + \
+                              self.dstart.strftime('%d').lstrip('0') + \
+                              self.dstart.strftime(', %Y')
+        else:
+            self.dstart_str = ''
+
+        if self.dexpires:
+            self.dexpires_str = self.dexpires.strftime('%b ') + \
+                                self.dexpires.strftime('%d').lstrip('0') + \
+                                self.dexpires.strftime(', %Y')
+        else:
+            self.dexpires_str = ''
 
     def serialize(self):
         '''

@@ -150,10 +150,23 @@ def page_manage_account(request, uname):
     user = get_object_or_404(User, username=uname)
     if user != request.user:
         return HttpResponseForbidden()
+    if request.POST:
+        # TODO: process credentials form
+        profile_form = UserProfileForm(data=request.POST, files=request.FILES,
+            instance=user.get_profile())
+        preferences_form = ActivityPreferencesForm(data=request.POST,
+            instance=user.get_profile())
+        if profile_form.is_valid() and preferences_form.is_valid():
+            profile_form.save()
+            preferences_form.save()
+    else:
+        profile_form = UserProfileForm(instance=user.get_profile())
+        preferences_form = ActivityPreferencesForm(instance=user.get_profile())
+
     forms = dict(
-        profile_form=UserProfileForm(),
+        profile_form=profile_form,
         credentials_form=CredentialsForm(),
-        preferences_form=ActivityPreferencesForm())
+        preferences_form=preferences_form)
     return _render_profile_page(request, user, 'account', {'account_forms': forms})
 
 

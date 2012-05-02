@@ -11,6 +11,10 @@ class PostForm(forms.ModelForm):
         self.author = author
         super(PostForm, self).__init__(*args, **kwargs)
 
+    def clean(self):
+        if not self.author or not self.author.is_authenticated():
+            raise forms.ValidationError('User must be logged in to post.')
+
     def save(self, commit=True, *args, **kwargs):
         post = super(PostForm, self).save(commit=False, *args, **kwargs)
         post.author = self.author

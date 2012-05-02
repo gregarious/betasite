@@ -10,6 +10,8 @@ def page_feed(request):
         if submit_form.is_valid():
             if submit_form.cleaned_data['content'].strip() != '':
                 submit_form.save()
+            # create new form -- don't want the post text in there again
+            submit_form = PostForm(author=request.user)
     else:
         submit_form = PostForm(author=request.user)
 
