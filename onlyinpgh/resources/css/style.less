@@ -1042,9 +1042,29 @@ legend {
 
 /* TEMPLATE SPECIFICS --------- */
 
+/* Chatter */
+
+#chatter-page, #news-page {
+  .page-title-container {
+    .column(3);
+  }
+
+  .page-title {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  .page-header-content {
+    .column(9);
+    .tip {
+      font-size: 0.8em;
+    }
+  }
+}
+
 /* Now */
 
-#now-page, #chatter-page {
+#now-page {
 
   .page-title {
     font-size: 1.1em;
@@ -1231,8 +1251,8 @@ legend {
   .feed, form {
     padding: 0 10%;
   }
-}
-.post {
+
+  .post {
     .row();
     background: #fff;
     //border: 2px #e1e1e1 solid;
@@ -1266,7 +1286,7 @@ legend {
       font-size: 0.8em;
     }
   }
-
+}
 /* Profile */
 
 .no-items {
