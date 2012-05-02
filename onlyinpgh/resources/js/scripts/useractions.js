@@ -1,4 +1,4 @@
-/* Requires jQuery */
+/* Requires jQuery, underscore */
 scenable = window.scenable = window.scenable || {};
 
 scenable.useractions = {
@@ -66,7 +66,7 @@ scenable.useractions = {
         scenable.useractions._attachAtomicHandler(
             ajaxActionElement,
             {'pid': placeId},
-            '/places/ajax/favorite/',
+            scenable.constants.SITE_URL + 'places/ajax/favorite/',
             ['unfavorite', 'favorite'],
             isOn
         );
@@ -76,7 +76,7 @@ scenable.useractions = {
       scenable.useractions._attachAtomicHandler(
             ajaxActionElement,
             {'eid': eventId},
-            '/events/ajax/attend/',
+            scenable.constants.SITE_URL + 'events/ajax/attend/',
             ['unattend', 'attend'],
             isOn
         );
@@ -86,7 +86,7 @@ scenable.useractions = {
         var $el = $(grabElement);
         $el.one('click', function(){
             var processingAction = $.ajax({
-                url: '/specials/ajax/buy/',
+                url: scenable.constants.SITE_URL + 'specials/ajax/buy/',
                 data: {
                     sid: specialId
                 },
@@ -142,7 +142,7 @@ scenable.useractions = {
     },
 
     printCoupon: function(couponUUID) {
-        window.location.href = '/specials/redeem/' + couponUUID + '/?print=yes';
+        window.location.href = scenable.constants.SITE_URL + 'specials/redeem/' + couponUUID + '/?print=yes';
     },
 
     markCouponUsed: function(couponUUID) {
