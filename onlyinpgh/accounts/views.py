@@ -4,13 +4,12 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.accounts.forms import BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
+from onlyinpgh.accounts.forms import EmailAuthenticationForm, BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
 from onlyinpgh.common.views import PageContext
 
 import urlparse
@@ -33,7 +32,7 @@ def page_login(request, redirect_field_name='next'):
     '''
     redirect_to = request.REQUEST.get(redirect_field_name, '')
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = EmailAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             netloc = urlparse.urlparse(redirect_to)[1]
 
@@ -54,7 +53,7 @@ def page_login(request, redirect_field_name='next'):
 
             return HttpResponseRedirect(redirect_to)
     else:
-        form = AuthenticationForm(request)
+        form = EmailAuthenticationForm(request)
     request.session.set_test_cookie()
 
     content = dict(

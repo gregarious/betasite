@@ -13,6 +13,8 @@ from onlyinpgh.places.models import Location
 from onlyinpgh.events.forms import EventForm
 from onlyinpgh.specials.forms import SpecialForm
 
+from onlyinpgh.accounts.forms import EmailAuthenticationForm
+
 from onlyinpgh.places.models import Place, Parking, Hours
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.outsourcing.places import resolve_location
@@ -51,42 +53,11 @@ class SimpleOrgForm(OrganizationForm):
         fields = ("name",)
 
 
-class OrgLoginForm(AuthenticationForm):
+class OrgLoginForm(EmailAuthenticationForm):
     '''
-    Form for org admin login.
-
-    Currently assumes email address is username.
+    Form for org admin login. Same as EmailAuthenticationForm now.
     '''
-    def clean(self):
-        '''
-        Override default logging in behavior to allow for email address
-        login. Doing this here instead of clean_username because we don't
-        want to reveal email addresses via a field-specific error message.
-        '''
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-
-        if username and password:
-            if '@' in username:
-                # grab all possible usernames associated with this email address to authenitcate with
-                # we'll never allow a login for more than one, but trying all of them allows us to
-                # hold off on the multi-user email error until after a good password is used
-                usernames = [u.username for u in User.objects.filter(email=username)]
-                auth_users = [authenticate(username=username, password=password) for username in usernames]
-                if not any(auth_users):
-                    raise forms.ValidationError("Please enter a correct email address and password. Note that both fields are case-sensitive.")
-                if len(auth_users) > 1:
-                    raise forms.ValidationError("This email address is associated with more than one user. Please use a username.")
-                self.user_cache = auth_users[0]
-            else:
-                # standard authentication
-                self.user_cache = authenticate(username=username, password=password)
-                if self.user_cache is None:
-                    raise forms.ValidationError("Please enter a correct username and password. Note that both fields are case-sensitive.")
-                elif not self.user_cache.is_active:
-                    raise forms.ValidationError("This account is inactive.")
-        self.check_for_test_cookie()
-        return self.cleaned_data
+    pass
 
 
 class OrgAdminPlaceForm(PlaceForm):
