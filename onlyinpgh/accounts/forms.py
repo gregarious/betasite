@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
 from onlyinpgh.accounts.models import UserProfile, BetaMember
 
 
@@ -38,6 +38,12 @@ class BetaRegistrationForm(RegistrationForm):
         if BetaMember.objects.filter(email=email).count() < 1:
             raise forms.ValidationError('This email address is not registered for entry into the Scenable private beta launch. '\
                                   'Are you sure you used the email address we have on record?')
+        try:
+            existing_user = User.objects.get(email=email)
+            if existing_user.organization_set.count() > 0:
+                raise forms.ValidationError('An business account for this email address already exists. Go ahead to the login page to enter the site.')
+        except User.DoesNotExist:
+            return email
 
 
 class UserProfileForm(forms.ModelForm):

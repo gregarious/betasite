@@ -26,7 +26,6 @@ $(function(){
 
     // Sidebar feedback modal
 	$('.feedback-modal').dialog({
-        maxHeight: 700,
         modal: true,
         autoOpen: false
     });

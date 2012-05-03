@@ -85,17 +85,7 @@ Context variables:
         </ul>
     </div> <!-- .row-container -->
     <hr />
-    <div class="row-container">
-        <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
-        <ul class="feed news">
-        {% for item in news_articles|slice:"3" %}
-            <li class="item">
-                {% include "news/feed_item.html" with article=i.instance %}
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-    <div class="row-container chatter">       
+     <div class="row-container chatter">       
         <h2><a href="{% url chatter-feed %}" title="Oakland Chatter">Chatter</a></h2>
         <ul class="feed">
         {% for item in chatter_posts|slice:"0:3" %}
@@ -108,6 +98,17 @@ Context variables:
         {% for item in chatter_posts|slice:"4:6" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container -->
+    <hr />
+    <div class="row-container">
+        <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
+        <ul class="feed news">
+        {% for item in news_articles|slice:"3" %}
+            <li class="item">
+                {% include "news/feed_item.html" with article=i.instance %}
             </li>
         {% endfor %}
         </ul>

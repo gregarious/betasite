@@ -71,10 +71,11 @@ def page_login(request, redirect_field_name='next'):
 def page_signup(request):
     # if POST request, handle the form submission
     if request.POST:
-        reg_form = BetaRegistrationForm(request.POST, prefix='reg')
-        profile_form = UserProfileForm(request.POST, prefix='prof')
+        reg_form = BetaRegistrationForm(data=request.POST, prefix='reg')
+        profile_form = UserProfileForm(data=request.POST, prefix='prof')
 
         if reg_form.is_valid() and profile_form.is_valid():
+            print 'yo', reg_form.cleaned_data
             user = reg_form.save()     # saves new user
 
             # reinitialize the form linked to the new user profile
