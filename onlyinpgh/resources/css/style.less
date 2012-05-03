@@ -1357,33 +1357,27 @@ legend {
 
 .see-more-thumbs {
   display: block;
-  margin: 1em 0;
+  margin: 0.5em 0;
   padding: 0.5em;
   .rounded(0.3em);
   .ease-out(background);
   .clearfix();
 
-  &:hover {
-    background: #e1e1e1;
-    a {
-      color: #333;
-    }
-  }
-
+ 
   &>div {
     .row();
   }
 
   img {
     float: left;
-    //.column_nm(1.2);
     width: 50px;
+    margin: 0.1em;
     .border-box();
   }
 
-  .see-more a {
+  .see-more {
     display: block;
-    font-size: 1.2em;
+    font-size: 1em;
     float: right;
     width: auto;
     padding: 20px 0 0 0.5em;

@@ -1884,7 +1884,7 @@ legend {
 }
 .see-more-thumbs {
   display: block;
-  margin: 1em 0;
+  margin: 0.5em 0;
   padding: 0.5em;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -1906,12 +1906,6 @@ legend {
 .see-more-thumbs:after {
   clear: both;
 }
-.see-more-thumbs:hover {
-  background: #e1e1e1;
-}
-.see-more-thumbs:hover a {
-  color: #333;
-}
 .see-more-thumbs > div {
   width: 100%;
   -moz-box-sizing: border-box;
@@ -1921,13 +1915,14 @@ legend {
 .see-more-thumbs img {
   float: left;
   width: 50px;
+  margin: 0.1em;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.see-more-thumbs .see-more a {
+.see-more-thumbs .see-more {
   display: block;
-  font-size: 1.2em;
+  font-size: 1em;
   float: right;
   width: auto;
   padding: 20px 0 0 0.5em;
