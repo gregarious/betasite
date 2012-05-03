@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import truncatechars
 
 
 class GenericFeedbackComment(models.Model):
     user = models.ForeignKey(User)
     feedback = models.TextField()
+
+    def __unicode__(self):
+        return truncatechars(self.feedback, 25)
 # class BasicSurveyResponse(models.Model):
 #     general_feedback = models.TextField(verbose_name=u'What would make this page better?', blank=True)
 
