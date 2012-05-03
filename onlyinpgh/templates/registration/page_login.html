@@ -3,12 +3,16 @@
 {% block main-content %}
 <br>
 <div class="notification">
-	<h2>Beta Testers: First time here? <a href="{% url signup %}" title="Create an account">Create an account</a>.</h2>
-	
+	<h2>First time here?</h2>
+    <ul>
+        <li><b>Beta Testers</b>: <a href="{% url signup %}" title="Create an account">Create an account</a>.</li>
+        <li><b>Business Users</b>: <a href="{% url orgadmin-signup %}" title="Create an account">Head to the management panel</a>.</li>
+	</ul>
+    <br/>
+
     <p>Scenable is currently in its private beta testing phase. Not a Beta Tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
 </div>
 <h1 class="page-title">Login to your Account</h1>
-<p><em>Are you looking to manage your business account? Log in to the <a href="{% url orgadmin-login %}">Management Panel</a>.</em></p>
 <article class="page-content" id="login-page">
 	{% include "registration/login_form.html" %}
 	{% endblock %}
