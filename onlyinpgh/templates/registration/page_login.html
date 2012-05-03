@@ -3,9 +3,14 @@
 {% block main-content %}
 <br>
 <div class="notification">
-	<h2>Scenable preview is a private Beta</h2>
-    <p>So you'll need to log in to access the site. If you're a beta tester who hasn't claimed an account yet, head over to the <a href="{%url signup%}">sign up page</a>.</p> <br /><br />
-    <p>Not a Beta tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
+	<h2>First time here?</h2>
+    <ul>
+        <li><strong>Beta Testers</strong>: <a href="{% url signup %}" title="Create an account">Create an account</a>.</li>
+        <li><strong>Business Users</strong>: <a href="{% url orgadmin-signup %}" title="Create an account">Head to the management panel</a>.</li>
+	</ul>
+    <br/>
+
+    <p>Scenable is currently in its private beta testing phase. Not a Beta Tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
 </div>
 <h1 class="page-title">Login to your Account</h1>
 <article class="page-content" id="login-page">

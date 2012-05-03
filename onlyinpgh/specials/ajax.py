@@ -48,11 +48,10 @@ def coupon_email(request):
     if coupon.user != request.user:
         return _make_error('authorization denied', '2')
     try:
-        print 'sending to', request.user.email
-        # send_mail(subject=u'Scenable coupon: %s' % coupon.special.title,
-        #     message=u'Access your coupon at this link: http://scenable.com%s' % coupon.get_absolute_url(),
-        #     from_email=u'robot@scenable.com',
-        #     recipient_list=[request.user.email])
+        send_mail(subject=u'Scenable coupon: %s' % coupon.special.title,
+            message=u'Access your coupon at this link: http://scenable.com%s' % coupon.get_absolute_url(),
+            from_email=u'robot@scenable.com',
+            recipient_list=[request.user.email])
     except SMTPException as e:
         return _make_error('problem sending: %s' % str(getattr(e, 'message', '')), '3')
 

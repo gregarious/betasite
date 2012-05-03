@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.views.generic.simple import redirect_to, direct_to_template
 
 # Uncomment the next two lines to enable the admin:
@@ -7,6 +8,7 @@ from django.contrib import admin
 from haystack.forms import SearchForm
 from haystack.views import search_view_factory
 from onlyinpgh.common.views import PageSiteSearch
+from onlyinpgh import settings
 
 admin.autodiscover()
 
@@ -67,3 +69,6 @@ urlpatterns = patterns('',
     url(r'^team/$', 'onlyinpgh.common.views.page_static_team', name='team'),
     url(r'^mission/$', 'onlyinpgh.common.views.page_static_mission', name='mission'),
 )
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
