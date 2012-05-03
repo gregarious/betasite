@@ -149,12 +149,12 @@ blockquote {
 #sidebar-title {
   .b-shadow(0.1em, 0.1em, 0.2em, #444);
   font-size: 1em;
-  text-align: center;
+  
   letter-spacing: 1px;
   background: @mgreen;
-  padding-left: 2.5em;
+  padding-left: 3em;
   position: relative;
-  right: 1.7em;
+  right: 2em;
   width: 96%;
 }
 
@@ -188,6 +188,7 @@ form {
 
 label {
   font-size: 0.9em;
+  font-weight: bold;
   display: block;
   line-height: 1.2em;
   text-align: right;
@@ -218,7 +219,7 @@ button, input[type="submit"], .btn {
   padding: 0.5em;
   position: relative;
   .rounded(0.5em);
-  text-shadow: 0 0 0.03em #000;
+  ///text-shadow: 0 0 0.03em #000;
 
   &:hover {
     background: @dgreen;
@@ -1251,7 +1252,7 @@ legend {
   .news {
 
     .item {
-      cursor: text;
+      cursor: text !important;
       .row();
     }
 
