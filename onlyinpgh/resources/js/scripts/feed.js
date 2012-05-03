@@ -105,10 +105,6 @@ scenable.mapFeed = (function(){
                 options.mapDOMElement, options.mapOptions);
         },
 
-        initMap: function(domElement, opts) {
-            this.map = new google.maps.Map(domElement, opts);
-        },
-
         createSubView: function(model) {
             var sv = new this.SubViewClass({
                 model: model
@@ -168,6 +164,18 @@ scenable.mapFeed = (function(){
             _.each(this.subViews, function(subView){
                 this.$el.append(subView.render(this.map).el);
             }, this);
+            if(this.map) {
+                var bounds = new google.maps.LatLngBounds();
+                _.each(this.model.models, function(model) {
+                    var latLng = model.getLatLng();
+                    if(latLng !== null) {
+                        bounds.extend(latLng);
+                    }
+                });
+                if(!bounds.isEmpty()) {
+                    this.map.panTo(bounds.getCenter());
+                }
+            }
             return this;
         }
     });
