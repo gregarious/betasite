@@ -7,6 +7,9 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 class BetaMember(models.Model):
     email = models.EmailField()
 
+    def __unicode__(self):
+        return self.email
+
 
 class UserProfile(models.Model, ViewModel):
     '''
