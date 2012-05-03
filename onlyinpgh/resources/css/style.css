@@ -297,10 +297,6 @@ blockquote {
   margin-top: -0.05em;
   text-shadow: 0.05em 0.05em 0 #ded57f;
 }
-#openGrabbitModal {
-  padding: 0.5em;
-  font-size: 1.2em;
-}
 /* HEADINGS --------- */
 #site-title {
   margin-top: 20px;
@@ -374,6 +370,9 @@ blockquote {
   -webkit-box-shadow: 0.1em 0.1em 0.2em #444444;
   -moz-box-shadow: 0.1em 0.1em 0.2em #444444;
   box-shadow: 0.1em 0.1em 0.2em #444444;
+  font-size: 1em;
+  text-align: center;
+  letter-spacing: 1px;
   background: #6baa55;
   padding-left: 2.5em;
   position: relative;
@@ -385,6 +384,11 @@ blockquote {
   font-family: 'DroidSerifItalic', 'Gerogia', serif;
   margin: 0.5em 0;
   text-shadow: 0.01em 0.01em 0.03em #999;
+}
+.detail-title {
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  display: block;
 }
 /* FORMS & INPUTS --------------- */
 ::-webkit-input-placeholder {
@@ -819,7 +823,7 @@ legend {
 }
 #login-page form,
 #signup-page form {
-  padding: 0 6%;
+  padding: 6%;
 }
 /* HEADER ------------- */
 #logo {
@@ -1453,6 +1457,9 @@ legend {
   background-clip: padding-box;
   padding: 2% 4% 4%;
 }
+.detail-section .map {
+  height: 85%;
+}
 .detail-section#placeDetail,
 .detail-section#profile {
   display: block;
@@ -1482,11 +1489,6 @@ legend {
 .detail-section#placeDetail .item-details > li ul {
   margin-left: 1.5em;
   list-style-type: circle;
-}
-.detail-section#placeDetail .item-details .detail-title {
-  margin-bottom: 0.2em;
-  font-weight: bold;
-  display: block;
 }
 .detail-section .map-container {
   margin: 0 0 1em 1em;
@@ -1604,6 +1606,9 @@ legend {
   font-size: 2em;
   text-shadow: 0.05em 0.05em 0.03em #999;
 }
+#now-page .page-header-content {
+  text-align: center;
+}
 #now-page .short {
   float: left;
   width: 31.25%;
@@ -1676,6 +1681,10 @@ legend {
 }
 /* Events */
 /* Specials */
+#grabbitButton {
+  padding: 0.5em;
+  font-size: 1.5em !important;
+}
 #special-single .item-thumb {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1779,7 +1788,7 @@ legend {
 #chatter-page form {
   padding: 0 10%;
 }
-#chatter-page .post {
+.post {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1807,19 +1816,19 @@ legend {
 
   margin-top: 0.5em;
 }
-#chatter-page .post > div {
+.post > div {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#chatter-page .post > div.post-content {
+.post > div.post-content {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 0.5em;
   padding-bottom: 0.5em;
   font-size: 1.1em;
 }
-#chatter-page .post .avatar-container {
+.post .avatar-container {
   float: left;
   width: 6.25%;
   margin: 0 1.0416666666666665%;
@@ -1827,13 +1836,13 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#chatter-page .post img {
+.post img {
   float: left;
   margin-right: 0.5em;
   height: 20px;
   width: 20px;
 }
-#chatter-page .post .tip {
+.post .tip {
   font-size: 0.8em;
 }
 /* Profile */
@@ -1962,7 +1971,7 @@ legend {
 }
 /* MAP --------- */
 .map-container {
-  height: 240px;
+  height: 200px;
 }
 .map {
   width: 100%;

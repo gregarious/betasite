@@ -78,11 +78,6 @@ blockquote {
   text-shadow: 0.05em 0.05em 0 @yellow;
 }
 
-#openGrabbitModal {
-  padding: 0.5em;
-  font-size: 1.2em;
-}
-
 /* HEADINGS --------- */
 
 #site-title {
@@ -151,9 +146,11 @@ blockquote {
   z-index: 200;
 }
 
-
 #sidebar-title {
   .b-shadow(0.1em, 0.1em, 0.2em, #444);
+  font-size: 1em;
+  text-align: center;
+  letter-spacing: 1px;
   background: @mgreen;
   padding-left: 2.5em;
   position: relative;
@@ -166,6 +163,12 @@ blockquote {
   font-family: 'DroidSerifItalic', 'Gerogia', serif;
   margin: 0.5em 0;
   text-shadow: 0.01em 0.01em 0.03em #999;
+}
+
+.detail-title {
+  margin-bottom: 0.2em;
+  font-weight: bold;
+  display: block;
 }
 
 /* FORMS & INPUTS --------------- */
@@ -484,7 +487,7 @@ legend {
 
 #login-page, #signup-page {
   form {
-    padding: 0 6%;
+    padding: 6%;
   }
 }
 
@@ -966,6 +969,10 @@ legend {
   .rounded(0.5em);
   padding: 2% 4% 4%;
 
+  .map {
+    height: 85%;
+  }
+
   &#placeDetail, &#profile {
     display: block;
   }
@@ -983,11 +990,6 @@ legend {
         margin-left: 1.5em;
         list-style-type: circle;
       }
-    }
-    .detail-title {
-      margin-bottom: 0.2em;
-      font-weight: bold;
-      display: block;
     }
   }
 
@@ -1081,6 +1083,10 @@ legend {
     }
   }
 
+  .page-header-content {
+    text-align: center;
+  }
+
   .short {
     .column(4);
     .clearfix();
@@ -1140,6 +1146,11 @@ legend {
 
 
 /* Specials */
+
+#grabbitButton {
+  padding: 0.5em;
+  font-size: 1.5em !important;
+}
 
 #special-single {
   .item-thumb {
@@ -1258,7 +1269,7 @@ legend {
   .feed, form {
     padding: 0 10%;
   }
-
+}
   .post {
     .row();
     background: #fff;
@@ -1293,7 +1304,7 @@ legend {
       font-size: 0.8em;
     }
   }
-}
+
 /* Profile */
 
 .no-items {
@@ -1407,7 +1418,7 @@ legend {
 /* MAP --------- */
 
 .map-container {
-  height: 240px;
+  height: 200px;
 }
 
 .map {
@@ -1470,7 +1481,6 @@ legend {
   .page-header-content {
     .column(7);
   }
-
 }
 
 #map-unavailable {
