@@ -41,6 +41,9 @@ urlpatterns = patterns('',
     url(r'^qr/(\w+)/$', 'onlyinpgh.common.views.qr_redirect'),
     url(r'^qr/(\w+)$', 'onlyinpgh.common.views.qr_redirect'),
 
+    # feedback form
+    url(r'^feedback/ajax/generic/$', 'onlyinpgh.feedback.ajax.submit_generic'),
+
     # Scenable and Oakland shirt QRs
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
@@ -59,7 +62,7 @@ urlpatterns = patterns('',
         form_class=SearchForm
     ), name='site-search'),
 
-    # Staic pages
+    # Static pages
     url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about-oakland'),
     url(r'^team/$', 'onlyinpgh.common.views.page_static_team', name='team'),
     url(r'^mission/$', 'onlyinpgh.common.views.page_static_mission', name='mission'),

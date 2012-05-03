@@ -33,7 +33,21 @@ $(function(){
 
     $('#openFeedbackModal').click(function(){
         $('.feedback-modal').dialog("open");
-    });    
+    });
+
+    var feedbackForm = $('.feedback-modal').find('form');
+    feedbackForm.find('input[type="submit"]').click(function(){
+        $.ajax({
+            url: scenable.constants.SITE_URL + 'feedback/ajax/generic/',
+            type: 'POST',
+            data: {
+                'feedback': feedbackForm.find('textarea[name="feedback"]').val(),
+                'csrfmiddlewaretoken': feedbackForm.find('input[name="csrfmiddlewaretoken"]').val()
+            }
+        });
+        $('.feedback-modal').dialog("close");
+        return false;
+    });
 
     // Show 'private' or 'public' next to checkbox in manage account panel
     // For later. 

@@ -6,9 +6,9 @@
 	<p class="tip">Scenable is in it's infancy. We take any feedback to heart and will do our best to keep you beta testers happy :).
 
 	<!-- Form elements -->
-	<textarea></textarea>
-	<div class="row-container">
-		<input type="submit" class="right" value="Submit" />
-	</div>
-
+	<form action='/feedback/ajax/generic' method='POST'>
+        {% csrf_token %}
+        {{sidebar_feedback_form.feedback}}
+        <input type="submit" class="right" value="Submit" />
+    </form>
 </div>

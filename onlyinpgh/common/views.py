@@ -11,6 +11,7 @@ from haystack.views import SearchView
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 
+from onlyinpgh.feedback.forms import GenericFeedbackForm
 from onlyinpgh.common.utils.jsontools import sanitize_json
 import json
 import urlparse
@@ -48,6 +49,7 @@ class PageContext(RequestContext):
             page_title=page_title,
             current_section=current_section,
             site_search_form=SearchForm(),
+            sidebar_feedback_form=GenericFeedbackForm(user=request.user),
         )
         variables.update(content_dict)
         super(PageContext, self).__init__(request, variables, **kwargs)
