@@ -195,6 +195,27 @@ def page_home(request):
 
 
 @authentication_required
+def page_link_org(request):
+    context = ManagePageContext(request)
+
+    if request.POST:
+        form = SimpleOrgForm(request.POST)
+        if form.is_valid():
+            org = form.save()   # saves new org
+            org.administrators.add(request.user)
+            request.session['current_org'] = org
+            return redirect('orgadmin-home')
+    else:
+        form = SimpleOrgForm()
+
+    context = ManagePageContext(request, content_dict=dict(
+        form=form
+    ))
+
+    return render_to_response('orgadmin/page_link_org.html', context_instance=context)
+
+
+@authentication_required
 def page_claim_place(request):
     '''
     View displays place claim page to an authorized user with an organization.
