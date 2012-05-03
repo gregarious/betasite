@@ -7,7 +7,7 @@ Context variables:
 {% load thumbnail %}
 
 <div class="item-thumb">
-	{% thumbnail place.image "50x50" crop="center" as im %}
+	{% thumbnail place.image "130x130" crop="center" as im %}
     <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
 	{% empty %}
 	<img class="thumbnail" alt="{{place.name}}" src="/static/img/default-place.png" />

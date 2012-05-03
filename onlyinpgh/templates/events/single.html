@@ -35,7 +35,7 @@ Context variables:
             {% if event.place %}
                 <li>at <a class="host" href="{{event.place.get_absolute_url}}">{{event.place.name}}</a></li>
                 <!-- <li class="address">{{event.place.location.address}}</li> -->
-            {% else %}
+            {% elif event.place_primitive %}
                 <li>at {{event.place_primitive}}</li>
             {% endif %}
             {% if event.place.location.address %}
