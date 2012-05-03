@@ -1,5 +1,7 @@
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
+
 from onlyinpgh.common.views import PageContext
 
 from onlyinpgh.now.viewmodels import NowFeedItem
@@ -16,11 +18,17 @@ import random
 ### URL-LINKED VIEWS ###
 @login_required
 def page_now(request):
-    # TODO: logic to pick relevant items
+    # TODO: better logic
+    places = list(Place.listed_objects.all())
+    random.shuffle(places)
+    eligible_places = sorted(places, key=lambda p: -p.favorite_set.count())[:20]
+    eligible_events = Event.listed_objects.filter(dtend__gt=now())
+    eligible_specials = Special.objects.filter(dexpires__gte=now().date())
+
     objects = []
-    objects += random.sample(Place.listed_objects.all(), min(4, Place.objects.count()))
-    objects += random.sample(Event.listed_objects.all(), min(4, Event.objects.count()))
-    objects += random.sample(Special.objects.all(), min(4, Special.objects.count()))
+    objects += random.sample(eligible_places, min(4, len(eligible_places)))
+    objects += random.sample(eligible_events, min(4, len(eligible_events)))
+    objects += random.sample(eligible_specials, min(4, len(eligible_specials)))
     random.shuffle(objects)
 
     items = [NowFeedItem(obj) for obj in objects]
