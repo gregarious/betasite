@@ -56,7 +56,7 @@ urlpatterns = patterns('',
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
-    url(r'^search/', search_view_factory(
+    url(r'^prelaunch/search/', search_view_factory(
         view_class=PageSiteSearch,
         template='search/page_site_search.html',
         form_class=SearchForm
