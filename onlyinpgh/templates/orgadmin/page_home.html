@@ -13,7 +13,7 @@ Context variables (ManagePageContext)
 {% endif %}
 
 {% if notification_type == '2' %}
-<p>Sorry, you can't complete this action without having any organizations associated with your account. If you are a business, please <a href="{% url orgadmin-linkorg %}">link your account to an organization</a> first.</p>
+<p>Sorry, you can't complete this action without having an organization associated with your account. If you are a business, please <a href="{% url orgadmin-linkorg %}">link your account to an organization</a> first.</p>
 {% endif %}
 
 {% if notification_type == '3' %}
