@@ -151,7 +151,7 @@ def page_manage_account(request, uname):
     user = get_object_or_404(User, username=uname)
     if user != request.user:
         return HttpResponseForbidden()
-    if request.POST:
+    if request.POST or request.FILES:
         # TODO: process credentials form
         profile_form = UserProfileForm(data=request.POST, files=request.FILES,
             instance=user.get_profile())
