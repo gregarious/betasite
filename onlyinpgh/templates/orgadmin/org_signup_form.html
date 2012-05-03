@@ -5,7 +5,7 @@ Context variables:
 	registration_form: RegistrationForm (from accounts.forms)
 	org_form: SimpleOrgForm (from orgadmin.forms)
 {% endcomment %}
-<p class="form-help" id="login-prompt">Already have a Scenable account? <a href="{% url orgadmin-login %}">Login here</a>.</p>
+
 <form action="{% url orgadmin-signup %}" method="POST" >
 	{% csrf_token %}
 	
