@@ -51,6 +51,13 @@ Root context is an ManagePageContext object with the following variables:
 		</div> <!-- .wrap -->
 	</header>
 
+		<div id="main-site-link">
+			<a href="{% url home %}" title="Oakland Scene" target="blank">
+				<p>See the</p>
+				<img src="{{STATIC_URL}}img/logos/oakland-site-white.png">
+			</a>
+		</div>
+
 	<div id="site-content">
     {% block main-content %}{% endblock %}
 	</div>
