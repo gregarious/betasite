@@ -2053,6 +2053,7 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 0 1em;
   margin: 2em 0 0;
   *zoom: 1;
   font-size: 0.9em;
@@ -2067,6 +2068,9 @@ legend {
 }
 .static-section p {
   margin-bottom: 1em;
+}
+.static-section h2 {
+  margin-top: 0;
 }
 .static-section h3,
 .static-section h4 {
