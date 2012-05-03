@@ -63,7 +63,7 @@ Context variables:
     {% endif %}
     
     {% if event.description %}
-    <p class="description">{{event.description|linebreaksbr}}</p>
+    <p class="description">{{event.description|urlizetrunc:20|linebreaksbr}}</p>
     {% else %}
     <p class="description">We don't have any description for this event.</p>
     <p class="description"><strong>Coming soon - </strong> would you like to add some?</p>
