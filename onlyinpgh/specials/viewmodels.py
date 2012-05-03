@@ -58,6 +58,7 @@ class SpecialData(object):
                     'longitude': float(self.place.location.longitude) if self.place.location.longitude is not None else None,
                     'is_gecoded': self.place.location.latitude is not None and self.place.location.longitude is not None,
                 } if self.place.location else None,
+                'permalink': self.place.get_absolute_url(),
             } if self.place else None,
             'total_available': self.total_available,
             'total_sold': self.total_sold,
