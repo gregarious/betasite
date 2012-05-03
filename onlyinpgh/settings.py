@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'onlyinpgh.specials',
     'onlyinpgh.news',
     'onlyinpgh.chatter',
+    'onlyinpgh.feedback',
 )
 
 # A sample logging configuration. The only tangible logging

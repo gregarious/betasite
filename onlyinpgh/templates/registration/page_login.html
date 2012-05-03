@@ -1,12 +1,14 @@
 {% extends "page.html" %}
 
 {% block main-content %}
+<br>
+<div class="notification">
+    <p>The Scenable preview is a private Beta, so you'll need to log in to access the site.</p><br><br>
+    <p>If you're a beta tester who hasn't claimed an account yet, head over to the <a href="{%url signup%}">sign up page</a>.</p><br><br>
+    <p>Not a Beta tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
+</div>
 <h1 class="page-title">Login to your Account</h1>
 <article class="page-content" id="login-page">
-	<div class="notification">
-		<h3>Hey beta tester!</h3>
-		<p>Since we are in a private beta schmeta katering solid water pie div change sunny day fiver burger sampsonite bumb phone. Cute pie love junk hello.</p>
-	</div>
 	{% include "registration/login_form.html" %}
 	{% endblock %}
 </article>

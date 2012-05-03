@@ -14,4 +14,5 @@ urlpatterns = patterns('onlyinpgh.specials.views',
 
 urlpatterns += patterns('onlyinpgh.specials.ajax',
     url(r'^ajax/buy/$', 'coupon_buy'),
+    url(r'^ajax/email/$', 'coupon_email'),
 )

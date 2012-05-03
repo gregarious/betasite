@@ -10,7 +10,7 @@ from onlyinpgh.places.models import Place
 from onlyinpgh.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
 from haystack.forms import SearchForm
-
+import random
 
 class PagePlacesFeed(PageFilteredFeed):
     def __init__(self, *args, **kwargs):
@@ -36,10 +36,12 @@ class PagePlacesFeed(PageFilteredFeed):
 
         Necessary because self.searchqueryset.all() seems to be buggy.
         '''
-        return sorted([p for p in Place.listed_objects.all()], key=lambda p: -p.favorite_set.count())
+        places = [p for p in Place.listed_objects.all()]
+        random.shuffle(places)
+        return sorted(places, key=lambda p: -p.favorite_set.count())
 
     def hacked_filtered(self):
-        return sorted([result.object for result in self.form.search()], key=lambda p: -p.favorite_set.count())
+        return [result.object for result in self.form.search()]
 
 
 @login_required
