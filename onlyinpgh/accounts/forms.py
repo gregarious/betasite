@@ -52,7 +52,7 @@ class UserProfileForm(forms.ModelForm):
         exclude = ('user', 'points')
 
     birth_date = forms.DateField(label=u'Birth date',
-        widget=forms.DateInput(format='%d/%m/%Y'),
+        widget=forms.DateInput(format='%m/%d/%Y'),
         input_formats=('%m/%d/%Y', '%m/%d/%y',),
         required=False)
 
