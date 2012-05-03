@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('onlyinpgh.accounts.urls')),
 
-    url(r'^/djadmin/', include(admin.site.urls)),
+    url(r'^djadmin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^/prelaunchadmin/doc/', include('django.contrib.admindocs.urls')),
 
