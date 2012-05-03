@@ -66,7 +66,7 @@ Context variables:
         {% endif %}
 
         {% if place.phone %}
-            <li><p class="detail-title">Phone: </p>{{ place.phone }}</li>
+            <li><p class="detail-title">Phone: </p>{{place.phone}}</li>
         {% endif %}
 
         {% if place.url %}
@@ -76,7 +76,7 @@ Context variables:
     </ul>
 
     {% if place.description %}
-    <p class="description">{{place.description|linebreaksbr}}</p>
+    <p class="description">{{place.description|urlizetrunc:20|linebreaksbr}}</p>
     {% endif %}
 
 </section>

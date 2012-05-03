@@ -51,7 +51,7 @@ TODO #2: Only show expiration date if there is one.
 			</button>
 		</div>
 		{% if special.description %}
-		<p class="description">{{special.description}}</p>
+		<p class="description">{{special.description|urlizetrunc:20|linebreaksbr}}</p>
 		{% else %}
 		<p class="description">We don't have a description for this special.</p>
 		{% endif %}
