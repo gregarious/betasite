@@ -30,6 +30,9 @@ def page_login(request, redirect_field_name='next'):
     '''
     Renders login page.
     '''
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('home'))
+
     redirect_to = request.REQUEST.get(redirect_field_name, '')
     if request.method == "POST":
         form = EmailAuthenticationForm(request, data=request.POST)
@@ -68,6 +71,9 @@ def page_login(request, redirect_field_name='next'):
 
 
 def page_signup(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('home'))
+
     # if POST request, handle the form submission
     if request.POST:
         reg_form = BetaRegistrationForm(data=request.POST, prefix='reg')
