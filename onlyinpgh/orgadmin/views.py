@@ -40,8 +40,8 @@ class ManagePageContext(RequestContext):
             page_title=page_title,
             current_org=current_org,
         )
-        if not current_org:
-            current_org = request.session.get('current_org')
+        if not current_org and request.user.is_authenticated():
+            current_org = _get_current_org(request.user)
         variables['current_org'] = current_org
         variables.update(content_dict)
         super(ManagePageContext, self).__init__(request, variables, **kwargs)
@@ -51,6 +51,15 @@ def _redirect_home(request, notification_type=None):
     if notification_type is not None:
         request.session['home-notification'] = notification_type
     return redirect('orgadmin-home')
+
+
+def _get_current_org(user):
+    # just default to first org in the list for now
+    owned_orgs = Organization.objects.filter(administrators=user)
+    if len(owned_orgs) > 0:
+        return owned_orgs[0]
+    else:
+        return None
 
 
 ### Shotcuts for authentication ###
@@ -115,8 +124,6 @@ def page_signup(request):
                 # set user as administrator to given org
                 org.administrators.add(user)
 
-                request.session['current_org'] = org
-
                 # redirect to home page
                 return _redirect_home(request, notification_type=1)
             else:   # if cookies aren't enabled, go to login page
@@ -147,13 +154,6 @@ def page_login(request):
 
             user = form.get_user()
             login(request, user)
-
-            # just default to first org in the list for now
-            owned_orgs = Organization.objects.filter(administrators=user)
-            if len(owned_orgs) > 0:
-                request.session['current_org'] = owned_orgs[0]
-            else:
-                request.session['current_org'] = None
 
             # redirect to homepage
             redirect_to = reverse('orgadmin-home')
@@ -195,6 +195,26 @@ def page_home(request):
 
 
 @authentication_required
+def page_link_org(request):
+    context = ManagePageContext(request)
+
+    if request.POST:
+        form = SimpleOrgForm(request.POST)
+        if form.is_valid():
+            org = form.save()   # saves new org
+            org.administrators.add(request.user)
+            return redirect('orgadmin-home')
+    else:
+        form = SimpleOrgForm()
+
+    context = ManagePageContext(request, content_dict=dict(
+        form=form
+    ))
+
+    return render_to_response('orgadmin/page_link_org.html', context_instance=context)
+
+
+@authentication_required
 def page_claim_place(request):
     '''
     View displays place claim page to an authorized user with an organization.
@@ -203,7 +223,7 @@ def page_claim_place(request):
     to create a new place. The resulting action for either choice is to bring
     up the place setup wizard.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     if not org:
         return _redirect_home(request, notification_type=2)
 
@@ -226,7 +246,7 @@ def page_claim_place(request):
 
 @authentication_required
 def page_edit_place(request, id=None):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     if id is not None:
         instance = get_object_or_404(Place, id=id)
         if not org or not org_owns(org, instance):
@@ -268,7 +288,7 @@ def page_edit_place(request, id=None):
 
 @authentication_required
 def page_remove_place(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Place, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
@@ -278,7 +298,7 @@ def page_remove_place(request, id):
 
 @authentication_required
 def page_list_places(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     places = org.establishments.all() if org else []
     items = [PlaceData(place) for place in places]
 
@@ -288,7 +308,7 @@ def page_list_places(request):
 
 @authentication_required
 def page_delete_event(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Event, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
@@ -301,7 +321,7 @@ def page_edit_event(request, id=None):
     '''
     Edit an Event. If id is None, the form is for a new Event entry.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     initial = {}
     if id is not None:
         instance = get_object_or_404(Event, id=id)
@@ -345,7 +365,7 @@ def page_edit_event(request, id=None):
 
 @authentication_required
 def page_list_events(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     establishments = org.establishments.all() if org else []
 
     events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
@@ -358,7 +378,7 @@ def page_list_events(request):
 
 @authentication_required
 def page_delete_special(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Special, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
@@ -371,7 +391,7 @@ def page_edit_special(request, id=None):
     '''
     Edit a Special. If id is None, the form is for a new Special entry.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     if id is not None:
         instance = get_object_or_404(Special, id=id)
         if not org or not org_owns(org, instance):
@@ -400,7 +420,7 @@ def page_edit_special(request, id=None):
 
 @authentication_required
 def page_list_specials(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
     items = [SpecialData(special) for special in specials]

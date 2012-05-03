@@ -4,6 +4,8 @@ urlpatterns = patterns('onlyinpgh.orgadmin.views',
     url(r'^$', 'page_index'),
     url(r'^home/$', 'page_home', name='orgadmin-home'),
 
+    url(r'^linkorg/$', 'page_link_org', name='orgadmin-linkorg'),
+
     url(r'^signup/$', 'page_signup', name='orgadmin-signup'),
     url(r'^login/$', 'page_login', name='orgadmin-login'),
     url(r'^logout/$', 'page_logout', name='orgadmin-logout'),

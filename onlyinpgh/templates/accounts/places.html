@@ -18,7 +18,7 @@ Context variables:
         {% if public_user == user %}
     	<p>Looks like you haven't favorited any places yet. Take a look through the Places page, click one you like and choose 'Favorite' under the places thumbnail picture. As Scenable develops, Scene Cred will be awarded based on your activity at favorited places.</p> 
         {% else %}
-        <p>Looks like {{user.get_profile.display_or_username}} hasn't favorited any places yet.</p>
+        <p>No favorited places here!</p>
         {% endif %}
     </section>
 {% endif %}

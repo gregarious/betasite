@@ -115,6 +115,10 @@ p {
 	text-shadow: 0.01em 0.01em 0 #000;
 	text-align: center;
 	padding-bottom: 8px;
+
+	a {
+		color: @yellow;
+	}
 }
 
 
@@ -145,6 +149,11 @@ p {
 	top: 0;
 	z-index: 999;
 
+	.wrap {
+		position: relative;
+		z-index: 999;
+	}
+
 	#user {
 		float: right;
 		position: relative;
@@ -169,6 +178,44 @@ p {
 
 #header-logo {
 	margin-bottom: 2em;
+}
+
+#main-site-link a {
+	padding: 0.5em;
+	position: absolute;
+
+	p {
+		color: #fff; 
+		font-style: italic;
+		text-shadow: 1px 1px 1px #555;
+	}
+
+	&:hover {
+		background: #333;
+	}
+
+	&:active {
+		background: #222;
+	}
+
+	top: -8px;
+	left: 5px;
+	.b-shadow(0.1em, 0.1em, 0.1em, #000);
+	-webkit-border-radius: 0 0 0.5em 0.5em; 
+	 -moz-border-radius: 0 0 0.5em 0.5em; 
+	      border-radius: 0 0 0.5em 0.5em; 
+  
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	width: 150px;
+	text-align: center;
+	margin: 2px 0 0 10px;
+	background: #555;
+	z-index: 1000;
+
+	img {
+		width: 100%;
+	}
+
 }
 
 #site-content {
@@ -676,6 +723,10 @@ input[type="checkbox"] {
 
 .form-help {
 	margin: 0 0 2em 2em;
+
+	&#login-prompt {
+		margin-top: 1em;
+	}
 }
 
 /* AUTOCOMPLETE -------- */
