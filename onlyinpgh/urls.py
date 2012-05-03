@@ -12,6 +12,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'onlyinpgh.common.views.page_home', name='home'),
+
     url(r'^login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/prelaunch/login/'}),
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^/prelaunchadmin/doc/', include('django.contrib.admindocs.urls')),
 
+    url(r'^oakland/$', 'onlyinpgh.common.views.page_home', name='oakland-home'),
     url(r'^oakland/places/', include('onlyinpgh.places.urls')),
     url(r'^oakland/events/', include('onlyinpgh.events.urls')),
     url(r'^oakland/specials/', include('onlyinpgh.specials.urls')),
