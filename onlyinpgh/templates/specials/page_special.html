@@ -8,7 +8,7 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<div class="single-container" id="special-single">
+<article class="page-single" id="special-single">
     {% include "specials/single.html" %}
     <!-- Coupon redemption modale -->
     <div class="grabbit-modal" title="{{special.title}}" id="grabbitModal">
@@ -19,7 +19,7 @@ Context variables:
         </div>
         <div id="emailStatus"></div>
     </div>
-</div>
+</article>
 {% endblock %}
 
 {% block sidebar %}

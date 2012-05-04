@@ -406,7 +406,7 @@ p {
 }
 #main-site-link a {
   padding: 0.5em;
-  position: absolute;
+  position: fixed;
   top: -8px;
   left: 5px;
   -webkit-box-shadow: 0.1em 0.1em 0.1em #000000;

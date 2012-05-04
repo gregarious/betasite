@@ -10,7 +10,7 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-<div class="single-container detailed-single">
+<article class="page-single detailed-single">
     {% include "accounts/public_profile.html" %}
     <nav id="profile-nav" class="detail-nav">
         {% include "accounts/nav_tabs.html" %}
@@ -32,7 +32,7 @@ Context variables:
         {% include "accounts/specials.html" with items=feed_items %}
         {% endif %}
     </section>
-</div>
+</article>
 {% endblock %}
 
 {% block sidebar %}

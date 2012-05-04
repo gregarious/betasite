@@ -31,6 +31,10 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  margin: 0;
+}
+
 p {
   color: #222;
   font-size: 0.9em;
@@ -68,7 +72,6 @@ blockquote {
 .description {
   margin-top: 0.3em;
   font-style: italic;
-  font-size: 0.9em;
 }
 
 .points {
@@ -79,29 +82,6 @@ blockquote {
 }
 
 /* HEADINGS --------- */
-
-#site-title {
-  margin-top: 20px;
-  padding: 0 0 15px 15px;
-  text-align: center;
-  
-  a {
-    color: #fff;
-  
-    &:hover {
-      color: #fff;
-        text-shadow: 0.05em 0.05em 0 #222;
-    }
-
-    &:active {
-      text-shadow: 0 0.03em 0.05em #000;
-    }
- 
-    &:visited {
-      color: #fff;
-    }
-  }
-}
 
 .page-title {
   border-bottom: 1px solid #e1e1e1;
@@ -149,7 +129,6 @@ blockquote {
 #sidebar-title {
   .b-shadow(0.1em, 0.1em, 0.2em, #444);
   font-size: 1em;
-  
   letter-spacing: 1px;
   background: @mgreen;
   padding-left: 3em;
@@ -165,7 +144,7 @@ blockquote {
   text-shadow: 0.01em 0.01em 0.03em #999;
 }
 
-.detail-title {
+.item-detail-title {
   margin-bottom: 0.2em;
   font-weight: bold;
   display: block;
@@ -219,7 +198,6 @@ button, input[type="submit"], .btn {
   padding: 0.5em;
   position: relative;
   .rounded(0.5em);
-  ///text-shadow: 0 0 0.03em #000;
 
   &:hover {
     background: @dgreen;
@@ -237,33 +215,6 @@ button, input[type="submit"], .btn {
     padding: 5%;
   }
 
-}
-
-.choice-container {
-  padding-left: 1em;
-  .row();
-  .clearfix;
-
-  input {
-    float: left;
-    margin-top: 0.1em;
-  }
-
-  label {
-    padding: 0 0 0.5em 0.5em;
-    font-weight: bold;
-    font-size: 0.8em;
-    float: left;
-  }
-
-  &.other {
-    margin-top: 0.5em;
-    padding-left: 0.5em;
-    input[type="text"] {
-      display: block;
-      width: 70%;
-    }
-  }
 }
 
 fieldset {
@@ -321,7 +272,6 @@ legend {
   .column_r(9);
 }
 
-/* Manage Account */
 .grouped-field-row {
   padding-right: 2%;
   &>div {  
@@ -352,37 +302,13 @@ legend {
 }
 
 .tip, .errorlist {
-  color: #555;
   font-size: 0.9em;
   display: block;
-
-  &.desc {
-    margin-top: 2%;
-  }
-
-  &.public {
-    margin-top: 0.3em;
-    .clearfix;
-
-    label {
-      float: left;
-      margin-left: 0.5em;
-      text-transform: none;
-    }
-
-    input[type="checkbox"] {
-      float: left;
-    }
-  }
-
-  label {
-    font-size: 0.9em;
-    font-weight: normal;
-    line-height: 1.8em;
-    text-transform: none;
-  }
-
   margin-left: 2%;
+}
+
+.tip {
+  color: #999;
 }
 
 .errorlist {
@@ -405,7 +331,6 @@ legend {
   
     &:hover {
       color: @red;
-      //border: 1px solid #999;
     }
 
     &:active {
@@ -428,45 +353,12 @@ legend {
   }
 }
 
-#sidebar-feedback {
-
-  label {
-    text-align: left;
-  }
-
-  .field-label {
-    text-align: left;
-    .row();
-    margin: 1.5em 0 0.5em 0.1em;
-  }
-
-  .field {
-    .row();
-  }
-
-  textarea {
-    font-size: 0.9em;
-    .row();
-    background: #fff;
-  }
-
-  textarea {
-    height: 6em;
-  }
-
-  input[type="submit"] {
-    float: right;
-    margin-top: 0.5em;
-  }
-}
-
 #account-privacy {
    
   input[type="checkbox"] {
     float: right;
     margin-right: 0.5em;    
   }
-
 
   label {
     text-align: center;
@@ -500,7 +392,7 @@ legend {
   padding: 0.3em;
 }
 
-#select-sect {
+#select-nav {
   display: none;
 }
 
@@ -596,22 +488,16 @@ legend {
   background: fade(#fff, 100%);
   .b-shadow(0.1em, 0.1em, 0.3em, #444);
   .column(8);
-  //margin-bottom: 3em;
   min-height: 100%;
   padding: 0.7em 1.5em 0.5em;
   position: relative;
-  /*-webkit-border-radius: 0 0 0.5em 0.5em; 
-   -moz-border-radius: 0 0 0.5em 0.5em; 
-        border-radius: 0 0 0.5em 0.5em;*/
   top: 5.5em;
   z-index: 1;
-  //padding-bottom: 3em;
 }
 
 #site-footer {
   .row();
   position: absolute;
-  //margin-top: 2em;
   font-size: 0.9em;
   bottom: 10px;
   left: 0;
@@ -647,26 +533,15 @@ legend {
 
 .widget {
   .row();
-  //background: #fff;
   padding: 0.5em 1.5em;
   margin: 0;
 
-  p, ul li {
-    
+  p {
     margin-bottom: 1em;
-  }
-
-  ul {
-    margin-left: 1em;
-    li {
-      list-style-type: disc;
-      padding: 0.4em;
-    }
   }
 }
 
 /* FEED/ITEMS ---------- */
-
 
 .item {
   .clearfix();
@@ -693,16 +568,6 @@ legend {
   }
 }
 
-.item-actions {
-  position: absolute;
-  //display: none;
-  top: 0;
-  right: 0;
-  img {
-    cursor: pointer;
-  }
-}
-
 .feed .item, .infowindow {
   
     .item-thumb {
@@ -723,13 +588,12 @@ legend {
 
 .item-details {
   .row();
-  .clearfix;
+  .clearfix();
 }
 
 .thumbnail {
   width: 100%;
   height: auto;
-  //min-height: 130px;
 }
 
 .item-type {
@@ -754,7 +618,7 @@ legend {
 
 /* PAGE --------- */
 
-.page-content {
+.page-main {
   padding: 0 0.5em 6em;
   .clearfix();
 
@@ -782,9 +646,9 @@ legend {
         height: 110px;
       }
     }
-
   }
 
+  // Hidden until items become rows
   .description {
     display: none;
   }
@@ -862,7 +726,6 @@ legend {
     
     .previous, .next {
       font-size: 2em;
-
       line-height: 1.5em;
       .column(2.5);
     }
@@ -890,7 +753,7 @@ legend {
 
 /* SINGLE ---------- */
 
-.single-container {
+.page-single {
   .row();
   padding: 3% 3% 6em;
   .clearfix();
@@ -950,8 +813,6 @@ legend {
 .detailed-single {
   .single-header {
     border: none;
-    //padding-bottom: 0;
-
   }
   .single-content {
     margin-top: 0.5em;
@@ -1143,9 +1004,6 @@ legend {
   }
 }
 
-/* Events */
-
-
 /* Specials */
 
 #grabbitButton {
@@ -1201,11 +1059,17 @@ legend {
   border: none;
 }
 
+
+/* Events */
+
 #events-page {
   .focused {
     background: fade(@lgreen, 50%);
   }
 }
+
+
+/* Places */
 
 #places-page {
   .focused {
@@ -1213,11 +1077,13 @@ legend {
   }
 }
 
+/* News feed */
+
 .news {
   .item {
     .row();
     height: auto;
-    cursor: default;
+    cursor: text !important;
     border-bottom: 1px solid #e1e1e1;
     &:hover {
       background: none;
@@ -1232,12 +1098,8 @@ legend {
     font-size: 1em;
   }
 
-  .source {
-    color: #000;
-
-    &:hover {
-      color: @red;
-    }
+  .item-thumb {
+    max-height: 130px;
   }
 
   .blurb {
@@ -1247,23 +1109,6 @@ legend {
 
 }
 
-/* News */
-
-  .news {
-
-    .item {
-      cursor: text !important;
-      .row();
-    }
-
-    .item-thumb {
-      max-height: 130px;
-    }
-  }
-
-/* Places */
-
-
 /* Chatter */
 
 #chatter-page {
@@ -1271,40 +1116,41 @@ legend {
     padding: 0 10%;
   }
 }
-  .post {
+
+.post {
+  .row();
+  background: #fff;
+  //border: 2px #e1e1e1 solid;
+  padding: 0.7em;
+  .gradient(#f9f9f9, #e9e9e9);
+  margin-top: 0.5em;
+
+  &>div {
     .row();
-    background: #fff;
-    //border: 2px #e1e1e1 solid;
-    padding: 0.7em;
-    .gradient(#f9f9f9, #e9e9e9);
-    margin-top: 0.5em;
 
-    &>div {
-      .row();
-
-      &.post-content {
-        border-bottom: 1px solid #e1e1e1;
-        margin-bottom: 0.5em;
-        padding-bottom: 0.5em;
-        font-size: 1.1em;
-      }
-    }
-
-    .avatar-container {
-      .column(1);
-    }
-
-    img {
-      float: left;
-      margin-right: 0.5em;
-      height: 20px;
-      width: 20px;
-    }
-
-    .tip {
-      font-size: 0.8em;
+    &.post-content {
+      border-bottom: 1px solid #e1e1e1;
+      margin-bottom: 0.5em;
+      padding-bottom: 0.5em;
+      font-size: 1.1em;
     }
   }
+
+  .avatar-container {
+    .column(1);
+  }
+
+  img {
+    float: left;
+    margin-right: 0.5em;
+    height: 20px;
+    width: 20px;
+  }
+
+  .tip {
+    font-size: 0.8em;
+  }
+}
 
 /* Profile */
 
@@ -1315,10 +1161,6 @@ legend {
   img {
     float: left;
     margin-right: 2em;
-  }
-
-  h3 {
-    margin: 0;
   }
 }
 
@@ -1422,7 +1264,7 @@ legend {
   border: 1px solid #888;
 }
 
-.page-content {
+.page-main {
 
   .map-container {
     position: relative;
@@ -1430,14 +1272,12 @@ legend {
     margin: 2em 0 0;
     height: 300px;
     overflow: visible;
-
   }
 
 }
 
 .directions {
   margin: 0.5em 0;
-  //text-align: center;
 
   a {
     background: url("@{static_url}img/icons/map-marker-small.png") no-repeat top left;
@@ -1448,7 +1288,6 @@ legend {
     &:hover {
       color: @red;
     }
-
   }
 }
 
@@ -1499,10 +1338,6 @@ legend {
     margin-top: 0;
   }
 
-  h3, h4 {
-    margin: 0;
-  }
-
   h3 {
     font-size: 1.3em;
     font-family: 'DroidSerifRegular';
@@ -1547,12 +1382,11 @@ legend {
 #about-oakland, #scenable-mission {
   img {
     .column_r(6);
-    margin: 1em 1em 1em 1em;
+    margin: 1em;
   }
 
   .tip {
     font-style: italic;
-    color: #999;
     margin-left: 0;
   }
 }
@@ -1687,13 +1521,6 @@ legend {
   }
 }
 
-.has-special {
-  float: right;
-  color: red;
-  font-style: italic;
-  .rounded(5px);
-}
-
 .left, .prev {
   float: left;
 }
@@ -1704,14 +1531,6 @@ legend {
 
 .third {
   .column(4);
-}f
-
-.half {
-  .column(6);
-  .item {
-    .row();
-    height: auto;
-  }
 }
 
 .loader {
@@ -1721,7 +1540,6 @@ legend {
 
 .notification {
   width: 88%;
-  
   float: left;
   .border-box();
   .rounded(0.5em);
@@ -1745,6 +1563,6 @@ legend {
 
 @import "../LESS/icons";
 
-// MEDIA QUERIES --------- */
+/* MEDIA QUERIES --------- */
 
 @import "../LESS/media-queries";
