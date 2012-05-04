@@ -11,12 +11,12 @@ Context variables:
 {% load thumbnail %}
 
 {% block main-content %}
-<div class="single-container detailed-single" id="place-single">
+<article class="page-single detailed" id="place-single">
     {% include "places/header.html" %}
 	<article class="single-content">
 	    {% include "places/details.html" %}
 	</article>
-</div>
+</article>
 {% endblock %}
 
 {% block sidebar %}
