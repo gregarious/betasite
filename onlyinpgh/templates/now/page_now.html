@@ -15,7 +15,7 @@ Context variables:
 
 
 {% block main-content %}
-<article class="page-content no-map" id="now-page">
+<article class="page-main no-map" id="now-page">
     <header class="page-header">
         <div class="page-title-container">
             <h1 class="page-title"><span id="now">NOW</span> in Oakland</h1>
@@ -26,7 +26,7 @@ Context variables:
     </header>
 
     <div class="row-container">
-        <ul class="feed random">
+        <ul class="feed">
         {% for i in items|slice:"0:3" %}
             {% if i.model == 'Special' %}
             <li class="item short">
@@ -45,7 +45,7 @@ Context variables:
             {% endif %}
         {% endfor %}
         </ul>
-        <ul class="feed random">
+        <ul class="feed">
         {% for i in items|slice:"3:6" %}
             {% if i.model == 'Special' %}
             <li class="item short">
@@ -64,7 +64,7 @@ Context variables:
             {% endif %}
         {% endfor %}
         </ul>
-        <ul class="feed random">
+        <ul class="feed">
         {% for i in items|slice:"6:9" %}
             {% if i.model == 'Special' %}
             <li class="item short">
@@ -101,7 +101,7 @@ Context variables:
             </li>
         {% endfor %}
         </ul>
-    </div> <!-- .row-container -->
+    </div> <!-- .row-container #now-random -->
     <hr />
     <div class="row-container">
         <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
