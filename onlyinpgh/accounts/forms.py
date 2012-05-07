@@ -73,7 +73,7 @@ class BetaRegistrationForm(RegistrationForm):
     email addresses in a BetaMember object to register.
     '''
     def clean_email(self):
-        email = self.cleaned_data['email'].strip()
+        email = self.cleaned_data['email'].strip().lower()
         if BetaMember.objects.filter(email=email).count() < 1:
             raise forms.ValidationError('This email address is not registered for entry into the Scenable private beta launch. '\
                                   'Are you sure you used the email address we have on record?')
