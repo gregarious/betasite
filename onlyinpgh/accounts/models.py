@@ -7,6 +7,10 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 class BetaMember(models.Model):
     email = models.EmailField()
 
+    def save(self, *args, **kwargs):
+        self.email = self.email.lower()
+        super(BetaMember, self).save(*args, **kwargs)
+
     def __unicode__(self):
         return self.email
 
