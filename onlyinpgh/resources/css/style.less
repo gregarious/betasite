@@ -403,7 +403,7 @@ legend {
   .fixed();
   height: 5.5em;
   max-width: 1140px;
-  min-width: 810px;
+  //min-width: 810px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em; 
    -moz-border-radius: 0 0 0.5em 0.5em; 
@@ -479,7 +479,7 @@ legend {
   .clearfix;
   margin: 0 auto;
   max-width: 1140px;
-  min-width: 810px;
+  //min-width: 810px;
   position: relative;
   height: 100%;
 }
@@ -635,6 +635,12 @@ legend {
     &:active {
       background: #d9d9d9;
     }
+
+    // Hidden until items become rows
+    .description {
+      display: none;
+    }
+    
   }
 
   .feed {
@@ -646,11 +652,6 @@ legend {
         height: 110px;
       }
     }
-  }
-
-  // Hidden until items become rows
-  .description {
-    display: none;
   }
 
 }

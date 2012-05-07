@@ -15,8 +15,11 @@
 		{{#if place}} 
  			<li class="host">at <a href="{{permalink}}">{{place.name}}</a></li>
 		{{/if}}
-		{{#if place_primitive}}
+		{{#unless place}}
 			<li class="host">at {{place_primitive}}</li>
+		{{/unless}}
+		{{#if description}}
+			<li class="description">{{description}}</li>
 		{{/if}}
 	</ul>
 	{{#if tags}}
