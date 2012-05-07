@@ -4,6 +4,7 @@ from django.utils.timezone import now
 from onlyinpgh.common.utils import get_cached_thumbnail
 
 import datetime
+from django.template.defaultfilters import truncatewords
 
 
 class EventData(object):
@@ -71,14 +72,14 @@ class EventData(object):
         '''
         return {
             'id': self.id,
-            'name': self.name,
-            'description': self.description,
+            'name': truncatewords(self.name, 4),
+            'description': truncatewords(self.description, 10),
             'dtstart': str(self.dtstart),
             'dtend': str(self.dtend),
             'dtstart_str': self.dtstart_str,
             'dtend_str': self.dtend_str,
             'place': {
-                'name': self.place.name,
+                'name': truncatewords(self.place.name, 4),
                 'location': {
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,
@@ -87,7 +88,7 @@ class EventData(object):
                 } if self.place.location else None,
                 'permalink': self.place.get_absolute_url(),
             } if self.place else None,
-            'place_primitive': self.place_primitive,
+            'place_primitive': truncatewords(self.place_primitive, 4),
             'image': self.image.url if self.image else '',
             'tags': [{
                 'name': tag.name,

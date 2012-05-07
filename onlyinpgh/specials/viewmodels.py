@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-
+from django.template.defaultfilters import truncatewords
 
 class SpecialData(object):
     def __init__(self, special, user=None):
@@ -44,14 +44,14 @@ class SpecialData(object):
         '''
         return {
             'title': self.title,
-            'description': self.description,
+            'description': truncatewords(self.description, 15),
             'dstart': str(self.dstart),
             'dexpires': str(self.dexpires),
             'dstart_str': self.dstart_str,
             'dexpires_str': self.dexpires_str,
             'points': self.points,
             'place': {
-                'name': self.place.name,
+                'name': truncatewords(self.place.name, 4),
                 'location': {
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,

@@ -13,16 +13,9 @@ $(function(){
 	});
 
 	// Make mobile select box menu links
-	$('#select-sect').change(function(){
+	$('#select-nav').change(function(){
 		window.location = $(this).val();
 	});
-
-	//Show/hide .item-content when hovering over now thumbnail items
-	// $('.item.short').hover(function(){
-	// 	$(this).find('.item-type').fadeIn(200);
-	// }, function() {
-	// 	$(this).find('.item-type').fadeOut(270);
-	// });
 
     // Sidebar feedback modal
 	$('.feedback-modal').dialog({

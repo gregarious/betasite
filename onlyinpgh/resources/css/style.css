@@ -749,7 +749,6 @@ legend {
   z-index: 999;
   height: 5.5em;
   max-width: 1140px;
-  min-width: 810px;
   z-index: 999;
   -webkit-border-radius: 0 0 0.5em 0.5em;
   -moz-border-radius: 0 0 0.5em 0.5em;
@@ -846,7 +845,6 @@ legend {
   *zoom: 1;
   margin: 0 auto;
   max-width: 1140px;
-  min-width: 810px;
   position: relative;
   height: 100%;
 }
@@ -1073,6 +1071,9 @@ legend {
 }
 .page-main .item:active {
   background: #d9d9d9;
+}
+.page-main .item .description {
+  display: none;
 }
 .page-main .feed {
   *zoom: 1;
@@ -1690,7 +1691,7 @@ legend {
   height: 20px;
   width: 20px;
 }
-.post .tip {
+.tip {
   font-size: 0.8em;
 }
 /* Profile */
@@ -2209,12 +2210,6 @@ a#siteNews {
     background-clip: padding-box;
   }
 }
-@media screen and (max-width: 1082px) {
-  .page-main .feed.events .item,
-  .page-main .feed.specials .item {
-    height: 130px;
-  }
-}
 @media screen and (max-width: 992px) {
   #logo {
     padding-top: 1em;
@@ -2278,39 +2273,68 @@ a#siteNews {
   .detail-section-title {
     display: none;
   }
-  .single-title {
-    font-size: 1.5em;
-  }
   .single-container {
     padding-left: 0;
     padding-right: 0;
   }
-}
-@media screen and (max-width: 800px) {
-  .logout,
-  .bar {
-    display: none;
+  .page-main .events .item,
+  .page-main .places .item,
+  .page-main .specials .item,
+  .page-main .chatter .item {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
   }
+}
+@media screen and (max-width: 810px) {
   body {
     background-image: none;
   }
-  #site-content.single {
+  .page-single {
     margin-top: 0;
+  }
+  .page-main .places .item,
+  .page-main .specials .item,
+  .page-main .chatter .item {
+    float: left;
+    width: 47.91666666666667%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 110px;
+  }
+  .page-main .events .item {
+    float: left;
+    width: 47.91666666666667%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 130px;
   }
   #utility {
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    margin: 0;
+    height: 2.5em;
   }
   #utility a {
     color: #ded57f;
   }
   #site-content {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    margin: 0;
     padding: 0;
     top: 7.5em;
   }
@@ -2320,11 +2344,6 @@ a#siteNews {
   }
   #site-sidebar {
     display: none;
-  }
-  #site-content {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
   }
   #scene-nav {
     top: 2em;
@@ -2344,9 +2363,7 @@ a#siteNews {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  }
-  .feed .item-details {
-    font-size: 0.9em;
+    height: auto;
   }
   .field-label,
   label {
@@ -2432,23 +2449,15 @@ a#siteNews {
     padding-right: 0;
   }
 }
-@media screen and (max-width: 720px) {
-  #logo img {
-    height: auto;
-  }
-}
 @media screen and (max-width: 600px) {
-  .page-content .feed .item {
+  .page-main .feed .item {
+    height: auto !important;
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .page-content .feed .item:last-child {
-    border: none;
-  }
-  .page-content .feed .item .description,
-  .page-content .feed .item .host {
+  .page-main .feed .item .description {
     display: block;
   }
   .single-container {
@@ -2459,10 +2468,6 @@ a#siteNews {
   .single-header {
     padding: 1em 1em 0 1em;
     border: none;
-  }
-  .single-title {
-    line-height: 1;
-    font-size: 1.3em;
   }
   .page-header {
     display: none;
@@ -2491,7 +2496,7 @@ a#siteNews {
   .main-menu {
     display: none;
   }
-  #select-sect {
+  #select-nav {
     display: inline-block;
     float: right;
     width: 39.58333333333333%;
@@ -2537,11 +2542,6 @@ a#siteNews {
   }
   #logo {
     padding-top: 0.7em;
-    float: left;
-    width: 39.58333333333333%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     margin-left: 0.5em;
   }
   #logo img {
@@ -2555,9 +2555,8 @@ a#siteNews {
     top: 6.5em;
     padding: 0;
   }
-  .map-container.hot {
-    height: 150px;
-    overflow: hidden;
+  .page-main {
+    margin: 0;
   }
   #scene-nav {
     height: 4.5em;
