@@ -12,7 +12,9 @@
 	<h4 class="item-title"><a href="{{permalink}}" title="See Place page">{{name}}</a></h4>
 	<ul class="item-details">
 		<li>{{location.address}}</li>
-		<li class="description">{{description}}
+		{{#if description}}
+			<li class="description">{{description}}</li>
+		{{/if}}
   	</ul>
 
   	{{#if tags}}

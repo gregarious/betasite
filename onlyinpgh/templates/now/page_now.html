@@ -85,7 +85,7 @@ Context variables:
         </ul>
     </div> <!-- .row-container -->
     <hr />
-     <div class="row-container chatter">       
+     <div class="row-container">       
         <h2><a href="{% url chatter-feed %}" title="Oakland Chatter">Chatter</a></h2>
         <ul class="feed">
         {% for item in chatter_posts|slice:"0:3" %}
@@ -94,7 +94,7 @@ Context variables:
             </li>
         {% endfor %}
         </ul>
-        <ul class="feed">
+        <ul class="feed chatter">
         {% for item in chatter_posts|slice:"4:6" %}
             <li class="post">
                 {% include "chatter/feed_item.html" with chatter=i.instance %}
