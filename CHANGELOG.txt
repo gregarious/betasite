@@ -1,0 +1,13 @@
+Pre-versioning changes:
+
+5/9:
+- Places ordering no longer shuffled on paging
+
+
+5/3-5/7:
+- Chatter posts now displaying avatar
+- Enabled clickable URLs in chatter
+- Fixed misleading end time display for multiday events
+- Allowed business users to associate their accounts with an Organization post-signup (in case they created an account on the beta user signup)
+- Various minor style tweaks
+- Correctly spelled the surname of the CEO and developer/designer's primary source of income
