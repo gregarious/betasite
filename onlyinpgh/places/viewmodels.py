@@ -32,6 +32,9 @@ class PlaceData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
+        thumb_small = get_cached_thumbnail(self.image, 'small') if self.image else None
+        thumb_standard = get_cached_thumbnail(self.image, 'standard') if self.image else None
+
         return {
             'name': self.name,
             'description': truncatewords(self.description, 15),
@@ -49,8 +52,8 @@ class PlaceData(object):
             'image': self.image.url if self.image else '',
             # special fields only for JSON output
             'permalink': self.get_absolute_url(),
-            'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
-            'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
+            'thumb_small': thumb_small.url if thumb_small else '',
+            'thumb_standard': thumb_standard.url if thumb_standard else '',
         }
 
 

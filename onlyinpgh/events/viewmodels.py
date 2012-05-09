@@ -70,6 +70,8 @@ class EventData(object):
         but too many special issues (e.g. thumbnails) to worry about
         doing "right" at the moment.
         '''
+        thumb_small = get_cached_thumbnail(self.image, 'small') if self.image else None
+        thumb_standard = get_cached_thumbnail(self.image, 'standard') if self.image else None
         return {
             'id': self.id,
             'name': truncatewords(self.name, 4),
@@ -96,6 +98,6 @@ class EventData(object):
             } for tag in self.tags.all()],
             # special fields only for JSON output
             'permalink': self.get_absolute_url(),
-            'thumb_small': get_cached_thumbnail(self.image, 'small').url if self.image else '',
-            'thumb_standard': get_cached_thumbnail(self.image, 'standard').url if self.image else '',
+            'thumb_small': thumb_small.url if thumb_small else '',
+            'thumb_standard': thumb_standard.url if thumb_standard else '',
         }

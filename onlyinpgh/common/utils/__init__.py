@@ -81,7 +81,7 @@ def imagefile_from_url(url):
 THUMB_TYPES = ('small', 'standard', )
 
 
-def get_cached_thumbnail(image, type):
+def get_cached_thumbnail(image, type, ioerror_silent=True):
     '''
     Returns a sorl ImageFile for a preset thumbnail type
     types:
@@ -90,12 +90,18 @@ def get_cached_thumbnail(image, type):
 
     Will throw IOError if image file doesn't exist.
     '''
-    if type.lower() == 'small':
-        return get_thumbnail(image, '50x50', crop='center')
-    elif type.lower() == 'standard':
-        return get_thumbnail(image, '130x130', crop='center')
-    else:
-        return None
+    try:
+        if type.lower() == 'small':
+            return get_thumbnail(image, '50x50', crop='center')
+        elif type.lower() == 'standard':
+            return get_thumbnail(image, '130x130', crop='center')
+        else:
+            return None
+    except IOError:
+        if ioerror_silent:
+            return None
+        else:
+            raise
 
 
 def precache_thumbnails(image):
