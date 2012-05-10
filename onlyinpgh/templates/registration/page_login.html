@@ -12,7 +12,12 @@
         <form method="post" action="{{ form_action }}">
             {% csrf_token %}
             {% include "registration/login_form.html" %}
-            {{ remember_me }}
+            <div class="row-container">
+                <div class="field remember-me">
+                    {{remember_me.remember_me}}
+                    {{remember_me.remember_me.label_tag}}
+                </div>
+            </div>
             <input type="submit" value="Login" class="submit-item next" />
             <input type="hidden" name="next" value="{{ next }}" />
         </form>

@@ -32,7 +32,7 @@ Template variables:
 			</div>
 		</li> <!-- username -->
 
-		<li class="field-container last">
+		<li class="field-container">
 			<div class="field-label">
 				{{form.password1.label_tag}}
 			</div>
@@ -50,6 +50,12 @@ Template variables:
 				{{form.password2.errors}}
 			</div>
 		</li> <!-- password1 -->
+		<li class="field-container last">	  
+            <div class="field remember-me">
+                {{remember_me.remember_me}}
+                {{remember_me.remember_me.label_tag}}
+            </div>
+        </li>
 	</ul>
 </fieldset>
 

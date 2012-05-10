@@ -711,6 +711,15 @@ legend {
 #signup-page form {
   padding: 6%;
 }
+.remember-me label {
+  float: left;
+  font-weight: normal;
+  font-size: 0.8em;
+}
+.remember-me input[type="checkbox"] {
+  float: left;
+  margin-right: 0.5em;
+}
 /* HEADER ------------- */
 #logo {
   float: left;
