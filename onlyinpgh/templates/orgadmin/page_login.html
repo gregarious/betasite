@@ -4,5 +4,10 @@
 <img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
 
 <h2>Login to your Account...</h2>
-{% include "registration/login_form.html" with form=form form_action=form_action %}
+<form method="post" action="{{ form_action }}">
+{% csrf_token %}
+    {% include "registration/login_form.html" with form=form form_action=form_action %}
+    {{ remember_me }}
+    <input type="submit" value="Login" class="submit-item next" />
+</form>
 {% endblock %}

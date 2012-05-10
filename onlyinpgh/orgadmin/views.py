@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import get_object_or_404, redirect, render, render_to_response
 from django.template import RequestContext
 from onlyinpgh.common.core.rendering import render_safe
@@ -16,9 +16,10 @@ from onlyinpgh.specials.viewmodels import SpecialData
 
 from onlyinpgh.tags.models import Tag
 
-from onlyinpgh.accounts.forms import RegistrationForm
+from onlyinpgh.accounts.forms import RegistrationForm, RememberMeForm
 from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgLoginForm, OrgAdminPlaceForm, SimplePlaceForm,\
                                      PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
+from onlyinpgh.accounts.views import login
 
 import re
 
@@ -136,7 +137,8 @@ def page_signup(request):
 
     context = ManagePageContext(request, content_dict=dict(
         registration_form=reg_form,
-        org_form=org_form
+        org_form=org_form,
+        remember_me=RememberMeForm(),
     ))
     return render_to_response('orgadmin/page_signup.html', context_instance=context)
 
@@ -165,7 +167,8 @@ def page_login(request):
 
     context = ManagePageContext(request, content_dict=dict(
         form=form,
-        form_action=reverse('orgadmin-login')
+        form_action=reverse('orgadmin-login'),
+        remember_me=RememberMeForm(),
     ))
     return render_to_response('orgadmin/page_login.html', context_instance=context)
 
