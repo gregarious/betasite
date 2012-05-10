@@ -702,7 +702,6 @@ legend {
   margin: auto auto 1em;
   width: 60px;
 }
-#login-page form,
 #signup-page form {
   padding: 6%;
 }
@@ -2119,8 +2118,6 @@ legend {
   margin: 0.5em auto 0;
 }
 .notification {
-  width: 88%;
-  float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -2131,9 +2128,12 @@ legend {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: 1px #ded57f solid;
-  margin: 0 6% 2em;
+  margin-top: 2em;
   padding: 3%;
   background: rgba(222, 213, 127, 0.3);
+}
+.notification h2 {
+  margin-top: 0;
 }
 .notification h3 {
   font-weight: bold;
@@ -2142,6 +2142,12 @@ legend {
 .notification img {
   float: left;
   margin-right: 1em;
+}
+.login-form-container {
+  margin: 3em 3%;
+}
+.login-form-container form {
+  padding: 2em 0 0;
 }
 /* ICONS ----------- */
 /* 	Stylesheet to define le icons 
@@ -2469,7 +2475,7 @@ a#siteNews {
     padding: 1em 1em 0 1em;
     border: none;
   }
-  .page-header {
+  .page-title {
     display: none;
   }
   #utility {
@@ -2573,6 +2579,24 @@ a#siteNews {
   }
   .page-content .map-container {
     height: 200px;
+  }
+  #now-page .feed .item.short {
+    float: left;
+    width: 47.91666666666667%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #now-page .feed .item.short:last-child {
+    display: none;
+  }
+  .single-header {
+    padding: 0;
+  }
+  .page-single {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media only screen and (max-width: 320px) {

@@ -378,7 +378,7 @@ legend {
   }
 }
 
-#login-page, #signup-page {
+#signup-page {
   form {
     padding: 6%;
   }
@@ -1545,12 +1545,15 @@ legend {
 }
 
 .notification {
-  width: 88%;
-  float: left;
+  
+  h2 {
+    margin-top: 0;
+  }
+
   .border-box();
   .rounded(0.5em);
   border: 1px @yellow solid;
-  margin: 0 6% 2em;
+  margin-top: 2em;
   padding: 3%;
   background: fade(@yellow, 30%);  
 
@@ -1563,6 +1566,15 @@ legend {
     float: left;
     margin-right: 1em;
   }
+}
+
+.login-form-container {
+  margin: 3em 3%;
+  
+  form {
+    padding: 2em 0 0;
+  }
+
 }
 
 /* ICONS ----------- */

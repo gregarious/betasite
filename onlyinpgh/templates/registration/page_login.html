@@ -1,22 +1,19 @@
 {% extends "page.html" %}
 
 {% block main-content %}
-<br>
-<div class="notification">
-	<h2>First time here?</h2>
-    <ul>
-        <li><strong>Beta Testers</strong>: <a href="{% url signup %}" title="Create an account">Create an account</a>.</li>
-        <li><strong>Business Users</strong>: <a href="{% url orgadmin-signup %}" title="Create an account">Head to the management panel</a>.</li>
-	</ul>
-    <br/>
-
-    <p>Scenable is currently in its private beta testing phase. Not a Beta Tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
-</div>
-<h1 class="page-title">Login to your Account</h1>
 <article class="page-main" id="login-page">
-	{% include "registration/login_form.html" %}
-	{% endblock %}
+	<h1 class="page-title">Hey Beta Tester!</h1>
+	<section class="notification">
+		<h2 class="">First time here? <a href="{% url signup %}">Claim your account.</a></h2>
+		<p>Scenable is currently in its private beta testing phase. Not a Beta Tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
+ 	</section>
+ 	<section class="login-form-container">
+		<p>If you've been here before, welcome back! Sign in using the form below.</p>
+		{% include "registration/login_form.html" %}
+	</section>
 </article>
+{% endblock %}
+
 {% block sidebar %}
 {% include "sidebar/sidebar_login.html" %}
 {% endblock %}

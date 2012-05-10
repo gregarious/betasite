@@ -232,7 +232,7 @@
     border: none;
   }
 
-  .page-header {
+  .page-title {
     display: none;
   }
 
@@ -347,6 +347,26 @@
 
   .page-content .map-container {
     height: 200px;
+  }
+
+  #now-page {
+    .feed {
+      .item.short {
+        .column(6);
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .single-header {
+    padding: 0;
+  }
+
+  .page-single {
+    padding-left: 0;
+    padding-right: 0;
   }
 
 }
