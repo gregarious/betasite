@@ -2143,10 +2143,10 @@ legend {
   float: left;
   margin-right: 1em;
 }
-.login-form-container {
+.registration-form-container {
   margin: 3em 3%;
 }
-.login-form-container form {
+.registration-form-container form {
   padding: 2em 0 0;
 }
 /* ICONS ----------- */
