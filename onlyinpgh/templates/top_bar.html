@@ -3,7 +3,7 @@
 	    {% if user.is_authenticated %}
 	        <a class="username" href="{% url account-manage uname=user.username %}">{{user.username}}</a> <span id="bar">|</span> 
 			{% if user.organization_set.all.count > 0 %}
-				<a href="{% url orgadmin-home %}" class="bus-mgmt-link">Business Mgmt</a> | 
+				<a href="{% url orgadmin-home %}" id="bus-mgmt-link">Business Mgmt</a> | 
 			{% endif %}
 	        <a class="logout" href="{% url logout %}">Logout</a>
 	    {% else %}
