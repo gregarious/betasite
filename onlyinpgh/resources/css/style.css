@@ -2143,10 +2143,12 @@ legend {
   float: left;
   margin-right: 1em;
 }
-.registration-form-container {
+.registration-form-container,
+.newpass-page {
   margin: 3em 3%;
 }
-.registration-form-container form {
+.registration-form-container form,
+.newpass-page form {
   padding: 2em 0 0;
 }
 /* ICONS ----------- */
