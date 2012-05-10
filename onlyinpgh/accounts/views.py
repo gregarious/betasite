@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import default_token_generator
 
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect

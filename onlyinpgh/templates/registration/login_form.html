@@ -23,7 +23,7 @@ Context variables:
         </div>
         <div class="field login">
             {{ form.password }}
-            <p class="tip"><a onclick="alert('Forgot it already? Sorry, we have not automated this process yet. Please email contact@scenable.com to request a new password.')" href="#">Forgot your password?</a></p>
+            <p class="tip"><a href="{% url accounts-password_reset %}">Forgot your password?</a></p>
             {% if form.non_field_errors %}
                 {{ form.non_field_errors }}
             {% endif %}
