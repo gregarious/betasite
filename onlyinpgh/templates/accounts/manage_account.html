@@ -82,8 +82,9 @@ Context variables:
 </fieldset>
 <input type="submit" value="Save Profile Changes" name="save_profile" class="right"/>
 {% if form in forms_saved %}
-	<p>Changes saved!</p>
+	<p class="right success">Changes saved!</p>
 {% endif %}
+
 </form>
 {% endwith %}
 
@@ -129,7 +130,7 @@ Context variables:
 </fieldset>
 <input type="submit" value="Save Privacy Changes" name="save_preferences" class="right"/>
 {% if form in forms_saved %}
-	<p>Changes saved!</p>
+	<p class="right success">Changes saved!</p>
 {% endif %}
 </form>
 {% endwith %}
@@ -154,7 +155,7 @@ Context variables:
 </fieldset>
 <input type="submit" value="Change Email" name="save_email" class="right"/>
 {% if form in forms_saved %}
-	<p>Changes saved!</p>
+	<p class="right success">Changes saved!</p>
 {% endif %}
 </form>
 {% endwith %}
@@ -199,7 +200,7 @@ Context variables:
 </fieldset>
 <input type="submit" value="Change Password" name="save_password" class="right"/>
 {% if form in forms_saved %}
-	<p>Changes saved!</p>
+	<p class="right success">Changes saved!</p>
 {% endif %}
 </form>
 {% endwith %}

@@ -639,10 +639,16 @@ legend {
   box-sizing: border-box;
 }
 .tip,
-.errorlist {
+.errorlist,
+.success {
   font-size: 0.9em;
   display: block;
   margin-left: 2%;
+}
+.success {
+  font-weight: bold;
+  color: #ff9f00;
+  padding: 1%;
 }
 .tip {
   color: #999;
