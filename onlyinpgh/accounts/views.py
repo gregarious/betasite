@@ -5,12 +5,12 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.forms import PasswordChangeForm
 
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.accounts.forms import EmailAuthenticationForm, BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, CredentialsForm
+from onlyinpgh.accounts.forms import EmailAuthenticationForm, BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, EmailForm
 from onlyinpgh.common.views import PageContext
 
 import urlparse
@@ -153,28 +153,56 @@ def page_manage_account(request, uname):
     - current_panel is an enum string with on of the following values:
         account, places, events, specials.
     '''
+    print request.POST
+    forms_saved = []
     # only allow access to the page if the current user matches the url
     user = get_object_or_404(User, username=uname)
     if user != request.user:
         return HttpResponseForbidden()
-    if request.POST or request.FILES:
-        # TODO: process credentials form
+
+    # 4 separate instances of the standard form building/saving pattern,
+    # controlled primarily by which submit button was clicked
+    if 'save_profile' in request.POST:
         profile_form = UserProfileForm(data=request.POST, files=request.FILES,
             instance=user.get_profile())
-        preferences_form = ActivityPreferencesForm(data=request.POST,
-            instance=user.get_profile())
-        if profile_form.is_valid() and preferences_form.is_valid():
+        if profile_form.is_valid():
             profile_form.save()
-            preferences_form.save()
+            forms_saved.append(profile_form)
     else:
         profile_form = UserProfileForm(instance=user.get_profile())
+
+    if 'save_preferences' in request.POST:
+        preferences_form = ActivityPreferencesForm(data=request.POST,
+            instance=user.get_profile())
+        if preferences_form.is_valid():
+            preferences_form.save()
+            forms_saved.append(preferences_form)
+    else:
         preferences_form = ActivityPreferencesForm(instance=user.get_profile())
+
+    if 'save_email' in request.POST:
+        email_form = EmailForm(instance=user, data=request.POST)
+        if email_form.is_valid():
+            email_form.save()
+            forms_saved.append(email_form)
+    else:
+        email_form = EmailForm(instance=user)
+
+    if 'save_password' in request.POST:
+        password_form = PasswordChangeForm(user=user, data=request.POST)
+        if password_form.is_valid():
+            password_form.save()
+            forms_saved.append(password_form)
+    else:
+        password_form = PasswordChangeForm(user=user)
 
     forms = dict(
         profile_form=profile_form,
-        credentials_form=CredentialsForm(),
+        password_form=password_form,
+        email_form=email_form,
         preferences_form=preferences_form)
-    return _render_profile_page(request, user, 'account', {'account_forms': forms})
+    return _render_profile_page(request, user, 'account',
+        {'account_forms': forms, 'forms_saved': forms_saved})
 
 
 @login_required

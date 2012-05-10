@@ -8,12 +8,13 @@ Context variables:
 {% endcomment %}
 
 <h2 class="detail-section-title">{{user.username}}'s Account</h2>
-<form method="post" action="{% url account-manage uname=user.username %}"" enctype="multipart/form-data"">
+
+{% with form=account_forms.profile_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#profile-form" enctype="multipart/form-data" id="profile-form">
 {% csrf_token %}
 <fieldset>
 	<legend>Profile</legend>
 	<p class="tip">This information will appear publicly on your profile.</p>
-	{% with form=account_forms.profile_form %}
 	<ul>
 		<li class="field-container">
 			<div class="field-label">
@@ -77,16 +78,22 @@ Context variables:
 		        </div>
 			</div>	
 		</li> <!-- twitter_username -->
-		{% endwith %}
-
 	</ul>
 </fieldset>
+<input type="submit" value="Save Profile Changes" name="save_profile" class="right"/>
+{% if form in forms_saved %}
+	<p>Changes saved!</p>
+{% endif %}
+</form>
+{% endwith %}
 
+{% with form=account_forms.preferences_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#privacy-form" enctype="multipart/form-data" id="privacy-form">
+{% csrf_token %}
 <fieldset id="account-privacy">
 	<legend>Privacy</legend>
 	<p class="tip">By default, your public profile page will show the places you favorite and the coupons you have purchased. You can opt in to make your events public.</p>
 	<ul>
-		{% with form=account_forms.preferences_form %}
 		<li class="field-container">
 			<div class="third">
 				<label name="{{form.public_favorites.html_name}}" for="id_public_favorites">
@@ -118,15 +125,22 @@ Context variables:
 				
 			</div> <!-- public_coupons -->
 		</li>
-		{% endwith %}
 	</ul>
 </fieldset>
-{% comment %}
+<input type="submit" value="Save Privacy Changes" name="save_preferences" class="right"/>
+{% if form in forms_saved %}
+	<p>Changes saved!</p>
+{% endif %}
+</form>
+{% endwith %}
+
+{% with form=account_forms.email_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#email-form" enctype="multipart/form-data" id="email-form">
+{% csrf_token %}
 <fieldset>
-	<legend>Email and password</legend>
-	<p class="tip">Change your email and password here.</p>
+	<legend>Email</legend>
+	<p class="tip">Change your email address here.</p>
 	<ul>
-		{% with form=account_forms.credentials_form %}
 		<li class="field-container">
 			<div class="field-label">
 				{{form.email.label_tag}}
@@ -136,39 +150,56 @@ Context variables:
 				{{form.email.errors}}
 			</div>
 		</li> <!-- email -->
-		<li class="field-container">
-			<div class="field-label">
-				{{form.current_password.label_tag}}
-			</div>
-			<div class="field">
-				{{form.current_password}}
-				{{form.current_password.errors}}
-			</div>
-		</li> <!-- current_password -->
-
-		<li class="field-container">
-			<div class="field-label">
-				{{form.new_password.label_tag}}
-			</div>
-			<div class="field">
-				{{form.new_password}}
-				{{form.new_password.errors}}
-			</div>
-		</li> <!-- new_password -->
-
-		<li class="field-container">
-			<div class="field-label">
-				{{form.confirm_new_password.label_tag}}
-			</div>
-			<div class="field">
-				{{form.confirm_new_password}}
-				{{form.confirm_new_password.errors}}
-			</div>
-		</li> <!-- confirm_new_password -->
-		{% endwith %}
 	</ul>
 </fieldset>
-{% endcomment %}
-<input type="submit" value="Save Changes" class="right"/>
-
+<input type="submit" value="Change Email" name="save_email" class="right"/>
+{% if form in forms_saved %}
+	<p>Changes saved!</p>
+{% endif %}
 </form>
+{% endwith %}
+
+{% with form=account_forms.password_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#password-form" enctype="multipart/form-data" id="password-form">
+{% csrf_token %}
+<fieldset>
+	<legend>Password</legend>
+	<p class="tip">Change your password here.</p>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.old_password.label_tag}}
+			</div>
+			<div class="field">
+				{{form.old_password}}
+				{{form.old_password.errors}}
+			</div>
+		</li> <!-- old_password -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.new_password1.label_tag}}
+			</div>
+			<div class="field">
+				{{form.new_password1}}
+				{{form.new_password1.errors}}
+			</div>
+		</li> <!-- new_password1 -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.new_password2.label_tag}}
+			</div>
+			<div class="field">
+				{{form.new_password2}}
+				{{form.new_password2.errors}}
+			</div>
+		</li> <!-- new_password2 -->
+	</ul>
+</fieldset>
+<input type="submit" value="Change Password" name="save_password" class="right"/>
+{% if form in forms_saved %}
+	<p>Changes saved!</p>
+{% endif %}
+</form>
+{% endwith %}
