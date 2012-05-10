@@ -1509,6 +1509,25 @@ input[type="checkbox"] {
   /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=@first, EndColorStr=@second); /* IE6-IE9 */
 
 }
+.row-container {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  *zoom: 1;
+}
+.row-container:before,
+.row-container:after {
+  content: "";
+  display: table;
+}
+.row-container:after {
+  clear: both;
+}
+.remember-me label {
+  text-transform: none !important;
+  font-weight: normal;
+}
 /* IE CLASSES ---------- */
 .lt-ie9 #site-content,
 .lt-ie9 #page-nav ul li a,

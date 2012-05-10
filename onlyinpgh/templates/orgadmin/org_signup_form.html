@@ -61,6 +61,13 @@ Context variables:
 		</div>
 	</div> <!-- .field-container -->
 
+	<div class="row-container">
+	    <div class="field remember-me">
+	        {{remember_me.remember_me}}
+	        {{remember_me.remember_me.label_tag}}
+	    </div>
+	</div>
+
 	<nav class="prev-next">
 		<a href="{% url orgadmin-login %}" title="Cancel" class="back">Cancel</a>
 		<input type="submit" value="Sign Up" class="next"  />
