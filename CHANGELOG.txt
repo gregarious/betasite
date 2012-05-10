@@ -2,6 +2,7 @@ Pre-versioning changes:
 
 5/10:
 - Upgraded django-pipeline package on all machines to fix Javascript issues in IE8
+- Removed trailing commas in feed page Javascript causing compatibility problems in IE7
 - Added automated "forgot password?" process for beta testers and business users
 - Added password/email changing to account management
 - Added an opt-in "remember me?" button on the signup and login pages for main site and management panel
