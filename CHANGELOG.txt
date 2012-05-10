@@ -1,5 +1,8 @@
 Pre-versioning changes:
 
+5/10:
+- Upgraded django-pipeline package on all machines to fix Javascript issues in IE8
+
 5/9:
 - Places ordering no longer shuffled on paging
 
