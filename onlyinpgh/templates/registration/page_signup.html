@@ -1,5 +1,13 @@
 {% extends "page.html" %}
 
+{% comment %}
+Template variables:
+    registration_form: BetaRegistrationForm
+    profile_form: UserProfileForm
+    remember_me: simple form with one checkbox with name="remember_me"
+    form_action: url to post form to
+{% endcomment %}
+
 {% block main-content %}
 <article class="page-main" id="signup-page">
     <h1 class="page-title">Claim your Account</h1>
@@ -14,6 +22,7 @@
 	<section class="registration-form-container">
 	   <form action="{{ form_action }}" method="POST">
 	       {% include "registration/signup_form.html" %}
+           {{ remember_me }}
 	   </form>
     </section>
 </article>

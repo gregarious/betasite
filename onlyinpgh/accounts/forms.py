@@ -43,10 +43,18 @@ class EmailAuthenticationForm(AuthenticationForm):
         return self.cleaned_data
 
 
+class RememberMeForm(forms.Form):
+    '''
+    Basic checkbox for remembering the user. Responsibility of the view to
+    do something with this value.
+    '''
+    remember_me = forms.BooleanField(label="Keep me logged in on this computer", initial=False)
+
+
 class RegistrationForm(UserCreationForm):
     '''
-    Overrides UserCreationForm to include email address.
-    Also disallows @ symbols in usernames.
+    Overrides UserCreationForm to include email address, also disallows @
+    symbols in usernames.
     '''
     username = forms.RegexField(label="Username", max_length=30, regex=r'^[\w.+-]+$',
         help_text="Required. 30 characters or fewer. Letters, digits and ./+/-/_ only.",

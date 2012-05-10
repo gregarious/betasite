@@ -1,3 +1,10 @@
+{% comment %}
+Template variables:
+	registration_form: BetaRegistrationForm
+	profile_form: UserProfileForm
+	remember_me: simple form with one checkbox with name="remmeber_me"
+{% endcomment %}
+
 {% csrf_token %}
 {% with form=registration_form pform=profile_form %}
 <fieldset>

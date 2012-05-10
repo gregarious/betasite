@@ -9,7 +9,13 @@
  	</section>
  	<section class="registration-form-container">
 		<p>If you've been here before, welcome back! Sign in using the form below.</p>
-		{% include "registration/login_form.html" %}
+        <form method="post" action="{{ form_action }}">
+            {% csrf_token %}
+            {% include "registration/login_form.html" %}
+            {{ remember_me }}
+            <input type="submit" value="Login" class="submit-item next" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
 	</section>
 </article>
 {% endblock %}

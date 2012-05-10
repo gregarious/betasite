@@ -2,7 +2,8 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -10,7 +11,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from onlyinpgh.accounts.forms import EmailAuthenticationForm, BetaRegistrationForm, UserProfileForm, ActivityPreferencesForm, EmailForm
+from onlyinpgh.accounts.forms import EmailAuthenticationForm, BetaRegistrationForm, \
+        UserProfileForm, ActivityPreferencesForm, EmailForm, RememberMeForm
 from onlyinpgh.common.views import PageContext
 
 import urlparse
@@ -23,6 +25,16 @@ from onlyinpgh.events.viewmodels import EventData
 
 from onlyinpgh.specials.models import Coupon
 from onlyinpgh.specials.viewmodels import SpecialData
+
+
+def login(request, *args, **kwargs):
+    '''
+    Wrapper around auth's login to support persistant login via a
+    "Remember me?" POST value.
+    '''
+    if not request.POST.get('remember_me', None):
+        request.session.set_expiry(0)
+    return auth_login(request, *args, **kwargs)
 
 
 @csrf_protect
@@ -51,6 +63,7 @@ def page_login(request, redirect_field_name='next'):
 
             # Okay, security checks complete. Log the user in.
             login(request, form.get_user())
+            RememberMeForm
 
             if request.session.test_cookie_worked():
                 request.session.delete_test_cookie()
@@ -63,6 +76,7 @@ def page_login(request, redirect_field_name='next'):
     content = dict(
         form=form,
         form_action=reverse('login'),
+        remember_me=RememberMeForm(),
         next=redirect_to
     )
     context = PageContext(request,
@@ -113,6 +127,7 @@ def page_signup(request):
     content = dict(
         registration_form=reg_form,
         profile_form=profile_form,
+        remember_me=RememberMeForm(),
         form_action=reverse('signup')
     )
     context = PageContext(request,
