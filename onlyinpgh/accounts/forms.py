@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from onlyinpgh.accounts.models import UserProfile, BetaMember
 
@@ -67,6 +67,19 @@ class RegistrationForm(UserCreationForm):
         return user
 
 
+class EmailForm(forms.ModelForm):
+    """
+    A form for changing a user's email. Note that this form mandates that a
+    user has an email address.
+    """
+    # same as default field, but with required turned off
+    email = forms.EmailField(max_length=75, required=True, label=u'E-mail address')
+
+    class Meta:
+        model = User
+        fields = ("email",)
+
+
 class BetaRegistrationForm(RegistrationForm):
     '''
     Special registration form for the private beta. Only allows users with
@@ -102,13 +115,25 @@ class ActivityPreferencesForm(forms.ModelForm):
         fields = ('public_favorites', 'public_attendance', 'public_coupons')
 
 
-# TODO: hook this up to User model
-class CredentialsForm(forms.Form):
+class CredentialsForm(PasswordChangeForm):
     email = forms.EmailField(label=u'Email address')
 
-    current_password = forms.CharField(label=u'Current password')
-    new_password = forms.CharField(label=u'New password')
-    confirm_new_password = forms.CharField(label=u'Confirm new password')
+    def __init__(self, user, *args, **kwargs):
+        initial = kwargs.setdefault('initial', {})
+        if 'email' not in initial:
+            initial['email'] = user.email
+        super(CredentialsForm, self).__init__(user, *args, **kwargs)
+
+    def save(self, commit=True):
+        # parent sets the new password
+        super(CredentialsForm, self).save(commit=False)
+        self.user.email = self.cleaned_data['email']
+        if commit:
+            self.user.save()
+        return self.user
+CredentialsForm.base_fields.keyOrder = ['email', 'old_password',
+                                        'new_password1', 'new_password2']
+
 
 # BROKEN: PROBABLY NEVER FIX
 # class EmailOnlyRegistrationForm(UserCreationForm):
