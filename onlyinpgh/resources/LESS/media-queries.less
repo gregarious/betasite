@@ -26,20 +26,16 @@
 
     ul {
       .clearfix();
-       li a {
+
+      li a {
         .column(4);
         .tabs(0.5em);
         position: relative;
         top: 1px;
-        text-shadow: 0.05em 0.05em 0em #fff;
         text-align: center;
         font-weight: bold;
         float: left;
-
-        &.current-page {
-          border-bottom: none;
-          border-right: 1px #ccc solid;
-        }
+        border-right: 1px solid #ccc;
       }
     }
 
@@ -232,10 +228,6 @@
     border: none;
   }
 
-  .page-title {
-    display: none;
-  }
-
   #utility {
     bottom: 4.1em;
   }
@@ -246,9 +238,7 @@
 
   .single-content {
     .map-container {  
-      height: 100px;
       .row();
-      overflow: hidden;
       margin-bottom: 1em;
     }
   }
@@ -291,10 +281,6 @@
         }
       }
     }
-
-    .map-container {
-      height: 100px;
-    }
   }
 
   #scene-nav {
@@ -309,10 +295,8 @@
     padding-top: 0.7em;
     margin-left: 0.5em;
 
-    img {
       width: auto;
-      height: 80%;
-    }
+      height: 100%;
   }
 
   .filter {
@@ -336,6 +320,10 @@
 // Styles for phones
 @media only screen and (max-width: 480px) {
 
+  #bar, #bus-mgmt-link {
+    display: none;
+  }
+
   .single-title {
     font-size: 1em;
     text-shadow: none;
@@ -343,10 +331,6 @@
 
   .item-details, .item-title {
     font-size: 0.9em;
-  }
-
-  .page-content .map-container {
-    height: 200px;
   }
 
   #now-page {
@@ -360,6 +344,21 @@
     }
   }
 
+  #chatter-page {
+    .page-title {
+      display: none;
+    }
+    .page-header-content {
+      .row();
+    }
+    .feed, form {
+      padding: 0;
+    }
+    .page-header {
+      margin-top: 1em;
+    }
+  }
+
   .single-header {
     padding: 0;
   }
@@ -369,12 +368,23 @@
     padding-right: 0;
   }
 
+  .page-main {
+    .map-title-container {
+      display: none;
+    }
+    .map-container {
+      height: 150px;
+      margin-top: 1em;
+    }
+  }
+
+  .page-nav-container {
+    .simple-form {
+      .column(9);
+    }
+  }
+
 }
 
 @media only screen and (max-width: 320px) {
-
-    .page-content .map-container {
-      height: 150px;
-    }
-
 }

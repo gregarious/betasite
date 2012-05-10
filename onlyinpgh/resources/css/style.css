@@ -639,10 +639,16 @@ legend {
   box-sizing: border-box;
 }
 .tip,
-.errorlist {
+.errorlist,
+.success {
   font-size: 0.9em;
   display: block;
   margin-left: 2%;
+}
+.success {
+  font-weight: bold;
+  color: #ff9f00;
+  padding: 1%;
 }
 .tip {
   color: #999;
@@ -2255,14 +2261,10 @@ a#siteNews {
     background-clip: padding-box;
     position: relative;
     top: 1px;
-    text-shadow: 0.05em 0.05em 0em #fff;
     text-align: center;
     font-weight: bold;
     float: left;
-  }
-  .detail-nav ul li a.current-page {
-    border-bottom: none;
-    border-right: 1px #ccc solid;
+    border-right: 1px solid #ccc;
   }
   .detail-nav#profile-nav ul li a {
     float: left;
@@ -2477,9 +2479,6 @@ a#siteNews {
     padding: 1em 1em 0 1em;
     border: none;
   }
-  .page-title {
-    display: none;
-  }
   #utility {
     bottom: 4.1em;
   }
@@ -2487,12 +2486,10 @@ a#siteNews {
     padding: 0.3em;
   }
   .single-content .map-container {
-    height: 100px;
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    overflow: hidden;
     margin-bottom: 1em;
   }
   .single-content.places {
@@ -2539,9 +2536,6 @@ a#siteNews {
   .detail-section#placeDetail .item-details ul li {
     margin: 0;
   }
-  .detail-section .map-container {
-    height: 100px;
-  }
   #scene-nav {
     border: none;
   }
@@ -2551,10 +2545,8 @@ a#siteNews {
   #logo {
     padding-top: 0.7em;
     margin-left: 0.5em;
-  }
-  #logo img {
     width: auto;
-    height: 80%;
+    height: 100%;
   }
   .filter {
     display: none;
@@ -2571,6 +2563,10 @@ a#siteNews {
   }
 }
 @media only screen and (max-width: 480px) {
+  #bar,
+  #bus-mgmt-link {
+    display: none;
+  }
   .single-title {
     font-size: 1em;
     text-shadow: none;
@@ -2578,9 +2574,6 @@ a#siteNews {
   .item-details,
   .item-title {
     font-size: 0.9em;
-  }
-  .page-content .map-container {
-    height: 200px;
   }
   #now-page .feed .item.short {
     float: left;
@@ -2593,6 +2586,22 @@ a#siteNews {
   #now-page .feed .item.short:last-child {
     display: none;
   }
+  #chatter-page .page-title {
+    display: none;
+  }
+  #chatter-page .page-header-content {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #chatter-page .feed,
+  #chatter-page form {
+    padding: 0;
+  }
+  #chatter-page .page-header {
+    margin-top: 1em;
+  }
   .single-header {
     padding: 0;
   }
@@ -2600,9 +2609,22 @@ a#siteNews {
     padding-left: 0;
     padding-right: 0;
   }
+  .page-main .map-title-container {
+    display: none;
+  }
+  .page-main .map-container {
+    height: 150px;
+    margin-top: 1em;
+  }
+  .page-nav-container .simple-form {
+    float: left;
+    width: 72.91666666666666%;
+    margin: 0 1.0416666666666665%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
 @media only screen and (max-width: 320px) {
-  .page-content .map-container {
-    height: 150px;
-  }
+  
 }
