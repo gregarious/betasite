@@ -32,11 +32,11 @@ class PageSpecialsFeed(PageFilteredFeed):
             content_dict=content)
 
     def hacked_unfiltered(self):
-        return Special.objects.filter(dexpires__gt=timezone.now()).order_by('dexpires')
+        return Special.objects.filter(dexpires__gt=timezone.now().date()).order_by('dexpires')
 
     def hacked_filtered(self):
         return sorted([result.object for result in self.form.search()
-                        if result.object.dexpires > timezone.now()],
+                        if result.object.dexpires > timezone.now().date()],
                         key=lambda s: s.dexpires)
 
 
