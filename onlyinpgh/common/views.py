@@ -97,7 +97,7 @@ class PageSiteSearch(SearchView):
             content['results'] = dict(
                 places=result_by_type.get('places.place', []),
                 events=[result for result in result_by_type.get('events.event', [])
-                            if result.object.dtends > timezone.now()],
+                            if result.object.dtend > timezone.now()],
                 specials=[result for result in result_by_type.get('specials.special', [])
                             if result.object.dexpires > timezone.now().date()],
                 news_articles=result_by_type.get('news.article', []),
