@@ -11,7 +11,6 @@ from onlyinpgh.events.viewmodels import EventData
 # from onlyinpgh.events.resources import EventFeedResource
 
 from haystack.forms import SearchForm
-from haystack.query import SearchQuerySet
 
 
 class PageEventsFeed(PageFilteredFeed):
@@ -22,7 +21,6 @@ class PageEventsFeed(PageFilteredFeed):
             template='events/page_feed.html',
             form_class=SearchForm,
             results_per_page=6,
-            searchqueryset=SearchQuerySet().filter(dtend__gt=timezone.now())
         )
 
     def get_page_context(self, content):
@@ -35,7 +33,10 @@ class PageEventsFeed(PageFilteredFeed):
         return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtstart')
 
     def hacked_filtered(self):
-        return sorted([result.object for result in self.form.search()], key=lambda e: e.dtstart)
+        # TODO: move this filtering into the query
+        return sorted([result.object for result in self.form.search()
+                        if result.object.dtend > timezone.now()],
+                        key=lambda e: e.dtstart)
 
 
 @login_required
