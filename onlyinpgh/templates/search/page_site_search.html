@@ -26,7 +26,7 @@
                         {% thumbnail result.object.image "50x50" crop="center" as im %}
                         <img class="thumbnail" alt="{{result.object.name}}" src="{{im.url}}" />
                         {% empty %}
-                        <img class="thumbnail" alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        <img class="thumbnail" alt="{{result.object.name}}" src="/static/img/defaults/default-place.png" />
                         {% endthumbnail %}
                         <h4 class="item-title">{{result.object.name}}</h4>
                         <p>{{result.object.location.address}}</p>
@@ -41,7 +41,7 @@
                         {% thumbnail result.object.image "50x50" crop="center" as im %}
                         <img alt="{{result.object.name}}" src="{{im.url}}" />
                         {% empty %}
-                        <img alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        <img alt="{{result.object.name}}" src="/static/img/defaults/default-place.png" />
                         {% endthumbnail %}
                     {% endfor %}
                     <div class="see-more">See all place results...</div>
@@ -69,7 +69,7 @@
                         {% thumbnail result.object.image "50x50" crop="center" as im %}
                         <img alt="{{result.object.name}}" src="{{im.url}}" />
                         {% empty %}
-                        <img alt="{{result.object.name}}" src="/static/img/default-place.png" />
+                        <img alt="{{result.object.name}}" src="/static/img/defaults/default-place.png" />
                         {% endthumbnail %}
                     </a>
                 {% endfor %}
