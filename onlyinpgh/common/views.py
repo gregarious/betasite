@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.utils import timezone
 
 from haystack.views import SearchView
 from haystack.forms import SearchForm
@@ -92,10 +93,13 @@ class PageSiteSearch(SearchView):
             for r in self.results:
                 thistype = result_by_type.setdefault(r.content_type(), [])
                 thistype.append(r)
+            # TODO: do filtering in the search query
             content['results'] = dict(
                 places=result_by_type.get('places.place', []),
-                events=result_by_type.get('events.event', []),
-                specials=result_by_type.get('specials.special', []),
+                events=[result for result in result_by_type.get('events.event', [])
+                            if result.object.dtend > timezone.now()],
+                specials=[result for result in result_by_type.get('specials.special', [])
+                            if result.object.dexpires > timezone.now().date()],
                 news_articles=result_by_type.get('news.article', []),
                 chatter_posts=result_by_type.get('chatter.post', []),
             )
