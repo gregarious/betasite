@@ -46,9 +46,18 @@ scenable.mapFeed = (function(){
 
         initialize: function(options) {
             var position = this.model.getLatLng();
+            // if markerOptions is a function depends on the model instance
+            var mOpts = null;
+            if(typeof(this.markerOptions) === 'function') {
+                mOpts = this.markerOptions(this.model);
+            }
+            else {
+                mOpts = this.markerOptions;
+            }
+
             if(position !== null){
                 this.marker = new google.maps.Marker(
-                    _.extend(_.clone(this.markerOptions), {position: position})
+                    _.extend(_.clone(mOpts), {position: position})
                 );
             }
             this.InfoWindow = new google.maps.InfoWindow(

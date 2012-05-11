@@ -5,6 +5,7 @@ from onlyinpgh.common.utils import get_cached_thumbnail
 
 import datetime
 from django.template.defaultfilters import truncatewords
+from django.utils import timezone
 
 
 class EventData(object):
@@ -18,6 +19,11 @@ class EventData(object):
             self.is_attending = False
         for attr in fields:
             setattr(self, attr, getattr(event, attr))
+
+        if self.dtstart < timezone.now() < self.dtend:
+            self.icon_day = timezone.now().day
+        else:
+            self.icon_day = self.dtstart.day
         self.pk = self.id
         self._add_dates()
 
@@ -80,6 +86,7 @@ class EventData(object):
             'dtend': str(self.dtend),
             'dtstart_str': self.dtstart_str,
             'dtend_str': self.dtend_str,
+            'icon_day': self.icon_day,
             'place': {
                 'name': truncatewords(self.place.name, 4),
                 'location': {
