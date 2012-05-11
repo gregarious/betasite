@@ -2198,22 +2198,22 @@ a {
 
 }
 a#siteHot {
-  background: #ffffff url('/static/img/main-menu/city.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/city.png') no-repeat center 9px;
 }
 a#sitePlaces {
-  background: #ffffff url('/static/img/main-menu/store-front.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/store-front.png') no-repeat center 9px;
 }
 a#siteEvents {
-  background: #ffffff url('/static/img/main-menu/calendar-alt.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/calendar-alt.png') no-repeat center 9px;
 }
 a#siteSpecials {
-  background: #ffffff url('/static/img/main-menu/tag-special.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/tag-special.png') no-repeat center 9px;
 }
 a#siteChatter {
-  background: #ffffff url('/static/img/main-menu/speech-bubble.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/speech-bubble.png') no-repeat center 9px;
 }
 a#siteNews {
-  background: #ffffff url('/static/img/main-menu/newspaper.png') no-repeat center 9px;
+  background: #ffffff url('/static/img/main-icons-small/newspaper.png') no-repeat center 9px;
 }
 /* Actions */
 /* MEDIA QUERIES --------- */
