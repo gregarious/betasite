@@ -5,6 +5,7 @@ from PIL import Image
 import urllib2 as urllib
 from StringIO import StringIO
 
+from django.utils.timezone import get_current_timezone
 from django.core.files import File
 from sorl.thumbnail import get_thumbnail
 
@@ -113,5 +114,19 @@ def precache_thumbnails(image):
         get_cached_thumbnail(image, type)
 
 
-def make_uuid():
-    return str(uuid.uuid4())
+def localtime(value, timezone=None):
+    """
+    Converts an aware datetime.datetime to local time.
+
+    Local time is defined by the current time zone, unless another time zone
+    is specified.
+
+    This was copied directly from the dev version of Django.
+    """
+    if timezone is None:
+        timezone = get_current_timezone()
+    value = value.astimezone(timezone)
+    if hasattr(timezone, 'normalize'):
+        # available for pytz time zones
+        value = timezone.normalize(value)
+    return value

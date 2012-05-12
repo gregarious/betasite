@@ -5,6 +5,7 @@ from onlyinpgh.common.utils import get_cached_thumbnail
 
 import datetime
 from django.template.defaultfilters import truncatewords
+from onlyinpgh.common.utils import localtime
 
 
 class EventData(object):
@@ -19,9 +20,9 @@ class EventData(object):
         for attr in fields:
             setattr(self, attr, getattr(event, attr))
         self.pk = self.id
-        self._add_dates()
+        self._process_dates()
 
-    def _add_dates(self):
+    def _process_dates(self):
         # TODO: really should test some of this logic
         # if it's happening in the same year as now, or within the next 45 days, use the start year
         if self.dtstart.year == now().year:
@@ -30,6 +31,9 @@ class EventData(object):
             use_year = False
         else:
             use_year = True
+
+        self.dtstart = localtime(self.dtstart)
+        self.dtend = localtime(self.dtend)
 
         self.dtstart_str = self.dtstart.strftime('%b ') + \
                           self.dtstart.strftime('%d').lstrip('0') + \
