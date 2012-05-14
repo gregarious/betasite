@@ -28,12 +28,12 @@ Context variables:
         </form>
         <nav class="prev-next" id="events-feed-nav">
             <div class="previous">
-            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}{%if query%}&q={{query}}{%endif%}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
             <div class="page-num">
                 <p>Page</p>
                 {{page.number}} / {{page.paginator.num_pages}}</div>
             <div class="next">
-                {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}">&rarr;</a>{% else %}&nbsp;{% endif %}
+                {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}{%if query%}&q={{query}}{%endif%}">&rarr;</a>{% else %}&nbsp;{% endif %}
             </div>
         </nav>
     </div>
@@ -75,9 +75,16 @@ $(function(){
         className: 'item',
         template: window.TPL.eventItem,
         iwTemplate: window.TPL.eventInfoWindow,
-        markerOptions: {
-            icon: '/static/img/markers/event-marker.png',
-            shadow: '/static/img/markers/marker-shadow.png'
+        markerOptions: function(evModel) { 
+            var icon = '/static/img/markers/event-marker.png';
+            if(evModel.attributes && !_.isUndefined(evModel.attributes.icon_day)) {
+                icon = '/static/img/markers/events/day_'+evModel.attributes.icon_day+'.png';
+            }
+            console.log('using icon: ' + icon);
+            return {
+                icon: icon,
+                shadow: '/static/img/markers/marker-shadow.png'
+            };
         }
     });
     var EventFeed = scenable.mapFeed.FeedView.extend({SubViewClass:EventView});

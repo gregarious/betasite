@@ -12,6 +12,7 @@ from onlyinpgh.specials.viewmodels import SpecialData
 # from onlyinpgh.specials.resources import SpecialFeedResource
 
 from haystack.forms import SearchForm
+from django.utils import timezone
 
 
 class PageSpecialsFeed(PageFilteredFeed):
@@ -31,10 +32,12 @@ class PageSpecialsFeed(PageFilteredFeed):
             content_dict=content)
 
     def hacked_unfiltered(self):
-        return Special.objects.order_by('dexpires')
+        return Special.objects.filter(dexpires__gt=timezone.now().date()).order_by('dexpires')
 
     def hacked_filtered(self):
-        return sorted([result.object for result in self.form.search()], key=lambda s: s.dexpires)
+        return sorted([result.object for result in self.form.search()
+                        if result.object.dexpires > timezone.now().date()],
+                        key=lambda s: s.dexpires)
 
 
 @login_required

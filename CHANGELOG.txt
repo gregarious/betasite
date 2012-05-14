@@ -1,7 +1,12 @@
 Pre-versioning changes:
 
+5/11:
+- Events and special searches no longer include expired items
+- Events filtering working
+- Filtering is now persistent through pagination
+
 5/10:
-- Upgraded django-pipeline package on all machines to fix Javascript issues in IE8
+- Upgraded django-pipeline package on all machines to fix Javascript MIME type issues in IE8
 - Removed trailing commas in feed page Javascript causing compatibility problems in IE7
 - Added automated "forgot password?" process for beta testers and business users
 - Added password/email changing to account management
@@ -9,7 +14,6 @@ Pre-versioning changes:
 
 5/9:
 - Places ordering no longer shuffled on paging
-
 
 5/3-5/7:
 - Chatter posts now displaying avatar

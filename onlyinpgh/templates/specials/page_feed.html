@@ -28,12 +28,12 @@ Context variables:
         </form>
         <nav class="prev-next" id="specials-feed-nav">
             <div class="previous">
-            {% if page.has_previous %}<a href="{% url specials-feed %}?page={{page.previous_page_number}}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            {% if page.has_previous %}<a href="{% url specials-feed %}?page={{page.previous_page_number}}{%if query%}&q={{query}}{%endif%}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
             <div class="page-num">
                 <p>Page</p>
                 {{page.number}} / {{page.paginator.num_pages}}</div>
             <div class="next">
-                {% if page.has_next %}<a href="{% url specials-feed %}?page={{page.next_page_number}}">&rarr;</a>{% else %}&nbsp;{% endif %}
+                {% if page.has_next %}<a href="{% url specials-feed %}?page={{page.next_page_number}}{%if query%}&q={{query}}{%endif%}">&rarr;</a>{% else %}&nbsp;{% endif %}
             </div>
         </nav>
     </div>
