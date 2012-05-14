@@ -1,16 +1,22 @@
 # Django settings for scenable project.
 import os
-import datetime
 
 # import settings that differ based on deployment
 import settings_local
 
-ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, '..'))
 
 
-def to_abspath(path):
-    '''prepends ROOT_DIR setting to the given path'''
-    return os.path.join(ROOT_DIR, path)
+def project_file(path):
+    '''prepends PROJECT_ROOT setting to the given path'''
+    return os.path.join(PROJECT_ROOT, path)
+
+
+def site_file(path):
+    '''prepends SITE_ROOT setting to the given path'''
+    return os.path.join(SITE_ROOT, path)
+
 
 DEBUG = settings_local.DEBUG
 TEMPLATE_DEBUG = settings_local.TEMPLATE_DEBUG
@@ -68,8 +74,8 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    to_abspath('resources'),
-    to_abspath('boilerplate'),
+    project_file('resources'),
+    project_file('boilerplate'),
 )
 
 # List of finder classes that know how to find static files in
@@ -105,7 +111,7 @@ ROOT_URLCONF = 'scenable.urls'
 WSGI_APPLICATION = 'scenable.wsgi.application'
 
 TEMPLATE_DIRS = (
-    to_abspath('templates'),
+    project_file('templates'),
 )
 
 INSTALLED_APPS = (
@@ -160,7 +166,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': to_abspath('logs/debug.log')
+            'filename': site_file('logs/debug.log')
         },
     },
     'loggers': {
@@ -169,7 +175,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'scenable.debugging': {
+        'debugging': {
             'handlers': ['console', 'debug_file'],
             'level': 'DEBUG',
             'propagate': False
@@ -192,7 +198,7 @@ LOGIN_REDIRECT_URL = '/'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 FIXTURE_DIRS = (
-    to_abspath('fixtures'),
+    project_file('fixtures'),
 )
 
 # email settings for production errors
@@ -207,14 +213,14 @@ SEND_BROKEN_LINK_EMAILS = True
 
 # pipeline settings
 from settings_pipeline import *
-# this is defined outside so we can use to_abspath
-PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor')
+# this is defined outside so we can use project_file
+PIPELINE_YUI_BINARY = project_file('../bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # initial Haystack setup for Whoosh
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': to_abspath('../var/whoosh_index'),
+        'PATH': project_file('../var/whoosh_index'),
     },
 }

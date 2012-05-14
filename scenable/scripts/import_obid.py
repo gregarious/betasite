@@ -21,8 +21,8 @@ from scripts import places_fb_import
 import logging
 logging.root.setLevel(logging.INFO)
 
-from scenable.settings import to_abspath
-DATA_DIR = to_abspath('../data')
+from scenable.settings import project_file
+DATA_DIR = project_file('../data')
 
 #gplaces_category_map = load_category_map('google_places')
 
