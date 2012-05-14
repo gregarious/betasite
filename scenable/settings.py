@@ -21,8 +21,10 @@ def site_file(path):
 DEBUG = settings_local.DEBUG
 TEMPLATE_DEBUG = settings_local.TEMPLATE_DEBUG
 
-ADMINS = settings_local.ADMINS
-MANAGERS = settings_local.MANAGERS
+ADMINS = (
+    ('Scenable Admin', 'admin@scenable.com'),
+)
+MANAGERS = ADMINS
 
 DATABASES = {
     'default': settings_local.DB_DEFAULT
@@ -47,7 +49,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
@@ -131,6 +133,7 @@ INSTALLED_APPS = (
     'tastypie',
     'haystack',
     'django_extensions',
+    # scenable apps
     'scenable.common',
     'scenable.accounts',
     'scenable.tags',
@@ -213,14 +216,14 @@ SEND_BROKEN_LINK_EMAILS = True
 
 # pipeline settings
 from settings_pipeline import *
-# this is defined outside so we can use project_file
-PIPELINE_YUI_BINARY = project_file('../bin/yuicompressor')
+# this is defined outside so we can use site_file
+PIPELINE_YUI_BINARY = site_file('bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # initial Haystack setup for Whoosh
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': project_file('../var/whoosh_index'),
+        'PATH': site_file('var/whoosh_index'),
     },
 }

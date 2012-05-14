@@ -1694,7 +1694,7 @@ def after_install(options, home_dir):
             virtualenv created and bootstrap requirements installed!
             Next steps for site configuration:
               - syncdb/migrate
-              - Set proper entry in Sites table.
+              - Set proper entry for the Sites framework.
               - Complete settings_local.py''')
     else:
         print textwrap.dedent('''

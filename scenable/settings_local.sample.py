@@ -1,10 +1,6 @@
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-)
-MANAGERS = ADMINS
-
 DB_DEFAULT = {
     'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     'NAME': '',                      # Or path to database file if using sqlite3.
