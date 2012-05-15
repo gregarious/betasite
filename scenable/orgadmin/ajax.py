@@ -34,7 +34,7 @@ def _autocomplete_response(request, place_choices, term, limit=4):
             thumb = get_cached_thumbnail(p.image, 'small') if p.image else None
         except IOError:
             thumb = None
-        image_url = thumb.url if thumb else '/static/img/default-place.png'
+        image_url = thumb.url if thumb else '/static/img/defaults/default-place.png'
         results.append({
             'id': p.id,
              'name': p.name,

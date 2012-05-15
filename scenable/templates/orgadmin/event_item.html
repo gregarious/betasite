@@ -11,7 +11,7 @@ Context variables:
 		{% thumbnail event.image "130x130" crop="center" as im %}
 		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
 		{% empty %}
-		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{STATIC_URL}}img/default-event.png" />
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{STATIC_URL}}img/defaults/default-event.png" />
 		{% endthumbnail %}
 	</a>
 </div>

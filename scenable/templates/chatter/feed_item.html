@@ -6,7 +6,7 @@
 	{% thumbnail item.author.get_profile.avatar "20x20" crop="center" as im %}
 	<img src="{{im.url}}" alt="{{item.author.get_profile.display_or_username}}'s avatar" />
 	{% empty %}
-	<img src="{{STATIC_URL}}img/default-avatar.png" alt="{{item.author.get_profile.display_or_username}}'s avatar" />
+	<img src="{{STATIC_URL}}img/defaults/default-avatar.png" alt="{{item.author.get_profile.display_or_username}}'s avatar" />
 	{% endthumbnail %}
 	<p class="tip">posted {{item.dtcreated|timesince}} ago by <a href="{% url account-public uname=item.author.username %}">{{item.author.get_profile.display_or_username}}</a></p>
 </div>

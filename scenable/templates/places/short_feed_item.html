@@ -5,10 +5,10 @@
         {% thumbnail place.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" />
         <div class="item-type type-place">
-            <img src="{{STATIC_URL}}img/main-menu/store-front.png" alt="Store front" />
+            <img src="{{STATIC_URL}}img/main-icons-small/store-front.png" alt="Store front" />
         </div>
         {% empty %}
-        <img class="thumbnail" alt="{{place.name}}" src="{{STATIC_URL}}img/default-place.png" />
+        <img class="thumbnail" alt="{{place.name}}" src="{{STATIC_URL}}img/defaults/default-place.png" />
         {% endthumbnail %}
     </a>
 </div>
