@@ -1,0 +1,40 @@
+{% comment %}
+Template to render a particular event as a item in an orgadmin list.
+
+Context variables:
+	event:			Event model instance
+{% endcomment %}
+{% load thumbnail %}
+
+<div class="item-thumb">
+	<a href="{% url orgadmin-editevent event.id %}" title="Edit this event">
+		{% thumbnail event.image "130x130" crop="center" as im %}
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
+		{% empty %}
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{STATIC_URL}}img/defaults/default-event.png" />
+		{% endthumbnail %}
+	</a>
+</div>
+
+<section class="item-content">
+	<h4 class="item-title in-feed">
+		<a href="{% url orgadmin-editevent event.id %}" title="Edit this event">
+			{{event.name|truncatewords:10}}
+		</a>
+	</h4>
+	
+	<ul class="item-details meta">	
+		<li class="address">{{event.dtstart}} - {{event.dtend}}</li>
+		<li>{{event.location.address}}</li>
+		<li class="description">{{ event.description|truncatewords:15|urlizetrunc:20 }}</li>
+  	</ul>
+  	
+	{% include "tags/tag_list.html" with tags=event.tags %}
+
+</section>
+
+<div class="item-actions">
+	<a href="{% url event-detail eid=event.id %}" title="View listing" target="blank"><img src="{{STATIC_URL}}img/icons/browser.png" alt="view"/></a>
+	<a href="{% url orgadmin-editevent event.id %}" title="Edit event"><img class="item-action" src="{{STATIC_URL}}img/icons/pencil.png" alt="edit"/></a>
+	<a href="{% url orgadmin-delevent event.id %}" class="delete-item" title="Delete event"><img class="item-action" src="{{STATIC_URL}}img/icons/icon_x.gif" alt="delete" /></a>
+</div>
