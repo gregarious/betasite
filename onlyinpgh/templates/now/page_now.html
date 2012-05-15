@@ -1,0 +1,122 @@
+{% extends "page.html" %}
+
+{% comment %}
+Template for main now section
+
+Context variables:
+    [items]: list of NowFeedItem instances
+        model: string representing model type for this item (e.g. 'Place')
+        instance: a PlaceData, EventData, or SpecialData instance
+    [news_articles]: list of Article instances
+    [chatter_posts]: list of Post instances
+{% endfor %}
+
+{% endcomment %}
+
+
+{% block main-content %}
+<article class="page-main no-map" id="now-page">
+    <header class="page-header">
+        <div class="page-title-container">
+            <h1 class="page-title"><span id="now">NOW</span> in Oakland</h1>
+        </div>
+        <div class="page-header-content">
+            <p>So, what's going on in Oakland? Browse this list of top places, events, specials, news and chatter from around the Oakland Scene.</p>
+        </div>
+    </header>
+
+    <div class="row-container">
+        <ul class="feed">
+        {% for i in items|slice:"0:3" %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <ul class="feed">
+        {% for i in items|slice:"3:6" %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <ul class="feed">
+        {% for i in items|slice:"6:9" %}
+            {% if i.model == 'Special' %}
+            <li class="item short">
+                {% include "specials/short_feed_item.html" with special=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Place' %}
+            <li class="item short">
+                {% include "places/short_feed_item.html" with place=i.instance %}
+            </li>
+            {% endif %}
+            {% if i.model == 'Event' %}
+            <li class="item short">
+                {% include "events/short_feed_item.html" with event=i.instance %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container -->
+    <hr />
+     <div class="row-container">       
+        <h2><a href="{% url chatter-feed %}" title="Oakland Chatter">Chatter</a></h2>
+        <ul class="feed">
+        {% for item in chatter_posts|slice:"0:3" %}
+            <li class="post">
+                {% include "chatter/feed_item.html" with chatter=i.instance %}
+            </li>
+        {% endfor %}
+        </ul>
+        <ul class="feed chatter">
+        {% for item in chatter_posts|slice:"4:6" %}
+            <li class="post">
+                {% include "chatter/feed_item.html" with chatter=i.instance %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container #now-random -->
+    <hr />
+    <div class="row-container">
+        <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
+        <ul class="feed news">
+        {% for item in news_articles|slice:"3" %}
+            <li class="item">
+                {% include "news/feed_item.html" with article=i.instance %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div> <!-- .row-container -->
+
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_now.html" %}
+{% endblock %}

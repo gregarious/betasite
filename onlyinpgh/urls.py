@@ -1,8 +1,14 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import direct_to_template
+from django.conf.urls.static import static
+from django.views.generic.simple import redirect_to, direct_to_template
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
+from haystack.forms import SearchForm
+from haystack.views import search_view_factory
+from onlyinpgh.common.views import PageSiteSearch
+from onlyinpgh import settings
 
 admin.autodiscover()
 
@@ -11,20 +17,25 @@ urlpatterns = patterns('',
 
     url(r'^login/$', 'onlyinpgh.accounts.views.page_login', name='login'),
     url(r'^signup/$', 'onlyinpgh.accounts.views.page_signup', name='signup'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/login/'}),
 
-    url(r'^account/', include('onlyinpgh.accounts.urls')),
+    url(r'^accounts/', include('onlyinpgh.accounts.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^djadmin/', include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^/prelaunchadmin/doc/', include('django.contrib.admindocs.urls')),
+
+    url(r'^oakland/$', 'onlyinpgh.common.views.page_home', name='oakland-home'),
+    url(r'^oakland/places/', include('onlyinpgh.places.urls')),
+    url(r'^oakland/events/', include('onlyinpgh.events.urls')),
+    url(r'^oakland/specials/', include('onlyinpgh.specials.urls')),
+    url(r'^oakland/news/', include('onlyinpgh.news.urls')),
+    url(r'^oakland/chatter/', include('onlyinpgh.chatter.urls')),
+    url(r'^oakland/now/$', 'onlyinpgh.now.views.page_now', name='now'),
+
+    url(r'^oakland/tags/', include('onlyinpgh.tags.urls')),
 
     url(r'^manage/', include('onlyinpgh.orgadmin.urls')),
-
-    url(r'^places/', include('onlyinpgh.places.urls')),
-    url(r'^events/', include('onlyinpgh.events.urls')),
-    url(r'^specials/', include('onlyinpgh.specials.urls')),
-    url(r'^hot/$', 'onlyinpgh.hot.views.page_hot', name='hot'),
 
     # QR-code redirect handling
     url(r'^qr/$', 'onlyinpgh.common.views.qr_redirect'),
@@ -32,57 +43,32 @@ urlpatterns = patterns('',
     url(r'^qr/(\w+)/$', 'onlyinpgh.common.views.qr_redirect'),
     url(r'^qr/(\w+)$', 'onlyinpgh.common.views.qr_redirect'),
 
+    # feedback form
+    url(r'^feedback/ajax/generic/$', 'onlyinpgh.feedback.ajax.submit_generic'),
+
     # Scenable and Oakland shirt QRs
     url(r'^mobile-about/$', direct_to_template, {'template': 'qr/mobile_about.html'}, name='mobile-about'),
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
 
-    # Static about page for the scenable.com - not in use
+    # Error pages
+    url(r'^500.html$', direct_to_template, {'template': '500.html'}, name='500'),
+    url(r'^404.html$', direct_to_template, {'template': '404.html'}, name='404'),
+    url(r'^403.html$', direct_to_template, {'template': '403.html'}, name='403'),
+
+    # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
 
-    url('chatter_example', 'onlyinpgh.common.views.example_chatter', name='example_chatter'),
-    url('news_example', 'onlyinpgh.common.views.example_news', name='example_news'),
+    url(r'^oakland/search/', search_view_factory(
+        view_class=PageSiteSearch,
+        template='search/page_site_search.html',
+        form_class=SearchForm
+    ), name='site-search'),
 
-    #url(r'^tags/',include('onlyinpgh.tags.urls')),
-
-    # url(r'^$', home_views.hot_page),
-    # url(r'^map$', home_views.map_page),
-    # url(r'^grabbit$', home_views.checkin_page),
-    # url(r'^specials$', offers_views.offers_page),
-    # url(r'^news$', news_views.news_page),
-    # url(r'^events$', events_views.events_page),
-    # url(r'^places$', places_views.places_page),
-    # url(r'^search$', home_views.search_page),
-    # url(r'^tags$', tag_views.all_tags),
-
-    # url(r'^chatter$', chatter_views.chatter_posts_hot),
-    # url(r'^chatter/new$', chatter_views.chatter_posts_new),
-    # url(r'^chatter/questions$', chatter_views.chatter_posts_questions),
-    # url(r'^chatter/discuss$', chatter_views.chatter_posts_conversations),
-    # url(r'^chatter/pics$', chatter_views.chatter_posts_photos),
-
-    # url(r'^chatter/(?P<id>\d+)/$', chatter_views.single_post_page),
-    # url(r'^chatter/post-form/$', chatter_views.post_form),
-
-    # url(r'^specials/(?P<id>\d+)/$', offers_views.single_offer_page),
-    # url(r'^news/(?P<id>\d+)/$', news_views.single_article_page),
-    # url(r'^events/(?P<id>\d+)/$', events_views.single_event_page),
-    # url(r'^places/(?P<id>\d+)/$', places_views.single_place_page),
-
-    # # OBID app urls
-    # url(r'^ajax/places_feed$', places_views.ajax_places_feed),
-    # url(r'^ajax/events_feed$', events_views.ajax_events_feed),
-    # url(r'^ajax/event/(?P<eid>\d+)/$', events_views.ajax_event_item),
-
-    # url(r'^ajax/hot_feed$', home_views.ajax_hot_page)
-    # #url(r'^ajax/specials_feed$', offers_views.ajax_specials_feed),
+    # Static pages
+    url(r'^about-oakland/$', 'onlyinpgh.common.views.page_static_about_oakland', name='about-oakland'),
+    url(r'^team/$', 'onlyinpgh.common.views.page_static_team', name='team'),
+    url(r'^mission/$', 'onlyinpgh.common.views.page_static_mission', name='mission'),
 )
 
-from onlyinpgh import settings
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-    )
-    urlpatterns += patterns('',
-        url(r'^testbed/', include('onlyinpgh.testbed.urls')))
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

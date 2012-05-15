@@ -115,6 +115,10 @@ p {
 	text-shadow: 0.01em 0.01em 0 #000;
 	text-align: center;
 	padding-bottom: 8px;
+
+	a {
+		color: @yellow;
+	}
 }
 
 
@@ -145,6 +149,11 @@ p {
 	top: 0;
 	z-index: 999;
 
+	.wrap {
+		position: relative;
+		z-index: 999;
+	}
+
 	#user {
 		float: right;
 		position: relative;
@@ -169,6 +178,44 @@ p {
 
 #header-logo {
 	margin-bottom: 2em;
+}
+
+#main-site-link a {
+	padding: 0.5em;
+	position: fixed;
+
+	p {
+		color: #fff; 
+		font-style: italic;
+		text-shadow: 1px 1px 1px #555;
+	}
+
+	&:hover {
+		background: #333;
+	}
+
+	&:active {
+		background: #222;
+	}
+
+	top: -8px;
+	left: 5px;
+	.b-shadow(0.1em, 0.1em, 0.1em, #000);
+	-webkit-border-radius: 0 0 0.5em 0.5em; 
+	 -moz-border-radius: 0 0 0.5em 0.5em; 
+	      border-radius: 0 0 0.5em 0.5em; 
+  
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	width: 150px;
+	text-align: center;
+	margin: 2px 0 0 10px;
+	background: #555;
+	z-index: 1000;
+
+	img {
+		width: 100%;
+	}
+
 }
 
 #site-content {
@@ -328,18 +375,13 @@ input[type="checkbox"] {
 }
 
 .social-input {
+	.clearfix();
 	img {
-		margin-top: 0.5em;
-		float: right;
+		.column_r(1.3);
 	}
 	input {
-		width: 90% !important;
-		float: left;
+		.column(10.7);
 	}
-}
-
-#confirm-pass {
-	margin-top: 10px;
 }
 
 .tip, .error, .errorlist {
@@ -550,11 +592,11 @@ input[type="checkbox"] {
   overflow: hidden;
   //padding: 0 1% 1%;
   text-align: center;
-
+  border: 2px #e1e1e1 solid;
+  
   .thumbnail {
-    border: 2px #fff solid;
     display: block;
-    margin: 0 1%;
+    margin: 0;
     max-width: 130px;
     max-height: 130px;
     overflow: hidden;
@@ -681,6 +723,10 @@ input[type="checkbox"] {
 
 .form-help {
 	margin: 0 0 2em 2em;
+
+	&#login-prompt {
+		margin-top: 1em;
+	}
 }
 
 /* AUTOCOMPLETE -------- */
@@ -939,6 +985,16 @@ input[type="checkbox"] {
 
 		}
 	}
+}
+
+.row-container {
+	.row();
+	.clearfix();
+}
+
+.remember-me label {
+	text-transform: none !important;
+	font-weight: normal;
 }
 
 /* IE CLASSES ---------- */

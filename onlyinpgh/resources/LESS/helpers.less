@@ -42,7 +42,6 @@
 
 .row() {
   width: 100%;
-  margin: 0;
   .border-box;
 }
 
@@ -88,7 +87,7 @@
 @teal: #2C525D;
 @red: #B83939;
 @yellow: #DED57F; 
-@white: #90E0A1;
+@orange: #FF9F00;
 
 .lucida() {
   font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
@@ -96,6 +95,7 @@
 
 .blok() {
   font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 .fixed() {
@@ -158,15 +158,22 @@
 }
 
 .icon(@path) {
-  background: #ffffff url('/static/img/main-menu/@{path}.png') no-repeat center;
+  background: #ffffff url('/static/img/icons/@{path}.png') no-repeat center;
 }
 
 .menu_icon(@path) {
-  background: #ffffff url('/static/img/main-menu/@{path}.png') no-repeat center 9px; 
+  background: #ffffff url('/static/img/main-icons-small/@{path}.png') no-repeat center 9px; 
 }
 
 .b-shadow-bot(@x, @y, @blur, @color) {
-  -webkit-box-shadow: 0 0 @x @y @blur @color; 
-     -moz-box-shadow: 0 0 @x @y @blur @color; 
-          box-shadow: 0 0 @x @y @blur @color; 
+  -webkit-box-shadow: @x @y 0 0 @blur @color; 
+     -moz-box-shadow: @x @y 0 0 @blur @color; 
+          box-shadow: @x @y 0 0 @blur @color; 
+}
+
+.ease-out(@rule) {
+  -webkit-transition: @rule 0.2s ease-out;  
+    -moz-transition: @rule 0.2s ease-out;  
+      -o-transition: @rule 0.2s ease-out;  
+  transition: @rule 0.2s ease-in; 
 }

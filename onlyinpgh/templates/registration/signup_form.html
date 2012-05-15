@@ -1,6 +1,98 @@
-<form action="{{ form_action }}" method="POST">
-    {% csrf_token %}
-    {{ registration_form.as_ul }}
-    {{ profile_form.as_ul }}
-    <button type="submit">Submit</button>
-</form>
+{% comment %}
+Template variables:
+	registration_form: BetaRegistrationForm
+	profile_form: UserProfileForm
+	remember_me: simple form with one checkbox with name="remmeber_me"
+{% endcomment %}
+
+{% csrf_token %}
+{% with form=registration_form pform=profile_form %}
+<fieldset>
+	<!-- <legend>Your Account</legend> -->
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.email.label_tag}}
+			</div>
+			<div class="field">
+				{{form.email}}
+				<p class="tip">Enter the email you used to sign up to be a beta tester.</p>  
+				{{form.email.errors}}
+			</div>
+		</li> <!-- email -->
+		
+		<li class="field-container">
+			<div class="field-label">
+				{{form.username.label_tag}}
+			</div>
+			<div class="field">
+				{{form.username}}
+				<p class="tip">Create a user name for login purposes. Once you're signed in, you can create a display name that will be visible to other users.</p>  
+				{{form.username.errors}}
+			</div>
+		</li> <!-- username -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.password1.label_tag}}
+			</div>
+			<div class="field grouped-field-row">
+				<div>
+					{{form.password1}}
+				</div>
+				<div>
+					<label name="{{form.password2.html_name}}">Confirm Password</label>	
+				</div>
+				<div>
+					{{form.password2}}
+				</div>
+				{{form.password1.errors}}
+				{{form.password2.errors}}
+			</div>
+		</li> <!-- password1 -->
+		<li class="field-container last">	  
+            <div class="field remember-me">
+                {{remember_me.remember_me}}
+                {{remember_me.remember_me.label_tag}}
+            </div>
+        </li>
+	</ul>
+</fieldset>
+
+<fieldset>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{pform.neighborhood.label_tag}}
+			</div>
+			<div class="field">
+				{{pform.neighborhood}}
+				<p class="tip">The neighborhood you live in, (e.g. Lawrenceville, Penn Hills).</p>
+				{{pform.neighborhood.errors}}
+			</div>
+		</li> <!-- neighborhood -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{pform.gender.label_tag}}
+			</div>
+			<div class="field grouped-field-row">
+				<div>
+					{{pform.gender}}
+				</div> <!-- gender -->
+				<div>
+					{{pform.birth_date.label_tag}}
+				</div>
+				<div>
+					{{pform.birth_date}}
+					{{pform.birth_date.errors}}
+					<p class="tip">MM/DD/YYYY</p>
+				</div> <!-- birth_year -->
+			</div>
+		</li>  <!-- gender & birth_year -->
+	</ul>
+</fieldset>
+
+{% endwith %}
+
+<input type="submit" value="Sign Up" class="right" />

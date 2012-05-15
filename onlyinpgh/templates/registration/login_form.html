@@ -6,31 +6,24 @@ Context variables:
     form_action: where form should be posted to
     next: where user should be taken after successful login
 {% endcomment %}
-<form method="post" action="{{ form_action }}">
-    {% csrf_token %}
-    <div class="field-container">
-        <div class="field-label">
-            <label for="{{ form.username.html_name }}">Email or Username</label>
-        </div>
-        <div class="field login">
-            {{ form.username }}
-        </div>
-    </div> 
-
-    <div class="field-container">
-        <div class="field-label">
-            {{ form.password.label_tag }}
-        </div>
-        <div class="field login">
-            {{ form.password }}
-            <p class="tip"><a onclick="alert('Forgot it already? Sorry, we have not automated this process yet. Please email contact@scenable.com to request a new password.')" href="#">Forgot your password?</a></p>
-            {% if form.non_field_errors %}
-                {{ form.non_field_errors }}
-            {% endif %}
-        </div>
+<div class="field-container">
+    <div class="field-label">
+        <label for="{{ form.username.html_name }}">Email or Username</label>
     </div>
-    
-    <input type="submit" value="Login" class="submit-item next" />
+    <div class="field login">
+        {{ form.username }}
+    </div>
+</div> 
 
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<div class="field-container">
+    <div class="field-label">
+        {{ form.password.label_tag }}
+    </div>
+    <div class="field login">
+        {{ form.password }}
+        <p class="tip"><a href="{% url accounts-password_reset %}">Forgot your password?</a></p>
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+    </div>
+</div>

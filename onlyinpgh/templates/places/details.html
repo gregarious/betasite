@@ -2,114 +2,103 @@
 Template to render items related to a place
 
 Context variables:
-    C:
-        place: PlaceContext instance
-        related_feeds:
-            events_feed:
-                [EventFeedItem VMs]
-            specials_feed:  
-                [SpecialFeedItem VMs]
+    place: PlaceData instance
+    related_feeds:
+        events_feed:
+            [EventFeedItem VMs]
+        specials_feed:  
+            [SpecialFeedItem VMs]
 
 {% endcomment %}
 {% load external_url from commontags %}
-{% with related_feeds=C.related_feeds place=C.place %}
-
 <nav class="detail-nav">
     <ul>
-        <li><a id="placeInfo" class="current-page">Info</a></li>
-        {% if not related_feeds.events_feed %}
-            <li><a id="placeEvents" class="disabled">Events</a></li>
-        {% else %}
+        <li><a id="placeDetail" class="current-page">About</a></li>
+        {% if related_feeds.events_feed %}
             <li><a id="placeEvents">Events</a></li>
         {% endif %}
-        {% if not related_feeds.specials_feed %}
-            <li><a id="placeSpecials" class="disabled">Specials</a></li>
-        {% else %}
+        {% if related_feeds.specials_feed %}
             <li><a id="placeSpecials">Specials</a></li>
         {% endif %}
     </ul>
 </nav>
 
-<section class="detail-section" id="placeInfo">
+<section class="detail-section" id="placeDetail">
 
-    <h2 class="detail-section-title">Details</h2>
+    <h2 class="detail-section-title">About - <em>{{place.name}}</em></h2>
 
     <div class="map-container">
-        <!-- Background image stand in -->
+    {% if place.location.is_geocoded %}
+        <div class="map" id="mainPlaceMap"></div>
+        
+        {% if place.location.directions_link %}
+        <div class="directions">
+            <a href="{{place.location.directions_link}}" target="blank" title="Directions to {{place.name}}">Get Directions</a>
+        </div>
+        {% endif %}
+    {% else %}
+        <div class="map" id="map-unavailable"></div>
+    {% endif %}    
     </div>
-
+    
     <ul class="item-details">
         {% if place.hours %}
-            {# This is ugly and unintuitive. But works for now. #}
-            {% for tuples in place.hours_unpacked %}
-                <li>{{tuples.0}}: {{tuples.1}}</li>
-            {% endfor %}
+            <li><p class="item-item-detail-title">Hours:</p>
+                <ul>
+                {# This is ugly and unintuitive. But works for now. #}
+                {% for tuples in place.hours %}
+                    <li>{{tuples.0}}: {{tuples.1}}</li>
+                {% endfor %}        
+                </ul>
+            </li>
         {% endif %}
 
+        {# parking is disabled temporarily #}
         {% if place.parking %}
             {# This is ugly and unintuitive. But works for now. #}
-            {% for option in place.parking_unpacked %}
-                <li>Parking: {{option}}</li>
+            <li><p class="item-detail-title">Parking: </p> 
+                <ul>
+            {% for option in place.parking %}
+                    <li>{{option}}</li>
             {% endfor %}
+                </ul>
+            </li>
         {% endif %}
 
         {% if place.phone %}
-            <li>Phone: {{ place.phone }}</li>
+            <li><p class="item-detail-title">Phone: </p>{{place.phone}}</li>
         {% endif %}
 
         {% if place.url %}
-            <li><a href="{{ place.url|external_url}}">See our full website</a></li>
+            <li><a href="{{ place.url|external_url}}" title="{{place.name}}'s Website" target="blank">Website</a></li>
         {% endif %}
 
     </ul>
 
-    <p class="description">{{place.description|linebreaksbr}}</p>
+    {% if place.description %}
+    <p class="description">{{place.description|urlizetrunc:20|linebreaksbr}}</p>
+    {% endif %}
 
 </section>
 
 <section class="detail-section" id="placeEvents">
-    <h2 class="detail-section-title">Events</h2>
+    <h2 class="detail-section-title">Events - <em>{{place.name}}</em></h2>
     <ul class="feed">
     {% for item in related_feeds.events_feed %}
         <li class="item">
-            {% include 'events/short_feed_item.html' with C=item %}
+            {% include 'events/feed_item.html' with event=item %}
         </li>
     {% endfor %}
     </ul>
 </section>
 
 <section class="detail-section specials" id="placeSpecials">
-    <h2 class="detail-section-title">Specials</h2>
+    <h2 class="detail-section-title">Specials - <em>{{place.name}}</em></h2>
     <ul class="feed">
     {% for item in related_feeds.specials_feed %}
         <li class="item">
-            {% include 'specials/short_feed_item.html' with C=item %}
+            {% include 'specials/feed_item.html' with special=item %}
         </li>
     {% endfor %}
     </ul>
 </section>
-
-<!--    <section class="single-section" id="{{place_section_id}}">
-
-    <h1 class="title">{{place_section_title}}</h1>
-    
-    {% if place.description %}  
-        <p>{{ place.description|linebreaksbr|truncatewords:50|urlizetrunc:20 }}</p>     
-    {% endif %}
--->
-        <!-- <div class="single-featured-special">
-            The Raspberry Pi (or RasPi)[4] is a single-board computer developed in the UK by the Raspberry Pi Foundation. The foundation has released two versions, priced at US$25 and $35 (~GB£16 and ~£22). The $35 model was released first on 29 Febuary 2012[5]. The Raspberry Pi is intended to stimulate the ...
-            <a class="grabbit">Grabbit!</a>
-        </div> -->
-    
-
-<!--    </section> -->
-
-{% if featured_special %}
-    <aside class="single-featured-special">
-        {{featured_special.description}}
-        <a href="{% url offers-item-detail featured_special.id %}">Grab it!</a>
-    </aside>
-{% endif %}
-
-{% endwith %}

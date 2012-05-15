@@ -1,0 +1,32 @@
+<div class="item-thumb">
+	<a href="{{permalink}}" title="See Event Page">
+	{{#if thumb_standard}}
+    	<img class="thumbnail" alt="Thumbnail" src="{{thumb_standard}}" />
+	{{else}}
+		<img class="thumbnail" alt="Thumbnail" src="/static/img/defaults/default-place.png" />
+	{{/if}}
+	</a>
+</div>
+
+<section class="item-content">
+	<h4 class="item-title"><a href="{{permalink}}" title="See Event page">{{name}}</a></h4>
+	<ul class="item-details">
+		<li class="datetime">{{dtstart_str}} - {{dtend_str}}</li>
+		{{#if place}} 
+ 			<li class="host">at <a href="{{permalink}}">{{place.name}}</a></li>
+		{{/if}}
+		{{#unless place}}
+			<li class="host">at {{place_primitive}}</li>
+		{{/unless}}
+		{{#if description}}
+			<li class="description">{{description}}</li>
+		{{/if}}
+	</ul>
+	{{#if tags}}
+	<ul class="tag-list">
+  		{{#each tags}}
+  			<li>{{this.name}}</li>
+  		{{/each}}
+  	</ul>
+  	{{/if}}
+</section>

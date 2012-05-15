@@ -5,6 +5,7 @@ Context variables:
 	registration_form: RegistrationForm (from accounts.forms)
 	org_form: SimpleOrgForm (from orgadmin.forms)
 {% endcomment %}
+
 <form action="{% url orgadmin-signup %}" method="POST" >
 	{% csrf_token %}
 	
@@ -59,6 +60,13 @@ Context variables:
 			{{ org_form.name.errors }}
 		</div>
 	</div> <!-- .field-container -->
+
+	<div class="row-container">
+	    <div class="field remember-me">
+	        {{remember_me.remember_me}}
+	        {{remember_me.remember_me.label_tag}}
+	    </div>
+	</div>
 
 	<nav class="prev-next">
 		<a href="{% url orgadmin-login %}" title="Cancel" class="back">Cancel</a>

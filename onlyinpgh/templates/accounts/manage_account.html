@@ -4,26 +4,203 @@ Context variables:
     account_forms:
         profile_form: form object
         credentials_form: form object
-        preferences_form: form object
+        preferences_form: form object    
 {% endcomment %}
 
-<form method="post" action="">
-{% csrf_token %}
+<h2 class="detail-section-title">{{user.username}}'s Account</h2>
 
 {% with form=account_forms.profile_form %}
-<b>Form 1</b><br>
-{{form.as_table}}
-{% endwith %}
+<form method="post" action="{% url account-manage uname=user.username %}#profile-form" enctype="multipart/form-data" id="profile-form">
+{% csrf_token %}
+<fieldset>
+	<legend>Profile</legend>
+	<p class="tip">This information will appear publicly on your profile.</p>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.display_name.label_tag}}
+			</div>
+			<div class="field">
+				{{form.display_name}}
+				<p class="tip">Leave blank to use your username.</p>
+				{{form.display_name.errors}}
+			</div>
+		</li> <!-- display_name -->
 
-{% with form=account_forms.credentials_form %}
-<b>Form 2</b><br>
-{{form.as_table}}
+		<li class="field-container">
+			<div class="field-label">
+				{{form.gender.label_tag}}
+			</div>
+			<div class="field grouped-field-row">
+				<div>
+					{{form.gender}}
+				</div> <!-- gender -->
+				<div>
+					{{form.birth_date.label_tag}}
+				</div>
+				<div>
+					{{form.birth_date}}
+					{{form.birth_date.errors}}
+					<p class="tip">MM/DD/YYYY</p>
+				</div> <!-- birth_date -->
+			</div>
+		</li>  <!-- gender & birth_date -->
+		
+		<li class="field-container">
+			<div class="field-label">
+				{{form.neighborhood.label_tag}}
+			</div>
+			<div class="field">
+				{{form.neighborhood}}
+				{{forn.neighborhood.errors}}
+			</div>
+		</li> <!-- neighborhood -->
+		
+		<li class="field-container">
+			<div class="field-label">
+				{{form.avatar.label_tag}}
+			</div>
+			<div class="field">
+				{{form.avatar}}
+				{{form.avatar.errors}}
+			</div>
+		</li> <!-- avatar -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.twitter_username.label_tag}}
+			</div>
+			<div class="field">
+				<div class="social-input">
+		        	{{form.twitter_username}}
+		        	{{form.twitter_username.errors}}
+		            <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
+		        </div>
+			</div>	
+		</li> <!-- twitter_username -->
+	</ul>
+</fieldset>
+<input type="submit" value="Save Profile Changes" name="save_profile" class="right"/>
+{% if form in forms_saved %}
+	<p class="right success">Changes saved!</p>
+{% endif %}
+
+</form>
 {% endwith %}
 
 {% with form=account_forms.preferences_form %}
-<b>Form 3</b><br>
-{{form.as_table}}
+<form method="post" action="{% url account-manage uname=user.username %}#privacy-form" enctype="multipart/form-data" id="privacy-form">
+{% csrf_token %}
+<fieldset id="account-privacy">
+	<legend>Privacy</legend>
+	<p class="tip">By default, your public profile page will show the places you favorite and the coupons you have purchased. You can opt in to make your events public.</p>
+	<ul>
+		<li class="field-container">
+			<div class="third">
+				<label name="{{form.public_favorites.html_name}}" for="id_public_favorites">
+					<img src="{{STATIC_URL}}img/manage-place.png" />
+					<!-- <p>Favorite Places</p> -->
+					<span class="check-value">Public</span>
+				</label>
+				{{form.public_favorites}}
+				
+			</div> <!-- public_favorites -->
+
+			<div class="third">
+				<label name="{{form.public_attendance.html_name}}" for="id_public_attendance">
+					<img src="{{STATIC_URL}}img/manage-events.png" />
+					<!-- <p>Events</p> -->
+					<span class="check-value">Public</span>
+				</label>
+				{{form.public_attendance}}
+				
+			</div> <!-- public_attendance -->
+
+			<div class="third">
+				<label name="{{form.public_coupons.html_name}}" for="id_public_coupons">
+					<img src="{{STATIC_URL}}img/manage-special.png" />
+				<!-- 	<p>My Coupons</p> -->
+				<span class="check-value">Public</span>
+				</label>
+				{{form.public_coupons}}
+				
+			</div> <!-- public_coupons -->
+		</li>
+	</ul>
+</fieldset>
+<input type="submit" value="Save Privacy Changes" name="save_preferences" class="right"/>
+{% if form in forms_saved %}
+	<p class="right success">Changes saved!</p>
+{% endif %}
+</form>
 {% endwith %}
 
-<input type="submit">Submit</input>
+{% with form=account_forms.email_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#email-form" enctype="multipart/form-data" id="email-form">
+{% csrf_token %}
+<fieldset>
+	<legend>Email</legend>
+	<p class="tip">Change your email address here.</p>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.email.label_tag}}
+			</div>
+			<div class="field">
+				{{form.email}}
+				{{form.email.errors}}
+			</div>
+		</li> <!-- email -->
+	</ul>
+</fieldset>
+<input type="submit" value="Change Email" name="save_email" class="right"/>
+{% if form in forms_saved %}
+	<p class="right success">Changes saved!</p>
+{% endif %}
 </form>
+{% endwith %}
+
+{% with form=account_forms.password_form %}
+<form method="post" action="{% url account-manage uname=user.username %}#password-form" enctype="multipart/form-data" id="password-form">
+{% csrf_token %}
+<fieldset>
+	<legend>Password</legend>
+	<p class="tip">Change your password here.</p>
+	<ul>
+		<li class="field-container">
+			<div class="field-label">
+				{{form.old_password.label_tag}}
+			</div>
+			<div class="field">
+				{{form.old_password}}
+				{{form.old_password.errors}}
+			</div>
+		</li> <!-- old_password -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.new_password1.label_tag}}
+			</div>
+			<div class="field">
+				{{form.new_password1}}
+				{{form.new_password1.errors}}
+			</div>
+		</li> <!-- new_password1 -->
+
+		<li class="field-container">
+			<div class="field-label">
+				{{form.new_password2.label_tag}}
+			</div>
+			<div class="field">
+				{{form.new_password2}}
+				{{form.new_password2.errors}}
+			</div>
+		</li> <!-- new_password2 -->
+	</ul>
+</fieldset>
+<input type="submit" value="Change Password" name="save_password" class="right"/>
+{% if form in forms_saved %}
+	<p class="right success">Changes saved!</p>
+{% endif %}
+</form>
+{% endwith %}

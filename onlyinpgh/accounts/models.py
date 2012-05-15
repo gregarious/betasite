@@ -4,6 +4,17 @@ from django.db.models.signals import post_save
 from onlyinpgh.common.core.viewmodels import ViewModel
 
 
+class BetaMember(models.Model):
+    email = models.EmailField()
+
+    def save(self, *args, **kwargs):
+        self.email = self.email.lower()
+        super(BetaMember, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return self.email
+
+
 class UserProfile(models.Model, ViewModel):
     '''
     Extended information for any user of the site.
@@ -11,12 +22,13 @@ class UserProfile(models.Model, ViewModel):
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
+        ('O', 'Other'),
     )
 
     user = models.OneToOneField(User)
     display_name = models.CharField(max_length=30, blank=True)
 
-    avatar_url = models.URLField(max_length=400, blank=True)
+    avatar = models.ImageField(upload_to='img/a', null=True, blank=True)
     points = models.IntegerField(default=0)
 
     # all of the following should be optional on a registration form
@@ -27,9 +39,14 @@ class UserProfile(models.Model, ViewModel):
     twitter_username_public = models.BooleanField(default=True)
 
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
-    birth_year = models.IntegerField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
 
     neighborhood = models.CharField(max_length=50, blank=True)
+
+    # temporary location for these settings. when they're more complcated, they'll have their own model setup
+    public_favorites = models.BooleanField(default=True)
+    public_attendance = models.BooleanField(default=False)
+    public_coupons = models.BooleanField(default=True)
 
     def __unicode__(self):
         return unicode(self.user)
@@ -47,6 +64,9 @@ class UserProfile(models.Model, ViewModel):
         for k in user_fields:
             data[k] = getattr(self.user, k)
         return data
+
+    def display_or_username(self):
+        return self.display_name if self.display_name else self.user.username
 
 
 # signal handler to automatically create a new UserProfile

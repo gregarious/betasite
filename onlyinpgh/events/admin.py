@@ -1,5 +1,5 @@
 from django.contrib import admin
-from onlyinpgh.events.models import Event, Role, EventMeta
+from onlyinpgh.events.models import Event, Role, EventMeta, ICalendarFeed
 
 
 class RoleInline(admin.TabularInline):
@@ -20,3 +20,4 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ['dtstart']
 
 admin.site.register(Event,EventAdmin)
+admin.site.register(ICalendarFeed)

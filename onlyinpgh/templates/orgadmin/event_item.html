@@ -11,7 +11,7 @@ Context variables:
 		{% thumbnail event.image "130x130" crop="center" as im %}
 		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{im.url}}" />
 		{% empty %}
-		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{STATIC_URL}}img/default-event.png" />
+		<img class="thumbnail" alt="{{event.name|truncatewords:10}}" src="{{STATIC_URL}}img/defaults/default-event.png" />
 		{% endthumbnail %}
 	</a>
 </div>
@@ -34,7 +34,7 @@ Context variables:
 </section>
 
 <div class="item-actions">
-	<a href="#" title="View listing (coming soon)"><img src="{{STATIC_URL}}img/icons/browser.png" alt="view"/></a>
+	<a href="{% url event-detail eid=event.id %}" title="View listing" target="blank"><img src="{{STATIC_URL}}img/icons/browser.png" alt="view"/></a>
 	<a href="{% url orgadmin-editevent event.id %}" title="Edit event"><img class="item-action" src="{{STATIC_URL}}img/icons/pencil.png" alt="edit"/></a>
 	<a href="{% url orgadmin-delevent event.id %}" class="delete-item" title="Delete event"><img class="item-action" src="{{STATIC_URL}}img/icons/icon_x.gif" alt="delete" /></a>
 </div>

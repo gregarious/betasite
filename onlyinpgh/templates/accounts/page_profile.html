@@ -3,33 +3,38 @@
 Main outer template for user profile page
 
 Context variables:
-    C:
-        profile:    PublicProfile context instance
-        current_panel:  string
-        account_forms:  collection of forms (available when current_panel is 'account')
-        feed_items: collection of feed items (available when current_panel is a feed)
+    public_user:    User object in question
+    current_panel:  string
+    account_forms:  collection of forms (available when current_panel is 'account')
+    feed_items: collection of feed items (available when current_panel is a feed)
 {% endcomment %}
 
 {% block main-content %}
-{% include "accounts/public_profile.html" with profile=C.profile %}
-<nav id="profile-nav" class="related-nav">
-    {% include "accounts/nav_tabs.html" with current_panel=C.current_panel %}
-</nav>
-<div class="related-section profile">
-    {% if C.current_panel == 'account' %}
-    {% include "accounts/manage_account.html" with account_forms=C.account_forms %}
-    {% endif %}
-    
-    {% if C.current_panel == 'places' %}
-    {% include "accounts/places.html" with items=C.feed_items %}
-    {% endif %}
+<article class="page-single detailed-single">
+    {% include "accounts/public_profile.html" %}
+    <nav id="profile-nav" class="detail-nav">
+        {% include "accounts/nav_tabs.html" %}
+    </nav>
+    <section class="detail-section" id="profile">
+        {% if current_panel == 'account' %}
+        {% include "accounts/manage_account.html" %}
+        {% endif %}
+        
+        {% if current_panel == 'places' %}
+        {% include "accounts/places.html" with items=feed_items %}
+        {% endif %}
 
-    {% if C.current_panel == 'events' %}
-    {% include "accounts/events.html" with items=C.feed_items %}
-    {% endif %}
+        {% if current_panel == 'events' %}
+        {% include "accounts/events.html" with items=feed_items %}
+        {% endif %}
 
-    {% if C.current_panel == 'specials' %}
-    {% include "accounts/specials.html" with items=C.feed_items %}
-    {% endif %}
-</div>
+        {% if current_panel == 'specials' %}
+        {% include "accounts/specials.html" with items=feed_items %}
+        {% endif %}
+    </section>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_profile.html" %}
 {% endblock %}

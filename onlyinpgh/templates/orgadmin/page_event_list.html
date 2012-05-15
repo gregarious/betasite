@@ -1,8 +1,7 @@
 {% extends "orgadmin/manage_page.html" %}
 {% comment %}
 Context variables
-    C:
-        items: EventContext instances
+    items: EventData instances
 {% endcomment %}
 
 {% block main-content %}
@@ -10,11 +9,11 @@ Context variables
 
 <a href="{% url orgadmin-addevent %}" title="Add event" class="add-item">+ Add new event</a>
 
-{% if C.items %}
+{% if items %}
 	<ul class="feed">
-		{% for item in C.items %}
+		{% for item in items %}
 			<li class="item">
-	    		{% include "orgadmin/event_item.html" with event=item.event %}
+	    		{% include "orgadmin/event_item.html" with event=item %}
 	    	</li>
 	    {% endfor %}
     </ul>

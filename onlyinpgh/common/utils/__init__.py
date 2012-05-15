@@ -5,6 +5,7 @@ from PIL import Image
 import urllib2 as urllib
 from StringIO import StringIO
 
+from django.utils.timezone import get_current_timezone
 from django.core.files import File
 from sorl.thumbnail import get_thumbnail
 
@@ -78,19 +79,54 @@ def imagefile_from_url(url):
     im.save(tmp)
     return File(tmp)
 
+THUMB_TYPES = ('small', 'standard', )
 
-def get_std_thumbnail(image, type):
+
+def get_cached_thumbnail(image, type, ioerror_silent=True):
     '''
     Returns a sorl ImageFile for a preset thumbnail type
     types:
-        - 'autocomplete' (50x50, center crop)
+        - 'small' (50x50, center crop)
         - 'standard' (130x130, center crop)
 
     Will throw IOError if image file doesn't exist.
     '''
-    if type.lower() == 'autocomplete':
-        return get_thumbnail(image, '50x50', crop='center')
-    elif type.lower() == 'standard':
-        return get_thumbnail(image, '130x130', crop='center')
-    else:
-        return None
+    try:
+        if type.lower() == 'small':
+            return get_thumbnail(image, '50x50', crop='center')
+        elif type.lower() == 'standard':
+            return get_thumbnail(image, '130x130', crop='center')
+        else:
+            return None
+    except IOError:
+        if ioerror_silent:
+            return None
+        else:
+            raise
+
+
+def precache_thumbnails(image):
+    '''
+    Pre-caches thumbnail versions of the given ImageFile, one thumbnail
+    per values in THUMB_TYPES.
+    '''
+    for type in THUMB_TYPES:
+        get_cached_thumbnail(image, type)
+
+
+def localtime(value, timezone=None):
+    """
+    Converts an aware datetime.datetime to local time.
+
+    Local time is defined by the current time zone, unless another time zone
+    is specified.
+
+    This was copied directly from the dev version of Django.
+    """
+    if timezone is None:
+        timezone = get_current_timezone()
+    value = value.astimezone(timezone)
+    if hasattr(timezone, 'normalize'):
+        # available for pytz time zones
+        value = timezone.normalize(value)
+    return value

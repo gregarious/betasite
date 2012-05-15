@@ -6,7 +6,7 @@ from onlyinpgh.common.core.viewmodels import ViewModel
 from onlyinpgh.places.models import Place
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.organizations.models import Organization
-from onlyinpgh.common.utils import get_std_thumbnail
+from onlyinpgh.common.utils import precache_thumbnails
 
 class ListedEventManager(models.Manager):
     def get_query_set(self):
@@ -52,8 +52,7 @@ class Event(models.Model, ViewModel):
         if self.image:
             # pre-cache common sized thumbnails
             try:
-                get_std_thumbnail(self.image, 'autocomplete')
-                get_std_thumbnail(self.image, 'standard')
+                precache_thumbnails(self.image)
             # never let these lines interrupt anything
             except Exception as e:
                 print 'error caching thumbnails', e
@@ -68,6 +67,30 @@ class Event(models.Model, ViewModel):
         data['place'] = self.place.to_data(*args, **kwargs) if self.place else None
         data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
+
+    def add_attendee(self, user):
+        '''
+        Adds Attendee object to this Event's attendee_set.
+
+        Returns True if new Attendee created, False if already existed
+        '''
+        _, created = self.attendee_set.get_or_create(user=user)
+        return created
+
+    def remove_attendee(self, user):
+        '''
+        Deletes Attendee object from this Event's attendee_set.
+
+        Returns True if Attendee existed, False if it already didn't.
+        '''
+        attendees = self.attendee_set.filter(user=user)
+        attendee_exists = attendees.count() != 0
+        attendees.delete()
+        return attendee_exists
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('event-detail', (), {'eid': self.id})
 
 
 class EventMeta(models.Model):
@@ -95,29 +118,19 @@ class Attendee(models.Model):
     event = models.ForeignKey(Event)
     dtcreated = models.DateTimeField('Time user added event', auto_now_add=True)
 
-    dtmodified = models.DateTimeField('Time user changed attendance status', auto_now=True)
-    # This flag must be True to consider user as attending
-    # defaults to True, but can be False is user revokes attendance
-    is_attending = models.BooleanField('Is user attending?"', default=True)
-
-    def revoke_attendance(self):
-        '''
-        After using this function, Attendee should never be used again:
-        create new one if user wants to re-attend.
-        '''
-        self.is_attending = False
-        self.save()
-
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.event)
 
 
 class ICalendarFeed(models.Model):
+    class Meta:
+        verbose_name = 'iCalendar Feed'
     url = models.URLField(max_length=300)
     owner = models.ForeignKey(Organization, null=True, blank=True)
     name = models.CharField(max_length=100, blank=True)
     candidate_places = models.ManyToManyField(Place,
-        verbose_name=u'A collection of Places that are likely venues for events in this feed')
+        verbose_name=u'A collection of Places that are likely venues for events in this feed',
+        null=True, blank=True)
 
     def __unicode__(self):
         return self.name

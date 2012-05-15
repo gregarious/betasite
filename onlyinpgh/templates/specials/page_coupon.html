@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% comment %}
+Template for simple coupon being used for makeshift special redemption.
+
+This page is meant for printing/phone display, so it doesn't inherit anything
+from page.html.
+
+Template variables:
+    - coupon: Coupon model instance (has special, user sub objects see specials/models.py)
+{% endcomment %}
+
+{% block head-stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/coupon.css?v=1">
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+	<header class="page-header">
+		<img src="{{STATIC_URL}}img/manage-special.png">
+		<hgroup>
+			<span class="tip">Scenable Coupon for:</span>
+			<h1>{{coupon.special.title}}</h1>
+			<p>Purchased {{coupon.dtcreated}}</p>
+		</hgroup>
+	</header>
+	<article class="page-main">
+		<h2>at {{coupon.special.place.name}}</h2>
+		<p>{{coupon.special.place.location.address}}</p>
+		<p>{{coupon.special.description}}</p>
+	</article>
+	<footer class="page-footer">
+		<p class="coupon-id">ID: {{coupon.uuid}}</p>
+		<p><a href="{% url now %}" title="Back to the Oakland Scene">&larr; Back to the Oakland Scene</a></p>
+	</footer>
+</div>
+{# insert "back to scenable" link? "mark as used" button? #}
+{% endblock %}
+
+{% block foot %}
+{% if print == 'yes' %}
+<script type="text/javascript">
+window.print();
+</script>
+{% endif %}
+{% endblock %}

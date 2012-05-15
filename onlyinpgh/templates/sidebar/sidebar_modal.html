@@ -1,0 +1,14 @@
+<p>Something not working? Ideas, questions, suggestions?</p>
+<button id="openFeedbackModal">Let us know!</button>
+
+<!-- General feedback modal -->
+<div class="feedback-modal" title="Feedback">
+	<p class="tip">Scenable is in it's infancy. We take any feedback to heart and will do our best to keep you beta testers happy :).
+
+	<!-- Form elements -->
+	<form action='/feedback/ajax/generic' method='POST'>
+        {% csrf_token %}
+        {{sidebar_feedback_form.feedback}}
+        <input type="submit" class="right" value="Submit" />
+    </form>
+</div>

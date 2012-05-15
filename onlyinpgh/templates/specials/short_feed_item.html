@@ -1,24 +1,30 @@
 {% comment %}
-Template to render a particular event as a related feed item on a single place page.
+Template to render a particular event as a related feed item on a single special page.
 
-Compatible contexts: SpecialContext
+Context variables:
+    special: SpecialData instance
 {% endcomment %}
-{% with special=C.special %}
+
+{% load thumbnail %}
 <div class="item-thumb">
-	<div class="points">+{{special.points}}</div>
-	<button class="btn btn-primary">Grab It!</button>
+    <a href="{{special.get_absolute_url}}">
+        {% thumbnail special.place.image "200x200" crop="center" as im %}
+        <img class="thumbnail" alt="{{special.place.name}}" src="{{im.url}}" />
+        <div class="item-type type-special">
+            <img src="{{STATIC_URL}}img/main-icons-small/tag-special.png" alt="Special icon" />
+        </div>
+        {% empty %}
+        <img class="thumbnail" alt="{{special.place.name}}" src="{{STATIC_URL}}img/defaults/default-special.png" />
+        {% endthumbnail %}
+    </a>
 </div>
-
 <section class="item-content">
-	<h4 class="item-title"><a href="{% url special-detail special.id %}">{{special.title|truncatewords:7}}</a></h4>
-	<ul class="item-details">
-		{% if special.dtexpires %}
-			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
-		{% endif %}
-		{% if special.description %}
-			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
-		{% endif %}	
-
-	</ul>
+	<h4 class="item-title"><a href="{{special.get_absolute_url}}" title="See this special">{{special.title|truncatechars:50}}</a></h4>
+    <ul class="item-details">
+        <li>at <a class="host" href="{{special.place.get_absolute_url}}">{{special.place.name}}</a></li>
+        {% if special.dtexpires %}
+            <li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
+        {% endif %}
+    </ul>
+    {% include "tags/tag_list.html" with tags=place.tags %}
 </section>
-{% endwith %}

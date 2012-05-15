@@ -3,32 +3,55 @@
 {% comment %}
 Template for any Scenable webpage. 
 
-Context is a PageContext variable, meaning the following root-level
-variables are available. All are Context variables set in the
-PageContext constructor.
-- header_context
-- main_context
-- sidebar_context
-- footer_context
+Context is a PageContext variable, meaning the context variables
+are always available (in addition to normal RequestContext vbls):
+
+    page_title: string
+    current_section: string
 {% endcomment %}
+{% load compressed %}
+
+{% block head-title %}
+    <title>{{page_title}}</title>
+{% endblock %}
+
+{% block head-stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/smoothness/jquery-ui-1.8.18.custom.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css?v=1">
+{% endblock %}
 
 {% block content %}
 <div class="wrap">
     <nav id="scene-nav">
-        {% include "scene_nav.html" with C=header_context %}
-        {% include "top_bar.html" with C=header_context %}
+        {% include "scene_nav.html" %}
+        {% include "top_bar.html" %}
     </nav>
-</div>
-<div class="wrap">
-    {% with C=main_context %}
+
     <div id="site-content" role="main">
     {% block main-content %}{% endblock %}
-    </div>        
-    {% endwith %}
+        <footer id="site-footer">
+            {% include "footer.html" %}
+        </footer> <!-- #footer -->        
+    </div> <!-- #site-content -->
+    
     <aside id="site-sidebar" role="complementary">
-		{% include "sidebar_base.html" with C=sidebar_context %}
+        {% block sidebar %}{% endblock %}
 	</aside>
+
 </div>
 
-<!--{% include "footer.html" with C=footer_context %}-->
+{% endblock %}
+
+{% block foot %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+{% compressed_js 'all_libs' %}
+{% compressed_js 'jquery_ui' %}
+{% compressed_js 'templates' %}
+{# TODO: get pipeline to handle this when including a map script #}
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyC7INTXYluYDoz0yZRX89jLORKJEGeQeCY&sensor=false"></script>
+{% compressed_js 'site_scripts' %}
+
+{# block for inline scripts: used for bootstraping models, simple-DOM related one-liners, etc. #}
+{% block foot-inlines %}{% endblock %}
 {% endblock %}

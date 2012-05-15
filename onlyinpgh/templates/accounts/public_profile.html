@@ -2,18 +2,37 @@
 Template for user's public profile.
 
 Context variables:
-    profile: PublicProfile context instance
+    public_user: User instance in question
 {% endcomment %}
-
-<img src="{{ profile.avatar_url }}" />
-<h2>{{ profile.display_name }}</h2>
-<ul>
-    <li>{{ profile.username }}</li>
-    <li>{{ profile.points }}</li>
-    {% if profile.fb_id %}
-    <li><a href="http://www.facebook.com/{{ profile.fb_id }}">Facebook</a></li>
-    {% endif %}
-    {% if profile.twitter_username %}
-    <li><a href="http://twitter.com/{{ profile.twitter_username }}">Twitter</a></li>
-    {% endif %}
-</ul>
+{% load thumbnail %}
+{% with profile=public_user.get_profile %}
+<header class="single-header">
+    <div class="single-thumb-container">
+        {% thumbnail profile.avatar "130x130" crop="center" as im %}
+        <img class="thumbnail" alt="{{profile.display_name}}'s avatar" src="{{im.url}}" />
+        {% empty %}
+        <img class="thumbnail" alt="{{place.name|truncatewords:10}}" src="{{STATIC_URL}}img/defaults/default-avatar.png" />
+        {% endthumbnail %}
+    </div>
+    <section class="item-content">
+        <h1 class="single-title">{{ profile.display_or_username }}</h1>
+        <ul class="item-details">
+            <li>{{ profile.username }}</li>
+            <li>{#{{ profile.points }}#}Scene Cred - <em>Coming soon!</em></li>
+            {% if profile.neighborhood %}
+            <li>{{ profile.neighborhood }}</li>
+            {% endif %}
+        </ul>
+        <div class="social-container">
+            {% comment %}
+            {% if profile.fb_id %}
+            <a href="http://www.facebook.com/{{ profile.fb_id }}"><img src="/static/img/icons/facebook.png" class="social-icon" alt="Facebook icon" /></a>
+            {% endif %}
+            {% endcomment %}
+            {% if profile.twitter_username %}
+            <a href="http://twitter.com/{{ profile.twitter_username }}" title="{{profile.display_name}}'s Twitter Account" target="blank"><img src="/static/img/icons/twitter.png" class="social-icon" alt="Twitter icon" /></a>
+            {% endif %}        
+        </div>
+    </section>
+</header>
+{% endwith %}

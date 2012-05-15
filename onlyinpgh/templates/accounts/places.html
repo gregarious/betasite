@@ -2,13 +2,23 @@
 Inner template to render a list of places the user has favorited
 
 Context variables:
-    [items]:  list of PlaceContext instances
+    [feed_items]:  list of PlaceData instances
 {% endcomment %}
 
-<h3 class="section-title">Favorite Places</h3>
-
-<ul class="feed my-feed places">
-    {% for item in C.items %}
-        <li class="item">{% include "places/feed_item.html" with C=item %}</li>
-    {% endfor %}
-</ul>
+<h2 class="detail-section-title">Favorite Places</h2>
+{% if feed_items %}
+	<ul class="feed my-feed places">
+    	{% for item in feed_items %}
+        	<li class="item">{% include "places/feed_item.html" with place=item %}</li>
+    	{% endfor %}
+	</ul>
+{% else %}
+	<section class="no-items">
+    	<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
+        {% if public_user == user %}
+    	<p>Looks like you haven't favorited any places yet. Take a look through the Places page, click one you like and choose 'Favorite' under the places thumbnail picture. As Scenable develops, Scene Cred will be awarded based on your activity at favorited places.</p> 
+        {% else %}
+        <p>No favorited places here!</p>
+        {% endif %}
+    </section>
+{% endif %}

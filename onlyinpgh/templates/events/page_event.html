@@ -4,12 +4,36 @@
 Page-based template for the Places feed
 
 Context variables:
-    C:
-        event_context: EventContext instance
+    event: EventData instance
 {% endcomment %}
 
 {% block main-content %}
-<div class="single-container" id="event-single">
-	{% include "events/single.html" with C=C.event_context %}
-</div>
+<article class="page-single" id="event-single">
+	{% include "events/single.html" %}
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_events_single.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    {# attendButton element should be inside places/header.html #}
+    scenable.useractions.attachAttendanceHandler(
+        document.getElementById('attendingButton'), {{ event.id }});
+    {% if event.place.location.latitude and event.place.location.longitude %}
+    var pos = new google.maps.LatLng({{event.place.location.latitude|default:"NaN"}},{{event.place.location.longitude|default:"NaN"}});
+    // id comes from an element drawn in places/details.html
+    var map = scenable.map.mapFactory('single',
+            document.getElementById('mainEventMap'),
+            {center: pos});
+    new google.maps.Marker({
+        position: pos,
+        map: map
+    });
+    {% endif %}
+});
+</script>
 {% endblock %}

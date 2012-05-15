@@ -31,6 +31,7 @@ DATABASES['default']['TEST_CHARSET'] = 'utf8'
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 TIME_ZONE = 'US/Eastern'
+USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -120,14 +121,20 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'sorl.thumbnail',
+    'pipeline',
+    'tastypie',
+    'haystack',
     'django_extensions',
+    'onlyinpgh.common',
     'onlyinpgh.accounts',
     'onlyinpgh.tags',
     'onlyinpgh.places',
     'onlyinpgh.organizations',
     'onlyinpgh.events',
     'onlyinpgh.specials',
-    'onlyinpgh.common',
+    'onlyinpgh.news',
+    'onlyinpgh.chatter',
+    'onlyinpgh.feedback',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -194,4 +201,20 @@ EMAIL_HOST_USER = settings_local.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = settings_local.EMAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = settings_local.DEFAULT_FROM_EMAIL
 SERVER_EMAIL = settings_local.SERVER_EMAIL
+EMAIL_PORT = settings_local.EMAIL_PORT
+EMAIL_USE_TLS = settings_local.EMAIL_USE_TLS
 SEND_BROKEN_LINK_EMAILS = True
+
+# pipeline settings
+from settings_pipeline import *
+# this is defined outside so we can use to_abspath
+PIPELINE_YUI_BINARY = to_abspath('../bin/yuicompressor')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+# initial Haystack setup for Whoosh
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': to_abspath('../var/whoosh_index'),
+    },
+}
