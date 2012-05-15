@@ -2,9 +2,9 @@
 import os
 
 # import settings that differ based on deployment
-import settings_local
+from scenable.settings import local as settings_local
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SITE_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, '..'))
 
 
@@ -214,7 +214,7 @@ EMAIL_USE_TLS = settings_local.EMAIL_USE_TLS
 SEND_BROKEN_LINK_EMAILS = True
 
 # pipeline settings
-from settings_pipeline import *
+from scenable.settings.pipeline import *
 # this is defined outside so we can use site_file
 PIPELINE_YUI_BINARY = site_file('bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
