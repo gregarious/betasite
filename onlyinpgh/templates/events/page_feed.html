@@ -75,9 +75,16 @@ $(function(){
         className: 'item',
         template: window.TPL.eventItem,
         iwTemplate: window.TPL.eventInfoWindow,
-        markerOptions: {
-            icon: '/static/img/markers/event-marker.png',
-            shadow: '/static/img/markers/marker-shadow.png'
+        markerOptions: function(evModel) { 
+            var icon = '/static/img/markers/event-marker.png';
+            if(evModel.attributes && !_.isUndefined(evModel.attributes.icon_day)) {
+                icon = '/static/img/markers/events/day_'+evModel.attributes.icon_day+'.png';
+            }
+            console.log('using icon: ' + icon);
+            return {
+                icon: icon,
+                shadow: '/static/img/markers/marker-shadow.png'
+            };
         }
     });
     var EventFeed = scenable.mapFeed.FeedView.extend({SubViewClass:EventView});

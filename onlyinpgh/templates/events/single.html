@@ -12,7 +12,7 @@ Context variables:
             {% thumbnail event.image "130x130" crop="center" as im %}
             <img alt="{{event.name}}" class="thumbnail" src="{{im.url}}" />
             {% empty %}
-            <img src="/static/img/default-event.png" class="thumbnail" alt="{{event.name}}" />
+            <img src="/static/img/defaults/default-event.png" class="thumbnail" alt="{{event.name}}" />
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
         <div class="ajax-action-container" id="attendingButton">

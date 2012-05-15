@@ -11,10 +11,10 @@ Context variables:
         {% thumbnail special.place.image "200x200" crop="center" as im %}
         <img class="thumbnail" alt="{{special.place.name}}" src="{{im.url}}" />
         <div class="item-type type-special">
-            <img src="{{STATIC_URL}}img/main-menu/tag-special.png" alt="Special icon" />
+            <img src="{{STATIC_URL}}img/main-icons-small/tag-special.png" alt="Special icon" />
         </div>
         {% empty %}
-        <img class="thumbnail" alt="{{special.place.name}}" src="{{STATIC_URL}}img/default-special.png" />
+        <img class="thumbnail" alt="{{special.place.name}}" src="{{STATIC_URL}}img/defaults/default-special.png" />
         {% endthumbnail %}
     </a>
 </div>

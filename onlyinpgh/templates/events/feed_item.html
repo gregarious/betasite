@@ -12,7 +12,7 @@ TODO: only show month/day for events ending on a different day
     {% thumbnail event.image "130x130" crop="center" as im %}
     <img class="thumbnail" alt="{{event.name}}" src="{{im.url}}"/>
 	{% empty %}
-	<img class="thumbnail" alt="{{event.name}}" src="/static/img/default-event.png" />
+	<img class="thumbnail" alt="{{event.name}}" src="/static/img/defaults/default-event.png" />
 	{% endthumbnail %}
 </div>
 
