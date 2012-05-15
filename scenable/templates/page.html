@@ -8,6 +8,7 @@ are always available (in addition to normal RequestContext vbls):
 
     page_title: string
     current_section: string
+    site_url: string
 {% endcomment %}
 {% load compressed %}
 
@@ -45,6 +46,12 @@ are always available (in addition to normal RequestContext vbls):
 {% block foot %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script type="text/javascript">
+scenable = window.scenable = window.scenable || {};
+scenable.constants = {
+    SITE_URL: '/{{site_url|escapejs}}/'
+};
+</script>
 {% compressed_js 'all_libs' %}
 {% compressed_js 'jquery_ui' %}
 {% compressed_js 'templates' %}

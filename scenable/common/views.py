@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.utils import timezone
+from django.contrib.sites.models import get_current_site
 
 from haystack.views import SearchView
 from haystack.forms import SearchForm
@@ -34,6 +35,7 @@ def to_login(request):
     return redirect_to_login(path, reverse('login'), REDIRECT_FIELD_NAME)
 
 
+# TODO: consider moving page context stuff into a template context processor
 class PageContext(RequestContext):
     '''
     Used for main context variable for every main site page.
@@ -49,6 +51,7 @@ class PageContext(RequestContext):
         variables = dict(
             page_title=page_title,
             current_section=current_section,
+            site_url=get_current_site(request).domain,
             site_search_form=SearchForm(),
             sidebar_feedback_form=GenericFeedbackForm(user=request.user),
         )
