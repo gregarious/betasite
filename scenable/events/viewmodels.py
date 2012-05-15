@@ -1,17 +1,11 @@
 from django.contrib.auth.models import User
 
-from django.utils.timezone import now
-from scenable.common.utils import get_cached_thumbnail
-
 import datetime
-from django.template.defaultfilters import truncatewords
-<<<<<<< HEAD
-from scenable.common.utils import localtime
-=======
-
-from onlyinpgh.common.utils import localtime
 from django.utils import timezone
->>>>>>> master
+from scenable.common.utils import localtime
+
+from scenable.common.utils import get_cached_thumbnail
+from django.template.defaultfilters import truncatewords
 
 
 class EventData(object):
@@ -36,9 +30,9 @@ class EventData(object):
     def _process_dates(self):
         # TODO: really should test some of this logic
         # if it's happening in the same year as now, or within the next 45 days, use the start year
-        if self.dtstart.year == now().year:
+        if self.dtstart.year == timezone.now().year:
             use_year = False
-        elif (self.dtstart - now()).days < 45:
+        elif (self.dtstart - timezone.now()).days < 45:
             use_year = False
         else:
             use_year = True
