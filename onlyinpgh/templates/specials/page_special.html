@@ -1,0 +1,56 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Specials feed
+
+Context variables:
+    special: SpecialData instance
+{% endcomment %}
+
+{% block main-content %}
+<article class="page-single" id="special-single">
+    {% include "specials/single.html" %}
+    <!-- Coupon redemption modale -->
+    <div class="grabbit-modal" title="{{special.title}}" id="grabbitModal">
+        <h5>Thanks!</h5>
+        <p>Show your coupon at {{special.place.name}} to redeem the offer. Bring a printed copy or show it on your phone.</p>
+        <div class="row-container">
+            <button class="left" id="emailCoupon">Email it</button><button class="right" id="printCoupon">Print it</button>
+        </div>
+        <div id="emailStatus"></div>
+    </div>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_specials_single.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+
+{% if special.place.location.latitude and special.place.location.longitude %}
+<script type="text/javascript">
+$(function(){
+    {% if not special.coupon %}
+        scenable.useractions.attachCouponBuyHandler(
+            document.getElementById('grabbitButton'), {{ special.id }}, document.getElementById('grabbitModal')
+        );
+    {% elif not special.coupon.was_used %}
+        $('#grabbitButton').click(function(){
+            scenable.useractions.openCouponPopup(document.getElementById('grabbitModal'), "{{special.coupon.uuid|escapejs}}");
+        });
+    {% endif %}
+    var pos = new google.maps.LatLng({{special.place.location.latitude|default:"NaN"}},{{special.place.location.longitude|default:"NaN"}});
+    // id comes from an element drawn in places/details.html
+    var map = scenable.map.mapFactory('single',
+            document.getElementById('mainSpecialMap'),
+            {center: pos});
+    new google.maps.Marker({
+        position: pos,
+        map: map
+    });
+
+});
+</script>
+{% endif %}
+{% endblock %}

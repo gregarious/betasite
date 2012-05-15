@@ -1,0 +1,25 @@
+{% extends "orgadmin/manage_page.html" %}
+
+{% block main-content %}
+<h2>Link your organization</h2>
+
+<form action="{% url orgadmin-linkorg %}" method="POST">
+    {% csrf_token %}
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.name.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.name }}
+            <p class="tip">The organization you are representing</p>
+            {{ form.name.errors }}
+        </div>
+    </div> <!-- .field-container -->
+
+    <nav class="prev-next">
+        <a href="{% url orgadmin-home %}" title="Cancel" class="back">Cancel</a>
+        <input type="submit" value="Link Organization" class="next"  />
+    </nav>
+
+</form>
+{% endblock %}

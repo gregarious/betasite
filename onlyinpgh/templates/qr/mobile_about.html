@@ -1,0 +1,97 @@
+{% comment %}
+Header template, simple debug version now. To be filled with
+HTML5 Boilerplate before release.
+{% endcomment %}
+
+<!doctype html>
+<head>
+	<title>Scenable</title>
+
+	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Scripts -->
+	<script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{STATIC_URL}}css/splash_style.css?v=1">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Droid-Serif-fontfacekit/stylesheet.css">
+
+</head>
+<body>
+
+	<div class="wrap" id="splash">
+
+		<header id="site-header">
+			<!-- <h1 id="site-title">scenable</h1> -->
+			<img id="sign-logo" src="/static/img/logos/sign-753.png" alt="Scenable Logo" />	
+			<h1>an <span class="highlight">app</span> for local communities</h1>
+		</header>
+		<hr />
+		<section id="left">
+
+			<h2>Wish it were easier to find out what's going on in local communties?</h2>
+
+			<p class="about">Scenable is a mobile and online home for local communities (which we call Scenes), and over the next few months, Scenable will build a <a href="http://scenable.com/blog/scenables-vision-the-community-network/">Community Network</a> of local Scenes here in Pittsburgh.</p>
+
+		</section>
+		<hr />
+		<section id="right">
+			<h2>Live, work or play in Oakland? <a href="http://onlyinpgh.com/beta">Request an invite</a> to the Oakland Scene!</h2>
+
+			<p class="about">The first Scenable community is Oakland, which is in private beta right now but will be public soon.</p>
+			<img class="screenshot" src="{{STATIC_URL}}img/logos/oakland-coming-soon-dark.png" alt="Oakland Scene logo" />
+					<div class="caption">
+				<p>Coming soon to iPhone and Android</p>
+				<div class="icon-container">
+					<img class="icon" src="{{STATIC_URL}}img/icons/android.png" alt="Android icon" />
+					<img class="icon" src="{{STATIC_URL}}img/icons/iphone.png" alt="iPhone icon" />
+				</div>
+			</div>
+		</section>
+		<hr />
+		<section class="suggest-scene">
+<!--			<h2 class="section-title">Suggest a scene...</h2>
+			 <p class="about">What other Scenes do you want on Scenable? Suggest a Scene below!</p>
+			<form>
+				
+				<div class="field-container">
+					<div class="field-label">
+						<label>Email</label>
+					</div>
+					<div class="field">
+						<input type="email" placeholder="coolest@best.com"/>
+					</div>
+				</div>
+
+				<div class="field-container">
+					<div class="field-label">
+						<label>Scene</label>
+					</div>
+					<div class="field">
+						<input type="text" placeholder="like 'music' or 'southside'"/>
+					</div>
+				</div>
+
+				<div class="field-container">
+					<div class="field-label">
+						<label>Why?</label>
+					</div>
+					<div class="field">
+						<textarea placeholder="this scene should be on scenable because..."></textarea>
+					</div>
+				</div>
+
+			</form> -->
+
+			<p>Do you or your organization represent a local Scene? Find out how Scenable can help turn your Scene into a <a href="http://scenable.com/blog/digital-placemaking-how-the-online-world-can-benefit-the-offline-world/">Digital Destination</a>.</p>
+			<p class="">Finally, be sure to keep up with our <a href="http://scenable.com/blog">Development Blog</a> for the latest and the greatest.</p>
+		</article>	
+	</section>
+	</div>
+
+</body>
+</html>

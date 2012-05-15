@@ -1,4 +1,5 @@
 settings_local.py
+resources/js/scripts/core.js
 *.pyc
 *.pickle
 *~

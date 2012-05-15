@@ -4,12 +4,17 @@ from onlyinpgh.events.models import Event, Role
 
 from onlyinpgh.outsourcing.places import smart_text_resolve
 from onlyinpgh.common.utils.time import localize
-import icalendar, urllib, pytz, datetime, logging
+import icalendar
+import urllib
+import pytz
+import datetime
+import logging
 
 logger = logging.getLogger('onlyinpgh.outsourcing')
 
+
 class EventImportReport(object):
-    def __init__(self,vevent_record,notices=[]):
+    def __init__(self, vevent_record, notices=[]):
         self.vevent_record = vevent_record
         self.notices = notices
 
@@ -19,9 +24,10 @@ class EventImportReport(object):
             pass
 
     class UnknownTimezone(EventImportNotice):
-        def __init__(self,tzid):
+        def __init__(self, tzid):
             self.tzid = tzid
-            super(EventImportReport.UnknownTimezone,self).__init__()
+            super(EventImportReport.UnknownTimezone, self).__init__()
+
         def __unicode__(self):
             return u'EventImportNotice: UnknownTimezone: %s' % unicode(self.tzid)
 
@@ -31,57 +37,61 @@ class EventImportReport(object):
 
     class RecordExists(EventImportNotice):
         def __unicode__(self):
-            return u'EventImportNotice: RecordExists'       
+            return u'EventImportNotice: RecordExists'
 
     class RequiredFieldMissing(EventImportNotice):
-        def __init__(self,field):
+        def __init__(self, field):
             self.field = field
-            super(EventImportReport.RequiredFieldMissing,self).__init__()
+            super(EventImportReport.RequiredFieldMissing, self).__init__()
+
         def __unicode__(self):
-            return u'EventImportNotice: RecordExists'       
+            return u'EventImportNotice: RecordExists'
 
     class LocationResolveStatus(EventImportNotice):
-        def __init__(self,location_str,status):
+        def __init__(self, location_str, status):
             self.location_str = location_str
             self.status = status
-            super(EventImportReport.LocationResolveStatus,self).__init__()
+            super(EventImportReport.LocationResolveStatus, self).__init__()
+
         def __unicode__(self):
-            return u'EventImportNotice: LocationResolveStatus: "%s" resolved with parse status %s' % (self.location_str,self.status)
+            return u'EventImportNotice: LocationResolveStatus: "%s" resolved with parse status %s' % (self.location_str, self.status)
 
     class FailedLocationResolve(EventImportNotice):
-        def __init__(self,location_str):
+        def __init__(self, location_str):
             self.location_str = location_str
-            super(EventImportReport.FailedLocationResolve,self).__init__()
+            super(EventImportReport.FailedLocationResolve, self).__init__()
+
         def __unicode__(self):
             return u'EventImportNotice: FailedLocationResolve: "%s"' % self.location_str
 
+
 class FeedImporter(object):
-    def __init__(self,feed_inst):
+    def __init__(self, feed_inst):
         '''initialize from an ICalendarFeed instance'''
         self.feed_instance = feed_inst
-    
+
     @classmethod
-    def from_url(cls,url,organization=None):
+    def from_url(cls, url, organization=None):
         '''initialize from a url and Organization instance'''
 
         f = urllib.urlopen(url)
         ical = icalendar.Calendar.from_string(f.read())
         f.close()
-        cal_name = ical.get('X-WR-CALNAME',url)
+        cal_name = ical.get('X-WR-CALNAME', url)
 
         feed, created = ICalendarFeed.objects.get_or_create(
-                            url=url,name=cal_name)
-        
+                            url=url, name=cal_name)
+
         if organization:
             # if we need to set the owner, but found an existing feed whose owner is different, fail
             if not created and feed.owner is not None and feed.owner != organization:
                 raise Exception('Feed already exists under different owner. Cannot create new one.')
-            feed.owner = organization   
+            feed.owner = organization
             feed.save()
 
         return cls(feed)
-    
-    def _resolve_location_string(self,location_str):
+
+    def _resolve_location_string(self, location_str):
         if location_str:
             # TODO: could do some geocoding filtering here
             result = smart_text_resolve(location_str)
@@ -89,7 +99,7 @@ class FeedImporter(object):
             if result.place is not None:
                 place = result.place
             elif result.location is not None:
-                place = Place(name=location_str,location=result.location)
+                place = Place(name=location_str, location=result.location)
             else:
                 return None, None
         else:
@@ -107,26 +117,25 @@ class FeedImporter(object):
                                     neighborhood=l.neighborhood,
                                     latitude=l.latitude,
                                     longitude=l.longitude)
-        place, _ = Place.objects.get_or_create(name=place.name,location=place.location)
+        place, _ = Place.objects.get_or_create(name=place.name, location=place.location)
         return place, result.parse_status
 
-
-    def import_new(self,start_filter=None):
+    def import_new(self, start_filter=None):
         '''
-        Import any events in the feed not already tracked by a 
+        Import any events in the feed not already tracked by a
         VEventRecord. If provided, will ignore any events taking place
         before start_filter.
 
         Function is a generator object that will yield a collection of
         EventImportNotice objects, one per entry considered (that begins
         after the start_filter). If the event was not created successfully,
-        the VEventRecord in the returned notice will not be savable to the 
+        the VEventRecord in the returned notice will not be savable to the
         db.
         '''
         def _process_time(component):
             '''
             Returns a UTC-based timezone-naive datetime for the time present
-            in the given component. The component must have a dt element and 
+            in the given component. The component must have a dt element and
             an optional TZID parameter.
 
             Helper assumes the existance of a 'notices' list, a 'uid' string
@@ -163,8 +172,7 @@ class FeedImporter(object):
         f.close()
 
         default_tz_str = ical.get('X-WR-TIMEZONE')
-        
-        reports = []
+
         for entry in ical.walk('vevent'):
             try:
                 notices, uid = [], None
@@ -175,21 +183,21 @@ class FeedImporter(object):
                 dtstart = _process_time(entry['dtstart'])
                 if start_filter is not None and dtstart < start_filter:
                     continue
-                
+
                 # see if we've already processed this record. if so, we're done
                 try:
-                    record = VEventRecord.objects.get(feed=self.feed_instance,uid=uid)
+                    record = VEventRecord.objects.get(feed=self.feed_instance, uid=uid)
                     notices.append(EventImportReport.RecordExists())
-                    yield EventImportReport(record,notices)
+                    yield EventImportReport(record, notices)
                     continue
                 except VEventRecord.DoesNotExist:
                     pass
-                
+
                 #### Location Processing ####
-                location_str = entry.get('location','').strip()
+                location_str = entry.get('location', '').strip()
                 loc_key = location_str.strip().lower()
 
-                # if the place isn't cached, we need to resolve and cache it                
+                # if the place isn't cached, we need to resolve and cache it
                 if loc_key in place_cache:
                     place = place_cache[loc_key]
                 else:
@@ -199,24 +207,24 @@ class FeedImporter(object):
                         place, status = None, 'IOERROR'
 
                     if status:
-                        notices.append(EventImportReport.LocationResolveStatus(location_str,status))
+                        notices.append(EventImportReport.LocationResolveStatus(location_str, status))
                     # cache the results of the resolve process
                     place_cache[loc_key] = place
 
                 # if the location string is non-empty but the place is, we need a notice
                 if location_str and place is None:
                     notices.append(EventImportReport.FailedLocationResolve(location_str))
-                    
+
                 #### Other field processing and Event creation ####
                 dtmodified = entry.get('LAST-MODIFIED')
                 if dtmodified:
                     dtmodified = _process_time(dtmodified)
 
-                name = entry.get('summary','').strip()
+                name = entry.get('summary', '').strip()
                 event = Event.objects.create(name=name,
                                              dtstart=dtstart,
                                              dtend=_process_time(entry['dtend']),
-                                             description=entry.get('description','').strip(),
+                                             description=entry.get('description', '').strip(),
                                              place=place,
                                              dtmodified=dtmodified)
                 if owner:
@@ -228,10 +236,10 @@ class FeedImporter(object):
                                                         uid=uid,
                                                         dtmodified=dtmodified,
                                                         feed=self.feed_instance)
-                yield EventImportReport(record,notices)
+                yield EventImportReport(record, notices)
             except KeyError as e:
                 notices.append(EventImportNotice.RequiredFieldMissing(e.message))
-                yield EventImportReport(VEventRecord(uid=uid),notices)
+                yield EventImportReport(VEventRecord(uid=uid), notices)
             except Exception as e:
                 logger.error('iCalendar UID. %s' % unicode(e))
                 yield None

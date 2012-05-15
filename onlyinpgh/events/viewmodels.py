@@ -1,77 +1,115 @@
-from onlyinpgh.common.core.viewmodels import ViewModel
+from django.contrib.auth.models import User
+
+from django.utils.timezone import now
+from onlyinpgh.common.utils import get_cached_thumbnail
+
+import datetime
+from django.template.defaultfilters import truncatewords
+
+from onlyinpgh.common.utils import localtime
+from django.utils import timezone
 
 
-class EventFeedItem(ViewModel):
-    '''
-    Exposes the following data:
-        event
-            id
-            name
-            dtstart (datetime for Django, iso-formatted string for JSON)
-            dtend   (datetime for Django, iso-formatted string for JSON)
-            allday  (boolean)
-            place
-                id
-                name
-                location
-                    address
-            image_url
-            [tags]
-                id
-                name
-    '''
+class EventData(object):
     def __init__(self, event, user=None):
-        super(EventFeedItem, self).__init__()
-        self.event = event
+        fields = ('id', 'name', 'description', 'dtstart', 'dtend', 'image',
+                  'url', 'place', 'place_primitive', 'tags', 'listed',
+                  'get_absolute_url')
+        if isinstance(user, User):
+            self.is_attending = event.attendee_set.filter(user=user).count() > 0
+        else:
+            self.is_attending = False
+        for attr in fields:
+            setattr(self, attr, getattr(event, attr))
 
-    def to_data(self, *args, **kwargs):
-        data = super(EventFeedItem, self).to_data(*args, **kwargs)
-        event_data = data.get('event')
-        keepers = set(('id', 'name', 'dtstart', 'dtend', 'allday', 'place', 'image_url', 'tags'))
-        for k in event_data.keys():
-            if k not in keepers:
-                event_data.pop(k)
+        if self.dtstart < timezone.now() < self.dtend:
+            self.icon_day = timezone.now().day
+        else:
+            self.icon_day = self.dtstart.day
+        self.pk = self.id
+        self._process_dates()
 
-        place_data = data['event'].get('place')
-        keepers = set(('id', 'name', 'location'))
-        if place_data:
-            for k in place_data.keys():
-                if k not in keepers:
-                    place_data.pop(k)
+    def _process_dates(self):
+        # TODO: really should test some of this logic
+        # if it's happening in the same year as now, or within the next 45 days, use the start year
+        if self.dtstart.year == now().year:
+            use_year = False
+        elif (self.dtstart - now()).days < 45:
+            use_year = False
+        else:
+            use_year = True
 
-        return data
+        self.dtstart = localtime(self.dtstart)
+        self.dtend = localtime(self.dtend)
 
+        self.dtstart_str = self.dtstart.strftime('%b ') + \
+                          self.dtstart.strftime('%d').lstrip('0') + \
+                          (self.dtstart.strftime(' %Y') if use_year else '') + \
+                          ', ' + self.dtstart.strftime('%I').lstrip('0') + \
+                          (self.dtstart.strftime(':%M') if self.dtstart.minute != 0 else '') + \
+                          self.dtstart.strftime('%p').lower()
 
-class EventDetail(ViewModel):
-    '''
-        event
-            id
-            name
-            dtcreated
-            dtmodified
-            dtstart (datetime for Django, iso-formatted string for JSON)
-            dtend   (datetime for Django, iso-formatted string for JSON)
-            allday  (boolean)
-            place
-                id
-                name
-                location
-                    address
-            image_url
-            tags
-                id
-                name
-            invisible   (boolean)
-    '''
-    def __init__(self, event, user=None):
-        super(EventDetail, self).__init__()
-        self.event = event
+        # if ends on sasme day, or on next day but on or before 2 am, don't use the day part of dtend
+        if self.dtstart.day == self.dtend.day:
+            if self.id == 13:
+                print 'trigger 1'
+            use_endday = False
+        elif (self.dtend - self.dtstart).days < 1 and self.dtend.time() <= datetime.time(2, 0):
+            if self.id == 13:
+                print 'trigger 2'
+            use_endday = False
+        else:
+            if self.id == 13:
+                print 'trigger 3'
+            use_endday = True
 
-    def to_data(self, *args, **kwargs):
-        data = super(EventDetail, self).to_data(*args, **kwargs)
-        place_data = data['event'].get('place')
-        if place_data:
-            for k in place_data.keys():
-                if k not in ('id', 'name'):
-                    place_data.pop(k)
-        return data
+        if use_endday:
+            self.dtend_str = self.dtend.strftime('%b ') + \
+                            self.dtend.strftime('%d').lstrip('0') + \
+                            (self.dtend.strftime(', %Y') if use_year else '') + ', '
+        else:
+            self.dtend_str = ''
+
+        self.dtend_str += self.dtend.strftime('%I').lstrip('0') + \
+                          (self.dtend.strftime(':%M') if self.dtend.minute != 0 else '') + \
+                          self.dtend.strftime('%p').lower()
+
+    def serialize(self):
+        '''
+        Temporary method to take the place of TastyPie serialization
+        functionality. Will remove later in place of TastyPie functionality,
+        but too many special issues (e.g. thumbnails) to worry about
+        doing "right" at the moment.
+        '''
+        thumb_small = get_cached_thumbnail(self.image, 'small') if self.image else None
+        thumb_standard = get_cached_thumbnail(self.image, 'standard') if self.image else None
+        return {
+            'id': self.id,
+            'name': truncatewords(self.name, 4),
+            'description': truncatewords(self.description, 10),
+            'dtstart': str(self.dtstart),
+            'dtend': str(self.dtend),
+            'dtstart_str': self.dtstart_str,
+            'dtend_str': self.dtend_str,
+            'icon_day': self.icon_day,
+            'place': {
+                'name': truncatewords(self.place.name, 4),
+                'location': {
+                    'address': self.place.location.address,
+                    'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,
+                    'longitude': float(self.place.location.longitude) if self.place.location.longitude is not None else None,
+                    'is_gecoded': self.place.location.latitude is not None and self.place.location.longitude is not None,
+                } if self.place.location else None,
+                'permalink': self.place.get_absolute_url(),
+            } if self.place else None,
+            'place_primitive': truncatewords(self.place_primitive, 4),
+            'image': self.image.url if self.image else '',
+            'tags': [{
+                'name': tag.name,
+                'permalink': tag.get_absolute_url(),
+            } for tag in self.tags.all()],
+            # special fields only for JSON output
+            'permalink': self.get_absolute_url(),
+            'thumb_small': thumb_small.url if thumb_small else '',
+            'thumb_standard': thumb_standard.url if thumb_standard else '',
+        }

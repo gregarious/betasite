@@ -5,10 +5,13 @@ from django.core.exceptions import ValidationError
 
 from onlyinpgh.tags.models import Tag
 from onlyinpgh.common.core.viewmodels import ViewModel
+from onlyinpgh.common.utils import CSVPickler
 
 from django.contrib.auth.models import User
+from onlyinpgh.common.utils import precache_thumbnails
 
-from math import sqrt, pow
+import math
+import urllib
 
 
 class CloseLocationManager(models.Manager):
@@ -55,8 +58,8 @@ class CloseLocationManager(models.Manager):
         elif len(results) == 1:
             return results[0]
         else:
-            calc_distance = lambda p0, p1: sqrt(pow(float(p1[0]) - float(p0[0]), 2) +
-                                                pow(float(p1[1]) - float(p0[1]), 2))
+            calc_distance = lambda p0, p1: math.sqrt(math.pow(float(p1[0]) - float(p0[0]), 2) +
+                                                     math.pow(float(p1[1]) - float(p0[1]), 2))
             if lat is None:
                 lat = 0
             if lng is None:
@@ -177,6 +180,58 @@ class Location(models.Model, ViewModel):
 
         return s.rstrip(', ')
 
+    def is_geocoded(self):
+        return self.latitude is not None and self.longitude is not None
+
+    def distance_from(self, other_location, fast=False):
+        '''
+        Returns distance in km between two geolocated places.
+
+        Normally operates assuming a spherical projection of the earth,
+        but can be more efficient by assuming an equarectangular
+        projection (http://www.movable-type.co.uk/scripts/latlong.html).
+        Enable this behavior by specifying fast=True.
+
+        Returns None if self or other_location has incomplete geocoding.
+        '''
+        R = 6371     # mean earth radius in km
+        if not self.is_geocoded() or not other_location.is_geocoded():
+            return None
+
+        to_rad = lambda x: 0.01745327 * float(x)
+        lat1, lat2 = to_rad(self.latitude), to_rad(other_location.latitude)
+        lng1, lng2 = to_rad(self.longitude), to_rad(other_location.longitude)
+        if fast:
+            x = (lng2 - lng1) * math.cos((lat1 + lat2) / 2)
+            y = (lat2 - lat1)
+            return R * math.sqrt(pow(x, 2) + pow(y, 2))
+        else:
+            try:
+                return R * math.acos(math.sin(lat1) * math.sin(lat2) +
+                                      math.cos(lat1) * math.cos(lat2) *
+                                      math.cos(lng2 - lng1))
+            except:     # kind of a cop-out, but this should actually mean 0 distance if inputs are sane
+                return 0
+
+    def directions_link(self):
+        daddr = ''
+        if self.address:
+            daddr = self.address
+            if self.postcode:
+                daddr += ', ' + self.postcode
+        elif self.is_geocoded:
+            daddr = '(%f,%f)' % (float(self.longitude), float(self.latitude))
+
+        if not daddr:
+            return None
+        else:
+            return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr': daddr})
+
+
+class ListedPlaceManager(models.Manager):
+    def get_query_set(self):
+        return super(ListedPlaceManager, self).get_query_set().filter(listed=True)
+
 
 class Place(models.Model, ViewModel):
     '''
@@ -189,7 +244,7 @@ class Place(models.Model, ViewModel):
     name = models.CharField(max_length=200, blank=True)
     location = models.ForeignKey(Location, blank=True, null=True)
 
-    image_url = models.URLField(max_length=400, blank=True)
+    image = models.ImageField(upload_to='img/p', null=True, blank=True)
     description = models.TextField(blank=True)
 
     tags = models.ManyToManyField(Tag, blank=True)
@@ -202,11 +257,27 @@ class Place(models.Model, ViewModel):
     fb_id = models.CharField(max_length=50, blank=True)
     twitter_username = models.CharField(max_length=15, blank=True)
 
+    listed = models.BooleanField('place publicly listed on site?', default=True)
+
+    objects = models.Manager()
+    listed_objects = ListedPlaceManager()
+
     def __unicode__(self):
         s = self.name
         if self.location and self.location.address:
             s += u' (%s)' % self.location.address
         return s
+
+    def save(self, *args, **kwargs):
+        super(Place, self).save(*args, **kwargs)
+        if self.image:
+            # pre-cache common sized thumbnails
+            try:
+                precache_thumbnails(self.image)
+            # never let these lines interrupt anything
+            except Exception as e:
+                print 'error caching thumbnails', e
+                # TODO: log error
 
     def to_data(self, *args, **kwargs):
         '''
@@ -214,14 +285,63 @@ class Place(models.Model, ViewModel):
         '''
         data = super(Place, self).to_data(*args, **kwargs)
         data.pop('location_id')
-        data['location'] = self.location.to_data()
-        data['tags'] = [t.to_data() for t in self.tags.all()]
+        if self.location:
+            data['location'] = self.location.to_data(*args, **kwargs)
+        data['tags'] = [t.to_data(*args, **kwargs) for t in self.tags.all()]
         return data
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('place-detail', (), {'pid': self.id})
+
+    def mark_favorite(self, user):
+        '''
+        Adds Favorite object to this Place's favorite_set.
+
+        Returns True if new favorite created, False if already existed
+        '''
+        _, created = self.favorite_set.get_or_create(user=user)
+        return created
+
+    def unmark_favorite(self, user):
+        '''
+        Deletes Favorite object from this Place's favorite_set.
+
+        Returns True if favorite existed, False if it already didn't.
+        '''
+        favs = self.favorite_set.filter(user=user)
+        fav_exists = favs.count() != 0
+        favs.delete()
+        return fav_exists
+
+    # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
+    def hours_unpacked(self):
+        return self.hours_as_obj().to_data()
+
+    def hours_as_obj(self):
+        return Hours.deserialize(self.hours)
+
+    def set_hours(self, hours):
+        self.hours = hours.serialize()
+
+    def parking_unpacked(self):
+        return self.parking_as_obj().to_data()
+
+    def parking_as_obj(self):
+        return Parking.deserialize(self.parking)
+
+    def set_parking(self, parking):
+        self.parking = parking.serialize()
 
 
 class PlaceMeta(models.Model):
     '''
     Handles meta information for a Place.
+
+    Current possible keys & values:
+    - fb_synced_field: value is name of Place field retrieved from FB
+    - fb_last_synced: value is UTC time (in ISO format) fields last synced
+        with FB
     '''
     place = models.ForeignKey(Place)
     key = models.CharField(max_length=32)
@@ -237,19 +357,68 @@ class Favorite(models.Model):
     user = models.ForeignKey(User)
     place = models.ForeignKey(Place)
     dtcreated = models.DateTimeField('Time user first added as favorite', auto_now_add=True)
-    dtmodified = models.DateTimeField('Time user changed favorite status', auto_now=True)
-
-    # This flag must be True to consider user as attending
-    # defaults to True, but can be False is user revokes attendance
-    is_favorite = models.BooleanField('Is user attending?"', default=True)
-
-    def remove_favorite(self):
-        '''
-        After using this function, Coupon should never be used again.
-        '''
-        self.is_favorite = False
-        self.save()
-
 
     def __unicode__(self):
-        return unicode(self.user) + u'@' + unicode(self.event)
+        return unicode(self.user) + u'@' + unicode(self.place)
+
+
+class Hours(ViewModel):
+    '''
+    Object to handle day, hours pairs.
+    '''
+    def __init__(self):
+        self.day_hours_tuples = []
+        self.pickler = CSVPickler()
+
+    def add_span(self, day, hours):
+        self.day_hours_tuples.append((day, hours))
+
+    def to_data(self):
+        return [(day, hours) for day, hours in self.day_hours_tuples]
+
+    @classmethod
+    def deserialize(cls, data):
+        inst = Hours()
+        inst.day_hours_tuples = inst.pickler.from_csv(data)
+        return inst
+
+    def serialize(self):
+        return self.pickler.to_csv(self.day_hours_tuples)
+
+    def __str__(self):
+        return self.serialize()
+
+
+class Parking(ViewModel):
+    '''
+    Object to handle parking options.
+    '''
+    choices = (('street', 'Street'),
+               ('lot', 'Lot'),
+               ('garage', 'Garage'),
+               ('valet', 'Valet'))
+
+    def __init__(self):
+        self.parking_options = []
+        self.pickler = CSVPickler()
+
+    def add_option(self, option):
+        if option not in [c[0] for c in Parking.choices]:
+            raise ValueError('Invalid parking option')
+        self.parking_options.append(option)
+
+    def to_data(self):
+        choice_map = dict(Parking.choices)
+        return [choice_map[option_key] for option_key in self.parking_options]
+
+    @classmethod
+    def deserialize(cls, data):
+        inst = Parking()
+        inst.parking_options = [row[0] for row in inst.pickler.from_csv(data)]
+        return inst
+
+    def serialize(self):
+        return self.pickler.to_csv([[opt] for opt in self.parking_options])
+
+    def __str__(self):
+        return self.serialize()

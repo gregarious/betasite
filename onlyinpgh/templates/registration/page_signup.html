@@ -1,0 +1,32 @@
+{% extends "page.html" %}
+
+{% comment %}
+Template variables:
+    registration_form: BetaRegistrationForm
+    profile_form: UserProfileForm
+    remember_me: simple form with one checkbox with name="remember_me"
+    form_action: url to post form to
+{% endcomment %}
+
+{% block main-content %}
+<article class="page-main" id="signup-page">
+    <h1 class="page-title">Claim your Account</h1>
+    <section class="notification">
+        <h3>Welcome to Scenable, Beta Tester!</h3>
+        <hr />
+        <p>Thanks for helping us out during our first days out in the wild. We're still actively under development, so big changes will be happening every day. Site slowness, outages, and other issues might come up, so please excuse the mess.</p><br />
+        <p>We're happy you're here to help test things out. You can officially create your Scenable account using the form below. Thanks again!</p>
+        <hr />
+        <p><strong>Are you an Oakland business owner? Sign up and claim your place using our <a href="/manage" title="Scenable Business Account">Business Management system</a>.</strong></p>
+    </section>
+	<section class="registration-form-container">
+	   <form action="{{ form_action }}" method="POST">
+	       {% include "registration/signup_form.html" %}
+	   </form>
+    </section>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_signup.html" %}
+{% endblock %}

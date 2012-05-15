@@ -1,0 +1,7 @@
+{{ object.name }}
+{% for tag in object.tags.all %}
+{{ tag.name }}
+{% endfor %}
+{{ object.description }}
+{{ object.place.name }}
+{{ object.place.location.address }}

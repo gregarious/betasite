@@ -1,41 +1,66 @@
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
-from django.template.loader import render_to_string
-from django.template import RequestContext
-from django.utils.safestring import mark_safe
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
-from django.forms.util import ErrorList
-from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth import authenticate, logout
+from django.shortcuts import get_object_or_404, redirect, render, render_to_response
+from django.template import RequestContext
+from onlyinpgh.common.core.rendering import render_safe
 
 from onlyinpgh.organizations.models import Organization
+
 from onlyinpgh.places.models import Place
-from onlyinpgh.events.models import Event
+from onlyinpgh.places.viewmodels import PlaceData
+from onlyinpgh.events.models import Event, Role
+from onlyinpgh.events.viewmodels import EventData
 from onlyinpgh.specials.models import Special
+from onlyinpgh.specials.viewmodels import SpecialData
 
-from onlyinpgh.orgadmin.forms import OrgSignupForm, OrgLoginForm, \
-        SimpleLocationPlaceForm, PlaceClaimForm, SimpleEventForm, \
-        SimpleSpecialForm
+from onlyinpgh.tags.models import Tag
 
-from onlyinpgh.places.viewmodels import PlaceFeedItem
-from onlyinpgh.events.viewmodels import EventFeedItem
-from onlyinpgh.specials.viewmodels import SpecialFeedItem
+from onlyinpgh.accounts.forms import RegistrationForm, RememberMeForm
+from onlyinpgh.orgadmin.forms import SimpleOrgForm, OrgLoginForm, OrgAdminPlaceForm, SimplePlaceForm,\
+                                     PlaceClaimForm, SimpleEventForm, SimpleSpecialForm
+from onlyinpgh.accounts.views import login
 
-from onlyinpgh.common.core.rendering import render_viewmodels_as_ul
+import re
 
 
-def render_admin_page(safe_content, context_instance=None):
+class ManagePageContext(RequestContext):
     '''
-    Renders a page in the admin interface.
+    Used for main context variable for every main site page.
     '''
-    content = {
-        'content': mark_safe(safe_content)
-    }
-    return render_to_string('orgadmin/base.html',
-        content, context_instance=context_instance)
+    def __init__(self, request, current_org=None, page_title=None, content_dict={}, **kwargs):
+        '''
+        content_dict: context variables for main_context
+        '''
+        if page_title is None:
+            page_title = "Scenable Business Account"
+            if current_org:
+                page_title += " | %s" % current_org.name
+
+        variables = dict(
+            page_title=page_title,
+            current_org=current_org,
+        )
+        if not current_org and request.user.is_authenticated():
+            current_org = _get_current_org(request.user)
+        variables['current_org'] = current_org
+        variables.update(content_dict)
+        super(ManagePageContext, self).__init__(request, variables, **kwargs)
 
 
-def response_admin_page(safe_content, context_instance=None):
-    return HttpResponse(render_admin_page(safe_content, context_instance))
+def _redirect_home(request, notification_type=None):
+    if notification_type is not None:
+        request.session['home-notification'] = notification_type
+    return redirect('orgadmin-home')
+
+
+def _get_current_org(user):
+    # just default to first org in the list for now
+    owned_orgs = Organization.objects.filter(administrators=user)
+    if len(owned_orgs) > 0:
+        return owned_orgs[0]
+    else:
+        return None
 
 
 ### Shotcuts for authentication ###
@@ -58,6 +83,10 @@ def org_owns(org, instance):
     '''
     establishments = org.establishments.all()
 
+    # short circuit for event instances: also allow Role ownership over the event
+    if isinstance(instance, Event):
+        if Role.objects.filter(event=instance, organization=org, role_type='owner').count() > 0:
+            return True
     try:
         return instance.place in establishments
     except AttributeError:
@@ -65,45 +94,53 @@ def org_owns(org, instance):
 
 
 ### URL-linked page views ###
+def page_index(request):
+    if request.user.is_authenticated():
+        return redirect('orgadmin-home')
+    else:
+        return render(request, 'orgadmin/splash.html')
+
+
 def page_signup(request):
     if request.user.is_authenticated():
         logout(request)
 
     if request.POST:
-        form = OrgSignupForm(request.POST)
-        # test if the browser supports cookies
-        if request.session.test_cookie_worked():
-            request.session.delete_test_cookie()
-        else:
-            errors = form._errors.setdefault("__all__", ErrorList())
-            errors.append(u"Your browser must support cookies to use this site.")
+        reg_form = RegistrationForm(request.POST, prefix='reg')
+        org_form = SimpleOrgForm(request.POST, prefix='org')
 
-        if form.is_valid():
-            form.save()     # saves new user
+        if reg_form.is_valid() and org_form.is_valid():
+            reg_form.save()     # saves new user
+            org = org_form.save()   # saves new org
 
-            # authenticate new user, create  and log in
-            user = authenticate(username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1'])
-            login(request, user)
+            # test if the browser supports cookies
+            if request.session.test_cookie_worked():
+                request.session.delete_test_cookie()
 
-            # create new organization for user to administer
-            org = Organization.objects.create(name=form.cleaned_data['orgname'])
-            org.administrators.add(user)
+                # authenticate new user and log in
+                user = authenticate(username=reg_form.cleaned_data['username'],
+                    password=reg_form.cleaned_data['password1'])
+                login(request, user)
 
-            request.session['current_org'] = org
+                # set user as administrator to given org
+                org.administrators.add(user)
 
-            # redirect to home page
-            redirect_to = reverse('orgadmin-home')
-            return HttpResponseRedirect(redirect_to)
+                # redirect to home page
+                return _redirect_home(request, notification_type=1)
+            else:   # if cookies aren't enabled, go to login page
+                return redirect('orgadmin-login')
     else:
-        form = OrgSignupForm()
+        reg_form = RegistrationForm(prefix='reg')
+        org_form = SimpleOrgForm(prefix='org')
 
     request.session.set_test_cookie()
-    context = RequestContext(request)
-    content = render_to_string('orgadmin/signup_form.html',
-        {'form': form}, context_instance=context)
 
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict=dict(
+        registration_form=reg_form,
+        org_form=org_form,
+        remember_me=RememberMeForm(),
+    ))
+    return render_to_response('orgadmin/page_signup.html', context_instance=context)
 
 
 def page_login(request):
@@ -120,13 +157,6 @@ def page_login(request):
             user = form.get_user()
             login(request, user)
 
-            # just default to first org in the list for now
-            owned_orgs = Organization.objects.filter(administrators=user)
-            if len(owned_orgs) > 0:
-                request.session['current_org'] = owned_orgs[0]
-            else:
-                request.session['current_org'] = None
-
             # redirect to homepage
             redirect_to = reverse('orgadmin-home')
             return HttpResponseRedirect(redirect_to)
@@ -134,11 +164,13 @@ def page_login(request):
         form = OrgLoginForm()
 
     request.session.set_test_cookie()
-    context = RequestContext(request)
-    content = render_to_string('orgadmin/login_form.html',
-        {'form': form}, context_instance=context)
 
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        form_action=reverse('orgadmin-login'),
+        remember_me=RememberMeForm(),
+    ))
+    return render_to_response('orgadmin/page_login.html', context_instance=context)
 
 
 def page_logout(request):
@@ -150,10 +182,39 @@ def page_logout(request):
 
 @authentication_required
 def page_home(request):
-    context = RequestContext(request,
-        {'current_org': request.session.get('current_org')})
-    content = render_to_string('orgadmin/home.html', context_instance=context)
-    return response_admin_page(content, context)
+    '''
+    notification types:
+    1: Welcome message
+    2: No org warning
+    3: No place message for special adding
+    '''
+    try:
+        notification_type = str(request.session.pop('home-notification'))
+    except KeyError:
+        notification_type = None
+    content = {'notification_type': notification_type}
+    context = ManagePageContext(request, content_dict=content)
+    return render_to_response('orgadmin/page_home.html', context_instance=context)
+
+
+@authentication_required
+def page_link_org(request):
+    context = ManagePageContext(request)
+
+    if request.POST:
+        form = SimpleOrgForm(request.POST)
+        if form.is_valid():
+            org = form.save()   # saves new org
+            org.administrators.add(request.user)
+            return redirect('orgadmin-home')
+    else:
+        form = SimpleOrgForm()
+
+    context = ManagePageContext(request, content_dict=dict(
+        form=form
+    ))
+
+    return render_to_response('orgadmin/page_link_org.html', context_instance=context)
 
 
 @authentication_required
@@ -165,9 +226,9 @@ def page_claim_place(request):
     to create a new place. The resulting action for either choice is to bring
     up the place setup wizard.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     if not org:
-        return redirect('orgadmin-home')
+        return _redirect_home(request, notification_type=2)
 
     all_places = Place.objects.all()
     owned_places = org.establishments.all()
@@ -178,102 +239,84 @@ def page_claim_place(request):
         if form.is_valid():
             id_str = form.cleaned_data['place']
             org.establishments.add(Place.objects.get(id=int(id_str)))
-            return redirect('onlyinpgh.orgadmin.views.page_edit_place', id_str)
+            return redirect('orgadmin-editplace', id_str)
     else:
         form = PlaceClaimForm(place_choices=unowned_places)
 
-    context = RequestContext(request,
-        {'current_org': org})
-    content = render_to_string('orgadmin/place_claim.html', {'form': form},
-                context_instance=context)
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict={'form': form})
+    return render_to_response('orgadmin/page_place_claim.html', context_instance=context)
 
 
 @authentication_required
-def page_setup_place_wizard(request, id=None):
-    org = request.session.get('current_org')
+def page_edit_place(request, id=None):
+    org = _get_current_org(request.user)
     if id is not None:
         instance = get_object_or_404(Place, id=id)
         if not org or not org_owns(org, instance):
             return HttpResponseForbidden()
     else:
         instance = None
-        # TODO: home page needs some kind of message if user has no org
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
 
     if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST,
+        # clean up possible artifacts in fb/twitter fields (full urls, @ symbols)
+        fb_id = request.POST.get('fb_id', '')
+        if 'facebook.com' in fb_id:
+            request.POST.update({'fb_id': fb_id.strip().strip('/').split('/')[-1]})
+        twitter = request.POST.get('twitter_username', '').strip()
+        if twitter.startswith('@'):
+            request.POST.update({'twitter_username': twitter.strip().lstrip('@')})
+
+        form = OrgAdminPlaceForm(data=request.POST, files=request.FILES,
             instance=instance)
         if form.is_valid():
             place = form.save()
 
             # if a new place, it won't be a part of the current org's
             # list of establishments. add it now.
-            if place not in org.establishments.all():
+            if not instance and place not in org.establishments.all():
                 org.establishments.add(place)
 
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
+            return redirect('orgadmin-listplaces')
     else:
-        form = SimpleLocationPlaceForm(instance=instance)
+        form = OrgAdminPlaceForm(instance=instance)
 
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_setup_wizard.html', {'form': form},
-        context_instance=context)
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()]
+    ))
+    return render_to_response('orgadmin/page_place_edit.html', context_instance=context)
 
 
 @authentication_required
 def page_remove_place(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Place, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     org.establishments.remove(instance)
-    return redirect('onlyinpgh.orgadmin.views.page_list_places')
-
-
-@authentication_required
-def page_edit_place(request, id):
-    org = request.session.get('current_org')
-    instance = get_object_or_404(Place, id=id)
-    if not org or not org_owns(org, instance):
-        return HttpResponseForbidden()
-
-    if request.POST:
-        form = SimpleLocationPlaceForm(data=request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect('onlyinpgh.orgadmin.views.page_list_places')
-    else:
-        form = SimpleLocationPlaceForm(instance=instance)
-
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_edit_form.html', {'form': form}, context_instance=context)
-    return response_admin_page(content, context)
+    return redirect('orgadmin-listplaces')
 
 
 @authentication_required
 def page_list_places(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     places = org.establishments.all() if org else []
+    items = [PlaceData(place) for place in places]
 
-    items = [PlaceFeedItem(place) for place in places]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/place_item.html')
-
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/place_list.html', {'list_content': list_content}, context_instance=context)
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_place_list.html', context_instance=context)
 
 
 @authentication_required
 def page_delete_event(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Event, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     instance.delete()
-    return redirect('onlyinpgh.orgadmin.views.page_list_events')
+    return redirect('orgadmin-listevents')
 
 
 @authentication_required
@@ -281,7 +324,8 @@ def page_edit_event(request, id=None):
     '''
     Edit an Event. If id is None, the form is for a new Event entry.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
+    initial = {}
     if id is not None:
         instance = get_object_or_404(Event, id=id)
         if not org or not org_owns(org, instance):
@@ -289,44 +333,60 @@ def page_edit_event(request, id=None):
     else:
         instance = None
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
+        if org and org.establishments.count() == 1:
+            initial['place'] = org.establishments.all()[0].id
 
-    if request.POST:
-        form = SimpleEventForm(organization=org, data=request.POST, instance=instance)
+    if request.POST or request.FILES:
+        form = SimpleEventForm(data=request.POST, files=request.FILES, instance=instance, initial=initial)
         if form.is_valid():
-            form.save()
-            return redirect('onlyinpgh.orgadmin.views.page_list_events')
+            event = form.save()
+            Role.objects.get_or_create(role_type='owner', organization=org, event=event)
+            return redirect('orgadmin-listevents')
     else:
-        form = SimpleEventForm(organization=org, instance=instance)
+        form = SimpleEventForm(instance=instance, initial=initial)
 
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_edit_form.html', {'form': form},
-                                    context_instance=context)
-    return response_admin_page(content, context)
+    # TODO: awesome "initial_selected" hack for autocomplete display!!!!
+    match = re.search('name="place" value="(\d+)"', form.as_ul())
+    if match:
+        try:
+            initial_place = Place.objects.get(id=match.group(1))
+            initial_selected = render_safe('orgadmin/ac_place_selected.html', context_instance=RequestContext(request), place=initial_place)
+        except Place.DoesNotExist:
+            initial_selected = None
+    else:
+        initial_selected = None
+
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()],
+        newplace_form=SimplePlaceForm(prefix='newplace', initial={'state': 'PA', 'postcode': '15213', 'town': 'Pittsburgh'}),
+        initial_selected=initial_selected
+    ))
+    return render_to_response('orgadmin/page_event_edit.html', context_instance=context)
 
 
 @authentication_required
 def page_list_events(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     establishments = org.establishments.all() if org else []
-    events = Event.objects.filter(place__in=establishments)
-    items = [EventFeedItem(event) for event in events]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/event_item.html')
 
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/event_list.html', {'list_content': list_content},
-                                    context_instance=context)
-    return response_admin_page(content, context)
+    events = [role.event for role in Role.objects.filter(role_type='owner', organization=org)] if org else []
+    events = set(events).union(Event.objects.filter(place__in=establishments))
+    items = [EventData(event) for event in events]
+
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_event_list.html', context_instance=context)
 
 
 @authentication_required
 def page_delete_special(request, id):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     instance = get_object_or_404(Special, id=id)
     if not org or not org_owns(org, instance):
         return HttpResponseForbidden()
     instance.delete()
-    return redirect('onlyinpgh.orgadmin.views.page_list_specials')
+    return redirect('orgadmin-listspecials')
 
 
 @authentication_required
@@ -334,7 +394,7 @@ def page_edit_special(request, id=None):
     '''
     Edit a Special. If id is None, the form is for a new Special entry.
     '''
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     if id is not None:
         instance = get_object_or_404(Special, id=id)
         if not org or not org_owns(org, instance):
@@ -342,31 +402,31 @@ def page_edit_special(request, id=None):
     else:
         instance = None
         if not org:
-            return redirect('orgadmin-home')
+            return _redirect_home(request, notification_type=2)
+        if org.establishments.count() == 0:
+            return _redirect_home(request, notification_type=3)
 
     if request.POST:
         form = SimpleSpecialForm(organization=org, data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('onlyinpgh.orgadmin.views.page_list_specials')
+            return redirect('orgadmin-listspecials')
     else:
         form = SimpleSpecialForm(organization=org, instance=instance)
 
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_edit_form.html', {'form': form},
-                                context_instance=context)
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict=dict(
+        form=form,
+        tag_names=[t.name for t in Tag.objects.all()]
+    ))
+    return render_to_response('orgadmin/page_special_edit.html', context_instance=context)
 
 
 @authentication_required
 def page_list_specials(request):
-    org = request.session.get('current_org')
+    org = _get_current_org(request.user)
     establishments = org.establishments.all() if org else []
     specials = Special.objects.filter(place__in=establishments)
-    items = [SpecialFeedItem(special) for special in specials]
-    list_content = render_viewmodels_as_ul(items, 'orgadmin/special_item.html')
+    items = [SpecialData(special) for special in specials]
 
-    context = RequestContext(request, {'current_org': org})
-    content = render_to_string('orgadmin/special_list.html', {'list_content': list_content},
-                                context_instance=context)
-    return response_admin_page(content, context)
+    context = ManagePageContext(request, content_dict={'items': items})
+    return render_to_response('orgadmin/page_special_list.html', context_instance=context)

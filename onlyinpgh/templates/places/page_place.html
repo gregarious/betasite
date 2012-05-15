@@ -1,0 +1,46 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Places feed
+
+Context variables:
+    place: PlaceData instance
+    related_feeds: PlaceRelatedFeeds instance
+        
+{% endcomment %}
+{% load thumbnail %}
+
+{% block main-content %}
+<article class="page-single detailed" id="place-single">
+    {% include "places/header.html" %}
+	<article class="single-content">
+	    {% include "places/details.html" %}
+	</article>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_place_single.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+{% if place.location.latitude and place.location.longitude %}
+<script type="text/javascript">
+$(function(){
+    {# favoriteButton element should be inside places/header.html #}
+    scenable.useractions.attachFavoriteHandler(
+        document.getElementById('favoriteButton'), {{ place.id }});
+
+    var pos = new google.maps.LatLng({{place.location.latitude|default:"NaN"}},{{place.location.longitude|default:"NaN"}});
+    // id comes from an element drawn in places/details.html
+    var map = scenable.map.mapFactory('single',
+            document.getElementById('mainPlaceMap'),
+            {center: pos});
+    new google.maps.Marker({
+        position: pos,
+        map: map
+    });
+});
+</script>
+{% endif %}
+{% endblock %}

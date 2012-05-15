@@ -1,67 +1,71 @@
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseForbidden
+from django.template import RequestContext
+from django.shortcuts import get_object_or_404, render_to_response
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
-from onlyinpgh.common.utils.jsontools import jsonp_response, package_json_response
-from onlyinpgh.common.core.rendering import render_viewmodel, render_viewmodels_as_ul
+# from onlyinpgh.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
+from onlyinpgh.common.views import PageContext, PageFilteredFeed
 
-from onlyinpgh.specials.models import Special
-from onlyinpgh.specials.viewmodels import SpecialFeedItem, SpecialDetail
+from onlyinpgh.specials.models import Special, Coupon
+from onlyinpgh.specials.viewmodels import SpecialData
+# from onlyinpgh.specials.resources import SpecialFeedResource
 
-
-def feed_page(request):
-    '''
-    View function that handles a page load request for a feed of place
-    items.
-
-    Renders page.html with main_content set to the rendered HTML of
-    a feed.
-    '''
-    # get a list of rendered items
-    specials = Special.objects.all()[:10]
-    items = [SpecialFeedItem(special, user=request.user) for special in specials]
-    content = render_viewmodels_as_ul(items, 'specials/feed_item.html', container_class_label='specials feed')
-
-    return render(request, 'page.html', {'main_content': content})
+from haystack.forms import SearchForm
+from django.utils import timezone
 
 
-def detail_page(request, sid):
+class PageSpecialsFeed(PageFilteredFeed):
+    def __init__(self, *args, **kwargs):
+        super(PageSpecialsFeed, self).__init__(
+            model_class=Special,
+            viewmodel_class=SpecialData,
+            template='specials/page_feed.html',
+            form_class=SearchForm,
+            results_per_page=6,
+        )
+
+    def get_page_context(self, content):
+        return PageContext(self.request,
+            current_section='specials',
+            page_title='Scenable | Oakland Specials',
+            content_dict=content)
+
+    def hacked_unfiltered(self):
+        return Special.objects.filter(dexpires__gt=timezone.now().date()).order_by('dexpires')
+
+    def hacked_filtered(self):
+        return sorted([result.object for result in self.form.search()
+                        if result.object.dexpires > timezone.now().date()],
+                        key=lambda s: s.dexpires)
+
+
+@login_required
+def page_details(request, sid):
     '''
     View displays single specials.
     '''
     # build and render special detail viewmodel
     special = get_object_or_404(Special, id=sid)
-    details = SpecialDetail(special, user=request.user)
-    content = render_viewmodel(details,
-                template='specials/single.html',
-                class_label='special-single')
+    details = SpecialData(special, user=request.user)
+    content = {'special': details}
+    page_context = PageContext(request,
+        current_section='specials',
+        page_title='Scenable | %s' % special.title,
+        content_dict=content)
 
-    return render(request, 'page.html', {'main_content': content})
-
-
-# @jsonp_response
-# def feed_app(request):
-#     offers = []
-#     for s in Offer.objects.all()[:10]:
-#         special = {
-#             'id':   s.id,
-#             'description': s.description,
-#             'points': s.point_value,
-#             'sponsor': s.sponsor.name if s.sponsor else None,
-#             'tags': [{'name':item.tag.name} for item in p.tags.all() if item.tag.name != 'establishment']
-#         }
-#         offers.append(special)
-
-#     return {'offers': offers}    # decorator will handle JSONP details
+    return render_to_response('specials/page_special.html', context_instance=page_context)
 
 
-# @jsonp_response
-# def detail_app(request, oid):
-#     o = Offer.objects.get(id=oid)
-#     special = {
-#         'id':   o.id,
-#         'description': o.description,
-#         'points': o.point_value,
-#         'sponsor': o.sponsor.name if o.sponsor else None,
-#         'tags': [{'name':item.tag.name} for item in o.tags.all() if item.tag.name != 'establishment']
-#     }
-
-#     return {'special':special}
+def page_coupon(request, uuid):
+    coupon = get_object_or_404(Coupon, uuid=uuid)
+    content = {
+        'coupon': coupon,
+        'print': request.GET.get('print')
+    }
+    context = RequestContext(request)
+    if coupon.was_used:
+        # TODO: redirect to some error page?
+        return HttpResponseForbidden()
+    else:
+        return render_to_response('specials/page_coupon.html', content, context_instance=context)

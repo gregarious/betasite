@@ -1,0 +1,108 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Specials feed
+
+Context variables:
+    page: a Django Paginator Page with SpecialData instances as objects
+    items_json: JSON string of serialized SpecialData instances corresponding to the items in page.object_list
+    query: filter query text
+    form: filter form
+{% endcomment %}
+
+{% block main-content %}
+
+<article class="page-main" id="specials-page">
+    
+    <div class="map-container">
+        <div class="map-title-container">
+            <h1 class="ribbon-title">Specials</h1>
+        </div>
+        <div class="map" id="mainSpecialFeedMap"></div>
+    </div>
+
+    <div class="page-nav-container">
+        <form class="simple-form" method="get" action="{% url specials-feed %}">
+            <input type="search" placeholder="Filter Specials" name="{{form.q.html_name}}" value="{{query}}"/>
+            <input type="submit" value="Filter" />
+        </form>
+        <nav class="prev-next" id="specials-feed-nav">
+            <div class="previous">
+            {% if page.has_previous %}<a href="{% url specials-feed %}?page={{page.previous_page_number}}{%if query%}&q={{query}}{%endif%}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            <div class="page-num">
+                <p>Page</p>
+                {{page.number}} / {{page.paginator.num_pages}}</div>
+            <div class="next">
+                {% if page.has_next %}<a href="{% url specials-feed %}?page={{page.next_page_number}}{%if query%}&q={{query}}{%endif%}">&rarr;</a>{% else %}&nbsp;{% endif %}
+            </div>
+        </nav>
+    </div>
+    {% if not page.object_list %}
+        <div class="none-found">No results found</div>
+    {% else %}
+    <ul class="feed specials" id="mainSpecialFeed">
+        {# will be inserted via Backbone bootstrapping below #}
+        {% comment %}
+        Old code where server writes feed. Being replaced with bootstrapped-Backbone below
+        #{% for item in items %}
+        #    <li class="item">
+        #    {% include "specials/feed_item.html" with special=item %}
+        #    </li>
+        # {% endfor %}
+        {% endcomment %}
+    </ul> <!-- .feed#mainSpecialFeed -->
+    {% endif %}
+</article> <!-- .page-main -->
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_specials_feed.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    // need to overwrite default geolocation accessor
+    var SpecialItem = scenable.mapFeed.Item.extend({
+        getLatLng: function() {
+            var loc = this.attributes.place.location;
+            if(loc &&
+               loc.latitude !== null && !_.isUndefined(loc.latitude) &&
+               loc.longitude !== null && !_.isUndefined(loc.longitude)) {
+                return new google.maps.LatLng(loc.latitude, loc.longitude);
+            }
+            else {
+                return null;
+            }
+        }
+    });
+
+    var SpecialItems = scenable.mapFeed.ItemFeed.extend({model:SpecialItem});
+
+    var SpecialView = scenable.mapFeed.ItemView.extend({
+        className: 'item',
+        template: window.TPL.specialItem,
+        iwTemplate: window.TPL.specialInfoWindow,
+        markerOptions: {
+            icon: '/static/img/markers/special-marker.png',
+            shadow: '/static/img/markers/marker-shadow.png'
+        }
+    });
+    var SpecialFeed = scenable.mapFeed.FeedView.extend({SubViewClass:SpecialView});
+
+    var Items = new SpecialItems;
+    var Feed = new SpecialFeed({
+        model: Items,
+        el: document.getElementById('mainSpecialFeed'),
+        mapDOMElement: document.getElementById('mainSpecialFeedMap'),
+        // scenable.map.mapFactory handles most defaults
+        mapOptions: {   
+            center: new google.maps.LatLng(40.44417, -79.94583)
+        }
+    });
+
+    var bootstrapData = {{items_json|default:"[]"}};
+    Items.reset(bootstrapData);
+});
+</script>
+{% endblock %}

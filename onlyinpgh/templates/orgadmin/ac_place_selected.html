@@ -1,0 +1,21 @@
+{% comment %}
+HTML to be shown in place of text box.
+
+Template variables:
+    place:    Place model instance
+{% endcomment %}
+{% load thumbnail %}
+
+<div class="ac-item-thumb">
+    {% thumbnail place.image "50x50" crop="center" as im %}
+    	<img class="thumbnail" alt="{{place.name}}" src="{{im.url}}" width="{{im.width}}" height="{{im.height}}"/>
+    {% empty %}
+    	<img class="thumbnail" alt="{{place.name}}" src="{{STATIC_URL}}img/defaults/default-place.png" width="50" height="50"/>
+    {% endthumbnail %}
+</div>
+
+<section class="ac-item-content">
+	<h4 class="item-title">{{ place.name }}</h4>
+	<p class="address">{{place.location.address}}</p>
+    {% include "tags/tag_list.html" with tags=event.tags %}
+</section>

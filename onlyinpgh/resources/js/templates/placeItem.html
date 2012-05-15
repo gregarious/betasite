@@ -1,0 +1,27 @@
+<div class="item-thumb">
+	<a href="{{permalink}}" title="See Place page">
+	{{#if thumb_standard}}
+    	<img class="thumbnail" alt="Thumbnail" src="{{thumb_standard}}" />
+	{{else}}
+		<img class="thumbnail" alt="Thumbnail" src="/static/img/defaults/default-place.png" />
+	{{/if}}
+	</a>
+</div>
+
+<section class="item-content">		
+	<h4 class="item-title"><a href="{{permalink}}" title="See Place page">{{name}}</a></h4>
+	<ul class="item-details">
+		<li>{{location.address}}</li>
+		{{#if description}}
+			<li class="description">{{description}}</li>
+		{{/if}}
+  	</ul>
+
+  	{{#if tags}}
+  	<ul class="tag-list">
+  		{{#each tags}}
+  			<li>{{this.name}}</li>
+  		{{/each}}
+  	</ul>
+  	{{/if}}
+</section>

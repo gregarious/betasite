@@ -1,174 +1,206 @@
-import urllib, urllib2, json, time
-from onlyinpgh.outsourcing.apitools import APIError, delayed_retry_on_ioerror
+import urllib
+import urllib2
+import json
+import time
+import re
 
-import logging
-outsourcing_log = logging.getLogger('onlyinpgh.outsourcing')
 
-class FacebookAPIError(APIError):
-    # TODO: decide on error contents. complicated because there's a variety of responses this API handles
-    def __init__(self,request,*args):
-        self.request = request
-        super(FacebookAPIError,self).__init__('facebook',*args)
+class FacebookAPIError(IOError):
+    '''
+    Facebook API specific IOError. Can be constructed directly from an
+    error response dict resulting from a failed API call.
 
-def get_basic_access_token(client_id,client_secret):
+    Known codes:
+    - 21: page migrated
+    '''
+    def __init__(self, message='', error_dict={}):
+        self.code = str(error_dict.get('code', ''))
+        self.type = error_dict.get('type', 'Unknown')
+        super(FacebookAPIError, self).__init__(error_dict.get('message', message))
+
+    def is_migration_error(self):
+        return self.code == '21'
+
+    def get_migration_destination(self):
+        '''
+        If the given error is a migration error, return the new ID that
+        the page has moved to.
+        '''
+        if not self.is_migration_error():
+            return None
+        match = re.search('ID (\d+) was migrated to page ID (\d+)', self.message)
+        if match:
+            return match.group(2)
+        else:
+            # TODO: need to notify admin that the migration error message may have changed
+            return None
+
+
+def get_basic_access_token(client_id, client_secret):
     '''
     Quick utility function to generate a basic access token given an app id
-    and secret values. Shouldn't need 
+    and secret values. Shouldn't need
     '''
-    query = { 'client_id':      client_id,
-              'client_secret':  client_secret,
-              'grant_type':     'client_credentials'}
+    query = {'client_id':      client_id,
+             'client_secret':  client_secret,
+             'grant_type':     'client_credentials'}
 
     url = 'https://graph.facebook.com/oauth/access_token?' + urllib.urlencode(query)
-    response = urllib.urlopen(url).read()
-    
+    response = urllib2.urlopen(url).read()
+
     try:
-        key,val = response.split('=')
+        key, val = response.split('=')
         if key == 'access_token':
-            return val        
+            return val
     except ValueError:  # be silent for now, it will be reported below
         pass
 
-    # if we made it this far, we didn't return with a value response
-    outsourcing_log.error("Unexpected response to access token request: '%s'" % response)
-    raise FacebookAPIError('Access token retreival error. See log for details.')
-
-class BatchCommand(object):
-    '''
-    Stores a single GET command to be used in a batch operation.
-    e.g. BatchCommand('cocacola/events', {limit: 10}) will create a command 
-            that returns details of 10 events owned by Coca Cola.
-    
-    See https://developers.facebook.com/docs/reference/api/batch/ for
-    details about using the "name" parameter for commands with dependencies
-    with other commands.
-    '''
-
-    def __init__(self,url,options={},name=None,omit_response_on_success=True):
-        self.url = url
-        self.options = options
-        self.name = name
-        # only useful if name is specified
-        self.omit_response_on_success = omit_response_on_success    
-    
-    def __unicode__(self):
-        return unicode(dict(url=self.url,options=self.options,name=self.name))
-
-    # TODO: revisit this BS
-    def to_GET_format(self):
-        if self.options:
-            return self.url + '?' + urllib.urlencode(self.options)
-        return self.url
-
-    def to_command_dict(self):
-        command = { 'method':       'GET',
-                    'relative_url': self.url }
-        if self.options:
-            command['relative_url'] += '?' + urllib.urlencode(self.options)
-        if self.name:
-            command['name'] = self.name
-            command['omit_response_on_success'] = self.omit_response_on_success
-        return command
+    raise FacebookAPIError('Access token retreival error.')
 
 
 class GraphAPIClient(object):
-    def __init__(self,access_token=None):
+    def __init__(self, access_token=None):
         self.access_token = access_token
 
-    def _make_request(self,request,urllib_module=urllib):
+    def _make_request(self, request, timeout=None, retry_limit=1):
         '''
-        Helper function to make Graph API request and handle possible
-        error conditions. 
+        Helper function to make Graph API requests and handle timeout and
+        possible error conditions.
 
-        Request will be executed by calling <urllib_module>.urlopen on
-        request object. In the default case, this is callign urllib.urlopen
-        on a url string, but the urllib_module argument allows for 
-        flexibility (i.e. calling urllib2.urlopen on a urllib2.Request)
-        '''
-        response = delayed_retry_on_ioerror(lambda:json.load(urllib_module.urlopen(request)),
-                                            delay_seconds=6,
-                                            retry_limit=3,
-                                            logger=outsourcing_log)
-        return self.postprocess_response(request,response)
+        Will throw an IOError with a low-level problem (e.g. timeout,
+        connection refused, FacebookAPIError on a bad response from the
+        API service.
 
-    # TODO: revisit this -- don't like it being dependant on request
-    def postprocess_response(self,request,response):
+        Any falsey timeout value will be treated as no timeout.
         '''
-        Does some post-processing -- mostly error handling.
-        '''
+        try:
+            if timeout:
+                response = json.load(urllib2.urlopen(request, timeout=timeout))
+            else:
+                response = json.load(urllib2.urlopen(request))
+        except urllib2.HTTPError as http_err:
+            # urllib2 will throw an HTTPError if the HTTP request was unsuccessful. this error
+            # can contain useful info if the actual content of the response had error content,
+            # so we look into this content for error information
+            try:
+                response = json.load(http_err.fp)
+            except Exception:       # don't mess around here. if error's file can't be read for any reason, we punt
+                response = None
+            if response is None or 'error' not in response:    # raise it out here to get full stack trace
+                raise
+
+        # result post-processing
         if response == []:
-            raise FacebookAPIError(unicode(request),
-                                   "empty response returned")
+            raise FacebookAPIError(u"empty list response returned")
         elif response == False:
-            raise FacebookAPIError(unicode(request),
-                                   "'false' response returned")
+            raise FacebookAPIError(u"'false' response returned")
         elif response is None:
-            raise FacebookAPIError(unicode(request),
-                                    u"null response returned")
+            raise FacebookAPIError(u"null response returned")
         elif 'error' in response:
-            raise FacebookAPIError(unicode(request),
-                                    u'%s: "%s"' %  (response['error'].get('type','Unknown'),
-                                                    response['error'].get('message','')))
+            raise FacebookAPIError(error_dict=response['error'])
+        # TODO: remember to handle error code 21!
         return response
 
-    def graph_api_page_request(self,fbid):
+        # TODO: commented out old method of throttle handling. uncomment after
+        # learning more about FB throttling errors.
+        # assert(self.throttle_wait >= 0)  # if this isn't true, retry logic could allow exceeding timeout
+        # tend = (time.time() + timeout) if timeout is not None else float('inf')
+        # retry_count = 0
+        # while True:
+        #     try:
+        #         if tend != float('inf'):
+        #             tleft = tend - time.time()
+        #             if tleft <= 0:
+        #                 raise urllib2.URLError(socket.timeout('timed out'))
+        #             print '  Request:', request
+        #             print '  Allowed time:', tleft
+        #             response = json.load(urllib2.urlopen(request, timeout=tleft))
+        #         else:
+        #             response = json.load(urllib2.urlopen(request))
+        #     except IOError:
+        #         # check that the throttle wait doesn't exceed our retry limit
+        #         if self.throttle_wait > tend - time.time():
+        #             raise
+        #         # if we're out of retries -- just raise the error
+        #         if retry_count >= retry_limit:
+        #             raise
+        #         retry_count += 1
+        #         time.sleep(self.throttle_wait)
+        #     else:
+        #         return self.postprocess_response(response)
+
+    def graph_api_page_request(self, fb_id, metadata=False, timeout=None, retry_limit=1):
         '''
         Convenience method to query the Graph API for a page object.
 
-        Will always return metadata. To customize this, use 
-        graph_api_objects_request.
+        Will always return metadata. To customize this, use
+        graph_api_object_request.
 
         Will fail with a TypeError if the returned object isn't a page.
         '''
-        page_info = self.graph_api_objects_request(fbid,metadata=True)
+        page_info = self.graph_api_object_request(fb_id, metadata=True, timeout=timeout, retry_limit=1)
         if page_info.get('type') != 'page':
-            raise TypeError("Expected 'page' object from Graph API. Received '%s'." % page_info.get('type') )
+            raise TypeError("Expected 'page' object from Graph API. Received '%s'." % page_info.get('type'))
+        if not metadata:
+            page_info.pop('metadata')
         return page_info
 
-    def graph_api_picture_request(self,fbid,size='normal'):
+    def graph_api_picture_request(self, fb_id, size='normal', timeout=None):
         '''
-        Returns the url to the picture connected to the given object. 
+        Returns the url to the picture connected to the given object.
 
-        size can be among 'small','normal','large'
+        size can be among 'small', 'normal', 'large'.
         '''
-        url = 'http://graph.facebook.com/%s/picture?type=%s' % (fbid,size)
-        response =  delayed_retry_on_ioerror(lambda:urllib.urlopen(url),
-                                            delay_seconds=3,
-                                            retry_limit=2,
-                                            logger=outsourcing_log)
+        url = 'http://graph.facebook.com/%s/picture?type=%s' % (fb_id, size)
+        if timeout is None:
+            response = urllib2.urlopen(url)
+        else:
+            response = urllib2.urlopen(url, timeout=timeout)
         return response.url
 
-    def graph_api_objects_request(self,ids,metadata=False):
+    def graph_api_object_request(self, fb_id, metadata=False, timeout=None, retry_limit=1):
         '''
-        Returns details about objects with known Facebook ids. Input
-        is a list of ids (numbers or strings OK), output is a parallel
-        list of response dicts.
+        Returns a dict of data for given Graph API object.
 
-        A single string/value can be input without a list for convenience's 
-        sake. In this case, the single result will be returned in isolation 
-        (not in a list).
-
-        If metadata is True, the metadata argument will be enabled on the 
-        call, returning supplemental introspective fields for the object 
-        under the 'metadata' key (a root-level "type" key will also be 
+        If metadata is True, the metadata argument will be enabled on the
+        call, returning supplemental introspective fields for the object
+        under the 'metadata' key (a root-level "type" key will also be
         part of the results).
 
         Will raise IOError if response could not be received from the API
-        service. Any problem with response content will raise a 
+        service. Any problem with response content will raise a
         FacebookAPIError.
         '''
-        return_list = True
-        # duck typing fun to handle single id case
-        if isinstance(ids,basestring):
-            ids = [ids]
-            return_list = False
-        try:
-            ids = [str(id) for id in ids]
-        except TypeError:   # if the input was a number
-            ids = [str(ids)]
-            return_list = False
+        get_opts = {}
+        if self.access_token:
+            get_opts['access_token'] = self.access_token
+        if metadata:
+            get_opts['metadata'] = 1
 
-        get_opts = { 'ids': ','.join(ids) }
+        query_string = urllib.urlencode(get_opts)
+        request_url = 'https://graph.facebook.com/' + fb_id
+        if len(get_opts) > 0:
+            request_url += '?' + query_string
+
+        # handles retries and exception handling
+        return self._make_request(request_url, timeout=timeout, retry_limit=retry_limit)
+
+    def graph_api_multiobject_request(self, fb_ids, metadata=False, timeout=None, retry_limit=1):
+        '''
+        Does a "psuedo-batch" request for multiple objects with known
+        Facebook ids. Input is a list of ids (numbers or strings OK),
+        output is a parallel list of response dicts.
+
+        Be careful with this, if any of the requests are bad, the whole
+        thing will fail.
+
+        See graph_api_object_request for metadata details.
+
+        Will raise IOError if response could not be received from the API
+        service. Any problem with response content will raise a
+        FacebookAPIError.
+        '''
+        get_opts = {'ids': ', '.join(map(str, fb_ids))}
         if self.access_token:
             get_opts['access_token'] = self.access_token
         if metadata:
@@ -178,45 +210,44 @@ class GraphAPIClient(object):
         request_url = 'https://graph.facebook.com/?' + query_string
 
         # handles retries and exception handling
-        response = self._make_request(request_url)
+        response = self._make_request(request_url, timeout=timeout, retry_limit=retry_limit)
 
-        # return sorted list based on the input id ordering
-        responses = [response[id] for id in ids]
-        if return_list:
-            return responses
-        elif len(responses) > 1:
-            raise FacebookAPIError(request_url,'Internal error: More than one response returned to single object query.')
-        else:
-            return responses[0]
+        # result will be a dict indexed by facebook id
+        return [response[fb_id] for fb_id in fb_ids]
 
-    def graph_api_collection_request(self,suburl,max_pages=10,**kw_options):
+    def graph_api_collection_request(self, suburl, max_pages=10, timeout=None, retry_limit=1, **kw_options):
         '''
-        Thin wrapper around Graph API query that returns pages of 'data' arrays. 
-        kw_options can take any option that the graph query could take. 
+        Thin wrapper around Graph API query that returns pages of 'data' arrays.
+        kw_options can take any option that the graph query could take.
 
-        e.g. - graph_api_collection_request('cocacola/events') 
+        e.g. - graph_api_collection_request('cocacola/events')
                 for all events connected to Coca-Cola
-             - graph_api_collection_request('search',q=coffee,
+             - graph_api_collection_request('search', q=coffee,
                                         type=place,
-                                        center=37.76,-122.427,
+                                        center=37.76, -122.427,
                                         distance=1000)
-                for all pages with coffee in the name 1km from (37.76,-122.427)
+                for all pages with coffee in the name 1km from (37.76, -122.427)
             See https://developers.facebook.com/docs/reference/api/ for more.
 
         Paging will be automatically followed up to max_pages requests. This
         limit can be disabled by setting it to None or a non-positive number.
-        A runaway query could run for a VERY long time, hence the need to 
+        A runaway query could run for a VERY long time, hence the need to
         explicitly disabling the max pages.
+
+        timeout is the allowed time for ALL paging requests to finish (this is
+        always AT LEAST 2 requests, since we don't know we're done till we hit
+        an empty request), so this multiplicative effect should be considered if
+        using a timeout.
         '''
         if max_pages < 1:
             max_pages = None
 
         get_args = {}
         if self.access_token:
-            get_args = {'access_token':self.access_token}
+            get_args = {'access_token': self.access_token}
         if kw_options:
             get_args.update(kw_options)
-        
+
         request_url = 'https://graph.facebook.com/' + suburl
         if get_args:
             request_url += '?' + urllib.urlencode(get_args)
@@ -224,14 +255,15 @@ class GraphAPIClient(object):
         all_data = []
         pages_read = 0
         # inside loop because results might be paged
+        tstart = time.time()
         while request_url:
+            tleft = timeout - (time.time() - tstart) if timeout is not None else None
             # handles retries and exception handling
-            response = self._make_request(request_url)
+            response = self._make_request(request_url, timeout=tleft, retry_limit=retry_limit)
 
             if 'data' not in response:
-                raise FacebookAPIError(request_url,
-                                        "Expected response: no 'data' field")
-            
+                raise FacebookAPIError("Expected response: no 'data' field")
+
             all_data.extend(response['data'])
 
             # if there's more pages to the results, fb gives a handy url to go to next page
@@ -245,40 +277,3 @@ class GraphAPIClient(object):
                 break
 
         return all_data
-
-    def run_batch_request(self,batch_commands,process_response=True):
-        '''
-        Runs a batch of GET calls. Argument should be a list of BatchCommand
-        objects. All commands are run relative to https://graph.facebook.com/
-
-        If process_response is True (default), a list of response dicts
-        parsed out from the "body" elements of the full response will be
-        returned. Otherwise, the bare full response (with status codes and 
-        headers) will be directly returned.
-        
-        See https://developers.facebook.com/docs/reference/api/batch/
-        for more details on the format of this responses.
-        '''
-        command_dicts = [cmd.to_command_dict() for cmd in batch_commands]
-        data = {'batch': json.dumps(command_dicts)}
-        if self.access_token:
-            data['access_token'] = self.access_token
-        
-        req = urllib2.Request(url='https://graph.facebook.com/',data=urllib.urlencode(data))
-        # handles retries and exception handling
-        response = self._make_request(req,urllib2)
-
-        if process_response:
-            return [json.loads(entry['body']) if entry else None
-                        for entry in response]
-        else:
-            return response
-
-# onlyinpgh.com app credentials
-OIP_APP_ID = '203898346321665'
-OIP_APP_SECRET = '897ca9d744d43da15d40d3f793f112e3'
-# if this stops working, try calling get_basic_access_token directly
-OIP_ACCESS_TOKEN = '203898346321665|e_aVTLcJCsV3c9tiQJn0tZjWcZg'
-
-SCENABLE_APP_ID = '320468664678832'
-SCENABLE_APP_SECRET = '0dc296287dbe668954e256c43206504d'

@@ -1,8 +1,14 @@
-from django.conf.urls.defaults import patterns, url
-from django.views.generic.simple import redirect_to
+from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
+from django.views.generic.simple import redirect_to, direct_to_template
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
+from haystack.forms import SearchForm
+from haystack.views import search_view_factory
+from onlyinpgh.common.views import PageSiteSearch
+from onlyinpgh import settings
 
 admin.autodiscover()
 

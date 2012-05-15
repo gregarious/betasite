@@ -1,0 +1,39 @@
+{% extends "page.html" %}
+
+{% comment %}
+Page-based template for the Places feed
+
+Context variables:
+    event: EventData instance
+{% endcomment %}
+
+{% block main-content %}
+<article class="page-single" id="event-single">
+	{% include "events/single.html" %}
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_events_single.html" %}
+{% endblock %}
+
+{% block foot-inlines %}
+<script type="text/javascript">
+$(function(){
+    {# attendButton element should be inside places/header.html #}
+    scenable.useractions.attachAttendanceHandler(
+        document.getElementById('attendingButton'), {{ event.id }});
+    {% if event.place.location.latitude and event.place.location.longitude %}
+    var pos = new google.maps.LatLng({{event.place.location.latitude|default:"NaN"}},{{event.place.location.longitude|default:"NaN"}});
+    // id comes from an element drawn in places/details.html
+    var map = scenable.map.mapFactory('single',
+            document.getElementById('mainEventMap'),
+            {center: pos});
+    new google.maps.Marker({
+        position: pos,
+        map: map
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}

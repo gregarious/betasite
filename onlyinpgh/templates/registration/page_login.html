@@ -1,0 +1,30 @@
+{% extends "page.html" %}
+
+{% block main-content %}
+<article class="page-main" id="login-page">
+	<h1 class="page-title">Hey Beta Tester!</h1>
+	<section class="notification">
+		<h2 class="">First time here? <a href="{% url signup %}">Claim your account.</a></h2>
+		<p>Scenable is currently in its private beta testing phase. Not a Beta Tester? Send us a message at <a href="mailto:contact@scenable.com">contact@sceneble.com</a> and we'll see if we can squeeze you onto the list.</p>
+ 	</section>
+ 	<section class="registration-form-container">
+		<p>If you've been here before, welcome back! Sign in using the form below.</p>
+        <form method="post" action="{{ form_action }}">
+            {% csrf_token %}
+            {% include "registration/login_form.html" %}
+            <div class="row-container">
+                <div class="field remember-me">
+                    {{remember_me.remember_me}}
+                    {{remember_me.remember_me.label_tag}}
+                </div>
+            </div>
+            <input type="submit" value="Login" class="submit-item next" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+	</section>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_login.html" %}
+{% endblock %}

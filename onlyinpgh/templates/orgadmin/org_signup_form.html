@@ -1,0 +1,76 @@
+{% comment %}
+Inner template for org signup form.
+
+Context variables:
+	registration_form: RegistrationForm (from accounts.forms)
+	org_form: SimpleOrgForm (from orgadmin.forms)
+{% endcomment %}
+
+<form action="{% url orgadmin-signup %}" method="POST" >
+	{% csrf_token %}
+	
+	<div class="field-container">
+		<div class="field-label">
+			{{ registration_form.username.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.username }}
+			<p class="tip">Your unique login name</p>
+			{{ registration_form.username.errors }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			{{ registration_form.email.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.email }}
+			{{ registration_form.email.errors }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{ registration_form.password1.label_tag }}
+		</div>
+		<div class="field">
+			{{ registration_form.password1 }}
+			{{ registration_form.password1.errors }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container last">
+		<div class="field-label">
+			<label for="id_{{registration_form.password2.html_name}}">Confirm Password</label>
+		</div>
+		<div class="field">
+			{{ registration_form.password2 }}
+			{{ registration_form.password2.errors }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="field-container">
+		<div class="field-label">
+			{{ org_form.name.label_tag }}
+		</div>
+		<div class="field">
+			{{ org_form.name }}
+			<p class="tip">The organization you are representing</p>
+			{{ org_form.name.errors }}
+		</div>
+	</div> <!-- .field-container -->
+
+	<div class="row-container">
+	    <div class="field remember-me">
+	        {{remember_me.remember_me}}
+	        {{remember_me.remember_me.label_tag}}
+	    </div>
+	</div>
+
+	<nav class="prev-next">
+		<a href="{% url orgadmin-login %}" title="Cancel" class="back">Cancel</a>
+		<input type="submit" value="Sign Up" class="next"  />
+	</nav>
+
+</form>

@@ -1,0 +1,18 @@
+{% extends "orgadmin/manage_page.html" %}
+
+{% block main-content %}
+<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
+
+<h2>Login to your Account...</h2>
+<form method="post" action="{{ form_action }}">
+{% csrf_token %}
+    {% include "registration/login_form.html" with form=form form_action=form_action %}
+    <div class="row-container">
+        <div class="field remember-me">
+            {{remember_me.remember_me}}
+            {{remember_me.remember_me.label_tag}}
+        </div>
+    </div>
+    <input type="submit" value="Login" class="submit-item next" />
+</form>
+{% endblock %}

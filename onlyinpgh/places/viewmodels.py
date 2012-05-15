@@ -1,124 +1,63 @@
-from onlyinpgh.common.core.viewmodels import ViewModel
+from onlyinpgh.events.models import Event
+from onlyinpgh.specials.models import Special
+from django.contrib.auth.models import User
 
-from onlyinpgh.places.models import Place
+from onlyinpgh.events.viewmodels import EventData
+from onlyinpgh.specials.viewmodels import SpecialData
 
-from onlyinpgh.common.viewmodels import FeedCollection
+from onlyinpgh.common.utils import get_cached_thumbnail
 
-from onlyinpgh.common.utils import process_external_url
-
-import urllib
-
-
-def to_directions_link(location):
-    daddr = ''
-    if location.address:
-        daddr = location.address
-        if location.postcode:
-            daddr += ', ' + location.postcode
-    elif location.longitude and not location.latutude:
-        daddr = '(%f,%f)' % (float(location.longitude), float(location.latutude))
-
-    if not daddr:
-        return None
-    else:
-        return 'http://maps.google.com/maps?' + urllib.urlencode({'daddr': daddr})
+from django.template.defaultfilters import truncatewords
 
 
-class PlaceFeedItem(ViewModel):
-    '''
-    Exposes the following data:
-        place
-            id
-            name
-            location
-                address
-                postcode
-                town
-                state
-                country
-                latitude
-                longitude
-            image_url
-            description
-            [tags]
-                id
-                name
-    '''
+class PlaceData(object):
     def __init__(self, place, user=None):
-        super(PlaceFeedItem, self).__init__()
-        self.place = place
-        # TODO: reenable favorites when user model is created
-        # if user:
-        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
+        fields = ('id', 'name', 'location', 'description', 'tags', 'image',
+                  'url', 'fb_id', 'twitter_username', 'listed', 'get_absolute_url')
+        if isinstance(user, User):
+            self.is_favorite = place.favorite_set.filter(user=user).count() > 0
+        else:
+            self.is_favorite = False
+        for attr in fields:
+            setattr(self, attr, getattr(place, attr))
+        # do hours and parking separately
+        self.hours = place.hours_unpacked()
+        #self.parking = place.parking_unpacked()
+        self.pk = self.id
 
-    def to_data(self, *args, **kwargs):
-        data = super(PlaceFeedItem, self).to_data(*args, **kwargs)
-        place_data = data.get('place')
-        keepers = set(('id', 'name', 'location', 'image_url', 'description', 'tags'))
-        for k in place_data.keys():
-            if k not in keepers:
-                place_data.pop(k)
-        return data
+    def serialize(self):
+        '''
+        Temporary method to take the place of TastyPie serialization
+        functionality. Will remove later in place of TastyPie functionality,
+        but too many special issues (e.g. thumbnails) to worry about
+        doing "right" at the moment.
+        '''
+        thumb_small = get_cached_thumbnail(self.image, 'small') if self.image else None
+        thumb_standard = get_cached_thumbnail(self.image, 'standard') if self.image else None
+
+        return {
+            'name': self.name,
+            'description': truncatewords(self.description, 15),
+            'location': {
+                'address': self.location.address,
+                'latitude': float(self.location.latitude) if self.location.latitude is not None else None,
+                'longitude': float(self.location.longitude) if self.location.longitude is not None else None,
+                'is_gecoded': self.location.latitude is not None and self.location.longitude is not None,
+            } if self.location else None,
+            'tags': [{
+                'name': tag.name,
+                'permalink': tag.get_absolute_url(),
+            } for tag in self.tags.all()[:4]],
+            'hours': self.hours,
+            'image': self.image.url if self.image else '',
+            # special fields only for JSON output
+            'permalink': self.get_absolute_url(),
+            'thumb_small': thumb_small.url if thumb_small else '',
+            'thumb_standard': thumb_standard.url if thumb_standard else '',
+        }
 
 
-class PlaceDetail(ViewModel):
-    '''
-    Exposes the following data:
-        place
-            id
-            dtcreated
-            name
-            location
-                address
-                postcode
-                town
-                state
-                country
-                latitude
-                longitude
-            image_url
-            description
-            [tags]
-                id
-                name
-            hours
-            parking
-            phone
-            url
-            fb_id
-            twitter_username
-    '''
+class PlaceRelatedFeeds(object):
     def __init__(self, place, user=None):
-        super(PlaceDetail, self).__init__()
-        self.place = place
-
-        # TODO: reenable favorites when user model is created
-        # if user:
-        #     self.is_favorite = FavoriteItem.objects.filter_by_type(model_instance=place).count() > 0
-
-    def to_data(self, *args, **kwargs):
-        '''Manually handles setting of place data'''
-        data = super(PlaceDetail, self).to_data(*args, **kwargs)
-        url = data['place']['url']
-        if url:
-            data['place']['url'] = process_external_url(url)
-        return data
-
-
-class PlaceRelatedFeeds(FeedCollection):
-    def __init__(self, place, user=None):
-        # TODO: This is a temporary placeholder for related feeds. Need events, offers, etc. here,
-        #  but using places for the sake of testing and mockup styling
-        places1_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-        places2_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-        places3_feed = PlacesFeed.init_from_places(Place.objects.all().order_by('?')[:4], user=user)
-
-        feed_tuples = [('Places 1', places1_feed),
-                       ('Places 2', places2_feed),
-                       ('Places 3', places3_feed),
-                    ]
-        super(PlaceRelatedFeeds, self).__init__(feed_tuples)
-
-    def to_html(self, request=None):
-        print 'PlaceRelatedFeeds:', self.__dict__
-        return super(PlaceRelatedFeeds, self).to_html(request)
+        self.events_feed = [EventData(e, user) for e in Event.objects.filter(place=place)]
+        self.specials_feed = [SpecialData(s, user) for s in Special.objects.filter(place=place)]

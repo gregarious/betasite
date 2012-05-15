@@ -1,34 +1,26 @@
 {% comment %}
-Template to render a particular Special as a feed item.
-
-Compatible ViewModel: specials.viewmodels.SpecialFeedItem
+Template to render a particular special as a feed item.
 
 Context variables:
-	special:			Special ViewModel
+	special: SpecialData instance
 {% endcomment %}
 
-
 <div class="item-thumb">
-	<div class="points">+{{special.points}}</div>
-	<button class="btn btn-primary">Grab It!</button>
+	<div><a href="{{special.get_absolute_url}}" title="See Special"><img class="thumbnail" src="{{STATIC_URL}}img/defaults/default-special.png" /></a></div>
 </div>
 
 <section class="item-content">
-	<h4 class="item-title">
-		<a href="{% url specials-item-detail special.id %}">{{special.title}}</a>
-	</h4>
-
+	<h4 class="item-title"><a href="{{special.get_absolute_url}}">{{special.title|truncatewords:7}}</a></h4>
 	<ul class="item-details">
-		<li>{{special.place.name}}</li>
+		<li>at <a class="host" href="{{special.place.get_absolute_url}}">{{special.place.name}}</a></li>
 		{% if special.dtexpires %}
-			<li><time class="datetime meta">Expires {{special.dtexpires}}</time>
+			<li><time class="datetime meta">Expires {{special.dtexpires}}</time></li>
 		{% endif %}
 		{% if special.description %}
-			<li class="description meta">{{ special.description|truncatewords:35|urlizetrunc:20 }}</li>
+			<li class="description meta">{{ special.description|truncatewords:20|urlizetrunc:20 }}</li>
 		{% endif %}	
-
 	</ul>
-
+	
 	{% include "tags/tag_list.html" with tags=special.tags %}
 	
 </section>

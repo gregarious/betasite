@@ -1,0 +1,9 @@
+{% extends "orgadmin/manage_page.html" %}
+
+{% block main-content %}
+<p class="form-help" id="login-prompt">Already have a Scenable account? <a href="{% url orgadmin-login %}">Login here</a>.</p>
+<img id="header-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-sky.png">
+
+<h2>Register for a Scenable Business Account...</h2>
+{% include "orgadmin/org_signup_form.html" with registration_form=registration_form org_form=org_form %}
+{% endblock %}

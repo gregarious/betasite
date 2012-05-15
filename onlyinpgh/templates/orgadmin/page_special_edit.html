@@ -1,0 +1,131 @@
+{% extends "orgadmin/manage_page.html" %}
+{% comment %}
+Context variables
+    form: SimpleSpecialForm
+    tag_names: List of all tag names (temporary hack)
+{% endcomment %}
+
+{% block main-content %}
+<h2>Editing your special...</h2>
+
+<form method="post" action="">
+
+    {% csrf_token %}
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.title.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.title }}
+            <p class="tip">What is your special? 140 characters max.
+            {% for err in form.title.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.place.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.place }}
+            {% for err in form.place.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container last">
+        <div class="field-label">
+            <label for="id_{{form.dstart.html_name}}">Dates</label>
+        </div>
+        <div class="double">
+            <div class="field">
+                <input id="id_{{form.dstart.html_name}}" type="text" class="datepicker-start" value="{{ form.dstart.value|date:"m/d/Y" }}" name="{{form.dstart.html_name}}" />
+                <p class="tip">Special begins</p>
+                {% for err in form.dstart.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                <input id="id_{{form.dexpires.html_name}}" type="text" class="datepicker-end" value="{{ form.dexpires.value|date:"m/d/Y" }}" name="{{form.dexpires.html_name}}" />
+
+                <p class="tip">Special expires</p>
+                {% for err in form.dexpires.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<!--     <div class="field-container inner">
+        <div class="field-label">
+            {{ form.total_available.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.total_available }}
+            {% for err in form.total_available.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div> -->
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.description.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container tags">
+        <div class="field-label">
+            <label for="id_{{ form.tags.html_name }}">Tags</label>
+        </div>
+        <div class="field">
+            {{ form.tags }}
+            <p class="tip">Add keywords or search terms like 'theater, culture, ballet'. <strong>Separate tags with commas.</strong> Use hyphens for a tag with multiple words (for example, 'happy-hour').</p>
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <nav class="prev-next">
+        <input type="submit" class="next" value="Submit" />
+        <a href="{% url orgadmin-listspecials %}" title="Cancel" class="back">Cancel</a>
+    </nav>
+</form>
+{% endblock %}
+
+{% block additional-scripts %}
+<script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/tags.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.datepicker-start, .datepicker-end').datepicker();
+
+    var tagNames = [
+        {% for name in tag_names %}
+            "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
+    {# TODO: remove initial selected autocomplete hack #}
+    {% if initial_selected %}
+    scenable.onACSelect( {
+        'item': {
+            label: '',
+            value: '{{form.place.value}}',
+            selectedDisplay: '{{initial_selected|escapejs}}'
+        }
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}

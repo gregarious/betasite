@@ -1,0 +1,341 @@
+{% extends "orgadmin/manage_page.html" %}
+{% comment %}
+Context variables
+    form: OrgAdminPlaceForm
+    tag_names: List of all tag names (temporary hack)
+{% endcomment %}
+
+{% block main-content %}
+<header class="form-header">
+    <!-- <img src="{{STATIC_URL}}img/home_place.png" alt="Storefront" /> -->
+    <h2>Editing your location...</h2>
+</header>
+
+<form enctype="multipart/form-data" method="post" action="">
+
+{% csrf_token %}
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.name.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.name }}
+            {% for err in form.name.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.location.html_name }}">Street Address</label>
+        </div>
+        <div class="field">
+            {{ form.location }}
+            <p class="tip">Just the street address, we know you're in Oakland :)</p>
+            {% for err in form.location.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container last">
+        <div class="field-label">
+            {{ form.phone.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.phone }}
+            {% for err in form.phone.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.hr_days_1.html_name }}">Hours</label>
+        </div>
+        <p class="tip" id="hours-tip">Add a set of hours for your place. The first field is for hours, the second for days. To add another set, click the '+' to the right.</p>
+        <div class="double">
+            <div class="field">
+                <p class="tip">Days e.g. Mon-Fri or Sun.</p>
+            </div>
+            <div class="field">
+                <p class="tip">Hours e.g. 9am-5pm or Closed</p>
+            </div>
+        </div> <!-- Hours/Days tips -->
+        <div class="double hour-day-container">
+            <div class="field">
+                {{ form.hr_hours_1 }}
+                {% for err in form.hr_hours_1.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_1 }}
+                {% for err in form.hr_days_1.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_2.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if not form.hr_hours_2.value and not form.hr_days_2.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_2 }}
+                {% for err in form.hr_hours_2.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_2 }}
+                {% for err in form.hr_days_2.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_3.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if not form.hr_hours_3.value and not form.hr_days_3.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_3 }}
+                {% for err in form.hr_hours_3.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_3 }}
+                {% for err in form.hr_days_3.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_4.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if not form.hr_hours_4.value and not form.hr_days_4.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_4 }}
+                {% for err in form.hr_hours_4.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_4 }}
+                {% for err in form.hr_days_4.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_5.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+        <div class="double hour-day-container" {%if not form.hr_hours_5.value and not form.hr_days_5.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_5 }}
+                {% for err in form.hr_hours_5.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_5 }}
+                {% for err in form.hr_days_5.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_6.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if not form.hr_hours_6.value and not form.hr_days_6.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_6 }}
+                {% for err in form.hr_hours_6.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_6 }}
+                {% for err in form.hr_days_6.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            {% if not form.hr_hours_7.value %}
+                <a href="#" class="add-hour-row-btn">+</a>
+            {% endif %}
+        </div>
+
+
+        <div class="double hour-day-container" {%if not form.hr_hours_7.value and not form.hr_days_7.value%}style="display:none"{%endif%}>
+            <div class="field">
+                {{ form.hr_hours_7 }}
+                {% for err in form.hr_hours_7.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+            <div class="field">
+                {{ form.hr_days_7 }}
+                {% for err in form.hr_days_7.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.parking.label_tag }}
+        </div>
+        <div class="field" id="parking">
+            {{ form.parking }}
+            {% for err in form.parking.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container last">
+        <div class="field-label">
+            <label for="id_{{ form.url.html_name }}">Website</label>
+        </div>
+        <div class="field">
+            {{ form.url }}
+            {% for err in form.url.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            {{ form.image.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.image }}
+            {% for err in form.image.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container last">
+        <div class="field-label">
+            {{ form.description.label_tag }}
+        </div>
+        <div class="field">
+            {{ form.description }}
+            {% for err in form.description.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container first">
+        <div class="field-label">
+            <label for="id_{{ form.tags.html_name }}">Tags</label>
+        </div>
+        <div class="field tag-input">
+            {{ form.tags }}
+            <p class="tip">Add keywords or search terms like 'bar, food, casual'. <strong>Separate tags with commas.</strong> Use hyphens for a tag with multiple words (for example, 'real-estate').</p>
+            {% for err in form.tags.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.fb_id.html_name }}">Facebook</label>
+        </div>
+        <div class="field">
+            <div class="social-input">
+                {{ form.fb_id }}
+                <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
+            </div>
+            {% for err in form.fb_id.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+            <p class="tip">Enter your Facebook ID. Not sure how to find it? Go to your Facebook page and copy and paste the number or username as seen <a href="{{STATIC_URL}}img/fb-id-instructions.png" title="Find your Facebook ID">here</a>.</p>
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.twitter_username.html_name }}">Twitter</label>
+        </div>
+        <div class="field">
+            <div class="social-input">
+                {{ form.twitter_username }}
+                <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
+            </div>
+            {% for err in form.twitter_username.errors %}
+                <p class="tip error">{{ err }}</p><br />
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="field-container">
+        <div class="field-label">
+            <label for="id_{{ form.listed.html_name }}">Listed?</label>
+        </div>
+        <div class="field">
+            <div class="check-container">
+                {{ form.listed }}
+            </div>
+            <div class="check-desc-container">
+                <p class="tip">Uncheck this box if this location should not be listed on Scenable.com's Places page. (We recommend leaving it checked if you want to attract users to this address).</p>
+                {% for err in form.listed.errors %}
+                    <p class="tip error">{{ err }}</p><br />
+                {% endfor %}    
+            </div>
+        </div>
+    </div> <!-- event url -->
+
+    <nav class="prev-next">
+        <input type="submit" value="Save Changes" class="next" />
+        <a href="{% url orgadmin-listplaces %}" class="back" title="Cancel">Cancel</a>
+    </nav>
+</form>
+{% endblock %}
+
+{% block additional-scripts %}
+<script type="text/javascript" src="{{STATIC_URL}}js/orgadmin/tags.js"></script>
+<script type="text/javascript">
+// Prerequesites: jQuery, jQuery UI autocomplete
+$(function() {
+    // add plus button functionality
+    $(".hour-day-container").on('click', '.add-hour-row-btn', function(event){
+            $(this).hide() // hides the + button
+               .parent().next('.hour-day-container').show(); // shows the next input
+            return false;
+    });
+
+    var tagNames = [
+        {% for name in tag_names %}
+            "{{name|escapejs}}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    scenable.activateTagAC('#id_{{form.tags.name}}', tagNames);
+    {# TODO: remove initial selected autocomplete hack #}
+    {% if initial_selected %}
+    scenable.onACSelect( {
+        'item': {
+            label: '',
+            value: '{{form.place.value}}',
+            selectedDisplay: '{{initial_selected|escapejs}}'
+        }
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}

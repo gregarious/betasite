@@ -1,0 +1,389 @@
+/*******************************/
+/* 18 MEDIA QUERIES ---------- */
+/*******************************/
+
+// Styles for desktop and larger
+@media screen and (max-width: 1140px) {
+  body {
+    background-image: url("@{static_url}img/logos/oakland-bkgd-325.png");
+  }
+ 
+  #scene-nav {
+    .rounded(0);
+  }
+}
+
+// Styles for smaller desktop/larger tablet
+@media screen and (max-width: 992px) {
+
+  #logo {
+    padding-top: 0.5em;
+  }
+
+  .detail-nav {
+    .row();
+    margin-top: 1em;
+
+    ul {
+      .clearfix();
+
+      li a {
+        .column(4);
+        .tabs(0.5em);
+        position: relative;
+        top: 1px;
+        text-align: center;
+        font-weight: bold;
+        float: left;
+        border-right: 1px solid #ccc;
+      }
+    }
+
+    &#profile-nav {
+      ul li a {
+        .column(3);
+      }
+    }
+  }
+
+  .detail-section {
+    .row();
+  }
+
+  .detail-section-title {
+    display: none;
+  }
+
+  .single-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-main {
+    .events, .places, .specials, .chatter {
+      .item {
+        .row();
+        height: auto;
+      }
+    }
+  }
+
+}
+
+// Styles for tablets
+@media screen and (max-width: 810px) {
+
+  body {
+   background-image: none;
+  }
+
+  .page-single {
+    margin-top: 0;
+  }
+
+  .page-main {
+    .places, .specials, .chatter {
+      .item {
+        .column(6);
+        height: 110px;
+      }
+    }
+    .events {
+      .item {
+        .column(6);
+        height: 130px;
+      }
+    }
+  }
+
+  #utility {
+    .row();
+    margin: 0;
+    a {
+      color: @yellow;
+    }
+    height: 2.5em;
+  }
+
+  #site-content {
+    .no-b-shadow;
+    .row();
+    margin: 0;
+    padding: 0;
+    top: 7.5em;
+  }
+
+  .feed {
+    margin: 0;
+    clear: both;
+  }
+
+  #site-sidebar {
+    display: none;
+  }
+
+  #scene-nav {
+    top: 2em;
+    .main-menu {
+      .column_r(9);
+    }
+  }
+
+  #logo {
+    .column(3);
+    height: auto;
+  }
+  
+  .field-label, label {
+    .row();
+    text-align: left;
+    margin: 0 0.5em 0.5em;
+  }
+
+  .field {
+    .row();
+  }
+
+  .field-container {
+    margin: 1em 0;
+  }
+
+  #utility {
+    position: absolute;
+    bottom: 5.1em;
+    background: #444;
+    padding: 0.5em;
+    border-bottom: 1px solid #888;
+    color: #fff;
+
+    .site-search-container {
+      .column_r(5);
+    }
+
+    .simple-form {
+      .row();
+
+      input[type="search"] {
+        padding: 0.1em;
+        margin: 0;
+        .row();
+      }
+
+      input[type="submit"] {
+        display: none;
+      }
+    }
+
+    #debug-user {
+      .column(7);
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  .item {
+    .row();
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  .hot-section-title {
+    margin: 0;
+    .rounded(0);
+  }
+
+  .page-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+// Styles for higher res phones
+@media screen and (max-width: 600px) {
+
+  .page-main {
+    .feed {
+      .item {
+        height: auto !important;
+        .row();
+
+        .description {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .single-container {
+    padding: 0;
+    border: none;
+    background: url("/static/img/textures/white-tex.png");
+  }
+
+  .single-header {
+    padding: 1em 1em 0 1em;
+    border: none;
+  }
+
+  #utility {
+    bottom: 4.1em;
+  }
+
+  .btn-primary {
+    padding: 0.3em;
+  }
+
+  .single-content {
+    .map-container {  
+      .row();
+      margin-bottom: 1em;
+    }
+  }
+
+  .single-content.places {
+    .row();
+  }
+
+  .main-menu { 
+    display: none; 
+  }
+
+  #select-nav {
+    display: inline-block;
+    .column_r(5);
+    margin: 1.5em 0.5em 2em;
+  }
+
+  .detail-section {
+    .row();
+    padding: 0.3em;
+    
+    .map-container {
+      margin: 1em 0;
+    }
+
+    .section-title {
+      display: none;
+    }
+
+    &#placeDetail {
+      padding: 0 1em 1em;
+      .item-details {
+        .row();
+
+        ul {
+          li {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  #scene-nav {
+    border: none;
+  }
+
+  .item-title {
+    font-size: 1em;
+  }
+
+  #logo {
+    padding-top: 0.7em;
+    margin-left: 0.5em;
+    width: auto;
+    height: 120%;
+  }
+
+  .filter {
+    display: none;
+  }
+
+  #site-content {
+    top: 6.5em;
+    padding: 0;
+  } 
+
+  .page-main {
+    margin: 0;
+  }
+
+  #scene-nav {
+    height: 4.5em;
+  }
+}
+
+// Styles for phones
+@media only screen and (max-width: 480px) {
+
+  #bar, #bus-mgmt-link {
+    display: none;
+  }
+
+  .single-title {
+    font-size: 1em;
+    text-shadow: none;
+  }
+
+  .item-details, .item-title {
+    font-size: 0.9em;
+  }
+
+  #now-page {
+    .feed {
+      .item.short {
+        .column(6);
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #chatter-page {
+    .page-title {
+      display: none;
+    }
+    .page-header-content {
+      .row();
+    }
+    .feed, form {
+      padding: 0;
+    }
+    .page-header {
+      margin-top: 1em;
+    }
+  }
+
+  .single-header {
+    padding: 0;
+  }
+
+  .page-single {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-main {
+    .map-title-container {
+      display: none;
+    }
+    .map-container {
+      height: 150px;
+      margin-top: 1em;
+    }
+  }
+
+  .page-nav-container {
+    .simple-form {
+      .column(9);
+    }
+  }
+
+}
+
+@media only screen and (max-width: 320px) {
+}

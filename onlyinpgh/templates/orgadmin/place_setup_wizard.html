@@ -1,7 +1,7 @@
 
 <h2>Create Place</h2>
 
-<form method="post" action="">
+<form enctype="multipart/form-data" method="post" action="">
 
 {% csrf_token %}
 
@@ -62,10 +62,10 @@
 
     <div class="field-container inner">
         <div class="field-label">
-            {{ form.image_url.label_tag }}
+            {{ form.image.label_tag }}
         </div>
         <div class="field">
-            {{ form.image_url }}
+            {{ form.image }}
         </div>
     </div>
 
@@ -85,7 +85,7 @@
         <div class="field">
             <div class="social-input">
                 {{ form.fb_id }}
-                <img src="/static/img/facebook.png" alt="Facebook icon" />
+                <img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon" />
             </div>
         </div>
     </div>
@@ -97,13 +97,15 @@
         <div class="field">
             <div class="social-input">
                 {{ form.twitter_username }}
-                <img src="/static/img/twitter.png" alt="Facebook icon" />
+                <img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" />
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Create Place" class="submit-item" />
-    <button class="back">&larr; Back</button>
+    <nav class="prev-next">
+        <input type="submit" value="Create Place" class="next" />
+        <button class="back">Cancel</button>
+    </nav>
 
     {% comment %}
     form fields:

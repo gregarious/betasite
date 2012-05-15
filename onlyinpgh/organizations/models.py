@@ -7,16 +7,18 @@ class Organization(models.Model):
     '''
     Represents organizations in the community (business, charity, etc.)
     '''
-    name = models.CharField(max_length=200)
-    dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
+    name = models.CharField(u'Organization name', max_length=200)
+    dtcreated = models.DateTimeField(u'Datetime created', auto_now_add=True)
 
-    administrators = models.ManyToManyField(User, blank=True, null=True)
-    establishments = models.ManyToManyField(Place, blank=True, null=True)
+    administrators = models.ManyToManyField(User, verbose_name=u'Users with administrator access',
+        blank=True, null=True)
+    establishments = models.ManyToManyField(Place, verbose_name=u'Establishments owned',
+        blank=True, null=True)
 
-    image_url = models.URLField(max_length=400, blank=True)
-    url = models.URLField(blank=True)
-    fb_id = models.CharField(max_length=50, blank=True)
-    twitter_username = models.CharField(max_length=15, blank=True)
+    image = models.ImageField(upload_to='img/o', null=True, blank=True)
+    url = models.URLField('Website', blank=True)
+    fb_id = models.CharField('Facebook ID', max_length=50, blank=True)
+    twitter_username = models.CharField(u'Twitter username', max_length=15, blank=True)
 
     def __unicode__(self):
         return self.name

@@ -1,0 +1,36 @@
+{% extends "orgadmin/manage_page.html" %}
+{% comment %}
+Context variables
+    items: PlaceData instances
+{% endcomment %}
+
+{% block main-content %}
+{% include "orgadmin/tab_nav.html" %}
+
+<a href="{% url orgadmin-claimplace %}" class="add-item" title="Add a Place">+ Add a location</a>
+
+{% if items %}
+	<ul class="feed">
+		{% for item in items %}
+			<li class="item">
+	    		{% include "orgadmin/place_item.html" with place=item %}
+	    	</li>
+	    {% endfor %}
+    </ul>
+{% else %}
+    <section class="no-items">
+    	<img src="{{STATIC_URL}}img/manage-place.png" alt="Store front" />
+    	<p>We don't have any locations for you yet. Scenable has an extensive record of most storefronts and buildings in Oakland. Click <a href="{% url orgadmin-claimplace %}">here</a> to claim your location or create a new one in case we missed anything.
+    </section>
+{% endif %}
+{% endblock %}
+
+{% block additional-scripts %}
+<script type="text/javascript">
+$(function(){
+    $('.delete-item').on('click', function(event) {
+        return confirm('Are you sure you want to unclaim this place?');
+    });
+});
+</script>
+{% endblock %}

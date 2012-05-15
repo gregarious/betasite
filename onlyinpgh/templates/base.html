@@ -5,9 +5,52 @@ This is the most basic template for a page. This should be
 kept rather simple, Leaving the internals of the pages and 
 layouts up to child templates.
 {% endcomment %}
+{% load compressed %}
 
-{% include "head.html" %}
+{% block head %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    {% block head-title %}
+    <title>Scenable | A Platform for Local Communities Online</title>
+    {% endblock %}
+
+    {% block head-about-meta %}
+    <meta name="description" content="Scenable is an online platform that connects the web of communities which make up a place and presents them in a straightforward and easy-to-use way.">
+    <meta name="author" content="LG &amp; Sons, Daughters, Inc.">
+    {% endblock %}
+
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Webfonts -->
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Droid-Serif-fontfacekit/stylesheet.css?v=1">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Komika-Title-fontfacekit/stylesheet.css?v=1">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css?v=1">
+
+    <!-- Stylesheet -->
+    {% block head-stylesheets %}
+    {% endblock %}
+
+    {% block head-scripts %}
+    <!-- Using a semi-hacked together version of the Modernizr-Respond custom build from http://www.initializr.com/. Added a line I figured out was missing from the automated build of the file. Calling it "respond-1.1.1". See https://github.com/verekia/initializr/issues/43 -->
+    <script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
+    {% endblock %}
+</head>
+{% endblock %}
+
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a differen t browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 {% block content %}{% endblock %}
+{% block foot %}{% endblock %}
 
-{% include "foot.html" %}
+{% block analytics %}
+{% include "analytics.html" %}
+{% endblock %}
+</body>
+</html>
