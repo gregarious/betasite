@@ -1686,8 +1686,12 @@ def create_bootstrap_script(extra_text, python_version=''):
 def after_install(options, home_dir):
     import os
     import textwrap
+    requirements_file = os.path.join(home_dir, 'REQUIREMENTS.txt')
+    if not os.path.isfile(requirements_file):
+        print 'Could not find REQUIREMENTS.txt! Please manually enter the file path below.'
+        requirements_file = os.path.abspath(raw_input('File path: '))
     retcode = subprocess.call([os.path.join(home_dir, 'bin', 'pip'),
-                'install', '-r', os.path.join(home_dir, 'REQUIREMENTS.txt')])
+                'install', '-r', requirements_file])
 
     if retcode == 0:
         print textwrap.dedent('''
