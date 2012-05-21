@@ -6,6 +6,10 @@ from django.db import models
 
 class Migration(DataMigration):
 
+    depends_on = (
+        ('organizations', '0003_auto__del_field_organization_image_url__add_field_organization_image'),
+    )
+
     def forwards(self, orm):
         for oldorg in orm['organizations.Organization'].objects.all():
             org = orm['accounts.Organization'].objects.create(pk=oldorg.pk, name=oldorg.name)

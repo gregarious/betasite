@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
-from scenable.accounts.models import UserProfile, BetaMember
+from scenable.accounts.models import UserProfile, BetaMember, Organization
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
@@ -143,54 +143,9 @@ CredentialsForm.base_fields.keyOrder = ['email', 'old_password',
                                         'new_password1', 'new_password2']
 
 
-# BROKEN: PROBABLY NEVER FIX
-# class EmailOnlyRegistrationForm(UserCreationForm):
-#     """
-#     Registration form that autogenerates a username from an email
-#     address. Useful for presenting signup options to a user who has no
-#     need to know his/her username (e.g. business-only accounts).
-#     """
-#     username = forms.CharField(widget=forms.widgets.HiddenInput(), required=False)
-#     email = forms.EmailField(label="Email address", required=True)
-
-#     class Meta(UserCreationForm.Meta):
-#         fields = ("email",)
-
-#     def clean_username(self):
-#         '''
-#         Autogenerates a username.
-#         '''
-#         if 'email' not in self.data:
-#             forms.ValidationError("Username cannot be created without email address")
-#         username = basename = self.data['email'].split('@')[0][:30]
-#         suffix_int = 1
-#         while True:
-#             try:
-#                 User.objects.get(username=username)
-#             except User.DoesNotExist:
-#                 return username
-#             suffix = str(suffix_int)
-#             while len(basename + suffix) > 30:
-#                 basename = basename[:-1]
-#             username = basename + suffix
-#             suffix_int += 1
-
-#     def clean_email(self):
-#         email = self.cleaned_data["email"]
-#         try:
-#             User.objects.get(email=email)
-#         except User.DoesNotExist:
-#             return email
-#         raise forms.ValidationError("A user with that email address already exists.")
-
-#     def save(self, commit=True):
-#         '''
-#         Adds email to saved user.
-#         '''
-#         user = super(EmailOnlyRegistrationForm, self).save(commit=False)
-#         user.username = self.cleaned_data['username']   # doesn't seem to work in parent save
-#         user.email = self.cleaned_data['email']
-#         if commit:
-#             user.save()
-#         return user
-
+class OrganizationForm(forms.ModelForm):
+    '''
+    Organization-backed model form. Only exposes organization name.
+    '''
+    class Meta:
+        model = Organization

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from scenable.common.core.viewmodels import ViewModel
 from scenable.places.models import Place
 from scenable.tags.models import Tag
-from scenable.organizations.models import Organization
+from scenable.accounts.models import Organization
 from scenable.common.utils import precache_thumbnails
 
 class ListedEventManager(models.Manager):

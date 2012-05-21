@@ -136,8 +136,8 @@ INSTALLED_APPS = (
     'scenable.common',
     'scenable.accounts',
     'scenable.tags',
+    'scenable.organizations',   # kept around for migrations to work
     'scenable.places',
-    'scenable.organizations',
     'scenable.events',
     'scenable.specials',
     'scenable.news',
