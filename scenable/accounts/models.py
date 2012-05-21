@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from scenable.common.core.viewmodels import ViewModel
+from scenable.places.models import Place
 
 
 class BetaMember(models.Model):
@@ -67,6 +68,27 @@ class UserProfile(models.Model, ViewModel):
 
     def display_or_username(self):
         return self.display_name if self.display_name else self.user.username
+
+
+class Organization(models.Model):
+    '''
+    Represents organizations in the community (business, charity, etc.)
+    '''
+    name = models.CharField(u'Organization name', max_length=200)
+    dtcreated = models.DateTimeField(u'Datetime created', auto_now_add=True)
+
+    administrators = models.ManyToManyField(User, verbose_name=u'Users with administrator access',
+        blank=True, null=True, related_name='new_organization')
+    establishments = models.ManyToManyField(Place, verbose_name=u'Establishments owned',
+        blank=True, null=True, related_name='new_organization')
+
+    image = models.ImageField(upload_to='img/o', null=True, blank=True)
+    url = models.URLField('Website', blank=True)
+    fb_id = models.CharField('Facebook ID', max_length=50, blank=True)
+    twitter_username = models.CharField(u'Twitter username', max_length=15, blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 # signal handler to automatically create a new UserProfile
