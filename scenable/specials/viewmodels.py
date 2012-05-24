@@ -51,7 +51,7 @@ class SpecialData(object):
             'dexpires_str': self.dexpires_str,
             'points': self.points,
             'place': {
-                'name': truncatewords(self.place.name, 4),
+                'name': self.place.name,
                 'location': {
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,

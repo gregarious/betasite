@@ -91,7 +91,7 @@ class EventData(object):
             'dtend_str': self.dtend_str,
             'icon_day': self.icon_day,
             'place': {
-                'name': truncatewords(self.place.name, 6),
+                'name': self.place.name,
                 'location': {
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,
