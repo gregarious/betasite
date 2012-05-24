@@ -83,15 +83,15 @@ class EventData(object):
         thumb_standard = get_cached_thumbnail(self.image, 'standard') if self.image else None
         return {
             'id': self.id,
-            'name': truncatewords(self.name, 4),
-            'description': truncatewords(self.description, 10),
+            'name': self.name,
+            'description': truncatewords(self.description, 13),
             'dtstart': str(self.dtstart),
             'dtend': str(self.dtend),
             'dtstart_str': self.dtstart_str,
             'dtend_str': self.dtend_str,
             'icon_day': self.icon_day,
             'place': {
-                'name': truncatewords(self.place.name, 4),
+                'name': truncatewords(self.place.name, 6),
                 'location': {
                     'address': self.place.location.address,
                     'latitude': float(self.place.location.latitude) if self.place.location.latitude is not None else None,
@@ -100,7 +100,7 @@ class EventData(object):
                 } if self.place.location else None,
                 'permalink': self.place.get_absolute_url(),
             } if self.place else None,
-            'place_primitive': truncatewords(self.place_primitive, 4),
+            'place_primitive': truncatewords(self.place_primitive, 6),
             'image': self.image.url if self.image else '',
             'tags': [{
                 'name': tag.name,
