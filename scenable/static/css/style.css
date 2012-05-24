@@ -530,6 +530,10 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  background: #999;
+}
+.simple-form input[type="submit"]:hover {
+  background: #777;
 }
 .site-search-container {
   float: left;
@@ -1615,6 +1619,40 @@ legend {
 /* Events */
 #events-page .focused {
   background: rgba(143, 211, 111, 0.5);
+}
+#events-page .notification {
+  margin-top: 0;
+  *zoom: 1;
+}
+#events-page .notification:before,
+#events-page .notification:after {
+  content: "";
+  display: table;
+}
+#events-page .notification:after {
+  clear: both;
+}
+#events-page .notification h3 {
+  margin-bottom: 0.5em;
+}
+#events-page .notification div {
+  float: left;
+  width: 64.58333333333334%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 1em;
+}
+#events-page .notification .btn {
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 /* Places */
 #places-page .focused {

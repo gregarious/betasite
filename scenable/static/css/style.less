@@ -241,6 +241,12 @@ legend {
   }
   input[type="submit"] {
     .column(2);
+    background: #999;
+    //border: 1px solid #888;
+
+    &:hover {
+      background: #777;
+    }
   }
 }
 
@@ -1089,6 +1095,27 @@ legend {
 #events-page {
   .focused {
     background: fade(@lgreen, 50%);
+  }
+
+  .notification {
+    margin-top: 0;
+    .clearfix();
+
+    h3 {
+      margin-bottom: 0.5em;
+    }
+    
+    div {
+      .column_nm(8);
+      padding-right: 1em;
+    }
+
+    .btn {
+      .column(4);
+      padding: 1em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   }
 }
 

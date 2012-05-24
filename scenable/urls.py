@@ -54,6 +54,7 @@ urlpatterns = patterns('',
     url(r'^500.html$', direct_to_template, {'template': '500.html'}, name='500'),
     url(r'^404.html$', direct_to_template, {'template': '404.html'}, name='404'),
     url(r'^403.html$', direct_to_template, {'template': '403.html'}, name='403'),
+    url(r'^index.html$', direct_to_template, {'template': 'index.html'}, name='index'),
 
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
