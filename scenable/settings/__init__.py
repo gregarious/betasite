@@ -223,6 +223,6 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': site_file('var/whoosh_index'),
+        'PATH': site_file('local/var/whoosh_index'),
     },
 }
