@@ -216,7 +216,7 @@ SEND_BROKEN_LINK_EMAILS = True
 # pipeline settings
 from scenable.settings.pipeline import *
 # this is defined outside so we can use site_file
-PIPELINE_YUI_BINARY = site_file('bin/yuicompressor')
+PIPELINE_YUI_BINARY = site_file('local/bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # initial Haystack setup for Whoosh
