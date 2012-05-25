@@ -30,13 +30,13 @@ class PageEventsFeed(PageFilteredFeed):
             content_dict=content)
 
     def hacked_unfiltered(self):
-        return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtstart')
+        return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtend')
 
     def hacked_filtered(self):
         # TODO: move this filtering into the query
         return sorted([result.object for result in self.form.search()
                         if result.object.dtend > timezone.now()],
-                        key=lambda e: e.dtstart)
+                        key=lambda e: e.dtend)
 
 
 @login_required
