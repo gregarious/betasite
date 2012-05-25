@@ -223,7 +223,8 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 # initial Haystack setup for Whoosh
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': site_file('var/index/whoosh'),
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
     },
 }
