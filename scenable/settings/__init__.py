@@ -151,6 +151,7 @@ INSTALLED_APPS = (
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 # (see master:687f9565 for old logging examples)
+LOGGING_ROOT = site_file('local/logs')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -168,7 +169,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': site_file('logs/debug.log')
+            'filename': os.path.join(LOGGING_ROOT, 'debug.log'),
         },
     },
     'loggers': {
