@@ -151,7 +151,7 @@ INSTALLED_APPS = (
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 # (see master:687f9565 for old logging examples)
-LOGGING_ROOT = site_file('local/var/logs')
+LOGGING_ROOT = site_file('var/logs')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -217,13 +217,13 @@ SEND_BROKEN_LINK_EMAILS = True
 # pipeline settings
 from scenable.settings.pipeline import *
 # this is defined outside so we can use site_file
-PIPELINE_YUI_BINARY = site_file('local/bin/yuicompressor')
+PIPELINE_YUI_BINARY = site_file('opt/yuicompressor/bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # initial Haystack setup for Whoosh
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': site_file('local/var/whoosh_index'),
+        'PATH': site_file('var/index/whoosh'),
     },
 }
