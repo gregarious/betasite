@@ -4,4 +4,5 @@
 {% endfor %}
 {{ object.description }}
 {{ object.place.name }}
+{{ object.place_primitive }}
 {{ object.place.location.address }}
