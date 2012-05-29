@@ -837,8 +837,7 @@ legend {
 /* DETAILED SINGLE --------- */
 // Detailed = single page with relevant 
 // places/events/specials paneled menu
-// Currently just single place and profile pages
-
+// Currently relevant for single place and profile pages 
 
 .detailed-single {
   .single-header {
@@ -932,7 +931,6 @@ legend {
 
   }
 }
-
 
 /* TEMPLATE SPECIFICS --------- */
 
@@ -1095,27 +1093,6 @@ legend {
 #events-page {
   .focused {
     background: fade(@lgreen, 50%);
-  }
-
-  .notification {
-    margin-top: 0;
-    .clearfix();
-
-    h3 {
-      margin-bottom: 0.5em;
-    }
-    
-    div {
-      .column_nm(8);
-      padding-right: 1em;
-    }
-
-    .btn {
-      .column(4);
-      padding: 1em;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
   }
 }
 
@@ -1610,6 +1587,27 @@ legend {
   img {
     float: left;
     margin-right: 1em;
+  }
+
+  &.new-feature {
+
+    float: left;
+
+    h3 {
+      margin-bottom: 0.5em;
+    }
+    
+    div {
+      .column_nm(8);
+      padding-right: 1em;
+    }
+
+    .btn {
+      .column(4);
+      padding: 1em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   }
 }
 
