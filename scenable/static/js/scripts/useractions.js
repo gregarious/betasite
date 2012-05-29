@@ -66,7 +66,7 @@ scenable.useractions = {
         scenable.useractions._attachAtomicHandler(
             ajaxActionElement,
             {'pid': placeId},
-            scenable.constants.SITE_URL + 'oakland/places/ajax/favorite/',
+            '/oakland/places/ajax/favorite/',
             ['unfavorite', 'favorite'],
             isOn
         );
@@ -76,7 +76,7 @@ scenable.useractions = {
       scenable.useractions._attachAtomicHandler(
             ajaxActionElement,
             {'eid': eventId},
-            scenable.constants.SITE_URL + 'oakland/events/ajax/attend/',
+            '/oakland/events/ajax/attend/',
             ['unattend', 'attend'],
             isOn
         );
@@ -86,7 +86,7 @@ scenable.useractions = {
         var $el = $(grabElement);
         $el.one('click', function(){
             var processingAction = $.ajax({
-                url: scenable.constants.SITE_URL + 'oakland/specials/ajax/buy/',
+                url: '/oakland/specials/ajax/buy/',
                 data: {
                     sid: specialId
                 },
@@ -140,7 +140,7 @@ scenable.useractions = {
 
     emailCoupon: function(couponUUID, popupEl) {
         var sending = $.ajax({
-            url: scenable.constants.SITE_URL + 'oakland/specials/ajax/email/',
+            url: '/oakland/specials/ajax/email/',
             data: {
                 uuid: couponUUID
             },
@@ -166,7 +166,7 @@ scenable.useractions = {
     },
 
     printCoupon: function(couponUUID) {
-        window.open(scenable.constants.SITE_URL + 'oakland/specials/redeem/' + couponUUID + '/?print=yes');
+        window.open('/oakland/specials/redeem/' + couponUUID + '/?print=yes');
     },
 
     markCouponUsed: function(couponUUID) {
