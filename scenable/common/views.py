@@ -12,7 +12,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from haystack.views import SearchView
 from haystack.forms import SearchForm
-from haystack.query import SearchQuerySet
 
 from scenable.feedback.forms import GenericFeedbackForm
 from scenable.common.utils.jsontools import sanitize_json
@@ -164,7 +163,7 @@ class PageFilterableFeed(SearchView):
 
         paginator = Paginator(processed_results, self.results_per_page)
 
-        page_no = self.request.GET.get('p')
+        page_no = self.request.GET.get('page')
         try:
             page = paginator.page(page_no)
         except PageNotAnInteger:

@@ -11,7 +11,7 @@ Context variables:
 {% endcomment %}
 
 {% block main-content %}
-
+{% load feed_urlencode from commontags %}
 <article class="page-main" id="places-page">
     
     <div class="map-container">
@@ -28,12 +28,21 @@ Context variables:
         </form>
         <nav class="prev-next" id="places-feed-nav">
             <div class="previous">
-            {% if page.has_previous %}<a href="{% url places-feed %}?page={{page.previous_page_number}}{%if query%}&q={{query}}{%endif%}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            {% if page.has_previous %}
+                <a href="{% feed_urlencode 'places-feed' page_num=page.previous_page_number q=query %}">&larr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
+            </div>
             <div class="page-num">
                 <p>Page</p>
                 {{page.number}} / {{page.paginator.num_pages}}</div>
             <div class="next">
-                {% if page.has_next %}<a href="{% url places-feed %}?page={{page.next_page_number}}{%if query%}&q={{query}}{%endif%}">&rarr;</a>{% else %}&nbsp;{% endif %}
+            {% if page.has_next %}
+                <a href="{% feed_urlencode 'places-feed' page_num=page.next_page_number q=query %}">&rarr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
             </div>
         </nav>
     </div>
