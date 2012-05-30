@@ -1,43 +1,54 @@
 from django.http import HttpResponseForbidden
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
-# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
-# from scenable.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
-from scenable.common.views import PageContext, PageFilteredFeed
+from scenable.common.views import PageContext, PageFilterableFeed
 
 from scenable.specials.models import Special, Coupon
 from scenable.specials.viewmodels import SpecialData
-# from scenable.specials.resources import SpecialFeedResource
 
-from haystack.forms import SearchForm
-from django.utils import timezone
+from haystack.query import SearchQuerySet
+from django.utils.timezone import now
 
 
-class PageSpecialsFeed(PageFilteredFeed):
+class PageSpecialsFeed(PageFilterableFeed):
     def __init__(self, *args, **kwargs):
+        sqs = SearchQuerySet().models(Special).order_by('dexpires')
+        qs = Special.objects.order_by('dexpires')
         super(PageSpecialsFeed, self).__init__(
-            model_class=Special,
-            viewmodel_class=SpecialData,
             template='specials/page_feed.html',
-            form_class=SearchForm,
-            results_per_page=6,
+            searchqueryset=sqs,
+            nofilter_queryset=qs,
+            viewmodel_class=SpecialData,
+            results_per_page=8,
         )
 
-    def get_page_context(self, content):
+    def get_results(self):
+        '''
+        Due to a problem with Haystack/Elasticsearch filtering on nullable
+        fields (not sure which one), the filtering by expiration date must
+        be done manually after the search.
+        '''
+        results = super(PageSpecialsFeed, self).get_results()
+
+        if self.search_used:
+            # go through result.objects
+            return [result for result in results
+                        if result.object.dexpires is None or \
+                           result.object.dexpires >= now().date()]
+        else:
+            # go through bare results
+            return [result for result in results
+                        if result.dexpires is None or result.dexpires >= now().date()]
+
+    def get_page_context(self, request):
+        '''
+        Return a dict of extra context variables. Override this.
+        '''
         return PageContext(self.request,
             current_section='specials',
-            page_title='Scenable | Oakland Specials',
-            content_dict=content)
-
-    def hacked_unfiltered(self):
-        return Special.objects.filter(dexpires__gt=timezone.now().date()).order_by('dexpires')
-
-    def hacked_filtered(self):
-        return sorted([result.object for result in self.form.search()
-                        if result.object.dexpires > timezone.now().date()],
-                        key=lambda s: s.dexpires)
+            page_title='Scenable | Oakland Specials')
 
 
 @login_required

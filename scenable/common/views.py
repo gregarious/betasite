@@ -8,6 +8,7 @@ from django.contrib.auth.views import redirect_to_login
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.utils import timezone
 from django.contrib.sites.models import get_current_site
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from haystack.views import SearchView
 from haystack.forms import SearchForm
@@ -122,75 +123,77 @@ class PageSiteSearch(SearchView):
         return super(PageSiteSearch, self).__call__(request, *args, **kwargs)
 
 
-class PageFilteredFeed(SearchView):
-    '''
-    Base view class for filtered feeds. Only works with ViewModels right now.
-    Will need to change once VM mess is gotten rid of.
-    '''
-    def __init__(self, model_class, viewmodel_class, *args, **kwargs):
-        '''
-        Fixes the SearchQuerySet to only search over a particular model.
-        '''
-        self.model_class = model_class
+class PageFilterableFeed(SearchView):
+    def __init__(self, searchqueryset, nofilter_queryset, template, viewmodel_class=None, *args, **kwargs):
+        self.nofilter_queryset = nofilter_queryset
+        self.template = template
         self.viewmodel_class = viewmodel_class
-        sqs = kwargs.get('searchqueryset', SearchQuerySet())
-        kwargs['searchqueryset'] = sqs.models(model_class)
-        super(PageFilteredFeed, self).__init__(*args, **kwargs)
-
-    def __call__(self, request, *args, **kwargs):
-        # lock non beta testers out
-        if not request.user or not request.user.is_authenticated():
-            return to_login(request)
-        return super(PageFilteredFeed, self).__call__(request, *args, **kwargs)
+        self.search_used = False
+        super(PageFilterableFeed, self).__init__(
+            template=template,
+            form_class=SearchForm,
+            searchqueryset=searchqueryset,
+            *args, **kwargs)
 
     def get_results(self):
-        '''
-        Ensures all results are returned if there is no query.
+        """
+        If a query exists, fetch results via the form. Otherwise Fetches the results via the form.
 
-        Returns a list of the actual objects searched for, not SearchResult objects.
-        '''
-        if not self.query:
-            instances = self.hacked_unfiltered()
+        Returns an empty list if there's no query to search with.
+        """
+        if self.query:
+            self.search_used = True
+            return self.form.search()
         else:
-            instances = self.hacked_filtered()
-        return [self.viewmodel_class(instance, user=self.request.user) for instance in instances]
+            self.search_used = False
+            return self.nofilter_queryset
+
+    def build_page(self):
+        """
+        Paginates the results appropriately. Pages will contains an actual
+        model object, despite ragardless of whether the results returned
+        were model instances or search results.
+        """
+        if self.search_used:
+            processed_results = [result.object for result in self.results]
+        else:
+            processed_results = self.results
+
+        if self.viewmodel_class:
+            processed_results = [self.viewmodel_class(result) for result in processed_results]
+
+        paginator = Paginator(processed_results, self.results_per_page)
+
+        page_no = self.request.GET.get('p')
+        try:
+            page = paginator.page(page_no)
+        except PageNotAnInteger:
+            page = paginator.page(1)
+        except EmptyPage:
+            # if page out of range, return last one
+            page = paginator.page(paginator.num_pages)
+        return page
+
+    def get_page_context(self, request):
+        '''
+        Return a dict of extra context variables. Override this.
+        '''
+        return PageContext(self.request,
+            current_section=None,
+            page_title='Scenable')
 
     def create_response(self):
-        """
-        Generates the actual HttpResponse to send back to the user.
-        """
-        (paginator, page) = self.build_page()
-        items_json = sanitize_json(json.dumps([item.serialize() for item in page.object_list]))
+        page = self.build_page()
 
         content = {
             'query': self.query,
             'form': self.form,
             'page': page,
-            'suggestion': None,
-            'items_json': items_json
+            'items_json': sanitize_json(json.dumps([p.serialize() for p in page])),
         }
 
-        content.update(self.extra_context())
-        return render_to_response(self.template, context_instance=self.get_page_context(content))
-
-    def hacked_filtered(self):
-        return [result.object for result in self.form.search()]
-
-    def hacked_unfiltered(self):
-        '''
-        Temporary hack to get a list of unfiltered results. Will either be
-        self.model_class.objects.all() or
-        self.model_class.listed_objects.all().
-
-        Necessary because self.searchqueryset.all() seems to be buggy.
-        '''
-        raise NotImplementedError('calling an abstract base class')
-
-    def get_page_context(self, content):
-        '''
-        Override per feed page.
-        '''
-        return PageContext(self.request, content_dict=content)
+        context = self.get_page_context(self.request)
+        return render_to_response(self.template, content, context_instance=context)
 
 
 ### URL-LINKED VIEWS ###

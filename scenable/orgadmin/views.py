@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render, render_to_resp
 from django.template import RequestContext
 from scenable.common.core.rendering import render_safe
 
-from scenable.organizations.models import Organization
+from scenable.accounts.models import Organization
 
 from scenable.places.models import Place
 from scenable.places.viewmodels import PlaceData

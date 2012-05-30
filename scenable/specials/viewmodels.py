@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.template.defaultfilters import truncatewords
 
+
 class SpecialData(object):
     def __init__(self, special, user=None):
+        self.s = special
         fields = ('id', 'title', 'description', 'points', 'place',
                   'dexpires', 'dstart', 'total_available', 'total_sold',
                   'tags', 'get_absolute_url')
