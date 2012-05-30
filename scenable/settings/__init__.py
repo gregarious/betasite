@@ -26,9 +26,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': settings_local.DB_DEFAULT
-}
+DATABASES = settings_local.DATABASES
 DATABASES['default']['TEST_CHARSET'] = 'utf8'
 
 # Local time zone for this installation. Choices can be found here:
