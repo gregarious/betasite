@@ -196,9 +196,8 @@ class PageFilterableFeed(SearchView):
 
 
 ### URL-LINKED VIEWS ###
-@login_required
 def page_home(request):
-    return redirect(reverse('now'))
+    return redirect(reverse('about'))
 
 
 ### STATIC PAGES ###
