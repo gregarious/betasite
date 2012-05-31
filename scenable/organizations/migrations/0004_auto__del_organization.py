@@ -7,6 +7,10 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ('events', '0007_auto__chg_field_role_organization__chg_field_icalendarfeed_owner'),
+    )
+
     def forwards(self, orm):
         # Deleting model 'Organization'
         db.delete_table('organizations_organization')
