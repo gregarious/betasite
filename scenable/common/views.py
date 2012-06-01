@@ -202,7 +202,7 @@ def page_beta_home(request):
 
 def page_home(request):
     if request.user.is_authenticated():
-        return page_beta_home
+        return page_beta_home(request)
     return redirect(reverse('about'))
 
 
