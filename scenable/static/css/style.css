@@ -375,10 +375,10 @@ blockquote {
 }
 .item-actions {
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   right: 10px;
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   background: url('/static/img/icons/map-unavailable.png') no-repeat center;
 }
 /* FORMS & INPUTS --------------- */
