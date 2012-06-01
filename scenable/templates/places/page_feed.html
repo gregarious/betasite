@@ -36,7 +36,7 @@ Context variables:
             </div>
             <div class="page-num">
                 <p>Page</p>
-                {{page.number}} / {{page.paginator.num_pages}}</div>
+                {{page.number}} of {{page.paginator.num_pages}}</div>
             <div class="next">
             {% if page.has_next %}
                 <a href="{% feed_urlencode 'places-feed' page_num=page.next_page_number q=query %}">&rarr;</a>
@@ -45,11 +45,12 @@ Context variables:
             {% endif %}
             </div>
         </nav>
-    </div>
+    </div> <!-- .page-nav-container -->
 
     {% if not page.object_list %}
         <div class="none-found">No results found.</div>
     {% else %}
+
     <ul class="feed places" id="mainPlaceFeed">
         {# will be inserted via Backbone bootstrapping below #}
         {% comment %}
@@ -62,6 +63,28 @@ Context variables:
         {% endcomment %}
     </ul> <!-- .feed#mainPlaceFeed -->
     {% endif %}
+    <div class="page-nav-container">
+        <nav class="prev-next" id="places-feed-nav">
+            <div class="previous">
+            {% if page.has_previous %}
+                <a href="{% feed_urlencode 'places-feed' page_num=page.previous_page_number q=query %}">&larr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
+            </div>
+            <div class="page-num">
+                <p>Page</p>
+                {{page.number}} of {{page.paginator.num_pages}}</div>
+            <div class="next">
+            {% if page.has_next %}
+                <a href="{% feed_urlencode 'places-feed' page_num=page.next_page_number q=query %}">&rarr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
+            </div>
+        </nav>
+    </div> <!-- .page-nav-container -->
+    
 </article> <!-- .page-main -->
 {% endblock %}
 

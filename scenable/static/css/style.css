@@ -375,8 +375,8 @@ blockquote {
 }
 .item-actions {
   position: absolute;
-  bottom: 0;
-  right: 3px;
+  bottom: -2px;
+  right: 10px;
   height: 20px;
   width: 20px;
   background: url('/static/img/icons/map-unavailable.png') no-repeat center;
@@ -1172,6 +1172,9 @@ legend {
 }
 .page-nav-container:after {
   clear: both;
+}
+.page-nav-container:last-child {
+  border: none;
 }
 .page-nav-container .simple-form {
   float: left;

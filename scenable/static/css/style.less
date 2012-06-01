@@ -151,8 +151,8 @@ blockquote {
 
 .item-actions {
   position: absolute;
-  bottom: 0;
-  right: 3px;
+  bottom: -2px;
+  right: 10px;
   height: 20px;
   width: 20px;
   background: url('/static/img/icons/map-unavailable.png') no-repeat center;
@@ -742,6 +742,10 @@ legend {
   margin: 1em 0;
   padding-bottom: 1em;
 
+  &:last-child {
+    border: none;
+  }
+
   .simple-form {
     .column(7);
     //padding-right: 5em;
@@ -752,6 +756,7 @@ legend {
     input[type="search"] {
       .column(9);
     }
+
   }
 
   .prev-next {
