@@ -1,62 +1,45 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     depends_on = (
-        ('places', '0001_initial'),
-    )
-
-    needed_by = (
-        ('events', '0001_initial'),
+        ('accounts', '0009_org_app_move'),
     )
 
     def forwards(self, orm):
-        
-        # Adding model 'Organization'
-        db.create_table('organizations_organization', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('image_url', self.gf('django.db.models.fields.URLField')(max_length=400, blank=True)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('fb_id', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('twitter_username', self.gf('django.db.models.fields.CharField')(max_length=15, blank=True)),
-        ))
-        db.send_create_signal('organizations', ['Organization'])
 
-        # Adding M2M table for field administrators on 'Organization'
-        db.create_table('organizations_organization_administrators', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('organization', models.ForeignKey(orm['organizations.organization'], null=False)),
-            ('user', models.ForeignKey(orm['auth.user'], null=False))
-        ))
-        db.create_unique('organizations_organization_administrators', ['organization_id', 'user_id'])
+        # Changing field 'Role.organization'
+        db.alter_column('events_role', 'organization_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['accounts.Organization']))
 
-        # Adding M2M table for field establishments on 'Organization'
-        db.create_table('organizations_organization_establishments', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('organization', models.ForeignKey(orm['organizations.organization'], null=False)),
-            ('place', models.ForeignKey(orm['places.place'], null=False))
-        ))
-        db.create_unique('organizations_organization_establishments', ['organization_id', 'place_id'])
-
+        # Changing field 'ICalendarFeed.owner'
+        db.alter_column('events_icalendarfeed', 'owner_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['accounts.Organization'], null=True))
 
     def backwards(self, orm):
-        
-        # Deleting model 'Organization'
-        db.delete_table('organizations_organization')
 
-        # Removing M2M table for field administrators on 'Organization'
-        db.delete_table('organizations_organization_administrators')
+        # Changing field 'Role.organization'
+        db.alter_column('events_role', 'organization_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['organizations.Organization']))
 
-        # Removing M2M table for field establishments on 'Organization'
-        db.delete_table('organizations_organization_establishments')
-
+        # Changing field 'ICalendarFeed.owner'
+        db.alter_column('events_icalendarfeed', 'owner_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['organizations.Organization'], null=True))
 
     models = {
+        'accounts.organization': {
+            'Meta': {'object_name': 'Organization'},
+            'administrators': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'new_organization'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['auth.User']"}),
+            'dtcreated': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'establishments': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'new_organization'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['places.Place']"}),
+            'fb_id': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'twitter_username': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
+        },
         'auth.group': {
             'Meta': {'object_name': 'Group'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -93,16 +76,51 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'organizations.organization': {
-            'Meta': {'object_name': 'Organization'},
-            'administrators': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'establishments': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['places.Place']", 'null': 'True', 'blank': 'True'}),
-            'fb_id': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+        'events.attendee': {
+            'Meta': {'object_name': 'Attendee'},
+            'dtcreated': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'event': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['events.Event']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image_url': ('django.db.models.fields.URLField', [], {'max_length': '400', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
+        'events.event': {
+            'Meta': {'ordering': "['name']", 'object_name': 'Event'},
+            'allday': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'dtcreated': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'dtend': ('django.db.models.fields.DateTimeField', [], {}),
+            'dtmodified': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'dtstart': ('django.db.models.fields.DateTimeField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'listed': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'twitter_username': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
+            'place': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['places.Place']", 'null': 'True', 'blank': 'True'}),
+            'place_primitive': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'tags': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['tags.Tag']", 'symmetrical': 'False', 'blank': 'True'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
+        },
+        'events.eventmeta': {
+            'Meta': {'object_name': 'EventMeta'},
+            'event': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['events.Event']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'key': ('django.db.models.fields.CharField', [], {'max_length': '32'}),
+            'value': ('django.db.models.fields.TextField', [], {})
+        },
+        'events.icalendarfeed': {
+            'Meta': {'object_name': 'ICalendarFeed'},
+            'candidate_places': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['places.Place']", 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
+            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['accounts.Organization']", 'null': 'True', 'blank': 'True'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '300'})
+        },
+        'events.role': {
+            'Meta': {'object_name': 'Role'},
+            'event': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['events.Event']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'organization': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['accounts.Organization']"}),
+            'role_type': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         'places.location': {
             'Meta': {'ordering': "['address', 'latitude']", 'object_name': 'Location'},
@@ -122,7 +140,8 @@ class Migration(SchemaMigration):
             'fb_id': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'hours': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image_url': ('django.db.models.fields.URLField', [], {'max_length': '400', 'blank': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'listed': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'location': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['places.Location']", 'null': 'True', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
             'parking': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
@@ -133,9 +152,10 @@ class Migration(SchemaMigration):
         },
         'tags.tag': {
             'Meta': {'object_name': 'Tag'},
+            'dtcreated': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
+            'name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'})
         }
     }
 
-    complete_apps = ['organizations']
+    complete_apps = ['events']

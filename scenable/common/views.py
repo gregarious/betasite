@@ -196,9 +196,12 @@ class PageFilterableFeed(SearchView):
 
 
 ### URL-LINKED VIEWS ###
-@login_required
-def page_home(request):
+def page_beta_home(request):
     return redirect(reverse('now'))
+
+
+def page_home(request):
+    return redirect(reverse('about'))
 
 
 ### STATIC PAGES ###
