@@ -196,6 +196,10 @@ class PageFilterableFeed(SearchView):
 
 
 ### URL-LINKED VIEWS ###
+def page_beta_home(request):
+    return redirect(reverse('now'))
+
+
 def page_home(request):
     return redirect(reverse('about'))
 
