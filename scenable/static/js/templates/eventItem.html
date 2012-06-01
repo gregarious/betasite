@@ -21,6 +21,11 @@
 		{{#if description}}
 			<li class="description">{{description}}</li>
 		{{/if}}
+
+	{{# unless is_geocoded}}
+	<div class="item-actions" title="Map Unavailable">
+  	</div>
+  	{{/unless}}
 	</ul>
 	{{#if tags}}
 	<ul class="tag-list">
