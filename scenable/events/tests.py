@@ -16,6 +16,10 @@ class EventResourceTest(ResourceTestCase):
     def setUp(self):
         super(EventResourceTest, self).setUp()
 
+        # create some dummy places so FK relationship isn't just place.id=1
+        for i in range(10):
+            Place.objects.create(name='dummy%s' % i)
+
         # detailed event, in the future
         self.detailed_event = Event.objects.create(
             name='detailed',
@@ -87,7 +91,7 @@ class EventResourceTest(ResourceTestCase):
         if inst.place is None:
             self.assertEquals(inst.place, response_dict.get('place'))
         else:
-            self.assertEquals('/api/v1/place/%s/' % inst.id, response_dict.get('place'))
+            self.assertEquals('/api/v1/place/%s/' % inst.place.id, response_dict.get('place'))
 
         # test resource uri
         self.assertEquals('/api/v1/event/%s/' % inst.id, response_dict.get('resource_uri'))
