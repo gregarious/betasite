@@ -15,7 +15,7 @@ from scenable.specials.forms import SpecialForm
 
 from scenable.accounts.forms import EmailAuthenticationForm
 
-from scenable.places.models import Place, Parking, Hours
+from scenable.places.models import Place, Parking, HoursListing
 from scenable.tags.models import Tag
 from scenable.outsourcing.places import resolve_location
 from scenable.outsourcing.apitools import APIError
@@ -108,13 +108,12 @@ class OrgAdminPlaceForm(PlaceForm):
                 initial['parking'] = instance.parking_as_obj().parking_options
 
             if 'hours' not in initial:
-                day_hrs_tuples = instance.hours_as_obj().day_hours_tuples
-                for i in range(1, len(day_hrs_tuples) + 1):
-                    days_field, hours_field = 'hr_days_%d' % i, 'hr_hours_%d' % i
+                for i, listing in enumerate(instance.hours):
+                    days_field, hours_field = 'hr_days_%d' % (i + 1), 'hr_hours_%d' % (i + 1)
                     if days_field not in initial:
-                        initial[days_field] = day_hrs_tuples[i - 1][0]
+                        initial[days_field] = listing.days
                     if hours_field not in initial:
-                        initial[hours_field] = day_hrs_tuples[i - 1][1]
+                        initial[hours_field] = listing.hours
 
             if 'tags' not in initial:
                 initial['tags'] = ', '.join([tag.name for tag in instance.tags.all()])
@@ -182,13 +181,12 @@ class OrgAdminPlaceForm(PlaceForm):
         location.save()
         place.location = location
 
-        hours_obj = Hours()
+        place.hours = []
         for i in range(1, 8):
             day = self.cleaned_data.get('hr_days_%d' % i, '')
             hrs = self.cleaned_data.get('hr_hours_%d' % i, '')
             if day or hrs:
-                hours_obj.add_span(day, hrs)
-        place.set_hours(hours_obj)
+                place.hours.append(HoursListing(day, hrs))
 
         parking_obj = Parking()
         for opt in self.cleaned_data['parking']:

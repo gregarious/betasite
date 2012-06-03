@@ -358,16 +358,6 @@ class Place(models.Model, ViewModel):
         favs.delete()
         return fav_exists
 
-    # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
-    def hours_unpacked(self):
-        return self.hours_as_obj().to_data()
-
-    def hours_as_obj(self):
-        return Hours.deserialize(self.hours)
-
-    def set_hours(self, hours):
-        self.hours = hours.serialize()
-
     def parking_unpacked(self):
         return self.parking_as_obj().to_data()
 
@@ -404,33 +394,6 @@ class Favorite(models.Model):
 
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.place)
-
-
-class Hours(ViewModel):
-    '''
-    Object to handle day, hours pairs.
-    '''
-    def __init__(self):
-        self.day_hours_tuples = []
-        self.pickler = CSVPickler()
-
-    def add_span(self, day, hours):
-        self.day_hours_tuples.append((day, hours))
-
-    def to_data(self):
-        return [(day, hours) for day, hours in self.day_hours_tuples]
-
-    @classmethod
-    def deserialize(cls, data):
-        inst = Hours()
-        inst.day_hours_tuples = inst.pickler.from_csv(data)
-        return inst
-
-    def serialize(self):
-        return self.pickler.to_csv(self.day_hours_tuples)
-
-    def __str__(self):
-        return self.serialize()
 
 
 class Parking(ViewModel):
