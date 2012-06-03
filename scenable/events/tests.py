@@ -1,19 +1,17 @@
 from django.test import TestCase
 from tastypie.test import ResourceTestCase
 
-from django.utils.encoding import smart_unicode
-
 from scenable.places.models import Place, Location
 from scenable.events.models import Event
 from scenable.tags.models import Tag
 
 import datetime
-from pytz import timezone
+from django.utils.timezone import make_naive, get_current_timezone
 
 
 class EventResourceTest(ResourceTestCase):
     def fakeNow(self):
-        return datetime.datetime(2012, 6, 18, 20, 20, tzinfo=timezone('EST'))
+        return datetime.datetime(2012, 6, 18, 20, 20, tzinfo=get_current_timezone())
 
     def setUp(self):
         super(EventResourceTest, self).setUp()
@@ -27,8 +25,8 @@ class EventResourceTest(ResourceTestCase):
                 location=Location.objects.create(address='5139 Penn Ave',
                     town='Pittsburgh', state='PA', postcode='15224',
                     latitude='40.465002', longitude='-79.941352')),
-            dtstart=datetime.datetime(2012, 6, 20, 20, 0, tzinfo=timezone('EST')),
-            dtend=datetime.datetime(2012, 6, 20, 22, 30, tzinfo=timezone('EST')),
+            dtstart=datetime.datetime(2012, 6, 20, 20, 0, tzinfo=get_current_timezone()),
+            dtend=datetime.datetime(2012, 6, 20, 22, 30, tzinfo=get_current_timezone()),
             url='http://example.com',
             listed=True)
         self.detailed_event.tags.add(Tag.objects.create(name='fun'))
@@ -37,25 +35,39 @@ class EventResourceTest(ResourceTestCase):
         # event completely in the future
         self.simple_event1 = Event.objects.create(
             name='simple: future',
-            dtstart=datetime.datetime(2012, 7, 1, 12, 0, tzinfo=timezone('EST')),
-            dtend=datetime.datetime(2012, 7, 1, 14, 0, tzinfo=timezone('EST')),
+            dtstart=datetime.datetime(2012, 7, 1, 12, 0, tzinfo=get_current_timezone()),
+            dtend=datetime.datetime(2012, 7, 1, 14, 0, tzinfo=get_current_timezone()),
             listed=False)
 
         # event in progress relative to fakeNow (6/18 @ 20:20)
         self.simple_event2 = Event.objects.create(
             name='simple: in progress',
-            dtstart=datetime.datetime(2012, 6, 20, 16, 0, tzinfo=timezone('EST')),
-            dtend=datetime.datetime(2012, 6, 20, 18, 30, tzinfo=timezone('EST')),
+            dtstart=datetime.datetime(2012, 6, 20, 16, 0, tzinfo=get_current_timezone()),
+            dtend=datetime.datetime(2012, 6, 20, 18, 30, tzinfo=get_current_timezone()),
             listed=True)
 
         # event completely in the past
         self.simple_event3 = Event.objects.create(
             name='simple: past',
-            dtstart=datetime.datetime(2012, 6, 3, 20, 0, tzinfo=timezone('EST')),
-            dtend=datetime.datetime(2012, 6, 5, 14, 0, tzinfo=timezone('EST')),
+            dtstart=datetime.datetime(2012, 6, 3, 20, 0, tzinfo=get_current_timezone()),
+            dtend=datetime.datetime(2012, 6, 5, 14, 0, tzinfo=get_current_timezone()),
             listed=True)
 
         self.detail_url = '/api/v1/event/%s' % self.detailed_event.id
+
+    def _test_datetimes_equality(self, inst, response_dict):
+        '''
+        Ensures dtstart/dtend objects stored in inst match the serialized
+        versions in response_dict.
+
+        NOTE: Tastypie's out-of-the-box behavior returns naive ISO-
+              formatted datetimes relative to settings.DATE_TIME. Thus, we
+              have to convert our instance's datetimes first.
+        '''
+        iso_dtstart = make_naive(inst.dtstart, get_current_timezone()).isoformat()
+        iso_dtend = make_naive(inst.dtend, get_current_timezone()).isoformat()
+        self.assertEquals(iso_dtstart, response_dict.get('dtstart'))
+        self.assertEquals(iso_dtend, response_dict.get('dtend'))
 
     def _test_detailed_equality(self, inst, response_dict):
         '''
@@ -63,12 +75,15 @@ class EventResourceTest(ResourceTestCase):
         '''
         # these fields can be tested with a simple assertEquals
         simple_equality_keys = ['name', 'description', 'url', 'allday',
-                                'dtstart', 'dtend', 'place_primitive', 'listed']
+                                'place_primitive', 'listed']
         for k in simple_equality_keys:
             self.assertEquals(getattr(inst, k), response_dict.get(k))
 
         ### more complex equalities tests
-        # test locations
+        # test times
+        self._test_datetimes_equality(inst, response_dict)
+
+        # test place api url
         if inst.place is None:
             self.assertEquals(inst.place, response_dict.get('place'))
         else:

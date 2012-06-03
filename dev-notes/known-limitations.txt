@@ -1,0 +1,1 @@
+- All Tastypie serialized datetimes are naive ISO datetimes relative to settings.TIME_ZONE
