@@ -10,6 +10,10 @@ from haystack.views import search_view_factory
 from scenable.common.views import PageSiteSearch
 from scenable import settings
 
+from tastypie.api import Api
+from places.api import PlaceResource
+from tags.api import TagResource
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -68,6 +72,14 @@ urlpatterns = patterns('',
     url(r'^about-oakland/$', 'scenable.common.views.page_static_about_oakland', name='about-oakland'),
     url(r'^team/$', 'scenable.common.views.page_static_team', name='team'),
     url(r'^mission/$', 'scenable.common.views.page_static_mission', name='mission'),
+)
+
+# API setup
+v1_api = Api(api_name='v1')
+v1_api.register(PlaceResource())
+v1_api.register(TagResource())
+urlpatterns += patterns('',
+    (r'^api/', include(v1_api.urls)),
 )
 
 if settings.DEBUG:

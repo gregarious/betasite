@@ -1,11 +1,11 @@
 from django.test import TestCase
 from django.db import IntegrityError
-
-# from django.core.exceptions import ValidationError
+from django.utils.encoding import smart_unicode
 
 from scenable.places.models import Place, Location, HoursListing
+from scenable.tags.models import Tag
 from django.db import transaction
-
+from tastypie.test import ResourceTestCase
 # class LocationModelTest(TestCase):
 #     @property
 #     def valid_location_base(self):
@@ -125,6 +125,115 @@ class PlaceModelTest(TestCase):
         Place.objects.get(name='bank').hours == bank_hours
         Place.objects.get(name='restaurant').hours == restaurant_hours
 
+
+class PlaceResourceTest(ResourceTestCase):
+    def setUp(self):
+        super(PlaceResourceTest, self).setUp()
+        self.detailed_place = Place.objects.create(
+            name='detailed',
+            description='This is a fun place. So many details!',
+            location=Location.objects.create(address='5139 Penn Ave',
+                town='Pittsburgh', state='PA', postcode='15224',
+                latitude='40.465002', longitude='-79.941352'),
+            hours=[HoursListing('Mon-Fri', '9am - 5pm'),
+                   HoursListing('Sat', '10pm - 4pm'),
+                   HoursListing('Sun', 'Closed')],
+            # TODO: add parking
+            phone='555-5555',
+            url='http://example.com',
+            fb_id='1234567890',
+            twitter_username='twitter',
+            listed=True)
+        self.detailed_place.tags.add(Tag.objects.create(name='fun'))
+        self.detailed_place.tags.add(Tag.objects.create(name='woo-hoo'))
+
+        self.sparse_listed_place1 = Place.objects.create(
+            name='sparse listed 1',
+            listed=True)
+        self.sparse_listed_place2 = Place.objects.create(
+            name='sparse listed 2',
+            listed=True)
+        self.sparse_unlisted_place = Place.objects.create(
+            name='sparse unlisted',
+            listed=False)
+
+        self.detail_url = '/api/v1/place/%s' % self.detailed_place.id
+
+    def _test_detailed_equality(self, inst, response_dict):
+        '''
+        Tests each field of a Place object vs. a PlaceResource dict
+        '''
+        # these fields can be tested with a simple assertEquals
+        simple_equality_keys = ['name', 'phone', 'url', 'fb_id',
+                                'twitter_username', 'description']
+        for k in simple_equality_keys:
+            self.assertEquals(getattr(inst, k), response_dict.get(k))
+
+        ### more complex equalities tests
+        # test locations
+        if inst.location is None:
+            self.assertEquals(inst.location, response_dict.get('location'))
+        else:
+            location_equality_keys = ['address', 'town', 'state', 'postcode']
+            for k in location_equality_keys:
+                self.assertEquals(getattr(inst.location, k), response_dict['location'].get(k))
+            self.assertEquals(smart_unicode(inst.location.latitude), response_dict['location'].get('latitude'))
+            self.assertEquals(smart_unicode(inst.location.longitude), response_dict['location'].get('longitude'))
+
+        # test resource uri
+        self.assertEquals(response_dict.get('resource_uri'), '/api/v1/place/%s/' % inst.id)
+
+        # test hours with special logic
+        self.assertEquals(len(inst.hours), len(response_dict.get('hours')))
+        for detail_listing, resp_listing in zip(inst.hours, response_dict.get('hours')):
+            self.assertEquals(detail_listing.days, resp_listing.get('days'))
+            self.assertEquals(detail_listing.hours, resp_listing.get('hours'))
+
+        # ensure all tags are aaccounted for (also check id/name)
+        inst_tag_dataset = [{'id': tag.id, 'name': tag.name} for tag in inst.tags.order_by('id')]
+        response_dict.get('tags').sort(key=lambda d: d.get('id'))
+        self.assertEquals(inst_tag_dataset, response_dict.get('tags'))
+
+    def test_get_list(self):
+        '''
+        Test basic resource endpoint GET request.
+        '''
+        resp = self.api_client.get('/api/v1/place/', format='json')
+        self.assertValidJSONResponse(resp)
+        resp = self.deserialize(resp)
+
+        # test expected number of results, and that each id is unique
+        self.assertEquals(len(resp['objects']), 4)
+        self.assertEquals(len(set([r['id'] for r in resp['objects']])), 4)
+
+        detailed_resp = [r for r in resp['objects'] if r['id'] == self.detailed_place.id][0]
+        # sanity check for detail item
+        self.assertEquals(self.detailed_place.name, detailed_resp['name'])
+        self._test_detailed_equality(self.detailed_place, detailed_resp)
+
+    def test_get_listed_only(self):
+        '''
+        Double check to ensure listed filter is working: important for
+        feeds.
+        '''
+        resp = self.api_client.get('/api/v1/place/?listed=true', format='json')
+        self.assertValidJSONResponse(resp)
+        resp = self.deserialize(resp)
+        self.assertEquals(len(resp['objects']), 3)
+
+    def test_get_detail(self):
+        detail_resp = self.api_client.get('/api/v1/place/%s/' % self.detailed_place.id, format='json')
+        self.assertValidJSONResponse(detail_resp)
+        detail_resp = self.deserialize(detail_resp)
+        self._test_detailed_equality(self.detailed_place, detail_resp)
+
+        # ensure the unlisted object can be retrieved directly
+        unlisted_resp = self.api_client.get('/api/v1/place/%s/' % self.sparse_unlisted_place.id, format='json')
+        self.assertValidJSONResponse(unlisted_resp)
+        unlisted_resp = self.deserialize(unlisted_resp)
+        self._test_detailed_equality(self.sparse_unlisted_place, unlisted_resp)
+
+    # TODO: add some authentication stuff here?
 
 # class CloseLocationManagerTest(TestCase):
 #     def setUp(self):
