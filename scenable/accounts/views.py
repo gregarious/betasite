@@ -44,7 +44,7 @@ def page_login(request, redirect_field_name='next'):
     Renders login page.
     '''
     if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('beta-home'))
 
     redirect_to = request.REQUEST.get(redirect_field_name, '')
     if request.method == "POST":
@@ -54,12 +54,12 @@ def page_login(request, redirect_field_name='next'):
 
             # Use default setting if redirect_to is empty
             if not redirect_to:
-                redirect_to = reverse('home')
+                redirect_to = reverse('beta-home')
 
             # Security check -- don't allow redirection to a different
             # host.
             elif netloc and netloc != request.get_host():
-                redirect_to = reverse('home')
+                redirect_to = reverse('beta-home')
 
             # Okay, security checks complete. Log the user in.
             login(request, form.get_user())
@@ -87,7 +87,7 @@ def page_login(request, redirect_field_name='next'):
 
 def page_signup(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('beta-home'))
 
     # if POST request, handle the form submission
     if request.POST:
@@ -113,7 +113,7 @@ def page_signup(request):
                 login(request, user)
 
                 # redirect to home page
-                redirect_to = reverse('home')
+                redirect_to = reverse('beta-home')
             else:   # if cookies aren't enabled, go to login page
                 redirect_to = reverse('login')
 
