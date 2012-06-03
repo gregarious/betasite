@@ -1,11 +1,13 @@
 from django.test import TestCase
+from tastypie.test import ResourceTestCase
+
 from django.db import IntegrityError
 from django.utils.encoding import smart_unicode
 
 from scenable.places.models import Place, Location, HoursListing
 from scenable.tags.models import Tag
 from django.db import transaction
-from tastypie.test import ResourceTestCase
+
 # class LocationModelTest(TestCase):
 #     @property
 #     def valid_location_base(self):
@@ -164,7 +166,7 @@ class PlaceResourceTest(ResourceTestCase):
         Tests each field of a Place object vs. a PlaceResource dict
         '''
         # these fields can be tested with a simple assertEquals
-        simple_equality_keys = ['name', 'phone', 'url', 'fb_id',
+        simple_equality_keys = ['name', 'phone', 'url', 'fb_id', 'listed',
                                 'twitter_username', 'description']
         for k in simple_equality_keys:
             self.assertEquals(getattr(inst, k), response_dict.get(k))
@@ -181,7 +183,7 @@ class PlaceResourceTest(ResourceTestCase):
             self.assertEquals(smart_unicode(inst.location.longitude), response_dict['location'].get('longitude'))
 
         # test resource uri
-        self.assertEquals(response_dict.get('resource_uri'), '/api/v1/place/%s/' % inst.id)
+        self.assertEquals('/api/v1/place/%s/' % inst.id, response_dict.get('resource_uri'))
 
         # test hours with special logic
         self.assertEquals(len(inst.hours), len(response_dict.get('hours')))
@@ -206,10 +208,9 @@ class PlaceResourceTest(ResourceTestCase):
         self.assertEquals(len(resp['objects']), 4)
         self.assertEquals(len(set([r['id'] for r in resp['objects']])), 4)
 
-        detailed_resp = [r for r in resp['objects'] if r['id'] == self.detailed_place.id][0]
         # sanity check for detail item
+        detailed_resp = [r for r in resp['objects'] if r['id'] == self.detailed_place.id][0]
         self.assertEquals(self.detailed_place.name, detailed_resp['name'])
-        self._test_detailed_equality(self.detailed_place, detailed_resp)
 
     def test_get_listed_only(self):
         '''
@@ -232,8 +233,6 @@ class PlaceResourceTest(ResourceTestCase):
         self.assertValidJSONResponse(unlisted_resp)
         unlisted_resp = self.deserialize(unlisted_resp)
         self._test_detailed_equality(self.sparse_unlisted_place, unlisted_resp)
-
-    # TODO: add some authentication stuff here?
 
 # class CloseLocationManagerTest(TestCase):
 #     def setUp(self):

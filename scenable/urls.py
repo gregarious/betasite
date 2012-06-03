@@ -11,8 +11,9 @@ from scenable.common.views import PageSiteSearch
 from scenable import settings
 
 from tastypie.api import Api
-from places.api import PlaceResource
-from tags.api import TagResource
+from scenable.places.api import PlaceResource
+from scenable.events.api import EventResource
+from scenable.tags.api import TagResource
 
 admin.autodiscover()
 
@@ -77,6 +78,7 @@ urlpatterns = patterns('',
 # API setup
 v1_api = Api(api_name='v1')
 v1_api.register(PlaceResource())
+v1_api.register(EventResource())
 v1_api.register(TagResource())
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),

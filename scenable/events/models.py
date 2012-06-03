@@ -8,6 +8,7 @@ from scenable.tags.models import Tag
 from scenable.accounts.models import Organization
 from scenable.common.utils import precache_thumbnails
 
+
 class ListedEventManager(models.Manager):
     def get_query_set(self):
         return super(ListedEventManager, self).get_query_set().filter(listed=True)
