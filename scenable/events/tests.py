@@ -1,7 +1,7 @@
 from django.test import TestCase
 from tastypie.test import ResourceTestCase
 
-from scenable.places.models import Place, Location
+from scenable.places.models import Place
 from scenable.events.models import Event
 from scenable.tags.models import Tag
 
@@ -23,12 +23,8 @@ class EventResourceTest(ResourceTestCase):
         # detailed event, in the future
         self.detailed_event = Event.objects.create(
             name='detailed',
-            description='This is a event place. So many details!',
-            place=Place.objects.create(
-                name='Catapult PGH',
-                location=Location.objects.create(address='5139 Penn Ave',
-                    town='Pittsburgh', state='PA', postcode='15224',
-                    latitude='40.465002', longitude='-79.941352')),
+            description='This is a fun event. So many details!',
+            place=Place.objects.create(name='Catapult PGH'),
             dtstart=datetime.datetime(2012, 6, 20, 20, 0, tzinfo=get_current_timezone()),
             dtend=datetime.datetime(2012, 6, 20, 22, 30, tzinfo=get_current_timezone()),
             url='http://example.com',
@@ -39,6 +35,7 @@ class EventResourceTest(ResourceTestCase):
         # event completely in the future
         self.simple_event1 = Event.objects.create(
             name='simple: future',
+            place_primitive='Bad Place',
             dtstart=datetime.datetime(2012, 7, 1, 12, 0, tzinfo=get_current_timezone()),
             dtend=datetime.datetime(2012, 7, 1, 14, 0, tzinfo=get_current_timezone()),
             listed=False)
@@ -46,13 +43,15 @@ class EventResourceTest(ResourceTestCase):
         # event in progress relative to fakeNow (6/18 @ 20:20)
         self.simple_event2 = Event.objects.create(
             name='simple: in progress',
-            dtstart=datetime.datetime(2012, 6, 20, 16, 0, tzinfo=get_current_timezone()),
-            dtend=datetime.datetime(2012, 6, 20, 18, 30, tzinfo=get_current_timezone()),
+            place_primitive='Simple Place',
+            dtstart=datetime.datetime(2012, 6, 18, 16, 0, tzinfo=get_current_timezone()),
+            dtend=datetime.datetime(2012, 6, 18, 22, 30, tzinfo=get_current_timezone()),
             listed=True)
 
         # event completely in the past
         self.simple_event3 = Event.objects.create(
             name='simple: past',
+            place=Place.objects.create(name='Another Place'),
             dtstart=datetime.datetime(2012, 6, 3, 20, 0, tzinfo=get_current_timezone()),
             dtend=datetime.datetime(2012, 6, 5, 14, 0, tzinfo=get_current_timezone()),
             listed=True)
@@ -117,26 +116,30 @@ class EventResourceTest(ResourceTestCase):
         detailed_resp = [r for r in resp['objects'] if r['id'] == self.detailed_event.id][0]
         self.assertEquals(self.detailed_event.name, detailed_resp['name'])
 
-    def test_get_listed_only(self):
+    def test_get_list_filters(self):
         '''
-        Double check to ensure listed filter is working: important for
-        feeds.
+        Double check to ensure correct filters are supported: dtend, dtstart, listed
         '''
+        # check for listed (3 results expected)
         resp = self.api_client.get('/api/v1/event/?listed=true', format='json')
         self.assertValidJSONResponse(resp)
         resp = self.deserialize(resp)
         self.assertEquals(len(resp['objects']), 3)
 
-    def test_get_incomplete_listed_only(self):
-        '''
-        Double check to ensure listed and dtend filter is working for list
-        results: this is a very likely scenario.
-        '''
-        resp = self.api_client.get('/api/v1/event/?listed=true&dtend__gte=%s' % self.fakeNow().isoformat(), format='json')
+        isonow = self.fakeNow().isoformat()
+        # check for listed + not in past (2 expected)
+        resp = self.api_client.get('/api/v1/event/?listed=true&dtend__gte=%s' % isonow, format='json')
         self.assertValidJSONResponse(resp)
         resp = self.deserialize(resp)
         resp_names = set([r['name'] for r in resp['objects']])
         self.assertEquals(set(['simple: in progress', 'detailed']), resp_names)
+
+        # check for in progress (1 expected)
+        resp = self.api_client.get('/api/v1/event/?listed=true&dtend__gte=%s&dtstart__lte=%s' % (isonow, isonow), format='json')
+        self.assertValidJSONResponse(resp)
+        resp = self.deserialize(resp)
+        self.assertEquals(len(resp['objects']), 1)
+        self.assertEquals(resp['objects'][0]['name'], 'simple: in progress')
 
     def test_get_detail(self):
         detail_resp = self.api_client.get('/api/v1/event/%s/' % self.detailed_event.id, format='json')
