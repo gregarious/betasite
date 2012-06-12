@@ -530,10 +530,6 @@ legend {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #999;
-}
-.simple-form input[type="submit"]:hover {
-  background: #777;
 }
 .site-search-container {
   float: left;
@@ -2163,6 +2159,7 @@ legend {
   margin-right: 1em;
 }
 .notification.new-feature {
+  margin: 0.5em 0;
   float: left;
 }
 .notification.new-feature h3 {
@@ -2184,8 +2181,9 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 1em;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
+  text-align: center;
 }
 .registration-form-container,
 .newpass-page {
