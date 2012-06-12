@@ -373,6 +373,14 @@ blockquote {
   font-weight: bold;
   display: block;
 }
+.item-actions {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  background: url('/static/img/icons/map-unavailable.png') no-repeat center;
+}
 /* FORMS & INPUTS --------------- */
 ::-webkit-input-placeholder {
   color: #AAAAAA;
@@ -1164,6 +1172,9 @@ legend {
 }
 .page-nav-container:after {
   clear: both;
+}
+.page-nav-container:last-child {
+  border: none;
 }
 .page-nav-container .simple-form {
   float: left;
