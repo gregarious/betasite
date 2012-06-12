@@ -26,9 +26,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': settings_local.DB_DEFAULT
-}
+DATABASES = settings_local.DATABASES
 DATABASES['default']['TEST_CHARSET'] = 'utf8'
 
 # Local time zone for this installation. Choices can be found here:
@@ -136,8 +134,8 @@ INSTALLED_APPS = (
     'scenable.common',
     'scenable.accounts',
     'scenable.tags',
+    'scenable.organizations',   # kept around for migrations to work
     'scenable.places',
-    'scenable.organizations',
     'scenable.events',
     'scenable.specials',
     'scenable.news',
@@ -151,6 +149,7 @@ INSTALLED_APPS = (
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 # (see master:687f9565 for old logging examples)
+LOGGING_ROOT = site_file('var/logs')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -168,7 +167,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': site_file('logs/debug.log')
+            'filename': os.path.join(LOGGING_ROOT, 'debug.log'),
         },
     },
     'loggers': {
@@ -216,13 +215,14 @@ SEND_BROKEN_LINK_EMAILS = True
 # pipeline settings
 from scenable.settings.pipeline import *
 # this is defined outside so we can use site_file
-PIPELINE_YUI_BINARY = site_file('bin/yuicompressor')
+PIPELINE_YUI_BINARY = site_file('opt/yuicompressor/bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 # initial Haystack setup for Whoosh
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': site_file('var/whoosh_index'),
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
     },
 }

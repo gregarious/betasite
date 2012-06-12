@@ -1,7 +1,7 @@
 '''imports all events for knowns fb-linked Places'''
 from scenable.events.outsourcing import facebook
 from scenable.places.models import Place
-from scenable.organizations.models import Organization
+from scenable.accounts.models import Organization
 
 import logging
 logging.root.setLevel(logging.INFO)

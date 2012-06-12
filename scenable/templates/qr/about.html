@@ -12,22 +12,26 @@ HTML5 Boilerplate before release.
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Scripts -->
-	<script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
-
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{STATIC_URL}}css/splash_style.css?v=1">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Blokletters-Potlood-fontfacekit/stylesheet.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/fonts/Droid-Serif-fontfacekit/stylesheet.css">
 
+	<script>
+	</script>
+
 </head>
 <body>
 
-{% block content %}
+<div class="notification">
+	<h2>Are you a Beta Tester?</h2> 
+	<a href="{% url login %}">Login or claim your account on the Oakland Scene.</a>
+</div>
+
 <div class="wrap" id="desktop">
 
 	<header id="site-header">
-		<!-- <h1 id="site-title">scenable</h1> -->
+
 		<img id="sign-logo" src="{{STATIC_URL}}img/logos/scenable-cloud-pgh-1075.png" alt="Scenable Logo" />		
 		<h1>an <span class="highlight">app</span> for local communities</h1>
 	</header>
@@ -94,6 +98,23 @@ HTML5 Boilerplate before release.
 		</article>
 
 	</section>
-
 </div>
-{% endblock %}
+
+
+<!-- Scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script>
+
+window.jQuery || document.write('<script src="{{STATIC_URL}}js/libs/jquery-1.7.2.min.js"><\/script>')
+
+$(document).ready(function () {
+	$('.notification').delay(500).fadeIn(300);
+});
+
+</script>
+<script src="{{STATIC_URL}}js/libs/modernizr-2.5.3-respond-1.1.1.min.js"></script>
+
+</body>
+
+</html>

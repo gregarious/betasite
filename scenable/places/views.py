@@ -1,46 +1,34 @@
 from django.shortcuts import get_object_or_404, render_to_response
-#from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
-#from scenable.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
-from scenable.common.views import PageContext, PageFilteredFeed
+from scenable.common.views import PageContext, PageFilterableFeed
 
 from scenable.places.models import Place
-# from scenable.places.resources import PlaceFeedResource
 from scenable.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
-from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
+from django.db.models import Count
 
 
-class PagePlacesFeed(PageFilteredFeed):
+class PagePlacesFeed(PageFilterableFeed):
     def __init__(self, *args, **kwargs):
+        sqs = SearchQuerySet().models(Place)
+        qs = Place.listed_objects.annotate(total_favs=Count('favorite')).order_by('-total_favs')
         super(PagePlacesFeed, self).__init__(
-            model_class=Place,
-            viewmodel_class=PlaceData,
             template='places/page_feed.html',
-            form_class=SearchForm,
+            searchqueryset=sqs,
+            nofilter_queryset=qs,
+            viewmodel_class=PlaceData,
             results_per_page=8,
         )
 
-    def get_page_context(self, content):
+    def get_page_context(self, request):
+        '''
+        Return a dict of extra context variables. Override this.
+        '''
         return PageContext(self.request,
             current_section='places',
-            page_title='Scenable | Oakland Places',
-            content_dict=content)
-
-    def hacked_unfiltered(self):
-        '''
-        Temporary hack to get a list of unfiltered results. Will either be
-        self.model_class.objects.all() or
-        self.model_class.listed_objects.all().
-
-        Necessary because self.searchqueryset.all() seems to be buggy.
-        '''
-        places = [p for p in Place.listed_objects.all()]
-        return sorted(places, key=lambda p: -p.favorite_set.count())
-
-    def hacked_filtered(self):
-        return [result.object for result in self.form.search()]
+            page_title='Scenable | Oakland Places')
 
 
 @login_required

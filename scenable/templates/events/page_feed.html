@@ -9,6 +9,7 @@ Context variables:
     query: filter query text
     form: filter form
 {% endcomment %}
+{% load feed_urlencode from commontags %}
 
 {% block main-content %}
 
@@ -28,12 +29,21 @@ Context variables:
         </form>
         <nav class="prev-next" id="events-feed-nav">
             <div class="previous">
-            {% if page.has_previous %}<a href="{% url events-feed %}?page={{page.previous_page_number}}{%if query%}&q={{query}}{%endif%}">&larr;</a>{% else %}&nbsp;{% endif %}</div>
+            {% if page.has_previous %}
+                <a href="{% feed_urlencode 'events-feed' page_num=page.previous_page_number q=query %}">&larr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
+            </div>
             <div class="page-num">
                 <p>Page</p>
                 {{page.number}} / {{page.paginator.num_pages}}</div>
             <div class="next">
-                {% if page.has_next %}<a href="{% url events-feed %}?page={{page.next_page_number}}{%if query%}&q={{query}}{%endif%}">&rarr;</a>{% else %}&nbsp;{% endif %}
+            {% if page.has_next %}
+                <a href="{% feed_urlencode 'events-feed' page_num=page.next_page_number q=query %}">&rarr;</a>
+            {% else %}
+                &nbsp;
+            {% endif %}
             </div>
         </nav>
     </div> <!-- .page-nav-container -->

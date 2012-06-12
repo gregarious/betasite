@@ -6,8 +6,13 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ('tags', '0001_initial'),
+        ('places', '0001_initial'),
+        ('organizations', '0001_initial'),
+    )
+
     def forwards(self, orm):
-        
         # Adding model 'Event'
         db.create_table('events_event', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),

@@ -1,42 +1,60 @@
 from django.shortcuts import get_object_or_404, render_to_response
-# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
-from django.utils import timezone
+from django.utils.timezone import now
 
-# from scenable.common.utils.jsontools import serialize_resources, jsonp_response, sanitize_json
-from scenable.common.views import PageContext, PageFilteredFeed
+from scenable.common.views import PageContext, PageFilterableFeed
 
 from scenable.events.models import Event
 from scenable.events.viewmodels import EventData
-# from scenable.events.resources import EventFeedResource
 
-from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
 
 
-class PageEventsFeed(PageFilteredFeed):
+class PageEventsFeed(PageFilterableFeed):
     def __init__(self, *args, **kwargs):
+        sqs = SearchQuerySet().models(Event).filter(dtend__gt=now()).order_by('dtend')
+        qs = Event.listed_objects.filter(dtend__gt=now()).order_by('dtend')
         super(PageEventsFeed, self).__init__(
-            model_class=Event,
-            viewmodel_class=EventData,
             template='events/page_feed.html',
-            form_class=SearchForm,
-            results_per_page=6,
+            searchqueryset=sqs,
+            nofilter_queryset=qs,
+            viewmodel_class=EventData,
+            results_per_page=8,
         )
 
-    def get_page_context(self, content):
+    def get_page_context(self, request):
+        '''
+        Return a dict of extra context variables. Override this.
+        '''
         return PageContext(self.request,
             current_section='events',
-            page_title='Scenable | Oakland Events',
-            content_dict=content)
+            page_title='Scenable | Oakland Events')
 
-    def hacked_unfiltered(self):
-        return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtend')
 
-    def hacked_filtered(self):
-        # TODO: move this filtering into the query
-        return sorted([result.object for result in self.form.search()
-                        if result.object.dtend > timezone.now()],
-                        key=lambda e: e.dtend)
+# class PageEventsFeed(PageFilteredFeed):
+#     def __init__(self, *args, **kwargs):
+#         super(PageEventsFeed, self).__init__(
+#             model_class=Event,
+#             viewmodel_class=EventData,
+#             template='events/page_feed.html',
+#             form_class=SearchForm,
+#             results_per_page=6,
+#         )
+
+#     def get_page_context(self, content):
+#         return PageContext(self.request,
+#             current_section='events',
+#             page_title='Scenable | Oakland Events',
+#             content_dict=content)
+
+#     def hacked_unfiltered(self):
+#         return Event.listed_objects.filter(dtend__gt=timezone.now()).order_by('dtend')
+
+#     def hacked_filtered(self):
+#         # TODO: move this filtering into the query
+#         return sorted([result.object for result in self.form.search()
+#                         if result.object.dtend > timezone.now()],
+#                         key=lambda e: e.dtend)
 
 
 @login_required

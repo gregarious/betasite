@@ -9,8 +9,12 @@ python-dateutil==1.5    # Versions >1.5 require Python 3
 pytz>=2012c
 sorl-thumbnail>=11.12
 
+### Required for pyelasticsearch
+requests>=0.9.0
+
 ### Pakcages straight from VCS (ones not on PyPI, beta versions, etc.)
 -e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
+git+https://github.com/toastdriven/pyelasticsearch.git
 
 ### Packages require gcc (can be flaky on OS X)
 PIL>=1.1.7

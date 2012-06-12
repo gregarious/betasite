@@ -1,3 +1,2 @@
-bin/
-lib/
-src/
+src
+*.DS_Store

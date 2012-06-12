@@ -30,7 +30,7 @@ $(function(){
     var feedbackForm = $('.feedback-modal').find('form');
     feedbackForm.find('input[type="submit"]').click(function(){
         $.ajax({
-            url: scenable.constants.SITE_URL + 'feedback/ajax/generic/',
+            url: '/feedback/ajax/generic/',
             type: 'POST',
             data: {
                 'feedback': feedbackForm.find('textarea[name="feedback"]').val(),

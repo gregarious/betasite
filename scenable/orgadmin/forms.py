@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
-from scenable.organizations.forms import OrganizationForm
+from scenable.accounts.forms import OrganizationForm
 from scenable.places.forms import PlaceForm, LocationForm
 from scenable.places.models import Location
 

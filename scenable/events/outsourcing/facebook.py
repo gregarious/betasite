@@ -281,7 +281,8 @@ def add_fbevent(fb_event, place_candidate=None):
         event.save()
     else:
         event = fbevent_to_event(fb_event, save=False)
-        event.listed = False    # guilty until proven innocent (don't want to list events not DIRECTLY happening in a place we know about)
+        # reconsidered this: for now assuming all evetns are listed.
+        # event.listed = False    # guilty until proven innocent (don't want to list events not DIRECTLY happening in a place we know about)
         if event.place:
             # if we're here, we've got a newly created Place associated with the event
             #  let's see if we can match it to any likely candidate existing places

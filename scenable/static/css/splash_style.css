@@ -49,12 +49,12 @@ body {
   line-height: 1.4;
 }
 ::-moz-selection {
-  background: #fe57a1;
+  background: #4b7699;
   color: #fff;
   text-shadow: none;
 }
 ::selection {
-  background: #fe57a1;
+  background: #4b7699;
   color: #fff;
   text-shadow: none;
 }
@@ -247,7 +247,6 @@ body {
 }
 section {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -428,7 +427,6 @@ input[type="submit"]:active {
 }
 .field-container {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -462,7 +460,6 @@ input[type="submit"]:active {
 /* SITE ---------- */
 .wrap {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -521,12 +518,31 @@ input[type="submit"]:active {
   box-sizing: border-box;
   padding-left: 1%;
 }
+.notification {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px #ded57f solid;
+  background: #FCF8DE;
+  text-align: center;
+  padding: 0.5em;
+  width: 100%;
+  position: fixed;
+  -webkit-box-shadow: 0.2em 0 0.2em #666666;
+  -moz-box-shadow: 0.2em 0 0.2em #666666;
+  box-shadow: 0.2em 0 0.2em #666666;
+  display: none;
+}
+.notification h2 {
+  margin-top: 0;
+  display: inline;
+  font-size: 1em;
+}
 .suggest-scene {
   margin-top: 5%;
 }
 .caption {
   width: 100%;
-  margin: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -560,10 +576,6 @@ input[type="submit"]:active {
 .icon {
   float: right;
 }
-/*.keep-up {
-	padding: 1em;
-	background: #fff;
-}*/
 /* 18 MEDIA QUERIES ---------- */
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-../wiki/The-Style
@@ -572,7 +584,6 @@ input[type="submit"]:active {
 @media screen and (max-width: 768px) {
   section {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -582,7 +593,6 @@ input[type="submit"]:active {
     border-bottom: 1px solid #fff;
     padding-bottom: 5%;
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -590,7 +600,6 @@ input[type="submit"]:active {
   #company {
     padding: 5% 0 0;
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -602,14 +611,12 @@ input[type="submit"]:active {
   }
   .field-label {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
   .field {
     width: 100%;
-    margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
