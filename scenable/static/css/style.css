@@ -2169,6 +2169,33 @@ legend {
   float: left;
   margin-right: 1em;
 }
+.notification.new-feature {
+  margin: 0.5em 0;
+  float: left;
+}
+.notification.new-feature h3 {
+  margin-bottom: 0.5em;
+}
+.notification.new-feature div {
+  float: left;
+  width: 64.58333333333334%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 1em;
+}
+.notification.new-feature .btn {
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+}
 .registration-form-container,
 .newpass-page {
   margin: 3em 3%;
