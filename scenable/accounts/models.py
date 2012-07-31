@@ -78,9 +78,9 @@ class Organization(models.Model):
     dtcreated = models.DateTimeField(u'Datetime created', auto_now_add=True)
 
     administrators = models.ManyToManyField(User, verbose_name=u'Users with administrator access',
-        blank=True, null=True, related_name='new_organization')
+        blank=True, null=True)
     establishments = models.ManyToManyField(Place, verbose_name=u'Establishments owned',
-        blank=True, null=True, related_name='new_organization')
+        blank=True, null=True)
 
     image = models.ImageField(upload_to='img/o', null=True, blank=True)
     url = models.URLField('Website', blank=True)

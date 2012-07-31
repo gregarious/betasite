@@ -24,8 +24,8 @@ Context variables:
 
     <div class="page-nav-container">
         <form class="simple-form" method="get" action="{% url events-feed %}">
-            <input type="search" placeholder="Filter Events" name="{{form.q.html_name}}" value="{{query}}"/>
-            <input type="submit" value="Filter" />
+            <input type="search" placeholder="Search Events" name="{{form.q.html_name}}" value="{{query}}"/>
+            <input type="submit" value="Search" />
         </form>
         <nav class="prev-next" id="events-feed-nav">
             <div class="previous">
@@ -51,6 +51,15 @@ Context variables:
     {% if not page.object_list %}
         <div class="none-found">No results found.</div>
     {% else %}
+
+    <section class="notification new-feature">
+        <h3>New Feature!</h3>
+        <div>
+            <p>In Scenable's early stage, our data sources are limited. We'd like <em>you</em>, the users, to help us out and keep the site content thorough and accurate. Add an event and we'll have it up on the site in the next day or so.</p>
+        </div>
+        <a href="https://docs.google.com/spreadsheet/viewform?formkey=dGY2U2lweVBDTjZ3ZmNtZTd2SnBNZWc6MQ#gid=0" target="blank"class="btn">Add an event!</a>
+    </section> <!-- .notification -->
+
     <ul class="feed events" id="mainEventFeed">
 
     </ul> <!-- .feed#mainEventFeed -->
