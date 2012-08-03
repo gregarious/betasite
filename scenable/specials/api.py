@@ -2,6 +2,9 @@ from tastypie import fields
 from tastypie.resources import ModelResource
 from tastypie.constants import ALL
 
+from haystack.query import SearchQuerySet
+
+from scenable.places.models import Place
 from scenable.specials.models import Special
 from scenable.tags.api import TagResource
 from scenable.places.api import PlaceResource
@@ -18,46 +21,27 @@ class SpecialResource(ModelResource):
         filtering = {
             'dstart': ALL,
             'dexpires': ALL,
+            # search-query filtering and category filtering is also supported,
+            # see build_filters below
         }
 
-# Old SpecialData-based Resource
-# class SpecialFeedResource(Resource):
-#     id = fields.IntegerField('id')
-#     title = fields.CharField('title')
-#     tags = fields.ManyToManyField(TagResource, 'tags', full=True)
-#     place = fields.ForeignKey(PlaceFeedResource, 'place', full=True, null=True)
-#     has_coupon = fields.BooleanField('has_coupon', null=True, default=False)
+    def build_filters(self, filters=None):
+        '''
+        Custom filters used for category and searching.
+        '''
+        if filters is None:
+            filters = {}
 
-#     class Meta:
-#         resource_name = 'special'
-#         object_class = SpecialData
-#         authorization = Authorization()
+        orm_filters = super(SpecialResource, self).build_filters(filters)
 
-#     def get_resource_url(self, bundle_or_obj):
-#         kwargs = {
-#             'resource_name': self._meta.resource_name,
-#         }
+        query = filters.get('q')
+        category_pk = filters.get('catpk')
+        if query is not None:
+            sqs = SearchQuerySet().models(Special).load_all().auto_query(query)
+            orm_filters["pk__in"] = [i.pk for i in sqs]
 
-#         if isinstance(bundle_or_obj, Bundle):
-#             kwargs['pk'] = bundle_or_obj.obj.id
-#         else:
-#             kwargs['pk'] = bundle_or_obj.id
+        # category actually operates on Place and Special
+        if category_pk is not None:
+            orm_filters["place__tags__pk"] = category_pk
 
-#         if self._meta.api_name is not None:
-#             kwargs['api_name'] = self._meta.api_name
-
-#         return self._build_reverse_url('api_dispatch_detail', kwargs=kwargs)
-
-#     def get_object_list(self, request):
-#         specials = Special.objects.all()
-#         return [SpecialData(s, request.user) for s in specials]
-
-#     def obj_get_list(self, request=None, **kwargs):
-#         specials = Special.objects.filter(**kwargs)
-#         user = request.user if request else None
-#         return [SpecialData(s, user) for s in specials]
-
-#     def obj_get(self, request=None, **kwargs):
-#         special = Special.objects.get(**kwargs)
-#         user = request.user if request else None
-#         return SpecialData(special, user)
+        return orm_filters

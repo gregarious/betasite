@@ -2,8 +2,9 @@ from tastypie import fields
 from tastypie.resources import ModelResource
 from tastypie.constants import ALL
 
-from scenable.tags.api import TagResource
+from haystack.query import SearchQuerySet
 
+from scenable.tags.api import TagResource
 from scenable.places.models import Place, Location, HoursListing
 
 
@@ -23,7 +24,11 @@ class PlaceResource(ModelResource):
     class Meta:
         queryset = Place.objects.all()
         excludes = ('dtcreated', 'parking')
-        filtering = {'listed': ALL}     # allow pass-thru ORM filtering on listed
+        filtering = {
+            'listed': ALL,  # allow pass-thru ORM filtering on listed
+            # search-query filtering and category filtering is also supported,
+            # see build_filters below
+        }
 
     def dehydrate_hours(self, bundle):
         '''
@@ -41,34 +46,21 @@ class PlaceResource(ModelResource):
         bundle.data['hours'] = hours
         return bundle
 
-    # def obj_get_list(self, request=None, **kwargs):
-    #     return super(PlaceResource, self).obj_get_list(request, **kwargs).filter(listed=True)
+    def build_filters(self, filters=None):
+        '''
+        Custom filters used for category and searching.
+        '''
+        if filters is None:
+            filters = {}
 
-# class PlaceFeedResource(ModelResource):
-#     id = fields.IntegerField('id')
-#     name = fields.CharField('name')
-#     image = fields.FileField('image')
-#     description = fields.CharField('description')
-#     tags = fields.ManyToManyField(TagResource, 'tags', full=True)
-#     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
-#     is_favorite = fields.BooleanField('is_favorite', null=True, default=False)
+        orm_filters = super(PlaceResource, self).build_filters(filters)
 
-#     class Meta:
-#         resource_name = 'place'
-#         object_class = PlaceData
-#         authorization = Authorization()
+        query = filters.get('q')
+        category_pk = filters.get('catpk')
+        if query is not None:
+            sqs = SearchQuerySet().models(Place).load_all().auto_query(query)
+            orm_filters["pk__in"] = [i.pk for i in sqs]
+        if category_pk is not None:
+            orm_filters["tags__pk"] = category_pk
 
-#     def get_resource_url(self, bundle_or_obj):
-#         kwargs = {
-#             'resource_name': self._meta.resource_name,
-#         }
-
-#         if isinstance(bundle_or_obj, Bundle):
-#             kwargs['pk'] = bundle_or_obj.obj.id
-#         else:
-#             kwargs['pk'] = bundle_or_obj.id
-
-#         if self._meta.api_name is not None:
-#             kwargs['api_name'] = self._meta.api_name
-
-#         return self._build_reverse_url('api_dispatch_detail', kwargs=kwargs)
+        return orm_filters

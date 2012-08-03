@@ -276,7 +276,6 @@ class HoursField(models.TextField):
 # need to register custom field with South
 add_introspection_rules([], ["^scenable\.places\.models\.HoursField"])
 
-
 class Place(models.Model, ViewModel):
     '''
     Handles information about places.
