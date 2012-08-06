@@ -1,4 +1,4 @@
-from scenable.places.models import Place, Location, Hours, Parking
+from scenable.places.models import Place, Location, HoursListing, Parking
 from scenable.outsourcing.apitools.facebook import GraphAPIClient, FacebookAPIError
 from scenable.tokens import FACEBOOK_ACCESS_TOKEN
 from scenable.common.utils import imagefile_from_url
@@ -87,12 +87,12 @@ class FBPage(object):
             else:
                 entries.append([day, day, hours])
 
-        h = Hours()
+        h = []
         for start, end, hours in entries:
             if start == end:
-                h.add_span(start, hours)
+                h.append(HoursListing(start, hours))
             else:
-                h.add_span("%s-%s" % (start, end), hours)
+                h.append(HoursListing("%s-%s" % (start, end), hours))
 
         return h
 
@@ -158,9 +158,7 @@ def fbpage_to_place(fbpage, save=False):
 
     # special parking/hours objects used to serialize to DB
     # TODO: this is temporary. dig into django custom model field to make less hacky
-    hours = fbpage.get_hours()
-    if hours:
-        p.set_hours(hours)
+    p.hours = fbpage.get_hours()
     parking = fbpage.get_parking()
     if parking:
         p.set_parking(parking)

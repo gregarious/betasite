@@ -3,6 +3,8 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.core.exceptions import ValidationError
 
+from south.modelsinspector import add_introspection_rules
+
 from scenable.tags.models import Tag
 from scenable.common.core.viewmodels import ViewModel
 from scenable.common.utils import CSVPickler
@@ -233,6 +235,47 @@ class ListedPlaceManager(models.Manager):
         return super(ListedPlaceManager, self).get_query_set().filter(listed=True)
 
 
+class HoursListing(object):
+    def __init__(self, days, hours):
+        self.days = days
+        self.hours = hours
+
+    def __unicode__(self):
+        return u'<HoursListing: "%s: %s">' % (self.days, self.hours)
+
+    def __eq__(self, other):
+        return self.days == other.days and self.hours == other.hours
+
+
+class HoursField(models.TextField):
+    description = "List of HoursListings"
+    __metaclass__ = models.SubfieldBase
+
+    def __init__(self, *args, **kwargs):
+        self.pickler = CSVPickler()
+        super(HoursField, self).__init__(*args, **kwargs)
+
+    def to_python(self, value):
+        value = super(HoursField, self).to_python(value)
+        if isinstance(value, list) or value is None:
+            return value
+        return [HoursListing(*pair) for pair in self.pickler.from_csv(value)]
+
+    def get_prep_value(self, value):
+        if value is None:
+            prepped = value
+        else:
+            tuples = [(v.days.strip(), v.hours.strip()) for v in value]
+            prepped = self.pickler.to_csv(tuples)
+        return super(HoursField, self).get_prep_value(prepped)
+
+    # TODO: do a custom widget/field for this
+    def formfield(self, **kwargs):
+        return super(HoursField, self).formfield(**kwargs)
+
+# need to register custom field with South
+add_introspection_rules([], ["^scenable\.places\.models\.HoursField"])
+
 class Place(models.Model, ViewModel):
     '''
     Handles information about places.
@@ -249,7 +292,7 @@ class Place(models.Model, ViewModel):
 
     tags = models.ManyToManyField(Tag, blank=True)
 
-    hours = models.TextField('comma-separated Day:Hour entries', blank=True)
+    hours = HoursField('List of HoursListing', blank=True)
     parking = models.CharField(max_length=200, blank=True)
     phone = models.CharField(max_length=200, blank=True)
 
@@ -314,16 +357,6 @@ class Place(models.Model, ViewModel):
         favs.delete()
         return fav_exists
 
-    # TODO: Make hours and parking official Python custom fields https://docs.djangoproject.com/en/dev/howto/custom-model-fields/
-    def hours_unpacked(self):
-        return self.hours_as_obj().to_data()
-
-    def hours_as_obj(self):
-        return Hours.deserialize(self.hours)
-
-    def set_hours(self, hours):
-        self.hours = hours.serialize()
-
     def parking_unpacked(self):
         return self.parking_as_obj().to_data()
 
@@ -360,33 +393,6 @@ class Favorite(models.Model):
 
     def __unicode__(self):
         return unicode(self.user) + u'@' + unicode(self.place)
-
-
-class Hours(ViewModel):
-    '''
-    Object to handle day, hours pairs.
-    '''
-    def __init__(self):
-        self.day_hours_tuples = []
-        self.pickler = CSVPickler()
-
-    def add_span(self, day, hours):
-        self.day_hours_tuples.append((day, hours))
-
-    def to_data(self):
-        return [(day, hours) for day, hours in self.day_hours_tuples]
-
-    @classmethod
-    def deserialize(cls, data):
-        inst = Hours()
-        inst.day_hours_tuples = inst.pickler.from_csv(data)
-        return inst
-
-    def serialize(self):
-        return self.pickler.to_csv(self.day_hours_tuples)
-
-    def __str__(self):
-        return self.serialize()
 
 
 class Parking(ViewModel):

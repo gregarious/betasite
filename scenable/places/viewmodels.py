@@ -12,7 +12,7 @@ from django.template.defaultfilters import truncatewords
 
 class PlaceData(object):
     def __init__(self, place, user=None):
-        fields = ('id', 'name', 'location', 'description', 'tags', 'image',
+        fields = ('id', 'name', 'location', 'description', 'tags', 'image', 'hours',
                   'url', 'fb_id', 'twitter_username', 'listed', 'get_absolute_url')
         if isinstance(user, User):
             self.is_favorite = place.favorite_set.filter(user=user).count() > 0
@@ -21,7 +21,6 @@ class PlaceData(object):
         for attr in fields:
             setattr(self, attr, getattr(place, attr))
         # do hours and parking separately
-        self.hours = place.hours_unpacked()
         #self.parking = place.parking_unpacked()
         self.pk = self.id
 
@@ -48,7 +47,10 @@ class PlaceData(object):
                 'name': tag.name,
                 'permalink': tag.get_absolute_url(),
             } for tag in self.tags.all()[:4]],
-            'hours': self.hours,
+            'hours': [{
+                'days': listing.days,
+                'hours': listing.hours
+            } for listing in self.hours],
             'image': self.image.url if self.image else '',
             # special fields only for JSON output
             'permalink': self.get_absolute_url(),

@@ -29,9 +29,6 @@ Context variables:
 		{% if place.phone %}
 			<li>{{place.phone}}</li>
 		{% endif %}
-		{% if place.hours %}
-			<li>{{place.hours}}</li>
-		{% endif %}
 		{% if place.description %}
 			<li class="description">{{ place.description|truncatewords:20|urlizetrunc:20 }}</li>
 		{% endif %}

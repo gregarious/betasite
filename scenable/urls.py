@@ -10,6 +10,12 @@ from haystack.views import search_view_factory
 from scenable.common.views import PageSiteSearch
 from scenable import settings
 
+from tastypie.api import Api
+from scenable.places.api import PlaceResource
+from scenable.events.api import EventResource
+from scenable.specials.api import SpecialResource
+from scenable.tags.api import TagResource
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -51,10 +57,9 @@ urlpatterns = patterns('',
     url(r'^oakland-teaser/$', direct_to_template, {'template': 'qr/oakland_teaser.html'}, name='oakland-teaser'),
 
     # Error pages
-    url(r'^500.html$', direct_to_template, {'template': '500.html'}, name='500'),
-    url(r'^404.html$', direct_to_template, {'template': '404.html'}, name='404'),
-    url(r'^403.html$', direct_to_template, {'template': '403.html'}, name='403'),
-    url(r'^index.html$', direct_to_template, {'template': 'index.html'}, name='index'),
+    url(r'^500\.html$', direct_to_template, {'template': '500.html'}, name='500'),
+    url(r'^404\.html$', direct_to_template, {'template': '404.html'}, name='404'),
+    url(r'^403\.html$', direct_to_template, {'template': '403.html'}, name='403'),
 
     # Static about page for the scenable.com. TODO: organize the about pages
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
@@ -69,6 +74,16 @@ urlpatterns = patterns('',
     url(r'^about-oakland/$', 'scenable.common.views.page_static_about_oakland', name='about-oakland'),
     url(r'^team/$', 'scenable.common.views.page_static_team', name='team'),
     url(r'^mission/$', 'scenable.common.views.page_static_mission', name='mission'),
+)
+
+# API setup
+v1_api = Api(api_name='v1')
+v1_api.register(PlaceResource())
+v1_api.register(EventResource())
+v1_api.register(SpecialResource())
+v1_api.register(TagResource())
+urlpatterns += patterns('',
+    (r'^api/', include(v1_api.urls)),
 )
 
 if settings.DEBUG:
