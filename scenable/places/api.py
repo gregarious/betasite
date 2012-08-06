@@ -105,3 +105,11 @@ class PlaceResource(ModelResource):
             orm_filters["tags__pk"] = category_pk
 
         return orm_filters
+
+
+class PlaceStub(ModelResource):
+    location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
+
+    class Meta:
+        queryset = Place.objects.all()
+        fields = ('name', 'location')

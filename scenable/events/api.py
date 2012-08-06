@@ -6,14 +6,14 @@ from haystack.query import SearchQuerySet
 
 from scenable.events.models import Event
 from scenable.tags.api import TagResource
-from scenable.places.api import PlaceResource
+from scenable.places.api import PlaceStub
 
 from scenable.common.utils import get_cached_thumbnail
 
 
 ### API RESOURCES ###
 class EventResource(ModelResource):
-    place = fields.ForeignKey(PlaceResource, 'place', null=True)
+    place = fields.ForeignKey(PlaceStub, 'place', full=True, null=True)
     categories = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
 
     class Meta:
