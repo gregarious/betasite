@@ -4,6 +4,8 @@ from tastypie.constants import ALL
 
 from haystack.query import SearchQuerySet
 
+from scenable.common.utils import get_cached_thumbnail
+
 from scenable.tags.api import TagResource
 from scenable.places.models import Place, Location, HoursListing
 from scenable.events.models import Event
@@ -50,6 +52,9 @@ class PlaceResource(ModelResource):
         }
 
     def dehydrate(self, bundle):
+        '''
+        Handles the inclusion of event and special stubs from this place
+        '''
         bundle.data['events'] = [build_event_stub(e)
                                 for e in Event.objects.filter(place=bundle.obj)
                                                       .order_by('dtend')]
@@ -57,6 +62,14 @@ class PlaceResource(ModelResource):
                                 for s in Special.objects.filter(place=bundle.obj)
                                                         .order_by('dexpires')]
         return bundle
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        return get_cached_thumbnail(bundle.obj.image, 'app').url \
+                if bundle.obj.image \
+                else None
 
     def dehydrate_hours(self, bundle):
         '''

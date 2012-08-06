@@ -8,6 +8,8 @@ from scenable.events.models import Event
 from scenable.tags.api import TagResource
 from scenable.places.api import PlaceResource
 
+from scenable.common.utils import get_cached_thumbnail
+
 
 ### API RESOURCES ###
 class EventResource(ModelResource):
@@ -44,3 +46,11 @@ class EventResource(ModelResource):
             orm_filters["tags__pk"] = category_pk
 
         return orm_filters
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        return get_cached_thumbnail(bundle.obj.image, 'app').url \
+                if bundle.obj.image \
+                else None
