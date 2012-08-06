@@ -12,7 +12,7 @@ from scenable.places.api import PlaceResource
 ### API RESOURCES ###
 class EventResource(ModelResource):
     place = fields.ForeignKey(PlaceResource, 'place', null=True)
-    tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    categories = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
 
     class Meta:
         queryset = Event.objects.all()

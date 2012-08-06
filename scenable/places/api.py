@@ -37,7 +37,7 @@ def build_event_stub(event):
 
 class PlaceResource(ModelResource):
     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
-    tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    categories = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
     # related events and specials are inserted in the dehydrate method
 
     class Meta:
