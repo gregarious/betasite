@@ -1,0 +1,2 @@
+- All Tastypie serialized datetimes are naive ISO datetimes relative to settings.TIME_ZONE
+    - If/when fixed, the EventResourceTest._test_datetimes_equality needs adjusted
