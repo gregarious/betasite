@@ -102,7 +102,7 @@ class PageSiteSearch(SearchView):
                 events=[result for result in result_by_type.get('events.event', [])
                             if result.object.dtend > timezone.now()],
                 specials=[result for result in result_by_type.get('specials.special', [])
-                            if result.object.dexpires > timezone.now().date()],
+                            if result.object.dexpires is None or result.object.dexpires > timezone.now().date()],
                 news_articles=result_by_type.get('news.article', []),
                 chatter_posts=result_by_type.get('chatter.post', []),
             )
