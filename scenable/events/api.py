@@ -24,6 +24,7 @@ class EventResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
+        ordering = ['dtend', 'dtstart']
 
     def build_filters(self, filters=None):
         '''
