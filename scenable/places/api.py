@@ -6,6 +6,8 @@ from haystack.query import SearchQuerySet
 
 from scenable.tags.api import TagResource
 from scenable.places.models import Place, Location, HoursListing
+from scenable.events.models import Event
+from scenable.specials.models import Special
 
 
 ### API RESOURCES ###
@@ -17,9 +19,26 @@ class LocationResource(ModelResource):
         include_resource_uri = False
 
 
+def build_special_stub(special):
+    return {
+        'title': special.title,
+        'expiration_date': special.dexpires
+    }
+
+
+def build_event_stub(event):
+    return {
+        'name': event.name,
+        'dtstart': event.dtstart,
+        'dtend': event.dtend,
+        'categories': [t for t in event.tags.all()]
+    }
+
+
 class PlaceResource(ModelResource):
     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
     tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    # related events and specials are inserted in the dehydrate method
 
     class Meta:
         queryset = Place.objects.all()
@@ -29,6 +48,15 @@ class PlaceResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
+
+    def dehydrate(self, bundle):
+        bundle.data['events'] = [build_event_stub(e)
+                                for e in Event.objects.filter(place=bundle.obj)
+                                                      .order_by('dtend')]
+        bundle.data['specials'] = [build_special_stub(s)
+                                for s in Special.objects.filter(place=bundle.obj)
+                                                        .order_by('dexpires')]
+        return bundle
 
     def dehydrate_hours(self, bundle):
         '''
