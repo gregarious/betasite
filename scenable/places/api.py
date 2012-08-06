@@ -113,3 +113,19 @@ class PlaceStub(ModelResource):
     class Meta:
         queryset = Place.objects.all()
         fields = ('name', 'location')
+
+
+class PlaceExtendedStub(ModelResource):
+    location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
+
+    class Meta:
+        queryset = Place.objects.all()
+        fields = ('name', 'location', 'id', 'image')
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        return get_cached_thumbnail(bundle.obj.image, 'app').url \
+                if bundle.obj.image \
+                else None

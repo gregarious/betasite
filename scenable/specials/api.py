@@ -6,12 +6,12 @@ from haystack.query import SearchQuerySet
 
 from scenable.specials.models import Special
 from scenable.tags.api import TagResource
-from scenable.places.api import PlaceResource
+from scenable.places.api import PlaceExtendedStub
 
 
 ### API RESOURCES ###
 class SpecialResource(ModelResource):
-    place = fields.ForeignKey(PlaceResource, 'place', null=True)
+    place = fields.ForeignKey(PlaceExtendedStub, 'place', full=True, null=True)
     categories = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
 
     class Meta:
