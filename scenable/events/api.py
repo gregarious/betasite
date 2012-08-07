@@ -6,13 +6,15 @@ from haystack.query import SearchQuerySet
 
 from scenable.events.models import Event
 from scenable.tags.api import TagResource
-from scenable.places.api import PlaceResource
+from scenable.places.api import PlaceStub
+
+from scenable.common.utils import get_cached_thumbnail
 
 
 ### API RESOURCES ###
 class EventResource(ModelResource):
-    place = fields.ForeignKey(PlaceResource, 'place', null=True)
-    tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    place = fields.ForeignKey(PlaceStub, 'place', full=True, null=True)
+    categories = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
 
     class Meta:
         queryset = Event.objects.all()
@@ -24,6 +26,7 @@ class EventResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
+        ordering = ['dtend', 'dtstart']
 
     def build_filters(self, filters=None):
         '''
@@ -43,3 +46,11 @@ class EventResource(ModelResource):
             orm_filters["tags__pk"] = category_pk
 
         return orm_filters
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        return get_cached_thumbnail(bundle.obj.image, 'app').url \
+                if bundle.obj.image \
+                else None

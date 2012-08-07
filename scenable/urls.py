@@ -81,7 +81,7 @@ v1_api = Api(api_name='v1')
 v1_api.register(PlaceResource())
 v1_api.register(EventResource())
 v1_api.register(SpecialResource())
-v1_api.register(TagResource())
+
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),
 )
