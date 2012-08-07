@@ -20,6 +20,22 @@ class LocationResource(ModelResource):
         excludes = ('id')
         include_resource_uri = False
 
+    def dehydrate_latitude(self, bundle):
+        '''
+        Overrides the default of strings as serialized DecimalField values
+        '''
+        if bundle.obj.latitude is None:
+            return None
+        return float(bundle.obj.latitude)
+
+    def dehydrate_longitude(self, bundle):
+        '''
+        Overrides the default of strings as serialized DecimalField values
+        '''
+        if bundle.obj.longitude is None:
+            return None
+        return float(bundle.obj.longitude)
+
 
 def build_special_stub(special):
     return {
