@@ -51,6 +51,8 @@ class EventResource(ModelResource):
         '''
         Ensures data includes a url for an app-sized thumbnail
         '''
-        return get_cached_thumbnail(bundle.obj.image, 'app').url \
-                if bundle.obj.image \
-                else None
+        if bundle.obj.image:
+            img = get_cached_thumbnail(bundle.obj.image, 'app')
+            if img is not None:
+                return img.url
+        return None
