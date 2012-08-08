@@ -1,5 +1,5 @@
 from django.contrib import admin
-from scenable.events.models import Event, Role, EventMeta, ICalendarFeed
+from scenable.events.models import Event, Role, EventMeta, ICalendarFeed, Category
 
 
 class RoleInline(admin.TabularInline):
@@ -21,3 +21,4 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Event,EventAdmin)
 admin.site.register(ICalendarFeed)
+admin.site.register(Category)

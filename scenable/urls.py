@@ -12,7 +12,9 @@ from scenable import settings
 
 from tastypie.api import Api
 from scenable.places.api import PlaceResource
+from scenable.places.api import CategoryResource as PlaceCategoryResource
 from scenable.events.api import EventResource
+from scenable.events.api import CategoryResource as EventCategoryResource
 from scenable.specials.api import SpecialResource
 from scenable.news.api import NewsResource
 
