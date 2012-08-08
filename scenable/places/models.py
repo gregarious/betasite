@@ -235,6 +235,10 @@ class ListedPlaceManager(models.Manager):
         return super(ListedPlaceManager, self).get_query_set().filter(listed=True)
 
 
+# TODO: Note problem with HoursListings in admin interface. Interface will
+#  call to_python when pulling from db, and display this data as-is
+#  (e.g. "[]" or "[<scenable.places.models.HoursListing object at 0x10ecfebd0>, ...]")
+#  didn't look into how to fix this
 class HoursListing(object):
     def __init__(self, days, hours):
         self.days = days
