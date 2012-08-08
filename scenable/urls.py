@@ -14,7 +14,7 @@ from tastypie.api import Api
 from scenable.places.api import PlaceResource
 from scenable.events.api import EventResource
 from scenable.specials.api import SpecialResource
-from scenable.tags.api import TagResource
+from scenable.news.api import NewsResource
 
 admin.autodiscover()
 
@@ -79,8 +79,11 @@ urlpatterns = patterns('',
 # API setup
 v1_api = Api(api_name='v1')
 v1_api.register(PlaceResource())
+v1_api.register(PlaceCategoryResource())
 v1_api.register(EventResource())
+v1_api.register(EventCategoryResource())
 v1_api.register(SpecialResource())
+v1_api.register(NewsResource())
 
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),

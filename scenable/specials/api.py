@@ -23,7 +23,8 @@ class SpecialResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
-        ordering = ['dexpires']
+        ordering = ['dexpires'],
+        allowed_methods = ['get']
 
     def build_filters(self, filters=None):
         '''

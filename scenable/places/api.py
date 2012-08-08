@@ -17,7 +17,7 @@ class LocationResource(ModelResource):
     class Meta:
         queryset = Location.objects.all()
         allowed_methods = ['get']
-        excludes = ('id')
+        excludes = ['id']
         include_resource_uri = False
 
     def dehydrate_latitude(self, bundle):
