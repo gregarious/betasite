@@ -273,8 +273,20 @@ class HoursField(models.TextField):
     def formfield(self, **kwargs):
         return super(HoursField, self).formfield(**kwargs)
 
+
 # need to register custom field with South
 add_introspection_rules([], ["^scenable\.places\.models\.HoursField"])
+
+
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = 'categories'
+
+    label = models.CharField(max_length=32, unique=True)
+
+    def __unicode__(self):
+        return self.label
+
 
 class Place(models.Model, ViewModel):
     '''
@@ -289,6 +301,9 @@ class Place(models.Model, ViewModel):
 
     image = models.ImageField(upload_to='img/p', null=True, blank=True)
     description = models.TextField(blank=True)
+
+    # place-specific categories. more specific than tags.
+    categories = models.ManyToManyField(Category, blank=True)
 
     tags = models.ManyToManyField(Tag, blank=True)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from scenable.places.models import Place, Location, PlaceMeta
+from scenable.places.models import Place, Location, PlaceMeta, Category
 
 
 class PlaceMetaInline(admin.TabularInline):
@@ -16,3 +16,4 @@ class LocationAdmin(admin.ModelAdmin):
 
 admin.site.register(Place, PlaceAdmin)
 admin.site.register(Location)
+admin.site.register(Category)
