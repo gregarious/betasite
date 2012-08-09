@@ -6,7 +6,7 @@ from scenable.events.models import Event
 
 class Article(models.Model):
     class Meta:
-        ordering = ['title']
+        ordering = ['-dtcreated']
     dtcreated = models.DateTimeField(auto_now_add=True)
 
     title = models.CharField(max_length=80)

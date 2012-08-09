@@ -14,6 +14,17 @@ class ListedEventManager(models.Manager):
         return super(ListedEventManager, self).get_query_set().filter(listed=True)
 
 
+class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'categories'
+
+    label = models.CharField(max_length=32, unique=True)
+
+    def __unicode__(self):
+        return self.label
+
+
 class Event(models.Model, ViewModel):
     class Meta:
         ordering = ['name']
@@ -38,6 +49,9 @@ class Event(models.Model, ViewModel):
 
     # simple plaintext field to be used as a fallback when only unlinkable, text-based place info is available (e.g. from an iCal feed)
     place_primitive = models.CharField(max_length=200, blank=True)
+
+    # event-specific categories. more specific than tags.
+    categories = models.ManyToManyField(Category, blank=True)
 
     tags = models.ManyToManyField(Tag, blank=True)
     listed = models.BooleanField(default=True)
