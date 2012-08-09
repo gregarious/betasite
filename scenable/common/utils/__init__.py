@@ -79,7 +79,7 @@ def imagefile_from_url(url):
     im.save(tmp)
     return File(tmp)
 
-THUMB_TYPES = ('small', 'standard', )
+THUMB_TYPES = ('small', 'standard', 'app')
 
 
 def get_cached_thumbnail(image, type, ioerror_silent=True):
@@ -96,6 +96,8 @@ def get_cached_thumbnail(image, type, ioerror_silent=True):
             return get_thumbnail(image, '50x50', crop='center')
         elif type.lower() == 'standard':
             return get_thumbnail(image, '130x130', crop='center')
+        elif type.lower() == 'app':
+            return get_thumbnail(image, '80x80', crop='center')
         else:
             return None
     except IOError:

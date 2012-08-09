@@ -4,16 +4,13 @@ from tastypie.constants import ALL
 
 from haystack.query import SearchQuerySet
 
-from scenable.places.models import Place
 from scenable.specials.models import Special
-from scenable.tags.api import TagResource
-from scenable.places.api import PlaceResource
+from scenable.places.api import PlaceExtendedStub
 
 
 ### API RESOURCES ###
 class SpecialResource(ModelResource):
-    place = fields.ForeignKey(PlaceResource, 'place', null=True)
-    tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    place = fields.ForeignKey(PlaceExtendedStub, 'place', full=True, null=True)
 
     class Meta:
         queryset = Special.objects.all()
@@ -24,6 +21,8 @@ class SpecialResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
+        ordering = ['dexpires'],
+        allowed_methods = ['get']
 
     def build_filters(self, filters=None):
         '''
@@ -42,6 +41,6 @@ class SpecialResource(ModelResource):
 
         # category actually operates on Place and Special
         if category_pk is not None:
-            orm_filters["place__tags__pk"] = category_pk
+            orm_filters["place__categories__pk"] = category_pk
 
         return orm_filters

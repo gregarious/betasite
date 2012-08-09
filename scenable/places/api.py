@@ -4,8 +4,13 @@ from tastypie.constants import ALL
 
 from haystack.query import SearchQuerySet
 
-from scenable.tags.api import TagResource
-from scenable.places.models import Place, Location, HoursListing
+from scenable.common.utils import get_cached_thumbnail
+
+from scenable.places.models import Place, Location, HoursListing, Category
+from scenable.events.models import Event
+from scenable.specials.models import Special
+
+from django.conf.urls import url
 
 
 ### API RESOURCES ###
@@ -13,13 +18,54 @@ class LocationResource(ModelResource):
     class Meta:
         queryset = Location.objects.all()
         allowed_methods = ['get']
-        excludes = ('id')
+        excludes = ['id']
         include_resource_uri = False
+
+    def dehydrate_latitude(self, bundle):
+        '''
+        Overrides the default of strings as serialized DecimalField values
+        '''
+        if bundle.obj.latitude is None:
+            return None
+        return float(bundle.obj.latitude)
+
+    def dehydrate_longitude(self, bundle):
+        '''
+        Overrides the default of strings as serialized DecimalField values
+        '''
+        if bundle.obj.longitude is None:
+            return None
+        return float(bundle.obj.longitude)
+
+
+def build_special_stub(special):
+    return {
+        'title': special.title,
+        'expiration_date': special.dexpires
+    }
+
+
+def build_event_stub(event):
+    return {
+        'name': event.name,
+        'dtstart': event.dtstart,
+        'dtend': event.dtend,
+        'categories': list(event.categories.all())
+    }
+
+
+class CategoryResource(ModelResource):
+    class Meta:
+        queryset = Category.objects.all()
+        allowed_methods = ['get']
+        include_resource_uri = False
+        resource_name = 'place_category'
 
 
 class PlaceResource(ModelResource):
     location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
-    tags = fields.ManyToManyField(TagResource, 'tags', full=True, null=True)
+    categories = fields.ManyToManyField(CategoryResource, 'categories', full=True, null=True)
+    # related events and specials are inserted in the dehydrate method
 
     class Meta:
         queryset = Place.objects.all()
@@ -29,6 +75,28 @@ class PlaceResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
+
+    def dehydrate(self, bundle):
+        '''
+        Handles the inclusion of event and special stubs from this place
+        '''
+        bundle.data['events'] = [build_event_stub(e)
+                                for e in Event.objects.filter(place=bundle.obj)
+                                                      .order_by('dtend')]
+        bundle.data['specials'] = [build_special_stub(s)
+                                for s in Special.objects.filter(place=bundle.obj)
+                                                        .order_by('dexpires')]
+        return bundle
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        if bundle.obj.image:
+            img = get_cached_thumbnail(bundle.obj.image, 'app')
+            if img is not None:
+                return img.url
+        return None
 
     def dehydrate_hours(self, bundle):
         '''
@@ -61,6 +129,33 @@ class PlaceResource(ModelResource):
             sqs = SearchQuerySet().models(Place).load_all().auto_query(query)
             orm_filters["pk__in"] = [i.pk for i in sqs]
         if category_pk is not None:
-            orm_filters["tags__pk"] = category_pk
+            orm_filters["categories__pk"] = category_pk
 
         return orm_filters
+
+
+class PlaceStub(ModelResource):
+    location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
+
+    class Meta:
+        queryset = Place.objects.all()
+        fields = ('name', 'location')
+
+
+class PlaceExtendedStub(ModelResource):
+    location = fields.ForeignKey(LocationResource, 'location', full=True, null=True)
+    categories = fields.ManyToManyField(CategoryResource, 'categories', full=True, null=True)
+
+    class Meta:
+        queryset = Place.objects.all()
+        fields = ('name', 'location', 'id', 'image', 'categories')
+
+    def dehydrate_image(self, bundle):
+        '''
+        Ensures data includes a url for an app-sized thumbnail
+        '''
+        if bundle.obj.image:
+            img = get_cached_thumbnail(bundle.obj.image, 'app')
+            if img is not None:
+                return img.url
+        return None
