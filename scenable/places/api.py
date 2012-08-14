@@ -139,7 +139,7 @@ class PlaceStub(ModelResource):
 
     class Meta:
         queryset = Place.objects.all()
-        fields = ('name', 'location')
+        fields = ('name', 'location', 'id')
 
 
 class PlaceExtendedStub(ModelResource):
