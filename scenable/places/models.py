@@ -341,6 +341,18 @@ class Place(models.Model, ViewModel):
                 print 'error caching thumbnails', e
                 # TODO: log error
 
+    def next(self):
+        try:
+            return Place.objects.get(pk=self.pk + 1)
+        except Place.DoesNotExist:
+            return None
+
+    def previous(self):
+        try:
+            return Place.objects.get(pk=self.pk - 1)
+        except Place.DoesNotExist:
+            return None
+
     def to_data(self, *args, **kwargs):
         '''
         Manually handle location and tag entries.
