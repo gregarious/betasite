@@ -197,7 +197,10 @@ class PageFilterableFeed(SearchView):
 
 ### URL-LINKED VIEWS ###
 def page_beta_home(request):
-    return redirect(reverse('now'))
+#    return redirect(reverse('now'))
+    context = PageContext(request, page_title="Scenable | Oakland Scene")
+    return render_to_response('static_pages/beta_over.html', context_instance=context)
+
 
 
 def page_home(request):
