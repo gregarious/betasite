@@ -76,6 +76,16 @@ class PlaceResource(ModelResource):
             # see build_filters below
         }
 
+    def apply_sorting(self, obj_list, options=None):
+        # TODO: geopy based distance calculations
+        result = list(super(ModelResource, self).apply_sorting(obj_list, options))
+        ref_location = Location(latitude=options.get('lat'), longitude=options.get('lng'))
+
+        if ref_location.is_geocoded():
+            distance = lambda p: ref_location.distance_from(p.location, fast=True) if p.location and p.location.is_geocoded() else float('inf')
+            result.sort(key=distance)
+        return result
+
     def dehydrate(self, bundle):
         '''
         Handles the inclusion of event and special stubs from this place
