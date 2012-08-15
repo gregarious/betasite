@@ -12,7 +12,7 @@ Context variables:
     <li>
         <a href="{% url now %}" id="siteHot" {% if s == 'now'%}class="current-page"{% endif %}>
             <div class="container">
-                <div class="menu-item">Now</div>
+                <div class="menu-item">Home</div>
             </div>
         </a>
     </li>
@@ -42,14 +42,6 @@ Context variables:
     </li>
 
     <li>
-        <a href="{% url chatter-feed %}" id="siteChatter" {% if s == 'chatter'%}class="current-page"{% endif %}>
-            <div class="container">
-                <div class="menu-item">Chatter</div>
-            </div>    
-        </a>
-    </li>
-
-    <li>
         <a href="{% url news-feed %}" id="siteNews" {% if s == 'news'%}class="current-page"{% endif %}>
             <div class="container">
                 <div class="menu-item">News</div>
@@ -64,7 +56,6 @@ Context variables:
     <option value="{% url places-feed %}" {% if s == 'places'%}selected='selected'{% endif %}>Places</option>
     <option value="{% url events-feed %}" {% if s == 'events'%}selected='selected'{% endif %}>Events</option>
     <option value="{% url specials-feed %}" {% if s == 'specials'%}selected='selected'{% endif %}>Specials</option>
-    <option value="{% url chatter-feed %}" {% if s == 'chatter'%}selected='selected'{% endif %}>Chatter</option>
     <option value="{% url news-feed %}" {% if s == 'news'%}selected='selected'{% endif %}>News</option>
 </select>
 {% endwith %} {# end of s alias #}

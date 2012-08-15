@@ -15,17 +15,6 @@ Context variables:
             <img class="thumbnail" alt="{{event.name}}" src="/static/img/defaults/default-event.png" />
             {% endthumbnail %}
         </div>
-        <div class="ajax-action-container" id="favoriteButton">
-            <div class="state-on" {% if not place.is_favorite %}style="display:none"{% endif %}>
-                <a href="#" class="favbutton remove" title="Remove Favorite"><span class="status">&#215;</span>Remove Favorite</a>
-            </div>
-            <div class="state-off" {% if place.is_favorite %}style="display:none"{% endif %}>
-                <a href="#" class="favbutton add" title="Add Favorite"><span class="status">&#9733;</span>Add Favorite</a>
-            </div>
-            <div class="state-pending" style="display:none">
-                <img src="{{STATIC_URL}}img/ajax-loader.gif" class="loader" />
-            </div>
-        </div>
     </div> <!-- .item-thumb -->
 
     <section class="item-content">
