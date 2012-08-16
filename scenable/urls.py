@@ -48,7 +48,12 @@ urlpatterns = patterns('',
     url(r'^404\.html$', direct_to_template, {'template': '404.html'}, name='404'),
     url(r'^403\.html$', direct_to_template, {'template': '403.html'}, name='403'),
 
+    #### TEMPORARILY REDIRECT ALL PUBLIC-FACING BETA URLS TO ABOUT ####
     url(r'^oakland/.*$', 'scenable.common.views.page_beta_home', name='beta-home'),
+    url(r'^login/$', 'scenable.common.views.page_beta_home'),
+    url(r'^signup/$', 'scenable.common.views.page_beta_home'),
+    url(r'^accounts/', 'scenable.common.views.page_beta_home'),
+
 )
 
 
