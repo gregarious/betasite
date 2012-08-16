@@ -342,15 +342,27 @@ class Place(models.Model, ViewModel):
                 # TODO: log error
 
     def next(self):
+        places = Place.objects.all()
+        idx = [i for (i, p) in enumerate(places) if p == self]
+        if len(idx) != 1:
+            return None
+        next_idx = idx[0] + 1
         try:
-            return Place.objects.get(pk=self.pk + 1)
-        except Place.DoesNotExist:
+            return places[next_idx]
+        except IndexError:
             return None
 
     def previous(self):
+        places = Place.objects.all()
+        idx = [i for (i, p) in enumerate(places) if p == self]
+        if len(idx) != 1:
+            return None
+        prev_idx = idx[0] - 1
         try:
-            return Place.objects.get(pk=self.pk - 1)
-        except Place.DoesNotExist:
+            if prev_idx < 0: # want to simulate an index error for -1
+                raise IndexError
+            return places[prev_idx]
+        except IndexError:
             return None
 
     def to_data(self, *args, **kwargs):

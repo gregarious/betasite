@@ -34,10 +34,13 @@
     {% block object-tools-items %}
 
     <!-- experimental previous/next buttons -->
-	<li><a href="../{{original.previous.id}}/" class="previousModelLink">&larr; {% trans "Previous" %}</a></li>
-	<li><a href="../{{original.next.id}}/" class="nextModelLink">{% trans "Next" %} &rarr;</a></li>	
-
-    <li><a href="history/" class="historylink">{% trans "History" %}</a></li>
+    {% if original.previous %}
+		<li><a href="../{{original.previous.id}}/" class="previousModelLink">&larr; {% trans "Previous" %}</a></li>
+	{% endif %}
+	{% if original.next %}
+		<li><a href="../{{original.next.id}}/" class="nextModelLink">{% trans "Next" %} &rarr;</a></li>	
+	{% endif %}
+	<li><a href="history/" class="historylink">{% trans "History" %}</a></li>
     {% if has_absolute_url %}<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
     {% endblock %}
   </ul>
