@@ -33,7 +33,9 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^/prelaunchadmin/doc/', include('django.contrib.admindocs.urls')),
 
+    # New scenable.com/oakland 'beta is over' page is now the home page
     url(r'^oakland/$', 'scenable.common.views.page_beta_home', name='beta-home'),
+
     url(r'^oakland/places/', include('scenable.places.urls')),
     url(r'^oakland/events/', include('scenable.events.urls')),
     url(r'^oakland/specials/', include('scenable.specials.urls')),

@@ -57,7 +57,7 @@ class PageEventsFeed(PageFilterableFeed):
 #                         key=lambda e: e.dtend)
 
 
-@login_required
+#@login_required
 def page_details(request, eid):
     '''
     Returns page response with main content set as:

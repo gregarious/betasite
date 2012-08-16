@@ -16,7 +16,7 @@ import random
 
 
 ### URL-LINKED VIEWS ###
-@login_required
+##@login_required
 def page_now(request):
     # TODO: better logic
     places = list(Place.listed_objects.all())
