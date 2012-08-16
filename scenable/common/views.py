@@ -117,8 +117,8 @@ class PageSiteSearch(SearchView):
 
     def __call__(self, request, *args, **kwargs):
         # lock non beta testers out
-        if not request.user or not request.user.is_authenticated():
-            return to_login(request)
+        # if not request.user or not request.user.is_authenticated():
+        #     return to_login(request)
         return super(PageSiteSearch, self).__call__(request, *args, **kwargs)
 
 
