@@ -39,7 +39,10 @@ Context variables:
 </section>
 	
 <div class="item-actions">
+	{% comment %}
+	Disabled while beta site is down.
 	<a href="{% url place-detail pid=place.id %}" title="View listing" target="blank"><img src="{{STATIC_URL}}img/icons/browser.png" alt="view"/></a>
+	{% endcomment %}
 	<a href="{% url orgadmin-editplace place.id %}" title="Edit place"><img class="item-action" src="{{STATIC_URL}}img/icons/pencil.png" alt="edit" /></a>
 	<a href="{% url orgadmin-delplace place.id %}" class="delete-item" title="Unclaim place"><img class="item-action" src="{{STATIC_URL}}img/icons/icon_x.gif" alt="delete" /></a>
 </div>

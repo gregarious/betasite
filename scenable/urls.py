@@ -52,7 +52,8 @@ urlpatterns = patterns('',
     url(r'^oakland/.*$', 'scenable.common.views.page_beta_home', name='beta-home'),
     url(r'^login/$', 'scenable.common.views.page_beta_home'),
     url(r'^signup/$', 'scenable.common.views.page_beta_home'),
-    url(r'^accounts/', 'scenable.common.views.page_beta_home'),
+
+    url(r'^accounts/', include('scenable.accounts.urls')),
 
 )
 

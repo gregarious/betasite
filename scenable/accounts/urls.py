@@ -1,16 +1,18 @@
 from django.conf.urls import patterns, url
 
 # account profile urls
-urlpatterns = patterns('scenable.accounts.views',
-    url(r'^(?P<uname>[\w.+-]+)/$', 'page_public_account', name='account-public'),
-    url(r'^(?P<uname>[\w.+-]+)/manage/$', 'page_manage_account', name='account-manage'),
-    url(r'^(?P<uname>[\w.+-]+)/places/$', 'page_user_favorites', name='account-places'),
-    url(r'^(?P<uname>[\w.+-]+)/events/$', 'page_user_attendance', name='account-events'),
-    url(r'^(?P<uname>[\w.+-]+)/specials/$', 'page_user_coupons', name='account-specials'),
-)
+
+#### TEMPORARILY DISABLE ALL PUBLIC-FACING BETA URLS ####
+# urlpatterns = patterns('scenable.accounts.views',
+#     url(r'^(?P<uname>[\w.+-]+)/$', 'page_public_account', name='account-public'),
+#     url(r'^(?P<uname>[\w.+-]+)/manage/$', 'page_manage_account', name='account-manage'),
+#     url(r'^(?P<uname>[\w.+-]+)/places/$', 'page_user_favorites', name='account-places'),
+#     url(r'^(?P<uname>[\w.+-]+)/events/$', 'page_user_attendance', name='account-events'),
+#     url(r'^(?P<uname>[\w.+-]+)/specials/$', 'page_user_coupons', name='account-specials'),
+# )
 
 # password resetting urls
-urlpatterns += patterns('django.contrib.auth.views',
+urlpatterns = patterns('django.contrib.auth.views',
     url(r'^password/reset/$', 'password_reset', name='accounts-password_reset',
         kwargs={'template_name': 'registration/page_password_reset_request.html'}),
     url(r'^password/reset/request-sent/$', 'password_reset_done',
@@ -19,4 +21,9 @@ urlpatterns += patterns('django.contrib.auth.views',
         kwargs={'template_name': 'registration/page_password_reset_confirm.html'}),
     url(r'^password/reset/complete/$', 'password_reset_complete',
         kwargs={'template_name': 'registration/page_password_reset_complete.html'}),
+)
+
+#### TEMPORARILY REDIRECT ALL PUBLIC-FACING BETA URLS TO ABOUT ####
+urlpatterns += patterns('',
+    url(r'^.*$', 'scenable.common.views.page_beta_home')
 )
