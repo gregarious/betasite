@@ -18,7 +18,7 @@ urlpatterns += patterns('',
 )
 
 # account profile urls
-urlpatterns = patterns('scenable.accounts.views',
+urlpatterns += patterns('scenable.accounts.views',
     url(r'^(?P<uname>[\w.+-]+)/$', 'page_public_account', name='account-public'),
     url(r'^(?P<uname>[\w.+-]+)/manage/$', 'page_manage_account', name='account-manage'),
     url(r'^(?P<uname>[\w.+-]+)/places/$', 'page_user_favorites', name='account-places'),
