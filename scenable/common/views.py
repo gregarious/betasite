@@ -70,6 +70,10 @@ def qr_redirect(request, key=None):
         return redirect('mobile-about')
     elif key == 'card':
         return redirect('mobile-about')
+    elif key == 'poster':
+        return redirect('oakland-teaser')
+    elif key == 'halfsheet':
+        return redirect('oakland-teaser')
     else:
         print 'not found', key
         raise Http404
