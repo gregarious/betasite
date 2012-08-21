@@ -548,36 +548,47 @@ legend {
         img {
             width: auto;
         }
+        p {
+            margin-top: 1em;
+            //font-weight: bold;
+        }
     }
 }
 
 .widget {
   .row();
   padding: 0.5em 1.5em;
-  margin: 0 0 1em;
+//  margin: 0 0 1em;
 
   .app-add-container {
     .clearfix;
     margin-top: 1em;
   
-        * {
+    .social-container {
+        .row();
+        a img {
             .column(4);
         }
+    }
 
-        h2 {
-        	font-size: 1em; 
-        }
+    &>* {
+        .column(4);
+    }
 
-        img {
-            width: auto;
-            height: 100px;
-            margin: 0 1em 2em;
-            float: right;
-            &:last-child {
-                margin-right: 0;
-            }
+    h2 {
+    	font-size: 1em; 
+    }
+
+    img {
+        width: auto;
+        height: 100px;
+        margin: 0 1em 2em;
+        float: right;
+        &:last-child {
+            margin-right: 0;
         }
     }
+}
 
 	/*&#app-add-container {
 		.clearfix;
@@ -614,7 +625,7 @@ legend {
   .sixcol {
     width: 48%;
     height: 100px;
-    margin: 1em 0 2em;
+    margin: 1em 0 0;
     float: left;
     &:last-child {
       margin-left: 2%;

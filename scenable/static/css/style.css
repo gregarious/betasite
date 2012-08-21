@@ -929,13 +929,15 @@ legend {
 #site-sidebar #get-in-touch img {
   width: auto;
 }
+#site-sidebar #get-in-touch p {
+  margin-top: 1em;
+}
 .widget {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0.5em 1.5em;
-  margin: 0 0 1em;
   /*&#app-add-container {
 		.clearfix;
 		width: 90%;
@@ -981,7 +983,21 @@ legend {
 .widget .app-add-container:after {
   clear: both;
 }
-.widget .app-add-container * {
+.widget .app-add-container .social-container {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.widget .app-add-container .social-container a img {
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.widget .app-add-container > * {
   float: left;
   width: 31.25%;
   margin: 0 1.0416666666666665%;
@@ -1004,7 +1020,7 @@ legend {
 .widget .sixcol {
   width: 48%;
   height: 100px;
-  margin: 1em 0 2em;
+  margin: 1em 0 0;
   float: left;
 }
 .widget .sixcol:last-child {
