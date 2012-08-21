@@ -15,17 +15,6 @@ Context variables:
             <img src="/static/img/defaults/default-event.png" class="thumbnail" alt="{{event.name}}" />
             {% endthumbnail %}
         </div> <!-- .item-thumb -->
-        <div class="ajax-action-container" id="attendingButton">
-            <div class="state-on" {% if not event.is_attending %}style="display:none"{% endif %}>
-                <a href="#" class="favbutton remove" title="Remove from Calendar"><span class="status">&#215;</span>Remove from Calendar</a>
-            </div>
-            <div class="state-off" {% if event.is_attending %}style="display:none"{% endif %}>
-                <a href="#" class="favbutton add" title="Add to Calendar"><span class="status">&#9733;</span>Add to Calendar</a>
-            </div>
-            <div class="state-pending" style="display:none">
-                 <img src="{{STATIC_URL}}img/ajax-loader.gif" class="loader" />
-            </div>
-        </div>
     </div> <!-- .single-thumb-container -->
 
     <section class="item-content">

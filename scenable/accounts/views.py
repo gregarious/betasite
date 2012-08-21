@@ -159,7 +159,7 @@ def page_public_account(request, uname):
         return _render_profile_page(request, user, None)
 
 
-@login_required
+#@login_required
 def page_manage_account(request, uname):
     '''
     Main profile page view function, all panels are generated through here.

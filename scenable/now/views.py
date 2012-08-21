@@ -16,6 +16,7 @@ import random
 
 
 ### URL-LINKED VIEWS ###
+
 def page_now(request):
     # TODO: better logic
     places = list(Place.listed_objects.all())
@@ -41,7 +42,7 @@ def page_now(request):
 
     page_context = PageContext(request,
         current_section='now',
-        page_title='Scenable | Oakland NOW',
+        page_title='Scenable | Oakland Home',
         content_dict=content)
 
     return render_to_response('now/page_now.html', context_instance=page_context)
