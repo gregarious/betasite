@@ -51,6 +51,13 @@ class Special(models.Model, ViewModel):
         coupon, created = self.coupon_set.get_or_create(user=user)
         return coupon
 
+    def create_unowned_coupon(self):
+        '''
+        Returns a new coupon with no user assigned.
+        '''
+        coupon = self.coupon_set.create(user=None)
+        return coupon
+
     def __unicode__(self):
         return self.title
 
@@ -73,7 +80,7 @@ class CouponUsedError(Exception):
 class Coupon(models.Model):
     '''Coupon is a user-owned Special'''
     special = models.ForeignKey(Special)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True, blank=True)
     dtcreated = models.DateTimeField(help_text='Time user bought special', auto_now_add=True)
 
     dtused = models.DateTimeField(help_text='Time user used special', default=None, null=True, blank=True)
@@ -100,4 +107,8 @@ class Coupon(models.Model):
         self.save()
 
     def __unicode__(self):
-        return u'%s (owner: %s)' % (unicode(self.special), unicode(self.user.username))
+        if self.user:
+            username = self.user.username
+        else:
+            username = '<anonymous user>'
+        return u'%s (owner: %s)' % (unicode(self.special), unicode(username))

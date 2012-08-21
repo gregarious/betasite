@@ -16,7 +16,8 @@ def _make_error(status, code):
         }
 
 
-@authentication_required_403
+# authentication currently not required
+# @authentication_required_403
 @jsonp_response
 def coupon_buy(request):
     sid = request.GET.get('sid')
@@ -28,14 +29,18 @@ def coupon_buy(request):
     except Special.DoesNotExist:
         return _make_error('invalid sid', '1')
 
-    coupon = special.assign_coupon(request.user)
+    if request.user.is_authenticated():
+        coupon = special.assign_coupon(request.user)
+    else:
+        coupon = special.create_unowned_coupon()
     return {
         'success':
             {'uuid': str(coupon.uuid)}
         }
 
 
-@authentication_required_403
+# authentication currently not required
+# @authentication_required_403
 @jsonp_response
 def coupon_email(request):
     uuid = request.GET.get('uuid')

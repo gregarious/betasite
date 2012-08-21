@@ -117,11 +117,11 @@ scenable.useractions = {
 
     openCouponPopup: function(modalPopupElement, couponUUID) {
         var $el = $(modalPopupElement);
-        $el.find('#emailCoupon')
-            .off('click')
-            .on('click', function(){
-                scenable.useractions.emailCoupon(couponUUID, $el);
-            });
+        // $el.find('#emailCoupon')
+        //     .off('click')
+        //     .on('click', function(){
+        //         scenable.useractions.emailCoupon(couponUUID, $el);
+        //     });
 
         $el.find('#printCoupon')
             .off('click')
