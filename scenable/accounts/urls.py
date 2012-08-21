@@ -12,9 +12,9 @@ urlpatterns = patterns('django.contrib.auth.views',
         kwargs={'template_name': 'registration/page_password_reset_complete.html'}),
 )
 
-#### CATCH ALL TO  REDIRECT ALL PUBLIC-FACING BETA URLS TO ABOUT ####
+#### CATCH ALL TO REDIRECT ALL PUBLIC-FACING PROFILE URLS TO ABOUT ####
 urlpatterns += patterns('',
-    url(r'^.*$', 'scenable.common.views.page_beta_home')
+    url(r'^.*$', 'scenable.common.views.page_home')
 )
 
 # account profile urls

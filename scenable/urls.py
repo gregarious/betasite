@@ -48,24 +48,17 @@ urlpatterns = patterns('',
     url(r'^404\.html$', direct_to_template, {'template': '404.html'}, name='404'),
     url(r'^403\.html$', direct_to_template, {'template': '403.html'}, name='403'),
 
-    #### TEMPORARILY REDIRECT ALL LOGIN-RELATED BETA URLS TO ABOUT ####
-    url(r'^login/$', 'scenable.common.views.page_beta_home', name='login'),
-    url(r'^signup/$', 'scenable.common.views.page_beta_home', name='signup'),
+    ### TEMPORARILY REDIRECT LOGIN/SIGNUP URLS TO HOME PAGE ###
+    url(r'^login/$', 'scenable.common.views.page_home', name='login'),
+    url(r'^signup/$', 'scenable.common.views.page_home', name='signup'),
+
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/login/'}),
 
     url(r'^accounts/', include('scenable.accounts.urls')),
 
-)
+    #### OAKLAND CONTENT SPECIFIC URLs
 
-#### TEMPORARY CATCH-ALL FOR ALL OAKLAND SUBPAGES ####
-urlpatterns += patterns('',
-    url(r'^oakland/.*$', 'scenable.common.views.page_beta_home', name='beta-home')
-)
-
-
-#### Original Oakland patterns moved below catch-all to avoid name resolving errors in templates ###
-urlpatterns += patterns('',
-    url(r'^oakland/$', 'scenable.common.views.page_beta_home', name='beta-home'),
+    url(r'^oakland/$', 'scenable.common.views.page_oakland_home', name='beta-home'),
 
     url(r'^oakland/places/', include('scenable.places.urls')),
     url(r'^oakland/events/', include('scenable.events.urls')),
