@@ -1,21 +1,38 @@
 <h2 id="sidebar-title" class="ribbon-title">Welcome to the Oakland Scene!</h2>
 
+<!-- 
 <section class="widget">
 	<h3 class="widget-title">On this page...</h3>
 	{% block sidebar-main %}
 	{% endblock %}
-</section>
+</section> -->
 
 <section class="widget" id="sidebar-feedback">
 	<h3 class="widget-title">Feedback plz!</h3>
-	{% block sidebar-survey %}
+	{% block sidebar-survey %}	
 	{% endblock %}
 	{% include "sidebar/sidebar_modal.html" %}
 </section>
 
 <section class="widget" id="get-in-touch">
-	<h3 class="widget-title">Contact Scenable</h3>
+	<h3 class="widget-title">Get in Touch</h3>
 	<p>Interested in starting a Scene for your community? Thoughts, ideas? Get in touch and we'd love to discuss: <a href="mailto:contact@scenable.com?Subject=Contact%20from%20Oakland%20Scene">contact@scenable.com</a>.</p>
 	<a href="https://www.facebook.com/Scenable" title="Scenable on Facebook" target="blank"><img src="{{STATIC_URL}}img/icons/facebook.png" alt="Facebook icon"/></a>
 	<a href="http://twitter.com/ScenableApp" title="Scenable on Twitter" target="blank"><img src="{{STATIC_URL}}img/icons/twitter.png" alt="Twitter icon" /></a>
+</section>
+
+<section class="widget">
+	<h3 class="widget-title">Download the App</h3>
+	<div class="app-add-container">
+		<h2>Available for iPhone &amp; Android</h2>
+		<img src="{{STATIC_URL}}img/icons/android-large.png" alt="android" class="sixcol"/>
+		<img src="{{STATIC_URL}}img/icons/iphone-large.png" alt="iphone" class="sixcol" />
+	</div>
+</section>
+
+<section class="widget" id="sponsors">
+	<h3 class="widget-title">Brought to you by...</h3>
+	<a href="http://oaklandbid.org" target="_blank"><img src="{{STATIC_URL}}img/logos/obid.jpg" alt="OBID logo"/></a>
+	<a href="http://scenable.com" target="_blank" class="sixcol"><img src="{{STATIC_URL}}img/logos/scenable.png" alt="Scenable logo"/></a>
+	<a href="http://ppnd.org" target="_blank" class="sixcol"><img src="{{STATIC_URL}}img/logos/ppnd.jpg" alt="PPND logo" /></a>
 </section>
