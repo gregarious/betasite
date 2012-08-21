@@ -5,7 +5,6 @@ from scenable.chatter.forms import PostForm
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
 def page_feed(request):
     if request.POST:
         submit_form = PostForm(author=request.user, data=request.POST)

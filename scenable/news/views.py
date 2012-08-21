@@ -4,7 +4,6 @@ from scenable.news.models import Article
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
 def page_feed(request):
     items = Article.objects.order_by('-publication_date', '-dtcreated')
     context = PageContext(request,

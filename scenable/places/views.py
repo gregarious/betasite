@@ -31,7 +31,6 @@ class PagePlacesFeed(PageFilterableFeed):
             page_title='Scenable | Oakland Places')
 
 
-@login_required
 def page_details(request, pid):
     '''
     Returns page response with main content set as:

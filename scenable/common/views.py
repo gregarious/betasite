@@ -19,6 +19,7 @@ import json
 import urlparse
 
 
+# TODO: deprecated? Was only used for private beta
 def to_login(request):
     '''
     Temporary measure to emulate how the login_required decorator redirects
@@ -114,12 +115,6 @@ class PageSiteSearch(SearchView):
             page_title="Scenable | Oakland Search",
             content_dict=content)
         return render_to_response(self.template, context_instance=context)
-
-    def __call__(self, request, *args, **kwargs):
-        # lock non beta testers out
-        if not request.user or not request.user.is_authenticated():
-            return to_login(request)
-        return super(PageSiteSearch, self).__call__(request, *args, **kwargs)
 
 
 class PageFilterableFeed(SearchView):

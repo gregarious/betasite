@@ -51,7 +51,6 @@ class PageSpecialsFeed(PageFilterableFeed):
             page_title='Scenable | Oakland Specials')
 
 
-@login_required
 def page_details(request, sid):
     '''
     View displays single specials.

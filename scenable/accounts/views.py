@@ -146,7 +146,6 @@ def _render_profile_page(request, public_user, current_panel=None, variables={})
     return render_to_response('accounts/page_profile.html', context_instance=context)
 
 
-@login_required
 def page_public_account(request, uname):
     '''
     If uname refers to the current user's account, redirects to the account
@@ -220,7 +219,6 @@ def page_manage_account(request, uname):
         {'account_forms': forms, 'forms_saved': forms_saved})
 
 
-@login_required
 def page_user_favorites(request, uname):
     user = get_object_or_404(User, username=uname)
     # hide favorites if privacy settings dictate
@@ -232,7 +230,6 @@ def page_user_favorites(request, uname):
     return _render_profile_page(request, user, 'places', {'feed_items': items})
 
 
-@login_required
 def page_user_attendance(request, uname):
     user = get_object_or_404(User, username=uname)
     # hide attendance if privacy settings dictate
@@ -244,7 +241,6 @@ def page_user_attendance(request, uname):
     return _render_profile_page(request, user, 'events', {'feed_items': items})
 
 
-@login_required
 def page_user_coupons(request, uname):
     user = get_object_or_404(User, username=uname)
     # hide coupons if privacy settings dictate
