@@ -15,105 +15,32 @@ Context variables:
 
 
 {% block main-content %}
-<article class="page-main no-map" id="now-page">
-    <header class="page-header">
-        <div class="page-title-container">
-            <h1 class="page-title"><span id="now">NOW</span> in Oakland</h1>
-        </div>
-        <div class="page-header-content">
-            <p>So, what's going on in Oakland? Browse this list of top places, events, specials, news and chatter from around the Oakland Scene.</p>
-        </div>
-    </header>
+<article class="page-main no-map" id="about-oakland">
+	<div class="ribbon-title-container">
+    	<h1 class="ribbon-title">Welcome to the Oakland Scene!</h1>
+    </div>
+	<article class="static-section">
+		<figure>
+			<img src="{{STATIC_URL}}img/oakland/park.jpg" alt="Oakland is great" />
+		</figure>
+		<figcaption>
+			<p class="tip">Photo Credits: Rick Armstrong</p>
+			<blockquote>...a place of opportunity to grow and flourish personally and professionally, to live where you work, to open a niche business, and to be part of the wave that is reinventing Pittsburgh. Oakland is the place to be.</blockquote>
+		</figcaption>
+	
+		<p>Discover Oakland, Pittsburgh’s most ethnically diverse and lively neighborhood. Prestigious universities and museums, world class hospitals, grand architecture, quaint coffee shops, international cuisine and specialty shops create the hustle and bustle found in Oakland. If you are planning a picnic in the park, an evening of gripping drama or if you are searching for that Picasso masterpiece, Oakland has it all!</p>
 
-    <div class="row-container">
-        <ul class="feed">
-        {% for i in items|slice:"0:3" %}
-            {% if i.model == 'Special' %}
-            <li class="item short">
-                {% include "specials/short_feed_item.html" with special=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Place' %}
-            <li class="item short">
-                {% include "places/short_feed_item.html" with place=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Event' %}
-            <li class="item short">
-                {% include "events/short_feed_item.html" with event=i.instance %}
-            </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-        <ul class="feed">
-        {% for i in items|slice:"3:6" %}
-            {% if i.model == 'Special' %}
-            <li class="item short">
-                {% include "specials/short_feed_item.html" with special=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Place' %}
-            <li class="item short">
-                {% include "places/short_feed_item.html" with place=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Event' %}
-            <li class="item short">
-                {% include "events/short_feed_item.html" with event=i.instance %}
-            </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-        <ul class="feed">
-        {% for i in items|slice:"6:9" %}
-            {% if i.model == 'Special' %}
-            <li class="item short">
-                {% include "specials/short_feed_item.html" with special=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Place' %}
-            <li class="item short">
-                {% include "places/short_feed_item.html" with place=i.instance %}
-            </li>
-            {% endif %}
-            {% if i.model == 'Event' %}
-            <li class="item short">
-                {% include "events/short_feed_item.html" with event=i.instance %}
-            </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
-    </div> <!-- .row-container -->
-    <hr />
-     <div class="row-container">       
-        <h2><a href="{% url chatter-feed %}" title="Oakland Chatter">Chatter</a></h2>
-        <ul class="feed">
-        {% for item in chatter_posts|slice:"0:3" %}
-            <li class="post">
-                {% include "chatter/feed_item.html" with chatter=i.instance %}
-            </li>
-        {% endfor %}
-        </ul>
-        <ul class="feed chatter">
-        {% for item in chatter_posts|slice:"4:6" %}
-            <li class="post">
-                {% include "chatter/feed_item.html" with chatter=i.instance %}
-            </li>
-        {% endfor %}
-        </ul>
-    </div> <!-- .row-container #now-random -->
-    <hr />
-    <div class="row-container">
-        <h2><a href="{% url news-feed %}" title="Oakland News">News</a></h2>
-        <ul class="feed news">
-        {% for item in news_articles|slice:"3" %}
-            <li class="item">
-                {% include "news/feed_item.html" with article=i.instance %}
-            </li>
-        {% endfor %}
-        </ul>
-    </div> <!-- .row-container -->
+		<p>Oakland is where Dr. Jonas Salk developed the polio vaccine, Dr. Thomas Starzl performed the first liver transplant, Andy Warhol spent his childhood days, where a man known as “Mr. Rogers” instilled lessons of self-confidence and compassion into generations of young television viewers and where the music of America’s great composer Stephen Foster is preserved. Here, you will find plenty of stimulation for intellectual pursuits at cultural institutions such as the Carnegie Museum of Art and Natural History, Phipps Conservatory and Botanical Gardens, Soldiers and Sailors National Military Museum and the Miller Gallery of Carnegie Mellon University to name a few.</p>
 
+		<img src="{{STATIC_URL}}img/oakland/silowette.jpg" alt="Oakland is great" />
+
+		<p>Who can describe the appeal of Oakland better than a resident who came as a student of an adjacent university and chose to stay? “Oakland is the literal heart of the city. I loved going to school here. I feel the city’s pulse racing through the community. There is rhythm. There is diversity. It’s a really exciting place. It is a place of opportunity to grow and flourish personally and professionally, to live where you work, to open a niche business, and to be part of the wave that is reinventing Pittsburgh. Oakland is the place to be.</p>
+
+		<p>Setting out to discover Oakland leads one on a trip through one of Pittsburgh’s most diverse and lively neighborhoods. Prestigious universities and museums, world class hospitals, grand architecture, quaint coffee shops, international cuisine and specialty shops all create the hustle and bustle found in Oakland.</p>
+
+		<p>Oakland is less than 4 miles from Downtown Pittsburgh central business district. Get there by car or bus. Oakland’s major business corridors are Forbes Avenue and Fifth Avenue, which are one-way. Connecting streets include Craig Street, Bigelow Boulevard, and The Boulevard of the Allies. Also accessible via the Birmingham Bridge from Fifth Avenue. Oakland has metered on-street parking, and parking garages and parking lots are available throughout the neighborhood.</p>
+		
+	</section>
 </article>
 {% endblock %}
 

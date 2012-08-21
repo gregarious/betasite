@@ -30,7 +30,6 @@ class PagePlacesFeed(PageFilterableFeed):
             current_section='places',
             page_title='Scenable | Oakland Places')
 
-
 def page_details(request, pid):
     '''
     Returns page response with main content set as:
