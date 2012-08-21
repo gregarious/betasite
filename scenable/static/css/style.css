@@ -293,18 +293,13 @@ blockquote {
   margin-top: 0.3em;
   font-style: italic;
 }
-.points {
-  font-family: 'KomikaTitleRegular', Impact, sans-serif;
-  font-size: 3em;
-  margin-top: -0.05em;
-  text-shadow: 0.05em 0.05em 0 #ded57f;
-}
 /* HEADINGS --------- */
 .page-title {
   border-bottom: 1px solid #e1e1e1;
   margin: 1em 0 0.5em 0;
   padding: 0 0 0.5em 0.5em;
   font-size: 1.5em;
+  font-family: 'DroidSerifItalic';
 }
 .single-title {
   border-bottom: 1px #ccc solid;
@@ -332,7 +327,7 @@ blockquote {
   padding: 0.6em 0.5em 0.5em;
   text-shadow: 0.05em 0.05em 0.1em #222;
 }
-.map-title-container {
+.ribbon-title-container {
   color: #fff;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -930,12 +925,6 @@ legend {
   right: 0;
   z-index: 0;
   padding: 1em 0 1em 1.5em;
-  /*  img {
-    width: 100%;
-    height: auto;
-  }
-*/
-
 }
 #site-sidebar #get-in-touch img {
   width: auto;
@@ -946,7 +935,7 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0.5em 1.5em;
-  margin: 0;
+  margin: 0 0 1em;
 }
 .widget .app-add-container {
   *zoom: 1;
@@ -1954,6 +1943,10 @@ legend {
   background: #cccccc url('/static/img/map-unavailable.png') no-repeat center;
 }
 /* STATIC PAGES ------------ */
+#about-oakland .ribbon-title-container {
+  top: 60px;
+  left: 30px;
+}
 .static-section {
   width: 100%;
   -moz-box-sizing: border-box;
@@ -2002,6 +1995,10 @@ legend {
 .static-section hgroup {
   margin-bottom: 1em;
 }
+.static-section .tip {
+  font-style: italic;
+  margin-left: 0;
+}
 #team img {
   float: right;
   width: 40%;
@@ -2023,10 +2020,6 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 1em;
-}
-.tip {
-  font-style: italic;
-  margin-left: 0;
 }
 /* jQuery UI --------- */
 .grabbit-modal,
