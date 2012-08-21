@@ -1,0 +1,20 @@
+{% extends "page.html" %}
+
+{% block main-content %}
+<article class="page-main" id="download-app">
+	<h1 class="page-title">The Oakland Scene App</h1>
+	<section class="static-section">
+			<img src="{{STATIC_URL}}img/screenshots/app-places-map.png" alt="App screenshot"/>
+			<!-- <img src="{{STATIC_URL}}img/screenshots/single-place.png" alt="App screenshot"/> -->
+			<p>The app version of the Oakland Scene is currently available for Android in the Google Play Store and is coming soon to iPhone, download and enjoy!</p>
+			<a href="https://play.google.com/store/apps/details?id=com.scenable.oaklandscene" title="Oakland Scene on Google Play" target="_blank">
+				<img src="{{STATIC_URL}}img/icons/on-google-play.png" alt="available on Google Play" />
+			</a>
+		
+	</section>
+</article>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar/sidebar_static_pages.html" %}
+{% endblock %}

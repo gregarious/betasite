@@ -16,7 +16,7 @@ body {
 /* TYPOGRAPHY -------- */
 
 h1 {
-    .blok();
+    .lucida();
     margin: 0;
 }
 
@@ -82,11 +82,12 @@ blockquote {
     padding: 0 0 0.5em 0.5em;
     font-size: 1.5em;
     font-family: 'DroidSerifItalic';
+    font-weight: normal;
 }
 
 .single-title {
     border-bottom: 1px #ccc solid;
-    color: #333;
+    color: #111;
     font-size: 1.2em;
     margin: 0.3em 0;
     padding: 0 0 0.3em 0.3em;
@@ -95,6 +96,7 @@ blockquote {
 
 .detail-section-title {
     border-bottom: 1px #999 solid;
+    font-size: 1em;
     padding: 0 0 0.2em;
     margin: 0 0 1em;
 }
@@ -576,7 +578,7 @@ legend {
     }
 
     h2 {
-    	font-size: 1em; 
+    	font-size: 0.9em; 
     }
 
     img {
@@ -1367,6 +1369,24 @@ legend {
 	    margin-left: 0;
 	}
 
+}
+
+#download-app {
+	img {
+		.column(5.5);
+		//border: 2px solid #ddd;
+		border: none;
+		margin-right: 2em;
+
+		&:last-child {
+			margin-top: 2em;
+		}
+	}
+	
+	p {
+		font-size: 1.2em;
+		margin: 3em 0 0;
+	}
 }
 
 #team {

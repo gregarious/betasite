@@ -40,16 +40,8 @@ TODO #2: Only show expiration date if there is one.
 			{% if special.place.location.is_geocoded %}
 			<div class="map" id="mainSpecialMap"></div>
 			{% endif %}
-			<button class="btn-primary" id="grabbitButton">
-			{% if not special.coupon %}
-				Grab It!
-			{% elif not special.coupon.was_used %}
-				Got It!
-			{% else %}
-				Used It!
-			{% endif %}
-			</button>
 		</div>
+		
 		{% if special.description %}
 		<p class="description">{{special.description|urlizetrunc:20|linebreaksbr}}</p>
 		{% else %}
@@ -60,5 +52,21 @@ TODO #2: Only show expiration date if there is one.
 	        <a href="{{place.location.directions_link}}" target="blank" title="Directions to {{place.name}}">Get Directions</a>
 	    </div>
 	    {% endif %}
+
+		<button class="btn-primary" id="grabbitButton">
+		{% if not special.coupon %}
+			Grab It!
+		{% elif not special.coupon.was_used %}
+			Got It!
+		{% else %}
+			Used It!
+		{% endif %}
+		</button>
+
+    	<div class="notification">
+			<h2>Redeem specials on the go with our app!</h2> 
+			<p>Download it for Android from the Google Play Store.</p>
+		</div>
 	</div>
+
 </article>

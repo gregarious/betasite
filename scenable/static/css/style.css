@@ -246,8 +246,7 @@ body {
 }
 /* TYPOGRAPHY -------- */
 h1 {
-  font-family: 'BloklettersViltstift', 'Lucida Grande', Helvetica, sans-serif;
-  font-weight: normal;
+  font-family: 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
   margin: 0;
 }
 h2 {
@@ -300,10 +299,11 @@ blockquote {
   padding: 0 0 0.5em 0.5em;
   font-size: 1.5em;
   font-family: 'DroidSerifItalic';
+  font-weight: normal;
 }
 .single-title {
   border-bottom: 1px #ccc solid;
-  color: #333;
+  color: #111;
   font-size: 1.2em;
   margin: 0.3em 0;
   padding: 0 0 0.3em 0.3em;
@@ -311,6 +311,7 @@ blockquote {
 }
 .detail-section-title {
   border-bottom: 1px #999 solid;
+  font-size: 1em;
   padding: 0 0 0.2em;
   margin: 0 0 1em;
 }
@@ -1006,7 +1007,7 @@ legend {
   box-sizing: border-box;
 }
 .widget .app-add-container h2 {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .widget .app-add-container img {
   width: auto;
@@ -1892,6 +1893,23 @@ legend {
 .static-section .tip {
   font-style: italic;
   margin-left: 0;
+}
+#download-app img {
+  float: left;
+  width: 43.75%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  margin-right: 2em;
+}
+#download-app img:last-child {
+  margin-top: 2em;
+}
+#download-app p {
+  font-size: 1.2em;
+  margin: 3em 0 0;
 }
 #team img {
   float: right;

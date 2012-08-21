@@ -194,7 +194,6 @@ class PageFilterableFeed(SearchView):
 def page_oakland_home(request):
     return redirect(reverse('now'))
 
-
 def page_home(request):
     if request.user.is_authenticated():
         return page_oakland_home(request)
@@ -206,11 +205,13 @@ def page_static_about_oakland(request):
     context = PageContext(request, page_title="Scenable | About Oakland")
     return render_to_response('static_pages/about_oakland.html', context_instance=context)
 
+def page_static_download_app(request):
+    context = PageContext(request, page_title="Scenable | About the App")
+    return render_to_response('static_pages/download_app.html', context_instance=context)
 
 def page_static_team(request):
     context = PageContext(request, page_title="Scenable | The Team")
     return render_to_response('static_pages/team.html', context_instance=context)
-
 
 def page_static_mission(request):
     context = PageContext(request, page_title="Scenable | Our Mission")

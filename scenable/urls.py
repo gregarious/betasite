@@ -40,6 +40,7 @@ urlpatterns = patterns('',
     # Static about pages for scenable.com.
     url(r'^about/$', direct_to_template, {'template': 'qr/about.html'}, name='about'),
     url(r'^about-oakland/$', 'scenable.common.views.page_static_about_oakland', name='about-oakland'),
+    url(r'^app/$', 'scenable.common.views.page_static_download_app', name='download-app'),
     url(r'^team/$', 'scenable.common.views.page_static_team', name='team'),
     url(r'^mission/$', 'scenable.common.views.page_static_mission', name='mission'),
 
