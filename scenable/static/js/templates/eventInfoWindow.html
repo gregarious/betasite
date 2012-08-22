@@ -14,7 +14,7 @@
 		<ul class="item-details">
 			<li>{{dtstart_str}} - {{dtend_str}}</li>
 			{{#if place}}
-	 			<li class="host">at <a href="{{permalink}}">{{name}}</a></li>	
+	 			<li class="host">at <a href="{{place.permalink}}">{{place.name}}</a></li>	
 			{{else}}
 				<li class="host">at {{place_primitive}}</li>
 			{{/if}}
