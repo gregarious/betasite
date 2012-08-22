@@ -139,8 +139,9 @@ class GraphAPIClient(object):
         Will fail with a TypeError if the returned object isn't a page.
         '''
         page_info = self.graph_api_object_request(fb_id, metadata=True, timeout=timeout, retry_limit=1)
-        if page_info.get('type') != 'page':
-            raise TypeError("Expected 'page' object from Graph API. Received '%s'." % page_info.get('type'))
+        obj_type = page_info.get('metadata').get('type')
+        if obj_type != 'page':
+            raise TypeError("Expected 'page' object from Graph API. Received '%s'." % str(obj_type))
         if not metadata:
             page_info.pop('metadata')
         return page_info

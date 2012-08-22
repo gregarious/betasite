@@ -24,7 +24,7 @@ class EventResource(ModelResource):
     categories = fields.ManyToManyField(CategoryResource, 'categories', full=True, null=True)
 
     class Meta:
-        queryset = Event.objects.all()
+        queryset = Event.objects.all().order_by('dtend', 'dtstart')
         # allow pass-thru ORM filtering on listed, dtstart, dteend
         filtering = {
             'listed': ALL,
@@ -33,7 +33,6 @@ class EventResource(ModelResource):
             # search-query filtering and category filtering is also supported,
             # see build_filters below
         }
-        ordering = ['dtend', 'dtstart']
 
     def build_filters(self, filters=None):
         '''

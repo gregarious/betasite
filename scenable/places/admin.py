@@ -9,6 +9,7 @@ class PlaceMetaInline(admin.TabularInline):
 
 class PlaceAdmin(admin.ModelAdmin):
     inlines = [PlaceMetaInline]
+    list_display = ('name', 'dtcreated', 'id')
     exclude = ('hours',)
 
 

@@ -299,7 +299,7 @@ class Place(models.Model, ViewModel):
     class Meta:
         ordering = ['name']
 
-    dtcreated = models.DateTimeField('dt created', auto_now_add=True)
+    dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
     name = models.CharField(max_length=200, blank=True)
     location = models.ForeignKey(Location, blank=True, null=True)
 

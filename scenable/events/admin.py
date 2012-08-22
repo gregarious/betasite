@@ -15,10 +15,10 @@ class MetaInline(admin.TabularInline):
 
 class EventAdmin(admin.ModelAdmin):
     inlines = [RoleInline, MetaInline]
-    list_display = ('name', 'place', 'dtstart', 'dtend')
+    list_display = ('name', 'place', 'dtcreated', 'id')
     search_fields = ['name']
     ordering = ['dtstart']
 
-admin.site.register(Event,EventAdmin)
+admin.site.register(Event, EventAdmin)
 admin.site.register(ICalendarFeed)
 admin.site.register(Category)
