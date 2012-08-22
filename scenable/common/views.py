@@ -67,9 +67,9 @@ def qr_redirect(request, key=None):
     if key == 'oakland':
         return redirect('oakland-teaser')
     elif key == 'shirt':
-        return redirect('mobile-about')
+        return redirect('about')
     elif key == 'card':
-        return redirect('mobile-about')
+        return redirect('about')
     elif key == 'poster':
         return redirect('oakland-teaser')
     elif key == 'halfsheet':

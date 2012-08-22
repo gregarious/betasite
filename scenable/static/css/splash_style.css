@@ -326,6 +326,19 @@ img {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.caption img {
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 0.5em;
+}
+.caption img:first-child {
+  position: relative;
+  top: 0.5em;
+}
 .caption .icon-container {
   float: left;
   width: 27.083333333333332%;
@@ -541,33 +554,16 @@ input[type="submit"]:active {
   margin-top: 5%;
 }
 .caption {
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 1em;
-  margin-top: 5%;
-  *zoom: 1;
-  background: url("/static/img/textures/white-tex.png");
-  border: 1px solid #a9c6e8;
-  -webkit-box-shadow: 0.02em 0.02em 0.05em #ffffff;
-  -moz-box-shadow: 0.02em 0.02em 0.05em #ffffff;
-  box-shadow: 0.02em 0.02em 0.05em #ffffff;
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  padding: 2%;
-}
-.caption:before,
-.caption:after {
-  content: "";
-  display: table;
-}
-.caption:after {
-  clear: both;
+  /*	.row();
+	.border-box;
+	font-size: 1em;
+	.clearfix;
+	background: url("@{static_url}img/textures/white-tex.png");
+	border: 1px solid @lblue;
+	.b-shadow(0.02em, 0.02em, 0.05em, #fff);
+	.rounded(0.3em);
+	padding: 1%;*/
+
 }
 .icon {
   float: right;
@@ -583,6 +579,9 @@ input[type="submit"]:active {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+  }
+  #site-header {
+    padding-top: 10%;
   }
   #oakland {
     border-right: none;
@@ -601,7 +600,7 @@ input[type="submit"]:active {
     box-sizing: border-box;
   }
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 546px) {
   #site-title {
     font-size: 4em;
   }
@@ -617,10 +616,16 @@ input[type="submit"]:active {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+  #site-header {
+    padding-top: 20%;
+  }
 }
 @media screen and (max-width: 350px) {
   #site-title {
     font-size: 3em;
+  }
+  #site-header {
+    padding-top: 30%;
   }
 }
 /* Styles for desktop and large screen ----------- */
