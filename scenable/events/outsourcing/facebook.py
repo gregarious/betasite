@@ -8,6 +8,7 @@ from scenable.places import abbreviate_state
 from scenable.outsourcing.places import resolve_location
 
 from dateutil import parser as dtparser
+from pytz import timezone
 from scenable.common.utils import imagefile_from_url
 from django.utils.timezone import make_aware
 
@@ -33,7 +34,7 @@ class FBEvent(object):
             client = GraphAPIClient(FACEBOOK_ACCESS_TOKEN)
         try:
             data = client.graph_api_object_request(fbevent_id, metadata=True)
-            if data.get('type') != 'event':
+            if data.get('metadata', {}).get('type') != 'event':
                 raise Exception('Given ID "%s" is not a Facebook event!' % str(fbevent_id))
             data.pop('metadata')    # don't need it anymore
             inst = cls(data)
@@ -47,14 +48,14 @@ class FBEvent(object):
         if not dtstart_str:
             return None
         # currently assuming all datetimes are in Eastern (time is relative to event location in fb data)
-        return make_aware(dtparser.parse(dtstart_str), 'US/Eastern')
+        return make_aware(dtparser.parse(dtstart_str), timezone('US/Eastern'))
 
     def get_dtend(self):
         dtend_str = self.data.get('end_time')
         if not dtend_str:
             return None
         # currently assuming all datetimes are in Eastern (time is relative to event location in fb data)
-        return make_aware(dtparser.parse(dtend_str), 'US/Eastern')
+        return make_aware(dtparser.parse(dtend_str), timezone('US/Eastern'))
 
     def get_place(self, allow_import=True):
         '''

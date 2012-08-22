@@ -1,4 +1,4 @@
-from scenable.outsourcing.models import ICalendarFeed
+from scenable.events.models import ICalendarFeed
 from scenable.outsourcing.icalevents import FeedImporter, EventImportReport
 
 from datetime import datetime
