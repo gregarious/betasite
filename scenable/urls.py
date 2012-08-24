@@ -17,6 +17,7 @@ from scenable.events.api import EventResource
 from scenable.events.api import CategoryResource as EventCategoryResource
 from scenable.specials.api import SpecialResource
 from scenable.news.api import NewsResource
+from scenable.now.api import NoticeResource, FeaturedImageResource
 
 admin.autodiscover()
 
@@ -89,6 +90,8 @@ v1_api.register(EventResource())
 v1_api.register(EventCategoryResource())
 v1_api.register(SpecialResource())
 v1_api.register(NewsResource())
+v1_api.register(NoticeResource())
+v1_api.register(FeaturedImageResource())
 
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),
