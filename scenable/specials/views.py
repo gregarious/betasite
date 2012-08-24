@@ -19,7 +19,7 @@ class PageSpecialsFeed(PageFilterableFeed):
         super(PageSpecialsFeed, self).__init__(
             template='specials/page_feed.html',
             searchqueryset=sqs,
-            nofilter_queryset=qs,
+            nosearch_queryset=qs,
             viewmodel_class=SpecialData,
             results_per_page=8,
         )

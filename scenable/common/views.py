@@ -122,8 +122,8 @@ class PageSiteSearch(SearchView):
 
 
 class PageFilterableFeed(SearchView):
-    def __init__(self, searchqueryset, nofilter_queryset, template, viewmodel_class=None, *args, **kwargs):
-        self.nofilter_queryset = nofilter_queryset
+    def __init__(self, searchqueryset, nosearch_queryset, template, viewmodel_class=None, *args, **kwargs):
+        self.nosearch_queryset = nosearch_queryset
         self.template = template
         self.viewmodel_class = viewmodel_class
         self.search_used = False
@@ -144,7 +144,7 @@ class PageFilterableFeed(SearchView):
             return self.form.search()
         else:
             self.search_used = False
-            return self.nofilter_queryset
+            return self.nosearch_queryset
 
     def build_page(self):
         """

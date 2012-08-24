@@ -17,7 +17,7 @@ class PagePlacesFeed(PageFilterableFeed):
         super(PagePlacesFeed, self).__init__(
             template='places/page_feed.html',
             searchqueryset=sqs,
-            nofilter_queryset=qs,
+            nosearch_queryset=qs,
             viewmodel_class=PlaceData,
             results_per_page=8,
         )

@@ -17,7 +17,7 @@ class PageEventsFeed(PageFilterableFeed):
         super(PageEventsFeed, self).__init__(
             template='events/page_feed.html',
             searchqueryset=sqs,
-            nofilter_queryset=qs,
+            nosearch_queryset=qs,
             viewmodel_class=EventData,
             results_per_page=8,
         )
