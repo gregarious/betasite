@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'scenable.common',
     'scenable.accounts',
     'scenable.tags',
+    'scenable.now',
     'scenable.places',
     'scenable.events',
     'scenable.specials',
