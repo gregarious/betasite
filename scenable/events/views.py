@@ -4,7 +4,7 @@ from django.utils.timezone import now
 
 from scenable.common.views import PageContext, PageFilterableFeed
 
-from scenable.events.models import Event
+from scenable.events.models import Event, Category
 from scenable.events.viewmodels import EventData
 
 from haystack.query import SearchQuerySet
@@ -14,10 +14,14 @@ class PageEventsFeed(PageFilterableFeed):
     def __init__(self, *args, **kwargs):
         sqs = SearchQuerySet().models(Event).filter(dtend__gt=now()).order_by('dtend')
         qs = Event.listed_objects.filter(dtend__gt=now()).order_by('dtend')
+        categories = [(str(cat.id), cat.label) for cat in Category.objects.order_by('id')]
+        categories.insert(0, ('0', 'All Events'))
+
         super(PageEventsFeed, self).__init__(
             template='events/page_feed.html',
             searchqueryset=sqs,
             nosearch_queryset=qs,
+            categories=categories,
             viewmodel_class=EventData,
             results_per_page=8,
         )

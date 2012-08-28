@@ -22,10 +22,20 @@ Context variables:
     </div>
 
     <div class="page-nav-container">
-        <form class="simple-form" method="get" action="{% url specials-feed %}">
-            <input type="search" placeholder="Search Specials" name="{{form.q.html_name}}" value="{{query}}"/>
-            <input type="submit" value="Search" />
+        {% comment %}
+        Disabled since category-based searching needs a workaround SearchView subclass
+        <form class="simple-form" method="get" action="{% url events-feed %}">
+        Show {{form.category}}
+        {% if not query %}
+            <a class="keyword-activate" href="#">Add keyword to search</a>
+            <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" style="display:none"/>
+        {% else %}
+            <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" value="{{query}}"/>
+        {% endif %}            
+        <input type="submit" value="Go" />
         </form>
+        {% endcomment %}
+
         <nav class="prev-next" id="specials-feed-nav">
             <div class="previous">
             {% if page.has_previous %}
@@ -71,6 +81,18 @@ Context variables:
 {% block foot-inlines %}
 <script type="text/javascript">
 $(function(){
+    {% comment %}
+    Disabled since category-based searching needs a workaround SearchView subclass
+    // enable showing of search query
+    {% if not query %}
+        $('.keyword-activate').click(function(e){
+            $('.input-search').show();
+            $('.keyword-activate').hide();
+            e.preventDefault();
+        });
+    {% endif %}
+    {% endcomment %}
+
     // need to overwrite default geolocation accessor
     var SpecialItem = scenable.mapFeed.Item.extend({
         getLatLng: function() {

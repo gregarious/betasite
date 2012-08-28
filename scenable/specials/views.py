@@ -20,6 +20,7 @@ class PageSpecialsFeed(PageFilterableFeed):
             template='specials/page_feed.html',
             searchqueryset=sqs,
             nosearch_queryset=qs,
+            categories=[],  # disabled for now
             viewmodel_class=SpecialData,
             results_per_page=8,
         )

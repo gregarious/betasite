@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from scenable.common.views import PageContext, PageFilterableFeed
 
-from scenable.places.models import Place
+from scenable.places.models import Place, Category
 from scenable.places.viewmodels import PlaceData, PlaceRelatedFeeds
 
 from haystack.query import SearchQuerySet
@@ -14,10 +14,14 @@ class PagePlacesFeed(PageFilterableFeed):
     def __init__(self, *args, **kwargs):
         sqs = SearchQuerySet().models(Place)
         qs = Place.listed_objects.annotate(total_favs=Count('favorite')).order_by('-total_favs')
+        categories = [(str(cat.id), cat.label) for cat in Category.objects.order_by('id')]
+        categories.insert(0, ('0', 'All Places'))
+
         super(PagePlacesFeed, self).__init__(
             template='places/page_feed.html',
             searchqueryset=sqs,
             nosearch_queryset=qs,
+            categories=categories,
             viewmodel_class=PlaceData,
             results_per_page=8,
         )

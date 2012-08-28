@@ -15,6 +15,9 @@ from haystack.forms import SearchForm
 
 from scenable.feedback.forms import GenericFeedbackForm
 from scenable.common.utils.jsontools import sanitize_json
+
+from .forms import CategorySearchFormFactory
+
 import json
 import urlparse
 
@@ -122,14 +125,14 @@ class PageSiteSearch(SearchView):
 
 
 class PageFilterableFeed(SearchView):
-    def __init__(self, searchqueryset, nosearch_queryset, template, viewmodel_class=None, *args, **kwargs):
+    def __init__(self, searchqueryset, nosearch_queryset, categories, template, viewmodel_class=None, *args, **kwargs):
         self.nosearch_queryset = nosearch_queryset
         self.template = template
         self.viewmodel_class = viewmodel_class
         self.search_used = False
         super(PageFilterableFeed, self).__init__(
             template=template,
-            form_class=SearchForm,
+            form_class=CategorySearchFormFactory(categories),
             searchqueryset=searchqueryset,
             *args, **kwargs)
 
@@ -139,12 +142,31 @@ class PageFilterableFeed(SearchView):
 
         Returns an empty list if there's no query to search with.
         """
+        # TODO: all the category_id stuff here is hella hacky. see common.forms as well
+        category_id = None
+        if self.form.is_valid():
+            category_id = self.form.cleaned_data.get('category')
+            # hardcode 0 to mean all results
+            if str(category_id) == '0' or str(category_id) == '':
+                category_id = None
+
         if self.query:
             self.search_used = True
-            return self.form.search()
+            results = self.form.search()
+            if category_id is not None:
+                filtered = []
+                for r in results:
+                    if category_id in [str(cat.id) for cat in r.object.categories.all()]:
+                        filtered.append(r)
+                return filtered
+            else:
+                return results
         else:
             self.search_used = False
-            return self.nosearch_queryset
+            if category_id is not None:
+                return self.nosearch_queryset.filter(categories=category_id)
+            else:
+                return self.nosearch_queryset
 
     def build_page(self):
         """
@@ -198,6 +220,7 @@ class PageFilterableFeed(SearchView):
 def page_oakland_home(request):
     return redirect(reverse('now'))
 
+
 def page_home(request):
     if request.user.is_authenticated():
         return page_oakland_home(request)
@@ -209,13 +232,16 @@ def page_static_about_oakland(request):
     context = PageContext(request, page_title="Scenable | About Oakland")
     return render_to_response('static_pages/about_oakland.html', context_instance=context)
 
+
 def page_static_download_app(request):
     context = PageContext(request, page_title="Scenable | About the App")
     return render_to_response('static_pages/download_app.html', context_instance=context)
 
+
 def page_static_team(request):
     context = PageContext(request, page_title="Scenable | The Team")
     return render_to_response('static_pages/team.html', context_instance=context)
+
 
 def page_static_mission(request):
     context = PageContext(request, page_title="Scenable | Our Mission")
