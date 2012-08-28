@@ -21,7 +21,7 @@ from scenable.news.api import NewsResource
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'scenable.common.views.page_home', name='home'),
+    url(r'^$', redirect_to, {'url': "http://www.scenable.com/info/"}),
 
     # system admin and business admin pages
     url(r'^djadmin/', include(admin.site.urls)),
