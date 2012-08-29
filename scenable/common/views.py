@@ -222,9 +222,15 @@ def page_oakland_home(request):
 
 
 def page_home(request):
-    if request.user.is_authenticated():
-        return page_oakland_home(request)
-    return redirect(reverse('about'))
+    '''
+    For the moment, the index page redirects to the /info blog.
+    '''
+    if request.is_secure():
+        scheme = "https"
+    else:
+        scheme = "http"
+    info_url = "%s://%s/info/" % (scheme, request.get_host())
+    return redirect(info_url)
 
 
 ### STATIC PAGES ###
