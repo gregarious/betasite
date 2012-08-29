@@ -23,15 +23,19 @@ Context variables:
     
     <div class="page-nav-container">
         <form class="simple-form" method="get" action="{% url places-feed %}">
-            Show {{form.category}}
-            {% if not query %}
-                <a class="keyword-activate" href="#">Add keyword to search</a>
-                <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" style="display:none"/>
-            {% else %}
-                <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" value="{{query}}"/>
-            {% endif %}
-                
-            <input type="submit" value="Go" />
+            <div class="feed-search-container">
+                <span>Show</span> {{form.category}}
+            
+                {% if not query %}
+                    <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" style="display:none"/>
+                    <a class="keyword-activate" href="#">Add keyword to search</a>
+                {% else %}
+                    <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" value="{{query}}"/>
+                {% endif %}
+            </div>
+            <div class="submit-container">
+                <input type="submit" value="Go" />
+            </div>
         </form>
         <nav class="prev-next" id="places-feed-nav">
             <div class="previous">
@@ -105,11 +109,18 @@ $(function(){
     // enable showing of search query
     {% if not query %}
         $('.keyword-activate').click(function(e){
-            $('.input-search').show();
+            $('.input-search').show().focus();
             $('.keyword-activate').hide();
             e.preventDefault();
         });
     {% endif %}
+
+    // Highlight the search field text when clicked
+    $('.input-search').click(function(){
+        $(this).focus().select();
+        console.log('asdasd');
+    });
+
     // model extensions not strictly necessary: defaults will do for Places
     var PlaceItem = scenable.mapFeed.Item.extend();
     var PlaceItems = scenable.mapFeed.ItemFeed.extend({model:PlaceItem});

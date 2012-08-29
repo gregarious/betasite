@@ -121,19 +121,6 @@ blockquote {
     z-index: 200;
 }
 
-// Not in use
-#sidebar-title {
-    .b-shadow(0.1em, 0.1em, 0.2em, #444);
-    font-size: 1em;
-    letter-spacing: 1px;
-    background: @mgreen;
-    padding-left: 3em;
-    position: relative;
-    right: 2em;
-    width: 96%;
-}
-//
-
 .widget-title {
     border-bottom: 1px solid #e1e1e1;
     font-family: 'DroidSerifItalic', 'Gerogia', serif;
@@ -236,7 +223,6 @@ fieldset {
 legend {
 	.column_nm(12);
 	font-weight: bold;
-	//.gradient(@lblue, #f9f9f9);
 	font-size: 1.2em;
 	margin: 0;
 	padding: 0.5em;
@@ -500,7 +486,7 @@ legend {
   }
 }
 
-/* 4 CONTENT ---------- */
+/* 4 CONTENT SKELETON ---------- */
 
 .wrap {
   .clearfix;
@@ -560,7 +546,6 @@ legend {
 .widget {
   .row();
   padding: 0.5em 1.5em;
-//  margin: 0 0 1em;
 
   .app-add-container {
     .clearfix;
@@ -591,38 +576,6 @@ legend {
         }
     }
 }
-
-	/*&#app-add-container {
-		.clearfix;
-		width: 90%;
-		margin-top: 1em;
-		background: #eee;
-		border: 1px solid #ddd;
-		.rounded(10px);
-		padding: 1em;
-		margin: 0 5%;
-  
-        * {
-            .column(3.5);
-        }
-
-        h2 {
-        	font-size: 0.9em; 
-        	font-family: 'DroidSerifItalic';
-        	font-weight: normal;
-        }
-
-        img {
-            width: auto;
-            height: 100px;
-            margin: 0 1em 1em;
-            float: right;
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-    }
-*/
 
   .sixcol {
     width: 48%;
@@ -824,14 +777,40 @@ legend {
   }
 
   .simple-form {
-    .column(7);
-    //padding-right: 5em;
+    .column(9);
     margin-left: 0;
-    input[type="submit"] {
-      .column(3);   
+    
+    span {
+      margin-right: 0.5em;
+
     }
-    input[type="search"] {
+
+    
+    .submit-container {
+      margin-top: 0.2em;
+    }
+
+    .feed-search-container {
       .column(9);
+      margin-top: 0.3em;
+
+
+      .input-search {
+        .column_r(6);
+        font-size: 0.8em;
+      }
+
+      .keyword-activate {
+        .column_r(6);
+        margin-top: 0.3em;
+        color: @red;
+        font-size: 0.8em;
+        &:hover {
+          color: #999;
+
+        }
+      }
+
     }
 
   }

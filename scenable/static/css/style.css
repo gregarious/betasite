@@ -346,18 +346,6 @@ blockquote {
   padding: 0 1em 0 0.5em;
   z-index: 200;
 }
-#sidebar-title {
-  -webkit-box-shadow: 0.1em 0.1em 0.2em #444444;
-  -moz-box-shadow: 0.1em 0.1em 0.2em #444444;
-  box-shadow: 0.1em 0.1em 0.2em #444444;
-  font-size: 1em;
-  letter-spacing: 1px;
-  background: #6baa55;
-  padding-left: 3em;
-  position: relative;
-  right: 2em;
-  width: 96%;
-}
 .widget-title {
   border-bottom: 1px solid #e1e1e1;
   font-family: 'DroidSerifItalic', 'Gerogia', serif;
@@ -857,7 +845,7 @@ legend {
 #utility #debug-user a:hover {
   color: #8fd36f;
 }
-/* 4 CONTENT ---------- */
+/* 4 CONTENT SKELETON ---------- */
 .wrap {
   *zoom: 1;
   margin: 0 auto;
@@ -939,38 +927,6 @@ legend {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0.5em 1.5em;
-  /*&#app-add-container {
-		.clearfix;
-		width: 90%;
-		margin-top: 1em;
-		background: #eee;
-		border: 1px solid #ddd;
-		.rounded(10px);
-		padding: 1em;
-		margin: 0 5%;
-  
-        * {
-            .column(3.5);
-        }
-
-        h2 {
-        	font-size: 0.9em; 
-        	font-family: 'DroidSerifItalic';
-        	font-weight: normal;
-        }
-
-        img {
-            width: auto;
-            height: 100px;
-            margin: 0 1em 1em;
-            float: right;
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-    }
-*/
-
 }
 .widget .app-add-container {
   *zoom: 1;
@@ -1262,28 +1218,50 @@ legend {
 }
 .page-nav-container .simple-form {
   float: left;
-  width: 56.25%;
+  width: 72.91666666666666%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-left: 0;
 }
-.page-nav-container .simple-form input[type="submit"] {
-  float: left;
-  width: 22.916666666666664%;
-  margin: 0 1.0416666666666665%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+.page-nav-container .simple-form span {
+  margin-right: 0.5em;
 }
-.page-nav-container .simple-form input[type="search"] {
+.page-nav-container .simple-form .submit-container {
+  margin-top: 0.2em;
+}
+.page-nav-container .simple-form .feed-search-container {
   float: left;
   width: 72.91666666666666%;
   margin: 0 1.0416666666666665%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  margin-top: 0.3em;
+}
+.page-nav-container .simple-form .feed-search-container .input-search {
+  float: right;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.8em;
+}
+.page-nav-container .simple-form .feed-search-container .keyword-activate {
+  float: right;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 0.3em;
+  color: #b83939;
+  font-size: 0.8em;
+}
+.page-nav-container .simple-form .feed-search-container .keyword-activate:hover {
+  color: #999;
 }
 .page-nav-container .prev-next {
   float: right;
