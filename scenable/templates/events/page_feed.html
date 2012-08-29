@@ -23,7 +23,7 @@ Context variables:
     </div>
 
     <div class="page-nav-container">
-        <form class="simple-form" method="get" action="{% url places-feed %}">
+        <form class="simple-form" method="get" action="{% url events-feed %}">
             <div class="feed-search-container">
                 <span>Show</span> {{form.category}}
             
@@ -103,11 +103,16 @@ $(function(){
     // enable showing of search query
     {% if not query %}
         $('.keyword-activate').click(function(e){
-            $('.input-search').show();
+            $('.input-search').show().focus();
             $('.keyword-activate').hide();
             e.preventDefault();
         });
     {% endif %}
+
+    // Highlight the search field text when clicked
+    $('.input-search').click(function(){
+        $(this).select();
+    });
 
     // need to overwrite default geolocation accessor
     var EventItem = scenable.mapFeed.Item.extend({
