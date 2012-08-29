@@ -21,9 +21,9 @@ class EventData(object):
             setattr(self, attr, getattr(event, attr))
 
         if self.dtstart < timezone.now() < self.dtend:
-            self.icon_day = timezone.now().day
+            self.icon_day = "%02d" % timezone.now().day
         else:
-            self.icon_day = self.dtstart.day
+            self.icon_day = "%02d" % self.dtstart.day
         self.pk = self.id
         self._process_dates()
 
