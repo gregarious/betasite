@@ -103,11 +103,6 @@ img {
 	img {
 		.column(6);
 		margin-top: 0.5em;
-		
-		&:first-child {
-			position: relative;
-			top: 0.5em;
-		}
 	}
 
 	.icon-container {
@@ -223,8 +218,12 @@ button, input[type="submit"] {
 }
 
 #site-header {
-	padding: 6% 0;
+	padding: 4em 0 2em;
 	margin-bottom: 2%;
+
+	h1 {
+		font-size: 1em;
+	}
 
 	img {
 		margin-top: 0.4em;
@@ -251,9 +250,12 @@ button, input[type="submit"] {
 }
 
 .notification {
-  
-  h2 {
+  height: 4em;
+  h1 {
+  	font-size: 1.2em;
+  }
 
+  h2 {
     margin: 0.2em 0 0;
     //display: inline;
     font-size: 1em;
@@ -303,10 +305,6 @@ button, input[type="submit"] {
  		.row();
  	}
 
- 	#site-header {
- 		padding-top: 10%;
- 	}
-
  	#oakland {
  		border-right: none;
  		border-bottom: 1px solid #fff;
@@ -330,19 +328,12 @@ button, input[type="submit"] {
  	.field {
  		.row();
  	}
- 	#site-header {
- 		padding-top: 20%;
- 	}
 }
 
 @media screen and (max-width: 350px) {
 	#site-title {
 		font-size: 3em;
 	}
-
-	#site-header {
- 		padding-top: 30%;
- 	}
 }
 
 /* Styles for desktop and large screen ----------- */

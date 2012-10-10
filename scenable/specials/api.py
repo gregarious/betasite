@@ -44,3 +44,13 @@ class SpecialResource(ModelResource):
             orm_filters["place__categories__pk"] = category_pk
 
         return orm_filters
+
+    def dehydrate(self, bundle):
+        '''
+        If idonly is specified as a flag, the bundle will be reduced to just
+        the resource id.
+        '''
+        if bundle.request.GET.get('idonly', '').lower() == 'true':
+            bundle.data = {'id': str(bundle.obj.id)}
+
+        return bundle

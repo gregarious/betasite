@@ -24,9 +24,21 @@ Context variables:
 
     <div class="page-nav-container">
         <form class="simple-form" method="get" action="{% url events-feed %}">
-            <input type="search" placeholder="Search Events" name="{{form.q.html_name}}" value="{{query}}"/>
-            <input type="submit" value="Search" />
+            <div class="feed-search-container">
+                <span>Show</span> {{form.category}}
+            
+                {% if not query %}
+                    <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" style="display:none"/>
+                    <a class="keyword-activate" href="#">Add keyword to search</a>
+                {% else %}
+                    <input type="search" class="input-search" placeholder="Keywords" name="{{form.q.html_name}}" value="{{query}}"/>
+                {% endif %}
+            </div>
+            <div class="submit-container">
+                <input type="submit" value="Go" />
+            </div>
         </form>
+
         <nav class="prev-next" id="events-feed-nav">
             <div class="previous">
             {% if page.has_previous %}
@@ -88,6 +100,20 @@ Context variables:
 {% block foot-inlines %}
 <script type="text/javascript">
 $(function(){
+    // enable showing of search query
+    {% if not query %}
+        $('.keyword-activate').click(function(e){
+            $('.input-search').show().focus();
+            $('.keyword-activate').hide();
+            e.preventDefault();
+        });
+    {% endif %}
+
+    // Highlight the search field text when clicked
+    $('.input-search').focus(function(){
+        $(this).select();
+    });
+
     // need to overwrite default geolocation accessor
     var EventItem = scenable.mapFeed.Item.extend({
         getLatLng: function() {
@@ -114,7 +140,6 @@ $(function(){
             if(evModel.attributes && !_.isUndefined(evModel.attributes.icon_day)) {
                 icon = '/static/img/markers/events/day_'+evModel.attributes.icon_day+'.png';
             }
-            console.log('using icon: ' + icon);
             return {
                 icon: icon,
                 shadow: '/static/img/markers/marker-shadow.png'
