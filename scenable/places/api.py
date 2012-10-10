@@ -88,14 +88,21 @@ class PlaceResource(ModelResource):
 
     def dehydrate(self, bundle):
         '''
-        Handles the inclusion of event and special stubs from this place
+        Handles the inclusion of event and special stubs from this place.
+
+        If idonly is specified as a flag, the bundle will be reduced to just
+        the resource id.
         '''
-        bundle.data['events'] = [build_event_stub(e)
-                                for e in Event.objects.filter(place=bundle.obj)
-                                                      .order_by('dtend')]
-        bundle.data['specials'] = [build_special_stub(s)
-                                for s in Special.objects.filter(place=bundle.obj)
-                                                        .order_by('dexpires')]
+        if bundle.request.GET.get('idonly', '').lower() == 'true':
+            bundle.data = {'id': str(bundle.obj.id)}
+        else:
+            bundle.data['events'] = [build_event_stub(e)
+                                    for e in Event.objects.filter(place=bundle.obj)
+                                                          .order_by('dtend')]
+            bundle.data['specials'] = [build_special_stub(s)
+                                    for s in Special.objects.filter(place=bundle.obj)
+                                                            .order_by('dexpires')]
+
         return bundle
 
     def dehydrate_image(self, bundle):

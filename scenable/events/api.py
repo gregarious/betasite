@@ -62,3 +62,13 @@ class EventResource(ModelResource):
             if img is not None:
                 return img.url
         return None
+
+    def dehydrate(self, bundle):
+        '''
+        If idonly is specified as a flag, the bundle will be reduced to just
+        the resource id.
+        '''
+        if bundle.request.GET.get('idonly', '').lower() == 'true':
+            bundle.data = {'id': str(bundle.obj.id)}
+
+        return bundle
