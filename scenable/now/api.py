@@ -82,7 +82,7 @@ class RandomEndpointMixin(SingleObjectMixin):
     def mixin_get_obj(self, request):
         try:
             idx = random.randint(0, self._meta.queryset.count() - 1)
-            return self._meta.queryset.order_by('-dtcreated')[idx]
+            return self._meta.queryset.all()[idx]
         except ValueError:  # occurs on a randint(0,-1) call
             return http.HttpNotFound()
         except IndexError:  # shouldn't happen
@@ -102,7 +102,7 @@ class FeaturedImageResource(RandomEndpointMixin, ModelResource):
         if not bundle.obj.image:
             return bundle.obj.image
 
-        size = bundle.request.GET.get('size', '700x450')
+        size = bundle.request.GET.get('size', '500x500')
         crop = bundle.request.GET.get('crop', 'center')
 
         return get_thumbnail(bundle.obj.image, size, crop=crop)

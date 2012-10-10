@@ -22,7 +22,7 @@ from scenable.now.api import NoticeResource, FeaturedImageResource
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', redirect_to, {'url': "http://www.scenable.com/info/"}),
+    url(r'^$', 'scenable.common.views.page_home', name='home'),
 
     # system admin and business admin pages
     url(r'^djadmin/', include(admin.site.urls)),
