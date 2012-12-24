@@ -1,5 +1,6 @@
 # Django settings for scenable project.
 import os
+import re
 
 # import settings that differ based on deployment
 from scenable.settings import local as settings_local
@@ -211,6 +212,9 @@ SERVER_EMAIL = settings_local.SERVER_EMAIL
 EMAIL_PORT = settings_local.EMAIL_PORT
 EMAIL_USE_TLS = settings_local.EMAIL_USE_TLS
 SEND_BROKEN_LINK_EMAILS = True
+IGNORABLE_404_URLS = (
+    re.compile(r'\.(php|cgi)$'),    # ignore random harmless hack attempts
+)
 
 # pipeline settings
 from scenable.settings.pipeline import *

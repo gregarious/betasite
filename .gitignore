@@ -1,2 +1,3 @@
 /src
 *.DS_Store
+/opt/elasticsearch-0.19.4/bin/service/*.status
