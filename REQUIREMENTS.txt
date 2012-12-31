@@ -1,23 +1,29 @@
-Django==1.4
-South>=0.7.3
-Whoosh>=2.3.2
-django-extensions>=0.7.1
-django-pipeline>=1.2.6
-django-tastypie>=0.9.11
-icalendar>=3.0.1b2
-python-dateutil==1.5    # Versions >1.5 require Python 3
-pytz>=2012c
-sorl-thumbnail>=11.12
-
-### Required for pyelasticsearch
-requests>=0.9.0
-
-### Pakcages straight from VCS (ones not on PyPI, beta versions, etc.)
--e git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack
-git+https://github.com/toastdriven/pyelasticsearch.git
-
-### Packages require gcc (can be flaky on OS X)
-PIL>=1.1.7
-# Only need one of these DB APIs
-#MySQL-python>=1.2.3
-psycopg2>=2.4.5
+Django==1.4.1
+PIL==1.1.7
+South==0.7.5
+Werkzeug==0.8.3
+Whoosh==2.4.1
+amqp==1.0.6
+anyjson==0.3.3
+billiard==2.7.3.19
+celery==3.0.12
+certifi==0.0.8
+chardet==1.0.1
+django-celery==3.0.11
+django-extensions==0.9
+-e git+https://github.com/toastdriven/django-haystack.git@0e95d8696f8ba770f9c60152136aba32f5591fd6#egg=django_haystack-dev
+django-pipeline==1.2.10
+django-tastypie==0.9.11
+icalendar==3.0.1b2
+kombu==2.5.4
+mimeparse==0.1.3
+oauthlib==0.1.3
+psycopg2==2.4.5
+pyasn1==0.1.3
+pyelasticsearch==0.0.5
+python-dateutil==1.5
+pytz==2012c
+requests==0.13.1
+rsa==3.1.1
+sorl-thumbnail==11.12
+wsgiref==0.1.2

@@ -1,17 +1,5 @@
 Roadmap:
 
-- Research various server-side plugins/packages (fabric, celery, Haystack, logging/alerts, rspec/cucumber)
-
-    - Review requirements file. Get rid of install_env.py?
-
-    - Celery tasks:
-        - precache thumbnails
-        - search index server, search indexing
-        - resolving places
-
-    - Admin alerts. Need to send some logging messages to admin.
-        - outsourcing/apitools/facebook.py:35
-
 - Page-wide changes (Haystack config/views, context processors, etc.)
     - Get rid of on-save search indexing to avoid save exceptions.
     - Common:
@@ -45,6 +33,15 @@ Roadmap:
 
     - Nuke migrations. Too many wonky things in there.
 
+- Research various server-side plugins/packages (fabric, celery, Haystack, logging/alerts, rspec/cucumber)
+    - Celery tasks:
+        - precache thumbnails
+        - search index server, search indexing
+        - resolving places
+
+    - Admin alerts. Need to send some logging messages to admin.
+        - outsourcing/apitools/facebook.py:35
+
 - Client-side technologies work
 
     - Static file handling:
@@ -57,6 +54,10 @@ Roadmap:
 
     - Tastypie:
         - Consider replacing viewmodels' serialize methods with Tastypie. Might not be worth it? (e.g. events/viewmodels.py:75)
+
+- Package updating (Django, Elasticsearch source, others). Get rid of install_env?
+
+- Environment setup: get rid of need for absolute imports? check out wizbe setup.
 
 - Go back to looking into nginx, Gunicorn. Confusing to figure out. Maybe try getting a local server running with this setup, then after understanding it a bit better, seeing if getting it working with Webfaction makes any sense.
 
