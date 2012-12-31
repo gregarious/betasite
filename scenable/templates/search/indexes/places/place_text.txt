@@ -1,6 +1,6 @@
 {{ object.name }}
-{% for tag in object.tags.all %}
-{{ tag.name }}
+{% for category in object.categories.all %}
+ {{ category.name }}
 {% endfor %}
 {{ object.description }}
 {{ object.location.address }}

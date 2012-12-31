@@ -2,7 +2,7 @@ from haystack import indexes
 from scenable.news.models import Article
 
 
-class ArticleTextOnlyIndex(indexes.RealTimeSearchIndex, indexes.Indexable):
+class ArticleTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     publication_date = indexes.DateField(model_attr='publication_date')
     source_name = indexes.CharField(model_attr='source_name')
