@@ -18,7 +18,6 @@ import random
 ### URL-LINKED VIEWS ###
 
 def page_now(request):
-    # TODO: better logic
     places = list(Place.listed_objects.all())
     random.shuffle(places)
     eligible_places = sorted(places, key=lambda p: -p.favorite_set.count())[:20]

@@ -28,7 +28,6 @@ class EventData(object):
         self._process_dates()
 
     def _process_dates(self):
-        # TODO: really should test some of this logic
         # if it's happening in the same year as now, or within the next 45 days, use the start year
         if self.dtstart.year == timezone.now().year:
             use_year = False

@@ -1,0 +1,72 @@
+Roadmap:
+
+- Research various server-side plugins/packages (fabric, celery, Haystack, logging/alerts, rspec/cucumber)
+
+    - Review requirements file. Get rid of install_env.py?
+    - Celery tasks:
+        - precache thumbnails
+        - search index server, search indexing
+        - resolving places
+
+    - Admin alerts. Need to send some logging messages to admin.
+        - outsourcing/apitools/facebook.py:35
+
+- Page-wide changes (Haystack config/views, context processors, etc.)
+    - Get rid of on-save search indexing to avoid save exceptions.
+    - Common:
+        - Create template context processor to replace PageContext
+
+    - Haystack-based views:
+        - Problem with unfiltered vs. filtered results in same view. I remember some hacky workaround that hould be fixed.
+        - Revisit the rationale behind them
+        - Refactor searching and category filtering (see TODOS in common/forms, common/views)
+
+- Specific app changes
+    - Places:
+        - Fix hours custom field. create parking one. surround custom field stuff with unit tests
+        - Look into simpler Google place resolving/normalization
+        - Add geopy support perhaps?
+    - Events:
+        - Refactor so that place primitive is primary. linked Place is a bonus
+        - viewmodels._process_dates needs some unit tests
+        - Check on JS date display
+    - Now:
+        - Rename misleading "page_now" template/view
+        - Remove the old now page logic?
+
+    - Nuke migrations. Too many wonky things in there.
+
+- Client-side technologies work
+
+    - Static file handling:
+        - General research
+        - Pipeline: keep around? Look into what's the current standard. django-compressor maybe?
+
+    - JS:
+        - useractions.js: obsolete?
+        - review JS structure
+
+    - Tastypie:
+        - Consider replacing viewmodels' serialize methods with Tastypie. Might not be worth it? (e.g. events/viewmodels.py:75)
+
+- Go back to looking into nginx, Gunicorn. Confusing to figure out. Maybe try getting a local server running with this setup, then after understanding it a bit better, seeing if getting it working with Webfaction makes any sense.
+
+=================
+
+- Org Admin:
+    - Look over how flow works then make better notes on what to take care of
+
+- SSL issues resolved
+
+- Google geocoding
+    - Big time simplification needed
+
+- Facebook pulling:
+    - Majorly simplify code.
+    - Don't allow any critical errors to be thrown.
+    - Consider turning some of the batch-hiding operations into generators
+    - remove place resolving for any case more complex than id-based linking
+
+- iCal
+    - Revisit ical.py
+    - Discuss specs with Brett

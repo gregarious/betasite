@@ -3,9 +3,6 @@ from django.core.urlresolvers import reverse
 
 from django.http import Http404
 from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import redirect_to_login
-from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.utils import timezone
 from django.contrib.sites.models import get_current_site
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -19,24 +16,6 @@ from scenable.common.utils.jsontools import sanitize_json
 from .forms import CategorySearchFormFactory
 
 import json
-import urlparse
-
-
-# TODO: deprecated? Was only used for private beta
-def to_login(request):
-    '''
-    Temporary measure to emulate how the login_required decorator redirects
-    an unauthenticated user (needed for clas-based search views)
-    '''
-    path = request.build_absolute_uri()
-    # If the login url is the same scheme and net location then just
-    # use the path as the "next" url.
-    login_scheme, login_netloc = urlparse.urlparse(reverse('login'))[:2]
-    current_scheme, current_netloc = urlparse.urlparse(path)[:2]
-    if ((not login_scheme or login_scheme == current_scheme) and
-        (not login_netloc or login_netloc == current_netloc)):
-        path = request.get_full_path()
-    return redirect_to_login(path, reverse('login'), REDIRECT_FIELD_NAME)
 
 
 # TODO: consider moving page context stuff into a template context processor

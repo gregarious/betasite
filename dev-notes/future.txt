@@ -1,17 +1,11 @@
 A catch all text file for things that should be considered once there's an actual release candidate around:
 
-- Use of Zepto instead of jQuery. 
+- Use of Zepto instead of jQuery.
 	- For now, no. Problems with Deferred. The flexibility in foundation development that Deferred gives us makes it necessary to keep around until a RC is done. At this point, re-evaluating the need for Deferred would be good.
-
-- Launch app with latest version of Phonegap, and other js libraries.
 
 - Root through boilerplate code for app and site to remove anything unnecessary.
 
-- Unit tests for EVERYTHING after launch. EEEEVVVERYTHING.
-
 - Consider what code needs to be marked safe and what needs to be escaped. For now just marking everything that comes from a rendering.* function as safe.
-
-- Look into automating more Model+ViewModel's to_data with new flatten handlers
 
 - Learn details about models. Lean custom fields. Learn cleaning. (e.g. application: Add state fullname to abbrev translation into Place saving core)
 
