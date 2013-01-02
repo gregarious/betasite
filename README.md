@@ -14,4 +14,8 @@ Given that, and how much if a rabbit hole debugging the Haystack core can be, I 
 
 ## Elasticsearch ##
 
-The current install uses Elasticsearch as the search backend. The whole Elasticsearch package is self-contained in the project's opt/elasticsearch-0.19.4/ directory. A few configuration changes were done to make the project play well with the self-contained var directory, and these are documented in opt/elasticsearch-0.19.4/config/README.txt. **Note that this README will overwritten if the install is replaced.** Be sure to keep a copy around if Elasticsearch is upgraded.
+The current install uses Elasticsearch as the search backend. The whole Elasticsearch package is self-contained in the project's `opt/elasticsearch-x.y.z/` directory.
+
+A Java Service Wrapper is used to manage the execution of the search backend process (located at `opt/elasticsearch-x.y.z/bin/service/elasticsearch`). This service wrapper is not included in the basic Elasticsearch download, but is mentioned in the docs and [can be found here](https://github.com/elasticsearch/elasticsearch-servicewrapper). We're using this mostly because I was really in the dark about launching daemons when I installed the search component of the site, and this made a bit of sense to me. Not sure how necessary it is now, but it works, so I don't care enough to revisit it.
+
+A few configuration changes were done to make the project play well with the self-contained var directory, and these are documented in `opt/elasticsearch-x.y.z/config/README.txt`. **Note that this README will overwritten if the install is replaced.** Be sure to keep a copy around when messing with the install.
