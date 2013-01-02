@@ -1,3 +1,18 @@
-/src
-*.DS_Store
-/opt/elasticsearch-0.19.4/bin/service/*.status
+### Django gitignore (from https://github.com/github/gitignore/blob/master/Django.gitignore)
+
+*.log
+*.pot
+*.pyc
+
+### var directory contents
+/var/index/*
+/var/log/*
+/var/run/elasticsearch/*
+/var/run/celery/*
+
+/scenable/settings/local.py
+
+### misc
+*~
+*#
+.DS_Store

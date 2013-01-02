@@ -140,7 +140,7 @@
 
 path:
     data: ../../var/index
-    logs: ../../var/logs
+    logs: ../../var/log
 
 # Path to directory containing configuration (this file and logging.yml):
 #
