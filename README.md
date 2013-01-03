@@ -4,20 +4,23 @@
 
 # Configuration #
 
-** TODO **
+**TODO**
 
 # Stack/admin notes #
 
 ## Non-python dependencies ##
 
-- rabbitmq-server
-- ** TODO **
+- PostgreSQL
+- RabbitMQ Server
+- Elasticsearch (see extended notes in Third-party Package notes section)
+- yuicompressor (wrote custom yuicompressor script that handles calling the included jar file)
 
 ## supervisor processes ##
 
 [supervisor](http://supervisord.org/configuration.html) is recommended for out-of-the-box process running. Included in `/etc/supervisord/` are sample conf files for the following processes:
 - celeryd (standard celery worker)
-- celerybeat (hndles periodic tasks)
+- celerybeat (handles cron-like periodic tasks)
+- elasticsearch (search engine service)
 
 ## Static files ##
 
@@ -42,8 +45,8 @@ Given that, and how much if a rabbit hole debugging the Haystack core can be, I 
 
 ## Elasticsearch ##
 
-The current install uses Elasticsearch as the search backend. The whole Elasticsearch package is self-contained in the project's `opt/elasticsearch-x.y.z/` directory.
-
-A Java Service Wrapper is used to manage the execution of the search backend process (located at `opt/elasticsearch-x.y.z/bin/service/elasticsearch`). This service wrapper is not included in the basic Elasticsearch download, but is mentioned in the docs and [can be found here](https://github.com/elasticsearch/elasticsearch-servicewrapper). We're using this mostly because I was really in the dark about launching daemons when I installed the search component of the site, and this made a bit of sense to me. Not sure how necessary it is now, but it works, so I don't care enough to revisit it.
+The current install uses Elasticsearch as the search backend. The whole Elasticsearch package is self-contained in the project's `opt/elasticsearch/` directory.
 
 A few configuration changes were done to make the project play well with the self-contained var directory, and these are documented in `opt/elasticsearch-x.y.z/config/README.txt`. **Note that this README will overwritten if the install is replaced.** Be sure to keep a copy around when messing with the install.
+
+A Java Service Wrapper was used previously to manage the service (see any previous v1.0 commit), but was rendered obsolete by the introduction of supervisor. This could be useful again if we see some specific problems (e.g. [this issue](http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html)), but it's doubtful.

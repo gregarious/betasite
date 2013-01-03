@@ -1,0 +1,20 @@
+; =======================================
+;  elasticsearch daemon supervisor entry
+; =======================================
+
+[program:elasticsearch]
+command=<DJANGO_SITE_ROOT>/opt/elasticsearch/bin/elasticsearch -f -p <DJANGO_SITE_ROOT>/var/run/elasticsearch/elasticsearch.pid
+directory=<DJANGO_SITE_ROOT>/opt/elasticsearch
+numprocs=1
+autostart=true
+autorestart=true
+startsecs=15
+
+;logging already handled by elasticsearch
+;stdout_logfile=
+;stderr_logfile=
+;user=<USER> ; (if necessary, e.g. www)
+
+; Need to wait for currently executing tasks to finish at shutdown.
+; Increase this if you have very long running tasks.
+stopwaitsecs = 60
