@@ -2,7 +2,35 @@
 
 - Tagged comments with "FUTURE" that deal with some good ideas for enhancing/refactoring features.
 
-# Various notes #
+# Configuration #
+
+** TODO **
+
+# Stack/admin notes #
+
+## Non-python dependencies ##
+
+- rabbitmq-server
+- ** TODO **
+
+## supervisor processes ##
+
+[supervisor](http://supervisord.org/configuration.html) is recommended for out-of-the-box process running. Included in `/etc/supervisord/` are sample conf files for the following processes:
+- celeryd (standard celery worker)
+- celerybeat (hndles periodic tasks)
+
+## Static files ##
+
+Static file serving is not part of this install. The /static/ and /media/ endpoints must be supported externally (a separate nginx Webfaction app in the case of the current production server).
+
+## virtualenv ##
+
+## cron jobs ##
+
+Recommended cron jobs:
+- Database backup
+
+# Third-party Package Notes #
 
 ## Haystack ##
 

@@ -1,0 +1,18 @@
+; ===========================================
+;  celery beat supervisor example for Django
+; ===========================================
+
+[program:celerybeat]
+command=<VIRTUALENV_ROOT>/bin/python <DJANGO_SITE_ROOT>/manage.py beat --loglevel=INFO --pidfile=<DJANGO_SITE_ROOT>/var/run/celerybeat.pid
+directory=<DJANGO_SITE_ROOT>
+;user=<USER> ; (if necessary, e.g. www)
+numprocs=1
+stdout_logfile=<DJANGO_SITE_ROOT>/var/log/celerybeat.log
+stderr_logfile=<DJANGO_SITE_ROOT>/var/log/celerybeat.log
+autostart=true
+autorestart=true
+startsecs=10
+
+; if rabbitmq is supervised, set its priority higher
+; so it starts first
+priority=999

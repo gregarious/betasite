@@ -9,8 +9,11 @@
 /var/log/*
 /var/run/elasticsearch/*
 /var/run/celery/*
+/var/celerybeat-schedule
 
+### local settings/configuration
 /scenable/settings/local.py
+/etc/supervisord/celeryd.conf
 
 ### misc
 *~

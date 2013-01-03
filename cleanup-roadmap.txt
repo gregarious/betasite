@@ -1,3 +1,21 @@
+Current task:
+
+- supervisor for elasticsearch
+
+- celerybeat jobs
+    - periodically updating the search index every few minutes (and an "update all" every day)
+        - perhaps create an on save queue if that's super slow
+
+- cron jobs
+    - db backup
+
+- celery tasks
+    - precaching thumbnails
+
+- need to log everything and alert admin on criticl errors:
+    - cron job: email on log update
+    - celery/celerybeat jobs: either email alert, periodic digest, or simple logging, based on priority of message
+
 Roadmap:
 
 - Page-wide changes (Haystack config/views, context processors, etc.)
@@ -56,8 +74,6 @@ Roadmap:
         - Consider replacing viewmodels' serialize methods with Tastypie. Might not be worth it? (e.g. events/viewmodels.py:75)
 
 - Package updating (Django, Elasticsearch source, others). Get rid of install_env?
-
-- Environment setup: get rid of need for absolute imports? check out wizbe setup.
 
 - Go back to looking into nginx, Gunicorn. Confusing to figure out. Maybe try getting a local server running with this setup, then after understanding it a bit better, seeing if getting it working with Webfaction makes any sense.
 

@@ -26,3 +26,7 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+
+# need a celery hook in here according to http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
+import djcelery
+djcelery.setup_loader()

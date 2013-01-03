@@ -1,9 +1,10 @@
 from fabric.api import run, cd, env
+from fabric.decorators import hosts
 
-env.hosts = ['scenable']
 env.use_ssh_config = True
 
 
+@hosts('scenable')
 def deploy(update_static=True):
     update_static = bool(update_static)
     print update_static

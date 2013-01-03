@@ -125,12 +125,16 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    # third-party packages
     'south',
     'sorl.thumbnail',
     'pipeline',
     'tastypie',
     'haystack',
     'django_extensions',
+    'djcelery',
+
     # scenable apps
     'scenable.common',
     'scenable.accounts',
@@ -150,7 +154,7 @@ INSTALLED_APPS = (
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 # (see master:687f9565 for old logging examples)
-LOGGING_ROOT = site_file('var/logs')
+LOGGING_ROOT = site_file('var/log')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -230,3 +234,9 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+
+import djcelery
+djcelery.setup_loader()
+
+BROKER_URL = "amqp://guest:guest@localhost:5672//"
+CELERYBEAT_SCHEDULE_FILENAME = site_file('var/celerybeat-schedule')
