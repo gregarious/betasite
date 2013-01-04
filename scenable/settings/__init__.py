@@ -158,9 +158,15 @@ LOGGING_ROOT = site_file('var/log')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
         'console': {
@@ -240,3 +246,7 @@ djcelery.setup_loader()
 
 BROKER_URL = "amqp://guest:guest@localhost:5672//"
 CELERYBEAT_SCHEDULE_FILENAME = site_file('var/celerybeat-schedule')
+CELERY_SEND_TASK_ERROR_EMAILS = True
+
+# schedule.py contains all the celerybeat scheduled tasks
+from scenable.settings.schedule import *

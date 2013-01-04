@@ -1,20 +1,15 @@
 Current task:
 
-- supervisor for elasticsearch
-
 - celerybeat jobs
     - periodically updating the search index every few minutes (and an "update all" every day)
         - perhaps create an on save queue if that's super slow
 
 - cron jobs
     - db backup
+    - needs email on error support
 
 - celery tasks
     - precaching thumbnails
-
-- need to log everything and alert admin on criticl errors:
-    - cron job: email on log update
-    - celery/celerybeat jobs: either email alert, periodic digest, or simple logging, based on priority of message
 
 Roadmap:
 
