@@ -300,6 +300,7 @@ class Place(models.Model, ViewModel):
         ordering = ['name']
 
     dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
+    dtmodified = models.DateTimeField('last modified datetime', auto_now=True)
     name = models.CharField(max_length=200, blank=True)
     location = models.ForeignKey(Location, blank=True, null=True)
 
@@ -334,8 +335,6 @@ class Place(models.Model, ViewModel):
         super(Place, self).save(*args, **kwargs)
         if self.image:
             # pre-cache common sized thumbnails
-                precache_thumbnails(self.image)
-            except Exception as e:
             precache_thumbnails(Place, self.pk, 'image')
 
     def next(self):
@@ -356,6 +355,7 @@ class Place(models.Model, ViewModel):
             return None
         prev_idx = idx[0] - 1
         try:
+            if prev_idx < 0:    # want to simulate an index error for -1
                 raise IndexError
             return places[prev_idx]
         except IndexError:

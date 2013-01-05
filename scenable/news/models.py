@@ -8,6 +8,7 @@ class Article(models.Model):
     class Meta:
         ordering = ['-publication_date', '-dtcreated']
     dtcreated = models.DateTimeField(auto_now_add=True)
+    dtmodified = models.DateTimeField('last modified datetime', auto_now=True)
 
     title = models.CharField(max_length=80)
     blurb = models.TextField(help_text=u'Short excerpt/description of the article (max 350 characters)', max_length=350)

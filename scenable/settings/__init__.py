@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'haystack',
     'django_extensions',
     'djcelery',
+    'celery_haystack',
 
     # scenable apps
     'scenable.common',

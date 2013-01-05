@@ -1,6 +1,7 @@
 # Future work #
 
 - Tagged comments with "FUTURE" that deal with some good ideas for enhancing/refactoring features.
+- Consider replacing sorl Thumbnails with easy-thumbnails. More active development and I think I like its style a bit better. One issue though: I don't know if it supports easy deletion of all orphaned thumbs?
 
 # Configuration #
 
@@ -50,3 +51,4 @@ The current install uses Elasticsearch as the search backend. The whole Elastics
 For the most part, the library can be updated by simply replacing the directory wholesale. The one exception is the configuration changes that make the project play well with the self-contained var directory. These are documented in `opt/elasticsearch/config/README.txt`, so **this documentation will be overwritten when the install is replaced.** Be sure to keep a copy around for reference when upgrading the install (and remember to add the README into the new install, too).
 
 A Java Service Wrapper was used previously to manage the service (see any previous v1.0 commit), but was rendered obsolete by the introduction of supervisor. This could be useful again if we see some specific problems (e.g. [this issue](http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html)), but it's doubtful.
+

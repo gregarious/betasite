@@ -1,8 +1,10 @@
 from haystack import indexes
+from celery_haystack.indexes import CelerySearchIndex
+
 from scenable.events.models import Event
 
 
-class EventTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
+class EventTextOnlyIndex(CelerySearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     dtstart = indexes.DateTimeField(model_attr='dtstart')
     dtend = indexes.DateTimeField(model_attr='dtend')
@@ -16,3 +18,6 @@ class EventTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
 
     def get_model(self):
         return Event
+
+    def get_updated_field(self):
+        return 'dtmodified'

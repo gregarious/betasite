@@ -1,8 +1,10 @@
 from haystack import indexes
+from celery_haystack.indexes import CelerySearchIndex
+
 from scenable.places.models import Place
 
 
-class PlaceTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
+class PlaceTextOnlyIndex(CelerySearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     listed = indexes.BooleanField(model_attr='listed')
 
@@ -15,3 +17,6 @@ class PlaceTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
 
     def get_model(self):
         return Place
+
+    def get_updated_field(self):
+        return 'dtmodified'

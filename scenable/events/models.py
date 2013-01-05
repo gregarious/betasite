@@ -33,7 +33,7 @@ class Event(models.Model, ViewModel):
     description = models.TextField(blank=True)
 
     dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
-    dtmodified = models.DateTimeField('modified datetime', auto_now=True)
+    dtmodified = models.DateTimeField('last modified datetime', auto_now=True)
 
     dtstart = models.DateTimeField('start datetime')
     # dtend is the non-inclusive end date/time, meaning an event with dtend at 11pm actually only takes up time till 10:59pm

@@ -15,6 +15,7 @@ class Special(models.Model, ViewModel):
         ordering = ['title']
 
     dtcreated = models.DateTimeField('created datetime', auto_now_add=True)
+    dtmodified = models.DateTimeField('last modified datetime', auto_now=True)
 
     title = models.CharField(max_length=140)
     description = models.TextField(blank=True)
