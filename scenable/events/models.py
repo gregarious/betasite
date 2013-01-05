@@ -66,12 +66,7 @@ class Event(models.Model, ViewModel):
         super(Event, self).save(*args, **kwargs)
         if self.image:
             # pre-cache common sized thumbnails
-            try:
-                precache_thumbnails(self.image)
-            # never let these lines interrupt anything
-            except Exception as e:
-                print 'error caching thumbnails', e
-                # TODO: log error
+            precache_thumbnails(Event, self.pk, 'image')
 
     def to_data(self, *args, **kwargs):
         '''

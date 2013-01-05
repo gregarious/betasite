@@ -9,6 +9,8 @@ from django.utils.timezone import get_current_timezone
 from django.core.files import File
 from sorl.thumbnail import get_thumbnail
 
+from scenable.common.tasks import cache_image_thumbnail
+
 url_pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
 
@@ -79,7 +81,11 @@ def imagefile_from_url(url):
     im.save(tmp)
     return File(tmp)
 
-THUMB_TYPES = ('small', 'standard', 'app')
+THUMB_TYPES = {
+    'small': '50x50',
+    'standard': '130x130',
+    'app': '80x80'
+}
 
 
 def get_cached_thumbnail(image, type, ioerror_silent=True):
@@ -91,29 +97,30 @@ def get_cached_thumbnail(image, type, ioerror_silent=True):
 
     Will throw IOError if image file doesn't exist.
     '''
-    try:
-        if type.lower() == 'small':
+    size = THUMB_TYPES.get(type.lower())
+
+    if size:
+        try:
             return get_thumbnail(image, '50x50', crop='center')
-        elif type.lower() == 'standard':
-            return get_thumbnail(image, '130x130', crop='center')
-        elif type.lower() == 'app':
-            return get_thumbnail(image, '80x80', crop='center')
-        else:
-            return None
-    except IOError:
-        if ioerror_silent:
-            return None
-        else:
-            raise
+        except IOError:
+            if ioerror_silent:
+                return None
+            else:
+                raise
+    else:
+        return None
 
 
-def precache_thumbnails(image):
+def precache_thumbnails(model, pk, fieldname):
     '''
     Pre-caches thumbnail versions of the given ImageFile, one thumbnail
     per values in THUMB_TYPES.
+
+    Must specify an ORM lookup for the image field to be queried at the
+    time of caching, can't just serialize current state for Celery now.
     '''
-    for type in THUMB_TYPES:
-        get_cached_thumbnail(image, type)
+    for _, size in THUMB_TYPES.items():
+        cache_image_thumbnail.delay(model, pk, fieldname, size, crop='center')
 
 
 def localtime(value, timezone=None):

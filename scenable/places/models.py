@@ -334,12 +334,9 @@ class Place(models.Model, ViewModel):
         super(Place, self).save(*args, **kwargs)
         if self.image:
             # pre-cache common sized thumbnails
-            try:
                 precache_thumbnails(self.image)
-            # never let these lines interrupt anything
             except Exception as e:
-                print 'error caching thumbnails', e
-                # TODO: log error
+            precache_thumbnails(Place, self.pk, 'image')
 
     def next(self):
         places = Place.objects.all()
@@ -359,7 +356,6 @@ class Place(models.Model, ViewModel):
             return None
         prev_idx = idx[0] - 1
         try:
-            if prev_idx < 0: # want to simulate an index error for -1
                 raise IndexError
             return places[prev_idx]
         except IndexError:
