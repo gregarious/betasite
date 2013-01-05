@@ -15,6 +15,7 @@
 /scenable/settings/local.py
 /etc/supervisord/celeryd.conf
 /etc/supervisord/celerybeat.conf
+/etc/supervisord/celeryflower.conf
 /etc/supervisord/elasticsearch.conf
 
 ### misc
