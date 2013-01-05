@@ -1,20 +1,6 @@
-Current task:
-
-- celerybeat jobs
-    - periodically updating the search index every few minutes (and an "update all" every day)
-        - perhaps create an on save queue if that's super slow
-
-- cron jobs
-    - db backup
-    - needs email on error support
-
-- celery tasks
-    - precaching thumbnails
-
 Roadmap:
 
 - Page-wide changes (Haystack config/views, context processors, etc.)
-    - Get rid of on-save search indexing to avoid save exceptions.
     - Common:
         - Create template context processor to replace PageContext
 
@@ -46,14 +32,9 @@ Roadmap:
 
     - Nuke migrations. Too many wonky things in there.
 
-- Research various server-side plugins/packages (fabric, celery, Haystack, logging/alerts, rspec/cucumber)
-    - Celery tasks:
-        - precache thumbnails
-        - search index server, search indexing
-        - resolving places
+- Create some more fabric scripts (e.g. add supervisor control to deploy)
 
-    - Admin alerts. Need to send some logging messages to admin.
-        - outsourcing/apitools/facebook.py:35
+- Look into rspec/cucumber as inspiration for tests
 
 - Client-side technologies work
 
@@ -68,7 +49,7 @@ Roadmap:
     - Tastypie:
         - Consider replacing viewmodels' serialize methods with Tastypie. Might not be worth it? (e.g. events/viewmodels.py:75)
 
-- Package updating (Django, Elasticsearch source, others). Get rid of install_env?
+- Package updating (Django, Elasticsearch source, others). Create new requirements file and update on deployed.
 
 - Go back to looking into nginx, Gunicorn. Confusing to figure out. Maybe try getting a local server running with this setup, then after understanding it a bit better, seeing if getting it working with Webfaction makes any sense.
 
