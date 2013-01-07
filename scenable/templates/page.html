@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 
 {% comment %}
-Template for any Scenable webpage. 
+Template for any Scenable webpage.
 
 Context is a PageContext variable, meaning the context variables
 are always available (in addition to normal RequestContext vbls):
 
     page_title: string
     current_section: string
-    site_url: string
 {% endcomment %}
 {% load compressed %}
 
@@ -32,9 +31,9 @@ are always available (in addition to normal RequestContext vbls):
     {% block main-content %}{% endblock %}
         <footer id="site-footer">
             {% include "footer.html" %}
-        </footer> <!-- #footer -->        
+        </footer> <!-- #footer -->
     </div> <!-- #site-content -->
-    
+
     <aside id="site-sidebar" role="complementary">
         {% block sidebar %}{% endblock %}
 	</aside>
@@ -49,7 +48,7 @@ are always available (in addition to normal RequestContext vbls):
 <script type="text/javascript">
 scenable = window.scenable = window.scenable || {};
 scenable.constants = {
-    SITE_URL: '{{site_url|escapejs}}'
+    SITE_DOMAIN: '{{site_domain|escapejs}}'
 };
 </script>
 {% compressed_js 'all_libs' %}

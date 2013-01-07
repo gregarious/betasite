@@ -1,9 +1,8 @@
+Current task:
+
 Roadmap:
 
 - Page-wide changes (Haystack config/views, context processors, etc.)
-    - Common:
-        - Create template context processor to replace PageContext
-
     - Haystack-based views:
         - Problem with unfiltered vs. filtered results in same view. I remember some hacky workaround that hould be fixed.
         - Revisit the rationale behind them
@@ -54,6 +53,8 @@ Roadmap:
 - Go back to looking into nginx, Gunicorn. Confusing to figure out. Maybe try getting a local server running with this setup, then after understanding it a bit better, seeing if getting it working with Webfaction makes any sense.
 
 =================
+
+- Feedback?
 
 - Org Admin:
     - Look over how flow works then make better notes on what to take care of

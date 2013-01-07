@@ -4,13 +4,10 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.template import RequestContext
 from django.utils import timezone
-from django.contrib.sites.models import get_current_site
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from haystack.views import SearchView
-from haystack.forms import SearchForm
 
-from scenable.feedback.forms import GenericFeedbackForm
 from scenable.common.utils.jsontools import sanitize_json
 
 from .forms import CategorySearchFormFactory
@@ -18,7 +15,6 @@ from .forms import CategorySearchFormFactory
 import json
 
 
-# TODO: consider moving page context stuff into a template context processor
 class PageContext(RequestContext):
     '''
     Used for main context variable for every main site page.
@@ -34,9 +30,6 @@ class PageContext(RequestContext):
         variables = dict(
             page_title=page_title,
             current_section=current_section,
-            site_url=get_current_site(request).domain,
-            site_search_form=SearchForm(),
-            sidebar_feedback_form=GenericFeedbackForm(user=request.user),
         )
         variables.update(content_dict)
         super(PageContext, self).__init__(request, variables, **kwargs)
