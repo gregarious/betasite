@@ -52,3 +52,6 @@ For the most part, the library can be updated by simply replacing the directory 
 
 A Java Service Wrapper was used previously to manage the service (see any previous v1.0 commit), but was rendered obsolete by the introduction of supervisor. This could be useful again if we see some specific problems (e.g. [this issue](http://www.elasticsearch.org/tutorials/2011/04/06/too-many-open-files.html)), but it's doubtful.
 
+## Celery ##
+
+Although the Django admin plugin to monitor Celery processes was pretty simple ([see this post on stackoverflow for info on how to set it back up](http://stackoverflow.com/questions/10660202/how-do-i-set-a-backend-for-django-celery-i-set-celery-result-backend-but-it-is)), it's probably overkill, requires even more daemon features to be running (celerycam, -E flag for worker), and isn't officially recommended by the Celery folks anymore. As a result, Flower is in place now. It's a pretty nice tool, but it's fairly early in development and isn't well documented yet. I can't find a simple way to access it's data on a remote webserver, or to store task history persistently. No big deal, but might want to keep an eye on the project, and look into these things if monitoring async tasks becomes more than just a curiousity.
