@@ -1,17 +1,13 @@
-Current task:
-
 Roadmap:
 
-- Page-wide changes (Haystack config/views, context processors, etc.)
-    - Haystack-based views:
-        - Problem with unfiltered vs. filtered results in same view. I remember some hacky workaround that hould be fixed.
-        - Revisit the rationale behind them
-        - Refactor searching and category filtering (see TODOS in common/forms, common/views)
+- URL restructuring
+    - Tastypie integration?
 
 - Specific app changes
     - Places:
         - Fix hours custom field. create parking one. surround custom field stuff with unit tests
-        - Look into simpler Google place resolving/normalization
+        - Look into simpler Google place resolving/normalization. Remove any that's unnecessary. Which is pretty much all of it.
+        - Either use Tastypie for serialization, or write custom to_json methods ON THE MODELS THEMSELVES
         - Add geopy support perhaps?
         - remove tags, any obsolete fields
     - Events:
@@ -20,11 +16,13 @@ Roadmap:
         - Check on JS date display
         - remove tags, any obsolete fields
     - Specials:
+        - make dexpires required and give it a default value on save of a year from now if not specified
         - remove tags, any obsolete fields
     - Chatter:
         - Kill it?
     - News:
         - remove tags, any obsolete fields
+        - integrate the new FeedView into the feed
     - Now:
         - Rename misleading "page_now" template/view
         - Remove the old now page logic?

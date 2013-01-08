@@ -1,55 +1,56 @@
 from django.http import HttpResponseForbidden
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
-from django.contrib.auth.decorators import login_required
 
-from scenable.common.views import PageContext, PageFilterableFeed
+from scenable.common.views import PageContext, FeedView
 
 from scenable.specials.models import Special, Coupon
 from scenable.specials.viewmodels import SpecialData
 
 from haystack.query import SearchQuerySet
-from django.utils.timezone import now
+from haystack.forms import SearchForm
+
+from django.utils import timezone
+import datetime
 
 
-class PageSpecialsFeed(PageFilterableFeed):
-    def __init__(self, *args, **kwargs):
-        sqs = SearchQuerySet().models(Special).order_by('dexpires')
-        qs = Special.objects.order_by('dexpires')
+class PageSpecialsFeed(FeedView):
+    '''
+    Class-based view that shows main feed of specials
+    '''
+    def __init__(self):
+        # used to render the page with correctly configured PageContext
+        context_factory = lambda request: \
+            PageContext(request,
+                current_section='specials',
+                page_title='Scenable | Oakland Specials')
+
+        # set static attributes of the view class here
         super(PageSpecialsFeed, self).__init__(
-            template='specials/page_feed.html',
-            searchqueryset=sqs,
-            nosearch_queryset=qs,
-            categories=[],  # disabled for now
+            template='events/page_feed.html',
+            page_context_factory=context_factory,
             viewmodel_class=SpecialData,
-            results_per_page=8,
-        )
+            results_per_page=8)
 
-    def get_results(self):
+    def build_search_form(self, data=None):
         '''
-        Due to a problem with Haystack/Elasticsearch filtering on nullable
-        fields (not sure which one), the filtering by expiration date must
-        be done manually after the search.
+        Returns a form for that will search all Events with an event category
+        dropdown.
         '''
-        results = super(PageSpecialsFeed, self).get_results()
+        # Haystack (or elasticsearch?) stores all times as naive datetimes in UTC
+        sqs = SearchQuerySet().models(Special) \
+            .filter(dexpires__gte=datetime.datetime.now().date()) \
+            .order_by('dexpires')
 
-        if self.search_used:
-            # go through result.objects
-            return [result for result in results
-                        if result.object.dexpires is None or \
-                           result.object.dexpires >= now().date()]
-        else:
-            # go through bare results
-            return [result for result in results
-                        if result.dexpires is None or result.dexpires >= now().date()]
+        return SearchForm(searchqueryset=sqs, data=data)
 
-    def get_page_context(self, request):
+    def get_all_results(self):
         '''
-        Return a dict of extra context variables. Override this.
+        Returns all events, sorted by end time.
         '''
-        return PageContext(self.request,
-            current_section='specials',
-            page_title='Scenable | Oakland Specials')
+        return Special.objects.order_by('dexpires') \
+            .filter(dexpires__gte=timezone.now()) \
+            .order_by('dexpires')
 
 
 def page_details(request, sid):

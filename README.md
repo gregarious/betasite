@@ -40,9 +40,14 @@ Recommended cron jobs:
 
 Using v2.0.0-beta since I assumed it would be released sometime soon after I started playing around with it, but 8 months later it's still in beta.
 
-Really good ideas in Haystack: modeling after the ORM, search index templates, focus on indexing models, but the project looks to be a little too lofty to pull it all off in a stable way. Documentation is very complete on some subjects, absent on others. Lots of cool advanced features: spatial search, querysets that filter on a attributes that aren't directly indexed, etc, but I ran into a few bugs here and there on some fairly basic tasks (submitted a ticket even).
+Really good ideas in Haystack: modeling after the ORM, search index templates, focus on indexing models, but the project looks to be a little too lofty to pull it all off in a stable way. Documentation is very complete on some subjects, absent on others. Lots of cool advanced features: spatial search, querysets that filter on a attributes that are stored in the index, etc, but I ran into a few bugs here and there on some fairly basic tasks (submitted a ticket even).
 
-Given that, and how much if a rabbit hole debugging the Haystack core can be, I think it's best to keep it super simple and use the minimum number of extras. Basically, just sticking with taking advantage of the template indices and tight integration of search results to model types.
+But as it turns out, querying all heterogenous items via a QuerySet-like interface might not be a great idea. Filtering by stored fields is screwy.  Since not all indexed models have the same filterable field name, it'll just leaves out all results for models that don't have the filterable field. Also it's buggy (e.g. dtend=datetime.now() will crash, dtend__lte=datetime.now() won't)
+
+Don't want to spend the effort of implementing a new search backend, so going to stick with Haystack and just take advantage of it for index template and tight integration of search results to model types.
+
+A few reminders for things that either aren't documented or are hard to find in Haystack's docs:
+- All indexed dates/times are stored as naive datetimes in UTC. Not sure if this is a Haystack decision or up to the search backend.
 
 ## Elasticsearch ##
 
