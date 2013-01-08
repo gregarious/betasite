@@ -29,7 +29,9 @@ Roadmap:
 
     - Nuke migrations. Too many wonky things in there.
 
-- Create some more fabric scripts (e.g. add supervisor control to deploy)
+- Create some more fabric scripts
+    - supervisor control during deploy
+    - ability to pull down current production DB and media
 
 - Look into rspec/cucumber as inspiration for tests
 

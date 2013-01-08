@@ -4,13 +4,13 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.template import RequestContext
 from django.utils import timezone
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
+from django.core.paginator import Paginator, InvalidPage
 
 from haystack.views import SearchView
+from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
 
 from scenable.common.utils.jsontools import sanitize_json
-
-from scenable.common.forms import CategorySearchForm
 
 import json
 
@@ -111,8 +111,9 @@ class FeedView(object):
     '''
     Class-based view that draws inspiration from Haystack's SearchView. We
     want similar functionality, but the ability to skip the SearchQuerySet
-    if no search query is requested. Rather than hack around SearchView, this
-    one was created from scratch instead.
+    if no search query is requested. Rather than hack around SearchView with
+    it's internal assumption of results as SearchQueryResults, this one was
+    created from scratch instead.
 
     Main difference is the methods that should be overridden. The following
     methods should all be overridden, with the exception of
@@ -175,7 +176,7 @@ class FeedView(object):
         Instantiates the form the class should be used to process the search
         query
         """
-        return None
+        return SearchForm(searchqueryset=SearchQuerySet())
 
     def get_all_results(self):
         """
