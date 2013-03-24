@@ -3,7 +3,7 @@ from scenable.news.models import Article
 
 
 # TODO: Need to ensure 500 errors aren't thrown when indexer chokes on model save
-class ArticleTextOnlyIndex(indexes.RealTimeSearchIndex, indexes.Indexable):
+class ArticleTextOnlyIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     publication_date = indexes.DateField(model_attr='publication_date')
     source_name = indexes.CharField(model_attr='source_name')
