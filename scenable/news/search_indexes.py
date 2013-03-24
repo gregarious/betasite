@@ -2,7 +2,6 @@ from haystack import indexes
 from celery_haystack.indexes import CelerySearchIndex
 from scenable.news.models import Article
 
-
 class ArticleTextOnlyIndex(CelerySearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     publication_date = indexes.DateField(model_attr='publication_date')

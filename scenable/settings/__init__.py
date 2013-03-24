@@ -246,7 +246,7 @@ from scenable.settings.pipeline import *
 PIPELINE_YUI_BINARY = site_file('opt/yuicompressor/bin/yuicompressor')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
-# initial Haystack setup for Whoosh
+# Haystack settings
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',

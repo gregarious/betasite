@@ -3,7 +3,6 @@ from celery_haystack.indexes import CelerySearchIndex
 
 from scenable.events.models import Event
 
-
 class EventTextOnlyIndex(CelerySearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     dtstart = indexes.DateTimeField(model_attr='dtstart')
